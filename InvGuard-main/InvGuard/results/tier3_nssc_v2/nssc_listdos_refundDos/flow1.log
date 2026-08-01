@@ -1,0 +1,246 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_listdos_refundDos.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f join --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.join.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'refundAddresses', 'value_src': '0', 'args_src': 'refundAddresses.push(msg.sender)'}
+INFO:root:   {'op': 'map_add', 'map': 'refundAmount', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < refundAddresses.length', 'then': [{'op': 'raw', 'src': 'address(select(refundAddresses, i)).transfer(select(refundAmount, select(refundAddresses, i)))'}], 'else': [{'op': 'raw', 'src': 'i ++'}]}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender)  | meta.revert_taken=False, meta.sender=0, meta.value=57896044618658102532599625281315494176367622498507895558535861491481272385544, refundAddresses=0, refundAddresses1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)  | reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"
+   - (meta.revert_taken == false) -> (post.refundAddresses.length == pre.refundAddresses.length + 1)  | reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.join.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.join.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.join.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f refundDos --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.refundDos.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'refundAddresses', 'value_src': '0', 'args_src': 'refundAddresses.push(msg.sender)'}
+INFO:root:   {'op': 'map_add', 'map': 'refundAmount', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < refundAddresses.length', 'then': [{'op': 'raw', 'src': 'address(select(refundAddresses, i)).transfer(select(refundAmount, select(refundAddresses, i)))'}], 'else': [{'op': 'raw', 'src': 'i ++'}]}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender)  | meta.revert_taken=False, refundAddresses=0, refundAddresses1=0, refundAmount=K(BitVec(160),
+  57896044618658097711785492504343953926634992332820282019728792003956564819968), refundAmount1=K(BitVec(160),
+  57896044618658097711785492504343953926634992332820282019728792003956564819968)
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value)  | meta.revert_taken=False, meta.value=115792089237316195423570985008687907853269984665640564039457584007913129639935, refundAddresses=0, refundAddresses1=0, refundAmount=K(BitVec(160), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)  | reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"
+   - (meta.revert_taken == false) -> (post.refundAddresses.length == pre.refundAddresses.length + 1)  | reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.refundDos.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.refundDos.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.refundDos.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f join --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.join.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: join  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender))", "model": {"meta.revert_taken": "False", "meta.sender": "0", "meta.value": "57896044618658102532599625281315494176367622498507895558535861491481272385544", "refundAddresses": "0", "refundAddresses1": "0", "refundAmount": "K(BitVec(160),\n  28948022309329046445485679863686206838451181083566334240460861258215928627199)", "refundAmount1": "Store(K(BitVec(160),\n        28948022309329046445485679863686206838451181083566334240460861258215928627199),\n      0,\n      86844066927987148978085305145001701014818803582074229798996722749697201012743)"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)", "reason": "KeyError: \"Unknown symbol 'post.refundAddresses.length'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.refundAddresses.length == pre.refundAddresses.length + 1)", "reason": "KeyError: \"Unknown symbol 'post.refundAddresses.length'\"", "status": "REJECTED_UNSUPPORTED"}INFO:root:[FLOW1] Failed invariants detected for join — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.join.refined.filtered.txt
+INFO:root:[FLOW1] Failed invariants detected for refundDos — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.refundDos.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f refundDos --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.refundDos.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: refundDos  (invariants: LLM-translated)
+Notes:
+  - [tmp] created local i: BitVec256
+  - [raw-block] address(select(refundAddresses, i)).transfer(select(refundAmount, select(refundAddresses, i)))
+  - [raw-block] i ++
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender))", "model": {"meta.revert_taken": "False", "refundAddresses": "0", "refundAddresses1": "0", "refundAmount": "K(BitVec(160),\n  57896044618658097711785492504343953926634992332820282019728792003956564819968)", "refundAmount1": "K(BitVec(160),\n  57896044618658097711785492504343953926634992332820282019728792003956564819968)"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value))", "model": {"meta.revert_taken": "False", "meta.value": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "refundAddresses": "0", "refundAddresses1": "0", "refundAmount": "K(BitVec(160), 0)", "refundAmount1": "K(BitVec(160), 0)"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)", "reason": "KeyError: \"Unknown symbol 'post.refundAddresses.length'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.refundAddresses.length == pre.refundAddresses.length + 1)", "reason": "KeyError: \"Unknown symbol 'post.refundAddresses.length'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f join --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.join.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'refundAddresses', 'value_src': '0', 'args_src': 'refundAddresses.push(msg.sender)'}
+INFO:root:   {'op': 'map_add', 'map': 'refundAmount', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < refundAddresses.length', 'then': [{'op': 'raw', 'src': 'address(select(refundAddresses, i)).transfer(select(refundAmount, select(refundAddresses, i)))'}], 'else': [{'op': 'raw', 'src': 'i ++'}]}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value)
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender)  | meta.revert_taken=False, meta.sender=0, meta.value=57896044618658102532599625281315494176367622498507895558535861491481272385544, refundAddresses=0, refundAddresses1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)  | reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"
+   - (meta.revert_taken == false) -> (post.refundAddresses.length == pre.refundAddresses.length + 1)  | reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.join.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.join.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.join.summary.json
+
+[FLOW1] Checker report after refinement (join, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f join --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.join.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: join  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "((meta.revert_taken == false)) -> ((select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender)))", "model": {"meta.revert_taken": "False", "meta.sender": "0", "meta.value": "57896044618658102532599625281315494176367622498507895558535861491481272385544", "refundAddresses": "0", "refundAddresses1": "0", "refundAmount": "K(BitVec(160),\n  28948022309329046445485679863686206838451181083566334240460861258215928627199)", "refundAmount1": "Store(K(BitVec(160),\n        28948022309329046445485679863686206838451181083566334240460861258215928627199),\n      0,\n      86844066927987148978085305145001701014818803582074229798996722749697201012743)"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)", "reason": "KeyError: \"Unknown symbol 'post.refundAddresses.length'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.refundAddresses.length == pre.refundAddresses.length + 1)", "reason": "KeyError: \"Unknown symbol 'post.refundAddresses.length'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f refundDos --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.refundDos.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'refundAddresses', 'value_src': '0', 'args_src': 'refundAddresses.push(msg.sender)'}
+INFO:root:   {'op': 'map_add', 'map': 'refundAmount', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < refundAddresses.length', 'then': [{'op': 'raw', 'src': 'address(select(refundAddresses, i)).transfer(select(refundAmount, select(refundAddresses, i)))'}], 'else': [{'op': 'raw', 'src': 'i ++'}]}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender)  | meta.revert_taken=False, refundAddresses=0, refundAddresses1=0, refundAmount=K(BitVec(160),
+  57896044618658097711785492504343953926634992332820282019728792003956564819968), refundAmount1=K(BitVec(160),
+  57896044618658097711785492504343953926634992332820282019728792003956564819968)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)  | reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"
+   - (meta.revert_taken == false) -> (post.refundAddresses.length == pre.refundAddresses.length + 1)  | reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.refundDos.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.refundDos.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.refundDos.summary.json
+
+[FLOW1] Checker report after refinement (refundDos, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f refundDos --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.refundDos.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: refundDos  (invariants: LLM-translated)
+Notes:
+  - [tmp] created local i: BitVec256
+  - [raw-block] address(select(refundAddresses, i)).transfer(select(refundAmount, select(refundAddresses, i)))
+  - [raw-block] i ++
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "((meta.revert_taken == false)) -> ((select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender)))", "model": {"meta.revert_taken": "False", "refundAddresses": "0", "refundAddresses1": "0", "refundAmount": "K(BitVec(160),\n  57896044618658097711785492504343953926634992332820282019728792003956564819968)", "refundAmount1": "K(BitVec(160),\n  57896044618658097711785492504343953926634992332820282019728792003956564819968)"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)", "reason": "KeyError: \"Unknown symbol 'post.refundAddresses.length'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.refundAddresses.length == pre.refundAddresses.length + 1)", "reason": "KeyError: \"Unknown symbol 'post.refundAddresses.length'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_byqtitew/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_byqtitew/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_byqtitew/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_byqtitew' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'refundAddresses', 'value_src': '0', 'args_src': 'refundAddresses.push(msg.sender)'}
+INFO:root:   {'op': 'map_sub', 'map': 'refundAmount', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < refundAddresses.length', 'then': [{'op': 'raw', 'src': 'address(select(refundAddresses, i)).transfer(select(refundAmount, select(refundAddresses, i)))'}], 'else': [{'op': 'raw', 'src': 'i ++'}]}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender)  | meta.revert_taken=False, meta.sender=0, meta.value=2854495385411919762116571938898990272765493248, refundAddresses=0, refundAddresses1=0
+   - (meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value)  | meta.revert_taken=False, meta.sender=0, meta.value=28948022309329048855892746252171976963328129990376420336882214103598730575876, refundAddresses=0, refundAddresses1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_byqtitew/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_byqtitew/verified_invariants.global.summary.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

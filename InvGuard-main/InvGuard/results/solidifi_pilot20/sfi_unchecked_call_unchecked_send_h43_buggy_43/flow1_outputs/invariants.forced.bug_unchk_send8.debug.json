@@ -1,0 +1,35 @@
+{
+  "function": "bug_unchk_send8",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (_operator != address(0) -> _status == true)",
+    "(meta.revert_taken == false) -> (_operator == address(0) -> _status == false)",
+    "(meta.revert_taken == false) -> (select(post._operator, meta.sender) != select(pre._operator, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post._status, meta.sender) == true -> select(pre._status, meta.sender) == true)",
+    "(meta.revert_taken == false) -> (select(post._status, meta.sender) == false -> select(pre._status, meta.sender) == false)",
+    "(meta.revert_taken == false) -> (select(post._factory, meta.sender) == select(pre._factory, meta.sender))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (_operator != address(0) -> _status == true)",
+    "(meta.revert_taken == false) -> (_operator == address(0) -> _status == false)",
+    "(meta.revert_taken == false) -> (select(post._operator, meta.sender) != select(pre._operator, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post._status, meta.sender) == true -> select(pre._status, meta.sender) == true)",
+    "(meta.revert_taken == false) -> (select(post._status, meta.sender) == false -> select(pre._status, meta.sender) == false)",
+    "(meta.revert_taken == false) -> (select(post._factory, meta.sender) == select(pre._factory, meta.sender))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post._status, meta.sender) == true -> select(pre._status, meta.sender) == true)",
+    "(meta.revert_taken == false) -> (select(post._status, meta.sender) == false -> select(pre._status, meta.sender) == false)",
+    "(meta.revert_taken == false) -> (select(post._factory, meta.sender) == select(pre._factory, meta.sender))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post._status, meta.sender) == true -> select(pre._status, meta.sender) == true)",
+    "(meta.revert_taken == false) -> (select(post._status, meta.sender) == false -> select(pre._status, meta.sender) == false)",
+    "(meta.revert_taken == false) -> (select(post._factory, meta.sender) == select(pre._factory, meta.sender))"
+  ]
+}

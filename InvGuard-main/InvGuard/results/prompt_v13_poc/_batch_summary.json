@@ -1,0 +1,33 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol",
+    "stem": "unche_0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e",
+    "tier": "prompt_v13_poc",
+    "model": "gpt-4o-mini",
+    "target_function": "donateToWhale",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 40.0,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 96.1,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

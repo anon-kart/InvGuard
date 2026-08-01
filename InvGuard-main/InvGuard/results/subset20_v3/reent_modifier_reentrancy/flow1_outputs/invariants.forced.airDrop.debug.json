@@ -1,0 +1,32 @@
+{
+  "function": "airDrop",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 4,
+  "deposit_count": 4,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)",
+    "(meta.revert_taken == false) -> (post.hasBeenCalled == pre.hasBeenCalled || post.hasBeenCalled == true)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == 20)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)",
+    "(meta.revert_taken == false) -> (post.hasBeenCalled == pre.hasBeenCalled || post.hasBeenCalled == true)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == 20)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)",
+    "(meta.revert_taken == false) -> (post.hasBeenCalled == pre.hasBeenCalled || post.hasBeenCalled == true)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == 20)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)",
+    "(meta.revert_taken == false) -> (post.hasBeenCalled == pre.hasBeenCalled || post.hasBeenCalled == true)"
+  ]
+}

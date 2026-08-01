@@ -1,0 +1,33 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/guess_the_random_number.sol",
+    "stem": "bad_r_guess_the_random_number",
+    "tier": "prompt_v6_guess",
+    "model": "gpt-4o-mini",
+    "target_function": "guess",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "outcome_controlled"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 27.98,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 48.38,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

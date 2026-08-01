@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)  # reason=KeyError: "Unknown symbol 'post._dgxBalance'"
+(meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply()  # reason=KeyError: "Unknown symbol 'post.totalSupply()'"

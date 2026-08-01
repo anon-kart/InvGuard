@@ -1,0 +1,4 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.bal == pre.bal + select(post.deposits, meta.sender)  # reason=KeyError: "Unknown symbol 'post.bal'"
+(meta.revert_taken == false) -> (post.bal <= pre.bal)  # reason=KeyError: "Unknown symbol 'post.bal'"
+(meta.revert_taken == false) -> (post.bal >= 0)  # reason=KeyError: "Unknown symbol 'post.bal'"

@@ -1,0 +1,46 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol
+WARNING:root:No verified-useful invariants for WithdrawToken. Proceeding in CONTRACT_ONLY mode (no invariant-guided repair).
+INFO:root:Loaded invariants (function=WithdrawToken, mode=CONTRACT_ONLY_NOT_INVARIANT_GUIDED): constraints=0, objectives=0, validator_path=<none>
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=0 run_ok=0
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=1 compile_ok=0 run_ok=0
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=2 compile_ok=5 run_ok=2
+INFO:root:[feedback-loop] converged at round 2
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A2.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A3.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A4.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A5.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260718-110509.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+INFO:root:[flow2] No invariant file at all; 2 execution-confirmed attack(s). Proceeding with an empty invariant set: the gate will report invariant=INCONCLUSIVE and decide on replay.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[validate-gate] replay=FAIL invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=2 n=2 compile_ok=2 run_ok=2 | gate_ok=False
+ERROR:root:❌ Patch round 0 rejected by non-LLM validation gate.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[validate-gate] replay=FAIL invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=2 n=2 compile_ok=2 run_ok=2 | gate_ok=False
+ERROR:root:❌ Patch round 1 rejected by non-LLM validation gate.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+WARNING:root:[validate-gate] replay=FAIL invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=2 n=2 compile_ok=2 run_ok=2 | gate_ok=False
+ERROR:root:❌ Patch round 2 rejected by non-LLM validation gate.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[validate-gate] replay=FAIL invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=2 n=2 compile_ok=2 run_ok=2 | gate_ok=False
+ERROR:root:❌ Patch round 3 rejected by non-LLM validation gate.
+INFO:root:[template-patch] Applying deterministic template patch.
+INFO:root:[validate-gate] attacker(s) did not compile against patch → replay INCONCLUSIVE (not counted as blocked).
+WARNING:root:[validate-gate] replay=INCONCLUSIVE invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=0 n=2 compile_ok=0 run_ok=0 | gate_ok=False
+WARNING:root:[template-patch] Template patch also rejected.
+❌ Fix rejected (violates invariants or exploits still succeed)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

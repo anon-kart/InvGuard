@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (meta.sender == owner -> meta.contract_balance >= 0)

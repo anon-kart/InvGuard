@@ -1,0 +1,4 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (isComplete() == (address(this).balance == 0)  # reason=KeyError: "Unknown symbol 'isComplete()'"
+(meta.revert_taken == false) -> (meta.value == 1 ether)  # reason=KeyError: "Unknown symbol '1 ether'"
+(meta.revert_taken == false) -> (select(select(post.address, this).balance, meta.sender) == select(select(pre.address, this).balance, meta.sender) - (n == answer ? 2 ether : 0)  # reason=KeyError: "Unknown symbol 'select(post.address,this).balance'"

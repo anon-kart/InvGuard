@@ -1,0 +1,27 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/etherstore.sol",
+    "stem": "re_etherstore",
+    "tier": "mdl_gpt5mini_retry",
+    "model": "gpt-5-mini",
+    "target_function": "withdrawFunds",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 28.9,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.32,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (post.count >= 0)
+(meta.revert_taken == false) -> (post.count <= pre.count + arg.input)
+(meta.revert_taken == false) -> (post.count <= pre.count * arg.input)
+(meta.revert_taken == false) -> (post.count >= pre.count - arg.input)

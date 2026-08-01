@@ -1,0 +1,29 @@
+# UNSOUND / UNVERIFIABLE (function body missing or model incomplete)
+# --- checker report (tail) ---
+# [adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.deposit.filtered.txt --no-builtin-fallback --json-results
+# [adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+# [adapter] returncode: 0
+# 
+# === UNSOUND MODEL WARNING ===
+# UNSOUND_MODEL: verifier cannot soundly validate invariants for this function.
+# Reason: Function body not modeled (source=slither, modeled=True, body_len=0).
+# Action: returning UNVERIFIED_UNSOUND for all invariants.
+# =============================
+# 
+# 
+# [translator] Accepted 6 invariants from LLM.
+# 
+# Function: deposit  (invariants: LLM-translated)
+# {"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) == select(pre.balances_re_ent8, meta.sender) - meta.value) -> (meta.value > 0)", "reason": "UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).", "status": "UNVERIFIED_UNSOUND"}
+# {"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) == select(pre.balances_re_ent8, meta.sender)) -> (meta.value == 0)", "reason": "UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).", "status": "UNVERIFIED_UNSOUND"}
+# {"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))", "reason": "UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).", "status": "UNVERIFIED_UNSOUND"}
+# {"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) <= select(pre.balances_re_ent8, meta.sender))", "reason": "UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).", "status": "UNVERIFIED_UNSOUND"}
+# {"idx": 5, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) == 0) -> (select(pre.balances_re_ent8, meta.sender) > 0)", "reason": "UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).", "status": "UNVERIFIED_UNSOUND"}
+# {"idx": 6, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= 0)", "reason": "UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).", "status": "UNVERIFIED_UNSOUND"}
+
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) == select(pre.balances_re_ent8, meta.sender) - meta.value) -> (meta.value > 0)
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) == select(pre.balances_re_ent8, meta.sender)) -> (meta.value == 0)
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) <= select(pre.balances_re_ent8, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) == 0) -> (select(pre.balances_re_ent8, meta.sender) > 0)
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= 0)

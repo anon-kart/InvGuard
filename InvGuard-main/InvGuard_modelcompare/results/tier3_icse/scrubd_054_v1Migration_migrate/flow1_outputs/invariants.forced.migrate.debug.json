@@ -1,0 +1,39 @@
+{
+  "function": "migrate",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.current <= post.count)",
+    "(meta.revert_taken == false) -> (post.count > 0)",
+    "(meta.revert_taken == false) -> (select(post.user, meta.sender) != address(0))",
+    "(meta.revert_taken == false) -> (post.randomness != 0)",
+    "(meta.revert_taken == false) -> (post.limit >= post.remaining)",
+    "(meta.revert_taken == false) -> (post.remaining > 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.current <= post.count)",
+    "(meta.revert_taken == false) -> (post.count > 0)",
+    "(meta.revert_taken == false) -> (select(post.user, meta.sender) != address(0))",
+    "(meta.revert_taken == false) -> (post.randomness != 0)",
+    "(meta.revert_taken == false) -> (post.limit >= post.remaining)",
+    "(meta.revert_taken == false) -> (post.remaining > 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.current <= post.count)",
+    "(meta.revert_taken == false) -> (post.count > 0)",
+    "(meta.revert_taken == false) -> (post.randomness != 0)",
+    "(meta.revert_taken == false) -> (post.limit >= post.remaining)",
+    "(meta.revert_taken == false) -> (post.remaining > 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.current <= post.count)",
+    "(meta.revert_taken == false) -> (post.count > 0)",
+    "(meta.revert_taken == false) -> (post.randomness != 0)",
+    "(meta.revert_taken == false) -> (post.limit >= post.remaining)",
+    "(meta.revert_taken == false) -> (post.remaining > 0)"
+  ]
+}

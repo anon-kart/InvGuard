@@ -1,0 +1,5 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (block.number <= select(pre.guesses, meta.sender).block)  # reason=KeyError: "Unknown symbol 'block.number'"
+(meta.revert_taken == false) -> (select(pre.guesses, meta.sender).guess == answer)  # reason=KeyError: "Unknown symbol 'select(pre.guesses,meta.sender).guess'"
+(meta.revert_taken == false) -> (block.number > select(pre.guesses, meta.sender).block)  # reason=KeyError: "Unknown symbol 'block.number'"
+(meta.revert_taken == false) -> (select(pre.guesses, meta.sender).block != 0)  # reason=KeyError: "Unknown symbol 'select(pre.guesses,meta.sender).block'"

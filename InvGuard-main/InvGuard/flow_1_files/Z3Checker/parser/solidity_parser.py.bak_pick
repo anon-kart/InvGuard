@@ -1,0 +1,1268 @@
+# solidity_parser.py
+# Backend-only Solidity → Tiny IR parser
+# Prefers: Slither (best) → falls back to py-solc-x (AST-only) → regex fallback
+# Produces: ContractIR(state vars, functions with args, and a coarse body)
+#
+# Key reviewer-facing behavior:
+#   - Slither path: function bodies are modeled (modeled=True)
+#   - solcx / regex fallback: signature-only (modeled=False, body=[])
+#   - Downstream verifier must treat modeled=False as UNSOUND for semantic validation.
+#
+# IMPORTANT (soundness):
+#   - If INVGUARD_REQUIRE_SLITHER=1 and Slither is unavailable/fails, we FAIL CLOSED
+#     (raise) instead of silently falling back.
+#
+# ICSE-safe parser upgrades:
+#   - msg.value                  -> meta.value
+#   - msg.sender                 -> meta.sender
+#   - address(this).balance      -> meta.contract_balance
+#   - shares[msg.sender]         -> select(shares, meta.sender)
+#   - shares[msg.sender] += x    -> map_add
+#   - shares[msg.sender] -= x    -> map_sub
+#   - totalShares += x           -> store_add
+#   - totalShares -= x           -> store_sub
+#   - address(...).call{value:x} -> external_call with value_src and ok_var if assigned
+#
+# Usage:
+#   from parser.solidity_parser import SolidityParser
+#   cir = SolidityParser().parse("/path/to/contract.sol", contract_name=None)
+#   print(cir)
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import List, Optional, Dict, Any
+import os
+import re
+import logging
+
+logging.basicConfig(level=logging.INFO, force=True)
+
+# -----------------------
+# Tiny IR (self-contained)
+# -----------------------
+
+@dataclass
+class VarDecl:
+    name: str
+    ty: str
+    is_mapping: bool = False
+    key_ty: Optional[str] = None
+    val_ty: Optional[str] = None
+
+
+@dataclass
+class FunctionIR:
+    name: str
+    args: List[VarDecl]
+    body: List[Dict[str, Any]]
+    modeled: bool = True
+    model_source: str = "slither"
+
+
+@dataclass
+class ContractIR:
+    name: str
+    state: List[VarDecl]
+    functions: List[FunctionIR]
+
+
+# -----------------------
+# Utilities
+# -----------------------
+
+_SIMPLE_TYPE_MAP = {
+    "uint": "uint256",
+    "uint8": "uint256",
+    "uint16": "uint256",
+    "uint32": "uint256",
+    "uint64": "uint256",
+    "uint128": "uint256",
+    "uint256": "uint256",
+    "int": "int256",
+    "int256": "int256",
+    "bool": "bool",
+    "address": "address",
+    "address payable": "address",
+}
+
+
+def _norm_type(t: str) -> str:
+    t = (t or "").strip()
+
+    # Slither sometimes prints "address payable".
+    t = re.sub(r"\s+", " ", t)
+
+    if t in _SIMPLE_TYPE_MAP:
+        return _SIMPLE_TYPE_MAP[t]
+
+    if t.startswith("mapping"):
+        return t
+
+    return t
+
+
+def _map_var_type(solty: str) -> VarDecl:
+    solty = (solty or "").strip()
+    solty = re.sub(r"\s+", " ", solty)
+
+    m = re.match(
+        r"mapping\s*\(\s*([A-Za-z0-9_\s]+)\s*=>\s*([A-Za-z0-9_\s]+)\s*\)",
+        solty,
+    )
+
+    if m:
+        key_t = _norm_type(m.group(1))
+        val_t = _norm_type(m.group(2))
+
+        return VarDecl(
+            name="",
+            ty=f"mapping({key_t}=>{val_t})",
+            is_mapping=True,
+            key_ty=key_t,
+            val_ty=val_t,
+        )
+
+    return VarDecl(name="", ty=_norm_type(solty))
+
+
+# -----------------------
+# Debug flag
+# -----------------------
+
+DEBUG_PARSE = True
+
+
+# -----------------------
+# Require/assign cleaning helpers
+# -----------------------
+
+def _strip_require_typesig(s: str) -> str:
+    """
+    Slither sometimes emits require() as:
+      require(bool,string)(COND, "msg")
+
+    We want:
+      COND, "msg"
+    """
+    t = (s or "").strip()
+
+    m = re.match(r"^[^)]*\)\((.*)$", t)
+    return m.group(1).strip() if m else t
+
+
+def _first_arg_top_level(arglist: str) -> str:
+    """
+    Return the first argument from a comma-separated argument list,
+    respecting parentheses nesting. This is enough for common require(cond, "msg").
+    """
+    s = (arglist or "").strip()
+    depth = 0
+
+    for i, ch in enumerate(s):
+        if ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth = max(depth - 1, 0)
+        elif ch == "," and depth == 0:
+            return s[:i].strip()
+
+    return s.strip()
+
+
+def _split_top_level_commas(s: str) -> List[str]:
+    """
+    Split comma-separated text at top level only.
+    """
+    out = []
+    cur = []
+    depth = 0
+
+    for ch in s or "":
+        if ch == "(":
+            depth += 1
+            cur.append(ch)
+        elif ch == ")":
+            depth = max(depth - 1, 0)
+            cur.append(ch)
+        elif ch == "," and depth == 0:
+            part = "".join(cur).strip()
+            if part:
+                out.append(part)
+            cur = []
+        else:
+            cur.append(ch)
+
+    part = "".join(cur).strip()
+    if part:
+        out.append(part)
+
+    return out
+
+
+def _normalize_expr_src(expr: str) -> str:
+    """
+    Normalize Solidity-ish expression text into InvGuard DSL-ish expression text.
+
+    This is intentionally textual and conservative. The symbolic builder/parser
+    still owns real expression compilation.
+    """
+    s = (expr or "").strip()
+
+    if not s:
+        return s
+
+    # Normalize common Solidity environment fields.
+    s = re.sub(r"\bmsg\.value\b", "meta.value", s)
+    s = re.sub(r"\bmsg\.sender\b", "meta.sender", s)
+    s = re.sub(r"\btx\.origin\b", "meta.sender", s)
+
+    # address(this).balance
+    s = re.sub(
+        r"\baddress\s*\(\s*this\s*\)\s*\.balance\b",
+        "meta.contract_balance",
+        s,
+    )
+
+    # address(msg.sender) -> meta.sender
+    s = re.sub(
+        r"\baddress\s*\(\s*meta\.sender\s*\)",
+        "meta.sender",
+        s,
+    )
+
+    # payable(msg.sender) / payable(address(msg.sender)) normalization.
+    s = re.sub(
+        r"\bpayable\s*\(\s*meta\.sender\s*\)",
+        "meta.sender",
+        s,
+    )
+
+    # Normalize mapping reads in expressions:
+    #   shares[msg.sender]   -> select(shares, meta.sender)
+    #   balances[user]       -> select(balances, user)
+    #
+    # Repeat until stable to handle multiple mapping occurrences.
+    map_pat = re.compile(r"\b([A-Za-z_][A-Za-z0-9_]*)\s*\[\s*([^\[\]]+?)\s*\]")
+
+    prev = None
+    while prev != s:
+        prev = s
+
+        def _repl(m: re.Match) -> str:
+            base = m.group(1).strip()
+            key = _normalize_expr_src(m.group(2).strip())
+            return f"select({base}, {key})"
+
+        s = map_pat.sub(_repl, s)
+
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+
+def _normalize_key_src(key: str) -> str:
+    """
+    Normalize mapping key text.
+    """
+    return _normalize_expr_src(key)
+
+
+def _normalize_var_name(v: str) -> str:
+    """
+    Normalize LHS variable name text.
+    """
+    return (v or "").strip()
+
+
+# -----------------------
+# Parser
+# -----------------------
+
+class SolidityParser:
+    def __init__(self) -> None:
+        self._slither = None
+        self._solcx = None
+        self._Slither = None
+
+        self._slither_import_error: Optional[str] = None
+        self._solcx_import_error: Optional[str] = None
+
+        try:
+            from slither.slither import Slither  # type: ignore
+            self._Slither = Slither
+            self._slither = True
+        except Exception as e:
+            self._slither = False
+            self._slither_import_error = f"{type(e).__name__}: {e}"
+
+        try:
+            import solcx  # type: ignore
+            self._solcx = solcx
+        except Exception as e:
+            self._solcx = None
+            self._solcx_import_error = f"{type(e).__name__}: {e}"
+
+    def parse(self, filepath: str, contract_name: Optional[str] = None) -> ContractIR:
+        if not os.path.exists(filepath):
+            raise FileNotFoundError(filepath)
+
+        require_slither = os.environ.get(
+            "INVGUARD_REQUIRE_SLITHER",
+            "",
+        ).strip() in ("1", "true", "TRUE", "yes", "YES")
+
+        if self._slither:
+            try:
+                if DEBUG_PARSE:
+                    logging.info("[parser] USING SLITHER path")
+
+                return self._parse_with_slither(filepath, contract_name)
+
+            except Exception as e:
+                if DEBUG_PARSE:
+                    logging.info(f"[parser] Slither failed: {type(e).__name__}: {e}")
+
+                if require_slither:
+                    raise RuntimeError(
+                        "INVGUARD_REQUIRE_SLITHER=1 but Slither path failed. "
+                        "Refusing to fall back to AST-only parsing."
+                    ) from e
+
+                if DEBUG_PARSE:
+                    logging.info("[parser] Falling back to py-solc-x AST…")
+        else:
+            if DEBUG_PARSE:
+                logging.info("[parser] Slither not available (import failed).")
+                if self._slither_import_error:
+                    logging.info(f"[parser] Slither import error: {self._slither_import_error}")
+
+            if require_slither:
+                raise RuntimeError(
+                    "INVGUARD_REQUIRE_SLITHER=1 but Slither is not available. "
+                    "Install slither-analyzer and dependencies, or unset INVGUARD_REQUIRE_SLITHER."
+                )
+
+        if self._solcx:
+            if DEBUG_PARSE:
+                logging.info("[parser] USING SOLCX (py-solc-x) path")
+
+            return self._parse_with_solcx(filepath, contract_name)
+
+        if require_slither:
+            raise RuntimeError(
+                "INVGUARD_REQUIRE_SLITHER=1 but neither Slither nor solcx are available."
+            )
+
+        raise RuntimeError(
+            "Neither Slither nor py-solc-x is available. "
+            f"slither_error={self._slither_import_error}, "
+            f"solcx_error={self._solcx_import_error}"
+        )
+
+    # --------------- Slither path ---------------
+
+    def _parse_with_slither(self, filepath: str, contract_name: Optional[str]) -> ContractIR:
+        Slither = self._Slither  # type: ignore
+        sl = Slither(filepath)
+
+        c = None
+
+        if contract_name:
+            for cc in sl.contracts:
+                if cc.name == contract_name:
+                    c = cc
+                    break
+
+            if c is None:
+                raise ValueError(
+                    f"Contract {contract_name} not found. "
+                    f"Available: {[cc.name for cc in sl.contracts]}"
+                )
+        else:
+            non_ifaces = [cc for cc in sl.contracts if not cc.is_interface]
+            c = non_ifaces[0] if non_ifaces else sl.contracts[0]
+
+        state: List[VarDecl] = []
+
+        for sv in c.state_variables_declared:
+            vname = sv.name
+            vtype = self._slither_typename(sv.type)
+            vd = _map_var_type(vtype)
+            vd.name = vname
+            state.append(vd)
+
+        funs: List[FunctionIR] = []
+
+        for f in c.functions:
+            if f.is_constructor or f.is_fallback or f.is_receive:
+                continue
+
+            args: List[VarDecl] = []
+
+            for p in f.parameters:
+                args.append(
+                    VarDecl(
+                        name=p.name or f"arg{len(args)}",
+                        ty=_norm_type(self._slither_typename(p.type)),
+                    )
+                )
+
+            body = self._slither_coarse_body(f)
+
+            funs.append(
+                FunctionIR(
+                    name=f.name,
+                    args=args,
+                    body=body,
+                    modeled=True,
+                    model_source="slither",
+                )
+            )
+
+        return ContractIR(name=c.name, state=state, functions=funs)
+
+    def _slither_typename(self, t) -> str:
+        return _norm_type(str(t))
+
+    def _slither_coarse_body(self, f) -> List[Dict[str, Any]]:
+        body: List[Dict[str, Any]] = []
+
+        for n in f.nodes:
+            s = ""
+
+            try:
+                s = getattr(n, "solidity_statement", "") or ""
+            except Exception:
+                s = ""
+
+            if not s:
+                stmt = getattr(n, "content", None) or getattr(n, "expression", None)
+                s = (str(stmt) if stmt is not None else "").strip()
+
+            s = (s or "").replace("\r", "\n").strip()
+
+            if not s:
+                continue
+
+            # Try parse a full if { } else { } text in one node.
+            if "if" in s and "(" in s:
+                if_node = self._parse_if_text(s)
+                if if_node is not None:
+                    body.append(if_node)
+                    continue
+
+            parts = [p for p in s.split("\n") if p.strip()]
+
+            for p in parts:
+                body.append(self._coarse_stmt_from_line(p))
+
+        # Safe grouping pass: upgrade "raw comparison + next + next" into an if.
+        grouped: List[Dict[str, Any]] = []
+        i = 0
+
+        def _is_comparison_cond(txt: str) -> bool:
+            t = (txt or "").strip()
+
+            if not t:
+                return False
+
+            has_comp = any(op in t for op in (">=", "<=", "==", "!=", ">", "<"))
+
+            if not has_comp:
+                return False
+
+            if "+=" in t or "-=" in t:
+                return False
+
+            if ":=" in t:
+                return False
+
+            return True
+
+        while i < len(body):
+            st = body[i]
+
+            if st.get("op") == "raw":
+                cond_src = st.get("src", "")
+
+                if _is_comparison_cond(cond_src):
+                    then_stmt = body[i + 1] if i + 1 < len(body) else None
+                    else_stmt = body[i + 2] if i + 2 < len(body) else None
+
+                    if then_stmt and else_stmt:
+                        grouped.append(
+                            {
+                                "op": "if",
+                                "cond_src": _normalize_expr_src(cond_src),
+                                "then": [then_stmt],
+                                "else": [else_stmt],
+                            }
+                        )
+                        i += 3
+                        continue
+
+            grouped.append(st)
+            i += 1
+
+        body = grouped
+
+        if DEBUG_PARSE:
+            logging.info("[DEBUG-body-lines]")
+            for st in body:
+                logging.info("   %s", st)
+
+        return body
+
+    def _coarse_stmt_from_line(self, s: str) -> dict:
+        """
+        Convert one Solidity/Slither statement string into Tiny IR.
+
+        Important:
+        This parser is intentionally conservative. Unsupported constructs are
+        returned as raw statements and downstream soundness logic must avoid
+        treating unsupported raw semantics as proof.
+        """
+        line = (s or "").strip().rstrip(";").strip()
+
+        if not line:
+            return {"op": "raw", "src": ""}
+
+        # Normalize Slither artifacts.
+        line = line.replace(" ,", ",")
+        line = re.sub(r"\s+", " ", line).strip()
+
+        # ---- require(...) ----
+        m = re.match(r"^require\s*\((.+)\)\s*$", line)
+        if m:
+            raw_inside = m.group(1).strip()
+            raw_inside = _strip_require_typesig(raw_inside)
+            cond_only = _first_arg_top_level(raw_inside)
+            return {
+                "op": "require",
+                "cond_src": _normalize_expr_src(cond_only),
+            }
+
+        # ---- Slither/IR style require(bool)(...) ----
+        m = re.match(r"^require\s*\([^)]*\)\s*\((.+)\)\s*$", line)
+        if m:
+            raw_inside = _strip_require_typesig(m.group(1).strip())
+            cond_only = _first_arg_top_level(raw_inside)
+            return {
+                "op": "require",
+                "cond_src": _normalize_expr_src(cond_only),
+            }
+
+        # ---- tuple assignment external call:
+        #      (ok,None) = address(msg.sender).call{value: sendAmt}()
+        #      (ok, data) = target.call(...)
+        # ----
+        # Handle: (bool ok,) = ... AND (ok, data) = ... AND (ok,) = ...
+        m = re.match(
+            r"^\(\s*(?:bool\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*,\s*(?:[A-Za-z_][A-Za-z0-9_]*|None|_|bytes\s+[A-Za-z_]\w*)?\s*\)\s*=\s*(.+)$",
+            line,
+        )
+        if m:
+            ok_var = m.group(1).strip()
+            call_src = m.group(2).strip()
+            parsed_call = self._parse_external_call(call_src)
+
+            if parsed_call is not None:
+                parsed_call["ok_var"] = ok_var
+                parsed_call["op"] = "external_call"
+                return parsed_call
+
+        # ---- mapping increment: x[key] += val ----
+        m = re.match(
+            r"^([A-Za-z_][A-Za-z0-9_]*)\s*\[(.+)\]\s*\+=\s*(.+)$",
+            line,
+        )
+        if m:
+            return {
+                "op": "map_add",
+                "map": m.group(1).strip(),
+                "key_src": _normalize_key_src(m.group(2)),
+                "val_src": _normalize_expr_src(m.group(3)),
+            }
+
+        # ---- mapping decrement: x[key] -= val ----
+        m = re.match(
+            r"^([A-Za-z_][A-Za-z0-9_]*)\s*\[(.+)\]\s*-=\s*(.+)$",
+            line,
+        )
+        if m:
+            return {
+                "op": "map_sub",
+                "map": m.group(1).strip(),
+                "key_src": _normalize_key_src(m.group(2)),
+                "val_src": _normalize_expr_src(m.group(3)),
+            }
+
+        # ---- mapping store: x[key] = val ----
+        m = re.match(
+            r"^([A-Za-z_][A-Za-z0-9_]*)\s*\[(.+)\]\s*=\s*(?![=])(.+)$",
+            line,
+        )
+        if m:
+            return {
+                "op": "store_map",
+                "var": m.group(1).strip(),
+                "key_src": _normalize_key_src(m.group(2)),
+                "val_src": _normalize_expr_src(m.group(3)),
+            }
+
+        # ---- scalar increment: x += val ----
+        m = re.match(
+            r"^([A-Za-z_][A-Za-z0-9_]*)\s*\+=\s*(.+)$",
+            line,
+        )
+        if m:
+            return {
+                "op": "store_add",
+                "var": _normalize_var_name(m.group(1)),
+                "val_src": _normalize_expr_src(m.group(2)),
+            }
+
+        # ---- scalar decrement: x -= val ----
+        m = re.match(
+            r"^([A-Za-z_][A-Za-z0-9_]*)\s*-=\s*(.+)$",
+            line,
+        )
+        if m:
+            return {
+                "op": "store_sub",
+                "var": _normalize_var_name(m.group(1)),
+                "val_src": _normalize_expr_src(m.group(2)),
+            }
+
+        # ---- assignment store: x = val, but NOT x == y ----
+        m = re.match(
+            r"^([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(?![=])(.+)$",
+            line,
+        )
+        if m:
+            return {
+                "op": "store",
+                "var": _normalize_var_name(m.group(1)),
+                "val_src": _normalize_expr_src(m.group(2)),
+            }
+
+        # ---- external call without tuple assignment ----
+        parsed_call = self._parse_external_call(line)
+        if parsed_call is not None:
+            parsed_call["op"] = "external_call"
+            return parsed_call
+
+        return {
+            "op": "raw",
+            "src": _normalize_expr_src(line),
+        }
+
+    def _parse_external_call(self, line: str) -> Optional[Dict[str, Any]]:
+        """
+        Parse common external call forms:
+          address(msg.sender).call{value: sendAmt}()
+          target.call(...)
+          target.call{value: x}(...)
+          token.transfer(...)
+        """
+        s = (line or "").strip().rstrip(";").strip()
+
+        if not s:
+            return None
+
+        # Low-level call with optional value:
+        #   address(msg.sender).call{value: sendAmt}()
+        #   target.call{value: x}(data)
+        m = re.match(
+            r"^(?P<tgt>.+?)\.call\s*(?:\{\s*value\s*:\s*(?P<value>[^}]+)\s*\})?\s*\((?P<args>.*)\)\s*$",
+            s,
+        )
+        if m:
+            tgt = _normalize_expr_src(m.group("tgt").strip())
+            val = m.group("value")
+            args = (m.group("args") or "").strip()
+
+            return {
+                "op": "external_call",
+                "kind": "call",
+                "target_src": tgt,
+                "value_src": _normalize_expr_src(val) if val else "0",
+                "args_src": _normalize_expr_src(args) if args else "",
+            }
+
+        # delegatecall/staticcall.
+        m = re.match(
+            r"^(?P<tgt>.+?)\.(?P<kind>delegatecall|staticcall)\s*\((?P<args>.*)\)\s*$",
+            s,
+        )
+        if m:
+            return {
+                "op": "external_call",
+                "kind": m.group("kind"),
+                "target_src": _normalize_expr_src(m.group("tgt")),
+                "value_src": "0",
+                "args_src": _normalize_expr_src(m.group("args") or ""),
+            }
+
+        # High-level external-ish call:
+        #   token.transfer(...)
+        #   receiver.send(...)
+        # Avoid treating known arithmetic/functions as external calls.
+        if re.search(r"[A-Za-z_][A-Za-z0-9_]*\.[A-Za-z_][A-Za-z0-9_]*\s*\(", s):
+            if s.startswith(("select(", "require(", "assert(", "revert(")):
+                return None
+
+            tgt = s.split(".", 1)[0].strip()
+
+            return {
+                "op": "external_call",
+                "kind": "high_level",
+                "target_src": _normalize_expr_src(tgt),
+                "value_src": "0",
+                "args_src": s,
+            }
+
+        return None
+
+    def _consume_if_else_block(self, lines, i):
+        header = lines[i].strip()
+        m = re.match(r"^if\s*\((.+)\)\s*(\{)?\s*$", header)
+
+        if not m:
+            m2 = re.match(r"^if\s*\((.+)\)\s*(.+?)\s*else\s*(.+?)\s*$", header)
+
+            if m2:
+                cond_src = _normalize_expr_src(m2.group(1).strip())
+                then_st = self._coarse_stmt_from_line(m2.group(2))
+                else_st = self._coarse_stmt_from_line(m2.group(3))
+
+                return (
+                    {
+                        "op": "if",
+                        "cond_src": cond_src,
+                        "then": [then_st],
+                        "else": [else_st],
+                    },
+                    i + 1,
+                )
+
+            return (None, i)
+
+        cond_src = _normalize_expr_src(m.group(1).strip())
+        has_brace = bool(m.group(2))
+
+        def collect_block(j):
+            blk = []
+            brace = 0
+
+            if "{" in lines[j]:
+                brace += lines[j].count("{")
+                j += 1
+
+            while j < len(lines):
+                line = lines[j]
+                brace += line.count("{")
+                brace -= line.count("}")
+
+                if brace == 0 and "}" in line:
+                    return blk, j + 1
+
+                blk.append(line.strip().rstrip(";"))
+                j += 1
+
+            return blk, j
+
+        k = i
+
+        then_block, k = (
+            collect_block(k)
+            if has_brace
+            else ([lines[i + 1].strip().rstrip(";")], i + 2)
+        )
+
+        while k < len(lines) and not lines[k].strip():
+            k += 1
+
+        else_block = []
+
+        if k < len(lines) and lines[k].strip().startswith("else"):
+            if "{" in lines[k]:
+                else_block, k = collect_block(k)
+            else:
+                if k + 1 < len(lines):
+                    else_block = [lines[k + 1].strip().rstrip(";")]
+                    k = k + 2
+
+        then_stmts = [
+            self._coarse_stmt_from_line(x)
+            for x in then_block
+            if x and x != "}"
+        ]
+        else_stmts = [
+            self._coarse_stmt_from_line(x)
+            for x in else_block
+            if x and x != "}"
+        ]
+
+        return (
+            {
+                "op": "if",
+                "cond_src": cond_src,
+                "then": then_stmts,
+                "else": else_stmts,
+            },
+            k,
+        )
+
+    # --------------- py-solc-x path (AST-only / signature-only) ---------------
+
+    def _parse_with_solcx(self, filepath: str, contract_name: Optional[str]) -> ContractIR:
+        solcx = self._solcx  # type: ignore
+        from pathlib import Path
+
+        source_path = Path(filepath)
+        source = source_path.read_text(encoding="utf-8")
+
+        ver = self._infer_solc_version_from_pragma(source) or "0.8.33"
+
+        try:
+            solcx.set_solc_version(ver, silent=True)
+        except Exception as e:
+            logging.warning(
+                f"[parser] solcx.set_solc_version({ver}) failed: {e}. "
+                f"Falling back to 0.8.20"
+            )
+            solcx.set_solc_version("0.8.33", silent=True)
+
+        input_json = {
+            "language": "Solidity",
+            "sources": {source_path.name: {"content": source}},
+            "settings": {
+                "optimizer": {"enabled": False, "runs": 200},
+                "outputSelection": {"*": {"*": ["abi"], "": ["ast"]}},
+            },
+        }
+
+        try:
+            out = solcx.compile_standard(input_json, allow_paths=".")
+        except Exception as e:
+            logging.warning(
+                f"[parser] solcx AST compile failed; using regex fallback. "
+                f"err={type(e).__name__}: {e}"
+            )
+            return self._parse_with_regex_fallback(source, contract_name)
+
+        file_out = out.get("sources", {}).get(source_path.name, {})
+        ast = file_out.get("ast")
+
+        if not ast:
+            logging.warning("[parser] No AST returned from solc; using regex fallback.")
+            return self._parse_with_regex_fallback(source, contract_name)
+
+        contracts = [
+            n for n in ast.get("nodes", [])
+            if n.get("nodeType") == "ContractDefinition"
+        ]
+
+        if not contracts:
+            logging.warning("[parser] No ContractDefinition in AST; using regex fallback.")
+            return self._parse_with_regex_fallback(source, contract_name)
+
+        cnode = None
+
+        if contract_name:
+            for n in contracts:
+                if n.get("name") == contract_name:
+                    cnode = n
+                    break
+
+            if cnode is None:
+                raise ValueError(
+                    f"Contract {contract_name} not found. "
+                    f"Available: {[n.get('name') for n in contracts]}"
+                )
+        else:
+            cnode = contracts[0]
+
+        state: List[VarDecl] = []
+
+        for n in cnode.get("nodes", []):
+            if n.get("nodeType") == "VariableDeclaration" and n.get("stateVariable", False):
+                vname = n.get("name")
+                vtype = self._extract_type_from_ast_typeName(n.get("typeName"))
+                vd = _map_var_type(vtype)
+                vd.name = vname
+                state.append(vd)
+
+        funs: List[FunctionIR] = []
+
+        for n in cnode.get("nodes", []):
+            if n.get("nodeType") == "FunctionDefinition":
+                kind = n.get("kind")
+
+                if kind not in ("function",):
+                    continue
+
+                fname = n.get("name") or ""
+
+                if not fname:
+                    continue
+
+                params = n.get("parameters", {}).get("parameters", [])
+                args: List[VarDecl] = []
+
+                for p in params:
+                    pname = p.get("name") or f"arg{len(args)}"
+                    ptype = self._extract_type_from_ast_typeName(p.get("typeName"))
+                    args.append(VarDecl(name=pname, ty=_norm_type(ptype)))
+
+                # Extract body from raw source text using the regex body parser.
+                # This upgrades solcx from signature-only to body-modeled.
+                fn_body = self._extract_function_body_from_source(source, fname)
+
+                funs.append(
+                    FunctionIR(
+                        name=fname,
+                        args=args,
+                        body=fn_body,
+                        modeled=len(fn_body) > 0,
+                        model_source="solcx+regex-body" if fn_body else "solcx-ast-only",
+                    )
+                )
+
+        return ContractIR(name=cnode.get("name", "Contract"), state=state, functions=funs)
+
+    def _extract_function_body_from_source(self, source: str, fname: str) -> list:
+        """
+        Extract and parse the body of function `fname` from raw Solidity source.
+
+        Used when solcx gives state vars + signatures but no body.
+        Brace-matches the function body and parses line-by-line with
+        _coarse_stmt_from_line (same parser used in the Slither path).
+        """
+        pat = re.compile(
+            rf"\bfunction\s+{re.escape(fname)}\s*\([^)]*\)[^{{;]*\{{",
+            re.DOTALL,
+        )
+        m = pat.search(source)
+        if not m:
+            return []
+
+        # Brace-match to extract body text
+        start = m.end()
+        depth = 1
+        i = start
+        while i < len(source) and depth > 0:
+            if source[i] == "{":
+                depth += 1
+            elif source[i] == "}":
+                depth -= 1
+            i += 1
+        body_text = source[start:i - 1]
+
+        stmts = []
+        lines = body_text.splitlines()
+
+        idx = 0
+        while idx < len(lines):
+            raw = lines[idx].strip().rstrip(";").strip()
+            if not raw or raw in ("{", "}"):
+                idx += 1
+                continue
+
+            # Multi-line if/else block
+            if re.match(r"^if\s*\(", raw):
+                block_lines = []
+                brace_depth = 0
+                j = idx
+                while j < len(lines):
+                    bl = lines[j]
+                    brace_depth += bl.count("{") - bl.count("}")
+                    block_lines.append(bl)
+                    if brace_depth <= 0 and j > idx:
+                        break
+                    j += 1
+                block_text = "\n".join(block_lines).strip()
+                if_node = self._parse_if_text(block_text)
+                if if_node is not None:
+                    stmts.append(if_node)
+                else:
+                    for bl in block_lines:
+                        bl = bl.strip().rstrip(";").strip()
+                        if bl and bl not in ("{", "}") and not re.match(r"^(else\s*\{?|if\s*\()?\s*$", bl):
+                            stmts.append(self._coarse_stmt_from_line(bl))
+                idx = j + 1
+                continue
+
+            # Local var declaration only: "uint256 minted"
+            if re.match(r"^(?:uint256|uint|uint128|address|bool)\s+[A-Za-z_]\w*\s*$", raw):
+                stmts.append({"op": "raw", "src": raw})
+                idx += 1
+                continue
+
+            # Local var with initializer: "uint256 x = expr"
+            m2 = re.match(
+                r"^(?:uint256|uint|uint128|address|bool)\s+([A-Za-z_]\w*)\s*=\s*(.+)$", raw
+            )
+            if m2:
+                stmts.append({
+                    "op": "store",
+                    "var": m2.group(1),
+                    "val_src": _normalize_expr_src(m2.group(2)),
+                })
+                idx += 1
+                continue
+
+            stmts.append(self._coarse_stmt_from_line(raw))
+            idx += 1
+
+        return stmts
+
+    def _infer_solc_version_from_pragma(self, src: str) -> Optional[str]:
+        # [patched] full 0.4-0.8 pragma resolution
+        m = re.search(r"pragma\s+solidity\s+([^;]+);", src)
+        if not m:
+            return None
+        spec = m.group(1).strip()
+
+        triple = re.search(r"(\d+)\.(\d+)\.(\d+)", spec)
+        pair = re.search(r"(\d+)\.(\d+)", spec)
+        if triple:
+            major, minor, patch = (int(triple.group(1)), int(triple.group(2)),
+                                   int(triple.group(3)))
+        elif pair:
+            major, minor, patch = int(pair.group(1)), int(pair.group(2)), None
+        else:
+            return None
+
+        exact = not any(c in spec for c in ("^", "~", ">", "<"))
+
+        defaults = {
+            (0, 4): "0.4.26", (0, 5): "0.5.17", (0, 6): "0.6.12",
+            (0, 7): "0.7.6", (0, 8): "0.8.26",
+        }
+
+        try:
+            import solcx as _scx
+            installed = [str(v).lstrip("v") for v in
+                         _scx.get_installed_solc_versions()]
+        except Exception:
+            _scx = None
+            installed = []
+
+        if exact and patch is not None:
+            ver = f"{major}.{minor}.{patch}"
+        else:
+            same_minor = [iv for iv in installed
+                          if iv.startswith(f"{major}.{minor}.")]
+            if same_minor:
+                ver = sorted(same_minor,
+                             key=lambda s: list(map(int, s.split("."))))[-1]
+            else:
+                ver = defaults.get((major, minor))
+
+        if ver and _scx is not None and not any(ver in iv for iv in installed):
+            try:
+                _scx.install_solc(ver)
+            except Exception:
+                pass
+        return ver
+    def _parse_with_regex_fallback(self, source: str, contract_name: Optional[str]) -> ContractIR:
+        """
+        Minimal parser when solc/slither cannot compile.
+
+        Extracts:
+          - contract name
+          - state var declarations
+          - function signatures
+
+        Bodies are NOT modeled.
+        """
+        contract_matches = list(
+            re.finditer(r"\bcontract\s+([A-Za-z_][A-Za-z0-9_]*)\b", source)
+        )
+
+        cname = contract_matches[0].group(1) if contract_matches else "Contract"
+
+        if contract_name:
+            cname = contract_name
+
+        state: List[VarDecl] = []
+
+        for line in source.splitlines():
+            ln = line.strip()
+
+            if not ln or ln.startswith("//"):
+                continue
+
+            if ln.startswith(
+                (
+                    "function ",
+                    "event ",
+                    "struct ",
+                    "enum ",
+                    "modifier ",
+                    "constructor",
+                    "return ",
+                    "if ",
+                    "for ",
+                    "while ",
+                    "require",
+                )
+            ):
+                continue
+
+            # mapping(address => uint256) public balances;
+            m = re.match(
+                r"^(mapping\s*\(.+\)|[A-Za-z_][A-Za-z0-9_]*(?:\s*\[\s*\])*)"
+                r"(?:\s+(?:public|private|internal|external|constant|immutable))*"
+                r"\s+([A-Za-z_][A-Za-z0-9_]*)\s*(?:=.*)?;",
+                ln,
+            )
+
+            if m:
+                vtype = m.group(1)
+                vname = m.group(2)
+                vd = _map_var_type(vtype)
+                vd.name = vname
+                state.append(vd)
+
+        funs: List[FunctionIR] = []
+
+        for m in re.finditer(
+            r"\bfunction\s+([A-Za-z_][A-Za-z0-9_]*)\s*\(([^)]*)\)",
+            source,
+        ):
+            fname = m.group(1)
+            raw_params = (m.group(2) or "").strip()
+            args: List[VarDecl] = []
+
+            if raw_params:
+                parts = [p.strip() for p in raw_params.split(",") if p.strip()]
+
+                for p in parts:
+                    toks = [t for t in re.split(r"\s+", p) if t]
+                    toks = [
+                        t for t in toks
+                        if t not in (
+                            "memory",
+                            "calldata",
+                            "storage",
+                            "payable",
+                        )
+                    ]
+
+                    if not toks:
+                        continue
+
+                    if len(toks) == 1:
+                        ptype, pname = toks[0], f"arg{len(args)}"
+                    else:
+                        ptype, pname = toks[0], toks[-1]
+
+                    args.append(VarDecl(name=pname, ty=_norm_type(ptype)))
+
+            funs.append(
+                FunctionIR(
+                    name=fname,
+                    args=args,
+                    body=[],
+                    modeled=False,
+                    model_source="regex",
+                )
+            )
+
+        return ContractIR(name=cname, state=state, functions=funs)
+
+    def _extract_type_from_ast_typeName(self, typeName: Optional[dict]) -> str:
+        if not typeName:
+            return "uint256"
+
+        nt = typeName.get("nodeType")
+
+        if nt == "ElementaryTypeName":
+            return typeName.get("name", "uint256")
+
+        if nt == "Mapping":
+            key_t = self._extract_type_from_ast_typeName(typeName.get("keyType"))
+            val_t = self._extract_type_from_ast_typeName(typeName.get("valueType"))
+            return f"mapping({key_t}=>{val_t})"
+
+        if nt == "UserDefinedTypeName":
+            return typeName.get("namePath", "uint256")
+
+        return "uint256"
+
+    def _parse_if_text(self, s: str):
+        txt = (s or "").strip()
+
+        if not txt.lstrip().startswith("if"):
+            return None
+
+        m = re.match(
+            r"^\s*if\s*\((?P<cond>.+?)\)\s*\{\s*(?P<thens>.*?)\s*\}"
+            r"\s*(?:else\s*\{\s*(?P<elses>.*?)\s*\}\s*)?$",
+            txt,
+            flags=re.DOTALL,
+        )
+
+        if not m:
+            return None
+
+        cond = _normalize_expr_src(m.group("cond").strip())
+        then_block = (m.group("thens") or "").strip()
+        else_block = (m.group("elses") or "").strip()
+
+        has_assignmentish = any(tok in cond for tok in ["+=", "-=", "="])
+        has_comparison = any(op in cond for op in [">=", "<=", "==", "!=", ">", "<"])
+
+        if has_assignmentish and not has_comparison:
+            return None
+
+        def _split_block(btxt: str):
+            lines = []
+
+            for part in re.split(r";|\n", btxt):
+                p = part.strip()
+
+                if p:
+                    lines.append(self._coarse_stmt_from_line(p))
+
+            return lines
+
+        return {
+            "op": "if",
+            "cond_src": cond,
+            "then": _split_block(then_block),
+            "else": _split_block(else_block),
+        }
+
+
+# --------------- CLI test ---------------
+
+if __name__ == "__main__":
+    import sys
+
+    if len(sys.argv) < 2:
+        print("Usage: python solidity_parser.py <path-to-solidity> [ContractName]")
+        sys.exit(1)
+
+    path = sys.argv[1]
+    cname = sys.argv[2] if len(sys.argv) > 2 else None
+
+    cir = SolidityParser().parse(path, cname)
+
+    print("\n=== ContractIR ===")
+    print(f"Contract: {cir.name}")
+
+    print("State:")
+    for v in cir.state:
+        print("  ", v)
+
+    print("Functions:")
+    for f in cir.functions:
+        ms = f"{f.model_source}, modeled={f.modeled}, body_len={len(f.body)}"
+        print(f"  {f.name}({', '.join([a.ty + ' ' + a.name for a in f.args])})  [{ms}]")
+
+        for st in f.body:
+            print("    -", st)

@@ -1,0 +1,242 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_009_Free3_claim.sol",
+    "stem": "scrubd_009_Free3_claim",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "claim",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 35.47,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_009_Free3_claim/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_009_Free3_claim/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_030_DividendDistributor_distributeDividend.sol",
+    "stem": "scrubd_030_DividendDistributor_distributeDividend",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "distributeDividend",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 152.43,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_030_DividendDistributor_distributeDividend/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_030_DividendDistributor_distributeDividend/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_031_DividendDistributor_distributeDividend.sol",
+    "stem": "scrubd_031_DividendDistributor_distributeDividend",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "distributeDividend",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 87.76,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_031_DividendDistributor_distributeDividend/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.17,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_031_DividendDistributor_distributeDividend/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_032_TreasureHunt_unlockTreasure.sol",
+    "stem": "scrubd_032_TreasureHunt_unlockTreasure",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "unlockTreasure",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 22.48,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_032_TreasureHunt_unlockTreasure/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.27,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_032_TreasureHunt_unlockTreasure/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_036_DividendDistributor_distributeDividend.sol",
+    "stem": "scrubd_036_DividendDistributor_distributeDividend",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "distributeDividend",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 107.61,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_036_DividendDistributor_distributeDividend/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_036_DividendDistributor_distributeDividend/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_042_PrivateBank_CashOut.sol",
+    "stem": "scrubd_042_PrivateBank_CashOut",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.13,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_042_PrivateBank_CashOut/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_042_PrivateBank_CashOut/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_047_PRIVATE_ETH_CELL_Collect.sol",
+    "stem": "scrubd_047_PRIVATE_ETH_CELL_Collect",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "ETH_CELL_Collect",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 32.63,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_047_PRIVATE_ETH_CELL_Collect/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.17,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_047_PRIVATE_ETH_CELL_Collect/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_051_BANK_SAFE_Collect.sol",
+    "stem": "scrubd_051_BANK_SAFE_Collect",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "SAFE_Collect",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.68,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_051_BANK_SAFE_Collect/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_051_BANK_SAFE_Collect/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_054_v1Migration_migrate.sol",
+    "stem": "scrubd_054_v1Migration_migrate",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "migrate",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 54.2,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_054_v1Migration_migrate/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_054_v1Migration_migrate/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_073_ETH_VAULT_CashOut.sol",
+    "stem": "scrubd_073_ETH_VAULT_CashOut",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "VAULT_CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.94,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_073_ETH_VAULT_CashOut/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_073_ETH_VAULT_CashOut/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_085_ETH_VAULT_CashOut.sol",
+    "stem": "scrubd_085_ETH_VAULT_CashOut",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "VAULT_CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 21.01,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_085_ETH_VAULT_CashOut/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.17,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_085_ETH_VAULT_CashOut/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_090_D_BANK_Collect.sol",
+    "stem": "scrubd_090_D_BANK_Collect",
+    "tier": "tier3",
+    "model": "gpt-4o-mini",
+    "target_function": "BANK_Collect",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 27.97,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_090_D_BANK_Collect/flow1.log"
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.17,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_090_D_BANK_Collect/flow2.log"
+    }
+  }
+]

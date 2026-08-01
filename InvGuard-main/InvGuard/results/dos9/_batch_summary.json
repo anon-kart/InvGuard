@@ -1,0 +1,33 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/auction.sol",
+    "stem": "denia_auction",
+    "tier": "dos9",
+    "model": "gpt-4o-mini",
+    "target_function": "bid",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service",
+      "INVGUARD_IMPACT_POLICY": "liveness_broken"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 19.6,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 50.54,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

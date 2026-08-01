@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (arg._weiToWithdraw <= balances_re_ent3[meta.sender])
+(meta.revert_taken == false) -> (balances_re_ent3[meta.sender] >= 0)

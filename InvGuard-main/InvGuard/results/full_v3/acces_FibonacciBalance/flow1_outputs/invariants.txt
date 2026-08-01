@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)
+(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)
+(meta.revert_taken == false) -> (post.start >= 3)
+(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)

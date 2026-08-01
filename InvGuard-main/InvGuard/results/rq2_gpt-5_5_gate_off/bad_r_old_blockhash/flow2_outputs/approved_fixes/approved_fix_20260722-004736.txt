@@ -1,0 +1,4 @@
+Changed settle() to reject stale blockhash settlements, require an active guess, and fully clear guess state before any payout. The upper-bound check ensures blockhash() is only queried while the target block is still within the 256-block lookback window, preventing attackers from waiting until blockhash returns zero and winning with a zero guess.
+
+INVARIANTS USED:
+A user may settle only after locking a guess (guesses[msg.sender].block != 0). Settlement may occur only after the guessed target block has been mined (block.number > guesses[msg.sender].block). Settlement must occur before the target block falls outside the EVM blockhash lookup range (block.number <= guesses[msg.sender].block + 256), so blockhash(target) cannot be the stale zero value. Guess state is cleared before any external value transfer, and the stored guess is cached before clearing so payout logic remains correct.

@@ -1,0 +1,166 @@
+{
+  "ok": false,
+  "invariants": {
+    "ok": false,
+    "verified": [],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [
+      {
+        "name": "inv_1",
+        "line": "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      },
+      {
+        "name": "inv_2",
+        "line": "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      },
+      {
+        "name": "inv_3",
+        "line": "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      },
+      {
+        "name": "inv_4",
+        "line": "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      },
+      {
+        "name": "inv_5",
+        "line": "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      },
+      {
+        "name": "inv_6",
+        "line": "(meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      },
+      {
+        "name": "inv_7",
+        "line": "(meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      }
+    ],
+    "report_lines": [
+      "[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f initWallet --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results",
+      "[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker",
+      "[adapter] returncode: 0",
+      "",
+      "=== UNSOUND MODEL WARNING ===",
+      "UNSOUND_MODEL: verifier cannot soundly validate invariants for this function.",
+      "Reason: Function body not modeled (source=regex, modeled=False, body_len=0).",
+      "Action: returning UNVERIFIED_UNSOUND for all invariants.",
+      "=============================",
+      "",
+      "",
+      "[translator] Accepted 7 invariants from LLM.",
+      "",
+      "Function: initWallet  (invariants: LLM-translated)",
+      "{\"idx\": 1, \"inv\": \"(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}",
+      "{\"idx\": 2, \"inv\": \"(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}",
+      "{\"idx\": 3, \"inv\": \"(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}",
+      "{\"idx\": 4, \"inv\": \"(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}",
+      "{\"idx\": 5, \"inv\": \"(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}",
+      "{\"idx\": 6, \"inv\": \"(meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE)\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}",
+      "{\"idx\": 7, \"inv\": \"(meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE)\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}"
+    ],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "invariants_failed"
+  },
+  "replay": {
+    "results": {
+      "A1": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A1",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 5.81ms",
+        "stderr_head": "Error: Compiler run failed:\n    var pending = m_pending[_operation];\n    ^---------^\n                                            ^------------^\nError: Operator == not compatible with types address and uint256\nsrc/Target.sol:227:13: TypeError: Operator == not compatible with types address and uint256\n    require(msg.sender == m_owners[1]); // Ensure only the owner can call this function\n            ^-----------------------^\n--- (other output) ---\n    var pending = m_pending[_operation];\n    ^---------^\n  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }\n                                                     ^---^\n          throw;\n          ^---^\n          throw;\n          ^---^\n    var pending = m_pending[_operation];\n    ^---------^\n      Deposit(msg.sender, msg.value);\n      ^----------------------------^\n      Revoke(msg.sender, _operation);\n      ^----------------------------^\n  function changeOwner(address _from, address _to) onlymanyowners(sha3(msg.data)) external {\n                                                                  ^------------^\n    OwnerChanged(_from, _to);\n    ^----------------------^\n  function addOwner(address _owner) onlymanyowners(sha3(msg.data)) external {\n                                                   ^------------^\n    OwnerAdded(_owner);\n    ^----------------^\n  function removeOwner(address _owner) onlymanyowners(sha3(msg.data)) external {\n                                                      ^------------^\n    OwnerRemoved(_owner);\n    ^------------------^\n  function changeRequirement(uint _newRequired) onlymanyowners(sha3(msg.data)) external {\n                                                               ^------------^\n    RequirementChanged(_newRequired);\n    ^------------------------------^\n  function setDailyLimit(uint _newLimit) onlymanyowners(sha3(msg.data)) external {\n                                                        ^------------^\n  function resetSpentToday() onlymanyowners(sha3(msg.data)) external {\n  function kill(address _to) onlymanyowners(sha3(msg.data)) external {\n                                            ^------------^\n    suicide(_to);\n    ^----------^\n      SingleTransact(msg.sender, _value, _to, _data, created);\n      ^-----------------------------------------------------^\n      o_hash = sha3(msg.data, block.number);\n               ^--------------------------^\n      o_hash = sha3(msg.data, block.number);\n               ^--------------------------^\n        ConfirmationNeeded(o_hash, msg.sender, _value, _to, _data);\n        ^--------------------------------------------------------^\n      MultiTransact(msg.sender, _h, m_txs[_h].value, m_txs[_h].to, m_txs[_h].data, created);\n      ^-----------------------------------------------------------------------------------^\n      Confirmation(msg.sender, _operation);\n      ^----------------------------------^\n  address constant _walletLibrary = 0xcafecafecafecafecafecafecafecafecafecafe;\n                                    ^----------------------------------------^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A4": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A4",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 5.58ms",
+        "stderr_head": "Error: Compiler run failed:\n    var pending = m_pending[_operation];\n    ^---------^\n                                            ^------------^\nError: Operator == not compatible with types address and uint256\nsrc/Target.sol:227:13: TypeError: Operator == not compatible with types address and uint256\n    require(msg.sender == m_owners[1]); // Ensure only the owner can call this function\n            ^-----------------------^\n--- (other output) ---\n    var pending = m_pending[_operation];\n    ^---------^\n  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }\n                                                     ^---^\n          throw;\n          ^---^\n          throw;\n          ^---^\n    var pending = m_pending[_operation];\n    ^---------^\n      Deposit(msg.sender, msg.value);\n      ^----------------------------^\n      Revoke(msg.sender, _operation);\n      ^----------------------------^\n  function changeOwner(address _from, address _to) onlymanyowners(sha3(msg.data)) external {\n                                                                  ^------------^\n    OwnerChanged(_from, _to);\n    ^----------------------^\n  function addOwner(address _owner) onlymanyowners(sha3(msg.data)) external {\n                                                   ^------------^\n    OwnerAdded(_owner);\n    ^----------------^\n  function removeOwner(address _owner) onlymanyowners(sha3(msg.data)) external {\n                                                      ^------------^\n    OwnerRemoved(_owner);\n    ^------------------^\n  function changeRequirement(uint _newRequired) onlymanyowners(sha3(msg.data)) external {\n                                                               ^------------^\n    RequirementChanged(_newRequired);\n    ^------------------------------^\n  function setDailyLimit(uint _newLimit) onlymanyowners(sha3(msg.data)) external {\n                                                        ^------------^\n  function resetSpentToday() onlymanyowners(sha3(msg.data)) external {\n  function kill(address _to) onlymanyowners(sha3(msg.data)) external {\n                                            ^------------^\n    suicide(_to);\n    ^----------^\n      SingleTransact(msg.sender, _value, _to, _data, created);\n      ^-----------------------------------------------------^\n      o_hash = sha3(msg.data, block.number);\n               ^--------------------------^\n      o_hash = sha3(msg.data, block.number);\n               ^--------------------------^\n        ConfirmationNeeded(o_hash, msg.sender, _value, _to, _data);\n        ^--------------------------------------------------------^\n      MultiTransact(msg.sender, _h, m_txs[_h].value, m_txs[_h].to, m_txs[_h].data, created);\n      ^-----------------------------------------------------------------------------------^\n      Confirmation(msg.sender, _operation);\n      ^----------------------------------^\n  address constant _walletLibrary = 0xcafecafecafecafecafecafecafecafecafecafe;\n                                    ^----------------------------------------^\n        bytes32 operationHash = sha3(msg.data);\n                                ^------------^\n            bytes32 operationHash = sha3(msg.data);\n                                    ^------------^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      }
+    },
+    "compile_ok": 0,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": false,
+    "run_all": false,
+    "failures": [
+      {
+        "attack": "A1",
+        "compile_ok": false,
+        "run_ok": false,
+        "impact_ok": false,
+        "impact_details": null
+      },
+      {
+        "attack": "A4",
+        "compile_ok": false,
+        "run_ok": false,
+        "impact_ok": false,
+        "impact_details": null
+      }
+    ]
+  },
+  "benign": {
+    "ok": true,
+    "reason": null,
+    "original": {
+      "ok": true,
+      "calls": [],
+      "results": [],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 0,
+      "stdout_head": "",
+      "stderr_head": "",
+      "error": null
+    },
+    "patched": {
+      "ok": true,
+      "calls": [],
+      "results": [],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 0,
+      "stdout_head": "",
+      "stderr_head": "",
+      "error": null
+    },
+    "failed_calls": []
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "INCONCLUSIVE",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A1",
+    "invariant_applicable": false
+  }
+}

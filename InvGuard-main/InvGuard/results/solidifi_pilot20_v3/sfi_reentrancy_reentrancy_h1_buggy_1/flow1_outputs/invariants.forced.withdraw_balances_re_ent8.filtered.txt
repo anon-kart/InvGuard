@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) <= (select(pre.balances_re_ent8, meta.sender) + meta.value))
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) == 0) -> (select(pre.balances_re_ent8, meta.sender) > 0)
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) == (select(pre.balances_re_ent8, meta.sender) + meta.value))

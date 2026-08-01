@@ -1,0 +1,71 @@
+{
+  "strong": [],
+  "medium": [],
+  "useful": [],
+  "weak": [
+    "meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply",
+    "meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "flip_ge_to_gt",
+      "compiled": true
+    },
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    },
+    {
+      "name": "minus_eq_to_plus_eq",
+      "compiled": true
+    },
+    {
+      "name": "drop_require_2",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

@@ -1,0 +1,4 @@
+Replaced blockhash-based randomness in settle() with a commit-reveal scheme using keccak256.
+
+INVARIANTS USED:
+None

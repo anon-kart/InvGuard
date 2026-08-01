@@ -1,0 +1,21 @@
+{
+  "VU": {
+    "count": 0,
+    "examples": []
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.king != meta.sender)",
+      "(meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

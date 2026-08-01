@@ -1,0 +1,127 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/integer_overflow_add.sol",
+    "stem": "ar_ovf_add",
+    "tier": "mdl_gpt-5.5_arith",
+    "model": "gpt-5.5",
+    "target_function": "run",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 6.78,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/integer_overflow_minimal.sol",
+    "stem": "ar_ovf_min",
+    "tier": "mdl_gpt-5.5_arith",
+    "model": "gpt-5.5",
+    "target_function": "run",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 13.19,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.32,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/integer_overflow_mul.sol",
+    "stem": "ar_ovf_mul",
+    "tier": "mdl_gpt-5.5_arith",
+    "model": "gpt-5.5",
+    "target_function": "run",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 5.61,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.32,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/overflow_simple_add.sol",
+    "stem": "ar_ovf_simple",
+    "tier": "mdl_gpt-5.5_arith",
+    "model": "gpt-5.5",
+    "target_function": "add",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 13.95,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.42,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/overflow_single_tx.sol",
+    "stem": "ar_ovf_single",
+    "tier": "mdl_gpt-5.5_arith",
+    "model": "gpt-5.5",
+    "target_function": "underflowtostate",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 6.26,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.27,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

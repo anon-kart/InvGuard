@@ -1,0 +1,7 @@
+[
+ {"stem":"re_etherstore","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/etherstore.sol","target_function":"withdrawFunds","extra_env":{"INVGUARD_VULN_CLASS":"reentrancy"}},
+ {"stem":"re_etherbank","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/etherbank.sol","target_function":"withdrawBalance","extra_env":{"INVGUARD_VULN_CLASS":"reentrancy"}},
+ {"stem":"re_reentrancy_dao","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_dao.sol","target_function":"withdrawAll","extra_env":{"INVGUARD_VULN_CLASS":"reentrancy"}},
+ {"stem":"re_reentrance","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrance.sol","target_function":"withdraw","extra_env":{"INVGUARD_VULN_CLASS":"reentrancy"}},
+ {"stem":"re_simple_dao","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/simple_dao.sol","target_function":"withdraw","extra_env":{"INVGUARD_VULN_CLASS":"reentrancy"}}
+]

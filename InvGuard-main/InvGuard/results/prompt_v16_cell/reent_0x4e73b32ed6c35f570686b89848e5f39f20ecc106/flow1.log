@@ -1,0 +1,483 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.deposit.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'LastMsg.Sender = _adr'}
+INFO:root:   {'op': 'raw', 'src': 'LastMsg.Time = now'}
+INFO:root:   {'op': 'raw', 'src': 'LastMsg.Val = _val'}
+INFO:root:   {'op': 'raw', 'src': 'LastMsg.Data = _data'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'History', 'value_src': '0', 'args_src': 'History.push(LastMsg)'}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 904, in <module>
+    main()
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 657, in main
+    model = builder.build_for_function_name(cir, chosen_fn)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/model/symmodel_builder.py", line 109, in build_for_function_name
+    raise ValueError(f"Function '{func_name}' not found in contract {cir.name}.")
+ValueError: Function 'deposit' not found in contract PRIVATE_ETH_CELL.
+
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | Log=0, Log1=0, MinSum=1141035098407825031393314169523238493441872318269533112622130204246016001, MinSum1=1141035098407825031393314169523238493441872318269533112622130204246016001, arg._am=1047743228937543405485213914783235926626804417488479436472023741477421057INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg._am)  | Log=0, Log1=0, MinSum=109827514103347313321830362789384099324621321381534657043199118972635685357569, MinSum1=109827514103347313321830362789384099324621321381534657043199118972635685357569, arg._am=31762430367877311614699049674915079087857048617807103512691627696425204611073
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)  | Log=0, Log1=0, MinSum=1, MinSum1=1, arg._am=0
+   - (pre.intitalized == false) -> (post.intitalized == true)  | Log=0, Log1=0, MinSum=0, MinSum1=0, arg._am=0
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=1, arg._am=115792075433823501842443410139176183299219079763422619698684473682864682041345
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Collect.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Collect.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | Log=0, Log1=0, MinSum=1141035098407825031393314169523238493441872318269533112622130204246016001, MinSum1=1141035098407825031393314169523238493441872318269533112622130204246016001, arg._am=1047743228937543405485213914783235926626804417488479436472023741477421057
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg._am)  | Log=0, Log1=0, MinSum=109827514103347313321830362789384099324621321381534657043199118972635685357569, MinSum1=109827514103347313321830362789384099324621321381534657043199118972635685357569, arg._am=31762430367877311614699049674915079087857048617807103512691627696425204611073
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)  | Log=0, Log1=0, MinSum=1, MinSum1=1, arg._am=0
+   - (pre.intitalized == false) -> (post.intitalized == true)  | Log=0, Log1=0, MinSum=0, MinSum1=0, arg._am=0
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=1, arg._am=115792075433823501842443410139176183299219079763422619698684473682864682041345
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Collect.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Collect.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: Collect  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call (block): {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "model": {"Log": "0", "Log1": "0", "MinSum": "1141035098407825031393314169523238493441872318269533112622130204246016001", "MinSum1": "1141035098407825031393314169523238493441872318269533112622130204246016001", "arg._am": "1047743228937543405485213914783235926626804417488479436472023741477421057", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 0),\n      0,\n      1141035098407825031393314169523238493441872318269533112622130204246016000)", "balances1": "Store(K(BitVec(160), 0),\n      0,\n      93291869470281625908100254740002566815067900781053676150106462768594943)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg._am))", "model": {"Log": "0", "Log1": "0", "MinSum": "109827514103347313321830362789384099324621321381534657043199118972635685357569", "MinSum1": "109827514103347313321830362789384099324621321381534657043199118972635685357569", "arg._am": "31762430367877311614699049674915079087857048617807103512691627696425204611073", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 0),\n      0,\n      109827514103347313321830362789384099324621321381534657043199118972635685357568)", "balances1": "Store(K(BitVec(160), 0),\n      0,\n      78065083735470001707131313114469020236764272763727553530507491276210480746495)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value))", "model": {"Log": "0", "Log1": "0", "MinSum": "1", "MinSum1": "1", "arg._am": "0", "balances": "K(BitVec(160), 0)", "balances1": "K(BitVec(160), 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "115792089237316195423570985008687907853269984665640564039457584007913129639935"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(pre.intitalized == false) -> (post.intitalized == true)", "model": {"Log": "0", "Log1": "0", "MinSum": "0", "MinSum1": "0", "arg._am": "0", "balances": "K(BitVec(160), 0)", "balances1": "K(BitVec(160), 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= pre.MinSum)", "model": {"Log": "0", "Log1": "0", "MinSum": "1", "MinSum1": "1", "arg._am": "115792075433823501842443410139176183299219079763422619698684473682864682041345", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 1), 0, 0)", "balances1": "Store(K(BitVec(160), 1), 0, 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for Collect — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: Collect  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call (block): {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "model": {"Log": "0", "Log1": "0", "MinSum": "1141035098407825031393314169523238493441872318269533112622130204246016001", "MinSum1": "1141035098407825031393314169523238493441872318269533112622130204246016001", "arg._am": "1047743228937543405485213914783235926626804417488479436472023741477421057", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 0),\n      0,\n      1141035098407825031393314169523238493441872318269533112622130204246016000)", "balances1": "Store(K(BitVec(160), 0),\n      0,\n      93291869470281625908100254740002566815067900781053676150106462768594943)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg._am))", "model": {"Log": "0", "Log1": "0", "MinSum": "109827514103347313321830362789384099324621321381534657043199118972635685357569", "MinSum1": "109827514103347313321830362789384099324621321381534657043199118972635685357569", "arg._am": "31762430367877311614699049674915079087857048617807103512691627696425204611073", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 0),\n      0,\n      109827514103347313321830362789384099324621321381534657043199118972635685357568)", "balances1": "Store(K(BitVec(160), 0),\n      0,\n      78065083735470001707131313114469020236764272763727553530507491276210480746495)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value))", "model": {"Log": "0", "Log1": "0", "MinSum": "1", "MinSum1": "1", "arg._am": "0", "balances": "K(BitVec(160), 0)", "balances1": "K(BitVec(160), 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "115792089237316195423570985008687907853269984665640564039457584007913129639935"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(pre.intitalized == false) -> (post.intitalized == true)", "model": {"Log": "0", "Log1": "0", "MinSum": "0", "MinSum1": "0", "arg._am": "0", "balances": "K(BitVec(160), 0)", "balances1": "K(BitVec(160), 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= pre.MinSum)", "model": {"Log": "0", "Log1": "0", "MinSum": "1", "MinSum1": "1", "arg._am": "115792075433823501842443410139176183299219079763422619698684473682864682041345", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 1), 0, 0)", "balances1": "Store(K(BitVec(160), 1), 0, 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)  | Log=0, Log1=0, MinSum=1, MinSum1=1, arg._am=0
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | Log=0, Log1=0, MinSum=913627155471049280161803578480391515773318608136411037192216495760114305, MinSum1=913627155471049280161803578480391515773318608136411037192216495760114305, arg._am=906710131990761315473572172549999895881690515968526359579758182626459070
+   - (((meta.revert_taken == false) && ((pre.intitalized == false)) -> ((post.intitalized == true)  | Log=0, Log1=0, MinSum=0, MinSum1=0, arg._am=0
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=1, arg._am=115792089237316195423570985008687907853269984665640564039457584007913129639933
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Collect.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Collect.summary.json
+
+[FLOW1] Checker report after refinement (Collect, tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: Collect  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call (block): {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)))", "model": {"Log": "0", "Log1": "0", "MinSum": "1", "MinSum1": "1", "arg._am": "0", "balances": "K(BitVec(160), 0)", "balances1": "K(BitVec(160), 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "115792089237316195423570985008687907853269984665640564039457584007913129639935"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)", "status": "HOLDS"}
+{"idx": 3, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)))", "model": {"Log": "0", "Log1": "0", "MinSum": "913627155471049280161803578480391515773318608136411037192216495760114305", "MinSum1": "913627155471049280161803578480391515773318608136411037192216495760114305", "arg._am": "906710131990761315473572172549999895881690515968526359579758182626459070", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 0),\n      0,\n      913627155471049280161803578480391515773318608136411037192216495760114304)", "balances1": "Store(K(BitVec(160), 0),\n      0,\n      6917023480287964688231405930391619891628092167884677612458313133655234)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(((meta.revert_taken == false) && ((pre.intitalized == false)))) -> ((post.intitalized == true))", "model": {"Log": "0", "Log1": "0", "MinSum": "0", "MinSum1": "0", "arg._am": "0", "balances": "K(BitVec(160), 0)", "balances1": "K(BitVec(160), 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= pre.MinSum))", "model": {"Log": "0", "Log1": "0", "MinSum": "1", "MinSum1": "1", "arg._am": "115792089237316195423570985008687907853269984665640564039457584007913129639933", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 1), 0, 0)", "balances1": "Store(K(BitVec(160), 1), 0, 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for Collect — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.refined.filtered.txt
+
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)  | Log=0, Log1=0, MinSum=1, MinSum1=1, arg._am=0
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | Log=0, Log1=0, MinSum=913627155471049280161803578480391515773318608136411037192216495760114305, MinSum1=913627155471049280161803578480391515773318608136411037192216495760114305, arg._am=906710131990761315473572172549999895881690515968526359579758182626459070
+   - (((meta.revert_taken == false) && ((pre.intitalized == false)) -> ((post.intitalized == true)  | Log=0, Log1=0, MinSum=0, MinSum1=0, arg._am=0
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=1, arg._am=115792089237316195423570985008687907853269984665640564039457584007913129639933
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Collect.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Collect.summary.json
+
+[FLOW1] Checker report after refinement (Collect, tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Collect.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: Collect  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call (block): {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)))", "model": {"Log": "0", "Log1": "0", "MinSum": "1", "MinSum1": "1", "arg._am": "0", "balances": "K(BitVec(160), 0)", "balances1": "K(BitVec(160), 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "115792089237316195423570985008687907853269984665640564039457584007913129639935"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)", "status": "HOLDS"}
+{"idx": 3, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)))", "model": {"Log": "0", "Log1": "0", "MinSum": "913627155471049280161803578480391515773318608136411037192216495760114305", "MinSum1": "913627155471049280161803578480391515773318608136411037192216495760114305", "arg._am": "906710131990761315473572172549999895881690515968526359579758182626459070", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 0),\n      0,\n      913627155471049280161803578480391515773318608136411037192216495760114304)", "balances1": "Store(K(BitVec(160), 0),\n      0,\n      6917023480287964688231405930391619891628092167884677612458313133655234)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(((meta.revert_taken == false) && ((pre.intitalized == false)))) -> ((post.intitalized == true))", "model": {"Log": "0", "Log1": "0", "MinSum": "0", "MinSum1": "0", "arg._am": "0", "balances": "K(BitVec(160), 0)", "balances1": "K(BitVec(160), 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= pre.MinSum))", "model": {"Log": "0", "Log1": "0", "MinSum": "1", "MinSum1": "1", "arg._am": "115792089237316195423570985008687907853269984665640564039457584007913129639933", "array-ext": "[else -> 0]", "balances": "Store(K(BitVec(160), 1), 0, 0)", "balances1": "Store(K(BitVec(160), 1), 0, 0)", "intitalized": "False", "intitalized1": "False", "meta.revert_taken": "False", "meta.sender": "0"}, "status": "VIOLATED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_xggqy_l9/drop_require_1.sol --llm-invariants /tmp/inv_strength_xggqy_l9/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_xggqy_l9/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_xggqy_l9' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=0, arg._val=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_xggqy_l9/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_xggqy_l9/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_xggqy_l9/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_xggqy_l9' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) > MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=0, arg._val=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_xggqy_l9/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_xggqy_l9/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_xggqy_l9/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_xggqy_l9' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=0, arg._val=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_xggqy_l9/minus_eq_to_plus_eq.sol --llm-invariants /tmp/inv_strength_xggqy_l9/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_xggqy_l9/minus_eq_to_plus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_xggqy_l9' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=0, arg._val=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_xggqy_l9/drop_require_2.sol --llm-invariants /tmp/inv_strength_xggqy_l9/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_xggqy_l9/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_xggqy_l9' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! intitalized'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_am)()'}], 'else': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)  | Log=0, Log1=0, MinSum=1, MinSum1=0, arg._val=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_xggqy_l9/verified_invariants.global.summary.json

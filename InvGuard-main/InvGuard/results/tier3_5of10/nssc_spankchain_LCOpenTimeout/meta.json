@@ -1,0 +1,20 @@
+{
+  "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_spankchain_LCOpenTimeout.sol",
+  "stem": "nssc_spankchain_LCOpenTimeout",
+  "tier": "tier3_5of10",
+  "model": "gpt-4o-mini",
+  "target_function": "LCOpenTimeout",
+  "extra_env": {},
+  "flow1": {
+    "returncode": 0,
+    "elapsed_sec": 167.85,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_5of10/nssc_spankchain_LCOpenTimeout/flow1.log"
+  },
+  "flow2": {
+    "returncode": 0,
+    "elapsed_sec": 10.7,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_5of10/nssc_spankchain_LCOpenTimeout/flow2.log"
+  }
+}

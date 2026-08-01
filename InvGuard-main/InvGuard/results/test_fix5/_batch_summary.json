@@ -1,0 +1,55 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/FibonacciBalance.sol",
+    "stem": "acces_FibonacciBalance",
+    "tier": "test_fix5",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 39.73,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "CS10"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+    "stem": "reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106",
+    "tier": "test_fix5",
+    "model": "gpt-4o-mini",
+    "target_function": "Collect",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "financial"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 48.57,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

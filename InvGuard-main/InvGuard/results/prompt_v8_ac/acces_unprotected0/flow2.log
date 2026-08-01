@@ -1,0 +1,55 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/unprotected0.sol
+WARNING:root:[flow2] No VU invariants for changeOwner, but VM (violated-meaningful) invariants exist. Using VM as patch-validation constraints (access-control/logic repair: patch must make them HOLD).
+INFO:root:Loaded invariants (function=changeOwner, mode=INVARIANT_GUIDED_VM): constraints=1, objectives=1, validator_path=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/invariants.changeOwner.VM.txt
+INFO:root:[prompt-enhancer] appended 2382 chars of context-aware hints
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=0 run_ok=0
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=1 compile_ok=5 run_ok=5
+INFO:root:[feedback-loop] converged at round 1
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A2.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A3.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A4.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A5.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260720-220951.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[validate-gate] replay=PASS invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=5 n=5 compile_ok=5 run_ok=5 | gate_ok=True
+INFO:root:✅ Patch accepted by non-LLM validation gate.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:Saved approved fix
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f changeOwner --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:17:6: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+     function Unprotected()
+     ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'owner', 'val_src': '_newOwner'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (meta.sender == owner)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.changeOwner.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.changeOwner.summary.json
+✅ Flow-2 completed successfully (patch validated by execution + invariants)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

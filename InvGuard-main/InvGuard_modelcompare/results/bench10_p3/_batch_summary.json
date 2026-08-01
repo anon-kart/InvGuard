@@ -1,0 +1,171 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_re_etherbank_withdraw.sol",
+    "stem": "bench_re_etherbank_withdraw",
+    "tier": "bench10_p3",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 30.53,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 8.66,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_re_rewardvault_redeem.sol",
+    "stem": "bench_re_rewardvault_redeem",
+    "tier": "bench10_p3",
+    "model": "gpt-4o-mini",
+    "target_function": "redeem",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 30.12,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 9.81,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ac_ownablevault_withdrawAll.sol",
+    "stem": "bench_ac_ownablevault_withdrawAll",
+    "tier": "bench10_p3",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawAll",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 31.62,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 21.73,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ac_configbank_setManager.sol",
+    "stem": "bench_ac_configbank_setManager",
+    "tier": "bench10_p3",
+    "model": "gpt-4o-mini",
+    "target_function": "sweep",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_AC_FN": "setManager"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 30.65,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 22.47,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ac_treasurybox_withdrawTo.sol",
+    "stem": "bench_ac_treasurybox_withdrawTo",
+    "tier": "bench10_p3",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawTo",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.58,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 27.28,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "PASS",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ur_refundpool_refund.sol",
+    "stem": "bench_ur_refundpool_refund",
+    "tier": "bench10_p3",
+    "model": "gpt-4o-mini",
+    "target_function": "refund",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "silent_failure"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.8,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 23.17,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  }
+]

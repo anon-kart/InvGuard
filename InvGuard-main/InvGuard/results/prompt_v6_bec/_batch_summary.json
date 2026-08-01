@@ -1,0 +1,28 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/BECToken.sol",
+    "stem": "integ_BECToken",
+    "tier": "prompt_v6_bec",
+    "model": "gpt-4o-mini",
+    "target_function": "batchTransfer",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 39.03,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 37.02,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

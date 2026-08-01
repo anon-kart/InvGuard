@@ -1,0 +1,59 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/multiowned_vulnerable.sol",
+    "stem": "acces_multiowned_vulnerable",
+    "tier": "smoke8",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawAll",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 28.41,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 60.59,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/parity_wallet_bug_2.sol",
+    "stem": "acces_parity_wallet_bug_2",
+    "tier": "smoke8",
+    "model": "gpt-4o-mini",
+    "target_function": "initWallet",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 74.89,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 145.92,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "INCONCLUSIVE",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

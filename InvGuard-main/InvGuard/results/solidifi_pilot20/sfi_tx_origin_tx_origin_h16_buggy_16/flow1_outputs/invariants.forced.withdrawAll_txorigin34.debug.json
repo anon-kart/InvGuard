@@ -1,0 +1,30 @@
+{
+  "function": "withdrawAll_txorigin34",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 0,
+  "deposit_count": 0,
+  "withdraw_count": 0,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (_totalSupply == sum(balances))",
+    "(meta.revert_taken == false) -> (select(post.balances, owner) == _totalSupply)",
+    "(meta.revert_taken == false) -> (select(balances, arg.address) <= _totalSupply)",
+    "(meta.revert_taken == false) -> (_totalSupply >= 0)",
+    "(meta.revert_taken == false) -> (crowdsaleIsOn == true -> meta.value >= minimumBuy)",
+    "(meta.revert_taken == false) -> (_amount <= select(post.balances, meta.sender))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (_totalSupply == sum(balances))",
+    "(meta.revert_taken == false) -> (select(post.balances, owner) == _totalSupply)",
+    "(meta.revert_taken == false) -> (select(balances, arg.address) <= _totalSupply)",
+    "(meta.revert_taken == false) -> (_totalSupply >= 0)",
+    "(meta.revert_taken == false) -> (crowdsaleIsOn == true -> meta.value >= minimumBuy)",
+    "(meta.revert_taken == false) -> (_amount <= select(post.balances, meta.sender))"
+  ],
+  "sanitized": [],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)"
+  ]
+}

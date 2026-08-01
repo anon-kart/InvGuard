@@ -1,0 +1,10 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+acces_FibonacciBalance,withdraw,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE,29.37
+acces_multiowned_vulnerable,withdrawAll,False,gate_rejected,FAIL,INCONCLUSIVE,INCONCLUSIVE,55.09
+acces_parity_wallet_bug_2,initWallet,False,gate_rejected,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,174.59
+bad_r_blackjack,deal,False,gate_rejected,FAIL,INCONCLUSIVE,INCONCLUSIVE,123.83
+bad_r_etheraffle,chooseWinner,False,gate_rejected,FAIL,INCONCLUSIVE,INCONCLUSIVE,114.8
+reent_modifier_reentrancy,airDrop,False,gate_rejected,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,25.3
+reent_reentrancy_bonus,getFirstWithdrawalBonus,False,gate_rejected,FAIL,INCONCLUSIVE,INCONCLUSIVE,51.94
+unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839,WithdrawToken,False,gate_rejected,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,73.5
+unche_0x89c1b3807d4c67df034fffb62f3509561218d30b,deliver,False,gate_rejected,FAIL,INCONCLUSIVE,INCONCLUSIVE,105.11

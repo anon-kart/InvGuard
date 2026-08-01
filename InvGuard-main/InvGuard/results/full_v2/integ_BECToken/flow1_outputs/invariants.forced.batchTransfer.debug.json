@@ -1,0 +1,39 @@
+{
+  "function": "batchTransfer",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 4,
+  "deposit_count": 4,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.to) == select(pre.balances, arg.to) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.to) >= 0)",
+    "(meta.revert_taken == false) -> (post.c == pre.c)",
+    "(meta.revert_taken == false) -> (post.paused == pre.paused)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.to) == select(pre.balances, arg.to) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.to) >= 0)",
+    "(meta.revert_taken == false) -> (post.c == pre.c)",
+    "(meta.revert_taken == false) -> (post.paused == pre.paused)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (post.c == pre.c)",
+    "(meta.revert_taken == false) -> (post.paused == pre.paused)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (post.c == pre.c)",
+    "(meta.revert_taken == false) -> (post.paused == pre.paused)"
+  ]
+}

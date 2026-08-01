@@ -1,0 +1,4 @@
+Changed batchTransfer() to compute the aggregate transfer amount using SafeMath.mul so overflowing multiplications revert instead of wrapping.
+
+INVARIANTS USED:
+For batchTransfer, the aggregate debit from msg.sender must equal cnt * _value without arithmetic overflow; each receiver credit is performed with SafeMath.add; the sender debit is performed with SafeMath.sub after requiring balances[msg.sender] >= amount; valid calls preserve total token supply by debiting exactly the sum credited; paused state and existing ERC20 transfer/approval behavior remain unchanged.

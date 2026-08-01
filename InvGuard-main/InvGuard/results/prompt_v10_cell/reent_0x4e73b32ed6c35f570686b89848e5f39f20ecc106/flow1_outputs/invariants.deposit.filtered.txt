@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (post.MinSum >= 0)
+(meta.revert_taken == false) -> (post.intitalized == true || post.intitalized == false)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))

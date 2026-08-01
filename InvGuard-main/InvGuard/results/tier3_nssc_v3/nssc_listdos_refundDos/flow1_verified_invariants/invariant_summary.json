@@ -1,0 +1,20 @@
+{
+  "VU": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender))"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 0,
+    "examples": []
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

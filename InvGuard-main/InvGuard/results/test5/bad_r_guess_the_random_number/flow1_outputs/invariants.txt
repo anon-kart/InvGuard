@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (answer >= 0 && answer <= 255)
+(meta.revert_taken == false) -> (isComplete() == true -> address(this).balance == 0)
+(meta.revert_taken == false) -> (meta.value == 1 ether)
+(meta.revert_taken == false) -> (n == answer -> meta.sender.balance >= 2 ether)

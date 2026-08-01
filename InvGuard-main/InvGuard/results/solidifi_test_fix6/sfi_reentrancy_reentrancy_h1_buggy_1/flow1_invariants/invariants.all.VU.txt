@@ -1,0 +1,2 @@
+# VERIFIED-USEFUL (constraints for Flow-2)
+(meta.revert_taken == false) -> (balances_re_ent8[meta.sender] >= 0)

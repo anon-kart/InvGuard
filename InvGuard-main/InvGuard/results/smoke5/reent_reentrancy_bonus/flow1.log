@@ -1,0 +1,200 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_bonus.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/Reentrancy_bonus.sol -f withdraw --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.withdraw.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/Reentrancy_bonus.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/Reentrancy_bonus.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/Reentrancy_bonus.sol:13:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)('');
+        ^-----------------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Reentrancy_bonus.withdrawReward. Please open an issue https://github.com/crytic/slither/issues.
+Reentrancy_bonus.withdrawReward (../../run_outputs/flow1/Reentrancy_bonus.sol#10-15):
+ 	amountToWithdraw = rewardsForA[recipient]
+	rewardsForA[recipient] = 0
+	(success,None) = recipient.call.value(amountToWithdraw)()
+	require(bool)(success)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/Reentrancy_bonus.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/Reentrancy_bonus.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/Reentrancy_bonus.sol:13:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)('');
+        ^-----------------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Reentrancy_bonus.withdrawReward. Please open an issue https://github.com/crytic/slither/issues.
+Reentrancy_bonus.withdrawReward (../../run_outputs/flow1/Reentrancy_bonus.sol#10-15):
+ 	amountToWithdraw = rewardsForA[recipient]
+	rewardsForA[recipient] = 0
+	(success,None) = recipient.call.value(amountToWithdraw)()
+	require(bool)(success)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 904, in <module>
+    main()
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 657, in main
+    model = builder.build_for_function_name(cir, chosen_fn)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/model/symmodel_builder.py", line 109, in build_for_function_name
+    raise ValueError(f"Function '{func_name}' not found in contract {cir.name}.")
+ValueError: Function 'withdraw' not found in contract Reentrancy_bonus.
+
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f getFirstWithdrawalBonus --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.getFirstWithdrawalBonus.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)("");
+        ^-----------------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Reentrancy_bonus.withdrawReward. Please open an issue https://github.com/crytic/slither/issues.
+Reentrancy_bonus.withdrawReward (../../run_outputs/flow1/contract.sol#16-21):
+ 	amountToWithdraw = rewardsForA[recipient]
+	rewardsForA[recipient] = 0
+	(success,None) = recipient.call.value(amountToWithdraw)()
+	require(bool)(success)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient)
+   - (meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= (select(pre.rewardsForA, arg.recipient) + 100)
+   - (meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false)  | arg.recipient=0, claimedBonus=K(BitVec(160), True), claimedBonus1=K(BitVec(160), True), meta.revert_taken=False, rewardsForA=K(BitVec(160),
+  49584796025940577825425661060849265228182508081917370440724756433076081393596)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.amountToWithdraw == select(pre.rewardsForA, arg.recipient)  | reason=KeyError: "Unknown symbol 'post.amountToWithdraw'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.getFirstWithdrawalBonus.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.getFirstWithdrawalBonus.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.getFirstWithdrawalBonus.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f getFirstWithdrawalBonus --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.getFirstWithdrawalBonus.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)INFO:root:[FLOW1] Failed invariants detected for getFirstWithdrawalBonus — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.getFirstWithdrawalBonus.refined.filtered.txt
+INFO:root:[FLOW1] No usable refined invariants produced for getFirstWithdrawalBonus; skipping refined re-check.
+INFO:root:[FLOW1] Failed invariants detected for getFirstWithdrawalBonus — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.getFirstWithdrawalBonus.refined.filtered.txt
+INFO:root:[FLOW1] No usable refined invariants produced for getFirstWithdrawalBonus; skipping refined re-check.
+
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)("");
+        ^-----------------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Reentrancy_bonus.withdrawReward. Please open an issue https://github.com/crytic/slither/issues.
+Reentrancy_bonus.withdrawReward (../../run_outputs/flow1/contract.sol#16-21):
+ 	amountToWithdraw = rewardsForA[recipient]
+	rewardsForA[recipient] = 0
+	(success,None) = recipient.call.value(amountToWithdraw)()
+	require(bool)(success)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient)
+   - (meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= (select(pre.rewardsForA, arg.recipient) + 100)
+   - (meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false)  | arg.recipient=0, claimedBonus=K(BitVec(160), True), claimedBonus1=K(BitVec(160), True), meta.revert_taken=False, rewardsForA=K(BitVec(160),
+  49584796025940577825425661060849265228182508081917370440724756433076081393596)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.amountToWithdraw == select(pre.rewardsForA, arg.recipient)  | reason=KeyError: "Unknown symbol 'post.amountToWithdraw'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.getFirstWithdrawalBonus.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.getFirstWithdrawalBonus.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.getFirstWithdrawalBonus.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f getFirstWithdrawalBonus --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.getFirstWithdrawalBonus.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: getFirstWithdrawalBonus  (invariants: LLM-translated)
+Notes:
+  - [raw] require(!select(claimedBonus, recipient)); // Each recipient should only be able to claim the bonus once
+  - [raw] // <yes> <report> REENTRANCY
+  - [raw] withdrawReward(recipient); // At this point, the caller will be able to execute getFirstWithdrawalBonus again.
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= (select(pre.rewardsForA, arg.recipient) + 100))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false)", "model": {"arg.recipient": "0", "claimedBonus": "K(BitVec(160), True)", "claimedBonus1": "K(BitVec(160), True)", "meta.revert_taken": "False", "rewardsForA": "K(BitVec(160),\n  49584796025940577825425661060849265228182508081917370440724756433076081393596)", "rewardsForA1": "Store(K(BitVec(160),\n        49584796025940577825425661060849265228182508081917370440724756433076081393596),\n      0,\n      49584796025940577825425661060849265228182508081917370440724756433076081393696)", "userBalances": "K(BitVec(160), 0)", "userBalances1": "K(BitVec(160), 0)"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient))", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.amountToWithdraw == select(pre.rewardsForA, arg.recipient))", "reason": "KeyError: \"Unknown symbol 'post.amountToWithdraw'\"", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f getFirstWithdrawalBonus --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.getFirstWithdrawalBonus.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: getFirstWithdrawalBonus  (invariants: LLM-translated)
+Notes:
+  - [raw] require(!select(claimedBonus, recipient)); // Each recipient should only be able to claim the bonus once
+  - [raw] // <yes> <report> REENTRANCY
+  - [raw] withdrawReward(recipient); // At this point, the caller will be able to execute getFirstWithdrawalBonus again.
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= (select(pre.rewardsForA, arg.recipient) + 100))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false)", "model": {"arg.recipient": "0", "claimedBonus": "K(BitVec(160), True)", "claimedBonus1": "K(BitVec(160), True)", "meta.revert_taken": "False", "rewardsForA": "K(BitVec(160),\n  49584796025940577825425661060849265228182508081917370440724756433076081393596)", "rewardsForA1": "Store(K(BitVec(160),\n        49584796025940577825425661060849265228182508081917370440724756433076081393596),\n      0,\n      49584796025940577825425661060849265228182508081917370440724756433076081393696)", "userBalances": "K(BitVec(160), 0)", "userBalances1": "K(BitVec(160), 0)"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient))", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.amountToWithdraw == select(pre.rewardsForA, arg.recipient))", "reason": "KeyError: \"Unknown symbol 'post.amountToWithdraw'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

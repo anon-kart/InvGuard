@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_privatebank_CashOut.sol",
+    "stem": "nssc_privatebank_CashOut",
+    "tier": "outc_check",
+    "model": "gpt-4o-mini",
+    "target_function": "CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 40.02,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/outc_check/nssc_privatebank_CashOut/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 33.37,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/outc_check/nssc_privatebank_CashOut/flow2.log"
+    }
+  }
+]

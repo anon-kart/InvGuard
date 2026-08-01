@@ -1,0 +1,4 @@
+# VERIFIED-USEFUL (STRONG + MEDIUM) — ONLY THESE SHOULD GUIDE FLOW-2
+meta.revert_taken == false) -> (post.currentBid > pre.currentBid
+meta.revert_taken == false) -> (post.currentFrontrunner == pre.currentFrontrunner || post.currentBid > pre.currentBid
+meta.revert_taken == false) -> (post.currentBid > 0

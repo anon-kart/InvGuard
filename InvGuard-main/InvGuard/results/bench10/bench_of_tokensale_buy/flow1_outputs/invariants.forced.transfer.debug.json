@@ -1,0 +1,35 @@
+{
+  "function": "transfer",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 4,
+  "deposit_count": 2,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.spent, meta.sender) <= select(post.balanceOf, meta.sender) * PRICE)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender) - arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= select(pre.balanceOf, arg.to) + arg.amount)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.spent, meta.sender) <= select(post.balanceOf, meta.sender) * PRICE)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender) - arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= select(pre.balanceOf, arg.to) + arg.amount)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= (select(pre.balanceOf, meta.sender) - arg.amount))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= (select(pre.balanceOf, arg.to) + arg.amount))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= (select(pre.balanceOf, meta.sender) - arg.amount))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= (select(pre.balanceOf, arg.to) + arg.amount))"
+  ]
+}

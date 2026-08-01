@@ -1,0 +1,150 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Overflow-Underflow/buggy_4.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer_intou26 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer_intou26.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_intou26, meta.sender) - _value >= 0'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_intou26', 'key_src': 'meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'map_add', 'map': 'balances_intou26', 'key_src': '_to', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender != to'}
+INFO:root:   {'op': 'require', 'cond_src': 'value > 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= value'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, to) + value >= select(balances, to)'}
+INFO:root:   {'op': 'if', 'cond_src': 'meta.sender == team', 'then': [{'op': 'require', 'cond_src': 'now >= 1589036400'}], 'else': [{'op': 'raw', 'src': 'select(balances, meta.sender) - value < toWei(600000000)'}]}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= 1620572400'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) - value < toWei(400000000)', 'then': [{'op': 'require', 'cond_src': 'now >= 1652108400'}], 'else': [{'op': 'raw', 'src': 'select(balances, meta.sender) - value < toWei(200000000)'}]}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= 1683644400'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= value'}
+INFO:root:   {'op': 'require', 'cond_src': '_totalSupply >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'store_sub', 'var': '_totalSupply', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,address(0),value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'value * (10 ** uint256(decimals))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'name', 'val_src': 'PHO'}
+INFO:root:   {'op': 'store', 'var': 'decimals', 'val_src': '18'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer_intou26.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer_intou26.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer_intou26 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer_intou26.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_intou26, meta.sender) - _value >= 0'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_intou26', 'key_src': 'meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'map_add', 'map': 'balances_intou26', 'key_src': '_to', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender != to'}
+INFO:root:   {'op': 'require', 'cond_src': 'value > 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= value'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, to) + value >= select(balances, to)'}
+INFO:root:   {'op': 'if', 'cond_src': 'meta.sender == team', 'then': [{'op': 'require', 'cond_src': 'now >= 1589036400'}], 'else': [{'op': 'raw', 'src': 'select(balances, meta.sender) - value < toWei(600000000)'}]}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= 1620572400'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) - value < toWei(400000000)', 'then': [{'op': 'require', 'cond_src': 'now >= 1652108400'}], 'else': [{'op': 'raw', 'src': 'select(balances, meta.sender) - value < toWei(200000000)'}]}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= 1683644400'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= value'}
+INFO:root:   {'op': 'require', 'cond_src': '_totalSupply >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'store_sub', 'var': '_totalSupply', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,address(0),value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'value * (10 ** uint256(decimals))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'name', 'val_src': 'PHO'}
+INFO:root:   {'op': 'store', 'var': 'decimals', 'val_src': '18'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer_intou26.txtWARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer_intou26.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer_intou26 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer_intou26.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 1 invariants from LLM.
+
+Function: transfer_intou26  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)", "status": "HOLDS"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer_intou26 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer_intou26.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 1 invariants from LLM.
+
+Function: transfer_intou26  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)", "status": "HOLDS"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ⚠️ No verified-useful invariants for Flow-2. Invariant-guided Flow-2 must be disabled or run in explicit contract-only mode.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

@@ -1,0 +1,11 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+0x0148650ef8e216e8d0999fe8d4b5c1871b71771a,transfer,False,no_report,None,None,None,76.45
+0x01e958f3c383f59be55a12ba27b05295df141bd7,transfer,False,no_report,None,None,None,12.14
+0x044eefa225a051027061bea002dd97ace7878f89,transfer,False,no_report,None,None,None,65.91
+0x0539bf9af0d5f8611a87a24560c406137a0431c2,transfer,False,no_report,None,None,None,9.84
+0x05829a3c3c15068b325a3296ee270efcc7595067,transfer,False,no_report,None,None,None,39.67
+0x05b040c629663d07c344ad8cd70d8c76421feedf,transfer,False,no_report,None,None,None,74.64
+0x05bedda666801857b3b72f2b507639bd8aff4982,transfer,False,no_report,None,None,None,78.11
+0x05eb605bf452c1dfcd0562bd28a007fe390009e5,transfer,False,no_report,None,None,None,12.61
+0x067085aa0ff4e97a3c61bf06de618e0aae11dbc2,transfer,False,no_report,None,None,None,46.84
+0x0711f1005af593b8df936e99c731fe29c3c745ea,transfer,False,no_report,None,None,None,39.9

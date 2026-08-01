@@ -1,0 +1,4 @@
+Changed winner selection to use a feeAddress-controlled commit-reveal value instead of block-derived values. The draw is delayed until the committed value is revealed and verified against the stored commitment for the current raffle.
+
+INVARIANTS USED:
+Winner selection no longer depends on block.timestamp, block.number, blockhash, block.coinbase, difficulty, or other miner-influenced block attributes; the reveal must match the stored keccak256 commitment; the commitment is bound to the current raffleId via randomnessRaffleId; chooseWinner exits unless randomness is revealed and verified; raffle state is reset after winner selection. Note: validation assumes feeAddress is a trusted randomness committer; this pattern does not remove operator withholding/selection risk.

@@ -1,0 +1,47 @@
+{
+    "patches": [
+        {
+            "bug_type": "transaction_origin",
+            "pc": 172,
+            "patch": [
+                {
+                    "delete": "ORIGIN",
+                    "insert": "CALLER",
+                    "insert_mode": "before",
+                    "constructor": false
+                }
+            ]
+        },
+        {
+            "bug_type": "leaking_ether",
+            "pc": 45,
+            "patch": [
+                {
+                    "delete": "",
+                    "insert": "CALLER PUSH1_0x1 SSTORE",
+                    "insert_mode": "after",
+                    "constructor": true
+                }
+            ]
+        },
+        {
+            "bug_type": "leaking_ether",
+            "pc": 209,
+            "patch": [
+                {
+                    "delete": "",
+                    "insert": "PUSH1_0x1 SLOAD PUSH20_0xffffffffffffffffffffffffffffffffffffffff AND CALLER EQ PUSH_jump_loc_1 JUMPI PUSH1_0x0 DUP1 REVERT JUMPDEST_jump_loc_1",
+                    "insert_mode": "before",
+                    "constructor": false
+                }
+            ]
+        }
+    ],
+    "control_flow_graph_recovery_time": 0.005041360855102539,
+    "control_flow_graph_recovery": "100%",
+    "original_deployment_size": "50 bytes",
+    "patched_deployment_size": "54 bytes",
+    "original_runtime_size": "253 bytes",
+    "patched_runtime_size": "291 bytes",
+    "execution_time": 0.20591378211975098
+}

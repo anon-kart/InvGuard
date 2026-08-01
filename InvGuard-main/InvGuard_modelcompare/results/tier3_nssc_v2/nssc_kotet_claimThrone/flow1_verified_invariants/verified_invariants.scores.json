@@ -1,0 +1,39 @@
+{
+  "strong": [],
+  "medium": [
+    "meta.revert_taken == false) -> (post.king == meta.sender"
+  ],
+  "useful": [
+    "meta.revert_taken == false) -> (post.king == meta.sender"
+  ],
+  "weak": [],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (post.king == meta.sender",
+      "killed": 3,
+      "mutants_ran": 3,
+      "kill_rate": 1.0,
+      "coverage_score": 0.2,
+      "trivial": false,
+      "score": 1.0,
+      "tier": "medium",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "flip_ge_to_gt",
+      "compiled": true
+    },
+    {
+      "name": "drop_require_2",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

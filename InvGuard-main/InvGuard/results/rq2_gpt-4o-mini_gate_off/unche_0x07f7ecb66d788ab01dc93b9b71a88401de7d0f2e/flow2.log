@@ -1,0 +1,114 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol
+INFO:root:Loaded invariants (function=donateToWhale, mode=INVARIANT_GUIDED): constraints=6, objectives=0, validator_path=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/invariants.donateToWhale.VU.txt
+INFO:root:[prompt-enhancer] appended 6555 chars of context-aware hints
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=0 run_ok=0
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=1 compile_ok=0 run_ok=0
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=2 compile_ok=2 run_ok=2
+INFO:root:[feedback-loop] converged at round 2
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A2.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A3.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A4.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A5.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260721-152715.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[validate-gate] replay=PASS invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=2 n=2 compile_ok=2 run_ok=2 | gate_ok=True
+INFO:root:gate-OFF: patch auto-accepted. Gate would have ACCEPTED.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:Saved approved fix
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f donateToWhale --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'openToPublic', 'val_src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'onlyOwner()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'betLimit', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'BetLimitChanged(betLimit)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyOwner()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'difficulty', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'DifficultyChanged(difficulty)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyOwner()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value == betLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(wagers, meta.sender) == 0'}
+INFO:root:   {'op': 'store_map', 'var': 'timestamps', 'key_src': 'meta.sender', 'val_src': 'block.number'}
+INFO:root:   {'op': 'store_map', 'var': 'wagers', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'raw', 'src': 'Wager(meta.value,meta.sender)'}
+INFO:root:   {'op': 'raw', 'src': 'isOpenToPublic()'}
+INFO:root:   {'op': 'raw', 'src': 'onlyRealPeople()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'blockNumber', 'val_src': 'select(timestamps, meta.sender)'}
+INFO:root:   {'op': 'if', 'cond_src': 'blockNumber < block.number', 'then': [{'op': 'store_map', 'var': 'timestamps', 'key_src': 'meta.sender', 'val_src': '0'}], 'else': [{'op': 'store_map', 'var': 'wagers', 'key_src': 'meta.sender', 'val_src': '0'}]}
+INFO:root:   {'op': 'store', 'var': 'winningNumber', 'val_src': 'uint256(keccak256()(abi.encodePacked(blockhash(uint256)(blockNumber),meta.sender))) % difficulty + 1'}
+INFO:root:   {'op': 'if', 'cond_src': 'winningNumber == difficulty / 2', 'then': [{'op': 'raw', 'src': 'payout(meta.sender)'}], 'else': [{'op': 'raw', 'src': 'loseWager(betLimit / 2)'}]}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'raw', 'src': 'isOpenToPublic()'}
+INFO:root:   {'op': 'raw', 'src': 'onlyRealPeople()'}
+INFO:root:   {'op': 'raw', 'src': 'onlyPlayers()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'donateToWhale(meta.value)'}
+INFO:root:   {'op': 'raw', 'src': 'isOpenToPublic()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'ethToTransfer', 'val_src': 'meta.contract_balance / 2'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner', 'value_src': '0', 'args_src': 'winner.transfer(ethToTransfer)'}
+INFO:root:   {'op': 'raw', 'src': 'Win(ethToTransfer,winner)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'whale.call.value(amount)(bytes4(keccak256()(donate())))'}
+INFO:root:   {'op': 'store_add', 'var': 'totalDonated', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'Donate(amount,whale,meta.sender)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'whale.call.value(amount)(bytes4(keccak256()(donate())))'}
+INFO:root:   {'op': 'store_add', 'var': 'totalDonated', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'Lose(amount,meta.sender)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'difficulty'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'betLimit'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(wagers, player) > 0', 'then': [{'op': 'raw', 'src': 'true'}], 'else': [{'op': 'raw', 'src': 'false'}]}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance / 2'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'ERC20Interface(tokenAddress).transfer(tokenOwner,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyOwner()'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)
+   - (meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender)
+   - (meta.revert_taken == false) -> (post.betLimit >= pre.betLimit)
+   - (meta.revert_taken == false) -> (post.openToPublic == pre.openToPublic)
+   - (meta.revert_taken == false) -> (post.difficulty >= pre.difficulty)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.donateToWhale.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.donateToWhale.summary.json
+✅ Flow-2 completed successfully (patch validated by execution + invariants)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.random >= 0 && post.random < 100)  # reason=KeyError: "Unknown symbol 'post.random'"

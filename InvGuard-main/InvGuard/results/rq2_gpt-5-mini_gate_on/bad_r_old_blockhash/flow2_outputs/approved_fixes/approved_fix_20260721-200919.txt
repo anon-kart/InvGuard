@@ -1,0 +1,8 @@
+Added a commit-reveal flow (revealSecret) and a reentrancy mutex, required the secret to be revealed before the target block, derived payout from keccak256(blockhash, secret), and cleared state before transfer to prevent BAD_RANDOMNESS and reentrancy.
+
+INVARIANTS USED:
+- State cleared before external calls (Checks-Effects-Interactions): guesses[msg.sender].block and revealed data are reset before transfer.
+- Reentrancy protection: _locked mutex prevents reentrancy during settle().
+- Reveal-before-target invariant: revealedAt[msg.sender] != 0 and revealedAt[msg.sender] < guesses[msg.sender].block ensures the secret was revealed prior to the target block.
+- Input/amount invariants: constructor and lockInGuess require exact 1 ether deposits and prevent multiple guesses per address via guesses[msg.sender].block == 0.
+- Randomness construction invariant: randomness = keccak256(blockhash(target), revealedSecret) so outcome cannot be determined by caller at settle time if blockhash is not yet known.

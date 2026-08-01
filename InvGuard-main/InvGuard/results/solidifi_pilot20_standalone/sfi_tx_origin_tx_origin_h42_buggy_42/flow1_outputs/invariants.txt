@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (address(this).balance >= 0)
+(meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender))

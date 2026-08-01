@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (guesses[meta.sender].guess != 0)
+(meta.revert_taken == false) -> (block.number > guesses[meta.sender].block)
+(meta.revert_taken == false) -> (guesses[meta.sender].block != 0)
+(meta.revert_taken == false) -> (guesses[meta.sender].guess == answer)

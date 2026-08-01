@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)  # reason=KeyError: "Unknown symbol 'post.balanceOf'"
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)  # reason=KeyError: "Unknown symbol 'post.balanceOf'"

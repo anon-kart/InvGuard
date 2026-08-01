@@ -1,0 +1,156 @@
+{
+  "ok": true,
+  "invariants": {
+    "ok": true,
+    "verified": [
+      "(meta.revert_taken == false) -> (balances_intou26[meta.sender] >= 0)"
+    ],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [
+      "[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f transfer_intou26 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results",
+      "[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker",
+      "[adapter] returncode: 0",
+      "",
+      "[translator] Accepted 1 invariants from LLM.",
+      "",
+      "Function: transfer_intou26  (invariants: LLM-translated)",
+      "",
+      "=== Invariant Checks ===",
+      "{\"idx\": 1, \"inv\": \"(meta.revert_taken == false) -> (balances_intou26[meta.sender] >= 0)\", \"status\": \"HOLDS\"}"
+    ],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "OK"
+  },
+  "replay": {
+    "results": {
+      "A1": {
+        "compile_ok": true,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A1",
+        "forge_returncode": 0,
+        "stdout_head": "Compiling 2 files with Solc 0.5.17\nSolc 0.5.17 finished in 5.76ms\nCompiler run successful!",
+        "stderr_head": "Warning: unable to lint. Solar only supports Solidity versions prior to 0.8.0",
+        "error": null,
+        "entrypoint": "attack()",
+        "value_wei": 1000000000000000000,
+        "run_ok": false,
+        "impact_ok": false,
+        "impact_details": "forge test ok; entrypoint_ok=0; impact_ok=0; profit_wei=0; drain_wei=0; honest_drain_wei=0; excess_drain_wei=0; impact_ok_differential=0; policy=profit_positive_or_excess_drain; revert_reason=Minimum 1 ether required",
+        "excess_drain_wei": 0,
+        "impact_ok_differential": false,
+        "test_returncode": 0,
+        "test_stdout_head": "Compiling 2 files with Solc 0.8.28\nSolc 0.8.28 finished in 401.89ms\nCompiler run successful!\n\nRan 1 test for test/ExploitExecutor.t.sol:ExploitExecutorTest\n[PASS] test_run_attack() (gas: 2139345)\nLogs:\n  entrypoint_ok: 0\n  ret_data: 0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000184d696e696d756d20312065746865722072657175697265640000000000000000\n  unauthorized_change: 0\n  priv_bypassed: 0\n  stranded_funds: 0\n  profit_wei: 0\n  drain_wei: 0\n  honest_drain_wei: 0\n  excess_drain_wei: 0\n  impact_ok: 0\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 714.12\u00b5s (476.95\u00b5s CPU time)\n\nRan 1 test suite in 5.59ms (714.12\u00b5s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+        "test_stderr_head": "",
+        "test_error": null
+      }
+    },
+    "compile_ok": 1,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": true,
+    "run_all": false
+  },
+  "benign": {
+    "ok": false,
+    "reason": "benign_original_failed",
+    "original": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "transfer_intou26",
+          "arg_types": [
+            "address",
+            "uint256"
+          ],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol >=0.5.0, <0.6.0",
+      "error": "forge test failed"
+    },
+    "patched": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "transfer_intou26",
+          "arg_types": [
+            "address",
+            "uint256"
+          ],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol >=0.5.0, <0.6.0",
+      "error": "forge test failed"
+    },
+    "failed_calls": [
+      {
+        "reason": "original_suite_failed"
+      }
+    ]
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "PASS",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A1",
+    "invariant_applicable": false
+  }
+}

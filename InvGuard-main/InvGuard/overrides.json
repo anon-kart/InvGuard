@@ -1,0 +1,7 @@
+{
+  "acces_multiowned_vulnerable": "withdrawAll",
+  "acces_parity_wallet_bug_2": "initWallet",
+  "acces_unprotected0": "changeOwner",
+  "reent_modifier_reentrancy": "airDrop",
+  "bad_r_guess_the_random_number": "guess"
+}

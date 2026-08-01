@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (numElements >= 0)
+(meta.revert_taken == false) -> (numElements <= array.length)
+(meta.revert_taken == false) -> (array.length >= 0)
+(meta.revert_taken == false) -> (numElements > 1500)
+(meta.revert_taken == false) -> (numElements > 1500)

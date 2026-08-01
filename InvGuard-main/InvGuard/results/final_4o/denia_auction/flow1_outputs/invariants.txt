@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.currentBid >= pre.currentBid)
+(meta.revert_taken == false) -> (post.currentBid <= pre.currentBid + arg.value)
+(meta.revert_taken == false) -> (post.currentFrontrunner == meta.sender)
+(meta.revert_taken == false) -> (post.currentBid == arg.value)
+(pre.currentFrontrunner != 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)

@@ -1,0 +1,67 @@
+{
+  "strong": [
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value)",
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)"
+  ],
+  "medium": [],
+  "useful": [
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value)",
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)"
+  ],
+  "weak": [
+    "meta.revert_taken == false) -> (post.salt == pre.salt"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value)",
+      "killed": 1,
+      "mutants_ran": 3,
+      "kill_rate": 0.3333333333333333,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.343,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)",
+      "killed": 1,
+      "mutants_ran": 3,
+      "kill_rate": 0.3333333333333333,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.343,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.salt == pre.salt",
+      "killed": 0,
+      "mutants_ran": 3,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "flip_ge_to_gt",
+      "compiled": true
+    },
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

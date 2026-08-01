@@ -1,0 +1,15 @@
+{
+    "Error": null,
+    "Timeout": false,
+    "Finished": true,
+    "Time": 0.0007190704345703125,
+    "Reentrancy": [
+        {
+            "callOffset": 96,
+            "sStoreOffset": 172,
+            "result": "Error tracing executed instructions from CALL to SSTORE. CALL: 0x60, SSTORE: 0xac"
+        }
+    ],
+    "IntegerBugs": [],
+    "UnhandledExceptions": []
+}

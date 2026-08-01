@@ -1,0 +1,37 @@
+{
+  "function": "ifillArray",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))",
+    "(pre.listAddresses.length == 1500) -> (meta.revert_taken == true)",
+    "(meta.revert_taken == false) -> (post.listAddresses.length == pre.listAddresses.length + 350)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))",
+    "(pre.listAddresses.length == 1500) -> (meta.revert_taken == true)",
+    "(meta.revert_taken == false) -> (post.listAddresses.length == pre.listAddresses.length + 350)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))",
+    "(pre.listAddresses.length == 1500) -> (meta.revert_taken == true)",
+    "(meta.revert_taken == false) -> (post.listAddresses.length == pre.listAddresses.length + 350)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))",
+    "(pre.listAddresses.length == 1500) -> (meta.revert_taken == true)",
+    "(meta.revert_taken == false) -> (post.listAddresses.length == pre.listAddresses.length + 350)"
+  ]
+}

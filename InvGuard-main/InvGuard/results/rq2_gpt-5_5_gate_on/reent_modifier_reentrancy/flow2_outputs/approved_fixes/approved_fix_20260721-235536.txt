@@ -1,0 +1,4 @@
+Moved the supportsToken external callback until after airDrop updates tokenBalance and added a reentrancy mutex to block nested airDrop execution.
+
+INVARIANTS USED:
+Validated checks-effects-interactions ordering and reentrancy guard: airDrop cannot reach the external Bank(msg.sender).supportsToken() callback until after tokenBalance[msg.sender] has been incremented; any nested airDrop call during the callback fails require(!_locked); the hasNoBalance invariant still ensures a caller can receive the airdrop only when its pre-call balance is zero; reverting token-support validation rolls back the balance update and mutex state.

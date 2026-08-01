@@ -1,0 +1,25 @@
+{
+  "VU": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.count >= (pre.count + arg.input))"
+    ]
+  },
+  "VT": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.count >= 0)"
+    ]
+  },
+  "VM": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.count >= pre.count * arg.input)",
+      "(meta.revert_taken == false) -> (post.count <= (pre.count - arg.input))"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

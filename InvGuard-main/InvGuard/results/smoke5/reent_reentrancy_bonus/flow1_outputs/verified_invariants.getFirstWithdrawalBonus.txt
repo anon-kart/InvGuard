@@ -1,0 +1,5 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient)
+(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= (select(pre.rewardsForA, arg.recipient) + 100)
+(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient)

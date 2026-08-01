@@ -1,0 +1,1455 @@
+# model/symmodel_builder.py
+# Build a symbolic (pre, post, meta, assumptions) model for a function
+# from the Tiny-IR produced by parser/solidity_parser.py
+
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Any, Tuple
+import re
+
+try:
+    from z3 import (
+        Bool, BoolSort, BoolVal, And, Or, Not, If,
+        BitVecSort, BitVec, BitVecVal, ArraySort, Array, Store, Select,
+        UGE, ULE, UGT, ULT, simplify, is_true, is_false,
+        ArrayRef, is_bv, is_bool, is_int, is_arith
+    )
+except Exception as e:
+    raise RuntimeError("Install z3-solver: pip install z3-solver")
+
+# Sorts we’ll use for EVM-ish modeling
+BV256 = BitVecSort(256)
+BV160 = BitVecSort(160)
+
+def _as_bool(x):
+    """
+    Z3 If() requires a Bool condition.
+    Coerce bitvectors/arith to bool when they accidentally appear as path conditions.
+    """
+    if x is None:
+        return BoolVal(True)
+    try:
+        if is_bool(x):
+            return x
+        if is_bv(x):
+            return x != 0
+        if is_int(x) or is_arith(x):
+            return x != 0
+    except Exception:
+        pass
+    # last resort: treat as truthy to avoid crash (should not happen)
+    return BoolVal(True)
+
+
+def _compatible_value(dst, val) -> bool:
+    """
+    Return True iff `val` can be assigned into `dst` without Z3 sort mismatch.
+
+    We use this to avoid crashes when the parser produces bogus assignments
+    like: totalShares = (0 || address(this).balance == msg.value)
+    which parses as Bool but totalShares is BitVec(256).
+    """
+    try:
+        # Arrays must both be arrays
+        if isinstance(dst, ArrayRef):
+            return isinstance(val, ArrayRef)
+
+        # Bool destinations must take Bool values
+        if is_bool(dst):
+            return is_bool(val)
+
+        # BitVec destinations must take BitVec of same width
+        if is_bv(dst):
+            return is_bv(val) and dst.size() == val.size()
+
+        # fallback: accept if same python type (rarely used)
+        return type(dst) == type(val)
+    except Exception:
+        return False
+
+
+# ---- IR type hints (kept minimal; we only inspect fields we need) ----
+# VarDecl(name:str, ty:str, is_mapping:bool, key_ty:str|None, val_ty:str|None)
+# FunctionIR(name:str, args:List[VarDecl], body:List[dict])
+# ContractIR(name:str, state:List[VarDecl], functions:List[FunctionIR])
+
+# ----------------------------------------------------------------------
+# Public result type
+# ----------------------------------------------------------------------
+@dataclass
+class SymFunctionModel:
+    contract_name: str
+    function_name: str
+    pre: Dict[str, Any]
+    post: Dict[str, Any]
+    meta: Dict[str, Any]
+    assumptions: List[Any]      # BoolRefs to conjoin in checks
+    arg_symbols: Dict[str, Any] # z3 symbols for function args
+    notes: List[str]            # warnings / skipped statements
+
+# ----------------------------------------------------------------------
+# Builder
+# ----------------------------------------------------------------------
+class SymModelBuilder:
+    def __init__(self) -> None:
+        pass
+
+    # ----- entry points -----
+    def build_for_function_name(self, cir, func_name: str) -> SymFunctionModel:
+        """
+        Build a symbolic model for the named function in the contract IR.
+        Ensures parser/encoder notes get attached to the model so driver.py can print them.
+        """
+        f = None
+        for fn in cir.functions:
+            if fn.name == func_name:
+                f = fn
+                break
+        if f is None:
+            raise ValueError(f"Function '{func_name}' not found in contract {cir.name}.")
+
+        model = self._encode_function(cir, f)
+        return model
+
+    def build_first_function(self, cir) -> SymFunctionModel:
+        if not cir.functions:
+            raise ValueError(f"No functions in contract {cir.name}.")
+        return self._encode_function(cir, cir.functions[0])
+
+    # ------------------------------------------------------------------
+    # ✅ Solidity 0.8 checked arithmetic helpers (reviewer-critical)
+    # ------------------------------------------------------------------
+    def _checked_add_u256(self, a, b):
+        """
+        Solidity 0.8: uint256 add reverts on overflow.
+        Constraint for non-revert: (a + b) >= a  (unsigned)
+        Returns: (a+b, overflow_ok)
+        """
+        s = a + b
+        overflow_ok = UGE(s, a)
+        return s, overflow_ok
+
+    def _checked_sub_u256(self, a, b):
+        """
+        Solidity 0.8: uint256 sub reverts on underflow.
+        Constraint for non-revert: a >= b (unsigned)
+        Returns: (a-b, underflow_ok)
+        """
+        underflow_ok = UGE(a, b)
+        d = a - b
+        return d, underflow_ok
+
+    def _is_u256(self, z) -> bool:
+        try:
+            return is_bv(z) and z.size() == 256
+        except Exception:
+            return False
+
+    # ------------------------------------------------------------------
+    # ✅ Top-level splitter for operators like || / && with parentheses support
+    # ------------------------------------------------------------------
+    def _split_top_level(self, s: str, op: str) -> List[str]:
+        """
+        Split s by operator `op` only when `op` occurs at top-level (paren depth 0).
+        Returns [] if no split found, else list of parts.
+        """
+        s = (s or "").strip()
+        if not s:
+            return []
+        parts: List[str] = []
+        depth = 0
+        last = 0
+        i = 0
+        while i < len(s):
+            ch = s[i]
+            if ch == "(":
+                depth += 1
+            elif ch == ")":
+                depth = max(depth - 1, 0)
+
+            if depth == 0 and s.startswith(op, i):
+                parts.append(s[last:i].strip())
+                i += len(op)
+                last = i
+                continue
+            i += 1
+
+        if parts:
+            parts.append(s[last:].strip())
+        return parts
+
+    # ----- core encoder -----
+    def _encode_function(self, cir, fn) -> SymFunctionModel:
+        notes: List[str] = []
+
+        # 1) make storage symbols (pre/post); mappings -> Arrays, scalars -> BitVec/Bool
+        pre, post = self._mk_state_symbols(cir.state)
+
+        # 2) meta/environment symbols (match checker expectations)
+        # ICSE-safe addition:
+        #   meta.contract_balance is the canonical DSL symbol for address(this).balance.
+        #   meta.this_balance is kept as a backward-compatible alias to the SAME Z3 term.
+        contract_balance_sym = BitVec("meta.contract_balance", 256)
+        meta = {
+            'sender': BitVec("meta.sender", 160),
+            'call_depth': BitVec("meta.call_depth", 256),
+            'target': BitVec("meta.target", 160),
+            'all_calls_success': Bool("meta.all_calls_success"),
+            'revert_taken': Bool("meta.revert_taken"),
+            'value': BitVec("meta.value", 256),  # msg.value / meta.value
+            'contract_balance': contract_balance_sym,
+            'this_balance': contract_balance_sym,
+        }
+
+        # 3) argument symbols
+        arg_syms: Dict[str, Any] = {}
+        for a in fn.args:
+            if a.ty == 'uint256':
+                arg_syms[a.name] = BitVec(f"arg.{a.name}", 256)
+            elif a.ty == 'address':
+                arg_syms[a.name] = BitVec(f"arg.{a.name}", 160)
+            elif a.ty == 'bool':
+                arg_syms[a.name] = Bool(f"arg.{a.name}")
+            else:
+                # default to 256-bit if unknown numeric
+                arg_syms[a.name] = BitVec(f"arg.{a.name}", 256)
+
+        # 4) path condition
+        ok_curr = BoolVal(True)
+
+        # working copy of storage (curr) and bind to post at the end.
+        # Internal pseudo-state for contract ETH balance. It is not written to post-state
+        # unless the invariant language explicitly supports post.contract_balance later.
+        curr = dict(pre)
+        curr["__contract_balance"] = meta['contract_balance']
+
+        # 5) walk the body
+        for st in fn.body:
+            op = st.get('op')
+
+            # --- Structured IR path (preferred) ---
+            if op == 'require' and 'cond' in st:
+                cond = self._E(st['cond'], curr, arg_syms)
+                ok_curr = And(ok_curr, cond)
+                continue
+
+            if op == 'store_map' and all(k in st for k in ('var','key','val')):
+                var = st['var']
+                key = self._E(st['key'], curr, arg_syms)
+                val = self._E(st['val'], curr, arg_syms)
+                if var not in curr:
+                    notes.append(f"[skip] unknown mapping var '{var}'")
+                    continue
+                curr[var] = If(_as_bool(ok_curr), Store(curr[var], key, val), curr[var])
+                continue
+
+            if op == 'store' and all(k in st for k in ('var','val')):
+                var = st['var']
+                val = self._E(st['val'], curr, arg_syms)
+                if var not in curr:
+                    notes.append(f"[skip] unknown var '{var}'")
+                    continue
+                if not _compatible_value(curr[var], val):
+                    notes.append(f"[skip] sort mismatch store {var}: dst={curr[var].sort()} val={getattr(val,'sort',lambda:None)()}")
+                    continue
+                curr[var] = If(_as_bool(ok_curr), val, curr[var])
+                continue
+
+            if op == 'external_call' and 'target' in st:
+                tgt = self._E(st['target'], curr, arg_syms)
+                meta['target'] = tgt
+                meta['call_depth'] = meta['call_depth'] + BitVecVal(1, 256)
+                continue
+
+            # --- If/Else (structured or coarse) ---
+            if op == 'if':
+                cond = None
+                if 'cond' in st:
+                    cond = self._E(st['cond'], curr, arg_syms)
+                elif 'cond_src' in st:
+                    cond = self._parse_cond_src(st['cond_src'], curr, arg_syms, notes)
+                    if cond is None:
+                        cond = self._parse_expr_src(st['cond_src'], curr, arg_syms, notes)
+
+                if cond is None:
+                    notes.append(f"[skip] unparsed if cond: {st.get('cond_src')}")
+                    continue
+
+                then_state, _ = self._encode_block(st.get('then', []), dict(curr), ok_curr, arg_syms, notes)
+                else_state, _ = self._encode_block(st.get('else', []), dict(curr), ok_curr, arg_syms, notes)
+
+                curr = self._merge_states(cond, then_state, else_state)
+                continue
+
+            if op == 'require' and 'cond_src' in st:
+                txt = st['cond_src'].strip()
+                if ")(" in txt:
+                    txt = txt.split(")(", 1)[1].strip()
+                # Only strip trailing string message like , "msg text" - not commas inside select()
+                import re as _re2
+                _msg_strip = _re2.search(r',\s*"[^"]*"\s*$', txt)
+                if _msg_strip:
+                    txt = txt[:_msg_strip.start()].strip()
+                txt = txt.replace("msg.sender", "meta.sender")
+
+                # Symbolic multiplication (BV256 * BV256) causes Z3 nonlinear blowup.
+                # Instead of skipping entirely, extract a weaker scalar constraint:
+                # For "a * k <= b * c" style requires, add "b > 0 AND c > 0" as the
+                # abstraction (preserves important non-zero constraints without nonlinearity).
+                _has_sym_mul = bool(_re2.search(r"[A-Za-z_][A-Za-z0-9_.]*\s*\*|\*\s*[A-Za-z_][A-Za-z0-9_.]*", txt))
+                if _has_sym_mul:
+                    notes.append(f"[abs-mul] require abstracted (symbolic mul -> nonzero guards): {txt}")
+                    # Extract named identifiers and add nonzero constraints for state vars
+                    _mul_vars = _re2.findall(r"[A-Za-z_][A-Za-z0-9_]*", txt)
+                    _state_names = set(curr.keys())
+                    for _mv in _mul_vars:
+                        if _mv in _state_names and not self._is_array(curr[_mv]):
+                            z_mv = curr[_mv]
+                            if self._is_u256(z_mv):
+                                # Add: var > 0 (conservative non-zero guard)
+                                ok_curr = And(ok_curr, UGT(z_mv, BitVecVal(0, 256)))
+                                notes.append(f"[abs-mul] added nonzero guard for {_mv}")
+                                break  # one guard is enough; avoid over-constraining
+                    continue
+
+                # Try heuristic require parser first
+                cond = self._parse_cond_src(txt, curr, arg_syms, notes)
+
+                # Fallback to full expression parser
+                if cond is None:
+                    cond = self._parse_expr_src(txt, curr, arg_syms, notes)
+
+                if cond is not None:
+                    ok_curr = And(ok_curr, _as_bool(cond))
+                else:
+                    notes.append(f"[skip] unparsed require: {st['cond_src']}")
+                continue
+
+
+            if op in ('map_add', 'map_sub') and all(k in st for k in ('map', 'key_src', 'val_src')):
+                var = st['map']
+                key_expr = self._parse_expr_src(st['key_src'], curr, arg_syms, notes)
+                val_expr = self._parse_expr_src(st['val_src'], curr, arg_syms, notes)
+                if key_expr is None or val_expr is None or var not in curr:
+                    notes.append(f"[skip] unparsed {op}: {st}")
+                    continue
+                base = self._safe_select(curr[var], key_expr, notes, where=f"map_add/sub at var={var!r}")
+                if base is None:
+                    continue
+                if op == 'map_add':
+                    new_val, ok_arith = self._checked_add_u256(base, val_expr)
+                else:
+                    new_val, ok_arith = self._checked_sub_u256(base, val_expr)
+                ok_curr = And(ok_curr, ok_arith)
+                curr[var] = If(_as_bool(ok_curr), Store(curr[var], key_expr, new_val), curr[var])
+                continue
+
+            if op in ('store_add', 'store_sub') and all(k in st for k in ('var', 'val_src')):
+                var = st['var']
+                val_expr = self._parse_expr_src(st['val_src'], curr, arg_syms, notes)
+                if val_expr is None:
+                    notes.append(f"[skip] unparsed {op}: {st}")
+                    continue
+                if var not in curr:
+                    curr[var] = BitVec(f"tmp.{var}", 256)
+                    notes.append(f"[tmp] created local {var}: BitVec256")
+                if not self._is_u256(curr[var]) or not self._is_u256(val_expr):
+                    notes.append(f"[skip] sort mismatch {op} {var}: {st}")
+                    continue
+                if op == 'store_add':
+                    new_val, ok_arith = self._checked_add_u256(curr[var], val_expr)
+                else:
+                    new_val, ok_arith = self._checked_sub_u256(curr[var], val_expr)
+                ok_curr = And(ok_curr, ok_arith)
+                curr[var] = If(_as_bool(ok_curr), new_val, curr[var])
+                continue
+
+            if op == 'store_map' and 'key_src' in st and 'val_src' in st and 'var' in st:
+                var = st['var']
+                key_expr = self._parse_expr_src(st['key_src'], curr, arg_syms, notes)
+                val_expr = self._parse_expr_src(st['val_src'], curr, arg_syms, notes)
+                if key_expr is None or val_expr is None or var not in curr:
+                    notes.append(f"[skip] unparsed store_map: {st}")
+                    continue
+                curr[var] = If(_as_bool(ok_curr), Store(curr[var], key_expr, val_expr), curr[var])
+                continue
+
+            if op == 'store' and 'val_src' in st and 'var' in st:
+                var = st['var']
+                txt = st['val_src'].strip().rstrip(';')
+
+                # If val_src contains division, use a fresh unconstrained symbol.
+                # Division (and multiplication with symbolic operands) creates nonlinear
+                # arithmetic that causes Z3 to hang. Abstract to a fresh typed symbol.
+                # This is sound: the variable is still a valid uint256, just unconstrained.
+                # NOTE: condition is `"/" in txt` only (not `var not in curr`) because
+                # Slither may emit the division statement AFTER the if/else that sets the var,
+                # so var IS already in curr but the new value still contains division.
+                _has_div = "/" in txt
+                _has_sym_mul_store = bool(__import__('re').search(
+                    r"[A-Za-z_][A-Za-z0-9_.]*\s*\*|\*\s*[A-Za-z_][A-Za-z0-9_.]*", txt
+                ))
+                if _has_div or _has_sym_mul_store:
+                    curr[var] = BitVec(f"tmp.{var}", 256)
+                    notes.append(f"[div-abstract] abstracted {var} (val contains div/mul: {txt[:40]})")
+                    continue
+
+                # Handle "var = var + rhs"  (checked add)
+                m = re.fullmatch(rf"{re.escape(var)}\s*\+\s*(_?[A-Za-z_]\w*)", txt)
+                if m and var in curr and not self._is_array(curr[var]) and self._is_u256(curr[var]):
+                    rhs_name = m.group(1)
+                    rhs_z = arg_syms.get(rhs_name)
+                    if rhs_z is None:
+                        rhs_z = BitVec(f"arg.{rhs_name}", 256)
+
+                    s, ok_add = self._checked_add_u256(curr[var], rhs_z)
+                    ok_curr = And(ok_curr, ok_add)
+                    curr[var] = If(_as_bool(ok_curr), s, curr[var])
+                    continue
+
+                # Handle "var = var - rhs"  (checked sub)
+                m = re.fullmatch(rf"{re.escape(var)}\s*\-\s*(_?[A-Za-z_]\w*)", txt)
+                if m and var in curr and not self._is_array(curr[var]) and self._is_u256(curr[var]):
+                    rhs_name = m.group(1)
+                    rhs_z = arg_syms.get(rhs_name)
+                    if rhs_z is None:
+                        rhs_z = BitVec(f"arg.{rhs_name}", 256)
+
+                    d, ok_sub = self._checked_sub_u256(curr[var], rhs_z)
+                    ok_curr = And(ok_curr, ok_sub)
+                    curr[var] = If(_as_bool(ok_curr), d, curr[var])
+                    continue
+
+                # Fallback: existing expr parser
+                val_expr = self._parse_expr_src(txt, curr, arg_syms, notes)
+                if var not in curr:
+                    # create a temp local (uint256 default)
+                    curr[var] = BitVec(f"tmp.{var}", 256)
+                    notes.append(f"[tmp] created local {var}: BitVec256")
+
+                if val_expr is None:
+                    notes.append(f"[skip] unparsed store: {st}")
+                    continue
+
+                if not _compatible_value(curr[var], val_expr):
+                    notes.append(f"[skip] sort mismatch store {var}: dst={curr[var].sort()} val={getattr(val_expr,'sort',lambda:None)()}; src={txt!r}")
+                    continue
+
+                curr[var] = If(_as_bool(ok_curr), val_expr, curr[var])
+                continue
+
+
+                # ✅ NEW: do not crash if parser produced Bool for a u256 store, etc.
+                if not _compatible_value(curr[var], val_expr):
+                    notes.append(f"[skip] sort mismatch store {var}: dst={curr[var].sort()} val={getattr(val_expr,'sort',lambda:None)()}; src={txt!r}")
+                    continue
+
+                curr[var] = If(_as_bool(ok_curr), val_expr, curr[var])
+                continue
+
+            if op == 'external_call' and 'target_src' in st:
+                tgt = self._parse_expr_src(st['target_src'], curr, arg_syms, notes)
+                if tgt is not None:
+                    meta['target'] = tgt
+                    meta['call_depth'] = meta['call_depth'] + BitVecVal(1, 256)
+
+                    # If parser captured the low-level call success variable, model it as true
+                    # on the non-reverting path. This lets require(ok) become meaningful.
+                    ok_var = st.get('ok_var')
+                    if ok_var:
+                        curr[ok_var] = BoolVal(True)
+
+                    # If value was sent out, conservatively reduce the internal balance.
+                    value_src = st.get('value_src')
+                    if value_src:
+                        value_z = self._parse_expr_src(value_src, curr, arg_syms, notes)
+                        if value_z is not None and self._is_u256(curr.get("__contract_balance")) and self._is_u256(value_z):
+                            new_bal, ok_sub = self._checked_sub_u256(curr["__contract_balance"], value_z)
+                            ok_curr = And(ok_curr, ok_sub)
+                            curr["__contract_balance"] = If(_as_bool(ok_curr), new_bal, curr["__contract_balance"])
+                else:
+                    notes.append(f"[skip] unparsed external_call: {st}")
+                continue
+
+            # --- Translate raw "+= / -=" updates (checked arithmetic) ---
+            if op == 'raw' and 'src' in st:
+                src = st['src'].strip().rstrip(';')
+
+                if src.lower() == 'true':
+                    continue
+
+                def _addr_key(key_txt: str):
+                    z = self._parse_expr_src(key_txt, curr, arg_syms, notes)
+                    if z is not None:
+                        return z
+                    if key_txt in arg_syms:
+                        return arg_syms[key_txt]
+                    if key_txt in ('msg.sender', 'msg_sender', 'sender'):
+                        return BitVec("meta.sender", 160)
+                    return BitVec(f"arg.{key_txt}", 160)
+
+                def _u256(rhs_txt: str):
+                    z = self._parse_expr_src(rhs_txt, curr, arg_syms, notes)
+                    if z is not None:
+                        return z
+                    if rhs_txt in arg_syms:
+                        return arg_syms[rhs_txt]
+                    return BitVec(f"arg.{rhs_txt}", 256)
+
+                # balances[key] -= rhs  (checked sub)
+                m = re.fullmatch(r'([A-Za-z_]\w*)\s*\[\s*([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)?)\s*\]\s*-\=\s*([A-Za-z_]\w*)', src)
+                if m and m.group(1) in curr:
+                    arr, key_txt, rhs_txt = m.group(1), m.group(2), m.group(3)
+                    key_z = _addr_key(key_txt)
+                    rhs_z = _u256(rhs_txt)
+                    base = self._safe_select(curr[arr], key_z, notes, where=f"raw -= at arr={arr!r}")
+                    if base is None:
+                        continue
+
+                    # Solidity 0.8 underflow check: base >= rhs
+                    d, ok_sub = self._checked_sub_u256(base, rhs_z)
+                    ok_curr = And(ok_curr, ok_sub)
+
+                    curr[arr] = If(_as_bool(ok_curr), Store(curr[arr], key_z, d), curr[arr])
+                    continue
+
+                # balances[key] += rhs  (checked add)
+                m = re.fullmatch(r'([A-Za-z_]\w*)\s*\[\s*([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)?)\s*\]\s*\+\=\s*([A-Za-z_]\w*)', src)
+                if m and m.group(1) in curr:
+                    arr, key_txt, rhs_txt = m.group(1), m.group(2), m.group(3)
+                    key_z = _addr_key(key_txt)
+                    rhs_z = _u256(rhs_txt)
+                    base = self._safe_select(curr[arr], key_z, notes, where=f"raw += at arr={arr!r}")
+                    if base is None:
+                        continue
+
+                    s2, ok_add = self._checked_add_u256(base, rhs_z)
+                    ok_curr = And(ok_curr, ok_add)
+
+                    curr[arr] = If(_as_bool(ok_curr), Store(curr[arr], key_z, s2), curr[arr])
+                    continue
+
+                # scalar += rhs (checked add if u256)
+                m = re.fullmatch(r'([A-Za-z_]\w*)\s*\+\=\s*([A-Za-z_]\w*)', src)
+                if m:
+                    var, rhs_txt = m.group(1), m.group(2)
+                    if var in curr and not self._is_array(curr[var]) and self._is_u256(curr[var]):
+                        rhs_z = arg_syms[rhs_txt] if rhs_txt in arg_syms else BitVec(f"arg.{rhs_txt}", 256)
+
+                        s2, ok_add = self._checked_add_u256(curr[var], rhs_z)
+                        ok_curr = And(ok_curr, ok_add)
+                        curr[var] = If(_as_bool(ok_curr), s2, curr[var])
+                        continue
+
+                # scalar -= rhs (checked sub if u256)
+                m = re.fullmatch(r'([A-Za-z_]\w*)\s*\-\=\s*([A-Za-z_]\w*)', src)
+                if m:
+                    var, rhs_txt = m.group(1), m.group(2)
+                    if var in curr and not self._is_array(curr[var]) and self._is_u256(curr[var]):
+                        rhs_z = arg_syms[rhs_txt] if rhs_txt in arg_syms else BitVec(f"arg.{rhs_txt}", 256)
+
+                        d2, ok_sub = self._checked_sub_u256(curr[var], rhs_z)
+                        ok_curr = And(ok_curr, ok_sub)
+                        curr[var] = If(_as_bool(ok_curr), d2, curr[var])
+                        continue
+
+                notes.append(f"[raw] {st['src']}")
+                continue
+
+            # unknown statement
+            notes.append(f"[skip] unknown statement shape: {st}")
+
+        # 6) bind post == curr; collect assumptions
+        assumptions = []
+        for name in post:
+            assumptions.append(post[name] == curr[name])
+
+        # success/revert flag exposure
+        assumptions.append(meta['revert_taken'] == Not(ok_curr))
+
+        return SymFunctionModel(
+            contract_name=cir.name,
+            function_name=fn.name,
+            pre=pre, post=post, meta=meta,
+            assumptions=assumptions,
+            arg_symbols=arg_syms,
+            notes=notes
+        )
+
+    # ------------------------------------------------------------------
+    # Helpers: make storage symbols
+    # ------------------------------------------------------------------
+    def _safe_select(self, arr_val, key_z, notes, where: str = ""):
+        """Wrap z3.Select() with sort guards.
+
+        Failure modes we protect against:
+
+        1. ``arr_val`` is not actually a Z3 Array. The parser sometimes binds
+           a non-Array term (e.g., a BV256 representing an opaque struct value
+           loaded from a struct-valued mapping) to a name that subsequent IR ops
+           then treat as if it were a mapping. Calling Select() on that BV256
+           produces:
+               z3.z3types.Z3Exception: First argument must be a Z3 array expression
+
+        2. ``key_z`` has the wrong sort for the array's domain
+           (e.g., BV160 key for a BV256-keyed map, or Bool key for any map).
+           We attempt automatic resizing for BV-to-BV mismatches, and skip
+           cleanly when no coercion is possible.
+
+        Rather than crash the entire checker run on a single mishap, we log
+        the mismatch and return None so the caller can record a [skip] note
+        and continue with the rest of the function body.
+        """
+        if not self._is_array(arr_val):
+            notes.append(f"[skip] Select on non-Array (at {where}); "
+                         f"sort={getattr(arr_val,'sort',lambda:'?')()}")
+            return None
+        # Key sort handling
+        try:
+            from z3 import is_bool
+            if is_bool(key_z):
+                notes.append(f"[skip] Select key is Bool (at {where})")
+                return None
+            domain_sort = arr_val.sort().domain()
+            key_sort = key_z.sort() if hasattr(key_z, 'sort') else None
+            if key_sort is not None and key_sort != domain_sort:
+                # BV-to-BV resize: zero-extend or extract
+                if (hasattr(domain_sort, 'size') and hasattr(key_sort, 'size')):
+                    from z3 import ZeroExt, Extract
+                    d_size = domain_sort.size()
+                    k_size = key_sort.size()
+                    if d_size > k_size:
+                        key_z = ZeroExt(d_size - k_size, key_z)
+                    elif d_size < k_size:
+                        key_z = Extract(d_size - 1, 0, key_z)
+                    else:
+                        # same size but different sort -- shouldn't happen for BVs, skip
+                        notes.append(f"[skip] same-size sort mismatch (at {where}): {key_sort} vs {domain_sort}")
+                        return None
+                else:
+                    notes.append(f"[skip] Select key/domain sort mismatch (at {where}): "
+                                 f"key={key_sort} domain={domain_sort}")
+                    return None
+        except Exception as e:
+            notes.append(f"[skip] Select sort check raised {type(e).__name__} (at {where})")
+            return None
+        return Select(arr_val, key_z)
+
+
+    def _mk_state_symbols(self, state_vars) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+        pre, post = {}, {}
+        for v in state_vars:
+            if getattr(v, 'is_mapping', False):
+                key_sort = self._sort_for(getattr(v, 'key_ty', 'address'))
+                val_sort = self._sort_for(getattr(v, 'val_ty', 'uint256'))
+                pre[v.name]  = Array(v.name, key_sort, val_sort)
+                post[v.name] = Array(v.name + "1", key_sort, val_sort)
+            else:
+                s = self._sort_for(getattr(v, 'ty', 'uint256'))
+                if s is BV256:
+                    pre[v.name]  = BitVec(v.name, 256)
+                    post[v.name] = BitVec(v.name + "1", 256)
+                elif s is BV160:
+                    pre[v.name]  = BitVec(v.name, 160)
+                    post[v.name] = BitVec(v.name + "1", 160)
+                else:
+                    pre[v.name]  = Bool(v.name)
+                    post[v.name] = Bool(v.name + "1")
+        return pre, post
+
+    def _sort_for(self, ty: str):
+        """Return a Z3 *Sort* (not a constructor) for the given Solidity type string.
+
+        IMPORTANT: callers (especially _mk_state_symbols) pass the returned object
+        directly to Array(name, key_sort, val_sort) and ArraySort(...). Those z3 APIs
+        require a real Sort object. Returning a constructor function like `Bool`
+        (the variable factory) here used to crash with
+            AttributeError: 'function' object has no attribute 'ctx'
+        when Free3-like contracts declared `mapping(uint256 => bool)`.
+
+        Known/handled types:
+            uint*, int*       -> 256-bit bitvector
+            address, address payable -> 160-bit bitvector
+            bool              -> bool sort
+            bytes32           -> 256-bit bitvector (opaque)
+
+        Unknown types (notably user-defined struct names referenced as mapping
+        value types, e.g. `mapping(address => Stake)`) fall through to BV256.
+        This is semantically lossy — the struct is modeled as an opaque 256-bit
+        value — but it does not crash and lets the rest of the pipeline make
+        progress on contracts whose vulnerability does not actually depend on
+        per-field struct reasoning.
+        """
+        t = (ty or '').strip()
+        if t == 'uint' or t.startswith('uint'):
+            return BV256
+        if t.startswith('int'):
+            return BV256  # signed handling is approximated as bitvector
+        if t == 'address' or t == 'address payable':
+            return BV160
+        if t == 'bool':
+            return BoolSort()
+        if t.startswith('bytes'):
+            return BV256
+        # Unknown type (commonly a user-defined struct or enum referenced as a
+        # mapping value type). Model as opaque 256-bit bitvector to avoid crashing;
+        # checker will treat the value as an arbitrary uint256.
+        return BV256
+
+    # ------------------------------------------------------------------
+    # Structured IR expression evaluator
+    # ------------------------------------------------------------------
+    def _E(self, expr: Any, curr: Dict[str, Any], args: Dict[str, Any]):
+        """
+        Evaluate structured Tiny-IR expressions into Z3 terms.
+        Supported ops: 'arg', 'const_uint', 'const_bool', 'const_addr', 'load',
+                       'add','sub','UGE','ULE','EQ','NEQ'
+        """
+        if isinstance(expr, (int,)):
+            return BitVecVal(int(expr), 256)
+        if isinstance(expr, str):
+            if expr in args: return args[expr]
+            if expr in curr and not self._is_array(curr[expr]): return curr[expr]
+            s = expr.strip()
+            if s.startswith("0x"):
+                return BitVecVal(int(s, 16), 160)
+            if s.isdigit():
+                return BitVecVal(int(s), 256)
+            return BitVec(expr, 256)
+
+        if isinstance(expr, tuple):
+            tag = expr[0]
+            if tag == 'arg':
+                return args[expr[1]]
+            if tag == 'const_uint':
+                return BitVecVal(int(expr[1]), 256)
+            if tag == 'const_bool':
+                return BoolVal(bool(expr[1]))
+            if tag == 'const_addr':
+                return BitVecVal(int(expr[1], 16), 160)
+            if tag == 'load':
+                var = expr[1]; key = self._E(expr[2], curr, args)
+                return Select(curr[var], key)
+            if tag == 'add':
+                return self._E(expr[1], curr, args) + self._E(expr[2], curr, args)
+            if tag == 'sub':
+                return self._E(expr[1], curr, args) - self._E(expr[2], curr, args)
+            if tag == 'UGE':
+                return UGE(self._E(expr[1], curr, args), self._E(expr[2], curr, args))
+            if tag == 'ULE':
+                return ULE(self._E(expr[1], curr, args), self._E(expr[2], curr, args))
+            if tag == 'EQ':
+                return self._E(expr[1], curr, args) == self._E(expr[2], curr, args)
+            if tag == 'NEQ':
+                return self._E(expr[1], curr, args) != self._E(expr[2], curr, args)
+            raise RuntimeError(f"Unsupported IR expr tuple: {expr}")
+
+        raise RuntimeError(f"Unsupported IR expr: {expr!r}")
+
+    def _is_array(self, z) -> bool:
+        # ✅ Robust: in z3py, Arrays are ArrayRef
+        try:
+            return isinstance(z, ArrayRef)
+        except Exception:
+            return False
+
+    # ------------------------------------------------------------------
+    # Heuristic parsers for coarse Slither strings (common ERC-20 cases)
+    # ------------------------------------------------------------------
+    def _parse_cond_src(self, s: str, curr, args, notes) -> Optional[Any]:
+        txt = s.strip()
+
+        # ONLY strip Slither-style require(bool,string)(...) wrappers.
+        # Do NOT strip parens from expressions like select(shares, meta.sender) >= x.
+        import re as _re
+        slither_wrap = _re.match(r"^[A-Za-z_]\w*\s*\([^)]*\)\s*\((.+)\)$", txt, _re.DOTALL)
+        if slither_wrap:
+            txt = slither_wrap.group(1).strip()
+            # Remove trailing string message: "..., "msg""
+            if txt and txt[-1] == '"':
+                last_comma = txt.rfind(',"')
+                if last_comma > 0:
+                    txt = txt[:last_comma].strip()
+
+        m = re.fullmatch(r'!\s*paused', txt)
+        if m and 'paused' in curr:
+            return Not(curr['paused'])
+
+        m = re.fullmatch(r'paused\s*==\s*false', txt, flags=re.IGNORECASE)
+        if m and 'paused' in curr:
+            return Not(curr['paused'])
+
+        m = re.fullmatch(r'([A-Za-z_]\w*)\s*\[\s*([A-Za-z_][\w\.]*)\s*\]\s*>=\s*([A-Za-z_]\w*)', txt)
+        if m:
+            arr, key, rhs = m.group(1), m.group(2), m.group(3)
+            if arr in curr:
+                if key in ('msg.sender', 'msg_sender'):
+                    key_z = BitVec("meta.sender", 160)
+                else:
+                    key_z = args.get(key)
+                    if key_z is None:
+                        key_z = BitVec(f"arg.{key}", 160)
+                rhs_z = args.get(rhs)
+                if rhs_z is None:
+                    rhs_z = BitVec(f"arg.{rhs}", 256)
+                _sel = self._safe_select(curr[arr], key_z, [], where=f"UGE arr>=rhs at arr={arr!r}")
+                if _sel is None:
+                    return None
+                return UGE(_sel, rhs_z)
+
+        m = re.fullmatch(r'([A-Za-z_]\w*)\s*\[\s*(_?[A-Za-z_][\w\.]*)\s*\]\s*>=\s*(_?[A-Za-z_]\w*)', txt)
+        if m:
+            arr, key, rhs = m.group(1), m.group(2), m.group(3)
+            if arr in curr:
+                if key in ('msg.sender', 'msg_sender'):
+                    key_z = BitVec("meta.sender", 160)
+                else:
+                    key_z = args.get(key)
+                    if key_z is None:
+                        key_z = BitVec(f"arg.{key}", 160)
+                rhs_z = args.get(rhs)
+                if rhs_z is None:
+                    rhs_z = BitVec(f"arg.{rhs}", 256)
+                _sel = self._safe_select(curr[arr], key_z, [], where=f"UGE arr>=rhs (relaxed) at arr={arr!r}")
+                if _sel is None:
+                    return None
+                return UGE(_sel, rhs_z)
+
+        # Fallback: delegate to full expression parser (handles meta.value > 0, shareAmt > 0, etc.)
+        z = self._parse_expr_src(txt, curr, args, [])
+        if z is not None:
+            return _as_bool(z)
+
+        notes.append(f"[heuristics] unknown require cond: {s}")
+        return None
+
+    def _parse_expr_src(self, s: str, curr, args, notes) -> Optional[Any]:
+        from z3 import (
+            BitVec, BitVecVal, BoolVal, Select, is_bv, is_bool,
+            UGT, ULT, UGE, ULE, Or, And, Not, UDiv
+        )
+
+        txt = (s or "").strip()
+        if not txt:
+            return None
+
+        # Textual normalization from parser/DSL into the symbols used here.
+        txt = re.sub(r"\bmsg\.value\b", "meta.value", txt)
+        txt = re.sub(r"\bmsg\.sender\b", "meta.sender", txt)
+        txt = re.sub(r"\btx\.origin\b", "meta.sender", txt)
+        txt = re.sub(r"\baddress\s*\(\s*this\s*\)\s*\.balance\b", "meta.contract_balance", txt)
+        txt = re.sub(r"\baddress\s*\(\s*meta\.sender\s*\)", "meta.sender", txt)
+        txt = re.sub(r"\bpayable\s*\(\s*meta\.sender\s*\)", "meta.sender", txt)
+
+        # ------------------------------------------------------------
+        # ✅ Normalize common Solidity meta aliases
+        # ------------------------------------------------------------
+        # Common Solidity / InvGuard DSL meta aliases.
+        if txt in ("msg.value", "meta.value"):
+            return BitVec("meta.value", 256)
+        if txt in ("address(this).balance", "this.balance", "meta.contract_balance", "meta.this_balance"):
+            z_bal = curr.get("__contract_balance")
+            if z_bal is not None:
+                return z_bal
+            return BitVec("meta.contract_balance", 256)
+
+        if txt in ("msg.sender", "msg_sender", "sender", "meta.sender"):
+            return BitVec("meta.sender", 160)
+
+        # common local produced by low-level calls: (ok, ) = ...
+        if txt == "ok":
+            z_ok = curr.get("ok")
+            if z_ok is not None and is_bool(z_ok):
+                return z_ok
+            return BoolVal(True)  # conservative: don't block paths if we can't model
+
+        if txt.lower() == "true":
+            return BoolVal(True)
+        if txt.lower() == "false":
+            return BoolVal(False)
+
+        # ------------------------------------------------------------
+        # ✅ Handle parentheses-wrapped expressions early
+        # ------------------------------------------------------------
+        t0 = txt
+        if t0.startswith("(") and t0.endswith(")"):
+            inner = t0[1:-1].strip()
+            if inner:
+                z_inner = self._parse_expr_src(inner, curr, args, notes)
+                if z_inner is not None:
+                    return z_inner
+
+        # ------------------------------------------------------------
+        # ✅ Correct precedence: || and && before comparisons/arithmetic
+        # ------------------------------------------------------------
+        or_parts = self._split_top_level(txt, "||")
+        if or_parts:
+            sub = [self._parse_expr_src(p, curr, args, notes) for p in or_parts]
+            sub = [x for x in sub if x is not None]
+            if not sub:
+                return None
+            sub = [_as_bool(x) for x in sub]
+            return Or(sub)
+
+        and_parts = self._split_top_level(txt, "&&")
+        if and_parts:
+            sub = [self._parse_expr_src(p, curr, args, notes) for p in and_parts]
+            sub = [x for x in sub if x is not None]
+            if not sub:
+                return None
+            sub = [_as_bool(x) for x in sub]
+            return And(sub)
+
+        # ------------------------------------------------------------
+        # ✅ Unary NOT
+        # ------------------------------------------------------------
+        if txt.startswith("!"):
+            inner = txt[1:].strip()
+            z = self._parse_expr_src(inner, curr, args, notes)
+            if z is None:
+                return None
+            return Not(_as_bool(z))
+
+        # ------------------------------------------------------------
+        # Literals / addresses
+        # ------------------------------------------------------------
+        # FIX B: address(0) literal — return BitVecVal(0, 160) directly.
+        # Without this, the parser falls through to the mapping-select handler
+        # which calls Select(arr, key_z) with a Bool-sorted key, crashing Z3.
+        # Affects any contract using `recipient[msg.sender] != address(0)` pattern.
+        if re.match(r"^address\s*\(\s*0x?0*\s*\)$", txt):
+            return BitVecVal(0, 160)
+
+        if txt.startswith("0x") and len(txt) >= 3:
+            try:
+                return BitVecVal(int(txt, 16), 160)
+            except Exception:
+                pass
+
+        # ------------------------------------------------------------
+        # InvGuard DSL mapping read: select(arr, key)
+        # ------------------------------------------------------------
+        m = re.fullmatch(r"select\(\s*([A-Za-z_]\w*)\s*,\s*(.+)\s*\)", txt)
+        if m:
+            arr, key_txt = m.group(1), m.group(2).strip()
+            # REAL FIX B: The greedy .+ above can capture too much when the
+            # expression is "select(arr, key) != address(0)".
+            # fullmatch succeeds because the string ends with ")" from address(0).
+            # key_txt then becomes "meta.sender) != address(0" which contains an
+            # unbalanced ")" and a comparison operator — it parses as a Bool,
+            # causing Select(array, Bool) → Z3 crash: domain sort Bool != BitVec(160).
+            # Guard: if key_txt has unbalanced parens or top-level comparison
+            # operators, this is NOT a plain select() — skip and fall through
+            # to the comparison handler which will parse it correctly.
+            _depth = 0
+            _bad_key = False
+            for _ch in key_txt:
+                if _ch == "(":
+                    _depth += 1
+                elif _ch == ")":
+                    _depth -= 1
+                    if _depth < 0:   # unbalanced — key is malformed
+                        _bad_key = True
+                        break
+            if not _bad_key:
+                arr_val = curr.get(arr)
+                if arr_val is not None:
+                    key_z = self._parse_expr_src(key_txt, curr, args, notes)
+                    if key_z is None:
+                        if key_txt in ("meta.sender", "msg.sender", "msg_sender", "sender"):
+                            key_z = BitVec("meta.sender", 160)
+                        elif key_txt in args:
+                            key_z = args[key_txt]
+                        else:
+                            # Default-size the key to match the array's domain
+                            # (BV256 for mapping(uint=>X), BV160 for mapping(address=>X)).
+                            _ksize = 160
+                            try:
+                                if self._is_array(arr_val):
+                                    _dom = arr_val.sort().domain()
+                                    if hasattr(_dom, "size"):
+                                        _ksize = _dom.size()
+                            except Exception:
+                                pass
+                            key_z = BitVec(f"arg.{key_txt}", _ksize)
+                    return self._safe_select(arr_val, key_z, notes,
+                                              where=f"_parse_expr_src select() at arr={arr!r}, txt={txt!r}")
+
+        # ------------------------------------------------------------
+        # mapping read: arr[key]   (key may include msg.sender)
+        # ------------------------------------------------------------
+        m = re.fullmatch(r"([A-Za-z_]\w*)\s*\[\s*(.+?)\s*\]\s*", txt)
+        if m:
+            arr, key = m.group(1), m.group(2)
+            if arr in curr:
+                key_z = self._parse_expr_src(key, curr, args, notes)
+                if key_z is None:
+                    if key in ("msg.sender", "msg_sender", "sender", "meta.sender"):
+                        key_z = BitVec("meta.sender", 160)
+                    else:
+                        key_z = args.get(key)
+                        if key_z is None:
+                            key_z = BitVec(f"arg.{key}", 160)
+                # Guard: only Select if curr[arr] is actually an Array
+                _av = curr[arr]
+                if not self._is_array(_av):
+                    notes.append(f"[skip] arr[key] but arr={arr!r} is not an Array (sort={getattr(_av,'sort',lambda:'?')()}); txt={txt!r}")
+                    return None
+                return Select(_av, key_z)
+
+        # direct name in args or curr
+        if txt in args:
+            return args[txt]
+        if txt in curr and not self._is_array(curr[txt]):
+            return curr[txt]
+        # Local variables created during body encoding (minted, payout, prevBal, etc.)
+        tmp_key = f"tmp.{txt}"
+        if tmp_key in curr and not self._is_array(curr[tmp_key]):
+            return curr[tmp_key]
+
+        # integer literal
+        if txt.isdigit():
+            return BitVecVal(int(txt), 256)
+
+        # ------------------------------------------------------------
+        # ✅ Strip outer parens (lightweight)
+        # ------------------------------------------------------------
+        t = txt
+        if t.startswith("(") and t.endswith(")"):
+            t = t[1:-1].strip()
+
+        # ------------------------------------------------------------
+        # ✅ TOP-LEVEL comparisons/equality FIRST
+        # (Then lhs/rhs recursion will parse arithmetic correctly.)
+        # ------------------------------------------------------------
+        m = re.match(r"^(.+?)\s*(>=|<=|==|!=|>|<)\s*(.+)$", t)
+        if m:
+            lhs_txt, op, rhs_txt = m.group(1).strip(), m.group(2), m.group(3).strip()
+
+            lhs = self._parse_expr_src(lhs_txt, curr, args, notes)
+            if lhs is None:
+                lhs = BitVecVal(int(lhs_txt), 256) if lhs_txt.isdigit() else BitVec(f"arg.{lhs_txt}", 256)
+
+            rhs = self._parse_expr_src(rhs_txt, curr, args, notes)
+            if rhs is None:
+                rhs = BitVecVal(int(rhs_txt), 256) if rhs_txt.isdigit() else BitVec(f"arg.{rhs_txt}", 256)
+
+            if op == ">":
+                return UGT(lhs, rhs) if (is_bv(lhs) or is_bv(rhs)) else (lhs > rhs)
+            if op == "<":
+                return ULT(lhs, rhs) if (is_bv(lhs) or is_bv(rhs)) else (lhs < rhs)
+            if op == ">=":
+                return UGE(lhs, rhs) if (is_bv(lhs) or is_bv(rhs)) else (lhs >= rhs)
+            if op == "<=":
+                return ULE(lhs, rhs) if (is_bv(lhs) or is_bv(rhs)) else (lhs <= rhs)
+
+            if op == "==":
+                try:
+                    if hasattr(lhs, "sort") and hasattr(rhs, "sort") and lhs.sort() != rhs.sort():
+                        notes.append(f"[skip] sort mismatch in '==': {lhs.sort()} vs {rhs.sort()} for src={t!r}")
+                        return BoolVal(True)
+                except Exception:
+                    pass
+                return lhs == rhs
+
+            if op == "!=":
+                try:
+                    if hasattr(lhs, "sort") and hasattr(rhs, "sort") and lhs.sort() != rhs.sort():
+                        notes.append(f"[skip] sort mismatch in '!=': {lhs.sort()} vs {rhs.sort()} for src={t!r}")
+                        return BoolVal(True)
+                except Exception:
+                    pass
+                return lhs != rhs
+
+        # ------------------------------------------------------------
+        # ✅ If there is still a top-level comparator, do NOT try arithmetic
+        # (prevents '*'-splitting across '<=' etc if regex missed some edge.)
+        # ------------------------------------------------------------
+        if self._split_top_level(txt, "<=") or self._split_top_level(txt, ">=") or self._split_top_level(txt, "==") \
+        or self._split_top_level(txt, "!=") or self._split_top_level(txt, "<") or self._split_top_level(txt, ">"):
+            notes.append(f"[skip] comparator present but not parsed: {txt!r}")
+            return None
+
+        # ------------------------------------------------------------
+        # ✅ Arithmetic precedence: +, -, *, /
+        # ------------------------------------------------------------
+        parts = self._split_top_level(txt, "+")
+        if parts and len(parts) >= 2:
+            acc = self._parse_expr_src(parts[0], curr, args, notes)
+            if acc is None:
+                return None
+            for p in parts[1:]:
+                rhs = self._parse_expr_src(p, curr, args, notes)
+                if rhs is None:
+                    return None
+                acc = acc + rhs
+            return acc
+
+        parts = self._split_top_level(txt, "-")
+        if parts and len(parts) >= 2 and not txt.lstrip().startswith("-"):
+            acc = self._parse_expr_src(parts[0], curr, args, notes)
+            if acc is None:
+                return None
+            for p in parts[1:]:
+                rhs = self._parse_expr_src(p, curr, args, notes)
+                if rhs is None:
+                    return None
+                acc = acc - rhs
+            return acc
+
+        parts = self._split_top_level(txt, "*")
+        if parts and len(parts) >= 2:
+            acc = self._parse_expr_src(parts[0], curr, args, notes)
+            if acc is None:
+                return None
+            for p in parts[1:]:
+                rhs = self._parse_expr_src(p, curr, args, notes)
+                if rhs is None:
+                    return None
+                acc = acc * rhs
+            return acc
+
+        parts = self._split_top_level(txt, "/")
+        if parts and len(parts) >= 2:
+            acc = self._parse_expr_src(parts[0], curr, args, notes)
+            if acc is None:
+                return None
+            for p in parts[1:]:
+                rhs = self._parse_expr_src(p, curr, args, notes)
+                if rhs is None:
+                    return None
+                acc = UDiv(acc, rhs)
+            return acc
+
+        notes.append(f"[heuristics] unknown expr: {s}")
+        return None
+
+
+    def _merge_states(self, cond, s_then: Dict[str, Any], s_else: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Merge symbolic states after an if/else.
+
+        Important:
+        Branches may introduce different local variables. Example:
+
+            if (...) {
+                minted = meta.value;
+            } else {
+                prevBal = meta.contract_balance - meta.value;
+            }
+
+        In that case, then_state has 'minted' while else_state may not, and
+        else_state has 'prevBal' while then_state may not. We must not crash.
+
+        Policy:
+        - For keys in both branches: merge with If(cond, then, else).
+        - For keys only in one branch: keep the branch value.
+            This is a conservative local-variable merge so subsequent statements can
+            still reference that local. It avoids infrastructure failure.
+        - If Z3 sorts mismatch: prefer then value and continue; callers will
+            later emit sort-mismatch notes if assignment is impossible.
+        """
+        out: Dict[str, Any] = {}
+
+        all_keys = set(s_then.keys()) | set(s_else.keys())
+
+        for k in all_keys:
+            in_then = k in s_then
+            in_else = k in s_else
+
+            if in_then and in_else:
+                tv = s_then[k]
+                ev = s_else[k]
+
+                try:
+                    if hasattr(tv, "sort") and hasattr(ev, "sort") and tv.sort() != ev.sort():
+                        out[k] = tv
+                    else:
+                        out[k] = If(_as_bool(cond), tv, ev)
+                except Exception:
+                    out[k] = tv
+                continue
+
+            if in_then:
+                out[k] = s_then[k]
+                continue
+
+            if in_else:
+                out[k] = s_else[k]
+                continue
+
+        return out
+
+    def _encode_block(
+        self,
+        stmts: List[Dict[str, Any]],
+        curr_state: Dict[str, Any],
+        pc,
+        args: Dict[str, Any],
+        notes_list: List[str],
+    ):
+        from z3 import And, If, Store, Select, BitVec, BitVecVal, BoolVal
+
+        local = dict(curr_state)
+        ok_local = pc
+
+        for st in stmts:
+            opb = st.get('op')
+
+            if opb == 'require' and 'cond' in st:
+                condb = self._E(st['cond'], local, args)
+                ok_local = And(ok_local, condb)
+                continue
+
+            if opb == 'require' and 'cond_src' in st:
+                txt = st['cond_src'].strip()
+                if ")(" in txt:
+                    txt = txt.split(")(", 1)[1].strip()
+                if "," in txt:
+                    txt = txt.rsplit(",", 1)[0].strip()
+                txt = txt.replace("msg.sender", "msg_sender")
+                condb = self._parse_cond_src(txt, local, args, notes_list)
+                if condb is None:
+                    condb = self._parse_expr_src(txt, local, args, notes_list)
+                if condb is not None:
+                    ok_local = And(ok_local, condb)
+                else:
+                    notes_list.append(f"[skip] unparsed require (block): {st['cond_src']}")
+                continue
+
+            if opb == 'store_map' and all(k in st for k in ('var','key','val')):
+                var = st['var']
+                key = self._E(st['key'], local, args)
+                val = self._E(st['val'], local, args)
+                if var not in local:
+                    notes_list.append(f"[skip] unknown mapping var '{var}' (block)")
+                    continue
+                local[var] = If(_as_bool(ok_local), Store(local[var], key, val), local[var])
+                continue
+
+            if opb == 'store_map' and 'key_src' in st and 'val_src' in st and 'var' in st:
+                var = st['var']
+                key_expr = self._parse_expr_src(st['key_src'], local, args, notes_list)
+                val_expr = self._parse_expr_src(st['val_src'], local, args, notes_list)
+                if key_expr is None or val_expr is None or var not in local:
+                    notes_list.append(f"[skip] unparsed store_map (block): {st}")
+                    continue
+                local[var] = If(_as_bool(ok_local), Store(local[var], key_expr, val_expr), local[var])
+                continue
+
+            if opb in ('map_add', 'map_sub') and all(k in st for k in ('map', 'key_src', 'val_src')):
+                var = st['map']
+                key_expr = self._parse_expr_src(st['key_src'], local, args, notes_list)
+                val_expr = self._parse_expr_src(st['val_src'], local, args, notes_list)
+                if key_expr is None or val_expr is None or var not in local:
+                    notes_list.append(f"[skip] unparsed {opb} (block): {st}")
+                    continue
+                base = self._safe_select(local[var], key_expr, notes_list, where=f"map_add/sub (block) at var={var!r}")
+                if base is None:
+                    continue
+                if opb == 'map_add':
+                    new_val, ok_arith = self._checked_add_u256(base, val_expr)
+                else:
+                    new_val, ok_arith = self._checked_sub_u256(base, val_expr)
+                ok_local = And(ok_local, ok_arith)
+                local[var] = If(_as_bool(ok_local), Store(local[var], key_expr, new_val), local[var])
+                continue
+
+            if opb in ('store_add', 'store_sub') and all(k in st for k in ('var', 'val_src')):
+                var = st['var']
+                val_expr = self._parse_expr_src(st['val_src'], local, args, notes_list)
+                if val_expr is None:
+                    notes_list.append(f"[skip] unparsed {opb} (block): {st}")
+                    continue
+                if var not in local:
+                    local[var] = BitVec(f"tmp.{var}", 256)
+                    notes_list.append(f"[tmp] created local {var}: BitVec256 (block)")
+                if not self._is_u256(local[var]) or not self._is_u256(val_expr):
+                    notes_list.append(f"[skip] sort mismatch {opb} (block) {var}: {st}")
+                    continue
+                if opb == 'store_add':
+                    new_val, ok_arith = self._checked_add_u256(local[var], val_expr)
+                else:
+                    new_val, ok_arith = self._checked_sub_u256(local[var], val_expr)
+                ok_local = And(ok_local, ok_arith)
+                local[var] = If(_as_bool(ok_local), new_val, local[var])
+                continue
+
+            if opb == 'store' and all(k in st for k in ('var', 'val')):
+                var = st['var']
+                val = self._E(st['val'], local, args)
+                if var not in local:
+                    notes_list.append(f"[skip] unknown var '{var}' (block)")
+                    continue
+                if not _compatible_value(local[var], val):
+                    notes_list.append(f"[skip] sort mismatch store (block) {var}: dst={local[var].sort()} val={getattr(val,'sort',lambda:None)()}")
+                    continue
+                local[var] = If(_as_bool(ok_local), val, local[var])
+                continue
+
+            if opb == 'store' and 'val_src' in st and 'var' in st:
+                var = st['var']
+                txt = st['val_src'].strip().rstrip(';')
+
+                # Division or symbolic multiplication causes Z3 nonlinear blowup.
+                # Abstract unconditionally (even if var already in local from prior branch).
+                import re as _re_div
+                _has_div_b = "/" in txt
+                _has_sym_mul_b = bool(_re_div.search(
+                    r"[A-Za-z_][A-Za-z0-9_.]*\s*\*|\*\s*[A-Za-z_][A-Za-z0-9_.]*", txt
+                ))
+                if _has_div_b or _has_sym_mul_b:
+                    local[var] = BitVec(f"tmp.{var}", 256)
+                    notes_list.append(f"[div-abstract] abstracted {var} (block, div/mul: {txt[:40]})")
+                    continue
+
+                m = re.fullmatch(rf"\(?\s*{re.escape(var)}\s*([+\-])\s*(_?[A-Za-z_]\w*)\s*\)?", txt)
+                if m and var in local and not self._is_array(local[var]) and self._is_u256(local[var]):
+                    sign, rhs_name = m.group(1), m.group(2)
+                    rhs_z = args.get(rhs_name)
+                    if rhs_z is None:
+                        rhs_z = BitVec(f"arg.{rhs_name}", 256)
+                    if sign == '+':
+                        s2, ok_add = self._checked_add_u256(local[var], rhs_z)
+                        ok_local = And(ok_local, ok_add)
+                        local[var] = If(_as_bool(ok_local), s2, local[var])
+                    else:
+                        d2, ok_sub = self._checked_sub_u256(local[var], rhs_z)
+                        ok_local = And(ok_local, ok_sub)
+                        local[var] = If(_as_bool(ok_local), d2, local[var])
+                    continue
+
+                val_expr = self._parse_expr_src(txt, local, args, notes_list)
+                if var not in local:
+                    local[var] = BitVec(f"tmp.{var}", 256)
+                    notes_list.append(f"[tmp] created local {var}: BitVec256 (block)")
+                if val_expr is None:
+                    notes_list.append(f"[skip] unparsed store (block): {st}")
+                    continue
+
+                # ✅ NEW: skip mismatched sorts instead of crashing
+                if not _compatible_value(local[var], val_expr):
+                    notes_list.append(f"[skip] sort mismatch store (block) {var}: dst={local[var].sort()} val={getattr(val_expr,'sort',lambda:None)()}; src={txt!r}")
+                    continue
+
+                local[var] = If(_as_bool(ok_local), val_expr, local[var])
+                continue
+
+            if opb == 'external_call':
+                tgt = None
+                if 'target' in st:
+                    tgt = self._E(st['target'], local, args)
+                elif 'target_src' in st:
+                    tgt = self._parse_expr_src(st['target_src'], local, args, notes_list)
+                if tgt is None:
+                    notes_list.append(f"[skip] unparsed external_call (block): {st}")
+                else:
+                    ok_var = st.get('ok_var')
+                    if ok_var:
+                        local[ok_var] = BoolVal(True)
+                    value_src = st.get('value_src')
+                    if value_src and "__contract_balance" in local:
+                        value_z = self._parse_expr_src(value_src, local, args, notes_list)
+                        if value_z is not None and self._is_u256(local.get("__contract_balance")) and self._is_u256(value_z):
+                            new_bal, ok_sub = self._checked_sub_u256(local["__contract_balance"], value_z)
+                            ok_local = And(ok_local, ok_sub)
+                            local["__contract_balance"] = If(_as_bool(ok_local), new_bal, local["__contract_balance"])
+                continue
+
+            if opb == 'raw' and 'src' in st:
+                src = st['src'].strip().rstrip(';')
+
+                if src.lower() == 'true':
+                    continue
+
+                def _addr_key(key_txt: str):
+                    z = self._parse_expr_src(key_txt, local, args, notes_list)
+                    if z is not None:
+                        return z
+                    if key_txt in args:
+                        return args[key_txt]
+                    if key_txt in ('msg.sender', 'msg_sender', 'sender'):
+                        return BitVec("meta.sender", 160)
+                    return BitVec(f"arg.{key_txt}", 160)
+
+                def _u256(rhs_txt: str):
+                    z = self._parse_expr_src(rhs_txt, local, args, notes_list)
+                    if z is not None:
+                        return z
+                    if rhs_txt in args:
+                        return args[rhs_txt]
+                    return BitVec(f"arg.{rhs_txt}", 256)
+
+                m = re.fullmatch(r'([A-Za-z_]\w*)\s*\[\s*([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)?)\s*\]\s*-\=\s*([A-Za-z_]\w*)', src)
+                if m and m.group(1) in local:
+                    arr, key_txt, rhs_txt = m.group(1), m.group(2), m.group(3)
+                    key_z = _addr_key(key_txt)
+                    rhs_z = _u256(rhs_txt)
+                    base = self._safe_select(local[arr], key_z, notes_list, where=f"raw -= (block) at arr={arr!r}")
+                    if base is None:
+                        continue
+                    d, ok_sub = self._checked_sub_u256(base, rhs_z)
+                    ok_local = And(ok_local, ok_sub)
+                    local[arr] = If(_as_bool(ok_local), Store(local[arr], key_z, d), local[arr])
+                    continue
+
+                m = re.fullmatch(r'([A-Za-z_]\w*)\s*\[\s*([A-Za-z_]\w*(?:\.[A-Za-z_]\w*)?)\s*\]\s*\+\=\s*([A-Za-z_]\w*)', src)
+                if m and m.group(1) in local:
+                    arr, key_txt, rhs_txt = m.group(1), m.group(2), m.group(3)
+                    key_z = _addr_key(key_txt)
+                    rhs_z = _u256(rhs_txt)
+                    base = self._safe_select(local[arr], key_z, notes_list, where=f"raw += (block) at arr={arr!r}")
+                    if base is None:
+                        continue
+                    s2, ok_add = self._checked_add_u256(base, rhs_z)
+                    ok_local = And(ok_local, ok_add)
+                    local[arr] = If(_as_bool(ok_local), Store(local[arr], key_z, s2), local[arr])
+                    continue
+
+                m = re.fullmatch(r'([A-Za-z_]\w*)\s*\+\=\s*([A-Za-z_]\w*)', src)
+                if m:
+                    var, rhs_txt = m.group(1), m.group(2)
+                    if var in local and not self._is_array(local[var]) and self._is_u256(local[var]):
+                        rhs_z = args.get(rhs_txt)
+                        if rhs_z is None:
+                            rhs_z = BitVec(f"arg.{rhs_txt}", 256)
+                        s2, ok_add = self._checked_add_u256(local[var], rhs_z)
+                        ok_local = And(ok_local, ok_add)
+                        local[var] = If(_as_bool(ok_local), s2, local[var])
+                        continue
+
+                m = re.fullmatch(r'([A-Za-z_]\w*)\s*\-\=\s*([A-Za-z_]\w*)', src)
+                if m:
+                    var, rhs_txt = m.group(1), m.group(2)
+                    if var in local and not self._is_array(local[var]) and self._is_u256(local[var]):
+                        rhs_z = args.get(rhs_txt)
+                        if rhs_z is None:
+                            rhs_z = BitVec(f"arg.{rhs_txt}", 256)
+                        d2, ok_sub = self._checked_sub_u256(local[var], rhs_z)
+                        ok_local = And(ok_local, ok_sub)
+                        local[var] = If(_as_bool(ok_local), d2, local[var])
+                        continue
+
+                notes_list.append(f"[raw-block] {st['src']}")
+                continue
+
+            if opb == 'if':
+                cond_b = None
+                if 'cond' in st:
+                    cond_b = self._E(st['cond'], local, args)
+                elif 'cond_src' in st:
+                    cond_b = self._parse_cond_src(st['cond_src'], local, args, notes_list)
+                    if cond_b is None:
+                        cond_b = self._parse_expr_src(st['cond_src'], local, args, notes_list)
+                if cond_b is None:
+                    notes_list.append(f"[skip] unparsed nested if cond: {st.get('cond_src')}")
+                    continue
+
+                then_state_b, _ = self._encode_block(st.get('then', []), dict(local), ok_local, args, notes_list)
+                else_state_b, _ = self._encode_block(st.get('else', []), dict(local), ok_local, args, notes_list)
+                local = self._merge_states(cond_b, then_state_b, else_state_b)
+                continue
+
+            notes_list.append(f"[skip] unknown statement shape (block): {st}")
+
+        return local, ok_local

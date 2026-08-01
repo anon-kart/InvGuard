@@ -1,0 +1,4 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)
+(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)

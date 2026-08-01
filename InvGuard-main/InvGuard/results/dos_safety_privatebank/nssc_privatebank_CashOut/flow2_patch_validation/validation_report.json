@@ -1,0 +1,240 @@
+{
+  "ok": true,
+  "invariants": {
+    "ok": true,
+    "verified": [
+      "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)"
+    ],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [
+      "[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f CashOut --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results",
+      "[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker",
+      "[adapter] returncode: 0",
+      "",
+      "[translator] Accepted 1 invariants from LLM.",
+      "",
+      "Function: CashOut  (invariants: LLM-translated)",
+      "Notes:",
+      "  - [raw] ok",
+      "",
+      "=== Invariant Checks ===",
+      "{\"idx\": 1, \"inv\": \"(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)\", \"status\": \"HOLDS\"}"
+    ],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "OK"
+  },
+  "replay": {
+    "results": {
+      "T1": {
+        "compile_ok": true,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/T1",
+        "forge_returncode": 0,
+        "stdout_head": "Compiling 2 files with Solc 0.8.28\nSolc 0.8.28 finished in 32.50ms\nCompiler run successful!",
+        "stderr_head": "note[unaliased-plain-import]: use named imports '{A, B}' or alias 'import \"..\" as X'\n --> src/Attacker.sol:5:8\n  |\n5 | import \"./Target.sol\";\n  |        ^^^^^^^^^^^^^^\n  |\n  = help: https://book.getfoundry.sh/reference/forge/forge-lint#unaliased-plain-import\n\nnote[mixed-case-variable]: mutable variables should use mixedCase\n --> src/Target.sol:8:17\n  |\n8 |     uint public MinDeposit = 1 ether;\n  |                 ^^^^^^^^^^ help: consider using: `minDeposit`\n  |\n  = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-variable\n\nnote[mixed-case-variable]: mutable variables should use mixedCase\n --> src/Target.sol:9:9\n  |\n9 |     Log TransferLog;\n  |         ^^^^^^^^^^^ help: consider using: `transferLog`\n  |\n  = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-variable\n\nnote[mixed-case-function]: function names should use mixedCase\n  --> src/Target.sol:13:14\n   |\n13 |     function Deposit() public payable {\n   |              ^^^^^^^ help: consider using: `deposit`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-function\n\nnote[mixed-case-function]: function names should use mixedCase\n  --> src/Target.sol:20:14\n   |\n20 |     function CashOut(uint _am) public {\n   |              ^^^^^^^ help: consider using: `cashOut`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-function\n\nnote[mixed-case-variable]: mutable variables should use mixedCase\n  --> src/Target.sol:35:30\n   |\n35 |     struct Message { address Sender; string Data; uint Val; uint Time; }\n   |                              ^^^^^^ help: consider using: `sender`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-variable\n\nnote[mixed-case-variable]: mutable variables should use mixedCase\n  --> src/Target.sol:35:45\n   |\n35 |     struct Message { address Sender; string Data; uint Val; uint Time; }\n   |                                             ^^^^ help: consider using: `data`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-variable\n\nnote[mixed-case-variable]: mutable variables should use mixedCase\n  --> src/Target.sol:35:56\n   |\n35 |     struct Message { address Sender; string Data; uint Val; uint Time; }\n   |                                                        ^^^ help: consider using: `val`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-variable\n\nnote[mixed-case-variable]: mutable variables should use mixedCase\n  --> src/Target.sol:35:66\n   |\n35 |     struct Message { address Sender; string Data; uint Val; uint Time; }\n   |                                                                  ^^^^ help: consider using: `time`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-variable\n\nnote[mixed-case-variable]: mutable variables should use mixedCase\n  --> src/Target.sol:36:22\n   |\n36 |     Message[] public History;\n   |                      ^^^^^^^ help: consider using: `history`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-variable\n\nnote[mixed-case-variable]: mutable variables should use mixedCase\n  --> src/Target.sol:37:13\n   |\n37 |     Message LastMsg;\n   |             ^^^^^^^ help: consider using: `lastMsg`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-variable\n\nnote[mixed-case-function]: function names should use mixedCase\n  --> src/Target.sol:38:14\n   |\n38 |     function AddMessage(address _adr, uint _val, string memory _data) public {\n   |              ^^^^^^^^^^ help: consider using: `addMessage`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#mixed-case-function\n",
+        "error": null,
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": true,
+        "impact_ok": false,
+        "impact_details": "forge test ok; entrypoint_ok=1; impact_ok=0; profit_wei=0; drain_wei=0; honest_drain_wei=0; excess_drain_wei=0; impact_ok_differential=0; policy=profit_positive_or_excess_drain; revert_reason=",
+        "excess_drain_wei": 0,
+        "impact_ok_differential": false,
+        "test_returncode": 0,
+        "test_stdout_head": "Compiling 2 files with Solc 0.8.28\nSolc 0.8.28 finished in 49.80ms\nCompiler run successful!\n\nRan 1 test for test/ExploitExecutor.t.sol:ExploitExecutorTest\n[PASS] test_run_attack() (gas: 5259629)\nLogs:\n  entrypoint_ok: 1\n  ret_data: 0x\n  unauthorized_change: 0\n  stranded_funds: 0\n  profit_wei: 0\n  drain_wei: 0\n  honest_drain_wei: 0\n  excess_drain_wei: 0\n  impact_ok: 0\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 824.69\u00b5s (572.73\u00b5s CPU time)\n\nRan 1 test suite in 6.58ms (824.69\u00b5s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+        "test_stderr_head": "",
+        "test_error": null
+      }
+    },
+    "compile_ok": 1,
+    "run_ok": 1,
+    "impact_ok": 0,
+    "compile_all": true,
+    "run_all": true
+  },
+  "benign": {
+    "ok": false,
+    "reason": "benign_original_failed",
+    "original": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "Deposit",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "CashOut",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "AddMessage",
+          "arg_types": [],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 1,
+      "stdout_head": "Compiling 3 files with Solc 0.8.28\nSolc 0.8.28 finished in 4.28ms",
+      "stderr_head": "Error: Compiler run failed:\nError (2973): Wrong argument count for modifier invocation: 0 arguments given but expected 1.\n  --> src/Target.sol:51:19:\n   |\n51 |     constructor() Private_Bank() {}\n   |                   ^^^^^^^^^^^^^^\n\nWarning (5159): \"selfdestruct\" has been deprecated. Note that, starting from the Cancun hard fork, the underlying opcode no longer deletes the code and data associated with an account and only transfers its Ether to the beneficiary, unless executed in the same transaction in which the contract was created (see EIP-6780). Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. Future changes to the EVM might further reduce the functionality of the opcode.\n  --> test/BenignBehavior.t.sol:10:9:\n   |\n10 |         selfdestruct(to);\n   |         ^^^^^^^^^^^^",
+      "error": "forge test failed"
+    },
+    "patched": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "Deposit",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "CashOut",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "AddMessage",
+          "arg_types": [],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 1,
+      "stdout_head": "Compiling 3 files with Solc 0.8.28\nSolc 0.8.28 finished in 4.34ms",
+      "stderr_head": "Error: Compiler run failed:\nError (2973): Wrong argument count for modifier invocation: 0 arguments given but expected 1.\n  --> src/Target.sol:52:19:\n   |\n52 |     constructor() Private_Bank() {}\n   |                   ^^^^^^^^^^^^^^\n\nWarning (5159): \"selfdestruct\" has been deprecated. Note that, starting from the Cancun hard fork, the underlying opcode no longer deletes the code and data associated with an account and only transfers its Ether to the beneficiary, unless executed in the same transaction in which the contract was created (see EIP-6780). Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. Future changes to the EVM might further reduce the functionality of the opcode.\n  --> test/BenignBehavior.t.sol:10:9:\n   |\n10 |         selfdestruct(to);\n   |         ^^^^^^^^^^^^",
+      "error": "forge test failed"
+    },
+    "failed_calls": [
+      {
+        "reason": "original_suite_failed"
+      }
+    ]
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "PASS",
+    "invariant_verdict": "PASS",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "T1",
+    "invariant_applicable": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "Reentrancy": [
+        {
+            "callOffset": 129,
+            "sStoreOffset": 217
+        }
+    ],
+    "IntegerBugs": [],
+    "UnhandledExceptions": []
+}

@@ -1,0 +1,4 @@
+# VERIFIED-USEFUL INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED/TRIVIAL invariants are excluded.
+(meta.revert_taken == false) -> (post.currentBid > pre.currentBid)
+(meta.revert_taken == false) -> (post.currentBid > 0)

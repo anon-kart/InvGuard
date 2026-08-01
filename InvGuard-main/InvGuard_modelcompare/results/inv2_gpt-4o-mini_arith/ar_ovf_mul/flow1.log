@@ -1,0 +1,102 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Failed invariants detected for run — refining.
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.run.refined.filtered.txt
+INFO:root:[FLOW1] No usable refined invariants produced for run; skipping refined re-check.
+INFO:root:[FLOW1] Failed invariants detected for run — refining.
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.run.refined.filtered.txt
+INFO:root:[FLOW1] No usable refined invariants produced for run; skipping refined re-check.
+WARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/integer_overflow_mul.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f run --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.run.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'count *= input'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'count', 'val_src': '2'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.count >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.count > pre.count) || (post.count == pre.count * arg.input)  | arg.input=1402003509066111179093055920319497192367155941694110985417557937919534824437, count=86295008873413146328496337760199722767830939022883105257935156981463494030962, count1=86295008873413146328496337760199722767830939022883105257935156981463494030962, meta.revert_taken=False
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.run.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.run.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f run --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.run.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'count *= input'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'count', 'val_src': '2'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.count >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.count > pre.count) || (post.count == pre.count * arg.input)  | arg.input=1402003509066111179093055920319497192367155941694110985417557937919534824437, count=86295008873413146328496337760199722767830939022883105257935156981463494030962, count1=86295008873413146328496337760199722767830939022883105257935156981463494030962, meta.revert_taken=False
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.run.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.run.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f run --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.run.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: run  (invariants: LLM-translated)
+Notes:
+  - [raw] count *= input
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.count >= 0)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.count > pre.count) || (post.count == pre.count * arg.input)", "model": {"arg.input": "1402003509066111179093055920319497192367155941694110985417557937919534824437", "count": "86295008873413146328496337760199722767830939022883105257935156981463494030962", "count1": "86295008873413146328496337760199722767830939022883105257935156981463494030962", "meta.revert_taken": "False"}, "status": "VIOLATED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f run --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.run.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: run  (invariants: LLM-translated)
+Notes:
+  - [raw] count *= input
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.count >= 0)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.count > pre.count) || (post.count == pre.count * arg.input)", "model": {"arg.input": "1402003509066111179093055920319497192367155941694110985417557937919534824437", "count": "86295008873413146328496337760199722767830939022883105257935156981463494030962", "count1": "86295008873413146328496337760199722767830939022883105257935156981463494030962", "meta.revert_taken": "False"}, "status": "VIOLATED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ⚠️ No verified-useful invariants for Flow-2. Invariant-guided Flow-2 must be disabled or run in explicit contract-only mode.

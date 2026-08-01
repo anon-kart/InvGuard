@@ -1,0 +1,4 @@
+Converted the bid function to a pull-payment pattern by recording amounts owed and allowing accounts to withdraw their funds.
+
+INVARIANTS USED:
+The contract now uses a pull-payment pattern, which ensures that funds are only sent when the user explicitly calls the withdraw function, preventing potential denial of service attacks.

@@ -1,0 +1,4 @@
+Added an explicit overflow check in overflowaddtostate by requiring input <= uint256(-1) - count before performing the addition.
+
+INVARIANTS USED:
+Ensures count + input <= uint256(-1) by checking input <= uint256(-1) - count (i.e. addition result cannot exceed uint256 max). Assumes 2^256-1 wraparound semantics for uint256 and that require reverts on violation, preventing state change.

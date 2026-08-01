@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (post.betLimit > 0)
+(meta.revert_taken == false) -> (post.difficulty > 0)
+(meta.revert_taken == false) -> (post.openToPublic == true || post.openToPublic == false)

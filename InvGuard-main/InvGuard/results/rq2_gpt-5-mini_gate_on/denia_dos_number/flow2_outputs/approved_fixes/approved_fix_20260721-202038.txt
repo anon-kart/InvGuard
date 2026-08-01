@@ -1,0 +1,8 @@
+Replaced the unbounded push-loop in insertNnumbers with a pull-payment style: record the total owed in a pendingWithdrawals mapping, grow the array length in one operation, and added a withdraw() function with a reentrancy mutex and require-wrapped call for safe withdrawals.
+
+INVARIANTS USED:
+1) Pull-payment pattern: avoid external calls / per-recipient loops by recording owed amounts and allowing recipients to withdraw later.
+2) Checks-Effects-Interactions: state updated (pendingWithdrawals set to 0) before performing external call in withdraw().
+3) Reentrancy guard: simple boolean mutex (_locked) to prevent reentrant calls to withdraw().
+4) Multiplication overflow guard: require(numbers <= uint(-1) / value) when both non-zero to ensure value * numbers doesn't overflow.
+5) Single storage resize: grow array.length once to new length to avoid unbounded per-iteration storage writes (prevents gas DOS during insertion).

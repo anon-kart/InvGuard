@@ -1,0 +1,53 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol
+WARNING:root:No verified-useful invariants for deliver. Proceeding in CONTRACT_ONLY mode (no invariant-guided repair).
+INFO:root:Loaded invariants (function=deliver, mode=CONTRACT_ONLY_NOT_INVARIANT_GUIDED): constraints=0, objectives=0, validator_path=<none>
+INFO:root:[prompt-enhancer] appended 4834 chars of context-aware hints
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 400 Bad Request"
+ERROR:openai.agents:Error getting response: Error code: 400 - {'error': {'message': 'This content was flagged for possible cybersecurity risk. If this seems wrong, try rephrasing your request. To get authorized for security work, join the Trusted Access for Cyber program: https://chatgpt.com/cyber', 'type': 'invalid_request', 'param': None, 'code': 'cyber_policy'}}. (request_id: req_6b3a720fc7d34a6e9a4fab9c4773bb4b)
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_2_files/agent.py", line 3030, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_2_files/agent.py", line 2527, in main
+    attacks = await _generate_attacks_once(ctx, attack_query)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_2_files/agent.py", line 1039, in _generate_attacks_once
+    attack_out = await Runner.run(
+                 ^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/run.py", line 367, in run
+    return await runner.run(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/run.py", line 661, in run
+    input_guardrail_results, turn_result = await asyncio.gather(
+                                           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/run.py", line 1602, in _run_single_turn
+    new_response = await cls._get_new_response(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/run.py", line 1860, in _get_new_response
+    new_response = await model.get_response(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/models/openai_responses.py", line 95, in get_response
+    response = await self._fetch_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/models/openai_responses.py", line 317, in _fetch_response
+    response = await self._client.responses.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/openai/resources/responses/responses.py", line 2480, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1794, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1594, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'This content was flagged for possible cybersecurity risk. If this seems wrong, try rephrasing your request. To get authorized for security work, join the Trusted Access for Cyber program: https://chatgpt.com/cyber', 'type': 'invalid_request', 'param': None, 'code': 'cyber_policy'}}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

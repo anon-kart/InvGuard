@@ -1,0 +1,69 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h1_buggy_1.sol
+INFO:root:Loaded invariants (function=withdraw_balances_re_ent8, mode=INVARIANT_GUIDED): constraints=2, objectives=3, validator_path=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/invariants.withdraw_balances_re_ent8.VU.txt
+INFO:root:[prompt-enhancer] appended 2659 chars of context-aware hints
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=0 run_ok=0
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=1 compile_ok=5 run_ok=5
+INFO:root:[feedback-loop] converged at round 1
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A2.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A3.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A4.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A5.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260726-080644.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+WARNING:root:[validate-gate] replay=PASS invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=0 n=5 compile_ok=5 run_ok=5 | gate_ok=True
+INFO:root:Patch accepted by non-LLM validation gate.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:Saved approved fix
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f withdraw_balances_re_ent8 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:12:11: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+          (bool success,) = msg.sender.call.value(amount)("");
+          ^-------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Target.withdraw_balances_re_ent8. Please open an issue https://github.com/crytic/slither/issues.
+Target.withdraw_balances_re_ent8 (../../run_outputs/flow2/patch_validation/patched_contract.sol#8-14):
+ 	amount = balances_re_ent8[msg.sender]
+	require(bool,string)(amount > 0,No balance to withdraw)
+	balances_re_ent8[msg.sender] = 0
+	(success,None) = msg.sender.call.value(amount)()
+	require(bool,string)(success,Transfer failed)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) <= (select(pre.balances_re_ent8, meta.sender) + meta.value)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)  | balances_re_ent8=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129639935), balances_re_ent81=Store(K(BitVec(160),
+        115792089237316195423570985008687907853269984665640564039457584007913129639935),
+      0,
+      0), meta.revert_taken=False, meta.sender=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.withdraw_balances_re_ent8.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.withdraw_balances_re_ent8.summary.json
+✅ Flow-2 completed successfully (patch validated by execution + invariants)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

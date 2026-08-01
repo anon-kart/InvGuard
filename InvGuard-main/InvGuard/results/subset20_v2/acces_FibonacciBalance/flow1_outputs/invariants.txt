@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)
+(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)
+(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) >= select(pre.calculatedFibNumber, meta.sender))
+(meta.revert_taken == false) -> (select(post.withdrawalCounter, meta.sender) <= select(pre.withdrawalCounter, meta.sender))
+(pre.withdrawalCounter == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)

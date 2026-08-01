@@ -1,0 +1,2 @@
+# VIOLATED-MEANINGFUL (attack objectives for Flow-2)
+((meta.revert_taken == false)) -> ((post.collectedFees == 0) -> (pre.collectedFees > 0))

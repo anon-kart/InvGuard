@@ -1,0 +1,600 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x05829a3c3c15068b325a3296ee270efcc7595067/0x05829a3c3c15068b325a3296ee270efcc7595067.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a + b'}
+INFO:root:   {'op': 'require', 'cond_src': 'c >= a'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b <= a'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a - b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a * b'}
+INFO:root:   {'op': 'require', 'cond_src': 'a == 0 || c / a == b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b > 0'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a / b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply - select(balances, address(0))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, tokenOwner)'}
+INFO:root:   {'op': 'raw', 'src': 'balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'from', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(allowed, tokenOwner)[spender]'}
+INFO:root:   {'op': 'raw', 'src': 'remaining'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'ApproveAndCallFallBack(spender).receiveApproval(meta.sender,tokens,this,data)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post._totalSupply >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.to=0
+   - (meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender)  | _totalSupply=7491950517761223171904609319396082192561427260990631678989211188614596750620, _totalSupply1=7491950517761223171904609319396082192561427260990631678989211188614596750620, allowed=0, allowed1=0, arg.to=91343852333181432387730302044767688728495783936
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.to=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a + b'}
+INFO:root:   {'op': 'require', 'cond_src': 'c >= a'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b <= a'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a - b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a * b'}
+INFO:root:   {'op': 'require', 'cond_src': 'a == 0 || c / a == b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b > 0'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a / b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply - select(balances, address(0))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, tokenOwner)'}
+INFO:root:   {'op': 'raw', 'src': 'balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'from', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(allowed, tokenOwner)[spender]'}
+INFO:root:   {'op': 'raw', 'src': 'remaining'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'ApproveAndCallFallBack(spender).receiveApproval(meta.sender,tokens,this,data)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)
+   - (meta.revert_taken == false) -> (post._totalSupply >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.from=0
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.from=365375409332725730818572110638755060067980017664
+   - (meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender)  | _totalSupply=54527210917260561990728440145569411623780596090469417876760923650656068604964, _totalSupply1=54527210917260561990728440145569411623780596090469417876760923650656068604964, allowed=0, allowed1=0, arg.from=10384593717069655257060992658440192
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.from=43556142965880123323311949751266331066368
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] Transfer(meta.sender,to,tokens)
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.to": "0", "arg.tokens": "58362547930373334387904123345127242602759766708412165002585596652093108704557", "balances": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            87013686403001887659628892935583643637964853454249513610719518833046534179121),\n      0,\n      466481225220408083206338012341929578896825819662550418417584587478847664123)", "balances1": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            28651138472628553271724769590456401035205086745837348608133922180953425474564),\n      0,\n      58829029155593742471110461357469172181656592528074715421003181239571956368680)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "22835963083295358096932575511191922182123945984", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post._totalSupply >= 0)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender))", "model": {"_totalSupply": "7491950517761223171904609319396082192561427260990631678989211188614596750620", "_totalSupply1": "7491950517761223171904609319396082192561427260990631678989211188614596750620", "allowed": "0", "allowed1": "0", "arg.to": "91343852333181432387730302044767688728495783936", "arg.tokens": "63460033293886697397546115956920779353811886728937533841981626941426363836457", "balances": "Store(Store(K(BitVec(160),\n              63460033293886697397546115956920779353811886728937533841981626941426363836457),\n            0,\n            108866084304507383400592682273407076552019439954831968756640528345215046554920),\n      91343852333181432387730302044767688728495783936,\n      2412527740752389890247563149444318022338978673137399927620103252152452372439)", "balances1": "Store(Store(K(BitVec(160),\n              63460033293886697397546115956920779353811886728937533841981626941426363836457),\n            0,\n            45406051010620686003046566316486297198207553225894434914658901403788682718463),\n      91343852333181432387730302044767688728495783936,\n      65872561034639087287793679106365097376150865402074933769601730193578816208896)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.to": "0", "arg.tokens": "74226226519707587832736742776692263961395291142551006841861162228264128213051", "balances": "Store(Store(K(BitVec(160),\n              74226226519707587832736742776692263961395291142551006841861162228264128213051),\n            2596148429267413814265248164610048,\n            89223225768920111242931976124248500835204730819038141714469449766109077229665),\n      0,\n      5840491137643548069211465699330868375814198838049635940867669194500632211701)", "balances1": "Store(Store(K(BitVec(160),\n              74226226519707587832736742776692263961395291142551006841861162228264128213051),\n            2596148429267413814265248164610048,\n            14996999249212523410195233347556236873809439676487134872608287537844949016614),\n      0,\n      80066717657351135901948208476023132337209489980600642782728831422764760424752)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "2596148429267413814265248164610048", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: transferFrom  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: from][meta.sender
+  - [skip] unparsed map_sub: {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+  - [raw] Transfer(from,to,tokens)
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.from": "0", "arg.to": "223012901820170089113296611582111653028700240", "arg.tokens": "8710640466416291204082286051883318400308797581644321800458885950233326387200", "balances": "Store(Store(K(BitVec(160),\n              8710640466416291204082286051883318400308797581644321800458885950233326387200),\n            223012901820170089113296611582111653028700240,\n            6230151375036839244415467791616787519798751863544988467495573377244343525211),\n      0,\n      10972204710932091941408622397739348523938247905474521854556402296008314284576)", "balances1": "Store(Store(K(BitVec(160),\n              8710640466416291204082286051883318400308797581644321800458885950233326387200),\n            0,\n            2261564244515800737326336345856030123629450323830200054097516345774987897376),\n      223012901820170089113296611582111653028700240,\n      14940791841453130448497753843500105920107549445189310267954459327477669912411)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.from": "365375409332725730818572110638755060067980017664", "arg.to": "0", "arg.tokens": "7428579582524658333566912392219136594955882493088862536965088504785666173940", "balances": "Store(Store(K(BitVec(160),\n              7428579582524658333566912392219136594955882493088862536965088504785666173940),\n            0,\n            56829326232477855333589605189209920012970966792383240463207459558408524671056),\n      365375409332725730818572110638755060067980017664,\n      58009122830817287454439859921354918620188204194144506075753177775080095713460)", "balances1": "Store(Store(K(BitVec(160),\n              7428579582524658333566912392219136594955882493088862536965088504785666173940),\n            365375409332725730818572110638755060067980017664,\n            50580543248292629120872947529135782025232321701055643538788089270294429539520),\n      0,\n      64257905815002513667156517581429056607926849285472103000172548063194190844996)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post._totalSupply >= 0)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender))", "model": {"_totalSupply": "54527210917260561990728440145569411623780596090469417876760923650656068604964", "_totalSupply1": "54527210917260561990728440145569411623780596090469417876760923650656068604964", "allowed": "0", "allowed1": "0", "arg.from": "10384593717069655257060992658440192", "arg.to": "174224571863520570664500254341332505461760", "arg.tokens": "1856542591661256803866470330164148857535207119406638196606809765037551386628", "balances": "Store(Store(Store(K(BitVec(160),\n                    1856542591661256803866470330164148857535207119406638196606809765037551386628),\n                  174224571863520570664500254341332505461760,\n                  2068025084410077675813876915907175895117588963085003885238591521457696866300),\n            0,\n            72484046829136578199046663069919124776665294276161632070237556670879355771238),\n      10384593717069655257060992658440192,\n      2742367500419201224680298862576156105910522129849691722080369864272324329472)", "balances1": "Store(Store(Store(K(BitVec(160),\n                    1856542591661256803866470330164148857535207119406638196606809765037551386628),\n                  0,\n                  72484046829136578199046663069919124776665294276161632070237556670879355771238),\n            10384593717069655257060992658440192,\n            885824908757944420813828532412007248375315010443053525473560099234772942844),\n      174224571863520570664500254341332505461760,\n      3924567676071334479680347246071324752652796082491642081845401286495248252928)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.from": "43556142965880123323311949751266331066368", "arg.to": "0", "arg.tokens": "72370055780220525822001496956487919132592519011983848965415803458815290028321", "balances": "Store(Store(K(BitVec(160),\n              72370055780220525822001496956487919132592519011983848965415803458815290028321),\n            0,\n            3843211474325334541132772588793930385903112065313230815),\n      43556142965880123323311949751266331066368,\n      87748692625288771411929651871380566839235097112102671347530995668560407166976)", "balances1": "Store(Store(K(BitVec(160),\n              72370055780220525822001496956487919132592519011983848965415803458815290028321),\n            43556142965880123323311949751266331066368,\n            15378636845068245589928154914892647706642578100118822382115192209745117138655),\n      0,\n      72370055780220525822005340167962244467133651784572642895801706570880603259136)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for transfer — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a + b'}
+INFO:root:   {'op': 'require', 'cond_src': 'c >= a'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b <= a'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a - b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a * b'}
+INFO:root:   {'op': 'require', 'cond_src': 'a == 0 || c / a == b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b > 0'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a / b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply - select(balances, address(0))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, tokenOwner)'}
+INFO:root:   {'op': 'raw', 'src': 'balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'from', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(allowed, tokenOwner)[spender]'}
+INFO:root:   {'op': 'raw', 'src': 'remaining'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'ApproveAndCallFallBack(spender).receiveApproval(meta.sender,tokens,this,data)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.to=0
+   - ((meta.revert_taken == false)) -> ((post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender)  | _totalSupply=47538140119329022305266729973283852446531714399087904469151475459594236024468, _totalSupply1=47538140119329022305266729973283852446531714399087904469151475459594236024468, allowed=0, allowed1=0, arg.to=0
+   - ((meta.revert_taken == false)) -> ((post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.to=2475880078570760549798248448
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+
+[FLOW1] Checker report after refinement (transfer, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] Transfer(meta.sender,to,tokens)
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.to": "0", "arg.tokens": "58362547930373334387904123345127242602759766708412165002585596652093108704557", "balances": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            87013686403001887659628892935583643637964853454249513610719518833046534179121),\n      0,\n      466481225220408083206338012341929578896825819662550418417584587478847664123)", "balances1": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            28651138472628553271724769590456401035205086745837348608133922180953425474564),\n      0,\n      58829029155593742471110461357469172181656592528074715421003181239571956368680)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "22835963083295358096932575511191922182123945984", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "((meta.revert_taken == false)) -> ((post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender)))", "model": {"_totalSupply": "47538140119329022305266729973283852446531714399087904469151475459594236024468", "_totalSupply1": "47538140119329022305266729973283852446531714399087904469151475459594236024468", "allowed": "0", "allowed1": "0", "arg.to": "0", "arg.tokens": "16737343623009425030008995103091174756214069205692944184027912036413845012480", "balances": "Store(Store(K(BitVec(160),\n              16737343623009425030008995103091174756214069205692944184027912036413845012480),\n            91343852333181432387730302044767688728495783936,\n            72822594681112329997520312469676687960629612587842846567003765823533182550164),\n      0,\n      92960486571954387492885083690857047969933488191603722788103950552759730118271)", "balances1": "Store(Store(K(BitVec(160),\n              16737343623009425030008995103091174756214069205692944184027912036413845012480),\n            91343852333181432387730302044767688728495783936,\n            56085251058102904967511317366585513204415543382149902382975853787119337537684),\n      0,\n      109697830194963812522894078793948222726147557397296666972131862589173575130751)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "91343852333181432387730302044767688728495783936", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "((meta.revert_taken == false)) -> ((post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender))))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.to": "2475880078570760549798248448", "arg.tokens": "20022492518953074813631090137119965001881023234003123597594219171424595116554", "balances": "Store(Store(K(BitVec(160),\n              20022492518953074813631090137119965001881023234003123597594219171424595116554),\n            0,\n            72386896142316223450040240753700840484377091938667934189589353794856428769408),\n      2475880078570760549798248448,\n      16065452694200450247834765983197771955477823857028757142351917606214250903338)", "balances1": "Store(Store(K(BitVec(160),\n              20022492518953074813631090137119965001881023234003123597594219171424595116554),\n            0,\n            52364403623363148636409150616580875482496068704664810591995134623431833652854),\n      2475880078570760549798248448,\n      36087945213153525061465856120317736957358847091031880739946136777638846019892)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for transferFrom — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.refined.filtered.txt
+
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a + b'}
+INFO:root:   {'op': 'require', 'cond_src': 'c >= a'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b <= a'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a - b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a * b'}
+INFO:root:   {'op': 'require', 'cond_src': 'a == 0 || c / a == b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b > 0'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a / b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply - select(balances, address(0))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, tokenOwner)'}
+INFO:root:   {'op': 'raw', 'src': 'balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'from', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(allowed, tokenOwner)[spender]'}
+INFO:root:   {'op': 'raw', 'src': 'remaining'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'ApproveAndCallFallBack(spender).receiveApproval(meta.sender,tokens,this,data)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.from=0
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.from=5318210067257817549698891349255790592
+   - ((meta.revert_taken == false)) -> ((post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender)  | _totalSupply=30684569740752743010544483292151444807544301751642945903268244669493982408017, _totalSupply1=30684569740752743010544483292151444807544301751642945903268244669493982408017, allowed=0, allowed1=0, arg.from=5070602400912917605986812821504
+   - ((meta.revert_taken == false)) -> ((post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)  | _totalSupply=0, _totalSupply1=0, allowed=0, allowed1=0, arg.from=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.summary.json
+
+[FLOW1] Checker report after refinement (transferFrom, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: transferFrom  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: from][meta.sender
+  - [skip] unparsed map_sub: {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+  - [raw] Transfer(from,to,tokens)
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.from": "0", "arg.to": "223012901820170089113296611582111653028700240", "arg.tokens": "8710640466416291204082286051883318400308797581644321800458885950233326387200", "balances": "Store(Store(K(BitVec(160),\n              8710640466416291204082286051883318400308797581644321800458885950233326387200),\n            223012901820170089113296611582111653028700240,\n            6230151375036839244415467791616787519798751863544988467495573377244343525211),\n      0,\n      10972204710932091941408622397739348523938247905474521854556402296008314284576)", "balances1": "Store(Store(K(BitVec(160),\n              8710640466416291204082286051883318400308797581644321800458885950233326387200),\n            0,\n            2261564244515800737326336345856030123629450323830200054097516345774987897376),\n      223012901820170089113296611582111653028700240,\n      14940791841453130448497753843500105920107549445189310267954459327477669912411)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) <= select(pre.balances, meta.sender)))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.from": "5318210067257817549698891349255790592", "arg.to": "0", "arg.tokens": "27246935083742935335715956824155927146260761882721539689708543724661971234193", "balances": "Store(Store(K(BitVec(160),\n              27246935083742935335715956824155927146260761882721539689708543724661971234193),\n            0,\n            23466045419082432872499472425358316297783017125785019663468907545963725456),\n      5318210067257817549698891349255790592,\n      57900030377402171532005059014940526021307581655853064977082345258989433725572)", "balances1": "Store(Store(K(BitVec(160),\n              27246935083742935335715956824155927146260761882721539689708543724661971234193),\n            5318210067257817549698891349255790592,\n            30653095293659236196289102190784598875046819773131525287373801534327462491379),\n      0,\n      27270401129162017768588456296581285462558544899847324709372012632207934959649)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "((meta.revert_taken == false)) -> ((post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender)))", "model": {"_totalSupply": "30684569740752743010544483292151444807544301751642945903268244669493982408017", "_totalSupply1": "30684569740752743010544483292151444807544301751642945903268244669493982408017", "allowed": "0", "allowed1": "0", "arg.from": "5070602400912917605986812821504", "arg.to": "2417851639229258349412352", "arg.tokens": "51183518982872768761394148810743430948111088070673793063718227415347524542632", "balances": "Store(Store(Store(K(BitVec(160),\n                    51183518982872768761394148810743430948111088070673793063718227415347524542632),\n                  2417851639229258349412352,\n                  41703780302129683623994371023936305270323387972104046006329489513246012831658),\n            0,\n            114711665708130068683360465681937352994294005309139600184041020063593945629455),\n      5070602400912917605986812821504,\n      69275984338060786916064190848081316205423095863125430980594429262224007897223)", "balances1": "Store(Store(Store(K(BitVec(160),\n                    51183518982872768761394148810743430948111088070673793063718227415347524542632),\n                  0,\n                  114711665708130068683360465681937352994294005309139600184041020063593945629455),\n            5070602400912917605986812821504,\n            18092465355188018154670042037337885257312007792451637916876201846876483354591),\n      2417851639229258349412352,\n      92887299285002452385388519834679736218434476042777839070047716928593537374290)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "0", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "((meta.revert_taken == false)) -> ((post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender))))", "model": {"_totalSupply": "0", "_totalSupply1": "0", "allowed": "0", "allowed1": "0", "arg.from": "0", "arg.to": "348449143727040986586495598010130648530944", "arg.tokens": "57896044625556052816075846015068834999753389357336258204528266005876085620736", "balances": "Store(Store(K(BitVec(160),\n              57896044625556052816075846015068834999753389357336258204528266005876085620736),\n            348449143727040986586495598010130648530944,\n            3213876088580172557257378843548234420414296171965015364995186),\n      0,\n      86844066928092484771222759806871059842342202784958183142686093938844722397185)", "balances1": "Store(Store(K(BitVec(160),\n              57896044625556052816075846015068834999753389357336258204528266005876085620736),\n            0,\n            28948022302536431955146913791802224842588813427621924938157827932968636776449),\n      348449143727040986586495598010130648530944,\n      57896044625556056029951934595241392257132232905570678618824437970891450615922)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "meta.sender": "348449143727040986586495598010130648530944", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0"}, "status": "VIOLATED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_aiw_sx_y/drop_require_1.sol --llm-invariants /tmp/inv_strength_aiw_sx_y/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_aiw_sx_y/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_aiw_sx_y' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a + b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b <= a'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a - b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a * b'}
+INFO:root:   {'op': 'require', 'cond_src': 'a == 0 || c / a == b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b > 0'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a / b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply - select(balances, address(0))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, tokenOwner)'}
+INFO:root:   {'op': 'raw', 'src': 'balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'from', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(allowed, tokenOwner)[spender]'}
+INFO:root:   {'op': 'raw', 'src': 'remaining'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'ApproveAndCallFallBack(spender).receiveApproval(meta.sender,tokens,this,data)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_aiw_sx_y/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_aiw_sx_y/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_aiw_sx_y/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_aiw_sx_y/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_aiw_sx_y/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_aiw_sx_y' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a + b'}
+INFO:root:   {'op': 'require', 'cond_src': 'c > a'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b <= a'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a - b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a * b'}
+INFO:root:   {'op': 'require', 'cond_src': 'a == 0 || c / a == b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b > 0'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a / b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply - select(balances, address(0))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, tokenOwner)'}
+INFO:root:   {'op': 'raw', 'src': 'balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'from', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(allowed, tokenOwner)[spender]'}
+INFO:root:   {'op': 'raw', 'src': 'remaining'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'ApproveAndCallFallBack(spender).receiveApproval(meta.sender,tokens,this,data)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_aiw_sx_y/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_aiw_sx_y/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_aiw_sx_y/drop_require_2.sol --llm-invariants /tmp/inv_strength_aiw_sx_y/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_aiw_sx_y/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_aiw_sx_y' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a + b'}
+INFO:root:   {'op': 'require', 'cond_src': 'c >= a'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a - b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a * b'}
+INFO:root:   {'op': 'require', 'cond_src': 'a == 0 || c / a == b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'b > 0'}
+INFO:root:   {'op': 'store', 'var': 'c', 'val_src': 'a / b'}
+INFO:root:   {'op': 'raw', 'src': 'c'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply - select(balances, address(0))'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, tokenOwner)'}
+INFO:root:   {'op': 'raw', 'src': 'balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'from', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowed', 'key_src': 'from][meta.sender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'to', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(allowed, tokenOwner)[spender]'}
+INFO:root:   {'op': 'raw', 'src': 'remaining'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowed', 'key_src': 'meta.sender][spender', 'val_src': 'tokens'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(meta.sender,spender,tokens)'}
+INFO:root:   {'op': 'raw', 'src': 'ApproveAndCallFallBack(spender).receiveApproval(meta.sender,tokens,this,data)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_aiw_sx_y/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_aiw_sx_y/verified_invariants.global.summary.json

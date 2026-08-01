@@ -1,0 +1,225 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/tx.origin/buggy_40.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.withdraw.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowances, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(sender,meta.sender,select(_allowances, sender)[meta.sender].sub(amount))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'sender != address(0)'}
+INFO:root:   {'op': 'require', 'cond_src': 'recipient != address(0)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'sender', 'val_src': 'amount'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'recipient', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(sender,recipient,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'account != address(0)'}
+INFO:root:   {'op': 'store', 'var': '_totalSupply', 'val_src': '_totalSupply.add(amount)'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'account', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(address(0),account,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'account != address(0)'}
+INFO:root:   {'op': 'store', 'var': '_totalSupply', 'val_src': '_totalSupply.sub(value)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'account', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(account,address(0),value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'owner != address(0)'}
+INFO:root:   {'op': 'require', 'cond_src': 'spender != address(0)'}
+INFO:root:   {'op': 'store_map', 'var': '_allowances', 'key_src': 'owner][spender', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(owner,spender,value)'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowances, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(sender,meta.sender,select(_allowances, sender)[meta.sender].sub(amount))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f sendto_txorigin17 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.sendto_txorigin17.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowances, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(sender,meta.sender,select(_allowances, sender)[meta.sender].sub(amount))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'sender != address(0)'}
+INFO:root:   {'op': 'require', 'cond_src': 'recipient != address(0)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'sender', 'val_src': 'amount'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'recipient', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(sender,recipient,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'account != address(0)'}
+INFO:root:   {'op': 'store', 'var': '_totalSupply', 'val_src': '_totalSupply.add(amount)'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'account', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(address(0),account,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'account != address(0)'}
+INFO:root:   {'op': 'store', 'var': '_totalSupply', 'val_src': '_totalSupply.sub(value)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'account', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(account,address(0),value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'owner != address(0)'}
+INFO:root:   {'op': 'require', 'cond_src': 'spender != address(0)'}
+INFO:root:   {'op': 'store_map', 'var': '_allowances', 'key_src': 'owner][spender', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(owner,spender,value)'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowances, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(sender,meta.sender,select(_allowances, sender)[meta.sender].sub(amount))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2883, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2883, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f sendto_txorigin17 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.sendto_txorigin17.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowances, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(sender,meta.sender,select(_allowances, sender)[meta.sender].sub(amount))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'sender != address(0)'}
+INFO:root:   {'op': 'require', 'cond_src': 'recipient != address(0)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'sender', 'val_src': 'amount'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'recipient', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(sender,recipient,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'account != address(0)'}
+INFO:root:   {'op': 'store', 'var': '_totalSupply', 'val_src': '_totalSupply.add(amount)'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'account', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(address(0),account,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'account != address(0)'}
+INFO:root:   {'op': 'store', 'var': '_totalSupply', 'val_src': '_totalSupply.sub(value)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'account', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(account,address(0),value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'owner != address(0)'}
+INFO:root:   {'op': 'require', 'cond_src': 'spender != address(0)'}
+INFO:root:   {'op': 'store_map', 'var': '_allowances', 'key_src': 'owner][spender', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Approval(owner,spender,value)'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowances, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(sender,recipient,amount)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(sender,meta.sender,select(_allowances, sender)[meta.sender].sub(amount))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+[FLOW1] ❌ Skipping refinement + strength scoring due to checker infrastructure failure (non-zero exit).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

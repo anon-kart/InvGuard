@@ -1,0 +1,4 @@
+Changed the low-level call in donateToWhale() to require the success of the call to prevent silent failures.
+
+INVARIANTS USED:
+Require statements to check for conditions.

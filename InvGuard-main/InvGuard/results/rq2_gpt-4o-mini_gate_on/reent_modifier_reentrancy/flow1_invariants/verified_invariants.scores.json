@@ -1,0 +1,50 @@
+{
+  "strong": [],
+  "medium": [],
+  "useful": [],
+  "weak": [
+    "meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == select(pre.tokenBalance, meta.sender) + 20"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 3,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == select(pre.tokenBalance, meta.sender) + 20",
+      "killed": 0,
+      "mutants_ran": 3,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    },
+    {
+      "name": "drop_require_2",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

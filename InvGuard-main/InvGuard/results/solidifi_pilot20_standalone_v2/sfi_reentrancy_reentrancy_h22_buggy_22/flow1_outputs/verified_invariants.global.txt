@@ -1,0 +1,4 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (balances_re_ent17[meta.sender] >= 0)
+(meta.revert_taken == false) -> (balances_re_ent17[meta.sender] >= arg._weiToWithdraw)

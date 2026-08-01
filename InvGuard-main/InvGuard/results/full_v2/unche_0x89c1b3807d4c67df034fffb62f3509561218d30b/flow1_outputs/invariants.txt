@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)
+(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)
+(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).requester == meta.sender)
+(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)
+(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)
+(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)

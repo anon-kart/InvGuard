@@ -1,0 +1,38 @@
+Getting Slither report...
+Switched global version to 0.4.26
+
+
+
+/bin/sh: 1: Syntax error: "(" unexpected
+
+Error running slither
+Getting Solidity AST...
+
+nd, proc = wrapper.solc_wrapper(
+                                            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/solcx/wrapper.py", line 157, in solc_wrapper
+    raise SolcError(
+solcx.exceptions.SolcError: An error occurred during execution
+> command: `/home/kartik/.solcx/solc-v0.4.26 --combined-json ast -`
+> return code: `1`
+> stdout:
+
+> stderr:
+<stdin>:7:1: Error: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version
+pragma solidity ^0.5.2;
+^---------------------^
+<stdin>:33:1: Error: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version
+pragma solidity ^0.5.2;
+^---------------------^
+<stdin>:101:1: Error: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version
+pragma solidity ^0.5.2;
+^---------------------^
+<stdin>:325:1: Error: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version
+pragma solidity ^0.5.2;
+^---------------------^
+<stdin>:357:1: Error: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version
+pragma solidity ^0.5.2;
+^---------------------^
+<stdin>:415:1: Error: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version
+pragma solidity ^0.5.0;
+^---------------------^

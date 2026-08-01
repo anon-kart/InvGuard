@@ -1,0 +1,28 @@
+{
+  "function": "insertNnumbers",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 0,
+  "deposit_count": 0,
+  "withdraw_count": 0,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (numElements >= 0)",
+    "(meta.revert_taken == false) -> (numElements <= array.length)",
+    "(meta.revert_taken == false) -> (array.length >= 0)",
+    "(meta.revert_taken == false) -> (numElements > 1500)",
+    "(meta.revert_taken == false) -> (numElements > 1500)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (numElements >= 0)",
+    "(meta.revert_taken == false) -> (numElements <= array.length)",
+    "(meta.revert_taken == false) -> (array.length >= 0)",
+    "(meta.revert_taken == false) -> (numElements > 1500)",
+    "(meta.revert_taken == false) -> (numElements > 1500)"
+  ],
+  "sanitized": [],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)"
+  ]
+}

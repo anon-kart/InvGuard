@@ -1,0 +1,23 @@
+{
+  "n_contracts": 10,
+  "invariant_generation": {
+    "raw": 21,
+    "rej_parser_translator": 0,
+    "rej_smt": 7,
+    "accepted": 12,
+    "accepted_trivial": 2
+  },
+  "attack_generation": {
+    "raw": 9,
+    "rej_compiler": 0,
+    "rej_foundry": 0,
+    "accepted": 9
+  },
+  "patch_generation": {
+    "raw": 3,
+    "rej_invariant": 2,
+    "rej_replay": 0,
+    "rej_benign": 0,
+    "accepted": 1
+  }
+}

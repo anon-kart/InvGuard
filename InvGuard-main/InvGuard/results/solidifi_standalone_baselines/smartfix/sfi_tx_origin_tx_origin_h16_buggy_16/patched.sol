@@ -1,0 +1,21 @@
+pragma solidity ^0.5.11;
+
+contract Target {
+
+    address public owner;
+
+    constructor() public {
+        owner = msg.sender;
+    }
+
+    function withdrawAll_txorigin34(address payable _recipient,address owner_txorigin34) public {
+            require((owner == msg.sender)); /* <FIX> Insert */
+            require(tx.origin == owner_txorigin34);
+            _recipient.transfer(address(this).balance);
+        }
+
+    function() external payable {}
+
+    function deposit() public payable {}
+
+}

@@ -1,0 +1,4 @@
+Moved the state update for claimedBonus before the external call in getFirstWithdrawalBonus to prevent reentrancy.
+
+INVARIANTS USED:
+Reentrancy Guard

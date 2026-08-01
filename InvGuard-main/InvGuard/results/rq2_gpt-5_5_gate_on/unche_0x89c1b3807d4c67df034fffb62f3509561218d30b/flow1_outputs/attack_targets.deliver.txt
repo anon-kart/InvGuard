@@ -1,0 +1,6 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (post.requestCnt <= pre.requestCnt + 1)
+(meta.revert_taken == false) -> (post.unrespondedCnt >= pre.unrespondedCnt - 1)
+(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt + 1)
+(meta.revert_taken == false) -> (post.requestCnt + post.unrespondedCnt >= pre.requestCnt + pre.unrespondedCnt - 1)
+(meta.revert_taken == false) -> (post.requestCnt - post.unrespondedCnt >= pre.requestCnt - pre.unrespondedCnt - 1)

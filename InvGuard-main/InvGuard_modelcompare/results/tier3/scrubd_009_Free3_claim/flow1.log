@@ -1,0 +1,168 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2850, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_009_Free3_claim.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deposit.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol
+
+Warning: Interface functions are implicitly "virtual"
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:4:3:
+  |
+4 |   function mint(uint256 collectionId, address to) external virtual;
+  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:5:3:
+  |
+5 |   function ownerOf(uint256 tokenId) external virtual returns (address owner);
+  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:6:3:
+  |
+6 |   function tokenIdToCollectionId(uint256 tokenId) external virtual returns (uint256 collectionId);
+  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:7:3:
+  |
+7 |   function appendAttributeToToken(uint256 tokenId, string memory attrKey, string memory attrValue) external virtual;
+  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'administrator', 'val_src': 'newAdministrator'}
+INFO:root:   {'op': 'raw', 'src': 'onlyAdmin()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'stake', 'val_src': 'select(addressToStakes, meta.sender)'}
+INFO:root:   {'op': 'require', 'cond_src': 'stake.firstStakeBlockNumber == 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= 250000000000000000'}
+INFO:root:   {'op': 'raw', 'src': 'stake.firstStakeBlockNumber = block.number'}
+INFO:root:   {'op': 'raw', 'src': 'stake.totalStaked += meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'stake', 'val_src': 'select(addressToStakes, meta.sender)'}
+INFO:root:   {'op': 'require', 'cond_src': 'stake.firstStakeBlockNumber != 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'stake.secondStakeBlockNumber == 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'block.number > stake.firstStakeBlockNumber + stakePeriod && block.number < stake.firstStakeBlockNumber + progressPeriodExpiration'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= 250000000000000000'}
+INFO:root:   {'op': 'raw', 'src': 'stake.secondStakeBlockNumber = block.number'}
+INFO:root:   {'op': 'raw', 'src': 'stake.totalStaked += meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'stake', 'val_src': 'select(addressToStakes, staker)'}
+INFO:root:   {'op': 'store', 'var': 'firstStakeFailed', 'val_src': 'block.number > stake.firstStakeBlockNumber + progressPeriodExpiration'}
+INFO:root:   {'op': 'store', 'var': 'secondStakeFailed', 'val_src': 'block.number > stake.secondStakeBlockNumber + progressPeriodExpiration'}
+INFO:root:   {'op': 'store', 'var': 'ethStillStaked', 'val_src': 'stake.totalStaked > 0'}
+INFO:root:   {'op': 'store', 'var': 'isMinted', 'val_src': 'stake.mintBlockNumber > 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'firstStakeFailed && secondStakeFailed && ethStillStaked && ! isMinted'}
+INFO:root:   {'op': 'raw', 'src': 'address(administrator).transfer(stake.totalStaked)'}
+INFO:root:   {'op': 'raw', 'src': 'stake.totalStaked = 0'}
+INFO:root:   {'op': 'raw', 'src': 'onlyAdmin()'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: SPDX license identifier not provided in source file. Before publishing, consider adding a comment containing "SPDX-License-Identifier: <SPDX-License>" to each source file. Use "SPDX-License-Identifier: UNLICENSED" for non-open-source code. Please see https://spdx.org for more information.
+--> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol
+
+Warning: Interface functions are implicitly "virtual"
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:4:3:
+  |
+4 |   function mint(uint256 collectionId, address to) external virtual;
+  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:5:3:
+  |
+5 |   function ownerOf(uint256 tokenId) external virtual returns (address owner);
+  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:6:3:
+  |
+6 |   function tokenIdToCollectionId(uint256 tokenId) external virtual returns (uint256 collectionId);
+  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:7:3:
+  |
+7 |   function appendAttributeToToken(uint256 tokenId, string memory attrKey, string memory attrValue) external virtual;
+  |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'administrator', 'val_src': 'newAdministrator'}
+INFO:root:   {'op': 'raw', 'src': 'onlyAdmin()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'stake', 'val_src': 'select(addressToStakes, meta.sender)'}
+INFO:root:   {'op': 'require', 'cond_src': 'stake.firstStakeBlockNumber == 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= 250000000000000000'}
+INFO:root:   {'op': 'raw', 'src': 'stake.firstStakeBlockNumber = block.number'}
+INFO:root:   {'op': 'raw', 'src': 'stake.totalStaked += meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'stake', 'val_src': 'select(addressToStakes, meta.sender)'}
+INFO:root:   {'op': 'require', 'cond_src': 'stake.firstStakeBlockNumber != 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'stake.secondStakeBlockNumber == 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'block.number > stake.firstStakeBlockNumber + stakePeriod && block.number < stake.firstStakeBlockNumber + progressPeriodExpiration'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= 250000000000000000'}
+INFO:root:   {'op': 'raw', 'src': 'stake.secondStakeBlockNumber = block.number'}
+INFO:root:   {'op': 'raw', 'src': 'stake.totalStaked += meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'stake', 'val_src': 'select(addressToStakes, staker)'}
+INFO:root:   {'op': 'store', 'var': 'firstStakeFailed', 'val_src': 'block.number > stake.firstStakeBlockNumber + progressPeriodExpiration'}
+INFO:root:   {'op': 'store', 'var': 'secondStakeFailed', 'val_src': 'block.number > stake.secondStakeBlockNumber + progressPeriodExpiration'}
+INFO:root:   {'op': 'store', 'var': 'ethStillStaked', 'val_src': 'stake.totalStaked > 0'}
+INFO:root:   {'op': 'store', 'var': 'isMinted', 'val_src': 'stake.mintBlockNumber > 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'firstStakeFailed && secondStakeFailed && ethStillStaked && ! isMinted'}
+INFO:root:   {'op': 'raw', 'src': 'address(administrator).transfer(stake.totalStaked)'}
+INFO:root:   {'op': 'raw', 'src': 'stake.totalStaked = 0'}
+INFO:root:   {'op': 'raw', 'src': 'onlyAdmin()'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post.free0TokenIdUsed, post.free0TokenId) == true -> select(pre.free0TokenIdUsed, post.free0TokenId) == false)  | reason=KeyError: "Unknown symbol 'post.free0TokenId'"
+   - (meta.revert_taken == false) -> (post.totalStaked == 0 -> pre.totalStaked > 0)  | reason=KeyError: "Unknown symbol 'post.totalStaked'"
+   - (meta.revert_taken == false) -> (post.totalStaked > 0 -> pre.totalStaked == 0)  | reason=KeyError: "Unknown symbol 'post.totalStaked'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.summary.json
+[FLOW1] ❌ Skipping refinement + strength scoring due to checker infrastructure failure (non-zero exit).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

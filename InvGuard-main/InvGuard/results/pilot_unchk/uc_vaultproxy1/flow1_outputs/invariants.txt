@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (Deposits[meta.sender] >= 0)
+(meta.revert_taken == false) -> (Deposits[meta.sender] == select(pre.Deposits, meta.sender) + meta.value)
+(meta.revert_taken == false) -> (meta.sender == Owner) -> (Deposits[meta.sender] >= arg.amount)
+(meta.revert_taken == false) -> (Owner != address(0))
+(meta.revert_taken == false) -> (meta.value > 0.25 ether) -> (Deposits[meta.sender] >= select(pre.Deposits, meta.sender))
+(meta.revert_taken == false) -> (Owner == pre.Owner)

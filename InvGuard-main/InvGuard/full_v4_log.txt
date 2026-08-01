@@ -1,0 +1,2 @@
+
+=== [full_v4] acces_FibonacciBalance  (tf=withdraw, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===

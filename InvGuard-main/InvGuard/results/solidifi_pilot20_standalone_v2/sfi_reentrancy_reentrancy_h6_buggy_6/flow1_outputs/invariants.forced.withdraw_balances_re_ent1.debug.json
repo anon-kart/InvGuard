@@ -1,0 +1,37 @@
+{
+  "function": "withdraw_balances_re_ent1",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) <= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) == 0) -> (meta.revert_taken == true)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) > select(pre.balances_re_ent1, meta.sender)) -> (meta.value > 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) <= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) == 0) -> (meta.revert_taken == true)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) > select(pre.balances_re_ent1, meta.sender)) -> (meta.value > 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) <= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) == 0) -> (meta.revert_taken == true)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) > select(pre.balances_re_ent1, meta.sender)) -> (meta.value > 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) <= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) == 0) -> (meta.revert_taken == true)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) > select(pre.balances_re_ent1, meta.sender)) -> (meta.value > 0)"
+  ]
+}

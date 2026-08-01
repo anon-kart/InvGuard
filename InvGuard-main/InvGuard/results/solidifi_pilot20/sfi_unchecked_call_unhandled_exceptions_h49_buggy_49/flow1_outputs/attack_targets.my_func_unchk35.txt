@@ -1,0 +1,5 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false)
+(meta.revert_taken == false) -> (post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false)
+(meta.revert_taken == false) -> (post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false)
+(meta.revert_taken == false) -> (post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false)

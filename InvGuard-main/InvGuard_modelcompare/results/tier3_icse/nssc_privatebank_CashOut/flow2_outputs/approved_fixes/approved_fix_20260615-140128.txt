@@ -1,0 +1,4 @@
+Moved the state update before the external call in the CashOut function to prevent reentrancy.
+
+INVARIANTS USED:
+Reentrancy Guard

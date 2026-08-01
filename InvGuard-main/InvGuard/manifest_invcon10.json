@@ -1,0 +1,92 @@
+[
+ {
+  "stem": "0x0148650ef8e216e8d0999fe8d4b5c1871b71771a",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x0148650ef8e216e8d0999fe8d4b5c1871b71771a/0x0148650ef8e216e8d0999fe8d4b5c1871b71771a.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x01e958f3c383f59be55a12ba27b05295df141bd7",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x01e958f3c383f59be55a12ba27b05295df141bd7/0x01e958f3c383f59be55a12ba27b05295df141bd7.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x044eefa225a051027061bea002dd97ace7878f89",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x044eefa225a051027061bea002dd97ace7878f89/0x044eefa225a051027061bea002dd97ace7878f89.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x0539bf9af0d5f8611a87a24560c406137a0431c2",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x0539bf9af0d5f8611a87a24560c406137a0431c2/0x0539bf9af0d5f8611a87a24560c406137a0431c2.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x05829a3c3c15068b325a3296ee270efcc7595067",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x05829a3c3c15068b325a3296ee270efcc7595067/0x05829a3c3c15068b325a3296ee270efcc7595067.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x05b040c629663d07c344ad8cd70d8c76421feedf",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x05b040c629663d07c344ad8cd70d8c76421feedf/0x05b040c629663d07c344ad8cd70d8c76421feedf.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x05bedda666801857b3b72f2b507639bd8aff4982",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x05bedda666801857b3b72f2b507639bd8aff4982/0x05bedda666801857b3b72f2b507639bd8aff4982.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x05eb605bf452c1dfcd0562bd28a007fe390009e5",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x05eb605bf452c1dfcd0562bd28a007fe390009e5/0x05eb605bf452c1dfcd0562bd28a007fe390009e5.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x067085aa0ff4e97a3c61bf06de618e0aae11dbc2",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x067085aa0ff4e97a3c61bf06de618e0aae11dbc2/0x067085aa0ff4e97a3c61bf06de618e0aae11dbc2.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ },
+ {
+  "stem": "0x0711f1005af593b8df936e99c731fe29c3c745ea",
+  "contract": "/home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x0711f1005af593b8df936e99c731fe29c3c745ea/0x0711f1005af593b8df936e99c731fe29c3c745ea.sol",
+  "target_function": "transfer",
+  "extra_env": {
+   "INVGUARD_VULN_CLASS": "arithmetic",
+   "FLOW1_FUNCTIONS": "transfer,transferFrom"
+  }
+ }
+]

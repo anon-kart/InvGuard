@@ -1,0 +1,13 @@
+contract,target_fn,patch_generated,compiles,exploit_blocked,invariants_hold,benign_pass,gate_accept,n_attacks,impact_ok
+scrubd_009_Free3_claim,claim,no,0,0,0,0,0,0,0
+scrubd_030_DividendDistributor_distributeDividend,distributeDividend,no,0,0,0,0,0,0,0
+scrubd_031_DividendDistributor_distributeDividend,distributeDividend,no,0,0,0,0,0,0,0
+scrubd_032_TreasureHunt_unlockTreasure,unlockTreasure,no,0,0,0,0,0,0,0
+scrubd_036_DividendDistributor_distributeDividend,distributeDividend,no,0,0,0,0,0,0,0
+scrubd_042_PrivateBank_CashOut,CashOut,no,0,0,0,0,0,0,0
+scrubd_047_PRIVATE_ETH_CELL_Collect,ETH_CELL_Collect,no,0,0,0,0,0,0,0
+scrubd_051_BANK_SAFE_Collect,SAFE_Collect,no,0,0,0,0,0,0,0
+scrubd_054_v1Migration_migrate,migrate,no,0,0,0,0,0,0,0
+scrubd_073_ETH_VAULT_CashOut,VAULT_CashOut,no,0,0,0,0,0,0,0
+scrubd_085_ETH_VAULT_CashOut,VAULT_CashOut,no,0,0,0,0,0,0,0
+scrubd_090_D_BANK_Collect,BANK_Collect,no,0,0,0,0,0,0,0

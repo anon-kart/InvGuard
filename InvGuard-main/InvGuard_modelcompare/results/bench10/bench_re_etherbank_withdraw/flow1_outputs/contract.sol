@@ -1,0 +1,56 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract EtherBank {
+    mapping(address => uint256) public balances;
+    mapping(address => uint256) public depositCount;
+    uint256 public totalDeposited;
+    address public admin;
+    bool public paused;
+
+    event Deposited(address indexed who, uint256 amount);
+    event Withdrawn(address indexed who, uint256 amount);
+
+    constructor() {
+        admin = msg.sender;
+    }
+
+    modifier notPaused() {
+        require(!paused, "paused");
+        _;
+    }
+
+    function deposit() public payable notPaused {
+        require(msg.value > 0, "zero deposit");
+        balances[msg.sender] += msg.value;
+        depositCount[msg.sender] += 1;
+        totalDeposited += msg.value;
+        emit Deposited(msg.sender, msg.value);
+    }
+
+    function withdraw(uint256 amount) public notPaused {
+        require(balances[msg.sender] >= amount, "insufficient");
+        (bool ok, ) = msg.sender.call{value: amount}("");
+        require(ok, "send failed");
+        balances[msg.sender] -= amount;
+        emit Withdrawn(msg.sender, amount);
+    }
+
+    function balanceOf(address who) public view returns (uint256) {
+        return balances[who];
+    }
+
+    function contractBalance() public view returns (uint256) {
+        return address(this).balance;
+    }
+
+    function setPaused(bool p) external {
+        require(msg.sender == admin, "not admin");
+        paused = p;
+    }
+
+    receive() external payable {
+        balances[msg.sender] += msg.value;
+        totalDeposited += msg.value;
+    }
+}

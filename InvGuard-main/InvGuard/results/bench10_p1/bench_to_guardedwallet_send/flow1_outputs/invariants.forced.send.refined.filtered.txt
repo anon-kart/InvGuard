@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())
+(meta.revert_taken == false) -> (post.holder == pre.holder)

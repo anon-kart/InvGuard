@@ -1,0 +1,4 @@
+The submitted fix was insufficient because it restricted withdrawAll to root but left newOwner unprotected, allowing arbitrary accounts to add themselves or overwrite existing owner records. The saved fix protects newOwner with onlyOwner, prevents overwriting/re-parenting existing owners (including root), prevents deleting root, and preserves the root-only withdrawal check from the submitted patch.
+
+INVARIANTS USED:
+Only an existing owner may mutate the ownership set; ownership records may only be created for nonzero addresses that are not already owners; the constructor-established root owner must remain an owner and must not be re-parented or deleted; only root may withdraw all contract funds.

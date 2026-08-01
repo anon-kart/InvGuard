@@ -1,0 +1,35 @@
+{
+  "strong": [
+    "meta.revert_taken == false) -> (post.currentBid > pre.currentBid"
+  ],
+  "medium": [],
+  "useful": [
+    "meta.revert_taken == false) -> (post.currentBid > pre.currentBid"
+  ],
+  "weak": [],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (post.currentBid > pre.currentBid",
+      "killed": 2,
+      "mutants_ran": 2,
+      "kill_rate": 1.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 1.0,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "drop_require_2",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

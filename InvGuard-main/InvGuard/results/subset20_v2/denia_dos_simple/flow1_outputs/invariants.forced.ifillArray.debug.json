@@ -1,0 +1,31 @@
+{
+  "function": "ifillArray",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 2,
+  "deposit_count": 2,
+  "withdraw_count": 2,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (listAddresses.length < 1500)",
+    "(meta.revert_taken == false) -> (listAddresses.length >= 0)",
+    "(meta.revert_taken == false) -> (listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (listAddresses.length < 1500)",
+    "(meta.revert_taken == false) -> (listAddresses.length >= 0)",
+    "(meta.revert_taken == false) -> (listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))"
+  ]
+}

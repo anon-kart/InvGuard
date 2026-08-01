@@ -1,0 +1,31 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_bonus.sol",
+    "stem": "reent_reentrancy_bonus",
+    "tier": "test_fix10",
+    "model": "gpt-4o-mini",
+    "target_function": "getFirstWithdrawalBonus",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 63.88,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

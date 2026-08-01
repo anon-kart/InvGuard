@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (listAddresses.length < 1500)
+(meta.revert_taken == false) -> (i <= 350)

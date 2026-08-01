@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (balances_re_ent8[meta.sender] >= 0)
+(meta.revert_taken == false) -> (address(this).balance == sum(balances_re_ent8))
+(meta.revert_taken == false) -> (success -> balances_re_ent8[meta.sender] == 0)
+(meta.revert_taken == false) -> (balances_re_ent8[meta.sender] == select(pre.balances_re_ent8, meta.sender) + meta.value)

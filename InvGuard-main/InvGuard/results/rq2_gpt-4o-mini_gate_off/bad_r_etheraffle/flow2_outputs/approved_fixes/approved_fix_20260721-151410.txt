@@ -1,0 +1,4 @@
+Replaced the bad randomness in chooseWinner() with a commit-reveal scheme using blockhash and current time. Added access control to ensure only the feeAddress can call chooseWinner().
+
+INVARIANTS USED:
+Access control, commit-reveal scheme for randomness.

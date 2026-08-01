@@ -1,0 +1,4 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (select(post.owners, meta.sender) == select(pre.owners, meta.sender)
+(meta.revert_taken == false) -> (post.root == pre.root)

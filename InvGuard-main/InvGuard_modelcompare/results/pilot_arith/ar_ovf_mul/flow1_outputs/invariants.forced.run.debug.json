@@ -1,0 +1,25 @@
+{
+  "function": "run",
+  "raw_count": 2,
+  "fixed_raw_count": 2,
+  "sanitized_count": 2,
+  "deposit_count": 1,
+  "withdraw_count": 2,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.count >= 0)",
+    "(meta.revert_taken == false) -> (post.count == pre.count * arg.input)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.count >= 0)",
+    "(meta.revert_taken == false) -> (post.count == pre.count * arg.input)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.count >= 0)",
+    "(meta.revert_taken == false) -> (post.count == pre.count * arg.input)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.count >= 0)",
+    "(meta.revert_taken == false) -> (post.count == pre.count * arg.input)"
+  ]
+}

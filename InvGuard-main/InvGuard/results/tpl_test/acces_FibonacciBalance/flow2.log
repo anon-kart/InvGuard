@@ -1,0 +1,15 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/FibonacciBalance.sol
+INFO:root:Loaded invariants (function=withdraw, mode=CONTRACT_ONLY_NOT_INVARIANT_GUIDED): constraints=0, objectives=0, validator_path=<none>
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=2 run_ok=0
+INFO:root:[feedback-loop] compile_ok=2 run_ok=0 at round 0; stopping loop to allow template fallback.
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A2.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260717-141818.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+WARNING:root:LLM attacks ran but none had concrete impact. Attempting invariant-derived reentrancy template attack.
+WARNING:root:[template-attack] T1 had no impact: run_ok=False impact_ok=False
+WARNING:root:All candidate attacks ran but none had concrete impact. No repair claim is made.
+⚠️ Flow-2 stopped: no executable impactful exploit was validated. No repair claim is made.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

@@ -1,0 +1,27 @@
+{
+  "VU": {
+    "count": 3,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+      "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 4,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false)",
+      "(meta.revert_taken == false) -> (post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false)",
+      "(meta.revert_taken == false) -> (post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false)",
+      "(meta.revert_taken == false) -> (post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false)"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

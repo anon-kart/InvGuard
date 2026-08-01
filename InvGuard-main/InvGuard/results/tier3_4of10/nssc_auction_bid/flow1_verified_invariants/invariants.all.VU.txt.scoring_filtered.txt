@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.currentBid > pre.currentBid)
+(meta.revert_taken == false) -> (post.currentFrontrunner != pre.currentFrontrunner || post.currentBid > pre.currentBid)

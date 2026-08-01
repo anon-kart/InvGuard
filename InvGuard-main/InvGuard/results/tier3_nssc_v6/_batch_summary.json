@@ -1,0 +1,202 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_auction_bid.sol",
+    "stem": "nssc_auction_bid",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "bid",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.32,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_auction_bid/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 7.66,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_auction_bid/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_incorrect_constructor_withdraw.sol",
+    "stem": "nssc_incorrect_constructor_withdraw",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.3,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_incorrect_constructor_withdraw/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 54.6,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_incorrect_constructor_withdraw/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_kotet_claimThrone.sol",
+    "stem": "nssc_kotet_claimThrone",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "claimThrone",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 19.72,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_kotet_claimThrone/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 8.61,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_kotet_claimThrone/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_listdos_refundDos.sol",
+    "stem": "nssc_listdos_refundDos",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "refundDos",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 21.65,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_listdos_refundDos/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 12.35,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_listdos_refundDos/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_parity_walletlibrary_initWallet.sol",
+    "stem": "nssc_parity_walletlibrary_initWallet",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "initWallet",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 21.65,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_parity_walletlibrary_initWallet/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 47.84,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_parity_walletlibrary_initWallet/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_privatebank_CashOut.sol",
+    "stem": "nssc_privatebank_CashOut",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 33.49,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_privatebank_CashOut/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 31.02,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_privatebank_CashOut/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_rubixi_collectAllFees.sol",
+    "stem": "nssc_rubixi_collectAllFees",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "collectAllFees",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.45,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_rubixi_collectAllFees/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 8.11,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_rubixi_collectAllFees/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_spankchain_LCOpenTimeout.sol",
+    "stem": "nssc_spankchain_LCOpenTimeout",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "LCOpenTimeout",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 132.57,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_spankchain_LCOpenTimeout/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 9.41,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_spankchain_LCOpenTimeout/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_therun_play.sol",
+    "stem": "nssc_therun_play",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "play",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.92,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_therun_play/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 39.36,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_therun_play/flow2.log"
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_unprotected_changeOwner.sol",
+    "stem": "nssc_unprotected_changeOwner",
+    "tier": "tier3_nssc_v6",
+    "model": "gpt-4o-mini",
+    "target_function": "changeOwner",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 22.34,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_unprotected_changeOwner/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 36.89,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_nssc_v6/nssc_unprotected_changeOwner/flow2.log"
+    }
+  }
+]

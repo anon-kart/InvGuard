@@ -1,0 +1,494 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ac_treasurybox_withdrawTo.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawTo --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg.amount)  | arg.amount=23945242826029513417041469157758408622573294576473013, balances=K(BitVec(160),
+  115792089237316195423570961063445081823756570220319835548462775699866449355910), balances1=K(BitVec(160),
+  115792089237316195423570961063445081823756570220319835548462775699866449355910), depositorCount=0, depositorCount1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawTo --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg.amount)  | arg.amount=23945242826029513417041469157758408622573294576473013, balances=K(BitVec(160),
+  115792089237316195423570961063445081823756570220319835548462775699866449355910), balances1=K(BitVec(160),
+  115792089237316195423570961063445081823756570220319835548462775699866449355910), depositorCount=0, depositorCount1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawTo --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: withdrawTo  (invariants: LLM-translated)
+Notes:
+  - [raw] Paid(to,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg.amount))", "model": {"arg.amount": "23945242826029513417041469157758408622573294576473013", "balances": "K(BitVec(160),\n  115792089237316195423570961063445081823756570220319835548462775699866449355910)", "balances1": "K(BitVec(160),\n  115792089237316195423570961063445081823756570220319835548462775699866449355910)", "depositorCount": "0", "depositorCount1": "0", "frozen": "False", "frozen1": "False", "meta.contract_balance": "23945242826029513417041469157758408622573294576473013", "meta.revert_taken": "False", "owner": "0", "owner1": "0"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.frozen == pre.frozen)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}INFO:root:[FLOW1] Failed invariants detected for withdrawTo — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.refined.filtered.txt
+INFO:root:[FLOW1] Failed invariants detected for withdrawTo — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawTo --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 5 invariants from LLM.
+
+Function: withdrawTo  (invariants: LLM-translated)
+Notes:
+  - [raw] Paid(to,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg.amount))", "model": {"arg.amount": "23945242826029513417041469157758408622573294576473013", "balances": "K(BitVec(160),\n  115792089237316195423570961063445081823756570220319835548462775699866449355910)", "balances1": "K(BitVec(160),\n  115792089237316195423570961063445081823756570220319835548462775699866449355910)", "depositorCount": "0", "depositorCount1": "0", "frozen": "False", "frozen1": "False", "meta.contract_balance": "23945242826029513417041469157758408622573294576473013", "meta.revert_taken": "False", "owner": "0", "owner1": "0"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.frozen == pre.frozen)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawTo --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.summary.json
+
+[FLOW1] Checker report after refinement (withdrawTo, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawTo --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: withdrawTo  (invariants: LLM-translated)
+Notes:
+  - [raw] Paid(to,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.frozen == pre.frozen)", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawTo --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawTo.summary.json
+
+[FLOW1] Checker report after refinement (withdrawTo, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawTo --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawTo.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: withdrawTo  (invariants: LLM-translated)
+Notes:
+  - [raw] Paid(to,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.frozen == pre.frozen)", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ii9ksn48/drop_require_1.sol --llm-invariants /tmp/inv_strength_ii9ksn48/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ii9ksn48/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_ii9ksn48' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ii9ksn48/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_ii9ksn48/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ii9ksn48/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_ii9ksn48' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance > amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ii9ksn48/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_ii9ksn48/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ii9ksn48/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_ii9ksn48' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_sub', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)  | balances=K(BitVec(160), 0), balances1=K(BitVec(160), 0), depositorCount=57896044618658097711785492504343953926634992332820282019728792003956564819968, depositorCount1=57896044618658097711785492504343953926634992332820282019728792003956564819967, frozen=False
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ii9ksn48/relax_msg_value_guard.sol --llm-invariants /tmp/inv_strength_ii9ksn48/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ii9ksn48/relax_msg_value_guard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_ii9ksn48' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ii9ksn48/drop_require_ok.sol --llm-invariants /tmp/inv_strength_ii9ksn48/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ii9ksn48/drop_require_ok.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_ii9ksn48' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_ii9ksn48/drop_require_ok.sol:
+Warning: Unused local variable.
+  --> /tmp/inv_strength_ii9ksn48/drop_require_ok.sol:29:10:
+   |
+29 |         (bool ok, ) = to.call{value: amount}("");
+   |          ^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! frozen'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ii9ksn48/drop_require_2.sol --llm-invariants /tmp/inv_strength_ii9ksn48/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ii9ksn48/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_ii9ksn48' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) == 0', 'then': [{'op': 'store_add', 'var': 'depositorCount', 'val_src': '1'}], 'else': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}]}
+INFO:root:   {'op': 'raw', 'src': 'Deposited(meta.sender,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'to', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'Paid(to,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(balances, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'store', 'var': 'frozen', 'val_src': 'f'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.frozen == pre.frozen)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_ii9ksn48/verified_invariants.global.summary.json

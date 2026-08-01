@@ -1,0 +1,8 @@
+Validated and saved. In PausableToken.batchTransfer, the aggregate transfer amount is now computed as `uint256(cnt).mul(_value)` using SafeMath instead of unchecked multiplication. If `cnt * _value` would overflow uint256, SafeMath reverts before any balances are modified. This prevents the classic BEC batchTransfer overflow where a wrapped `amount` could satisfy the sender balance check while minting/crediting excessive tokens to receivers. The existing SafeMath `sub`/`add` operations continue to protect balance updates.
+
+INVARIANTS USED:
+1. `amount` must equal the exact mathematical product `cnt * _value`, or the transaction must revert; it must never wrap modulo 2^256.
+2. `batchTransfer` can only succeed when not paused, with `1 <= cnt <= 20`, `_value > 0`, and `balances[msg.sender] >= amount`.
+3. On success, the sender balance decreases by exactly `amount` and each receiver balance increases by exactly `_value`.
+4. Total token balances are conserved by `batchTransfer`: the sum of all receiver credits equals the sender debit.
+5. No balance arithmetic may overflow or underflow; SafeMath `mul`, `sub`, and `add` enforce this by reverting.

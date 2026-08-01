@@ -1,0 +1,5 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.totalShares >= pre.totalShares)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.totalShares <= pre.totalShares)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) >= select(pre.shares, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) <= select(pre.shares, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).

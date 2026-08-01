@@ -1,0 +1,182 @@
+[
+  {
+    "stem": "acces_FibonacciBalance",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/FibonacciBalance.sol",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "acces_multiowned_vulnerable",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/multiowned_vulnerable.sol",
+    "target_function": "withdrawAll",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "acces_parity_wallet_bug_2",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/parity_wallet_bug_2.sol",
+    "target_function": "initWallet",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "acces_unprotected0",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/unprotected0.sol",
+    "target_function": "changeOwner",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "integ_BECToken",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/BECToken.sol",
+    "target_function": "batchTransfer",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "integ_overflow_single_tx",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/overflow_single_tx.sol",
+    "target_function": "overflowaddtostate",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "bad_r_blackjack",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/blackjack.sol",
+    "target_function": "deal",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "bad_r_etheraffle",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/etheraffle.sol",
+    "target_function": "chooseWinner",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "bad_r_guess_the_random_number",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/guess_the_random_number.sol",
+    "target_function": "guess",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "outcome_controlled"
+    }
+  },
+  {
+    "stem": "bad_r_old_blockhash",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/old_blockhash.sol",
+    "target_function": "settle",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "outcome_controlled"
+    }
+  },
+  {
+    "stem": "denia_auction",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/auction.sol",
+    "target_function": "bid",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service",
+      "INVGUARD_IMPACT_POLICY": "liveness_broken"
+    }
+  },
+  {
+    "stem": "denia_dos_address",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_address.sol",
+    "target_function": "emptyCreditors",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "denia_dos_number",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_number.sol",
+    "target_function": "insertNnumbers",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "denia_dos_simple",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_simple.sol",
+    "target_function": "ifillArray",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+    "target_function": "Collect",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "reent_modifier_reentrancy",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/modifier_reentrancy.sol",
+    "target_function": "airDrop",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "reent_reentrancy_bonus",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_bonus.sol",
+    "target_function": "getFirstWithdrawalBonus",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "unche_0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e.sol",
+    "target_function": "donateToWhale",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+    "target_function": "WithdrawToken",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  },
+  {
+    "stem": "unche_0x89c1b3807d4c67df034fffb62f3509561218d30b",
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+    "target_function": "deliver",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    }
+  }
+]

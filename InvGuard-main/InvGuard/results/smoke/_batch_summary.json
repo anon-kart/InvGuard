@@ -1,0 +1,52 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/guess_the_random_number.sol",
+    "stem": "bad_r_guess_the_random_number",
+    "tier": "smoke",
+    "model": "gpt-4o-mini",
+    "target_function": "guess",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 38.62,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 12.34,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_simple.sol",
+    "stem": "denia_dos_simple",
+    "tier": "smoke",
+    "model": "gpt-4o-mini",
+    "target_function": "ifillArray",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 25.46,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 11.93,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

@@ -1,0 +1,7 @@
+Added an access control check at the start of withdraw() requiring msg.sender == fibonacciLibrary to restrict who can call withdraw.
+
+INVARIANTS USED:
+- Access control invariant: withdraw() must only send funds to an authorized/privileged recipient.
+- Delegatecall invariant: delegatecall executes in the caller's context; the callee can modify the caller's storage. Therefore, the library must not be able to overwrite privileged storage (e.g. the fibonacciLibrary address) or delegatecall must be avoided/restricted.
+- Storage-layout invariant: the library and main contract share storage layout when using delegatecall; ensure no overlap of sensitive slots or avoid delegatecall entirely.
+- Principle of least authority: only allow minimal, well-audited functionality to be invoked via delegatecall, or use external/static calls that do not mutate caller state.

@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (select(post.credit, arg.to) >= select(pre.credit, arg.to))
+(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender))
+(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender) + arg.amount)
+(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender) - arg.amount)

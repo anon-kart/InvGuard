@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.Val == pre.Val)  # reason=KeyError: "Unknown symbol 'post.Val'"
+(meta.revert_taken == false) -> (post.Time == pre.Time)  # reason=KeyError: "Unknown symbol 'post.Time'"

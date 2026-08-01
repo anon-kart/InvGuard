@@ -1,0 +1,35 @@
+Getting Slither report...
+Switched global version to 0.4.26
+
+
+
+/bin/sh: 1: Syntax error: "(" unexpected
+
+Error running slither
+Getting Solidity AST...
+
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/TIPS/run_tips.py", line 195, in <module>
+    main()
+  File "/home/kartik/Downloads/TIPS/run_tips.py", line 190, in main
+    get_solidity_ast(source_path, version, main_contract, output_dir)
+  File "/home/kartik/Downloads/TIPS/run_tips.py", line 144, in get_solidity_ast
+    compiled_sol = solcx.compile_source(
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/solcx/main.py", line 101, in compile_source
+    return _compile_combined_json(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/solcx/main.py", line 274, in _compile_combined_json
+    stdoutdata, stderrdata, command, proc = wrapper.solc_wrapper(
+                                            ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/solcx/wrapper.py", line 157, in solc_wrapper
+    raise SolcError(
+solcx.exceptions.SolcError: An error occurred during execution
+> command: `/home/kartik/.solcx/solc-v0.4.26 --combined-json ast -`
+> return code: `1`
+> stdout:
+
+> stderr:
+<stdin>:5:1: Error: Source file requires different compiler version (current compiler is 0.4.26+commit.4563c3fc.Linux.g++ - note that nightly builds are considered to be strictly less than the released version
+pragma solidity ^0.5.1;
+^---------------------^

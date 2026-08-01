@@ -1,0 +1,74 @@
+/*
+ * @source: https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/dos_gas_limit/dos_address.sol
+ * @author: -
+ * @vulnerable_at_lines: 16,17,18
+ */
+
+pragma solidity ^0.4.25;
+
+contract DosGas {
+
+    address[] creditorAddresses;
+    bool win = false;
+
+    // Reentrancy mutex required by patch rules
+    bool private _locked;
+
+    // Balances recorded for pull-payments (record amounts owed instead of pushing payments)
+    mapping(address => uint) public balances;
+
+    // Fallback to allow funding the contract so withdrawals can succeed
+    function () public payable { }
+
+    function emptyCreditors() public {
+        // protect against reentrancy
+        require(!_locked);
+        _locked = true;
+
+        // <yes> <report> DENIAL_OF_SERVICE
+        if(creditorAddresses.length>1500) {
+            // Instead of pushing payments in a loop (which could revert and block),
+            // record amounts owed to each creditor so they can withdraw individually.
+            for (uint i = 0; i < creditorAddresses.length; i++) {
+                balances[creditorAddresses[i]] += 1;
+            }
+            creditorAddresses = new address[](0);
+            win = true;
+        }
+
+        _locked = false;
+    }
+
+    function addCreditors() public returns (bool) {
+        for(uint i=0;i<350;i++) {
+          creditorAddresses.push(msg.sender);
+        }
+        return true;
+    }
+
+    // Pull-payment withdrawal function for creditors to claim their recorded amounts.
+    function withdraw() public {
+        uint amount = balances[msg.sender];
+        require(amount > 0);
+        // state update before external call (CEI)
+        balances[msg.sender] = 0;
+        // transfer will revert on failure
+        msg.sender.transfer(amount);
+    }
+
+    function iWin() public view returns (bool) {
+        return win;
+    }
+
+    function numberCreditors() public view returns (uint) {
+        return creditorAddresses.length;
+    }
+}
+
+
+// ---- auto-added by BenignExecutor ----
+// Provides a stable deployable name used by the harness: `Target`.
+// Assumes `DosGas` has a no-arg constructor (or implicit constructor).
+contract Target is DosGas {
+    constructor() DosGas() {}
+}

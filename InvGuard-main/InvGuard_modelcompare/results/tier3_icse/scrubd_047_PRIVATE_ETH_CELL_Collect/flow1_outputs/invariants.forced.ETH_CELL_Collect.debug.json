@@ -1,0 +1,45 @@
+{
+  "function": "ETH_CELL_Collect",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 7,
+  "deposit_count": 1,
+  "withdraw_count": 7,
+  "chosen_count_before_final_fallback": 7,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)",
+    "(meta.revert_taken == false) -> (post.intitalized == true) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= select(pre.balances, arg.Sender) + arg.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender) - arg.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= post.MinSum) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender) + arg.Val) -> (select(post.balances, arg.Sender) >= post.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= select(pre.balances, arg.Sender)) -> (select(post.balances, arg.Sender) >= post.MinSum)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)",
+    "(meta.revert_taken == false) -> (post.intitalized == true) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= select(pre.balances, arg.Sender) + arg.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender) - arg.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= post.MinSum) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender) + arg.Val) -> (select(post.balances, arg.Sender) >= post.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= select(pre.balances, arg.Sender)) -> (select(post.balances, arg.Sender) >= post.MinSum)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)",
+    "(meta.revert_taken == false) -> (post.intitalized == true) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= (select(pre.balances, arg.Sender) + arg.Val))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= (select(pre.balances, arg.Sender) - arg.Val))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= post.MinSum) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender) + arg.Val) -> (select(post.balances, arg.Sender) >= post.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= select(pre.balances, arg.Sender)) -> (select(post.balances, arg.Sender) >= post.MinSum)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)",
+    "(meta.revert_taken == false) -> (post.intitalized == true) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= (select(pre.balances, arg.Sender) + arg.Val))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= (select(pre.balances, arg.Sender) - arg.Val))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= post.MinSum) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender) + arg.Val) -> (select(post.balances, arg.Sender) >= post.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= select(pre.balances, arg.Sender)) -> (select(post.balances, arg.Sender) >= post.MinSum)"
+  ]
+}

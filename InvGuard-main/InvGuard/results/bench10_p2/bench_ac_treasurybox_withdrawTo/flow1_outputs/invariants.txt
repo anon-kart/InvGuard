@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + arg.amount)
+(meta.revert_taken == false) -> (post.frozen == pre.frozen)
+(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())
+(pre.depositorCount == 0 && post.depositorCount > 0) -> (meta.revert_taken == true)

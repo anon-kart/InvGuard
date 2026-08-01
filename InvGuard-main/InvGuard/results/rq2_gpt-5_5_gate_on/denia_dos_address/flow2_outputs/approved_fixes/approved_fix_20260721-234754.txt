@@ -1,0 +1,4 @@
+Changed creditor payouts to a pull-payment model by tracking pending withdrawals and adding a withdraw function, while emptyCreditors no longer performs any external payment loop.
+
+INVARIANTS USED:
+Validated that emptyCreditors no longer iterates over the unbounded creditorAddresses array or performs external transfers, so its gas use is not proportional to the number of creditors. Creditor accounting is moved to pendingWithdrawals, and withdraw follows checks-effects-interactions by reading the amount, requiring it to be positive, zeroing the balance before transfer, and then transferring. addCreditors retains only a fixed-size loop of 350 iterations and includes an overflow guard for the pending withdrawal increment.

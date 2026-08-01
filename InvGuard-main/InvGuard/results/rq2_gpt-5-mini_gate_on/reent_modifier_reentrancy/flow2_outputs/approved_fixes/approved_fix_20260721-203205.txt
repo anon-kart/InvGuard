@@ -1,0 +1,6 @@
+The prior submitted fix added a lock variable and performed a require(!_locked) inside the function body. That is insufficient because modifiers (including supportsToken) run before the function body and can reenter via an external call. This corrected fix introduces a nonReentrant modifier that sets the _locked guard before any subsequent modifiers execute and applies it as the first modifier to airDrop. This ensures the reentrancy mutex is set before the external call in supportsToken, preventing reentrant calls from bypassing the guard.
+
+INVARIANTS USED:
+- nonReentrant invariant: _locked is false normally; entering a nonReentrant-protected function sets _locked=true and clears it on exit, preventing any nested entry while true.
+- Modifier evaluation order invariant: modifiers are executed left-to-right, so applying nonReentrant as the first modifier ensures the lock is active before supportsToken's external call.
+- hasNoBalance invariant: tokenBalance[msg.sender]==0 prevents double-awarding within a single successful execution but is insufficient alone without the reentrancy guard.

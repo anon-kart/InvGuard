@@ -1,0 +1,39 @@
+{
+  "function": "payout",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 5,
+  "deposit_count": 2,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalOwed == pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who))",
+    "(meta.revert_taken == false) -> (select(post.owed, arg.who) >= 0)",
+    "(meta.revert_taken == false) -> (post.totalOwed >= 0)",
+    "(meta.revert_taken == false) -> (post.active == pre.active)",
+    "(meta.revert_taken == false) -> (select(post.owed, arg.who) == select(pre.owed, arg.who) + post.arg.amount)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalOwed == pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who))",
+    "(meta.revert_taken == false) -> (select(post.owed, arg.who) >= 0)",
+    "(meta.revert_taken == false) -> (post.totalOwed >= 0)",
+    "(meta.revert_taken == false) -> (post.active == pre.active)",
+    "(meta.revert_taken == false) -> (select(post.owed, arg.who) == select(pre.owed, arg.who) + arg.amount)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who))",
+    "(meta.revert_taken == false) -> (select(post.owed, arg.who) >= 0)",
+    "(meta.revert_taken == false) -> (post.totalOwed >= 0)",
+    "(meta.revert_taken == false) -> (post.active == pre.active)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who))",
+    "(meta.revert_taken == false) -> (select(post.owed, arg.who) >= 0)",
+    "(meta.revert_taken == false) -> (post.totalOwed >= 0)",
+    "(meta.revert_taken == false) -> (post.active == pre.active)"
+  ]
+}

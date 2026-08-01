@@ -1,0 +1,4 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.moneySent <= (pre.moneySent + meta.value)  # reason=KeyError: "Unknown symbol 'post.moneySent'"
+(meta.revert_taken == false) -> (select(post.contestants, meta.sender) >= select(pre.contestants, meta.sender)  # reason=Z3Exception: First argument must be a Z3 array expression
+(meta.revert_taken == false) -> (post.gaps.length <= pre.gaps.length)  # reason=KeyError: "Unknown symbol 'post.gaps.length'"

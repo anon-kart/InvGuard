@@ -1,0 +1,820 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+[DEBUG] contract_on_disk = /home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Unhandled-Exceptions/buggy_49.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:10:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:16:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:23:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:32:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:61:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:75:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:89:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:64:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk8'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk45'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - (meta.revert_taken == false) -> (post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - (meta.revert_taken == false) -> (post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - (meta.revert_taken == false) -> (post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.my_func_unchk35.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.my_func_unchk35.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:10:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:16:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:23:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:32:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:61:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:75:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:89:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:64:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk8'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk45'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - (meta.revert_taken == false) -> (post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - (meta.revert_taken == false) -> (post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - (meta.revert_taken == false) -> (post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.my_func_unchk35.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.my_func_unchk35.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 7 invariants from LLM.
+
+Function: my_func_unchk35  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "True", "payedOut_unchk81": "True", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "True", "payedOut_unchk451": "True", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "True", "payedOut_unchk331": "True", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 7, "inv": "(meta.revert_taken == false) -> (post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "True", "payedOut_unchk441": "True", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 7 invariants from LLM.
+
+Function: my_func_unchk35  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "True", "payedOut_unchk81": "True", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "True", "payedOut_unchk451": "True", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "True", "payedOut_unchk331": "True", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 7, "inv": "(meta.revert_taken == false) -> (post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "True", "payedOut_unchk441": "True", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for my_func_unchk35 — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.refined.filtered.txt
+
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:10:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:16:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:23:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:32:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:61:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:75:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:89:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:64:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk8'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk45'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - ((meta.revert_taken == false)) -> ((post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - ((meta.revert_taken == false)) -> ((post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - ((meta.revert_taken == false)) -> ((post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.my_func_unchk35.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.my_func_unchk35.summary.json
+
+[FLOW1] Checker report after refinement (my_func_unchk35, tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 7 invariants from LLM.
+
+Function: my_func_unchk35  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "((meta.revert_taken == false)) -> ((post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "True", "payedOut_unchk81": "True", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "((meta.revert_taken == false)) -> ((post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "True", "payedOut_unchk451": "True", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 6, "inv": "((meta.revert_taken == false)) -> ((post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "True", "payedOut_unchk331": "True", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 7, "inv": "((meta.revert_taken == false)) -> ((post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "True", "payedOut_unchk441": "True", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for my_func_unchk35 — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.refined.filtered.txt
+
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:10:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:16:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:23:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:32:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:61:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:75:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:89:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:64:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk8'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk45'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - ((meta.revert_taken == false)) -> ((post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - ((meta.revert_taken == false)) -> ((post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+   - ((meta.revert_taken == false)) -> ((post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160), 0), balanceOf1=K(BitVec(160), 0), decimals=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.my_func_unchk35.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.my_func_unchk35.summary.json
+
+[FLOW1] Checker report after refinement (my_func_unchk35, tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.my_func_unchk35.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 7 invariants from LLM.
+
+Function: my_func_unchk35  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "((meta.revert_taken == false)) -> ((post.payedOut_unchk8 == true -> pre.payedOut_unchk8 == false))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "True", "payedOut_unchk81": "True", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "((meta.revert_taken == false)) -> ((post.payedOut_unchk45 == true -> pre.payedOut_unchk45 == false))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "True", "payedOut_unchk451": "True", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 6, "inv": "((meta.revert_taken == false)) -> ((post.payedOut_unchk33 == true -> pre.payedOut_unchk33 == false))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "True", "payedOut_unchk331": "True", "payedOut_unchk44": "False", "payedOut_unchk441": "False", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+{"idx": 7, "inv": "((meta.revert_taken == false)) -> ((post.payedOut_unchk44 == true -> pre.payedOut_unchk44 == false))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160), 0)", "balanceOf1": "K(BitVec(160), 0)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "payedOut_unchk33": "False", "payedOut_unchk331": "False", "payedOut_unchk44": "True", "payedOut_unchk441": "True", "payedOut_unchk45": "False", "payedOut_unchk451": "False", "payedOut_unchk8": "False", "payedOut_unchk81": "False", "symbol": "0", "symbol1": "0", "totalSupply": "0", "totalSupply1": "0", "winAmount_unchk44": "0", "winAmount_unchk441": "0", "winAmount_unchk8": "0", "winAmount_unchk81": "0", "winner_unchk44": "0", "winner_unchk441": "0", "winner_unchk8": "0", "winner_unchk81": "0"}, "status": "VIOLATED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_x1qae49u/drop_require_1.sol --llm-invariants /tmp/inv_strength_x1qae49u/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_x1qae49u/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_x1qae49u' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_x1qae49u/drop_require_1.sol:
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:11:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:17:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:20:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:24:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:33:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:62:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:76:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:90:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/tmp/inv_strength_x1qae49u/drop_require_1.sol:65:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk45'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk44'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_x1qae49u/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_x1qae49u/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_x1qae49u/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_x1qae49u' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:10:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:16:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:19:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:23:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:32:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:61:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:75:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:89:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/tmp/inv_strength_x1qae49u/flip_ge_to_gt.sol:64:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk8'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk45'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) > value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_x1qae49u/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_x1qae49u/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_x1qae49u/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_x1qae49u' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:10:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:16:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:19:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:23:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:32:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:61:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:75:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:89:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/tmp/inv_strength_x1qae49u/plus_eq_to_minus_eq.sol:64:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk8'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk45'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_x1qae49u/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_x1qae49u/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol --llm-invariants /tmp/inv_strength_x1qae49u/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_x1qae49u' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:10:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:16:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:19:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:23:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:32:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:61:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:75:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:89:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/tmp/inv_strength_x1qae49u/minus_eq_to_plus_eq.sol:64:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk8'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk45'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_x1qae49u/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_x1qae49u/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_x1qae49u/drop_require_2.sol --llm-invariants /tmp/inv_strength_x1qae49u/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_x1qae49u/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_x1qae49u' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_x1qae49u/drop_require_2.sol:
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:10:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:16:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:19:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:23:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:33:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:62:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:76:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:90:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+/tmp/inv_strength_x1qae49u/drop_require_2.sol:65:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk8'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winner_unchk8', 'value_src': '0', 'args_src': 'winner_unchk8.send(winAmount_unchk8)'}
+INFO:root:   {'op': 'store', 'var': 'payedOut_unchk8', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'addr', 'value_src': '0', 'args_src': 'addr.send(4000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.call.value(msg.value)()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'dst', 'value_src': '0', 'args_src': 'dst.send(msg.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! addr_unchk40', 'value_src': '0', 'args_src': '! addr_unchk40.send(2000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'payedOut_unchk33'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(address(this).balance)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'callee', 'value_src': '0', 'args_src': 'callee.call.value(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! payedOut_unchk44'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_x1qae49u/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_x1qae49u/verified_invariants.global.summary.json

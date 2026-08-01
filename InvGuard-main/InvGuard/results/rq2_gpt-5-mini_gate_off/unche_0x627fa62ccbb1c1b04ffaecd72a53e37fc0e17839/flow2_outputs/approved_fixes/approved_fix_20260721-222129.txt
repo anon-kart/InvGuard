@@ -1,0 +1,8 @@
+Wrapped the low-level token.call(...) in require(...) inside WithdrawToken so a failed token transfer will revert instead of being silently ignored.
+
+INVARIANTS USED:
+1) External token transfer call must return true on success; wrapping the call in require ensures the transaction reverts when the call returns false, preserving atomicity.
+2) onlyOwner modifier restricts WithdrawToken execution to the owner address.
+3) State changes preceding the external call (none in WithdrawToken) are not partially applied when the external call fails due to require reverting.
+4) Solidity 0.4.19 semantics: low-level call returns (bool), and require(bool) reverts on false, restoring state.
+Notes: Remaining issues not addressed by this fix include owner variable shadowing across contracts and potential reentrancy in WithdrawToHolder (value transfer before updating Holders).

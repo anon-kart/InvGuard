@@ -1,0 +1,4 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (owner == meta.sender)
+(meta.revert_taken == false) -> (meta.sender == owner)

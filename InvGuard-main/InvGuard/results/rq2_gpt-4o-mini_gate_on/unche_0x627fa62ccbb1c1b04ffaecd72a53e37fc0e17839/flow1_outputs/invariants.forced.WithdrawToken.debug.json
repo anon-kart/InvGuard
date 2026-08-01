@@ -1,0 +1,41 @@
+{
+  "function": "WithdrawToken",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) >= select(pre.Holders, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) <= select(pre.Holders, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) == select(pre.Holders, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) == select(pre.Holders, meta.sender) - _wei)",
+    "(meta.revert_taken == false) -> (select(post.Holders, _to) == 0)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) >= select(pre.Holders, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) <= select(pre.Holders, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) == select(pre.Holders, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) == select(pre.Holders, meta.sender) - _wei)",
+    "(meta.revert_taken == false) -> (select(post.Holders, _to) == 0)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) >= select(pre.Holders, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) <= select(pre.Holders, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) == (select(pre.Holders, meta.sender) + meta.value))",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) >= select(pre.Holders, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) <= select(pre.Holders, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.Holders, meta.sender) == (select(pre.Holders, meta.sender) + meta.value))",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)"
+  ]
+}

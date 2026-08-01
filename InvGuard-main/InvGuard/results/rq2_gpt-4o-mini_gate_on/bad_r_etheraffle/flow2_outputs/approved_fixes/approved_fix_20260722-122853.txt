@@ -1,0 +1,4 @@
+Replaced the bad randomness in chooseWinner() with a commit-reveal scheme using block.timestamp and block.difficulty.
+
+INVARIANTS USED:
+BAD_RANDOMNESS

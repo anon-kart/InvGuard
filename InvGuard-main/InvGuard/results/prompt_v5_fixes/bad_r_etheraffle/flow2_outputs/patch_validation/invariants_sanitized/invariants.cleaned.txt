@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.raffleId >= pre.raffleId)
+(meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber)

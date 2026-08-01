@@ -1,0 +1,41 @@
+{
+  "function": "transferFrom",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 6,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post._totalSupply >= 0)",
+    "(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post._totalSupply >= 0)",
+    "(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post._totalSupply >= 0)",
+    "(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post._totalSupply >= 0)",
+    "(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply - (select(pre.balances, meta.sender) - select(post.balances, meta.sender)))"
+  ]
+}

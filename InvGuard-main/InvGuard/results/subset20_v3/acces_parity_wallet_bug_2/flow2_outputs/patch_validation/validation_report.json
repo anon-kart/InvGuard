@@ -1,0 +1,627 @@
+{
+  "ok": false,
+  "invariants": {
+    "ok": false,
+    "verified": [],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "invariants_failed"
+  },
+  "replay": {
+    "results": {
+      "A1": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A1",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 5.72ms",
+        "stderr_head": "Error: Compiler run failed:\n    var pending = m_pending[_operation];\n    ^---------^\n                                            ^------------^\nError: Operator == not compatible with types address and uint256\nsrc/Target.sol:227:13: TypeError: Operator == not compatible with types address and uint256\n    require(msg.sender == m_owners[1]); // Access control check\n            ^-----------------------^\n--- (other output) ---\n    var pending = m_pending[_operation];\n    ^---------^\n  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }\n                                                     ^---^\n          throw;\n          ^---^\n          throw;\n          ^---^\n    var pending = m_pending[_operation];\n    ^---------^\n      Deposit(msg.sender, msg.value);\n      ^----------------------------^\n      Revoke(msg.sender, _operation);\n      ^----------------------------^\n  function changeOwner(address _from, address _to) onlymanyowners(sha3(msg.data)) external {\n                                                                  ^------------^\n    OwnerChanged(_from, _to);\n    ^----------------------^\n  function addOwner(address _owner) onlymanyowners(sha3(msg.data)) external {\n                                                   ^------------^\n    OwnerAdded(_owner);\n    ^----------------^\n  function removeOwner(address _owner) onlymanyowners(sha3(msg.data)) external {\n                                                      ^------------^\n    OwnerRemoved(_owner);\n    ^------------------^\n  function changeRequirement(uint _newRequired) onlymanyowners(sha3(msg.data)) external {\n                                                               ^------------^\n    RequirementChanged(_newRequired);\n    ^------------------------------^\n  function setDailyLimit(uint _newLimit) onlymanyowners(sha3(msg.data)) external {\n                                                        ^------------^\n  function resetSpentToday() onlymanyowners(sha3(msg.data)) external {\n  function kill(address _to) onlymanyowners(sha3(msg.data)) external {\n                                            ^------------^\n    suicide(_to);\n    ^----------^\n      SingleTransact(msg.sender, _value, _to, _data, created);\n      ^-----------------------------------------------------^\n      o_hash = sha3(msg.data, block.number);\n               ^--------------------------^\n      o_hash = sha3(msg.data, block.number);\n               ^--------------------------^\n        ConfirmationNeeded(o_hash, msg.sender, _value, _to, _data);\n        ^--------------------------------------------------------^\n      MultiTransact(msg.sender, _h, m_txs[_h].value, m_txs[_h].to, m_txs[_h].data, created);\n      ^-----------------------------------------------------------------------------------^\n      Confirmation(msg.sender, _operation);\n      ^----------------------------------^\n  address constant _walletLibrary = 0xcafecafecafecafecafecafecafecafecafecafe;\n                                    ^----------------------------------------^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      }
+    },
+    "compile_ok": 0,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": false,
+    "run_all": false,
+    "failures": [
+      {
+        "attack": "A1",
+        "compile_ok": false,
+        "run_ok": false,
+        "impact_ok": false,
+        "impact_details": null
+      }
+    ]
+  },
+  "benign": {
+    "ok": false,
+    "reason": "benign_original_failed",
+    "original": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "revoke",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "changeOwner",
+          "arg_types": [
+            "address",
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "addOwner",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "removeOwner",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "changeRequirement",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "hasConfirmed",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "setDailyLimit",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "execute",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "revoke",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "getOwner",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "hasConfirmed",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "execute",
+          "arg_types": [],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.4.9",
+      "error": "forge test failed"
+    },
+    "patched": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "revoke",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "changeOwner",
+          "arg_types": [
+            "address",
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "addOwner",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "removeOwner",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "changeRequirement",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "hasConfirmed",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "setDailyLimit",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "execute",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "revoke",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "getOwner",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "hasConfirmed",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "execute",
+          "arg_types": [],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.4.9",
+      "error": "forge test failed"
+    },
+    "failed_calls": [
+      {
+        "reason": "original_suite_failed"
+      }
+    ]
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "INCONCLUSIVE",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A1",
+    "invariant_applicable": false
+  }
+}

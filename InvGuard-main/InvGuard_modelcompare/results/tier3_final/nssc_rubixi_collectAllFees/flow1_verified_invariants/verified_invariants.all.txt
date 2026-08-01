@@ -1,0 +1,6 @@
+# VERIFIED-USEFUL INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED/TRIVIAL invariants are excluded.
+(meta.revert_taken == false) -> (post.collectedFees <= (pre.collectedFees + meta.value))
+(meta.revert_taken == false) -> (post.collectedFees == (pre.collectedFees + meta.value))
+(meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees)
+(meta.revert_taken == false) -> (post.collectedFees == 0 -> pre.collectedFees != 0)

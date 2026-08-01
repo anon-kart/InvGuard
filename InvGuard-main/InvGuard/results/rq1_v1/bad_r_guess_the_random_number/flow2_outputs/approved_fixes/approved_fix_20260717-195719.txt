@@ -1,0 +1,4 @@
+Removed dependence on block values for randomness by implementing a commit-reveal scheme with a reveal block.
+
+INVARIANTS USED:
+None

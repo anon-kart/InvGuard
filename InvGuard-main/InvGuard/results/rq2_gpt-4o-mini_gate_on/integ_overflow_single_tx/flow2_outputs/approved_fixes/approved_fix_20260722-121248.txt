@@ -1,0 +1,4 @@
+Added an explicit bounds check to prevent integer overflow in the overflowaddtostate function.
+
+INVARIANTS USED:
+Explicit bounds checks for addition, multiplication, and subtraction.

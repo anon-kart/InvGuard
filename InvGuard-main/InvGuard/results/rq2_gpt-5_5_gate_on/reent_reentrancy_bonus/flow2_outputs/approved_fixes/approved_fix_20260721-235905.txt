@@ -1,0 +1,4 @@
+Moved all relevant state updates before the external value transfer: withdrawReward now zeros rewardsForA[recipient] before calling the recipient, and getFirstWithdrawalBonus now marks claimedBonus[recipient] before withdrawal. Added a simple mutex around getFirstWithdrawalBonus to block recursive bonus claims during the external call. Adjusted the low-level call syntax to the Solidity 0.4.24-compatible form.
+
+INVARIANTS USED:
+A recipient's bonus can be claimed at most once; rewardsForA[recipient] must be set to zero before any external transfer is made; no recursive execution of getFirstWithdrawalBonus is allowed while a bonus withdrawal is in progress; failed external transfers revert all state changes, including the mutex and balance/claim updates.

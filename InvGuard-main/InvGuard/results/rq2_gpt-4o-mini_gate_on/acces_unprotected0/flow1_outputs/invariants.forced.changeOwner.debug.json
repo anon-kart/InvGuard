@@ -1,0 +1,29 @@
+{
+  "function": "changeOwner",
+  "raw_count": 3,
+  "fixed_raw_count": 3,
+  "sanitized_count": 3,
+  "deposit_count": 2,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.owner != pre.owner)",
+    "(meta.revert_taken == false) -> (meta.sender == pre.owner) -> (post.owner == arg._newOwner)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (post.owner == pre.owner)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.owner != pre.owner)",
+    "(meta.revert_taken == false) -> (meta.sender == pre.owner) -> (post.owner == arg._newOwner)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (post.owner == pre.owner)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.owner != pre.owner)",
+    "(meta.revert_taken == false) -> (meta.sender == pre.owner) -> (post.owner == arg._newOwner)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (post.owner == pre.owner)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.owner != pre.owner)",
+    "(meta.revert_taken == false) -> (meta.sender == pre.owner) -> (post.owner == arg._newOwner)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (post.owner == pre.owner)"
+  ]
+}

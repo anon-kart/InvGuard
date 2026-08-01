@@ -1,0 +1,134 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2883, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_bonus.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f getFirstWithdrawalBonus --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.getFirstWithdrawalBonus.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)("");
+        ^-----------------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Reentrancy_bonus.withdrawReward. Please open an issue https://github.com/crytic/slither/issues.
+Reentrancy_bonus.withdrawReward (../../run_outputs/flow1/contract.sol#16-21):
+ 	amountToWithdraw = rewardsForA[recipient]
+	rewardsForA[recipient] = 0
+	(success,None) = recipient.call.value(amountToWithdraw)()
+	require(bool)(success)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)("");
+        ^-----------------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Reentrancy_bonus.withdrawReward. Please open an issue https://github.com/crytic/slither/issues.
+Reentrancy_bonus.withdrawReward (../../run_outputs/flow1/contract.sol#16-21):
+ 	amountToWithdraw = rewardsForA[recipient]
+	rewardsForA[recipient] = 0
+	(success,None) = recipient.call.value(amountToWithdraw)()
+	require(bool)(success)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 904, in <module>
+    main()
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 657, in main
+    model = builder.build_for_function_name(cir, chosen_fn)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/model/symmodel_builder.py", line 109, in build_for_function_name
+    raise ValueError(f"Function '{func_name}' not found in contract {cir.name}.")
+ValueError: Function 'getFirstWithdrawalBonus' not found in contract Reentrancy_bonus.
+
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f getFirstWithdrawalBonus --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.getFirstWithdrawalBonus.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)("");
+        ^-----------------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Reentrancy_bonus.withdrawReward. Please open an issue https://github.com/crytic/slither/issues.
+Reentrancy_bonus.withdrawReward (../../run_outputs/flow1/contract.sol#16-21):
+ 	amountToWithdraw = rewardsForA[recipient]
+	rewardsForA[recipient] = 0
+	(success,None) = recipient.call.value(amountToWithdraw)()
+	require(bool)(success)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:9: Warning: Different number of components on the left hand side (2) than on the right hand side (1).
+        (bool success, ) = recipient.call.value(amountToWithdraw)("");
+        ^-----------------------------------------------------------^
+
+ERROR:SlitherSolcParsing:
+Failed to generate IR for Reentrancy_bonus.withdrawReward. Please open an issue https://github.com/crytic/slither/issues.
+Reentrancy_bonus.withdrawReward (../../run_outputs/flow1/contract.sol#16-21):
+ 	amountToWithdraw = rewardsForA[recipient]
+	rewardsForA[recipient] = 0
+	(success,None) = recipient.call.value(amountToWithdraw)()
+	require(bool)(success)
+INFO:root:[parser] Slither failed: AssertionError: 
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 904, in <module>
+    main()
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 657, in main
+    model = builder.build_for_function_name(cir, chosen_fn)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/model/symmodel_builder.py", line 109, in build_for_function_name
+    raise ValueError(f"Function '{func_name}' not found in contract {cir.name}.")
+ValueError: Function 'getFirstWithdrawalBonus' not found in contract Reentrancy_bonus.
+ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2883, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+
+[FLOW1] ❌ Skipping refinement + strength scoring due to checker infrastructure failure (non-zero exit).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

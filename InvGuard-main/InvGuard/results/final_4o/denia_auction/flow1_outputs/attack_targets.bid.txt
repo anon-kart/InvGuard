@@ -1,0 +1,3 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (post.currentBid <= (pre.currentBid + meta.value))
+(meta.revert_taken == false) -> (post.currentFrontrunner == meta.sender)

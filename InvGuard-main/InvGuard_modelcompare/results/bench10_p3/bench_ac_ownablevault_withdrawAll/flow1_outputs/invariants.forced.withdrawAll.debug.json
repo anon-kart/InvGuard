@@ -1,0 +1,41 @@
+{
+  "function": "withdrawAll",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 6,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+    "(meta.revert_taken == false) -> (select(post.deposits, meta.sender) >= select(pre.deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (post.locked == pre.locked)",
+    "(meta.revert_taken == false) -> (post.bal == pre.bal + select(post.deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (post.bal <= pre.bal)",
+    "(meta.revert_taken == false) -> (post.bal >= 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+    "(meta.revert_taken == false) -> (select(post.deposits, meta.sender) >= select(pre.deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (post.locked == pre.locked)",
+    "(meta.revert_taken == false) -> (post.bal == pre.bal + select(post.deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (post.bal <= pre.bal)",
+    "(meta.revert_taken == false) -> (post.bal >= 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+    "(meta.revert_taken == false) -> (select(post.deposits, meta.sender) >= select(pre.deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (post.locked == pre.locked)",
+    "(meta.revert_taken == false) -> (post.bal == pre.bal + select(post.deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (post.bal <= pre.bal)",
+    "(meta.revert_taken == false) -> (post.bal >= 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+    "(meta.revert_taken == false) -> (select(post.deposits, meta.sender) >= select(pre.deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (post.locked == pre.locked)",
+    "(meta.revert_taken == false) -> (post.bal == pre.bal + select(post.deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (post.bal <= pre.bal)",
+    "(meta.revert_taken == false) -> (post.bal >= 0)"
+  ]
+}

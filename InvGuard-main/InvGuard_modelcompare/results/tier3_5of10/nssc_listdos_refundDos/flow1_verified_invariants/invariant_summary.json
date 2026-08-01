@@ -1,0 +1,26 @@
+{
+  "VU": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value))"
+    ]
+  },
+  "VT": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= 0)"
+    ]
+  },
+  "VM": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value))"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

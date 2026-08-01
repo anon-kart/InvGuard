@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)  # reason=TRANSLATOR_REJECTED: select expects 2 args

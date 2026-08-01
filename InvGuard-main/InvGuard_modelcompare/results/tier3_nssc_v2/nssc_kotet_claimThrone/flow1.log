@@ -1,0 +1,384 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_kotet_claimThrone.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:23:9:
+   |
+23 |         payable(king).send(compensation);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'owner', 'value_src': '0', 'args_src': 'owner.transfer(amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= claimPrice'}
+INFO:root:   {'op': 'store', 'var': 'compensation', 'val_src': '(meta.value * 50) / 100'}
+INFO:root:   {'op': 'raw', 'src': 'address(king).send(compensation)'}
+INFO:root:   {'op': 'store', 'var': 'king', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '(meta.value * 150) / 100'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '100'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.king == meta.sender)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)  | claimPrice=0, claimPrice1=115792089237316195423570985008687907853269984665640564039457584007913129639935, king1=0, meta.revert_taken=False, meta.sender=0
+   - (meta.revert_taken == false) -> (meta.value >= post.claimPrice)  | claimPrice=0, claimPrice1=1, king1=0, meta.revert_taken=False, meta.sender=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.compensation <= meta.value)  | reason=KeyError: "Unknown symbol 'post.compensation'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:23:9:
+   |
+23 |         payable(king).send(compensation);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'owner', 'value_src': '0', 'args_src': 'owner.transfer(amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= claimPrice'}
+INFO:root:   {'op': 'store', 'var': 'compensation', 'val_src': '(meta.value * 50) / 100'}
+INFO:root:   {'op': 'raw', 'src': 'address(king).send(compensation)'}
+INFO:root:   {'op': 'store', 'var': 'king', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '(meta.value * 150) / 100'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '100'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.king == meta.sender)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)  | claimPrice=0, claimPrice1=115792089237316195423570985008687907853269984665640564039457584007913129639935, king1=0, meta.revert_taken=False, meta.sender=0
+   - (meta.revert_taken == false) -> (meta.value >= post.claimPrice)  | claimPrice=0, claimPrice1=1, king1=0, meta.revert_taken=False, meta.sender=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.compensation <= meta.value)  | reason=KeyError: "Unknown symbol 'post.compensation'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: claimThrone  (invariants: LLM-translated)
+Notes:
+  - [div-abstract] abstracted compensation (val contains div/mul: (meta.value * 50) / 100)
+  - [raw] address(king).send(compensation)
+  - [div-abstract] abstracted claimPrice (val contains div/mul: (meta.value * 150) / 100)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.king == meta.sender)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)", "model": {"claimPrice": "0", "claimPrice1": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "king1": "0", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "0", "owner": "0", "owner1": "0", "tmp.claimPrice": "115792089237316195423570985008687907853269984665640564039457584007913129639935"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (meta.value >= post.claimPrice)", "model": {"claimPrice": "0", "claimPrice1": "1", "king1": "0", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "0", "owner": "0", "owner1": "0", "tmp.claimPrice": "1"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.compensation <= meta.value)", "reason": "KeyError: \"Unknown symbol 'post.compensation'\"", "status": "REJECTED_UNSUPPORTED"}INFO:root:[FLOW1] Failed invariants detected for claimThrone — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.refined.filtered.txt
+INFO:root:[FLOW1] Failed invariants detected for claimThrone — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: claimThrone  (invariants: LLM-translated)
+Notes:
+  - [div-abstract] abstracted compensation (val contains div/mul: (meta.value * 50) / 100)
+  - [raw] address(king).send(compensation)
+  - [div-abstract] abstracted claimPrice (val contains div/mul: (meta.value * 150) / 100)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.king == meta.sender)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)", "model": {"claimPrice": "0", "claimPrice1": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "king1": "0", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "0", "owner": "0", "owner1": "0", "tmp.claimPrice": "115792089237316195423570985008687907853269984665640564039457584007913129639935"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (meta.value >= post.claimPrice)", "model": {"claimPrice": "0", "claimPrice1": "1", "king1": "0", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "0", "owner": "0", "owner1": "0", "tmp.claimPrice": "1"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.compensation <= meta.value)", "reason": "KeyError: \"Unknown symbol 'post.compensation'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:23:9:
+   |
+23 |         payable(king).send(compensation);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'owner', 'value_src': '0', 'args_src': 'owner.transfer(amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= claimPrice'}
+INFO:root:   {'op': 'store', 'var': 'compensation', 'val_src': '(meta.value * 50) / 100'}
+INFO:root:   {'op': 'raw', 'src': 'address(king).send(compensation)'}
+INFO:root:   {'op': 'store', 'var': 'king', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '(meta.value * 150) / 100'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '100'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.king == meta.sender)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((post.claimPrice == (meta.value * 150) / 100)  | claimPrice=0, claimPrice1=115792089237316195423570985008687907853269984665640564039457584007913129639935, king1=0, meta.revert_taken=False, meta.sender=0
+   - ((meta.revert_taken == false)) -> ((meta.value >= post.claimPrice)  | claimPrice=0, claimPrice1=1, king1=0, meta.revert_taken=False, meta.sender=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.compensation <= meta.value)  | reason=KeyError: "Unknown symbol 'post.compensation'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.summary.json
+
+[FLOW1] Checker report after refinement (claimThrone, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: claimThrone  (invariants: LLM-translated)
+Notes:
+  - [div-abstract] abstracted compensation (val contains div/mul: (meta.value * 50) / 100)
+  - [raw] address(king).send(compensation)
+  - [div-abstract] abstracted claimPrice (val contains div/mul: (meta.value * 150) / 100)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((post.claimPrice == (meta.value * 150) / 100))", "model": {"claimPrice": "0", "claimPrice1": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "king1": "0", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "0", "owner": "0", "owner1": "0", "tmp.claimPrice": "115792089237316195423570985008687907853269984665640564039457584007913129639935"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "((meta.revert_taken == false)) -> ((meta.value >= post.claimPrice))", "model": {"claimPrice": "0", "claimPrice1": "1", "king1": "0", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "0", "owner": "0", "owner1": "0", "tmp.claimPrice": "1"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.king == meta.sender)", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.compensation <= meta.value)", "reason": "KeyError: \"Unknown symbol 'post.compensation'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:23:9:
+   |
+23 |         payable(king).send(compensation);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'owner', 'value_src': '0', 'args_src': 'owner.transfer(amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= claimPrice'}
+INFO:root:   {'op': 'store', 'var': 'compensation', 'val_src': '(meta.value * 50) / 100'}
+INFO:root:   {'op': 'raw', 'src': 'address(king).send(compensation)'}
+INFO:root:   {'op': 'store', 'var': 'king', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '(meta.value * 150) / 100'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '100'}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.king == meta.sender)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((post.claimPrice == (meta.value * 150) / 100)  | claimPrice=0, claimPrice1=115792089237316195423570985008687907853269984665640564039457584007913129639935, king1=0, meta.revert_taken=False, meta.sender=0
+   - ((meta.revert_taken == false)) -> ((meta.value >= post.claimPrice)  | claimPrice=0, claimPrice1=1, king1=0, meta.revert_taken=False, meta.sender=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.compensation <= meta.value)  | reason=KeyError: "Unknown symbol 'post.compensation'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.claimThrone.summary.json
+
+[FLOW1] Checker report after refinement (claimThrone, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.claimThrone.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: claimThrone  (invariants: LLM-translated)
+Notes:
+  - [div-abstract] abstracted compensation (val contains div/mul: (meta.value * 50) / 100)
+  - [raw] address(king).send(compensation)
+  - [div-abstract] abstracted claimPrice (val contains div/mul: (meta.value * 150) / 100)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((post.claimPrice == (meta.value * 150) / 100))", "model": {"claimPrice": "0", "claimPrice1": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "king1": "0", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "0", "owner": "0", "owner1": "0", "tmp.claimPrice": "115792089237316195423570985008687907853269984665640564039457584007913129639935"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "((meta.revert_taken == false)) -> ((meta.value >= post.claimPrice))", "model": {"claimPrice": "0", "claimPrice1": "1", "king1": "0", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "0", "owner": "0", "owner1": "0", "tmp.claimPrice": "1"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.king == meta.sender)", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.compensation <= meta.value)", "reason": "KeyError: \"Unknown symbol 'post.compensation'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_1g08cg2d/drop_require_1.sol --llm-invariants /tmp/inv_strength_1g08cg2d/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_1g08cg2d/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_1g08cg2d' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_1g08cg2d/drop_require_1.sol:
+Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+  --> /tmp/inv_strength_1g08cg2d/drop_require_1.sol:24:9:
+   |
+24 |         payable(king).send(compensation);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'owner', 'value_src': '0', 'args_src': 'owner.transfer(amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value >= claimPrice'}
+INFO:root:   {'op': 'store', 'var': 'compensation', 'val_src': '(meta.value * 50) / 100'}
+INFO:root:   {'op': 'raw', 'src': 'address(king).send(compensation)'}
+INFO:root:   {'op': 'store', 'var': 'king', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '(meta.value * 150) / 100'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '100'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.king == meta.sender)  | claimPrice=0, claimPrice1=0, king=1461501637330902918203684832716283019655932542975, king1=1461501637330902918203684832716283019655932542975, meta.revert_taken=False
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_1g08cg2d/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_1g08cg2d/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_1g08cg2d/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_1g08cg2d/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_1g08cg2d/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_1g08cg2d' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_1g08cg2d/flip_ge_to_gt.sol:
+Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+  --> /tmp/inv_strength_1g08cg2d/flip_ge_to_gt.sol:23:9:
+   |
+23 |         payable(king).send(compensation);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'owner', 'value_src': '0', 'args_src': 'owner.transfer(amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > claimPrice'}
+INFO:root:   {'op': 'store', 'var': 'compensation', 'val_src': '(meta.value * 50) / 100'}
+INFO:root:   {'op': 'raw', 'src': 'address(king).send(compensation)'}
+INFO:root:   {'op': 'store', 'var': 'king', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '(meta.value * 150) / 100'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '100'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.king == meta.sender)  | claimPrice=0, claimPrice1=0, king=1461501637330902918203684832716283019655932542975, king1=1461501637330902918203684832716283019655932542975, meta.revert_taken=False
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_1g08cg2d/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_1g08cg2d/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_1g08cg2d/drop_require_2.sol --llm-invariants /tmp/inv_strength_1g08cg2d/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_1g08cg2d/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_1g08cg2d' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_1g08cg2d/drop_require_2.sol:
+Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+  --> /tmp/inv_strength_1g08cg2d/drop_require_2.sol:24:9:
+   |
+24 |         payable(king).send(compensation);
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'owner', 'value_src': '0', 'args_src': 'owner.transfer(amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'compensation', 'val_src': '(meta.value * 50) / 100'}
+INFO:root:   {'op': 'raw', 'src': 'address(king).send(compensation)'}
+INFO:root:   {'op': 'store', 'var': 'king', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '(meta.value * 150) / 100'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'claimPrice', 'val_src': '100'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.king == meta.sender)  | claimPrice=0, claimPrice1=0, king=1461501637330902918203684832716283019655932542975, king1=1461501637330902918203684832716283019655932542975, meta.revert_taken=False
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_1g08cg2d/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_1g08cg2d/verified_invariants.global.summary.json

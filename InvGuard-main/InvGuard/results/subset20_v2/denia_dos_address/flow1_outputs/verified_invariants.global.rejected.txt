@@ -1,0 +1,5 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (creditorAddresses.length > 1500 -> win == true)  # reason=KeyError: "Unknown symbol 'creditorAddresses.length'"
+(meta.revert_taken == false) -> (creditorAddresses.length <= 1500 -> win == false)  # reason=KeyError: "Unknown symbol 'creditorAddresses.length'"
+(meta.revert_taken == false) -> (iWin() == win)  # reason=KeyError: "Unknown symbol 'iWin()'"
+(meta.revert_taken == false) -> (numberCreditors() == creditorAddresses.length)  # reason=KeyError: "Unknown symbol 'numberCreditors()'"

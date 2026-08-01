@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)
+(meta.revert_taken == false) -> (select(post.owed, arg.who) >= select(pre.owed, arg.who))
+(meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who))
+(meta.revert_taken == false) -> (post.totalOwed == pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who))
+(meta.revert_taken == false) -> (post.active == pre.active)

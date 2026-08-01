@@ -1,0 +1,105 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/etheraffle.sol
+INFO:root:Loaded invariants (function=chooseWinner, mode=INVARIANT_GUIDED): constraints=2, objectives=1, validator_path=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/invariants.chooseWinner.VU.txt
+INFO:root:[prompt-enhancer] appended 5225 chars of context-aware hints
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=0 run_ok=0
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=1 compile_ok=4 run_ok=4
+INFO:root:[feedback-loop] converged at round 1
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A2.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A3.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A4.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A5.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260721-151317.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+WARNING:root:[validate-gate] replay=PASS invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=4 n=4 compile_ok=4 run_ok=4 | gate_ok=True
+INFO:root:gate-OFF: patch auto-accepted. Gate would have ACCEPTED.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:Saved approved fix
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f chooseWinner --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:54:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Ethraffle_v4b() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:81:13: Warning: Invoking events without "emit" prefix is deprecated.
+            TicketPurchase(raffleId, msg.sender, currTicket);
+            ^----------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:100:28: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        bytes32 randHash = keccak256(block.blockhash(block.number - 1), now);
+                           ^-----------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:103:9: Warning: Invoking events without "emit" prefix is deprecated.
+        RaffleResult(raffleId, winningNumber, winningAddress, address(0), address(0), 0, randHash);
+        ^----------------------------------------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:127:17: Warning: Invoking events without "emit" prefix is deprecated.
+                TicketRefund(raffleId, msg.sender, i);
+                ^-----------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:143:21: Warning: Invoking events without "emit" prefix is deprecated.
+                    TicketRefund(raffleId, contestants[i].addr, i);
+                    ^--------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:148:13: Warning: Invoking events without "emit" prefix is deprecated.
+            RaffleResult(raffleId, totalTickets, address(0), address(0), address(0), 0, 0);
+            ^----------------------------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:100:38: Warning: "block.blockhash()" has been deprecated in favor of "blockhash()"
+        bytes32 randHash = keccak256(block.blockhash(block.number - 1), now);
+                                     ^-------------^
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'paused'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(msg.value)'}
+INFO:root:   {'op': 'store', 'var': 'moneySent', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'if', 'cond_src': 'moneySent >= pricePerTicket && nextTicket < totalTickets', 'then': [{'op': 'store', 'var': 'currTicket', 'val_src': '0'}], 'else': [{'op': 'raw', 'src': 'gaps.length > 0'}]}
+INFO:root:   {'op': 'store', 'var': 'currTicket', 'val_src': 'select(gaps, gaps.length - 1)'}
+INFO:root:   {'op': 'raw', 'src': 'gaps.length --'}
+INFO:root:   {'op': 'store', 'var': 'currTicket', 'val_src': 'nextTicket ++'}
+INFO:root:   {'op': 'store_map', 'var': 'contestants', 'key_src': 'currTicket', 'val_src': 'Contestant(meta.sender,raffleId)'}
+INFO:root:   {'op': 'raw', 'src': 'TicketPurchase(raffleId,meta.sender,currTicket)'}
+INFO:root:   {'op': 'store_sub', 'var': 'moneySent', 'val_src': 'pricePerTicket'}
+INFO:root:   {'op': 'if', 'cond_src': 'nextTicket == totalTickets', 'then': [{'op': 'raw', 'src': 'chooseWinner()'}], 'else': [{'op': 'raw', 'src': 'moneySent > 0'}]}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(moneySent)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == feeAddress'}
+INFO:root:   {'op': 'store', 'var': 'randHash', 'val_src': 'keccak256()(block.blockhash(block.number - 1),now)'}
+INFO:root:   {'op': 'store', 'var': 'winningNumber', 'val_src': 'uint256(randHash) % totalTickets'}
+INFO:root:   {'op': 'store', 'var': 'winningAddress', 'val_src': 'select(contestants, winningNumber).addr'}
+INFO:root:   {'op': 'raw', 'src': 'RaffleResult(raffleId,winningNumber,winningAddress,address(0),address(0),0,randHash)'}
+INFO:root:   {'op': 'raw', 'src': 'raffleId ++'}
+INFO:root:   {'op': 'store', 'var': 'nextTicket', 'val_src': '0'}
+INFO:root:   {'op': 'store', 'var': 'blockNumber', 'val_src': 'block.number'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'winningAddress', 'value_src': '0', 'args_src': 'winningAddress.transfer(prize)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'feeAddress', 'value_src': '0', 'args_src': 'feeAddress.transfer(fee)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'refund', 'val_src': '0'}
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < totalTickets', 'then': [{'op': 'raw', 'src': 'meta.sender == select(contestants, i).addr && raffleId == select(contestants, i).raffleId'}], 'else': [{'op': 'store_add', 'var': 'refund', 'val_src': 'pricePerTicket'}]}
+INFO:root:   {'op': 'store_map', 'var': 'contestants', 'key_src': 'i', 'val_src': 'Contestant(address(0),0)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'gaps', 'value_src': '0', 'args_src': 'gaps.push(i)'}
+INFO:root:   {'op': 'raw', 'src': 'TicketRefund(raffleId,meta.sender,i)'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.raffleId >= pre.raffleId)
+   - (meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.chooseWinner.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.chooseWinner.summary.json
+✅ Flow-2 completed successfully (patch validated by execution + invariants)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

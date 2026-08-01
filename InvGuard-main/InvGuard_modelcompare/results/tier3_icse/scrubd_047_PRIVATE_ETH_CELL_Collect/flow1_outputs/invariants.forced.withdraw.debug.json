@@ -1,0 +1,27 @@
+{
+  "function": "withdraw",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 1,
+  "deposit_count": 1,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 1,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.MinSum == pre.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, Sender) == select(pre.balances, Sender) + post.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, Sender) >= pre.MinSum && select(post.balances, Sender) >= post.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, Sender) <= select(pre.balances, Sender))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.MinSum == pre.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, Sender) == select(pre.balances, Sender) + post.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, Sender) >= pre.MinSum && select(post.balances, Sender) >= post.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, Sender) <= select(pre.balances, Sender))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.MinSum == pre.MinSum)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.MinSum == pre.MinSum)"
+  ]
+}

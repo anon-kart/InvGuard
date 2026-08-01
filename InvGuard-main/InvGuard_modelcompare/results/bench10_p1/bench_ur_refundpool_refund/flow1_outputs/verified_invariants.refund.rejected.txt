@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.totalCredit <= post.poolBalance()  # reason=KeyError: "Unknown symbol 'post.poolBalance()'"

@@ -1,0 +1,3 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))
+(meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= (select(pre.balanceOf, arg.to) + arg.amount))

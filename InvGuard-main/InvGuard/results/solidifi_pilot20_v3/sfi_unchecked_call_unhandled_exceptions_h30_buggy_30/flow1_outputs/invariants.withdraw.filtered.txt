@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.receivers_unchk18 >= pre.receivers_unchk18)
+(meta.revert_taken == false) -> (post.receivers_unchk18 <= pre.receivers_unchk18)
+(meta.revert_taken == false) -> (post.receivers_unchk18 == pre.receivers_unchk18 + 1)
+(meta.revert_taken == false) -> (select(post.receivers_unchk18, meta.sender) >= select(pre.receivers_unchk18, meta.sender))
+(meta.revert_taken == false) -> (select(post.receivers_unchk18, meta.sender) <= select(pre.receivers_unchk18, meta.sender))

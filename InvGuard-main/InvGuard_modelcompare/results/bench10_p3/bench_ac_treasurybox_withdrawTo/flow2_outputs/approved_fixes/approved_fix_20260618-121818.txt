@@ -1,0 +1,4 @@
+Added access control to the withdrawTo() function by requiring msg.sender to be the owner.
+
+INVARIANTS USED:
+Access control, ensuring only the owner can withdraw funds.

@@ -1,0 +1,34 @@
+{
+  "function": "withdraw",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalShares >= pre.totalShares)",
+    "(meta.revert_taken == false) -> (post.totalShares <= pre.totalShares)",
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) >= select(pre.shares, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) <= select(pre.shares, meta.sender))",
+    "(pre.totalShares == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalShares >= pre.totalShares)",
+    "(meta.revert_taken == false) -> (post.totalShares <= pre.totalShares)",
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) >= select(pre.shares, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) <= select(pre.shares, meta.sender))",
+    "(pre.totalShares == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalShares >= pre.totalShares)",
+    "(meta.revert_taken == false) -> (post.totalShares <= pre.totalShares)",
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) >= select(pre.shares, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) <= select(pre.shares, meta.sender))",
+    "(pre.totalShares == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalShares <= pre.totalShares)",
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) <= select(pre.shares, meta.sender))"
+  ]
+}

@@ -1,0 +1,2 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (select(post.balances, owner) == (select(pre.balances, owner) + meta.contract_balance))

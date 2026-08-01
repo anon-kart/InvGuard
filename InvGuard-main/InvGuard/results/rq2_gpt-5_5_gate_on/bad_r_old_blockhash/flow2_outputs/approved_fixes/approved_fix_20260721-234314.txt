@@ -1,0 +1,4 @@
+Updated settle() to reject expired blockhash lookups before calling blockhash. This prevents an attacker from locking in bytes32(0), waiting more than 256 blocks until blockhash(targetBlock) returns zero, and deterministically winning the payout.
+
+INVARIANTS USED:
+Each address can have only one active guess; a guess targets block.number + 1; settlement is allowed only after the target block has been mined; blockhash is only trusted for the most recent 256 prior blocks; state is cleared before any external value transfer; payout amount and required deposits remain unchanged.

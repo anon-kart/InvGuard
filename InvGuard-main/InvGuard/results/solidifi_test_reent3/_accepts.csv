@@ -1,0 +1,4 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+sfi_reentrancy_reentrancy_h1_buggy_1,withdraw_balances_re_ent8,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE,39.84
+sfi_reentrancy_reentrancy_h15_buggy_15,withdraw_balances_re_ent8,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE,43.24
+sfi_reentrancy_reentrancy_h22_buggy_22,withdrawFunds_re_ent17,False,no_report,None,None,None,35.06

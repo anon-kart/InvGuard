@@ -1,0 +1,4 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post._status, meta.sender) == true -> select(pre._status, meta.sender) == true)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post._status, meta.sender) == false -> select(pre._status, meta.sender) == false)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post._factory, meta.sender) == select(pre._factory, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).

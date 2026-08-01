@@ -1,0 +1,29 @@
+{
+  "function": "CashOut",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 1,
+  "deposit_count": 1,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 1,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= select(pre.balances, arg.Sender) + arg.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) == select(pre.balances, arg.Sender) + (arg.Val * (meta.value >= pre.MinDeposit ? 1 : 0)))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) == select(pre.balances, arg.Sender) - (arg._am * (arg._am <= select(pre.balances, arg.Sender) ? 1 : 0)))",
+    "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= select(pre.balances, arg.Sender) + arg.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) == select(pre.balances, arg.Sender) + (arg.Val * (meta.value >= pre.MinDeposit ? 1 : 0)))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) == select(pre.balances, arg.Sender) - (arg._am * (arg._am <= select(pre.balances, arg.Sender) ? 1 : 0)))",
+    "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)"
+  ]
+}

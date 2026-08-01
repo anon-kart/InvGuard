@@ -1,0 +1,33 @@
+{
+  "function": "withdrawAll_txorigin34",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender))",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (post.owner != address(0))",
+    "(meta.revert_taken == false) -> (post.owner == meta.sender)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender))",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (post.owner != address(0))",
+    "(meta.revert_taken == false) -> (post.owner == meta.sender)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender))",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (post.owner == meta.sender)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender))",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (post.owner == meta.sender)"
+  ]
+}

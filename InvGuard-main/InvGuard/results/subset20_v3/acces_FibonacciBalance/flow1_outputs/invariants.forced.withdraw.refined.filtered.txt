@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter + 1)
+((meta.revert_taken == false)) -> ((post.start >= 3))

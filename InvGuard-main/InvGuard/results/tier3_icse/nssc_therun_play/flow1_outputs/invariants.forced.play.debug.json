@@ -1,0 +1,33 @@
+{
+  "function": "play",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 4,
+  "deposit_count": 4,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (post.random >= 0 && post.random < 100)",
+    "(meta.revert_taken == false) -> (post.salt == pre.salt)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (post.random >= 0 && post.random < 100)",
+    "(meta.revert_taken == false) -> (post.salt == pre.salt)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value))",
+    "(meta.revert_taken == false) -> (post.random >= 0 && post.random < 100)",
+    "(meta.revert_taken == false) -> (post.salt == pre.salt)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value))",
+    "(meta.revert_taken == false) -> (post.random >= 0 && post.random < 100)",
+    "(meta.revert_taken == false) -> (post.salt == pre.salt)"
+  ]
+}

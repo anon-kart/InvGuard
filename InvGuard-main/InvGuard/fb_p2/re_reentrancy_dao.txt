@@ -1,0 +1,1 @@
+Your previous fix made the honest user's withdrawAll() revert (functional check failed). Keep the reentrancy fix (zero the caller's balance before the external call), but ensure a legitimate depositor can still successfully withdraw their own balance.

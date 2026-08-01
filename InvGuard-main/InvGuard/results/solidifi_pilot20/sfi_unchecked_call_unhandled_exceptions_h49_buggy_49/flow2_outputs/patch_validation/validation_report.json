@@ -1,0 +1,706 @@
+{
+  "ok": true,
+  "invariants": {
+    "ok": false,
+    "verified": [],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [
+      {
+        "name": "inv_1",
+        "line": "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      },
+      {
+        "name": "inv_2",
+        "line": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      },
+      {
+        "name": "inv_3",
+        "line": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)",
+        "reason": "UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0)."
+      }
+    ],
+    "report_lines": [
+      "[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f my_func_unchk35 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results",
+      "[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker",
+      "[adapter] returncode: 0",
+      "",
+      "=== UNSOUND MODEL WARNING ===",
+      "UNSOUND_MODEL: verifier cannot soundly validate invariants for this function.",
+      "Reason: Function body not modeled (source=regex, modeled=False, body_len=0).",
+      "Action: returning UNVERIFIED_UNSOUND for all invariants.",
+      "=============================",
+      "",
+      "",
+      "[translator] Accepted 3 invariants from LLM.",
+      "",
+      "Function: my_func_unchk35  (invariants: LLM-translated)",
+      "{\"idx\": 1, \"inv\": \"(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}",
+      "{\"idx\": 2, \"inv\": \"(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}",
+      "{\"idx\": 3, \"inv\": \"(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))\", \"reason\": \"UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).\", \"status\": \"UNVERIFIED_UNSOUND\"}"
+    ],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "UNSOUND_MODEL_OR_UNVERIFIED_INVARIANTS"
+  },
+  "replay": {
+    "results": {
+      "A1": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A1",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.5.17\nSolc 0.5.17 finished in 5.10ms",
+        "stderr_head": "Error: Compiler run failed:\nError: Expected primary expression.\nsrc/Target.sol:28:17: ParserError: Expected primary expression.\n        require(payable(dst).send(msg.value));\n                ^-----^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 1000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A2": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A2",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.5.17\nSolc 0.5.17 finished in 5.49ms",
+        "stderr_head": "Error: Compiler run failed:\nError: Expected primary expression.\nsrc/Target.sol:28:17: ParserError: Expected primary expression.\n        require(payable(dst).send(msg.value));\n                ^-----^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 1000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A3": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A3",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.5.17\nSolc 0.5.17 finished in 5.04ms",
+        "stderr_head": "Error: Compiler run failed:\nError: Expected primary expression.\nsrc/Target.sol:28:17: ParserError: Expected primary expression.\n        require(payable(dst).send(msg.value));\n                ^-----^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A4": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A4",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.5.17\nSolc 0.5.17 finished in 5.08ms",
+        "stderr_head": "Error: Compiler run failed:\nError: Expected primary expression.\nsrc/Target.sol:28:17: ParserError: Expected primary expression.\n        require(payable(dst).send(msg.value));\n                ^-----^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A5": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A5",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.5.17\nSolc 0.5.17 finished in 5.12ms",
+        "stderr_head": "Error: Compiler run failed:\nError: Expected primary expression.\nsrc/Target.sol:28:17: ParserError: Expected primary expression.\n        require(payable(dst).send(msg.value));\n                ^-----^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      }
+    },
+    "compile_ok": 0,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": false,
+    "run_all": false
+  },
+  "benign": {
+    "ok": false,
+    "reason": "benign_original_failed",
+    "original": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "sendToWinner_unchk8",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "bug_unchk39",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "my_func_uncheck36",
+          "arg_types": [
+            "address"
+          ],
+          "payable": true
+        },
+        {
+          "fn": "my_func_unchk35",
+          "arg_types": [
+            "address"
+          ],
+          "payable": true
+        },
+        {
+          "fn": "withdrawLeftOver_unchk45",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "UncheckedExternalCall_unchk40",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "transfer",
+          "arg_types": [
+            "address",
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "withdrawLeftOver_unchk33",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "callnotchecked_unchk13",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "sendToWinner_unchk44",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "approve",
+          "arg_types": [
+            "address",
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "bug_unchk27",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.5.11",
+      "error": "forge test failed"
+    },
+    "patched": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "sendToWinner_unchk8",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "bug_unchk39",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "my_func_uncheck36",
+          "arg_types": [
+            "address"
+          ],
+          "payable": true
+        },
+        {
+          "fn": "my_func_unchk35",
+          "arg_types": [
+            "address"
+          ],
+          "payable": true
+        },
+        {
+          "fn": "withdrawLeftOver_unchk45",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "UncheckedExternalCall_unchk40",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "transfer",
+          "arg_types": [
+            "address",
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "withdrawLeftOver_unchk33",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "callnotchecked_unchk13",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "sendToWinner_unchk44",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "approve",
+          "arg_types": [
+            "address",
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "bug_unchk27",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.5.11",
+      "error": "forge test failed"
+    },
+    "failed_calls": [
+      {
+        "reason": "original_suite_failed"
+      }
+    ]
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "PASS",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A1",
+    "invariant_applicable": false
+  }
+}

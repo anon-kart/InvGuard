@@ -1,0 +1,4 @@
+Changed insertNnumbers to record the logical number of inserted elements without performing unbounded storage array growth, preventing clearDOS from becoming gas-prohibitive. clearDOS now resets the storage array in one assignment and resets the logical counter, avoiding an unbounded deletion loop. Added an overflow guard for numElements + numbers.
+
+INVARIANTS USED:
+No function performs work proportional to untrusted, user-controlled numbers or numElements; clearDOS remains bounded in gas regardless of numElements; numElements is only increased with an overflow check and is reset to zero by clear/clearDOS; external view functions preserve the distinction between logical count (numElements) and physical storage array length.

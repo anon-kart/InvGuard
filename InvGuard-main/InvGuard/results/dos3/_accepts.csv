@@ -1,0 +1,2 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+denia_dos_simple,ifillArray,False,no_report,None,None,None,7.42

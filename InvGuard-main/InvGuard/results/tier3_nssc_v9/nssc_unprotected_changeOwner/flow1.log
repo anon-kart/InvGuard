@@ -1,0 +1,265 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_unprotected_changeOwner.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deposit.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'owner', 'val_src': '_newOwner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'raw', 'src': 'address(owner).transfer(meta.contract_balance)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | balances=K(BitVec(160), 0), balances1=Store(K(BitVec(160), 0),
+      0,
+      57896044618658097711785492504343953926634992332820282019728792003956564819968), meta.revert_taken=False, meta.sender=0, meta.value=57896044618658097711785492504343953926634992332820282019728792003956564819968
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | balances=K(BitVec(160), 134217727), balances1=Store(K(BitVec(160), 134217727),
+      0,
+      115792089237316195416901564414839559541693129175486633556475927541109678407680), meta.revert_taken=False, meta.sender=0, meta.value=115792089237316195416901564414839559541693129175486633556475927541109544189953
+   - (meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender)  | balances=K(BitVec(160),
+  32604147849460644773829934981307487729478837277616582987889562396170527932285), balances1=Store(K(BitVec(160),
+        32604147849460644773829934981307487729478837277616582987889562396170527932285),
+      0,
+      82284813403925010234060676760767485900549689898337669073274551201665097106318), meta.revert_taken=False, meta.sender=0, meta.value=49680665554464365460230741779459998171070852620721086085384988805494569174033
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f changeOwner --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.changeOwner.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'owner', 'val_src': '_newOwner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'raw', 'src': 'address(owner).transfer(meta.contract_balance)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner)
+   - (meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.changeOwner.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.changeOwner.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deposit.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: deposit  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "model": {"balances": "K(BitVec(160), 0)", "balances1": "Store(K(BitVec(160), 0),\n      0,\n      57896044618658097711785492504343953926634992332820282019728792003956564819968)", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "57896044618658097711785492504343953926634992332820282019728792003956564819968", "owner": "0", "owner1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "model": {"balances": "K(BitVec(160), 134217727)", "balances1": "Store(K(BitVec(160), 134217727),\n      0,\n      115792089237316195416901564414839559541693129175486633556475927541109678407680)", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "115792089237316195416901564414839559541693129175486633556475927541109544189953", "owner": "0", "owner1": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner))", "status": "HOLDS"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender))", "model": {"balances": "K(BitVec(160),\n  32604147849460644773829934981307487729478837277616582987889562396170527932285)", "balances1": "Store(K(BitVec(160),\n        32604147849460644773829934981307487729478837277616582987889562396170527932285),\n      0,\n      82284813403925010234060676760767485900549689898337669073274551201665097106318)", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "49680665554464365460230741779459998171070852620721086085384988805494569174033", "owner": "0", "owner1": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for deposit — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deposit.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f changeOwner --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.changeOwner.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: changeOwner  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "status": "HOLDS"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deposit.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'owner', 'val_src': '_newOwner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'raw', 'src': 'address(owner).transfer(meta.contract_balance)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | balances=K(BitVec(160), 0), balances1=Store(K(BitVec(160), 0),
+      0,
+      57896044618658097711785492504343953926634992332820282019728792003956564819968), meta.revert_taken=False, meta.sender=0, meta.value=57896044618658097711785492504343953926634992332820282019728792003956564819968
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | balances=K(BitVec(160), 134217727), balances1=Store(K(BitVec(160), 134217727),
+      0,
+      115792089237316195416901564414839559541693129175486633556475927541109678407680), meta.revert_taken=False, meta.sender=0, meta.value=115792089237316195416901564414839559541693129175486633556475927541109544189953
+   - ((meta.revert_taken == false)) -> ((post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender)  | balances=K(BitVec(160),
+  32604147849460644773829934981307487729478837277616582987889562396170527932285), balances1=Store(K(BitVec(160),
+        32604147849460644773829934981307487729478837277616582987889562396170527932285),
+      0,
+      82284813403925010234060676760767485900549689898337669073274551201665097106318), meta.revert_taken=False, meta.sender=0, meta.value=49680665554464365460230741779459998171070852620721086085384988805494569174033
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.summary.json
+
+[FLOW1] Checker report after refinement (deposit, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deposit.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: deposit  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)))", "model": {"balances": "K(BitVec(160), 0)", "balances1": "Store(K(BitVec(160), 0),\n      0,\n      57896044618658097711785492504343953926634992332820282019728792003956564819968)", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "57896044618658097711785492504343953926634992332820282019728792003956564819968", "owner": "0", "owner1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) <= select(pre.balances, meta.sender)))", "model": {"balances": "K(BitVec(160), 134217727)", "balances1": "Store(K(BitVec(160), 134217727),\n      0,\n      115792089237316195416901564414839559541693129175486633556475927541109678407680)", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "115792089237316195416901564414839559541693129175486633556475927541109544189953", "owner": "0", "owner1": "0"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner))", "status": "HOLDS"}
+{"idx": 6, "inv": "((meta.revert_taken == false)) -> ((post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender)))", "model": {"balances": "K(BitVec(160),\n  32604147849460644773829934981307487729478837277616582987889562396170527932285)", "balances1": "Store(K(BitVec(160),\n        32604147849460644773829934981307487729478837277616582987889562396170527932285),\n      0,\n      82284813403925010234060676760767485900549689898337669073274551201665097106318)", "meta.revert_taken": "False", "meta.sender": "0", "meta.value": "49680665554464365460230741779459998171070852620721086085384988805494569174033", "owner": "0", "owner1": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Direct VU injection: 3 invariants -> VU files.
+
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_pk9uf8qp/drop_require_1.sol --llm-invariants /tmp/inv_strength_pk9uf8qp/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_pk9uf8qp/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_pk9uf8qp' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'owner', 'val_src': '_newOwner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'address(owner).transfer(meta.contract_balance)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | balances=K(BitVec(160), 134217727), balances1=Store(K(BitVec(160), 134217727),
+      0,
+      115792089237316195416901564414839559541693129175486633556475927541109678407680), meta.revert_taken=False, meta.sender=0, meta.value=115792089237316195416901564414839559541693129175486633556475927541109544189953
+   - (meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender)  | balances=K(BitVec(160),
+  30286159333508930159481776950599269143622335031333503855092611209411555146724), balances1=Store(K(BitVec(160),
+        30286159333508930159481776950599269143622335031333503855092611209411555146724),
+      0,
+      114003471782559825654156552468120273231184375580645182106393944944933571084828), meta.revert_taken=False, meta.sender=0, meta.value=83717312449050895494674775517521004087562040549311678251301333735522015938104
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | balances=K(BitVec(160), 0), balances1=Store(K(BitVec(160), 0),
+      0,
+      57896044618658097711785492504343953926634992332820282019728792003956564819968), meta.revert_taken=False, meta.sender=0, meta.value=57896044618658097711785492504343953926634992332820282019728792003956564819968
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_pk9uf8qp/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_pk9uf8qp/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_pk9uf8qp/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_pk9uf8qp/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_pk9uf8qp/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_pk9uf8qp' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'owner', 'val_src': '_newOwner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner'}
+INFO:root:   {'op': 'raw', 'src': 'address(owner).transfer(meta.contract_balance)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | balances=K(BitVec(160),
+  109004175641689936889839356967735666789894699334048526720515910603146547208464), balances1=Store(K(BitVec(160),
+        109004175641689936889839356967735666789894699334048526720515910603146547208464),
+      0,
+      51108131023031839178053864463391712863259707001228244700787118599189982388496), meta.revert_taken=False, meta.sender=0, meta.value=57896044618658097711785492504343953926634992332820282019728792003956564819968
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | balances=K(BitVec(160),
+  115792089237316195422786347291764572757790510987739605737444789578454636961792), balances1=Store(K(BitVec(160),
+        115792089237316195422786347291764572757790510987739605737444789578454636961792),
+      0,
+      115792089237316195422786347291761718262405099067977489165505890588181871468544), meta.revert_taken=False, meta.sender=0, meta.value=2854495385411919762116571938898990272765493248
+   - (meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender)  | balances=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129639935), balances1=Store(K(BitVec(160),
+        115792089237316195423570985008687907853269984665640564039457584007913129639935),
+      0,
+      0), meta.revert_taken=False, meta.sender=0, meta.value=115792089237316195423570985008687907853269984665640564039457584007913129639935
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_pk9uf8qp/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_pk9uf8qp/verified_invariants.global.summary.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

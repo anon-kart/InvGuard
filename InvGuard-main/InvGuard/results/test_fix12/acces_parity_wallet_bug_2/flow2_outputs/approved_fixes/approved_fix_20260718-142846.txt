@@ -1,0 +1,4 @@
+Added access control to the initWallet function by requiring the caller to be the owner.
+
+INVARIANTS USED:
+ACCESS_CONTROL

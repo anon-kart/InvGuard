@@ -1,0 +1,8 @@
+Replaced the loop-based insertNnumbers with a pull-payment approach that records owed amounts per caller (payments mapping), added a withdraw() function for users to claim funds, added overflow checks and a reentrancy mutex (_locked), and avoided per-item array writes to prevent gas DoS.
+
+INVARIANTS USED:
+- No external calls inside loops (prevents gas exhaustion and single-recipient revert DoS).
+- Checks-Effects-Interactions pattern in withdraw(): state updated before external call.
+- Reentrancy guard (_locked) to prevent reentrant withdraw executions.
+- Integer overflow checks when updating numElements and when computing total = value * numbers.
+- Avoid expanding array in a loop: numElements updated atomically to reflect logical size while actual array writes are deferred/avoided.

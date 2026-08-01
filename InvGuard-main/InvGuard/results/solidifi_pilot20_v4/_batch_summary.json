@@ -1,0 +1,607 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h1_buggy_1.sol",
+    "stem": "sfi_reentrancy_reentrancy_h1_buggy_1",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw_balances_re_ent8",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 20.03,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 66.18,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h15_buggy_15.sol",
+    "stem": "sfi_reentrancy_reentrancy_h15_buggy_15",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw_balances_re_ent8",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 16.62,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 26.38,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h22_buggy_22.sol",
+    "stem": "sfi_reentrancy_reentrancy_h22_buggy_22",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawFunds_re_ent17",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 16.8,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 44.3,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h6_buggy_6.sol",
+    "stem": "sfi_reentrancy_reentrancy_h6_buggy_6",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw_balances_re_ent1",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 15.71,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 50.1,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h11_buggy_11.sol",
+    "stem": "sfi_reentrancy_reentrancy_h11_buggy_11",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawFunds_re_ent3",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 17.63,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 44.89,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_integer_overflow_overflow_underflow_h4_buggy_4.sol",
+    "stem": "sfi_integer_overflow_overflow_underflow_h4_buggy_4",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "transfer_intou26",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 17.33,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 18.0,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_integer_overflow_overflow_underflow_h2_buggy_2.sol",
+    "stem": "sfi_integer_overflow_overflow_underflow_h2_buggy_2",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "transfer_intou26",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 19.78,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 16.87,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_integer_overflow_overflow_underflow_h34_buggy_34.sol",
+    "stem": "sfi_integer_overflow_overflow_underflow_h34_buggy_34",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "transfer_intou34",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 14.26,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 14.66,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "T1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_integer_overflow_overflow_underflow_h43_buggy_43.sol",
+    "stem": "sfi_integer_overflow_overflow_underflow_h43_buggy_43",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "transfer_intou22",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 18.28,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 16.99,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_integer_overflow_overflow_underflow_h48_buggy_48.sol",
+    "stem": "sfi_integer_overflow_overflow_underflow_h48_buggy_48",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "transfer_intou26",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 15.41,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 14.46,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_unchecked_call_unhandled_exceptions_h30_buggy_30.sol",
+    "stem": "sfi_unchecked_call_unhandled_exceptions_h30_buggy_30",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "bug_unchk18",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 14.66,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 41.68,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_unchecked_call_unhandled_exceptions_h49_buggy_49.sol",
+    "stem": "sfi_unchecked_call_unhandled_exceptions_h49_buggy_49",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "my_func_unchk35",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 12.91,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 49.09,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_unchecked_call_unhandled_exceptions_h41_buggy_41.sol",
+    "stem": "sfi_unchecked_call_unhandled_exceptions_h41_buggy_41",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "bug_unchk30",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 15.72,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 48.55,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_unchecked_call_unchecked_send_h43_buggy_43.sol",
+    "stem": "sfi_unchecked_call_unchecked_send_h43_buggy_43",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "bug_unchk_send8",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 11.96,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 45.29,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_unchecked_call_unchecked_send_h23_buggy_23.sol",
+    "stem": "sfi_unchecked_call_unchecked_send_h23_buggy_23",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "bug_unchk_send15",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 11.06,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 46.96,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_tx_origin_tx_origin_h5_buggy_5.sol",
+    "stem": "sfi_tx_origin_tx_origin_h5_buggy_5",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "sendto_txorigin21",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 17.57,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 14.68,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_tx_origin_tx_origin_h16_buggy_16.sol",
+    "stem": "sfi_tx_origin_tx_origin_h16_buggy_16",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawAll_txorigin34",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 15.01,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 54.86,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_tx_origin_tx_origin_h42_buggy_42.sol",
+    "stem": "sfi_tx_origin_tx_origin_h42_buggy_42",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawAll_txorigin2",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 14.85,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 15.76,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_tx_origin_tx_origin_h44_buggy_44.sol",
+    "stem": "sfi_tx_origin_tx_origin_h44_buggy_44",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawAll_txorigin10",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 15.97,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 64.49,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A2"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_tx_origin_tx_origin_h40_buggy_40.sol",
+    "stem": "sfi_tx_origin_tx_origin_h40_buggy_40",
+    "tier": "solidifi_pilot20_v4",
+    "model": "gpt-4o-mini",
+    "target_function": "sendto_txorigin17",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 14.16,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 48.55,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A2"
+      }
+    }
+  }
+]

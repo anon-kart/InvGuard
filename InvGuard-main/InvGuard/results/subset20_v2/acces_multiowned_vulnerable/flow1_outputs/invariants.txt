@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (root == owners[root])
+(meta.revert_taken == false) -> (arg._owner != 0)
+(meta.revert_taken == false) -> (meta.sender == owners[arg._owner] || (owners[arg._owner] != 0 && meta.sender == root))
+(meta.revert_taken == false) -> (owners[meta.sender] != 0)

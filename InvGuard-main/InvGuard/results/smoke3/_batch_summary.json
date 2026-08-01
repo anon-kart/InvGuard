@@ -1,0 +1,52 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_simple.sol",
+    "stem": "denia_dos_simple",
+    "tier": "smoke3",
+    "model": "gpt-4o-mini",
+    "target_function": "ifillArray",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 20.81,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 11.62,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_bonus.sol",
+    "stem": "reent_reentrancy_bonus",
+    "tier": "smoke3",
+    "model": "gpt-4o-mini",
+    "target_function": "getFirstWithdrawalBonus",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 27.23,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 0.92,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

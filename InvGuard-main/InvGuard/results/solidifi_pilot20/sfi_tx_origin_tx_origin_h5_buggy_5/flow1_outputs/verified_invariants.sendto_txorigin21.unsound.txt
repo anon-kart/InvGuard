@@ -1,0 +1,8 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) + select(post.balanceOf, post.to) == select(pre.balanceOf, meta.sender) + select(pre.balanceOf, post.to)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.sellPrice >= 0)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.buyPrice >= 0)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).

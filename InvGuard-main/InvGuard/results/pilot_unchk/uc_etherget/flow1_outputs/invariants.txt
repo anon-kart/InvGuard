@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.owner != address(0))
+(meta.revert_taken == false) -> (select(post.balanceOf, post.owner) > select(pre.balanceOf, pre.owner))
+(meta.revert_taken == false) -> (this.balance >= 0)
+(meta.revert_taken == false) -> (meta.sender == post.owner)
+(meta.revert_taken == false) -> (success)

@@ -1,0 +1,61 @@
+{
+  "function": "withdraw_balances_re_ent1",
+  "raw_count": 11,
+  "fixed_raw_count": 11,
+  "sanitized_count": 11,
+  "deposit_count": 11,
+  "withdraw_count": 11,
+  "chosen_count_before_final_fallback": 11,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))",
+    "(meta.revert_taken == false) -> (post.stopped == pre.stopped)",
+    "(meta.revert_taken == false) -> (post._owner == pre._owner)",
+    "(meta.revert_taken == false) -> (post._master == pre._master)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))",
+    "(meta.revert_taken == false) -> (post.stopped == pre.stopped)",
+    "(meta.revert_taken == false) -> (post._owner == pre._owner)",
+    "(meta.revert_taken == false) -> (post._master == pre._master)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))",
+    "(meta.revert_taken == false) -> (post.stopped == pre.stopped)",
+    "(meta.revert_taken == false) -> (post._owner == pre._owner)",
+    "(meta.revert_taken == false) -> (post._master == pre._master)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))",
+    "(meta.revert_taken == false) -> (post.stopped == pre.stopped)",
+    "(meta.revert_taken == false) -> (post._owner == pre._owner)",
+    "(meta.revert_taken == false) -> (post._master == pre._master)"
+  ]
+}

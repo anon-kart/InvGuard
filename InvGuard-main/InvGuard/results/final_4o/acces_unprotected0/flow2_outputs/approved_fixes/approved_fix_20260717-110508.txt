@@ -1,0 +1,4 @@
+Added an authorization check to ensure only the current owner can call changeOwner.
+
+INVARIANTS USED:
+Authorization check using onlyowner modifier to restrict access to the changeOwner function.

@@ -1,0 +1,33 @@
+{
+  "function": "add",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 4,
+  "deposit_count": 3,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.balance >= pre.balance)",
+    "(meta.revert_taken == false) -> (post.balance <= pre.balance + arg.deposit)",
+    "(meta.revert_taken == false) -> (post.balance > pre.balance)",
+    "(meta.revert_taken == false) -> (post.balance != pre.balance)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.balance >= pre.balance)",
+    "(meta.revert_taken == false) -> (post.balance <= pre.balance + arg.deposit)",
+    "(meta.revert_taken == false) -> (post.balance > pre.balance)",
+    "(meta.revert_taken == false) -> (post.balance != pre.balance)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.balance >= pre.balance)",
+    "(meta.revert_taken == false) -> (post.balance <= (pre.balance + arg.deposit))",
+    "(meta.revert_taken == false) -> (post.balance > pre.balance)",
+    "(meta.revert_taken == false) -> (post.balance != pre.balance)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.balance >= pre.balance)",
+    "(meta.revert_taken == false) -> (post.balance <= (pre.balance + arg.deposit))",
+    "(meta.revert_taken == false) -> (post.balance > pre.balance)",
+    "(meta.revert_taken == false) -> (post.balance != pre.balance)"
+  ]
+}

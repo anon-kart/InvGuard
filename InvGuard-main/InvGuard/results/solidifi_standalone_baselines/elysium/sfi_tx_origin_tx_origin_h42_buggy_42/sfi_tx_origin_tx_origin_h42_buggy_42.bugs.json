@@ -1,0 +1,16 @@
+[
+    {
+        "code_coverage": 99.47,
+        "execution_time": 19.935632705688477,
+        "tool": "Mythril",
+        "pc": 187,
+        "type": "transaction origin"
+    },
+    {
+        "code_coverage": 99.47,
+        "execution_time": 19.935632705688477,
+        "tool": "Mythril",
+        "pc": 224,
+        "type": "leaking ether"
+    }
+]

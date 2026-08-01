@@ -1,0 +1,4 @@
+Converted the bid refund logic from an immediate push payment to a pull-payment pattern. Instead of requiring the previous frontrunner to successfully receive Ether during bid(), the contract records the previous bid in pendingReturns and lets users withdraw their refunds separately via withdraw(). This prevents a malicious frontrunner with a reverting fallback from blocking future bids. An overflow check was added when accumulating pending refunds.
+
+INVARIANTS USED:
+The highest-bid invariant is preserved: bid() still requires msg.value > currentBid before updating currentFrontrunner and currentBid. Previous frontrunners remain entitled to refunds equal to their displaced bids, now tracked in pendingReturns. A failed refund withdrawal affects only the withdrawing account and does not block bid progression. pendingReturns is cleared before the external send in withdraw(), with revert semantics restoring state if send fails under Solidity 0.4.15 require().

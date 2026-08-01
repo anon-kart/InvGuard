@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.currentBid > pre.currentBid)
+(meta.revert_taken == false) -> (post.currentFrontrunner != 0)
+(meta.revert_taken == false) -> (select(post.currentFrontrunner, meta.sender) == select(pre.currentFrontrunner, meta.sender))
+(meta.revert_taken == false) -> (post.currentBid >= pre.currentBid)
+(pre.currentFrontrunner != 0 && post.currentFrontrunner == 0) -> (meta.revert_taken == true)

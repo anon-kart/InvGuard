@@ -1,0 +1,23 @@
+{
+  "VU": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (meta.sender == pre.owner) -> (post.owner == arg._newOwner)",
+      "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (post.owner == pre.owner)"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.owner != pre.owner)"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

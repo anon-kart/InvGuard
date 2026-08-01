@@ -1,0 +1,2 @@
+# VERIFIED-USEFUL (STRONG + MEDIUM) — ONLY THESE SHOULD GUIDE FLOW-2
+meta.revert_taken == false) -> (post.king == meta.sender

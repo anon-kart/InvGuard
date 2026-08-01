@@ -1,0 +1,55 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/old_blockhash.sol",
+    "stem": "bad_r_old_blockhash",
+    "tier": "test_fix2",
+    "model": "gpt-4o-mini",
+    "target_function": "settle",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "outcome_controlled"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 33.7,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "T6"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/0x4e73b32ed6c35f570686b89848e5f39f20ecc106.sol",
+    "stem": "reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106",
+    "tier": "test_fix2",
+    "model": "gpt-4o-mini",
+    "target_function": "Collect",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "financial"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 36.41,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

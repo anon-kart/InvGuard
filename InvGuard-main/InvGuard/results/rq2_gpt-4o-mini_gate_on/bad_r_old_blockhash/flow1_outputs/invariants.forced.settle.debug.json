@@ -1,0 +1,29 @@
+{
+  "function": "settle",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 1,
+  "deposit_count": 1,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 1,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block >= select(pre.guesses, meta.sender).block)",
+    "(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block <= select(pre.guesses, meta.sender).block + 1)",
+    "(meta.revert_taken == false) -> (select(post.guesses, meta.sender).guess == select(pre.guesses, meta.sender).guess)",
+    "(meta.revert_taken == false) -> (post.block > pre.block)",
+    "(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block == 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block >= select(pre.guesses, meta.sender).block)",
+    "(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block <= select(pre.guesses, meta.sender).block + 1)",
+    "(meta.revert_taken == false) -> (select(post.guesses, meta.sender).guess == select(pre.guesses, meta.sender).guess)",
+    "(meta.revert_taken == false) -> (post.block > pre.block)",
+    "(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block == 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.block > pre.block)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.block > pre.block)"
+  ]
+}

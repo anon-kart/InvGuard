@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (owner != address(0))
+(meta.revert_taken == false) -> (address(this).balance == sum(balances))
+(meta.revert_taken == false) -> (meta.sender == owner)
+(meta.revert_taken == false) -> (owner != arg._newOwner)

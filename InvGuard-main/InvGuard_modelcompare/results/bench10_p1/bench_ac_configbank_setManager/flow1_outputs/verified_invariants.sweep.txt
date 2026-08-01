@@ -1,0 +1,7 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.totalFunds >= pre.totalFunds)
+(meta.revert_taken == false) -> (select(post.funds, meta.sender) >= select(pre.funds, meta.sender)
+(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)
+(meta.revert_taken == false) -> (post.manager == pre.manager)
+(meta.revert_taken == false) -> (post.founder == pre.founder)

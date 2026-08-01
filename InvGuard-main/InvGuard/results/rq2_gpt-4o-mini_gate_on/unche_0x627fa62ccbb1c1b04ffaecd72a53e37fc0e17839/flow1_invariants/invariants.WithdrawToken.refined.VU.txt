@@ -1,0 +1,5 @@
+# VERIFIED-USEFUL (constraints for Flow-2)
+(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)
+(meta.revert_taken == false) -> (select(post.Holders, meta.sender) >= select(pre.Holders, meta.sender))
+(meta.revert_taken == false) -> (select(post.Holders, meta.sender) <= select(pre.Holders, meta.sender))
+(meta.revert_taken == false) -> (post.owner == pre.owner)

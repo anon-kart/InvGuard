@@ -1,0 +1,137 @@
+{
+  "ok": true,
+  "invariants": {
+    "ok": false,
+    "verified": [],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "NO_REAL_INVARIANTS_AFTER_SANITIZATION"
+  },
+  "replay": {
+    "results": {
+      "CS5": {
+        "compile_ok": true,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/CS5",
+        "forge_returncode": 0,
+        "stdout_head": "Compiling 1 files with Solc 0.8.28\nCompiling 1 files with Solc 0.4.26\nSolc 0.4.26 finished in 8.61ms\nSolc 0.8.28 finished in 87.73ms\nCompiler run successful with warnings:\nWarning: \"sha3\" has been deprecated in favour of \"keccak256\"\nsrc/Target.sol:19:37: Warning: \"sha3\" has been deprecated in favour of \"keccak256\"\n    bytes4 constant fibSig = bytes4(sha3(\"setFibonacci(uint256)\"));\n                                    ^---------------------------^",
+        "stderr_head": "Warning: AST source not found for /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/CS5/src/Target.sol\nnote[screaming-snake-case-const]: constants should use SCREAMING_SNAKE_CASE\n  --> src/Attacker.sol:42:17\n   |\n42 |     Vm constant vm = Vm(address(uint160(uint256(keccak256('hevm cheat code')))));\n   |                 ^^ help: consider using: `VM`\n   |\n   = help: https://book.getfoundry.sh/reference/forge/forge-lint#screaming-snake-case-const\n",
+        "error": null,
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false,
+        "impact_details": "forge test ok; entrypoint_ok=0; impact_ok=0; profit_wei=0; drain_wei=0; honest_drain_wei=0; excess_drain_wei=0; impact_ok_differential=0; policy=profit_positive_or_excess_drain; revert_reason=",
+        "excess_drain_wei": 0,
+        "impact_ok_differential": false,
+        "test_returncode": 0,
+        "test_stdout_head": "Compiling 2 files with Solc 0.8.28\nSolc 0.8.28 finished in 407.00ms\nCompiler run successful!\n\nRan 1 test for test/ExploitExecutor.t.sol:ExploitExecutorTest\n[PASS] test_run_attack() (gas: 3323746)\nLogs:\n  entrypoint_ok: 0\n  ret_data: 0x\n  unauthorized_change: 0\n  priv_bypassed: 0\n  stranded_funds: 0\n  profit_wei: 0\n  drain_wei: 0\n  honest_drain_wei: 0\n  excess_drain_wei: 0\n  impact_ok: 0\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 1.21ms (897.65\u00b5s CPU time)\n\nRan 1 test suite in 8.53ms (1.21ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+        "test_stderr_head": "",
+        "test_error": null
+      }
+    },
+    "compile_ok": 1,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": true,
+    "run_all": false
+  },
+  "benign": {
+    "ok": false,
+    "reason": "benign_original_failed",
+    "original": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "withdraw",
+          "arg_types": [],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.4.22",
+      "error": "forge test failed"
+    },
+    "patched": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "withdraw",
+          "arg_types": [],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.4.22",
+      "error": "forge test failed"
+    },
+    "failed_calls": [
+      {
+        "reason": "original_suite_failed"
+      }
+    ]
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "PASS",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "CS5",
+    "invariant_applicable": false
+  }
+}

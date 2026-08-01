@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (select(post.staker, arg.sender).tokens >= select(pre.staker, arg.sender).tokens)
+(meta.revert_taken == false) -> (select(post.staker, arg.sender).redeem == true -> select(pre.staker, arg.sender).redeem == false)
+(meta.revert_taken == false) -> (post.stakeTokens >= pre.stakeTokens)
+(meta.revert_taken == false) -> (post.lock == true -> pre.lock == false)
+(meta.revert_taken == false) -> (select(post.staker, arg.sender).time >= select(pre.staker, arg.sender).time)
+(meta.revert_taken == false) -> (select(post.staker, arg.sender).tokens <= select(pre.staker, arg.sender).tokens + post.stakeTokens)

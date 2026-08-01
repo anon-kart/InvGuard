@@ -1,0 +1,4 @@
+Added access control to changeOwner() function by requiring msg.sender to be the owner.
+
+INVARIANTS USED:
+Ownership control, access control

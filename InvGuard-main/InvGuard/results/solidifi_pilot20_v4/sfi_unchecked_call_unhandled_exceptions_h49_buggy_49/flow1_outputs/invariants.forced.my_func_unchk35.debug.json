@@ -1,0 +1,41 @@
+{
+  "function": "my_func_unchk35",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 6,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalShares == pre.totalShares)",
+    "(meta.revert_taken == false) -> (post.collateral == pre.collateral)",
+    "(meta.revert_taken == false) -> (post.debt == pre.debt)",
+    "(meta.revert_taken == false) -> (post.price == pre.price)",
+    "(meta.revert_taken == false) -> (post.asset == pre.asset)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalShares == pre.totalShares)",
+    "(meta.revert_taken == false) -> (post.collateral == pre.collateral)",
+    "(meta.revert_taken == false) -> (post.debt == pre.debt)",
+    "(meta.revert_taken == false) -> (post.price == pre.price)",
+    "(meta.revert_taken == false) -> (post.asset == pre.asset)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalShares == pre.totalShares)",
+    "(meta.revert_taken == false) -> (post.collateral == pre.collateral)",
+    "(meta.revert_taken == false) -> (post.debt == pre.debt)",
+    "(meta.revert_taken == false) -> (post.price == pre.price)",
+    "(meta.revert_taken == false) -> (post.asset == pre.asset)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalShares == pre.totalShares)",
+    "(meta.revert_taken == false) -> (post.collateral == pre.collateral)",
+    "(meta.revert_taken == false) -> (post.debt == pre.debt)",
+    "(meta.revert_taken == false) -> (post.price == pre.price)",
+    "(meta.revert_taken == false) -> (post.asset == pre.asset)"
+  ]
+}

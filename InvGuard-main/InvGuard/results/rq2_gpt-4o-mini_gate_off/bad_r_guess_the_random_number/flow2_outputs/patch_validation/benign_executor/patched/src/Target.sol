@@ -1,0 +1,39 @@
+/*
+ * @source: https://capturetheether.com/challenges/lotteries/guess-the-random-number/
+ * @author: Steve Marx
+ * @vulnerable_at_lines: 15
+ */
+
+pragma solidity ^0.4.21;
+
+contract GuessTheRandomNumberChallenge {
+    uint8 answer;
+    uint256 public revealBlock;
+
+    function GuessTheRandomNumberChallenge() public payable {
+        require(msg.value == 1 ether);
+        answer = uint8(keccak256(block.blockhash(block.number - 1), now));
+        revealBlock = block.number + 1; // Set the block number for reveal
+    }
+
+    function isComplete() public view returns (bool) {
+        return address(this).balance == 0;
+    }
+
+    function guess(uint8 n) public payable {
+        require(msg.value == 1 ether);
+        require(block.number > revealBlock); // Ensure the guess is made after the reveal block
+
+        if (n == answer) {
+            msg.sender.transfer(2 ether);
+        }
+    }
+}
+
+
+// ---- auto-added by BenignExecutor ----
+// Provides a stable deployable name used by the harness: `Target`.
+// Assumes `GuessTheRandomNumberChallenge` has a no-arg constructor (or implicit constructor).
+contract Target is GuessTheRandomNumberChallenge {
+    constructor() GuessTheRandomNumberChallenge() {}
+}

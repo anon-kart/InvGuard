@@ -1,0 +1,20 @@
+{
+  "config": "code_only",
+  "aggregate": {
+    "n_contracts": 0,
+    "n_with_artifacts": 0,
+    "mean_meaningful": null,
+    "mean_fp": null,
+    "mean_precision": null,
+    "tier_totals": {
+      "strong": 0,
+      "medium": 0,
+      "useful": 0,
+      "weak": 0
+    },
+    "category_totals": {},
+    "mean_correct_inference_ratio": null,
+    "mean_gt_precision": null
+  },
+  "per_contract": []
+}

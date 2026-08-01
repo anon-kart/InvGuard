@@ -1,0 +1,31 @@
+{
+  "function": "bug_unchk_send15",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (meta.contract_balance >= 0)",
+    "(meta.revert_taken == false) -> (meta.contract_balance == pre.contract_balance + arg.value)",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance - 1 ether)",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance + arg.value)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (meta.contract_balance >= 0)",
+    "(meta.revert_taken == false) -> (meta.contract_balance == pre.contract_balance + meta.value)",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance - 1 ether)",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance + meta.value)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (meta.contract_balance >= 0)",
+    "(meta.revert_taken == false) -> (meta.contract_balance == (pre.contract_balance + meta.value))",
+    "(meta.revert_taken == false) -> (post.contract_balance == (pre.contract_balance + meta.value))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (meta.contract_balance >= 0)",
+    "(meta.revert_taken == false) -> (meta.contract_balance == (pre.contract_balance + meta.value))",
+    "(meta.revert_taken == false) -> (post.contract_balance == (pre.contract_balance + meta.value))"
+  ]
+}

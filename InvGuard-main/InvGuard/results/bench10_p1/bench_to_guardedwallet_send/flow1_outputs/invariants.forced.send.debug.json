@@ -1,0 +1,41 @@
+{
+  "function": "send",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 3,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)",
+    "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))",
+    "(meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount)",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.vaultBalance() <= pre.vaultBalance() + pre.vaultBalance() - arg.amount)",
+    "(meta.revert_taken == false) -> (post.holder == pre.holder)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)",
+    "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))",
+    "(meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount)",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.vaultBalance() <= pre.vaultBalance() + pre.vaultBalance() - arg.amount)",
+    "(meta.revert_taken == false) -> (post.holder == pre.holder)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)",
+    "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))",
+    "(meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == (select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount))",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + pre.vaultBalance() - arg.amount))",
+    "(meta.revert_taken == false) -> (post.holder == pre.holder)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)",
+    "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))",
+    "(meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == (select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount))",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + pre.vaultBalance() - arg.amount))",
+    "(meta.revert_taken == false) -> (post.holder == pre.holder)"
+  ]
+}

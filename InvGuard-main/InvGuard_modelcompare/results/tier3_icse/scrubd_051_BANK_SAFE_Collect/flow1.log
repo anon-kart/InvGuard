@@ -1,0 +1,102 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2876, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2876, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_051_BANK_SAFE_Collect.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f SAFE_Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.SAFE_Collect.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'intitalized'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'intitalized'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'call', 'target_src': 'meta.sender', 'value_src': '_am', 'args_src': '', 'ok_var': '_callOk1'}], 'else': [{'op': 'raw', 'src': '_callOk1'}]}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 883, in <module>
+    main()
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 636, in main
+    model = builder.build_for_function_name(cir, chosen_fn)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/model/symmodel_builder.py", line 109, in build_for_function_name
+    raise ValueError(f"Function '{func_name}' not found in contract {cir.name}.")
+ValueError: Function 'SAFE_Collect' not found in contract BANK_SAFE.
+
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f SAFE_Collect --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.SAFE_Collect.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'intitalized'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'MinSum', 'val_src': '_val'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'intitalized'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'Log', 'val_src': 'LogFile(_log)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'intitalized', 'val_src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,msg.value,Put)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'select(balances, meta.sender) >= MinSum && select(balances, meta.sender) >= _am', 'then': [{'op': 'external_call', 'kind': 'call', 'target_src': 'meta.sender', 'value_src': '_am', 'args_src': '', 'ok_var': '_callOk1'}], 'else': [{'op': 'raw', 'src': '_callOk1'}]}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'Log', 'value_src': '0', 'args_src': 'Log.AddMessage(msg.sender,_am,Collect)'}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 883, in <module>
+    main()
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 636, in main
+    model = builder.build_for_function_name(cir, chosen_fn)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/model/symmodel_builder.py", line 109, in build_for_function_name
+    raise ValueError(f"Function '{func_name}' not found in contract {cir.name}.")
+ValueError: Function 'SAFE_Collect' not found in contract BANK_SAFE.
+
+[FLOW1] ❌ Skipping refinement + strength scoring due to checker infrastructure failure (non-zero exit).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

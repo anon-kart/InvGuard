@@ -1,0 +1,186 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+WARNING:root:[FLOW1] No function-specific invariants for insertNnumbers; falling back to all sanitized invariants.
+WARNING:root:[FLOW1] Sanitizer removed all invariants for insertNnumbers; NOT falling back to raw invariants. Using safe deterministic invariants only.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+WARNING:root:[FLOW1] No function-specific invariants for insertNnumbers; falling back to all sanitized invariants.
+WARNING:root:[FLOW1] Sanitizer removed all invariants for insertNnumbers; NOT falling back to raw invariants. Using safe deterministic invariants only.
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_number.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < numbers', 'then': [{'op': 'raw', 'src': 'numElements == array.length'}], 'else': [{'op': 'raw', 'src': 'array.length += 1'}]}
+INFO:root:   {'op': 'store_map', 'var': 'array', 'key_src': 'numElements ++', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'i ++'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'numElements > 1500'}
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'numElements > 1500'}
+INFO:root:   {'op': 'store', 'var': 'array', 'val_src': 'new uint256[](0)'}
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'numElements'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'array.length'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (numElements >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (numElements > 1500)  | array=0, array1=0, meta.revert_taken=False, numElements=0, numElements1=0
+   - (meta.revert_taken == false) -> (numElements > 1500)  | array=0, array1=0, meta.revert_taken=False, numElements=0, numElements1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (numElements <= array.length)  | reason=KeyError: "Unknown symbol 'array.length'"
+   - (meta.revert_taken == false) -> (array.length >= 0)  | reason=KeyError: "Unknown symbol 'array.length'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.global.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.global.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f insertNnumbers --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.insertNnumbers.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < numbers', 'then': [{'op': 'raw', 'src': 'numElements == array.length'}], 'else': [{'op': 'raw', 'src': 'array.length += 1'}]}
+INFO:root:   {'op': 'store_map', 'var': 'array', 'key_src': 'numElements ++', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'i ++'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'numElements > 1500'}
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'numElements > 1500'}
+INFO:root:   {'op': 'store', 'var': 'array', 'val_src': 'new uint256[](0)'}
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'numElements'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'array.length'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  | reason=KeyError: "Unknown symbol 'post.feeBps'"
+   - (meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  | reason=KeyError: "Unknown symbol 'post.maxWithdrawBps'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.insertNnumbers.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.insertNnumbers.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.insertNnumbers.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f insertNnumbers --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.insertNnumbers.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'i', 'val_src': '0'}
+INFO:root:   {'op': 'if', 'cond_src': 'i < numbers', 'then': [{'op': 'raw', 'src': 'numElements == array.length'}], 'else': [{'op': 'raw', 'src': 'array.length += 1'}]}
+INFO:root:   {'op': 'store_map', 'var': 'array', 'key_src': 'numElements ++', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'i ++'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'numElements > 1500'}
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'numElements > 1500'}
+INFO:root:   {'op': 'store', 'var': 'array', 'val_src': 'new uint256[](0)'}
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'numElements'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'array.length'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'numElements', 'val_src': '0'}
+INFO:root:[FLOW1] Direct VU injection: 0 invariants -> VU files.
+WARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  | reason=KeyError: "Unknown symbol 'post.feeBps'"
+   - (meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  | reason=KeyError: "Unknown symbol 'post.maxWithdrawBps'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.insertNnumbers.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.insertNnumbers.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.insertNnumbers.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f insertNnumbers --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.insertNnumbers.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: insertNnumbers  (invariants: LLM-translated)
+Notes:
+  - [tmp] created local i: BitVec256
+  - [raw-block] numElements == array.length
+  - [raw-block] array.length += 1
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'array', 'key_src': 'numElements ++', 'val_src': 'value'}
+  - [raw] i ++
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)", "reason": "KeyError: \"Unknown symbol 'post.feeBps'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)", "reason": "KeyError: \"Unknown symbol 'post.maxWithdrawBps'\"", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f insertNnumbers --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.insertNnumbers.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: insertNnumbers  (invariants: LLM-translated)
+Notes:
+  - [tmp] created local i: BitVec256
+  - [raw-block] numElements == array.length
+  - [raw-block] array.length += 1
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'array', 'key_src': 'numElements ++', 'val_src': 'value'}
+  - [raw] i ++
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)", "reason": "KeyError: \"Unknown symbol 'post.feeBps'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)", "reason": "KeyError: \"Unknown symbol 'post.maxWithdrawBps'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ⚠️ No verified-useful invariants for Flow-2. Invariant-guided Flow-2 must be disabled or run in explicit contract-only mode.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

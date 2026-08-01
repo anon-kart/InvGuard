@@ -1,0 +1,160 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2883, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+[DEBUG] contract_on_disk = /home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Unhandled-Exceptions/buggy_30.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f bug_unchk18 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.bug_unchk18.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_paused'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': '_paused', 'val_src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'Paused(meta.sender)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyPauser()'}
+INFO:root:   {'op': 'raw', 'src': 'whenNotPaused()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': '_paused', 'val_src': 'false'}
+INFO:root:   {'op': 'raw', 'src': 'Unpaused(meta.sender)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyPauser()'}
+INFO:root:   {'op': 'raw', 'src': 'whenPaused()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_pausers', 'value_src': '0', 'args_src': '_pausers.has(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_addPauser(account)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyPauser()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_removePauser(meta.sender)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_pausers', 'value_src': '0', 'args_src': '_pausers.add(account)'}
+INFO:root:   {'op': 'raw', 'src': 'PauserAdded(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_pausers', 'value_src': '0', 'args_src': '_pausers.remove(account)'}
+INFO:root:   {'op': 'raw', 'src': 'PauserRemoved(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_minters', 'value_src': '0', 'args_src': '_minters.has(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_addMinter(account)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyMinter()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_removeMinter(meta.sender)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_minters', 'value_src': '0', 'args_src': '_minters.add(account)'}
+INFO:root:   {'op': 'raw', 'src': 'MinterAdded(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_minters', 'value_src': '0', 'args_src': '_minters.remove(account)'}
+INFO:root:   {'op': 'raw', 'src': 'MinterRemoved(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_name'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_symbol'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '18'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, tokenHolder)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_send(meta.sender,meta.sender,recipient,amount,data,,true)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'recipient != address(0)'}
+INFO:root:   {'op': 'store', 'var': 'from', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'raw', 'src': '_callTokensToSend(from,from,recipient,amount,,)'}
+INFO:root:   {'op': 'raw', 'src': '_move(from,from,recipient,amount,,)'}
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f bug_unchk18 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.bug_unchk18.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_paused'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': '_paused', 'val_src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'Paused(meta.sender)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyPauser()'}
+INFO:root:   {'op': 'raw', 'src': 'whenNotPaused()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': '_paused', 'val_src': 'false'}
+INFO:root:   {'op': 'raw', 'src': 'Unpaused(meta.sender)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyPauser()'}
+INFO:root:   {'op': 'raw', 'src': 'whenPaused()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_pausers', 'value_src': '0', 'args_src': '_pausers.has(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_addPauser(account)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyPauser()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_removePauser(meta.sender)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_pausers', 'value_src': '0', 'args_src': '_pausers.add(account)'}
+INFO:root:   {'op': 'raw', 'src': 'PauserAdded(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_pausers', 'value_src': '0', 'args_src': '_pausers.remove(account)'}
+INFO:root:   {'op': 'raw', 'src': 'PauserRemoved(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_minters', 'value_src': '0', 'args_src': '_minters.has(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_addMinter(account)'}
+INFO:root:   {'op': 'raw', 'src': 'onlyMinter()'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_removeMinter(meta.sender)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_minters', 'value_src': '0', 'args_src': '_minters.add(account)'}
+INFO:root:   {'op': 'raw', 'src': 'MinterAdded(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '_minters', 'value_src': '0', 'args_src': '_minters.remove(account)'}
+INFO:root:   {'op': 'raw', 'src': 'MinterRemoved(account)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_name'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_symbol'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '18'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, tokenHolder)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_send(meta.sender,meta.sender,recipient,amount,data,,true)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'recipient != address(0)'}
+INFO:root:   {'op': 'store', 'var': 'from', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'raw', 'src': '_callTokensToSend(from,from,recipient,amount,,)'}
+INFO:root:   {'op': 'raw', 'src': '_move(from,from,recipient,amount,,)'}
+[... truncated ...]ERROR:root:[FLOW1] Checker failed.
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/agent.py", line 2883, in _run_checker_once_from_python
+    core: InvGuardResult = run_invguard_core(
+                           ^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/invguard_adapter.py", line 479, in run_invguard_core
+    raise RuntimeError(
+RuntimeError: Z3Checker failed with return code 1. This is an infrastructure/configuration failure. See report_lines for details.
+
+[FLOW1] ❌ Skipping refinement + strength scoring due to checker infrastructure failure (non-zero exit).

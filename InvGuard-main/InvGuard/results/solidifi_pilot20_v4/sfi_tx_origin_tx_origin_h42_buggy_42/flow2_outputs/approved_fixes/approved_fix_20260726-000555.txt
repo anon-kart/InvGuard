@@ -1,0 +1,4 @@
+Replaced `tx.origin` checks with `msg.sender` in the `withdrawAll_txorigin2` function for proper authorization.
+
+INVARIANTS USED:
+msg.sender must be the owner to withdraw funds.

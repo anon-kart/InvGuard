@@ -1,0 +1,118 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/overflow_single_tx.sol",
+    "stem": "integ_overflow_single_tx",
+    "tier": "test_fix7",
+    "model": "gpt-4o-mini",
+    "target_function": "overflowaddtostate",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 27.73,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/blackjack.sol",
+    "stem": "bad_r_blackjack",
+    "tier": "test_fix7",
+    "model": "gpt-4o-mini",
+    "target_function": "deal",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 847.91,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "CS10"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_address.sol",
+    "stem": "denia_dos_address",
+    "tier": "test_fix7",
+    "model": "gpt-4o-mini",
+    "target_function": "emptyCreditors",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 36.79,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "CS12"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/modifier_reentrancy.sol",
+    "stem": "reent_modifier_reentrancy",
+    "tier": "test_fix7",
+    "model": "gpt-4o-mini",
+    "target_function": "airDrop",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 20.55,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

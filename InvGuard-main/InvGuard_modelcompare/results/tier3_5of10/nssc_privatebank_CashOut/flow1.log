@@ -1,0 +1,166 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_privatebank_CashOut.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Deposit.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'meta.value >= MinDeposit', 'then': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}], 'else': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'TransferLog', 'value_src': '0', 'args_src': 'TransferLog.AddMessage(msg.sender,msg.value,Deposit)'}]}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': '_am <= select(balances, meta.sender)', 'then': [{'op': 'external_call', 'kind': 'call', 'target_src': 'meta.sender', 'value_src': '_am', 'args_src': '', 'ok_var': 'ok'}], 'else': [{'op': 'raw', 'src': 'ok'}]}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'TransferLog', 'value_src': '0', 'args_src': 'TransferLog.AddMessage(msg.sender,_am,CashOut)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'MinDeposit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender)  | reason=KeyError: "Unknown symbol 'arg.Sender'"
+   - (meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= (select(pre.balances, arg.Sender) + arg.Val)  | reason=KeyError: "Unknown symbol 'arg.Sender'"
+   - (meta.revert_taken == false) -> (post.Time >= pre.Time)  | reason=KeyError: "Unknown symbol 'post.Time'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Deposit.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Deposit.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.Deposit.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f CashOut --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.CashOut.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'meta.value >= MinDeposit', 'then': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}], 'else': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'TransferLog', 'value_src': '0', 'args_src': 'TransferLog.AddMessage(msg.sender,msg.value,Deposit)'}]}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': '_am <= select(balances, meta.sender)', 'then': [{'op': 'external_call', 'kind': 'call', 'target_src': 'meta.sender', 'value_src': '_am', 'args_src': '', 'ok_var': 'ok'}], 'else': [{'op': 'raw', 'src': 'ok'}]}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'TransferLog', 'value_src': '0', 'args_src': 'TransferLog.AddMessage(msg.sender,_am,CashOut)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'MinDeposit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.Time >= pre.Time)  | reason=KeyError: "Unknown symbol 'post.Time'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.CashOut.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.CashOut.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.CashOut.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f Deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.Deposit.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: Deposit  (invariants: LLM-translated)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))", "reason": "KeyError: \"Unknown symbol 'arg.Sender'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= (select(pre.balances, arg.Sender) + arg.Val))", "reason": "KeyError: \"Unknown symbol 'arg.Sender'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.Time >= pre.Time)", "reason": "KeyError: \"Unknown symbol 'post.Time'\"", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f CashOut --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.CashOut.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: CashOut  (invariants: LLM-translated)
+Notes:
+  - [raw-block] ok
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.Time >= pre.Time)", "reason": "KeyError: \"Unknown symbol 'post.Time'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_qe__60n0/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_qe__60n0/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_qe__60n0/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_qe__60n0' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'meta.value >= MinDeposit', 'then': [{'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}], 'else': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'TransferLog', 'value_src': '0', 'args_src': 'TransferLog.AddMessage(msg.sender,msg.value,Deposit)'}]}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': '_am <= select(balances, meta.sender)', 'then': [{'op': 'external_call', 'kind': 'call', 'target_src': 'meta.sender', 'value_src': '_am', 'args_src': '', 'ok_var': 'ok'}], 'else': [{'op': 'raw', 'src': 'ok'}]}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'TransferLog', 'value_src': '0', 'args_src': 'TransferLog.AddMessage(msg.sender,_am,CashOut)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'MinDeposit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_qe__60n0/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_qe__60n0/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_qe__60n0/minus_eq_to_plus_eq.sol --llm-invariants /tmp/inv_strength_qe__60n0/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_qe__60n0/minus_eq_to_plus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_qe__60n0' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'meta.value >= MinDeposit', 'then': [{'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}], 'else': [{'op': 'external_call', 'kind': 'high_level', 'target_src': 'TransferLog', 'value_src': '0', 'args_src': 'TransferLog.AddMessage(msg.sender,msg.value,Deposit)'}]}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': '_am <= select(balances, meta.sender)', 'then': [{'op': 'external_call', 'kind': 'call', 'target_src': 'meta.sender', 'value_src': '_am', 'args_src': '', 'ok_var': 'ok'}], 'else': [{'op': 'raw', 'src': 'ok'}]}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_am'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'TransferLog', 'value_src': '0', 'args_src': 'TransferLog.AddMessage(msg.sender,_am,CashOut)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'MinDeposit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_qe__60n0/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_qe__60n0/verified_invariants.global.summary.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

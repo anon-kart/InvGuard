@@ -1,0 +1,6 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)  # reason=KeyError: "Unknown symbol 'post.listAddresses.length'"
+(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender)  # reason=Z3Exception: First argument must be a Z3 array expression
+(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender)  # reason=Z3Exception: First argument must be a Z3 array expression
+(pre.listAddresses.length == 1500) -> (meta.revert_taken == true)  # reason=KeyError: "Unknown symbol 'pre.listAddresses.length'"
+(meta.revert_taken == false) -> (post.listAddresses.length == pre.listAddresses.length + 350)  # reason=KeyError: "Unknown symbol 'post.listAddresses.length'"

@@ -1,0 +1,30 @@
+{
+  "function": "initWallet",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 0,
+  "deposit_count": 0,
+  "withdraw_count": 0,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (m_numOwners >= m_required)",
+    "(meta.revert_taken == false) -> (m_dailyLimit >= 0)",
+    "(meta.revert_taken == false) -> (m_spentToday <= m_dailyLimit)",
+    "(meta.revert_taken == false) -> (m_required <= m_numOwners)",
+    "(meta.revert_taken == false) -> (m_ownerIndex[uint(owner)] > 0)",
+    "(meta.revert_taken == false) -> (m_pending[operation].index >= 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (m_numOwners >= m_required)",
+    "(meta.revert_taken == false) -> (m_dailyLimit >= 0)",
+    "(meta.revert_taken == false) -> (m_spentToday <= m_dailyLimit)",
+    "(meta.revert_taken == false) -> (m_required <= m_numOwners)",
+    "(meta.revert_taken == false) -> (m_ownerIndex[uint(owner)] > 0)",
+    "(meta.revert_taken == false) -> (m_pending[operation].index >= 0)"
+  ],
+  "sanitized": [],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)"
+  ]
+}

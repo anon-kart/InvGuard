@@ -1,0 +1,4 @@
+Replaced `tx.origin` with `msg.sender` for authorization in withdrawAll_txorigin10().
+
+INVARIANTS USED:
+Authorization checks using msg.sender instead of tx.origin.

@@ -1,0 +1,4 @@
+Changed WithdrawToken() to require the low-level token.call to succeed so failed token transfers revert.
+
+INVARIANTS USED:
+The low-level token.call return value in WithdrawToken must be checked; if the call fails, the transaction must revert rather than silently continuing. Access control and function behavior are otherwise preserved.

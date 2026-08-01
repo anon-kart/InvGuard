@@ -1,0 +1,22 @@
+{
+  "VU": {
+    "count": 0,
+    "examples": []
+  },
+  "VT": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= 0)"
+    ]
+  },
+  "VM": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) == 0)"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

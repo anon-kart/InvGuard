@@ -1,0 +1,25 @@
+ pragma solidity ^0.4.15;
+
+ contract Unprotected{
+     address private owner;
+
+     modifier onlyowner {
+         require(msg.sender==owner);
+         _;
+     }
+
+     function Unprotected()
+         public
+     {
+         owner = msg.sender;
+     }
+
+     // This function should be protected
+     // <yes> <report> ACCESS_CONTROL
+     function changeOwner(address _newOwner)
+         public
+         onlyowner
+     {
+        owner = _newOwner;
+     }
+ }

@@ -1,0 +1,281 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_re_etherbank_withdraw.sol",
+    "stem": "bench_re_etherbank_withdraw",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 25.6,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 8.46,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_re_rewardvault_redeem.sol",
+    "stem": "bench_re_rewardvault_redeem",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "redeem",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 26.1,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 8.96,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ac_ownablevault_withdrawAll.sol",
+    "stem": "bench_ac_ownablevault_withdrawAll",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawAll",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 32.16,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 20.67,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ac_configbank_setManager.sol",
+    "stem": "bench_ac_configbank_setManager",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "sweep",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_AC_FN": "setManager"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 29.82,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 25.13,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ac_treasurybox_withdrawTo.sol",
+    "stem": "bench_ac_treasurybox_withdrawTo",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawTo",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 26.88,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 9.72,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ur_refundpool_refund.sol",
+    "stem": "bench_ur_refundpool_refund",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "refund",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "silent_failure"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.7,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 24.47,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ur_payoutledger_payout.sol",
+    "stem": "bench_ur_payoutledger_payout",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "payout",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "silent_failure"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 22.54,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 28.68,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ur_escrowdesk_release.sol",
+    "stem": "bench_ur_escrowdesk_release",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "release",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "silent_failure"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 22.54,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 9.06,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_to_piggybank_withdraw.sol",
+    "stem": "bench_to_piggybank_withdraw",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 22.27,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 22.52,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_to_guardedwallet_send.sol",
+    "stem": "bench_to_guardedwallet_send",
+    "tier": "bench10_p2",
+    "model": "gpt-4o-mini",
+    "target_function": "send",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.62,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 56.96,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  }
+]

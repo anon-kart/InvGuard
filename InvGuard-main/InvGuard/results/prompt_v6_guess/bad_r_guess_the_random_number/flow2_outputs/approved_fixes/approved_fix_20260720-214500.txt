@@ -1,0 +1,4 @@
+Removed dependence on block values for randomness by implementing a commit-reveal scheme.
+
+INVARIANTS USED:
+Commit-reveal scheme ensures that the guess is made after the commitment and prevents manipulation.

@@ -1,0 +1,142 @@
+[
+  {
+    "stem": "sfi_reentrancy_reentrancy_h1_buggy_1",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_reentrancy_reentrancy_h1_buggy_1.sol",
+    "elapsed_sec": 8.78,
+    "tokens_used": 3185
+  },
+  {
+    "stem": "sfi_reentrancy_reentrancy_h15_buggy_15",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_reentrancy_reentrancy_h15_buggy_15.sol",
+    "elapsed_sec": 9.34,
+    "tokens_used": 3627
+  },
+  {
+    "stem": "sfi_reentrancy_reentrancy_h22_buggy_22",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_reentrancy_reentrancy_h22_buggy_22.sol",
+    "elapsed_sec": 36.5,
+    "tokens_used": 9695
+  },
+  {
+    "stem": "sfi_reentrancy_reentrancy_h6_buggy_6",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_reentrancy_reentrancy_h6_buggy_6.sol",
+    "elapsed_sec": 35.25,
+    "tokens_used": 6185
+  },
+  {
+    "stem": "sfi_reentrancy_reentrancy_h11_buggy_11",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_reentrancy_reentrancy_h11_buggy_11.sol",
+    "elapsed_sec": 11.77,
+    "tokens_used": 4815
+  },
+  {
+    "stem": "sfi_integer_overflow_overflow_underflow_h4_buggy_4",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_integer_overflow_overflow_underflow_h4_buggy_4.sol",
+    "elapsed_sec": 6.55,
+    "tokens_used": 2772
+  },
+  {
+    "stem": "sfi_integer_overflow_overflow_underflow_h2_buggy_2",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_integer_overflow_overflow_underflow_h2_buggy_2.sol",
+    "elapsed_sec": 18.02,
+    "tokens_used": 4321
+  },
+  {
+    "stem": "sfi_integer_overflow_overflow_underflow_h34_buggy_34",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_integer_overflow_overflow_underflow_h34_buggy_34.sol",
+    "elapsed_sec": 18.12,
+    "tokens_used": 7266
+  },
+  {
+    "stem": "sfi_integer_overflow_overflow_underflow_h43_buggy_43",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_integer_overflow_overflow_underflow_h43_buggy_43.sol",
+    "elapsed_sec": 41.88,
+    "tokens_used": 7261
+  },
+  {
+    "stem": "sfi_integer_overflow_overflow_underflow_h48_buggy_48",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_integer_overflow_overflow_underflow_h48_buggy_48.sol",
+    "elapsed_sec": 18.02,
+    "tokens_used": 5421
+  },
+  {
+    "stem": "sfi_unchecked_call_unhandled_exceptions_h30_buggy_30",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_unchecked_call_unhandled_exceptions_h30_buggy_30.sol",
+    "elapsed_sec": 37.28,
+    "tokens_used": 10098
+  },
+  {
+    "stem": "sfi_unchecked_call_unhandled_exceptions_h49_buggy_49",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_unchecked_call_unhandled_exceptions_h49_buggy_49.sol",
+    "elapsed_sec": 7.74,
+    "tokens_used": 1754
+  },
+  {
+    "stem": "sfi_unchecked_call_unhandled_exceptions_h41_buggy_41",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_unchecked_call_unhandled_exceptions_h41_buggy_41.sol",
+    "elapsed_sec": 21.2,
+    "tokens_used": 4370
+  },
+  {
+    "stem": "sfi_unchecked_call_unchecked_send_h43_buggy_43",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_unchecked_call_unchecked_send_h43_buggy_43.sol",
+    "elapsed_sec": 15.84,
+    "tokens_used": 4332
+  },
+  {
+    "stem": "sfi_unchecked_call_unchecked_send_h23_buggy_23",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_unchecked_call_unchecked_send_h23_buggy_23.sol",
+    "elapsed_sec": 20.01,
+    "tokens_used": 4973
+  },
+  {
+    "stem": "sfi_tx_origin_tx_origin_h5_buggy_5",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_tx_origin_tx_origin_h5_buggy_5.sol",
+    "elapsed_sec": 9.99,
+    "tokens_used": 4472
+  },
+  {
+    "stem": "sfi_tx_origin_tx_origin_h16_buggy_16",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_tx_origin_tx_origin_h16_buggy_16.sol",
+    "elapsed_sec": 16.44,
+    "tokens_used": 5299
+  },
+  {
+    "stem": "sfi_tx_origin_tx_origin_h42_buggy_42",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_tx_origin_tx_origin_h42_buggy_42.sol",
+    "elapsed_sec": 11.41,
+    "tokens_used": 3037
+  },
+  {
+    "stem": "sfi_tx_origin_tx_origin_h44_buggy_44",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_tx_origin_tx_origin_h44_buggy_44.sol",
+    "elapsed_sec": 35.25,
+    "tokens_used": 6065
+  },
+  {
+    "stem": "sfi_tx_origin_tx_origin_h40_buggy_40",
+    "status": "patch_generated",
+    "patch_file": "results/solidifi_baselines/solgpt/sfi_tx_origin_tx_origin_h40_buggy_40.sol",
+    "elapsed_sec": 13.63,
+    "tokens_used": 5871
+  }
+]

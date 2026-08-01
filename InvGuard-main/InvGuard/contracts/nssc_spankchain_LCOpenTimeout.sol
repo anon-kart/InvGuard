@@ -1,0 +1,41 @@
+// SPDX-License-Identifier: UNLICENSED
+// Real-world: SpankChain payment-channel hack ($40K). Isolated vulnerable core.
+// LCOpenTimeout refunds via low-level call BEFORE clearing channel state,
+// enabling reentrant re-withdrawal of the same channel balance (NSSC).
+pragma solidity ^0.8.19;
+
+contract LedgerChannel {
+    struct Channel {
+        address partyA;     // channel opener (can be attacker)
+        uint256 ethBalanceA;
+        bool isOpen;
+        uint256 LCopenTimeout;
+    }
+    mapping(bytes32 => Channel) public Channels;
+
+    // Open a channel funded by msg.value, with a short timeout.
+    function createChannel(bytes32 _lcID) public payable {
+        require(!Channels[_lcID].isOpen, "exists");
+        Channels[_lcID].partyA = msg.sender;
+        Channels[_lcID].ethBalanceA = msg.value;
+        Channels[_lcID].isOpen = true;
+        Channels[_lcID].LCopenTimeout = block.timestamp; // immediately timed out for PoC
+    }
+
+    // BUG: refunds via low-level call (re-enterable) BEFORE zeroing balance /
+    // closing the channel. Attacker's fallback re-calls LCOpenTimeout to drain.
+    function LCOpenTimeout(bytes32 _lcID) public {
+        require(Channels[_lcID].partyA == msg.sender, "not partyA");
+        require(Channels[_lcID].isOpen, "closed");
+        require(block.timestamp >= Channels[_lcID].LCopenTimeout, "not timed out");
+
+        (bool ok, ) = msg.sender.call{value: Channels[_lcID].ethBalanceA}("");
+        require(ok, "refund failed");
+
+        // state cleared AFTER the external call (the vulnerability)
+        Channels[_lcID].ethBalanceA = 0;
+        Channels[_lcID].isOpen = false;
+    }
+
+    receive() external payable {}
+}

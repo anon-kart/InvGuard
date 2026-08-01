@@ -1,0 +1,33 @@
+{
+  "function": "claimThrone",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.king != address(0))",
+    "(meta.revert_taken == false) -> (post.claimPrice > 0)",
+    "(meta.revert_taken == false) -> (post.compensation == (arg.meta.value * 50) / 100)",
+    "(meta.revert_taken == false) -> (arg.meta.sender != address(0))",
+    "(meta.revert_taken == false) -> (post.claimPrice == (arg.meta.value * 150) / 100)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.king != address(0))",
+    "(meta.revert_taken == false) -> (post.claimPrice > 0)",
+    "(meta.revert_taken == false) -> (post.compensation == (meta.value * 50) / 100)",
+    "(meta.revert_taken == false) -> (meta.sender != address(0))",
+    "(meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.claimPrice > 0)",
+    "(meta.revert_taken == false) -> (post.compensation == (meta.value * 50) / 100)",
+    "(meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.claimPrice > 0)",
+    "(meta.revert_taken == false) -> (post.compensation == (meta.value * 50) / 100)",
+    "(meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)"
+  ]
+}

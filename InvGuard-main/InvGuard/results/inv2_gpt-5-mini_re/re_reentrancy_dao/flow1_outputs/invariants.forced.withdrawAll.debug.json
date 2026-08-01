@@ -1,0 +1,41 @@
+{
+  "function": "withdrawAll",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 6,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "select(pre.credit, meta.sender) >= 0",
+    "pre.balance >= 0",
+    "(meta.revert_taken == false) -> (post.balance >= 0)",
+    "(meta.revert_taken == false) -> (post.balance >= select(post.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (post.balance - pre.balance == select(post.credit, meta.sender) - select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender) + meta.value)"
+  ],
+  "fixed_raw": [
+    "select(pre.credit, meta.sender) >= 0",
+    "pre.balance >= 0",
+    "(meta.revert_taken == false) -> (post.balance >= 0)",
+    "(meta.revert_taken == false) -> (post.balance >= select(post.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (post.balance - pre.balance == select(post.credit, meta.sender) - select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender) + meta.value)"
+  ],
+  "sanitized": [
+    "select(pre.credit, meta.sender) >= 0",
+    "pre.balance >= 0",
+    "(meta.revert_taken == false) -> (post.balance >= 0)",
+    "(meta.revert_taken == false) -> (post.balance >= select(post.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (post.balance - pre.balance == select(post.credit, meta.sender) - select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= (select(pre.credit, meta.sender) + meta.value))"
+  ],
+  "chosen_before_final_fallback": [
+    "select(pre.credit, meta.sender) >= 0",
+    "pre.balance >= 0",
+    "(meta.revert_taken == false) -> (post.balance >= 0)",
+    "(meta.revert_taken == false) -> (post.balance >= select(post.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (post.balance - pre.balance == select(post.credit, meta.sender) - select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= (select(pre.credit, meta.sender) + meta.value))"
+  ]
+}

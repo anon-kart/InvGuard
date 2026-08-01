@@ -1,0 +1,57 @@
+{
+  "function": "transfer_intou26",
+  "raw_count": 10,
+  "fixed_raw_count": 10,
+  "sanitized_count": 10,
+  "deposit_count": 10,
+  "withdraw_count": 10,
+  "chosen_count_before_final_fallback": 10,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) >= select(pre.balances_intou26, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou38, meta.sender) >= select(pre.balances_intou38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou14, meta.sender) >= select(pre.balances_intou14, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou30, meta.sender) >= select(pre.balances_intou30, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou13, meta.sender) >= select(pre.lockTime_intou13, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou25, meta.sender) >= select(pre.lockTime_intou25, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou33, meta.sender) >= select(pre.lockTime_intou33, meta.sender))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) >= select(pre.balances_intou26, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou38, meta.sender) >= select(pre.balances_intou38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou14, meta.sender) >= select(pre.balances_intou14, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou30, meta.sender) >= select(pre.balances_intou30, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou13, meta.sender) >= select(pre.lockTime_intou13, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou25, meta.sender) >= select(pre.lockTime_intou25, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou33, meta.sender) >= select(pre.lockTime_intou33, meta.sender))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) >= select(pre.balances_intou26, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou38, meta.sender) >= select(pre.balances_intou38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou14, meta.sender) >= select(pre.balances_intou14, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou30, meta.sender) >= select(pre.balances_intou30, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou13, meta.sender) >= select(pre.lockTime_intou13, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou25, meta.sender) >= select(pre.lockTime_intou25, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou33, meta.sender) >= select(pre.lockTime_intou33, meta.sender))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) >= select(pre.balances_intou26, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou38, meta.sender) >= select(pre.balances_intou38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou14, meta.sender) >= select(pre.balances_intou14, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_intou30, meta.sender) >= select(pre.balances_intou30, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou13, meta.sender) >= select(pre.lockTime_intou13, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou25, meta.sender) >= select(pre.lockTime_intou25, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.lockTime_intou33, meta.sender) >= select(pre.lockTime_intou33, meta.sender))"
+  ]
+}

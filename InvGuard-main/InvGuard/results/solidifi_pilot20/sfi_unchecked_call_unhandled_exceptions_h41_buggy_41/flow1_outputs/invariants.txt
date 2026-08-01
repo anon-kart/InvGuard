@@ -1,0 +1,7 @@
+(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))
+(meta.revert_taken == false) -> (post.payedOut_unchk45 == pre.payedOut_unchk45 || (post.payedOut_unchk45 == true && pre.payedOut_unchk45 == false))
+(meta.revert_taken == false) -> (post.payedOut_unchk8 == pre.payedOut_unchk8 || (post.payedOut_unchk8 == true && pre.payedOut_unchk8 == false))
+(meta.revert_taken == false) -> (post.payedOut_unchk44 == pre.payedOut_unchk44 || (post.payedOut_unchk44 == true && pre.payedOut_unchk44 == false))
+(meta.revert_taken == false) -> (post.payedOut_unchk33 == pre.payedOut_unchk33 || (post.payedOut_unchk33 == true && pre.payedOut_unchk33 == false))

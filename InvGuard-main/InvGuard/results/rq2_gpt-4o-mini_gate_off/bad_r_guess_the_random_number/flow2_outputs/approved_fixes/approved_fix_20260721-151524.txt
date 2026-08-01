@@ -1,0 +1,4 @@
+Removed dependence on manipulable block values by implementing a commit-reveal scheme with a reveal block.
+
+INVARIANTS USED:
+None

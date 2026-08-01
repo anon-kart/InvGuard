@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_incorrect_constructor_withdraw.sol",
+    "stem": "nssc_incorrect_constructor_withdraw",
+    "tier": "nssc_incorrect_constructor_priv",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 19.69,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/nssc_incorrect_constructor_priv/nssc_incorrect_constructor_withdraw/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 46.88,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/nssc_incorrect_constructor_priv/nssc_incorrect_constructor_withdraw/flow2.log"
+    }
+  }
+]

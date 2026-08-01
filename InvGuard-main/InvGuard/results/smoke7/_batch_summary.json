@@ -1,0 +1,27 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/FibonacciBalance.sol",
+    "stem": "acces_FibonacciBalance",
+    "tier": "smoke7",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 19.37,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 40.03,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

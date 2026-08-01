@@ -1,0 +1,4 @@
+Added an authorization check at the start of changeOwner so only the current owner can change ownership.
+
+INVARIANTS USED:
+The deployer is initialized as owner in the constructor. Only the current owner is authorized to update the owner state variable. Unauthorized callers must not be able to change ownership.

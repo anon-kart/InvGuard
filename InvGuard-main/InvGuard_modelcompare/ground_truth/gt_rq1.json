@@ -1,0 +1,99 @@
+{
+  "_comment": "Ground-truth critical invariants for the 10 InvCon ERC20 contracts. category matches Table-1 class. score is the 3-point criticality (>=2 = critical). formal uses the post/pre form InvGuard emits so the matcher aligns.",
+
+  "0x0148650ef8e216e8d0999fe8d4b5c1871b71771a": {
+    "contract": "TokenERC20",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves the sum of sender and recipient balances","formal":"post.balanceOf[_from] + post.balanceOf[_to] == pre.balanceOf[_from] + pre.balanceOf[_to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"transfer does not increase sender balance","formal":"(meta.revert_taken == false) -> (post.balanceOf[meta.sender] <= pre.balanceOf[meta.sender])","score":3},
+      {"id":"C3","category":"Overflow/Underflow","predicate":"transfer does not change totalSupply","formal":"post.totalSupply == pre.totalSupply","score":2},
+      {"id":"C4","category":"Access Control","predicate":"transferFrom decreases allowance of caller by value","formal":"post.allowance[_from][meta.sender] <= pre.allowance[_from][meta.sender]","score":3}
+    ]
+  },
+
+  "0x01e958f3c383f59be55a12ba27b05295df141bd7": {
+    "contract": "StandardToken",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves total balances of sender and recipient","formal":"post.balances[_from] + post.balances[_to] == pre.balances[_from] + pre.balances[_to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"transfer requires and preserves sender solvency","formal":"(meta.revert_taken == false) -> (post.balances[meta.sender] <= pre.balances[meta.sender])","score":3},
+      {"id":"C3","category":"Access Control","predicate":"transferFrom decreases caller allowance","formal":"post.allowed[_from][meta.sender] <= pre.allowed[_from][meta.sender]","score":3}
+    ]
+  },
+
+  "0x044eefa225a051027061bea002dd97ace7878f89": {
+    "contract": "TokenERC20",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves sender+recipient balances","formal":"post.balanceOf[_from] + post.balanceOf[_to] == pre.balanceOf[_from] + pre.balanceOf[_to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"transfer does not increase sender balance","formal":"(meta.revert_taken == false) -> (post.balanceOf[meta.sender] <= pre.balanceOf[meta.sender])","score":3},
+      {"id":"C3","category":"Overflow/Underflow","predicate":"transfer does not change totalSupply","formal":"post.totalSupply == pre.totalSupply","score":2},
+      {"id":"C4","category":"Access Control","predicate":"transferFrom decreases caller allowance","formal":"post.allowance[_from][meta.sender] <= pre.allowance[_from][meta.sender]","score":3}
+    ]
+  },
+
+  "0x0539bf9af0d5f8611a87a24560c406137a0431c2": {
+    "contract": "HunterToken",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves sender+recipient balances","formal":"post.balanceOf[_from] + post.balanceOf[_to] == pre.balanceOf[_from] + pre.balanceOf[_to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"transfer does not increase sender balance","formal":"(meta.revert_taken == false) -> (post.balanceOf[meta.sender] <= pre.balanceOf[meta.sender])","score":3},
+      {"id":"C3","category":"Overflow/Underflow","predicate":"transfer does not change totalSupply","formal":"post.totalSupply == pre.totalSupply","score":2},
+      {"id":"C4","category":"Access Control","predicate":"transferFrom decreases caller allowance","formal":"post.allowance[_from][meta.sender] <= pre.allowance[_from][meta.sender]","score":3}
+    ]
+  },
+
+  "0x05829a3c3c15068b325a3296ee270efcc7595067": {
+    "contract": "CSF",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves sender+recipient balances (SafeMath)","formal":"post.balances[meta.sender] + post.balances[to] == pre.balances[meta.sender] + pre.balances[to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"safeSub reverts on underflow so sender balance never wraps","formal":"(meta.revert_taken == false) -> (post.balances[meta.sender] <= pre.balances[meta.sender])","score":3},
+      {"id":"C3","category":"Access Control","predicate":"transferFrom decreases caller allowance via safeSub","formal":"post.allowed[from][meta.sender] <= pre.allowed[from][meta.sender]","score":3}
+    ]
+  },
+
+  "0x05b040c629663d07c344ad8cd70d8c76421feedf": {
+    "contract": "GenreBase",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves sender+recipient balances (SafeMath)","formal":"post.balances[meta.sender] + post.balances[to] == pre.balances[meta.sender] + pre.balances[to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"safeSub prevents sender balance underflow","formal":"(meta.revert_taken == false) -> (post.balances[meta.sender] <= pre.balances[meta.sender])","score":3},
+      {"id":"C3","category":"Access Control","predicate":"transferFrom decreases caller allowance","formal":"post.allowed[from][meta.sender] <= pre.allowed[from][meta.sender]","score":3}
+    ]
+  },
+
+  "0x05bedda666801857b3b72f2b507639bd8aff4982": {
+    "contract": "TokenMintERC20Token",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves sender+recipient balances (OZ SafeMath)","formal":"post._balances[meta.sender] + post._balances[recipient] == pre._balances[meta.sender] + pre._balances[recipient]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"transfer does not increase sender balance","formal":"(meta.revert_taken == false) -> (post._balances[meta.sender] <= pre._balances[meta.sender])","score":3},
+      {"id":"C3","category":"Access Control","predicate":"transferFrom decreases caller allowance by amount","formal":"post._allowances[sender][meta.sender] <= pre._allowances[sender][meta.sender]","score":3},
+      {"id":"C4","category":"Overflow/Underflow","predicate":"transfer does not change totalSupply","formal":"post._totalSupply == pre._totalSupply","score":2}
+    ]
+  },
+
+  "0x05eb605bf452c1dfcd0562bd28a007fe390009e5": {
+    "contract": "Blockvila",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves sender+recipient balances","formal":"post.balances[meta.sender] + post.balances[_to] == pre.balances[meta.sender] + pre.balances[_to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"transfer does not increase sender balance","formal":"(meta.revert_taken == false) -> (post.balances[meta.sender] <= pre.balances[meta.sender])","score":3},
+      {"id":"C3","category":"Access Control","predicate":"transferFrom decreases caller allowance","formal":"post.allowed[_from][meta.sender] <= pre.allowed[_from][meta.sender]","score":3},
+      {"id":"C4","category":"Access Control","predicate":"only owner may burn tokens","formal":"(meta.revert_taken == false and burn) -> (meta.sender == pre.owner)","score":3}
+    ]
+  },
+
+  "0x067085aa0ff4e97a3c61bf06de618e0aae11dbc2": {
+    "contract": "YPROToken",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves sender+recipient balances (SafeMath)","formal":"post.balances[meta.sender] + post.balances[to] == pre.balances[meta.sender] + pre.balances[to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"safeSub prevents sender balance underflow","formal":"(meta.revert_taken == false) -> (post.balances[meta.sender] <= pre.balances[meta.sender])","score":3},
+      {"id":"C3","category":"Access Control","predicate":"transferFrom decreases caller allowance","formal":"post.allowed[from][meta.sender] <= pre.allowed[from][meta.sender]","score":3}
+    ]
+  },
+
+  "0x0711f1005af593b8df936e99c731fe29c3c745ea": {
+    "contract": "FarmCoin",
+    "critical_invariants": [
+      {"id":"C1","category":"Overflow/Underflow","predicate":"transfer conserves sender+recipient balances (SafeMath)","formal":"post.balances[meta.sender] + post.balances[to] == pre.balances[meta.sender] + pre.balances[to]","score":3},
+      {"id":"C2","category":"Overflow/Underflow","predicate":"safeSub prevents sender balance underflow","formal":"(meta.revert_taken == false) -> (post.balances[meta.sender] <= pre.balances[meta.sender])","score":3},
+      {"id":"C3","category":"Access Control","predicate":"transferFrom decreases caller allowance","formal":"post.allowed[from][meta.sender] <= pre.allowed[from][meta.sender]","score":3},
+      {"id":"C4","category":"Access Control","predicate":"only owner may sweep foreign ERC20 tokens","formal":"(meta.revert_taken == false and transferAnyERC20Token) -> (meta.sender == pre.owner)","score":3}
+    ]
+  }
+}

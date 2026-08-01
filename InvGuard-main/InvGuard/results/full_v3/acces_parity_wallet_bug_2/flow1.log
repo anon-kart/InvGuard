@@ -1,0 +1,448 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/parity_wallet_bug_2.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f initWallet --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.initWallet.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:67:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:119:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:135:54: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }
+                                                     ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:150:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:174:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:184:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:50:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Deposit(msg.sender, msg.value);
+      ^----------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:71:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Revoke(msg.sender, _operation);
+      ^----------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:74:67: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeOwner(address _from, address _to) onlymanyowners(sha3(msg.data)) external {
+                                                                  ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:82:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerChanged(_from, _to);
+    ^----------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:84:52: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function addOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                   ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:94:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerAdded(_owner);
+    ^----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:96:55: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function removeOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                      ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:104:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerRemoved(_owner);
+    ^------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:106:64: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeRequirement(uint _newRequired) onlymanyowners(sha3(msg.data)) external {
+                                                               ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:110:5: Warning: Invoking events without "emit" prefix is deprecated.
+    RequirementChanged(_newRequired);
+    ^------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:129:57: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function setDailyLimit(uint _newLimit) onlymanyowners(sha3(msg.data)) external {
+                                                        ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:132:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function resetSpentToday() onlymanyowners(sha3(msg.data)) external {
+                                            ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:140:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function kill(address _to) onlymanyowners(sha3(msg.data)) external {
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)
+   - (meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender)  | reason=Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'
+   - (meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender)  | reason=Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.initWallet.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.initWallet.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.initWallet.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f initWallet --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.initWallet.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:67:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:119:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:135:54: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }
+                                                     ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:150:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:174:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:184:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:50:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Deposit(msg.sender, msg.value);
+      ^----------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:71:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Revoke(msg.sender, _operation);
+      ^----------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:74:67: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeOwner(address _from, address _to) onlymanyowners(sha3(msg.data)) external {
+                                                                  ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:82:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerChanged(_from, _to);
+    ^----------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:84:52: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function addOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                   ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:94:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerAdded(_owner);
+    ^----------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:96:55: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function removeOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                      ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:104:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerRemoved(_owner);
+    ^------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:106:64: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeRequirement(uint _newRequired) onlymanyowners(sha3(msg.data)) external {
+                                                               ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:110:5: Warning: Invoking events without "emit" prefix is deprecated.
+    RequirementChanged(_newRequired);
+    ^------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:129:57: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function setDailyLimit(uint _newLimit) onlymanyowners(sha3(msg.data)) external {
+                                                        ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:132:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function resetSpentToday() onlymanyowners(sha3(msg.data)) external {
+                                            ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:140:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function kill(address _to) onlymanyowners(sha3(msg.data)) external {
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)
+   - (meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender)  | reason=Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'
+   - (meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender)  | reason=Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.initWallet.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.initWallet.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.initWallet.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f initWallet --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.initWallet.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: initWallet  (invariants: LLM-translated)
+Notes:
+  - [raw] initDaylimit(_daylimit)
+  - [raw] initMultiowned(_owners,_required)
+  - [raw] only_uninitialized()
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender))", "reason": "Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender))", "reason": "Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f initWallet --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.initWallet.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: initWallet  (invariants: LLM-translated)
+Notes:
+  - [raw] initDaylimit(_daylimit)
+  - [raw] initMultiowned(_owners,_required)
+  - [raw] only_uninitialized()
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender))", "reason": "Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender))", "reason": "Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_t_h95dq8/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_t_h95dq8' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:67:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:119:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:135:54: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }
+                                                     ^---^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:150:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:174:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:184:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:50:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Deposit(msg.sender, msg.value);
+      ^----------------------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:71:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Revoke(msg.sender, _operation);
+      ^----------------------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:74:67: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeOwner(address _from, address _to) onlymanyowners(sha3(msg.data)) external {
+                                                                  ^------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:82:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerChanged(_from, _to);
+    ^----------------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:84:52: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function addOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                   ^------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:94:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerAdded(_owner);
+    ^----------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:96:55: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function removeOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                      ^------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:104:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerRemoved(_owner);
+    ^------------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:106:64: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeRequirement(uint _newRequired) onlymanyowners(sha3(msg.data)) external {
+                                                               ^------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:110:5: Warning: Invoking events without "emit" prefix is deprecated.
+    RequirementChanged(_newRequired);
+    ^------------------------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:129:57: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function setDailyLimit(uint _newLimit) onlymanyowners(sha3(msg.data)) external {
+                                                        ^------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:132:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function resetSpentToday() onlymanyowners(sha3(msg.data)) external {
+                                            ^------------^
+/tmp/inv_strength_t_h95dq8/plus_eq_to_minus_eq.sol:140:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function kill(address _to) onlymanyowners(sha3(msg.data)) external {
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)
+   - (meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_t_h95dq8/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_t_h95dq8/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol --llm-invariants /tmp/inv_strength_t_h95dq8/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_t_h95dq8' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:67:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:119:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:135:54: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }
+                                                     ^---^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:150:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:174:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:184:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:50:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Deposit(msg.sender, msg.value);
+      ^----------------------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:71:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Revoke(msg.sender, _operation);
+      ^----------------------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:74:67: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeOwner(address _from, address _to) onlymanyowners(sha3(msg.data)) external {
+                                                                  ^------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:82:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerChanged(_from, _to);
+    ^----------------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:84:52: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function addOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                   ^------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:94:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerAdded(_owner);
+    ^----------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:96:55: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function removeOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                      ^------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:104:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerRemoved(_owner);
+    ^------------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:106:64: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeRequirement(uint _newRequired) onlymanyowners(sha3(msg.data)) external {
+                                                               ^------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:110:5: Warning: Invoking events without "emit" prefix is deprecated.
+    RequirementChanged(_newRequired);
+    ^------------------------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:129:57: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function setDailyLimit(uint _newLimit) onlymanyowners(sha3(msg.data)) external {
+                                                        ^------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:132:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function resetSpentToday() onlymanyowners(sha3(msg.data)) external {
+                                            ^------------^
+/tmp/inv_strength_t_h95dq8/minus_eq_to_plus_eq.sol:140:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function kill(address _to) onlymanyowners(sha3(msg.data)) external {
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)
+   - (meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_t_h95dq8/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_t_h95dq8/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python3 -m cli.driver /tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol --llm-invariants /tmp/inv_strength_t_h95dq8/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_t_h95dq8' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:67:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:119:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:135:54: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }
+                                                     ^---^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:150:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:174:11: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+          throw;
+          ^---^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:184:5: Warning: Use of the "var" keyword is deprecated.
+    var pending = m_pending[_operation];
+    ^---------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:50:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Deposit(msg.sender, msg.value);
+      ^----------------------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:71:7: Warning: Invoking events without "emit" prefix is deprecated.
+      Revoke(msg.sender, _operation);
+      ^----------------------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:74:67: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeOwner(address _from, address _to) onlymanyowners(sha3(msg.data)) external {
+                                                                  ^------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:82:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerChanged(_from, _to);
+    ^----------------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:84:52: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function addOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                   ^------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:94:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerAdded(_owner);
+    ^----------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:96:55: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function removeOwner(address _owner) onlymanyowners(sha3(msg.data)) external {
+                                                      ^------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:104:5: Warning: Invoking events without "emit" prefix is deprecated.
+    OwnerRemoved(_owner);
+    ^------------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:106:64: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function changeRequirement(uint _newRequired) onlymanyowners(sha3(msg.data)) external {
+                                                               ^------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:110:5: Warning: Invoking events without "emit" prefix is deprecated.
+    RequirementChanged(_newRequired);
+    ^------------------------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:129:57: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function setDailyLimit(uint _newLimit) onlymanyowners(sha3(msg.data)) external {
+                                                        ^------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:132:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function resetSpentToday() onlymanyowners(sha3(msg.data)) external {
+                                            ^------------^
+/tmp/inv_strength_t_h95dq8/relax_msg_value_guard.sol:140:45: Warning: "sha3" has been deprecated in favour of "keccak256"
+  function kill(address _to) onlymanyowners(sha3(msg.data)) external {
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)
+   - (meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_t_h95dq8/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_t_h95dq8/verified_invariants.global.summary.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

@@ -1,0 +1,41 @@
+{
+  "function": "emptyCreditors",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 6,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.win == true) -> (pre.creditorAddresses.length > 1500)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length >= pre.creditorAddresses.length)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length <= pre.creditorAddresses.length + 350)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length == 0) -> (pre.creditorAddresses.length > 1500)",
+    "(meta.revert_taken == false) -> (post.win == false) -> (pre.win == false)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length == pre.creditorAddresses.length + 350) -> (post.win == false)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.win == true) -> (pre.creditorAddresses.length > 1500)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length >= pre.creditorAddresses.length)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length <= pre.creditorAddresses.length + 350)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length == 0) -> (pre.creditorAddresses.length > 1500)",
+    "(meta.revert_taken == false) -> (post.win == false) -> (pre.win == false)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length == pre.creditorAddresses.length + 350) -> (post.win == false)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.win == true) -> (pre.creditorAddresses.length > 1500)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length >= pre.creditorAddresses.length)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length <= pre.creditorAddresses.length + 350)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length == 0) -> (pre.creditorAddresses.length > 1500)",
+    "(meta.revert_taken == false) -> (post.win == false) -> (pre.win == false)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length == pre.creditorAddresses.length + 350) -> (post.win == false)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.win == true) -> (pre.creditorAddresses.length > 1500)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length >= pre.creditorAddresses.length)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length <= pre.creditorAddresses.length + 350)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length == 0) -> (pre.creditorAddresses.length > 1500)",
+    "(meta.revert_taken == false) -> (post.win == false) -> (pre.win == false)",
+    "(meta.revert_taken == false) -> (post.creditorAddresses.length == pre.creditorAddresses.length + 350) -> (post.win == false)"
+  ]
+}

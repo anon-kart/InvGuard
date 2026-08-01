@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (post.balance >= pre.balance)
+(meta.revert_taken == false) -> (post.balance <= (pre.balance + arg.deposit))
+(meta.revert_taken == false) -> (post.balance > pre.balance)
+(meta.revert_taken == false) -> (post.balance != pre.balance)

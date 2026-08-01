@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (select(post._balances, arg.account) >= 0)
+(meta.revert_taken == false) -> (select(post._allowances, arg.owner, arg.spender) >= 0)

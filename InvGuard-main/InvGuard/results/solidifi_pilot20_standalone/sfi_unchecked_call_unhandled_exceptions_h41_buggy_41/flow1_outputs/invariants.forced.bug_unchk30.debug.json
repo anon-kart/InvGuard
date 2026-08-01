@@ -1,0 +1,45 @@
+{
+  "function": "bug_unchk30",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 7,
+  "deposit_count": 7,
+  "withdraw_count": 7,
+  "chosen_count_before_final_fallback": 7,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 >= pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 <= pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 + 1)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 - 1)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 != pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 > pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 < pre.receivers_unchk30)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 >= pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 <= pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 + 1)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 - 1)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 != pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 > pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 < pre.receivers_unchk30)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 >= pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 <= pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 + 1)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 - 1)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 != pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 > pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 < pre.receivers_unchk30)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 >= pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 <= pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 + 1)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 - 1)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 != pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 > pre.receivers_unchk30)",
+    "(meta.revert_taken == false) -> (post.receivers_unchk30 < pre.receivers_unchk30)"
+  ]
+}

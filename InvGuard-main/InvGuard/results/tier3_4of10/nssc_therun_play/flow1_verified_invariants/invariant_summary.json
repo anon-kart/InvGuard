@@ -1,0 +1,24 @@
+{
+  "VU": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value))"
+    ]
+  },
+  "VT": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)"
+    ]
+  },
+  "VM": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value))"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

@@ -1,0 +1,4 @@
+Changed the payout function to require the success of the send operation, preventing silent failures.
+
+INVARIANTS USED:
+Require statements to ensure conditions are met before executing critical operations.

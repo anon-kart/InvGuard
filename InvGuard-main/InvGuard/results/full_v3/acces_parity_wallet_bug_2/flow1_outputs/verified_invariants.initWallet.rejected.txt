@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender)  # reason=Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'
+(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender)  # reason=Z3Exception: b'domain sort (_ BitVec 160) and parameter (_ BitVec 256) do not match'

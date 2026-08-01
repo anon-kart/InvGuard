@@ -1,0 +1,4 @@
+Added an explicit bounds check in the overflowaddtostate function to prevent integer overflow.
+
+INVARIANTS USED:
+require(count + input >= count)

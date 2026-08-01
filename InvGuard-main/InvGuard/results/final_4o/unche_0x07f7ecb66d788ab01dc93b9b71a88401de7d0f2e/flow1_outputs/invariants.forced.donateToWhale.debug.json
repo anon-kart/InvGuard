@@ -1,0 +1,53 @@
+{
+  "function": "donateToWhale",
+  "raw_count": 10,
+  "fixed_raw_count": 10,
+  "sanitized_count": 8,
+  "deposit_count": 6,
+  "withdraw_count": 8,
+  "chosen_count_before_final_fallback": 8,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)",
+    "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender))",
+    "(meta.revert_taken == false) -> (post.betLimit == pre.betLimit)",
+    "(meta.revert_taken == false) -> (post.difficulty == pre.difficulty)",
+    "(meta.revert_taken == false) -> (post.openToPublic == pre.openToPublic)",
+    "(meta.revert_taken == false) -> (post.totalDonated <= pre.totalDonated + arg.amount)",
+    "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)",
+    "(meta.revert_taken == false) -> (post.totalDonated == pre.totalDonated + arg.amount)",
+    "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)",
+    "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender))",
+    "(meta.revert_taken == false) -> (post.betLimit == pre.betLimit)",
+    "(meta.revert_taken == false) -> (post.difficulty == pre.difficulty)",
+    "(meta.revert_taken == false) -> (post.openToPublic == pre.openToPublic)",
+    "(meta.revert_taken == false) -> (post.totalDonated <= pre.totalDonated + arg.amount)",
+    "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)",
+    "(meta.revert_taken == false) -> (post.totalDonated == pre.totalDonated + arg.amount)",
+    "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)",
+    "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender))",
+    "(meta.revert_taken == false) -> (post.betLimit == pre.betLimit)",
+    "(meta.revert_taken == false) -> (post.difficulty == pre.difficulty)",
+    "(meta.revert_taken == false) -> (post.openToPublic == pre.openToPublic)",
+    "(meta.revert_taken == false) -> (post.totalDonated <= (pre.totalDonated + arg.amount))",
+    "(meta.revert_taken == false) -> (post.totalDonated == (pre.totalDonated + arg.amount))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)",
+    "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender))",
+    "(meta.revert_taken == false) -> (post.betLimit == pre.betLimit)",
+    "(meta.revert_taken == false) -> (post.difficulty == pre.difficulty)",
+    "(meta.revert_taken == false) -> (post.openToPublic == pre.openToPublic)",
+    "(meta.revert_taken == false) -> (post.totalDonated <= (pre.totalDonated + arg.amount))",
+    "(meta.revert_taken == false) -> (post.totalDonated == (pre.totalDonated + arg.amount))"
+  ]
+}

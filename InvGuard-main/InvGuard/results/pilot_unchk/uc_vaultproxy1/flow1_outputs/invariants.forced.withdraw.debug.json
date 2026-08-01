@@ -1,0 +1,30 @@
+{
+  "function": "withdraw",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 0,
+  "deposit_count": 0,
+  "withdraw_count": 0,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (Deposits[meta.sender] >= 0)",
+    "(meta.revert_taken == false) -> (Deposits[meta.sender] == select(pre.Deposits, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (meta.sender == Owner) -> (Deposits[meta.sender] >= arg.amount)",
+    "(meta.revert_taken == false) -> (Owner != address(0))",
+    "(meta.revert_taken == false) -> (meta.value > 0.25 ether) -> (Deposits[meta.sender] >= select(pre.Deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (Owner == pre.Owner)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (Deposits[meta.sender] >= 0)",
+    "(meta.revert_taken == false) -> (Deposits[meta.sender] == select(pre.Deposits, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (meta.sender == Owner) -> (Deposits[meta.sender] >= arg.amount)",
+    "(meta.revert_taken == false) -> (Owner != address(0))",
+    "(meta.revert_taken == false) -> (meta.value > 0.25 ether) -> (Deposits[meta.sender] >= select(pre.Deposits, meta.sender))",
+    "(meta.revert_taken == false) -> (Owner == pre.Owner)"
+  ],
+  "sanitized": [],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)"
+  ]
+}

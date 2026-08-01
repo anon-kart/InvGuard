@@ -1,0 +1,8 @@
+Added a commit-reveal mechanism and reentrancy mutex: users must submit a prior-block commitment via commit(bytes32) (commit = keccak256(n, msg.sender)) and only then call guess(n) in a later block; guess now verifies the commit, clears state before payout (CEI), and uses a _locked flag to prevent reentrancy. This prevents same-block reveal attacks and reentrancy during payout. Note: the original weak randomness (answer derived from blockhash and now) remains and could still be exploited by an attacker who knows the chain state at deployment and precommits accordingly.
+
+INVARIANTS USED:
+1) commitments[msg.sender] == keccak256(n, msg.sender) enforces reveal matches prior commit.
+2) block.number > commitBlock[msg.sender] enforces commit was in a prior block (prevents same-block reveal).
+3) commitments[msg.sender] == 0 after clearing (state cleared before external transfer) to satisfy Checks-Effects-Interactions.
+4) _locked boolean prevents reentrancy in guess.
+5) require(commitments[msg.sender] == 0) in commit prevents overwriting an existing pending commit.

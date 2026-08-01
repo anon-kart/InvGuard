@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (post.totalDonated <= pre.totalDonated + select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated - select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (post.ethToTransfer == pre.ethToTransfer / 2)

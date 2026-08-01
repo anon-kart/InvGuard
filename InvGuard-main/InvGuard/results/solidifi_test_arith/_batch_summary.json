@@ -1,0 +1,33 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_integer_overflow_overflow_underflow_h4_buggy_4.sol",
+    "stem": "sfi_integer_overflow_overflow_underflow_h4_buggy_4",
+    "tier": "solidifi_test_arith",
+    "model": "gpt-4o-mini",
+    "target_function": "transfer_intou26",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 21.02,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 17.53,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

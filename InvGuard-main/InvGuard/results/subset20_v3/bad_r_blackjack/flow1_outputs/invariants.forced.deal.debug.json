@@ -1,0 +1,30 @@
+{
+  "function": "deal",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 0,
+  "deposit_count": 0,
+  "withdraw_count": 0,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).bet >= select(pre.games, meta.sender).bet)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).cardsDealt >= select(pre.games, meta.sender).cardsDealt)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).playerCards.length >= select(pre.games, meta.sender).playerCards.length)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).houseCards.length >= select(pre.games, meta.sender).houseCards.length)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).state == GameState.Ongoing) -> (select(post.games, meta.sender).bet == select(pre.games, meta.sender).bet)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).state != GameState.Ongoing) -> (select(post.games, meta.sender).bet == select(pre.games, meta.sender).bet)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).bet >= select(pre.games, meta.sender).bet)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).cardsDealt >= select(pre.games, meta.sender).cardsDealt)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).playerCards.length >= select(pre.games, meta.sender).playerCards.length)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).houseCards.length >= select(pre.games, meta.sender).houseCards.length)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).state == GameState.Ongoing) -> (select(post.games, meta.sender).bet == select(pre.games, meta.sender).bet)",
+    "(meta.revert_taken == false) -> (select(post.games, meta.sender).state != GameState.Ongoing) -> (select(post.games, meta.sender).bet == select(pre.games, meta.sender).bet)"
+  ],
+  "sanitized": [],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)"
+  ]
+}

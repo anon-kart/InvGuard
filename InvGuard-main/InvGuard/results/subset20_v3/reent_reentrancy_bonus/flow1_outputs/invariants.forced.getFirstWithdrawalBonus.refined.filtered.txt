@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient))
+((meta.revert_taken == false)) -> ((select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false))
+(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient))
+(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) == (select(pre.rewardsForA, arg.recipient) + 100))

@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.receivers_unchk18, meta.sender) >= select(pre.receivers_unchk18, meta.sender)  # reason=Z3Exception: First argument must be a Z3 array expression
+(meta.revert_taken == false) -> (select(post.receivers_unchk18, meta.sender) <= select(pre.receivers_unchk18, meta.sender)  # reason=Z3Exception: First argument must be a Z3 array expression

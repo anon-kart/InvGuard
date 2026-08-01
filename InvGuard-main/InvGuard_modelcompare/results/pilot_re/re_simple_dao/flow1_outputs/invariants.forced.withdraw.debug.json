@@ -1,0 +1,31 @@
+{
+  "function": "withdraw",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 3,
+  "deposit_count": 1,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.credit, arg.to) >= select(pre.credit, arg.to))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender) - arg.amount)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.credit, arg.to) >= select(pre.credit, arg.to))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender) - arg.amount)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= (select(pre.credit, meta.sender) + arg.amount))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= (select(pre.credit, meta.sender) - arg.amount))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= (select(pre.credit, meta.sender) + arg.amount))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= (select(pre.credit, meta.sender) - arg.amount))",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender))"
+  ]
+}

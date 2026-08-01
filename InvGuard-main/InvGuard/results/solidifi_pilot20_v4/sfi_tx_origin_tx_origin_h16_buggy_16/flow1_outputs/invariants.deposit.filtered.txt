@@ -1,0 +1,7 @@
+(meta.revert_taken == false) -> (post.contract_balance == (pre.contract_balance + meta.value))
+(meta.revert_taken == false) -> (post.contract_balance <= (pre.contract_balance + meta.value))
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) <= (select(pre.shares, meta.sender) + meta.value))
+(meta.revert_taken == false) -> (post.owner == pre.owner)
+(meta.revert_taken == false) -> (post.contract_balance >= pre.contract_balance)
+(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance - select(pre.shares, meta.sender))
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) >= select(pre.shares, meta.sender))

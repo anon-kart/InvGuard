@@ -1,0 +1,39 @@
+{
+  "function": "withdrawAll",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 5,
+  "deposit_count": 2,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == meta.sender)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, root) == root)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == meta.sender)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, root) == root)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == meta.sender)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == meta.sender)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == 0)"
+  ]
+}

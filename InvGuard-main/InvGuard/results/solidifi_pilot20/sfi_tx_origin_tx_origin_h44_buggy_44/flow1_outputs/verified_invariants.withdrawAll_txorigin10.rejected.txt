@@ -1,0 +1,5 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.hashFunction, meta.sender) == select(pre.hashFunction, meta.sender)  # reason=KeyError: "Unknown symbol 'post.hashFunction'"
+(meta.revert_taken == false) -> (select(post.digestSize, meta.sender) == select(pre.digestSize, meta.sender)  # reason=KeyError: "Unknown symbol 'post.digestSize'"
+(meta.revert_taken == false) -> (post.hash == pre.hash)  # reason=KeyError: "Unknown symbol 'post.hash'"
+(meta.revert_taken == false) -> (post.codeSize == pre.codeSize)  # reason=KeyError: "Unknown symbol 'post.codeSize'"

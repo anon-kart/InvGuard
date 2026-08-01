@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (post.isActive == false)
+(meta.revert_taken == false) -> (post._dgxBalance == 0)
+(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)
+(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)

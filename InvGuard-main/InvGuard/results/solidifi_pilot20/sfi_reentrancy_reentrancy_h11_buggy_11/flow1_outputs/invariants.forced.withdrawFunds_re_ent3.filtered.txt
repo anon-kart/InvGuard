@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply)
+(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances, owner) >= select(pre.balances, owner))
+(meta.revert_taken == false) -> (select(post.balances, owner) <= select(pre.balances, owner))

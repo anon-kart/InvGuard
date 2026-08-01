@@ -1,0 +1,4 @@
+Converted the outbid refund in bid() from a synchronous external send to a pull-payment model. Instead of requiring the previous frontrunner to accept Ether during the new bid, the contract records the refundable amount in pendingReturns and lets each bidder withdraw their own refund separately. An overflow check was added before accumulating pending returns, and withdraw() clears state before the external send.
+
+INVARIANTS USED:
+A new valid bid must still satisfy msg.value > currentBid. When a bidder is outbid, exactly the previous currentBid is credited to that bidder's pendingReturns instead of being sent synchronously. bid() performs no external calls, so a rejecting fallback cannot block future bids. withdraw() only allows withdrawal of a positive recorded balance, zeroes the balance before transfer to preserve checks-effects-interactions/reentrancy safety, and reverts to restore the balance if the send fails under Solidity 0.4.x semantics.

@@ -1,0 +1,4 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (select(post._balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender)

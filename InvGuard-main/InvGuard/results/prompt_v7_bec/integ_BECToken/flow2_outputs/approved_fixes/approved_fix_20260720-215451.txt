@@ -1,0 +1,4 @@
+Changed the arithmetic in batchTransfer to use SafeMath for multiplication to prevent integer overflow.
+
+INVARIANTS USED:
+SafeMath for arithmetic operations.

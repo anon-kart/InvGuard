@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))

@@ -1,0 +1,3 @@
+# VIOLATED-MEANINGFUL (attack objectives for Flow-2)
+(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) <= select(pre.refundAmount, meta.sender) + select(post.refundAmount, meta.sender))
+(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value))

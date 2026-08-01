@@ -1,0 +1,59 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h1_buggy_1.sol",
+    "stem": "sfi_reentrancy_reentrancy_h1_buggy_1",
+    "tier": "solidifi_test_fix6",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw_balances_re_ent8",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 20.96,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 45.06,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_tx_origin_tx_origin_h5_buggy_5.sol",
+    "stem": "sfi_tx_origin_tx_origin_h5_buggy_5",
+    "tier": "solidifi_test_fix6",
+    "model": "gpt-4o-mini",
+    "target_function": "sendto_txorigin21",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 14.07,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 26.51,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

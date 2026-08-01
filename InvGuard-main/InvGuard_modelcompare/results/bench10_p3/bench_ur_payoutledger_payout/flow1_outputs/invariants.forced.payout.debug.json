@@ -1,0 +1,39 @@
+{
+  "function": "payout",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)",
+    "(meta.revert_taken == false) -> (select(post.owed, meta.sender) >= select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.owed, meta.sender) <= select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalOwed <= pre.totalOwed + select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, meta.sender) >= select(pre.paidTotal, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, meta.sender) <= select(pre.paidTotal, meta.sender) + select(pre.owed, meta.sender))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)",
+    "(meta.revert_taken == false) -> (select(post.owed, meta.sender) >= select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.owed, meta.sender) <= select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalOwed <= pre.totalOwed + select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, meta.sender) >= select(pre.paidTotal, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, meta.sender) <= select(pre.paidTotal, meta.sender) + select(pre.owed, meta.sender))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)",
+    "(meta.revert_taken == false) -> (select(post.owed, meta.sender) >= select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.owed, meta.sender) <= select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalOwed <= pre.totalOwed + select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, meta.sender) >= select(pre.paidTotal, meta.sender))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)",
+    "(meta.revert_taken == false) -> (select(post.owed, meta.sender) >= select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.owed, meta.sender) <= select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalOwed <= pre.totalOwed + select(pre.owed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.paidTotal, meta.sender) >= select(pre.paidTotal, meta.sender))"
+  ]
+}

@@ -1,0 +1,6 @@
+Converted to a pull-payment pattern by recording amounts owed and allowing each account to withdraw its own funds.
+
+INVARIANTS USED:
+1. The contract uses a pull-payment pattern to prevent reentrancy attacks.
+2. The `withdraw` function sets the pending return to zero before transferring funds.
+3. The `transfer` method is used instead of `send` to ensure that the transaction reverts if the transfer fails.

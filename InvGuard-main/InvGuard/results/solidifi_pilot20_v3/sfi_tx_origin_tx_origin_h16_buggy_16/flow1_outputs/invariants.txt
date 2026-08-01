@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender))
+(meta.revert_taken == false) -> (post.owner == pre.owner)
+(meta.revert_taken == false) -> (post.owner != address(0))
+(meta.revert_taken == false) -> (post.owner == meta.sender)
+(meta.revert_taken == false) -> (post.owner == pre.owner)

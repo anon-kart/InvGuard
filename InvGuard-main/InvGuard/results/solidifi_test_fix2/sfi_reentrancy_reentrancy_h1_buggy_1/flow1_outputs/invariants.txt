@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (balances_re_ent8[meta.sender] >= 0)
+(meta.revert_taken == false) -> (success -> balances_re_ent8[meta.sender] == 0)
+(meta.revert_taken == false) -> (balances_re_ent8[meta.sender] == address(meta.sender).balance)

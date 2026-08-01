@@ -1,0 +1,27 @@
+{
+  "VU": {
+    "count": 8,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+      "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) >= select(pre.balances_re_ent38, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+      "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+      "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) <= select(pre.balances_re_ent38, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) <= select(pre.balances_re_ent31, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) <= select(pre.balances_re_ent36, meta.sender))"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 0,
+    "examples": []
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

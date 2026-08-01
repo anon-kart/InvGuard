@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees)
+(meta.revert_taken == false) -> (post.collectedFees == 0) -> (pre.collectedFees > 0)

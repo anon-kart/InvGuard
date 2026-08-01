@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + arg._amount)  # reason=KeyError: "Unknown symbol 'arg.arg.amount'"
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= (select(pre.balances, meta.sender) - arg._amount)  # reason=KeyError: "Unknown symbol 'arg.arg.amount'"

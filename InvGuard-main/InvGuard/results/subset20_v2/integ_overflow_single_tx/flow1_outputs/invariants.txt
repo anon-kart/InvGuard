@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (count >= 0)
+(meta.revert_taken == false) -> (count == 1)
+(meta.revert_taken == false) -> (count + arg.input > count)
+(meta.revert_taken == false) -> (count * arg.input > count)
+(meta.revert_taken == false) -> (count - arg.input < count)

@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  # reason=KeyError: "Unknown symbol 'post.vaultBalance()'"

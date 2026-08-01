@@ -1,0 +1,4 @@
+Replaced block-dependent randomness in chooseWinner() with a commit-reveal scheme using block.number and now.
+
+INVARIANTS USED:
+BAD_RANDOMNESS

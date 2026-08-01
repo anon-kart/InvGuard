@@ -1,0 +1,4 @@
+Added a commit-reveal scheme by introducing a reveal block to prevent predictable randomness in the guess function.
+
+INVARIANTS USED:
+Commit-reveal scheme, block number for randomness

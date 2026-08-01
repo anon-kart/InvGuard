@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= 0)
+(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) == 0)

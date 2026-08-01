@@ -1,0 +1,90 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/multiowned_vulnerable.sol",
+    "stem": "acces_multiowned_vulnerable",
+    "tier": "test_fix9",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawAll",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 71.55,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/parity_wallet_bug_2.sol",
+    "stem": "acces_parity_wallet_bug_2",
+    "tier": "test_fix9",
+    "model": "gpt-4o-mini",
+    "target_function": "initWallet",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 183.5,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "INCONCLUSIVE",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_bonus.sol",
+    "stem": "reent_reentrancy_bonus",
+    "tier": "test_fix9",
+    "model": "gpt-4o-mini",
+    "target_function": "getFirstWithdrawalBonus",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "financial"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 61.53,
+      "timed_out": false,
+      "attempt": 2
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

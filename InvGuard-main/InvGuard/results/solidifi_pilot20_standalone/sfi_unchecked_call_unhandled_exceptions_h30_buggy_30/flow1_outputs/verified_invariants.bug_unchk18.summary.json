@@ -1,0 +1,14 @@
+{
+  "verified_count": 2,
+  "violated_count": 2,
+  "unknown_count": 0,
+  "unsound_count": 0,
+  "rejected_count": 0,
+  "llm_invariants_accepted": true,
+  "used_builtin_fallback": false,
+  "verified_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk18.txt",
+  "unknown_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk18.unknown.txt",
+  "unsound_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk18.unsound.txt",
+  "rejected_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk18.rejected.txt",
+  "policy": "fail_closed: only HOLDS invariants from LLM translation/checking are written to verified_invariants.*.txt"
+}

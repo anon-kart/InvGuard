@@ -1,0 +1,41 @@
+{
+  "function": "withdraw",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 5,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)",
+    "(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) <= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalIn == pre.totalIn + select(post.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalOut == pre.totalOut + arg.amount)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)",
+    "(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) <= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalIn == pre.totalIn + select(post.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalOut == pre.totalOut + arg.amount)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)",
+    "(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) <= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalIn == pre.totalIn + select(post.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalOut == (pre.totalOut + arg.amount))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalOut == (pre.totalOut + arg.amount))",
+    "(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)",
+    "(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) <= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalIn == pre.totalIn + select(post.contributed, meta.sender))"
+  ]
+}

@@ -1,0 +1,510 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Unchecked-Send/buggy_23.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.deposit.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:3:17: Error: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:3:24: Error: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                       ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:3:39: Error: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                                      ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:4:17: Error: Undeclared identifier.
+  constructor() ERC20Detailed('Aggregion Token', 'AGR', 4) public {
+                ^-----------^
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:3:17: Error: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:3:24: Error: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                       ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:3:39: Error: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                                      ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:4:17: Error: Undeclared identifier.
+  constructor() ERC20Detailed('Aggregion Token', 'AGR', 4) public {
+                ^-----------^
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+WARNING:root:[parser] solcx AST compile failed; using regex fallback. err=SolcError: AGR.sol:3:17: DeclarationError: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                ^---^
+
+AGR.sol:3:24: DeclarationError: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                       ^-----------^
+
+AGR.sol:3:39: DeclarationError: Identifier not found or not unique.
+contract AGR is ERC20, ERC20Detailed, ERC20Burnable {
+                                      ^-----------^
+
+AGR.sol:4:17: DeclarationError: Undeclared identifier.
+  constructor() ERC20Detailed('Aggregion Token', 'AGR', 4) public {
+                ^-----------^
+
+> command: `/home/kartik/.solcx/solc-v0.5.17 --standard-json --allow-paths .`
+> return code: `0`
+> stdout:
+{"errors":[{"component":"general","formattedMessage":"AGR.sol:3:17: DeclarationError: Identifier not found or not unique.\ncontract AGR is ERC20, ERC20Detailed, ERC20Burnable {\n                ^---^\n","message":"Identifier not found or not unique.","severity":"error","sourceLocation":{"end":46,"file":"AGR.sol","start":41},"type":"DeclarationError"},{"component":"general","formattedMessage":"AGR.sol:3:24: DeclarationError: Identifier not found or not unique.\ncontract AGR is ERC20, ERC20Detailed, ERC20Burnable {\n                       ^-----------^\n","message":"Identifier not found or not unique.","severity":"error","sourceLocation":{"end":61,"file":"AGR.sol","start":48},"type":"DeclarationError"},{"component":"general","formattedMessage":"AGR.sol:3:39: DeclarationError: Identifier not found or not unique.\ncontract AGR is ERC20, ERC20Detailed, ERC20Burnable {\n                                      ^-----------^\n","message":"Identifier not found or not unique.","severity":"error","sourceLocation":{"end":76,"file":"AGR.sol","start":63},"type":"DeclarationError"},{"component":"general","formattedMessage":"AGR.sol:4:17: DeclarationError: Undeclared identifier.\n  constructor() ERC20Detailed('Aggregion Token', 'AGR', 4) public {\n                ^-----------^\n","message":"Undeclared identifier.","severity":"error","sourceLocation":{"end":108,"file":"AGR.sol","start":95},"type":"DeclarationError"}],"sources":{}}
+
+> stderr:
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/AGR.sol:3:17: Error: Identifier not found or not unique.
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f bug_unchk_send15 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.bug_unchk_send15.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burn(meta.sender,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burnFrom(from,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, owner)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowed, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(from,to,value)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(from,meta.sender,select(_allowed, from)[meta.sender].sub(value))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].add(addedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].sub(subtractedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'to != address(0)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'from', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,value)'}
+[... truncated ...]INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post._balances, meta.sender) >= 0)
+   - (meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post._allowed, meta.sender, arg.spender) >= 0)  | reason=TRANSLATOR_REJECTED: select expects 2 args
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk_send15.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk_send15.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk_send15.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f bug_unchk_send15 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.bug_unchk_send15.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burn(meta.sender,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burnFrom(from,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, owner)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowed, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(from,to,value)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(from,meta.sender,select(_allowed, from)[meta.sender].sub(value))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].add(addedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].sub(subtractedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'to != address(0)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'from', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,value)'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post._balances, meta.sender) >= 0)
+   - (meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post._allowed, meta.sender, arg.spender) >= 0)  | reason=TRANSLATOR_REJECTED: select expects 2 args
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk_send15.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk_send15.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.bug_unchk_send15.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f bug_unchk_send15 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.bug_unchk_send15.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Rejected lines (reason shown):
+  - (meta.revert_taken == false) -> (select(post._allowed, meta.sender, arg.spender) >= 0)  =>  select expects 2 args
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: bug_unchk_send15  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post._balances, meta.sender) >= 0)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post._allowed, meta.sender, arg.spender) >= 0)", "reason": "TRANSLATOR_REJECTED: select expects 2 args", "status": "REJECTED_UNSUPPORTED"}INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f bug_unchk_send15 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.bug_unchk_send15.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Rejected lines (reason shown):
+  - (meta.revert_taken == false) -> (select(post._allowed, meta.sender, arg.spender) >= 0)  =>  select expects 2 args
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: bug_unchk_send15  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post._balances, meta.sender) >= 0)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post._allowed, meta.sender, arg.spender) >= 0)", "reason": "TRANSLATOR_REJECTED: select expects 2 args", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_turf31ou/drop_require_1.sol --llm-invariants /tmp/inv_strength_turf31ou/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_turf31ou/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_turf31ou' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burn(meta.sender,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burnFrom(from,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, owner)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowed, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(from,to,value)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(from,meta.sender,select(_allowed, from)[meta.sender].sub(value))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].add(addedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].sub(subtractedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'to != address(0)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'from', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,value)'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_turf31ou/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_turf31ou/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_turf31ou/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_turf31ou/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_turf31ou/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_turf31ou' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burn(meta.sender,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burnFrom(from,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, owner)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowed, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(from,to,value)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(from,meta.sender,select(_allowed, from)[meta.sender].sub(value))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].add(addedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].sub(subtractedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'to != address(0)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'from', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,value)'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_turf31ou/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_turf31ou/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_turf31ou/drop_require_2.sol --llm-invariants /tmp/inv_strength_turf31ou/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_turf31ou/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_turf31ou' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burn(meta.sender,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_burnFrom(from,value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_totalSupply'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_balances, owner)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(_allowed, owner)[spender]'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,to,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(from,to,value)'}
+INFO:root:   {'op': 'raw', 'src': '_approve(from,meta.sender,select(_allowed, from)[meta.sender].sub(value))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].add(addedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_approve(meta.sender,spender,select(_allowed, meta.sender)[spender].sub(subtractedValue))'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'to != address(0)'}
+INFO:root:   {'op': 'map_sub', 'map': '_balances', 'key_src': 'from', 'val_src': 'value'}
+INFO:root:   {'op': 'map_add', 'map': '_balances', 'key_src': 'to', 'val_src': 'value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(from,to,value)'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_turf31ou/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_turf31ou/verified_invariants.global.summary.json

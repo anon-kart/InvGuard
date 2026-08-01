@@ -1,0 +1,246 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+WARNING:root:[FLOW1] No function-specific invariants for deal; falling back to all sanitized invariants.
+WARNING:root:[FLOW1] Sanitizer removed all invariants for deal; NOT falling back to raw invariants. Using safe deterministic invariants only.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+WARNING:root:[FLOW1] No function-specific invariants for deal; falling back to all sanitized invariants.
+WARNING:root:[FLOW1] Sanitizer removed all invariants for deal; NOT falling back to raw invariants. Using safe deterministic invariants only.
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/blackjack.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deal --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deal.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:52:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:61:2: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+	function BlackJack() {}
+	^---------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:67:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:70:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:100:8: Warning: Use of the "var" keyword is deprecated.
+		var (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);
+		     ^--------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:100:20: Warning: Use of the "var" keyword is deprecated.
+		var (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);
+		                 ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:113:8: Warning: Use of the "var" keyword is deprecated.
+		var (houseScore, houseScoreBig) = calculateScore(game.houseCards);
+		     ^--------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:113:20: Warning: Use of the "var" keyword is deprecated.
+		var (houseScore, houseScoreBig) = calculateScore(game.houseCards);
+		                 ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:114:8: Warning: Use of the "var" keyword is deprecated.
+		var (playerScore, playerScoreBig) = calculateScore(game.playerCards);
+		     ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:114:21: Warning: Use of the "var" keyword is deprecated.
+		var (playerScore, playerScoreBig) = calculateScore(game.playerCards);
+		                  ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:118:37: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+				if (!msg.sender.send(game.bet)) throw;
+				                                ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:128:48: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+					if (!msg.sender.send((game.bet * 5) / 2)) throw;
+					                                          ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:130:42: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+					if (!msg.sender.send(game.bet * 2)) throw;
+					                                    ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:157:43: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+						if (!msg.sender.send(game.bet * 2)) throw;
+						                                    ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:167:38: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+					if (!msg.sender.send(game.bet)) throw;
+					                                ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:170:42: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+					if (!msg.sender.send(game.bet * 2)) throw;
+					                                    ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:198:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:205:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:220:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  | reason=KeyError: "Unknown symbol 'post.feeBps'"
+   - (meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  | reason=KeyError: "Unknown symbol 'post.maxWithdrawBps'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deal.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deal.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deal.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deal --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deal.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:52:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:61:2: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+	function BlackJack() {}
+	^---------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:67:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:70:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:100:8: Warning: Use of the "var" keyword is deprecated.
+		var (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);
+		     ^--------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:100:20: Warning: Use of the "var" keyword is deprecated.
+		var (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);
+		                 ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:113:8: Warning: Use of the "var" keyword is deprecated.
+		var (houseScore, houseScoreBig) = calculateScore(game.houseCards);
+		     ^--------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:113:20: Warning: Use of the "var" keyword is deprecated.
+		var (houseScore, houseScoreBig) = calculateScore(game.houseCards);
+		                 ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:114:8: Warning: Use of the "var" keyword is deprecated.
+		var (playerScore, playerScoreBig) = calculateScore(game.playerCards);
+		     ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:114:21: Warning: Use of the "var" keyword is deprecated.
+		var (playerScore, playerScoreBig) = calculateScore(game.playerCards);
+		                  ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:118:37: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+				if (!msg.sender.send(game.bet)) throw;
+				                                ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:128:48: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+					if (!msg.sender.send((game.bet * 5) / 2)) throw;
+					                                          ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:130:42: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+					if (!msg.sender.send(game.bet * 2)) throw;
+					                                    ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:157:43: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+						if (!msg.sender.send(game.bet * 2)) throw;
+						                                    ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:167:38: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+					if (!msg.sender.send(game.bet)) throw;
+					                                ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:170:42: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+					if (!msg.sender.send(game.bet * 2)) throw;
+					                                    ^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:198:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:205:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+			^---^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:220:4: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+			throw;
+[... truncated ...]WARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  | reason=KeyError: "Unknown symbol 'post.feeBps'"
+   - (meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  | reason=KeyError: "Unknown symbol 'post.maxWithdrawBps'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deal.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deal.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deal.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deal --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deal.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: deal  (invariants: LLM-translated)
+Notes:
+  - [raw-block] meta.value < minBet || meta.value > maxBet
+  - [heuristics] unknown expr: new uint8[](1)
+  - [tmp] created local houseCards: BitVec256 (block)
+  - [skip] unparsed store (block): {'op': 'store', 'var': 'houseCards', 'val_src': 'new uint8[](1)'}
+  - [heuristics] unknown expr: new uint8[](2)
+  - [tmp] created local playerCards: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': 'playerCards', 'val_src': 'new uint8[](2)'}
+  - [heuristics] unknown expr: Deck.deal(meta.sender,0)
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'playerCards', 'key_src': '0', 'val_src': 'Deck.deal(meta.sender,0)'}
+  - [raw] Deal(true,select(playerCards, 0))
+  - [heuristics] unknown expr: Deck.deal(meta.sender,1)
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'houseCards', 'key_src': '0', 'val_src': 'Deck.deal(meta.sender,1)'}
+  - [raw] Deal(false,select(houseCards, 0))
+  - [heuristics] unknown expr: Deck.deal(meta.sender,2)
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'playerCards', 'key_src': '1', 'val_src': 'Deck.deal(meta.sender,2)'}
+  - [raw] Deal(true,select(playerCards, 1))
+  - [heuristics] unknown expr: Game({player:meta.sender,bet:meta.value,houseCards:houseCards,playerCards:playerCards,state:GameState.Ongoing,cardsDealt:3})
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'games', 'key_src': 'meta.sender', 'val_src': 'Game({player:meta.sender,bet:meta.value,houseCards:houseCards,playerCards:playerCards,state:GameState.Ongoing,cardsDealt:3})'}
+  - [raw] checkGameResult(select(games, meta.sender),false)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)", "reason": "KeyError: \"Unknown symbol 'post.feeBps'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)", "reason": "KeyError: \"Unknown symbol 'post.maxWithdrawBps'\"", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deal --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.deal.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: deal  (invariants: LLM-translated)
+Notes:
+  - [raw-block] meta.value < minBet || meta.value > maxBet
+  - [heuristics] unknown expr: new uint8[](1)
+  - [tmp] created local houseCards: BitVec256 (block)
+  - [skip] unparsed store (block): {'op': 'store', 'var': 'houseCards', 'val_src': 'new uint8[](1)'}
+  - [heuristics] unknown expr: new uint8[](2)
+  - [tmp] created local playerCards: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': 'playerCards', 'val_src': 'new uint8[](2)'}
+  - [heuristics] unknown expr: Deck.deal(meta.sender,0)
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'playerCards', 'key_src': '0', 'val_src': 'Deck.deal(meta.sender,0)'}
+  - [raw] Deal(true,select(playerCards, 0))
+  - [heuristics] unknown expr: Deck.deal(meta.sender,1)
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'houseCards', 'key_src': '0', 'val_src': 'Deck.deal(meta.sender,1)'}
+  - [raw] Deal(false,select(houseCards, 0))
+  - [heuristics] unknown expr: Deck.deal(meta.sender,2)
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'playerCards', 'key_src': '1', 'val_src': 'Deck.deal(meta.sender,2)'}
+  - [raw] Deal(true,select(playerCards, 1))
+  - [heuristics] unknown expr: Game({player:meta.sender,bet:meta.value,houseCards:houseCards,playerCards:playerCards,state:GameState.Ongoing,cardsDealt:3})
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'games', 'key_src': 'meta.sender', 'val_src': 'Game({player:meta.sender,bet:meta.value,houseCards:houseCards,playerCards:playerCards,state:GameState.Ongoing,cardsDealt:3})'}
+  - [raw] checkGameResult(select(games, meta.sender),false)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)", "reason": "KeyError: \"Unknown symbol 'post.feeBps'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)", "reason": "KeyError: \"Unknown symbol 'post.maxWithdrawBps'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ⚠️ No verified-useful invariants for Flow-2. Invariant-guided Flow-2 must be disabled or run in explicit contract-only mode.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

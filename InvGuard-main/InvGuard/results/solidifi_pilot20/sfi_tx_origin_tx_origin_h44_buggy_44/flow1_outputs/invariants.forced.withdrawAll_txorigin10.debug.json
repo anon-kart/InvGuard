@@ -1,0 +1,41 @@
+{
+  "function": "withdrawAll_txorigin10",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 6,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post._operator == pre._operator)",
+    "(meta.revert_taken == false) -> (post._status == pre._status)",
+    "(meta.revert_taken == false) -> (select(post.hashFunction, meta.sender) == select(pre.hashFunction, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.digestSize, meta.sender) == select(pre.digestSize, meta.sender))",
+    "(meta.revert_taken == false) -> (post.hash == pre.hash)",
+    "(meta.revert_taken == false) -> (post.codeSize == pre.codeSize)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post._operator == pre._operator)",
+    "(meta.revert_taken == false) -> (post._status == pre._status)",
+    "(meta.revert_taken == false) -> (select(post.hashFunction, meta.sender) == select(pre.hashFunction, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.digestSize, meta.sender) == select(pre.digestSize, meta.sender))",
+    "(meta.revert_taken == false) -> (post.hash == pre.hash)",
+    "(meta.revert_taken == false) -> (post.codeSize == pre.codeSize)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post._operator == pre._operator)",
+    "(meta.revert_taken == false) -> (post._status == pre._status)",
+    "(meta.revert_taken == false) -> (select(post.hashFunction, meta.sender) == select(pre.hashFunction, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.digestSize, meta.sender) == select(pre.digestSize, meta.sender))",
+    "(meta.revert_taken == false) -> (post.hash == pre.hash)",
+    "(meta.revert_taken == false) -> (post.codeSize == pre.codeSize)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post._operator == pre._operator)",
+    "(meta.revert_taken == false) -> (post._status == pre._status)",
+    "(meta.revert_taken == false) -> (select(post.hashFunction, meta.sender) == select(pre.hashFunction, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.digestSize, meta.sender) == select(pre.digestSize, meta.sender))",
+    "(meta.revert_taken == false) -> (post.hash == pre.hash)",
+    "(meta.revert_taken == false) -> (post.codeSize == pre.codeSize)"
+  ]
+}

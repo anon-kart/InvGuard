@@ -1,0 +1,4 @@
+# VERIFIED-USEFUL INVARIANTS ONLY
+# DEFAULT FLOW-2 INPUT. Fail-closed if empty.
+(meta.revert_taken == false) -> (post.raffleId >= pre.raffleId)
+(meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber)

@@ -1,0 +1,6 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+ac_mycontract,sendTo,False,no_report,None,None,None,8.49
+ac_wallet02,withdraw,False,no_report,None,None,None,30.88
+ac_wallet03,initWallet,False,no_report,None,None,None,25.88
+ac_mapwrite,set,False,no_report,None,None,None,1.22
+ac_unprotected,changeOwner,False,no_report,None,None,None,7.43

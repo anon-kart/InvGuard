@@ -1,0 +1,6 @@
+Added an authorization check to changeOwner by requiring msg.sender to equal the current owner before allowing the owner to be changed.
+
+INVARIANTS USED:
+1) owner is initialized to the contract deployer in the constructor (Unprotected()).
+2) changeOwner can only update owner when msg.sender == owner (authorization invariant).
+3) No other functions in the contract modify owner (owner only changed in constructor and changeOwner).

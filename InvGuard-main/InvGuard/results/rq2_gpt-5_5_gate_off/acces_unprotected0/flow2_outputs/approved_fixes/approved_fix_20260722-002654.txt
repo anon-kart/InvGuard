@@ -1,0 +1,4 @@
+Added an owner authorization check at the start of changeOwner so only the current owner can change ownership.
+
+INVARIANTS USED:
+Only the current owner may change the owner state variable; owner is initialized to msg.sender during deployment; changeOwner must preserve its intended functionality for authorized callers while reverting for all unauthorized callers.

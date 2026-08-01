@@ -1,0 +1,28 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/old_blockhash.sol",
+    "stem": "bad_r_old_blockhash",
+    "tier": "prompt_v3_smoke",
+    "model": "gpt-4o-mini",
+    "target_function": "settle",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "outcome_controlled"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 25.14,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 33.13,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

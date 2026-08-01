@@ -1,0 +1,62 @@
+
+=== [subset20_v3] acces_FibonacciBalance  (tf=withdraw, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+
+=== [subset20_v3] acces_multiowned_vulnerable  (tf=withdrawAll, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+
+=== [subset20_v3] acces_parity_wallet_bug_2  (tf=initWallet, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+
+=== [subset20_v3] acces_unprotected0  (tf=changeOwner, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+
+=== [subset20_v3] integ_BECToken  (tf=batchTransfer, env={'INVGUARD_VULN_CLASS': 'integer_overflow', 'INVGUARD_IMPACT_POLICY': 'financial'}) ===
+
+=== [subset20_v3] integ_overflow_single_tx  (tf=overflowaddtostate, env={'INVGUARD_VULN_CLASS': 'integer_overflow', 'INVGUARD_IMPACT_POLICY': 'financial'}) ===
+
+=== [subset20_v3] bad_r_blackjack  (tf=deal, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'outcome_controlled'}) ===
+
+=== [subset20_v3] bad_r_etheraffle  (tf=chooseWinner, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'outcome_controlled'}) ===
+
+=== [subset20_v3] bad_r_guess_the_random_number  (tf=guess, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'outcome_controlled'}) ===
+
+=== [subset20_v3] bad_r_old_blockhash  (tf=settle, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'outcome_controlled'}) ===
+
+=== [subset20_v3] denia_auction  (tf=bid, env={'INVGUARD_VULN_CLASS': 'denial_of_service', 'INVGUARD_IMPACT_POLICY': 'liveness_broken'}) ===
+
+=== [subset20_v3] denia_dos_address  (tf=emptyCreditors, env={'INVGUARD_VULN_CLASS': 'denial_of_service', 'INVGUARD_IMPACT_POLICY': 'liveness_broken'}) ===
+
+=== [subset20_v3] denia_dos_number  (tf=insertNnumbers, env={'INVGUARD_VULN_CLASS': 'denial_of_service', 'INVGUARD_IMPACT_POLICY': 'liveness_broken'}) ===
+
+=== [subset20_v3] denia_dos_simple  (tf=ifillArray, env={'INVGUARD_VULN_CLASS': 'denial_of_service', 'INVGUARD_IMPACT_POLICY': 'liveness_broken'}) ===
+
+=== [subset20_v3] reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106  (tf=Collect, env={'INVGUARD_VULN_CLASS': 'reentrancy', 'INVGUARD_IMPACT_POLICY': 'financial'}) ===
+
+=== [subset20_v3] reent_modifier_reentrancy  (tf=airDrop, env={'INVGUARD_VULN_CLASS': 'reentrancy', 'INVGUARD_IMPACT_POLICY': 'financial'}) ===
+
+=== [subset20_v3] reent_reentrancy_bonus  (tf=getFirstWithdrawalBonus, env={'INVGUARD_VULN_CLASS': 'reentrancy', 'INVGUARD_IMPACT_POLICY': 'financial'}) ===
+
+=== [subset20_v3] unche_0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e  (tf=donateToWhale, env={'INVGUARD_VULN_CLASS': 'unchecked_call', 'INVGUARD_IMPACT_POLICY': 'silent_failure'}) ===
+
+=== [subset20_v3] unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839  (tf=WithdrawToken, env={'INVGUARD_VULN_CLASS': 'unchecked_call', 'INVGUARD_IMPACT_POLICY': 'silent_failure'}) ===
+
+=== [subset20_v3] unche_0x89c1b3807d4c67df034fffb62f3509561218d30b  (tf=deliver, env={'INVGUARD_VULN_CLASS': 'unchecked_call', 'INVGUARD_IMPACT_POLICY': 'silent_failure'}) ===
+
+========== subset20_v3: 0/20 strict accepts ==========
+  ----    acces_FibonacciBalance                        gate_rejected
+  ----    acces_multiowned_vulnerable                   no_report
+  ----    acces_parity_wallet_bug_2                     gate_rejected
+  ----    acces_unprotected0                            no_report
+  ----    integ_BECToken                                no_report
+  ----    integ_overflow_single_tx                      no_report
+  ----    bad_r_blackjack                               no_report
+  ----    bad_r_etheraffle                              no_report
+  ----    bad_r_guess_the_random_number                 no_report
+  ----    bad_r_old_blockhash                           no_report
+  ----    denia_auction                                 no_report
+  ----    denia_dos_address                             no_report
+  ----    denia_dos_number                              no_report
+  ----    denia_dos_simple                              no_report
+  ----    reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106 no_report
+  ----    reent_modifier_reentrancy                     no_report
+  ----    reent_reentrancy_bonus                        gate_rejected
+  ----    unche_0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e no_report
+  ----    unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839 no_report
+  ----    unche_0x89c1b3807d4c67df034fffb62f3509561218d30b no_report

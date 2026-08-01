@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (MinSum >= 0)
+(meta.revert_taken == false) -> (intitalized == true)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (Sender != address(0))
+(meta.revert_taken == false) -> (Val >= 0)
+(meta.revert_taken == false) -> (Time >= 0)

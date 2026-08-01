@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (meta.contract_balance >= 0)
+(meta.revert_taken == false) -> (meta.contract_balance == pre.contract_balance + arg.value)
+(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance - 1 ether)
+(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance + arg.value)

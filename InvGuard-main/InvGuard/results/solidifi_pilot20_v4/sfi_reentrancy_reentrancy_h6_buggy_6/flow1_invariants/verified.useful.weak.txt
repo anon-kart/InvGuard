@@ -1,0 +1,2 @@
+# VERIFIED-USEFUL-WEAK (REPORTING ONLY; DO NOT GUIDE FLOW-2)
+meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) <= (select(pre.balances_re_ent1, meta.sender) + meta.value)

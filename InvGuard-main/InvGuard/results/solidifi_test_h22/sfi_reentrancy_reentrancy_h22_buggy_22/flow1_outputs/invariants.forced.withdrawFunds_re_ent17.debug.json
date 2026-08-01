@@ -1,0 +1,40 @@
+{
+  "function": "withdrawFunds_re_ent17",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 1,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= select(pre.balances_re_ent17, meta.sender) + arg._weiToWithdraw)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw == select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw <= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw)",
+    "(select(pre.balances_re_ent17, meta.sender) == 0 && meta.contract_balance > arg._weiToWithdraw) -> (meta.revert_taken == true)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= select(pre.balances_re_ent17, meta.sender) + arg._weiToWithdraw)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw == select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw <= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw)",
+    "(select(pre.balances_re_ent17, meta.sender) == 0 && meta.contract_balance > arg._weiToWithdraw) -> (meta.revert_taken == true)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= (select(pre.balances_re_ent17, meta.sender) + arg._weiToWithdraw))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw == select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw <= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= (select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw))",
+    "(select(pre.balances_re_ent17, meta.sender) == 0 && meta.contract_balance > arg._weiToWithdraw) -> (meta.revert_taken == true)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= (select(pre.balances_re_ent17, meta.sender) + arg._weiToWithdraw))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw == select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw <= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= (select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw))"
+  ]
+}

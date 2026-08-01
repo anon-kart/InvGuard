@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (meta.sender.transfer(select(post.balances, meta.sender)  # reason=KeyError: "Unknown symbol 'meta.sender.transfer(select(post.balances,meta.sender))'"

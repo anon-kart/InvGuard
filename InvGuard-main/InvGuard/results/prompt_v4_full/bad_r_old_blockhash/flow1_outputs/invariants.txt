@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (block.number <= guesses[arg.sender].block)
+(meta.revert_taken == false) -> (guesses[arg.sender].block == 0)
+(meta.revert_taken == false) -> (answer == blockhash(guesses[arg.sender].block))
+(meta.revert_taken == false) -> (meta.value == 1 ether)
+(guesses[arg.sender].guess == answer) -> (arg.sender.balance == pre.balance + 2 ether)

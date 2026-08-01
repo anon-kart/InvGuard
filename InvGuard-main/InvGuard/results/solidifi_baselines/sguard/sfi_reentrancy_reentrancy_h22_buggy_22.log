@@ -1,0 +1,29 @@
+
+> symEvm@1.0.0 dev
+> node src/index.js
+
+
+
+<--- Last few GCs --->
+
+[28179:0x13b0eca0]    13559 ms: Scavenge 2037.6 (2075.5) -> 2036.9 (2080.3) MB, 3.3 / 0.0 ms  (average mu = 0.094, current mu = 0.030) allocation failure; 
+[28179:0x13b0eca0]    13567 ms: Scavenge 2040.3 (2080.3) -> 2038.4 (2080.3) MB, 3.7 / 0.0 ms  (average mu = 0.094, current mu = 0.030) allocation failure; 
+[28179:0x13b0eca0]    13574 ms: Scavenge 2040.7 (2080.3) -> 2039.1 (2082.3) MB, 3.8 / 0.0 ms  (average mu = 0.094, current mu = 0.030) allocation failure; 
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+ 1: 0xb9bbf0 node::Abort() [node]
+ 2: 0xaa27ee  [node]
+ 3: 0xd734a0 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [node]
+ 4: 0xd73847 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [node]
+ 5: 0xf50c55  [node]
+ 6: 0xf51b58 v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [node]
+ 7: 0xf62053  [node]
+ 8: 0xf62ec8 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [node]
+ 9: 0xf66095 v8::internal::Heap::HandleGCRequest() [node]
+10: 0xee41ff v8::internal::StackGuard::HandleInterrupts() [node]
+11: 0x12e4adf v8::internal::Runtime_StackGuardWithGap(int, unsigned long*, v8::internal::Isolate*) [node]
+12: 0x1711cb9  [node]
+Aborted (core dumped)

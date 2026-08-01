@@ -1,0 +1,3 @@
+# VERIFIED-USEFUL (constraints for Flow-2)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= (select(pre.balances, meta.sender) + meta.value))
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value))

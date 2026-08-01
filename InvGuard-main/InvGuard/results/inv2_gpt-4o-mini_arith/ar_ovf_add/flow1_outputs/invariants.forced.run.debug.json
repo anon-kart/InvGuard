@@ -1,0 +1,37 @@
+{
+  "function": "run",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 2,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.count >= pre.count)",
+    "(meta.revert_taken == false) -> (post.count <= pre.count + arg.input)",
+    "(meta.revert_taken == false) -> (post.count > pre.count)",
+    "(meta.revert_taken == false) -> (post.count < pre.count + arg.input)",
+    "(meta.revert_taken == false) -> (post.count != pre.count + arg.input)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.count >= pre.count)",
+    "(meta.revert_taken == false) -> (post.count <= pre.count + arg.input)",
+    "(meta.revert_taken == false) -> (post.count > pre.count)",
+    "(meta.revert_taken == false) -> (post.count < pre.count + arg.input)",
+    "(meta.revert_taken == false) -> (post.count != pre.count + arg.input)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.count >= pre.count)",
+    "(meta.revert_taken == false) -> (post.count <= (pre.count + arg.input))",
+    "(meta.revert_taken == false) -> (post.count > pre.count)",
+    "(meta.revert_taken == false) -> (post.count < (pre.count + arg.input))",
+    "(meta.revert_taken == false) -> (post.count != (pre.count + arg.input))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.count >= pre.count)",
+    "(meta.revert_taken == false) -> (post.count <= (pre.count + arg.input))",
+    "(meta.revert_taken == false) -> (post.count > pre.count)",
+    "(meta.revert_taken == false) -> (post.count < (pre.count + arg.input))",
+    "(meta.revert_taken == false) -> (post.count != (pre.count + arg.input))"
+  ]
+}

@@ -1,0 +1,4 @@
+Changed the unchecked call in bug_unchk_send8 to require the transfer to succeed.
+
+INVARIANTS USED:
+Require statement to ensure the transfer succeeds.

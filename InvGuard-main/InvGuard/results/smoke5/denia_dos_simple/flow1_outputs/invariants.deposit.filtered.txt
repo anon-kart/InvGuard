@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.listAddresses.length <= pre.listAddresses.length + 350)
+(meta.revert_taken == false) -> (post.listAddresses.length >= pre.listAddresses.length)
+(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)
+(meta.revert_taken == false) -> (post.listAddresses.length == 0) -> (pre.listAddresses.length >= 1500)
+(meta.revert_taken == false) -> (post.listAddresses.length == pre.listAddresses.length + 350) -> (pre.listAddresses.length < 1500)

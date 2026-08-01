@@ -1,0 +1,47 @@
+[
+  {
+    "stem": "sfi_reentrancy_reentrancy_h1_buggy_1",
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h1_buggy_1.sol",
+    "clean_contract": "",
+    "target_function": "withdraw_balances_re_ent8",
+    "solidifi_category": "Re-entrancy",
+    "solidifi_sub": "reentrancy",
+    "host_id": "1",
+    "context": "state_after_value_call",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "original_contract": "/home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Re-entrancy/buggy_1.sol"
+  },
+  {
+    "stem": "sfi_reentrancy_reentrancy_h15_buggy_15",
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h15_buggy_15.sol",
+    "clean_contract": "",
+    "target_function": "withdraw_balances_re_ent8",
+    "solidifi_category": "Re-entrancy",
+    "solidifi_sub": "reentrancy",
+    "host_id": "15",
+    "context": "value_call",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "original_contract": "/home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Re-entrancy/buggy_15.sol"
+  },
+  {
+    "stem": "sfi_reentrancy_reentrancy_h22_buggy_22",
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h22_buggy_22.sol",
+    "clean_contract": "",
+    "target_function": "withdrawFunds_re_ent17",
+    "solidifi_category": "Re-entrancy",
+    "solidifi_sub": "reentrancy",
+    "host_id": "22",
+    "context": "value_call",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "original_contract": "/home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Re-entrancy/buggy_22.sol"
+  }
+]

@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (withdrawalCounter >= 0)
+(meta.revert_taken == false) -> (calculatedFibNumber >= 0)
+(meta.revert_taken == false) -> (start >= 0)
+(meta.revert_taken == false) -> (fibonacciLibrary != address(0))

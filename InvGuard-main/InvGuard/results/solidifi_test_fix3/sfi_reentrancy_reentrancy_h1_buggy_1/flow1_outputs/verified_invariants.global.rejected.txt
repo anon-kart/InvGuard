@@ -1,0 +1,4 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (balances_re_ent8[arg.sender] >= 0)  # reason=KeyError: "Unknown symbol 'arg.sender'"
+(meta.revert_taken == false) -> (balances_re_ent8[arg.sender] == 0) after withdraw_balances_re_ent8()  # reason=KeyError: "Unknown symbol 'arg.sender'"
+(meta.revert_taken == false) -> (balances_re_ent8[arg.sender] == select(pre.balances_re_ent8, arg.sender) + arg.value) after deposit()  # reason=KeyError: "Unknown symbol 'arg.sender'"

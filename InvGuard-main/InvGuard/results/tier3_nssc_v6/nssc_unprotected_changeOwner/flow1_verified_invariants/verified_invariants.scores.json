@@ -1,0 +1,49 @@
+{
+  "strong": [
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)"
+  ],
+  "medium": [],
+  "useful": [
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)"
+  ],
+  "weak": [
+    "(meta.revert_taken == false) -> (meta.sender == owner) -> (meta.contract_balance >= 0)"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)",
+      "killed": 1,
+      "mutants_ran": 2,
+      "kill_rate": 0.5,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.51,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (meta.sender == owner -> meta.contract_balance >= 0",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 0.1,
+      "trivial": true,
+      "score": 0.0,
+      "tier": "weak",
+      "weak_reason": "trivial",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

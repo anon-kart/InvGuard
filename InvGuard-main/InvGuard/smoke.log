@@ -1,0 +1,8 @@
+
+=== [smoke] bad_r_guess_the_random_number  (tf=guess, env={'INVGUARD_VULN_CLASS': 'bad_randomness'}) ===
+
+=== [smoke] denia_dos_simple  (tf=ifillArray, env={'INVGUARD_VULN_CLASS': 'denial_of_service'}) ===
+
+========== smoke: 0/2 strict accepts ==========
+  ----    bad_r_guess_the_random_number                 no_report
+  ----    denia_dos_simple                              no_report

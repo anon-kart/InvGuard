@@ -1,0 +1,4 @@
+Changed the unchecked call in bug_unchk30 to require the success of the send operation.
+
+INVARIANTS USED:
+require statement to ensure the success of the send operation.

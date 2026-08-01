@@ -1,0 +1,31 @@
+{
+  "function": "withdrawAll",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 2,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (balance >= 0)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= post.balance)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == select(pre.credit, meta.sender) + arg.value)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (balance >= 0)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= post.balance)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == select(pre.credit, meta.sender) + meta.value)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= post.balance)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == (select(pre.credit, meta.sender) + meta.value))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= post.balance)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == (select(pre.credit, meta.sender) + meta.value))"
+  ]
+}

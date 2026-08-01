@@ -1,0 +1,5 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+(meta.revert_taken == false) -> (select(post.deposits, meta.sender) >= select(pre.deposits, meta.sender)
+(meta.revert_taken == false) -> (post.locked == pre.locked)

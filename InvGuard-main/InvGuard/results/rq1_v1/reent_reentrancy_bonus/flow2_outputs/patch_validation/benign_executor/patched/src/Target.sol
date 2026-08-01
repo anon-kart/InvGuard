@@ -1,0 +1,46 @@
+/*
+ * @source: https://consensys.github.io/smart-contract-best-practices/known_attacks/
+ * @author: consensys
+ * @vulnerable_at_lines: 28
+ */
+
+pragma solidity ^0.4.24;
+
+contract Reentrancy_bonus{
+    bool private _locked;
+    modifier nonReentrant() {
+        require(!_locked);
+        _locked = true;
+        _;
+        _locked = false;
+    }
+
+
+    // INSECURE
+    mapping (address => uint) private userBalances;
+    mapping (address => bool) private claimedBonus;
+    mapping (address => uint) private rewardsForA;
+
+    function withdrawReward(address recipient) public {
+        uint amountToWithdraw = rewardsForA[recipient];
+        rewardsForA[recipient] = 0;
+        (bool success, ) = recipient.call.value(amountToWithdraw)("");
+        require(success);
+    }
+
+    function getFirstWithdrawalBonus(address recipient) public nonReentrant {
+        require(!claimedBonus[recipient]); // Each recipient should only be able to claim the bonus once
+        rewardsForA[recipient] += 100;
+        // <yes> <report> REENTRANCY
+        withdrawReward(recipient); // At this point, the caller will be able to execute getFirstWithdrawalBonus again.
+        claimedBonus[recipient] = true;
+    }
+}
+
+
+// ---- auto-added by BenignExecutor ----
+// Provides a stable deployable name used by the harness: `Target`.
+// Assumes `Reentrancy_bonus` has a no-arg constructor (or implicit constructor).
+contract Target is Reentrancy_bonus {
+    constructor() Reentrancy_bonus() {}
+}

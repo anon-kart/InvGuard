@@ -1,0 +1,9 @@
+[
+    {
+        "code_coverage": 98.61,
+        "execution_time": 42.30457878112793,
+        "tool": "Mythril",
+        "pc": 78,
+        "type": "leaking ether"
+    }
+]

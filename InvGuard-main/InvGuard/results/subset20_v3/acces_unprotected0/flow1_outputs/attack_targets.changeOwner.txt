@@ -1,0 +1,4 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (owner == meta.sender)
+(meta.revert_taken == false) -> (meta.sender == owner)
+(meta.revert_taken == false) -> (owner != arg._newOwner)

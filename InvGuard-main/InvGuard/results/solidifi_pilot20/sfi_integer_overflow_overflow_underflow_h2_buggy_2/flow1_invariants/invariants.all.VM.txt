@@ -1,0 +1,2 @@
+# VIOLATED-MEANINGFUL (attack objectives for Flow-2)
+(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) >= select(pre.balances_intou26, meta.sender))

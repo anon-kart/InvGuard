@@ -1,0 +1,4 @@
+Changed the low-level call in the refund() function to require the success of the send operation.
+
+INVARIANTS USED:
+None

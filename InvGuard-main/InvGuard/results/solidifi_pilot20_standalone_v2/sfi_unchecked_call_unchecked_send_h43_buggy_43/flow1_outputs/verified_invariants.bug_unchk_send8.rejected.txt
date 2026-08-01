@@ -1,0 +1,7 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender)  # reason=KeyError: "Unknown symbol 'post.shares'"
+(meta.revert_taken == false) -> (post.totalShares == pre.totalShares)  # reason=KeyError: "Unknown symbol 'post.totalShares'"
+(meta.revert_taken == false) -> (post.collateral == pre.collateral)  # reason=KeyError: "Unknown symbol 'post.collateral'"
+(meta.revert_taken == false) -> (post.debt == pre.debt)  # reason=KeyError: "Unknown symbol 'post.debt'"
+(meta.revert_taken == false) -> (post.price == pre.price)  # reason=KeyError: "Unknown symbol 'post.price'"
+(meta.revert_taken == false) -> (post.asset == pre.asset)  # reason=KeyError: "Unknown symbol 'post.asset'"

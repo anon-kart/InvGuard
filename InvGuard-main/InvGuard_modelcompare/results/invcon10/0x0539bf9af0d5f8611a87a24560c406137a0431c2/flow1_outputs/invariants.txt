@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))
+(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply - (select(post.balanceOf, meta.sender) - select(pre.balanceOf, meta.sender)))
+(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply + (select(post.balanceOf, meta.sender) - select(pre.balanceOf, meta.sender)))
+(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply + (select(pre.balanceOf, meta.sender) - select(post.balanceOf, meta.sender)))

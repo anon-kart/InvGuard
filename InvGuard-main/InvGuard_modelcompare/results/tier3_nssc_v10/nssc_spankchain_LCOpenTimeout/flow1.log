@@ -1,0 +1,159 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+WARNING:root:[FLOW1] No function-specific invariants for createChannel; falling back to all sanitized invariants.
+WARNING:root:[FLOW1] Sanitizer removed all invariants for createChannel; NOT falling back to raw invariants. Using safe deterministic invariants only.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+WARNING:root:[FLOW1] No function-specific invariants for LCOpenTimeout; falling back to all sanitized invariants.
+WARNING:root:[FLOW1] Sanitizer removed all invariants for LCOpenTimeout; NOT falling back to raw invariants. Using safe deterministic invariants only.
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_spankchain_LCOpenTimeout.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f createChannel --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.createChannel.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! select(Channels, _lcID).isOpen'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).partyA = meta.sender'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).ethBalanceA = meta.value'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).isOpen = true'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).LCopenTimeout = block.timestamp'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(Channels, _lcID).partyA == meta.sender'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(Channels, _lcID).isOpen'}
+INFO:root:   {'op': 'require', 'cond_src': 'block.timestamp >= select(Channels, _lcID).LCopenTimeout'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'meta.sender', 'value_src': 'select(Channels, _lcID).ethBalanceA', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).ethBalanceA = 0'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).isOpen = false'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  | reason=KeyError: "Unknown symbol 'post.feeBps'"
+   - (meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  | reason=KeyError: "Unknown symbol 'post.maxWithdrawBps'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.createChannel.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.createChannel.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.createChannel.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f LCOpenTimeout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.LCOpenTimeout.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '! select(Channels, _lcID).isOpen'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).partyA = meta.sender'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).ethBalanceA = meta.value'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).isOpen = true'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).LCopenTimeout = block.timestamp'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(Channels, _lcID).partyA == meta.sender'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(Channels, _lcID).isOpen'}
+INFO:root:   {'op': 'require', 'cond_src': 'block.timestamp >= select(Channels, _lcID).LCopenTimeout'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'meta.sender', 'value_src': 'select(Channels, _lcID).ethBalanceA', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).ethBalanceA = 0'}
+INFO:root:   {'op': 'raw', 'src': 'select(Channels, _lcID).isOpen = false'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  | reason=KeyError: "Unknown symbol 'post.feeBps'"
+   - (meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  | reason=KeyError: "Unknown symbol 'post.maxWithdrawBps'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.LCOpenTimeout.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.LCOpenTimeout.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.LCOpenTimeout.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f createChannel --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.createChannel.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: createChannel  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown require cond: ! select(Channels, _lcID).isOpen
+  - [heuristics] unknown expr: select(Channels, _lcID).isOpen
+  - [skip] unparsed require: ! select(Channels, _lcID).isOpen
+  - [raw] select(Channels, _lcID).partyA = meta.sender
+  - [raw] select(Channels, _lcID).ethBalanceA = meta.value
+  - [raw] select(Channels, _lcID).isOpen = true
+  - [raw] select(Channels, _lcID).LCopenTimeout = block.timestamp
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)", "reason": "KeyError: \"Unknown symbol 'post.feeBps'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)", "reason": "KeyError: \"Unknown symbol 'post.maxWithdrawBps'\"", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f LCOpenTimeout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.LCOpenTimeout.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: LCOpenTimeout  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown require cond: select(Channels, _lcID).isOpen
+  - [heuristics] unknown expr: select(Channels, _lcID).isOpen
+  - [skip] unparsed require: select(Channels, _lcID).isOpen
+  - [heuristics] unknown expr: select(Channels, _lcID).ethBalanceA
+  - [raw] select(Channels, _lcID).ethBalanceA = 0
+  - [raw] select(Channels, _lcID).isOpen = false
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)", "reason": "KeyError: \"Unknown symbol 'post.feeBps'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)", "reason": "KeyError: \"Unknown symbol 'post.maxWithdrawBps'\"", "status": "REJECTED_UNSUPPORTED"}WARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ⚠️ No verified-useful invariants for Flow-2. Invariant-guided Flow-2 must be disabled or run in explicit contract-only mode.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

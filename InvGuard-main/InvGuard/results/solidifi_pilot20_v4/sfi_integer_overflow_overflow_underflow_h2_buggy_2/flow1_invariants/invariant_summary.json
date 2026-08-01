@@ -1,0 +1,22 @@
+{
+  "VU": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) <= select(pre.balances_intou26, meta.sender))"
+    ]
+  },
+  "VT": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) >= 0)"
+    ]
+  },
+  "VM": {
+    "count": 0,
+    "examples": []
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

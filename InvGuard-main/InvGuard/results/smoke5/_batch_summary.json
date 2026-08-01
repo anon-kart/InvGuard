@@ -1,0 +1,57 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_simple.sol",
+    "stem": "denia_dos_simple",
+    "tier": "smoke5",
+    "model": "gpt-4o-mini",
+    "target_function": "ifillArray",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.65,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 7.72,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_bonus.sol",
+    "stem": "reent_reentrancy_bonus",
+    "tier": "smoke5",
+    "model": "gpt-4o-mini",
+    "target_function": "getFirstWithdrawalBonus",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 20.74,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 64.94,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

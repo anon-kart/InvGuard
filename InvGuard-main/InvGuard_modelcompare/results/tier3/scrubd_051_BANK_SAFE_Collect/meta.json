@@ -1,0 +1,20 @@
+{
+  "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_051_BANK_SAFE_Collect.sol",
+  "stem": "scrubd_051_BANK_SAFE_Collect",
+  "tier": "tier3",
+  "model": "gpt-4o-mini",
+  "target_function": "SAFE_Collect",
+  "extra_env": {},
+  "flow1": {
+    "returncode": 0,
+    "elapsed_sec": 23.68,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_051_BANK_SAFE_Collect/flow1.log"
+  },
+  "flow2": {
+    "returncode": 1,
+    "elapsed_sec": 1.22,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_051_BANK_SAFE_Collect/flow2.log"
+  }
+}

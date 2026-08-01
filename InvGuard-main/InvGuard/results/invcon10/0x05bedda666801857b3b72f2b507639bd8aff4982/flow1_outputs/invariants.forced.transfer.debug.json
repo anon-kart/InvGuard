@@ -1,0 +1,39 @@
+{
+  "function": "transfer",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 4,
+  "deposit_count": 2,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply)",
+    "(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post._balances, meta.sender) >= select(pre._balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post._balances, Account) == post._totalSupply / 100)",
+    "(meta.revert_taken == false) -> (select(post._balances, Account) >= select(pre._balances, Account))",
+    "(meta.revert_taken == false) -> (select(post._balances, Account) <= select(pre._balances, Account) + arg.amount)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply)",
+    "(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post._balances, meta.sender) >= select(pre._balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post._balances, Account) == post._totalSupply / 100)",
+    "(meta.revert_taken == false) -> (select(post._balances, Account) >= select(pre._balances, Account))",
+    "(meta.revert_taken == false) -> (select(post._balances, Account) <= select(pre._balances, Account) + arg.amount)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply)",
+    "(meta.revert_taken == false) -> (post._totalSupply <= (pre._totalSupply + arg.amount))",
+    "(meta.revert_taken == false) -> (select(post._balances, meta.sender) >= select(pre._balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post._balances, meta.sender) <= (select(pre._balances, meta.sender) + arg.amount))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply)",
+    "(meta.revert_taken == false) -> (post._totalSupply <= (pre._totalSupply + arg.amount))",
+    "(meta.revert_taken == false) -> (select(post._balances, meta.sender) >= select(pre._balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post._balances, meta.sender) <= (select(pre._balances, meta.sender) + arg.amount))"
+  ]
+}

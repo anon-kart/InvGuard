@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_073_ETH_VAULT_CashOut.sol",
+    "stem": "scrubd_073_ETH_VAULT_CashOut",
+    "tier": "smoketest5",
+    "model": "gpt-4o-mini",
+    "target_function": "CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 27.46,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/smoketest5/scrubd_073_ETH_VAULT_CashOut/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 11.33,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/smoketest5/scrubd_073_ETH_VAULT_CashOut/flow2.log"
+    }
+  }
+]

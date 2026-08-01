@@ -1,0 +1,11 @@
+contract,target_fn,patch_generated,compiles,exploit_blocked,invariants_hold,benign_pass,gate_accept,n_attacks,impact_ok
+nssc_auction_bid,bid,no,0,0,0,0,0,0,0
+nssc_incorrect_constructor_withdraw,withdraw,yes,1,0,0,1,0,5,5
+nssc_kotet_claimThrone,claimThrone,no,0,0,0,0,0,0,0
+nssc_listdos_refundDos,refundDos,no,0,0,0,0,0,0,0
+nssc_parity_walletlibrary_initWallet,initWallet,no,0,0,0,0,0,0,0
+nssc_privatebank_CashOut,CashOut,yes,1,1,1,0,1,1,0
+nssc_rubixi_collectFees,collectFees,no,0,0,0,0,0,0,0
+nssc_spankchain_LCOpenTimeout,LCOpenTimeout,no,0,0,0,0,0,0,0
+nssc_therun_play,play,no,0,0,0,0,0,0,0
+nssc_unprotected_changeOwner,changeOwner,yes,1,0,0,1,0,3,3

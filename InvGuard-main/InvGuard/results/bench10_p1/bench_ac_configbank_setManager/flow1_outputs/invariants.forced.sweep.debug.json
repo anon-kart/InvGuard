@@ -1,0 +1,37 @@
+{
+  "function": "sweep",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalFunds >= pre.totalFunds)",
+    "(meta.revert_taken == false) -> (select(post.funds, meta.sender) >= select(pre.funds, meta.sender))",
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.manager == pre.manager)",
+    "(meta.revert_taken == false) -> (post.founder == pre.founder)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalFunds >= pre.totalFunds)",
+    "(meta.revert_taken == false) -> (select(post.funds, meta.sender) >= select(pre.funds, meta.sender))",
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.manager == pre.manager)",
+    "(meta.revert_taken == false) -> (post.founder == pre.founder)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalFunds >= pre.totalFunds)",
+    "(meta.revert_taken == false) -> (select(post.funds, meta.sender) >= select(pre.funds, meta.sender))",
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.manager == pre.manager)",
+    "(meta.revert_taken == false) -> (post.founder == pre.founder)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalFunds >= pre.totalFunds)",
+    "(meta.revert_taken == false) -> (select(post.funds, meta.sender) >= select(pre.funds, meta.sender))",
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.manager == pre.manager)",
+    "(meta.revert_taken == false) -> (post.founder == pre.founder)"
+  ]
+}

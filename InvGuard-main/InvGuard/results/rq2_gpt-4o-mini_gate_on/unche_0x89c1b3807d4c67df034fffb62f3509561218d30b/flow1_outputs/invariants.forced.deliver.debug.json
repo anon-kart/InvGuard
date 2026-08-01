@@ -1,0 +1,55 @@
+{
+  "function": "deliver",
+  "raw_count": 10,
+  "fixed_raw_count": 10,
+  "sanitized_count": 9,
+  "deposit_count": 9,
+  "withdraw_count": 8,
+  "chosen_count_before_final_fallback": 9,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+    "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).requester == meta.sender)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)",
+    "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+    "(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)",
+    "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+    "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)",
+    "(meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE)",
+    "(meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+    "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).requester == meta.sender)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)",
+    "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+    "(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)",
+    "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+    "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)",
+    "(meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE)",
+    "(meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+    "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)",
+    "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+    "(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)",
+    "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+    "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)",
+    "(meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE)",
+    "(meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+    "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)",
+    "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+    "(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)",
+    "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+    "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)",
+    "(meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE)",
+    "(meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE)"
+  ]
+}

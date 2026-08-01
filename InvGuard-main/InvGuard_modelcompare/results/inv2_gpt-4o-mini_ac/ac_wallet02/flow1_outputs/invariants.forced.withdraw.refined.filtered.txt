@@ -1,0 +1,1 @@
+(meta.revert_taken == false) -> (meta.sender.transfer(select(post.balances, meta.sender)))

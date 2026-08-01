@@ -1,0 +1,4 @@
+Moved the state update "claimedBonus[recipient] = true;" before the external call to withdrawReward to prevent reentrancy.
+
+INVARIANTS USED:
+State Update Before External Call: Ensure that any state changes are made before making an external call to prevent reentrancy attacks.

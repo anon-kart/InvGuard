@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_unprotected_changeOwner.sol",
+    "stem": "nssc_unprotected_changeOwner",
+    "tier": "unprot_restore",
+    "model": "gpt-4o-mini",
+    "target_function": "changeOwner",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 19.32,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/unprot_restore/nssc_unprotected_changeOwner/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 25.37,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/unprot_restore/nssc_unprotected_changeOwner/flow2.log"
+    }
+  }
+]

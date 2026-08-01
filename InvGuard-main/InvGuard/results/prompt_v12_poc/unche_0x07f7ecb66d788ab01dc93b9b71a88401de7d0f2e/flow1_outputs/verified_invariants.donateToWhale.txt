@@ -1,0 +1,5 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender)
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender)
+(meta.revert_taken == false) -> (post.openToPublic == true || post.openToPublic == false)

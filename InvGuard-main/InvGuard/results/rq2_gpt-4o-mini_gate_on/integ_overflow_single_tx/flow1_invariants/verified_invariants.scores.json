@@ -1,0 +1,18 @@
+{
+  "strong": [],
+  "medium": [],
+  "useful": [],
+  "weak": [],
+  "scores": [],
+  "mutants": [
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    },
+    {
+      "name": "minus_eq_to_plus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

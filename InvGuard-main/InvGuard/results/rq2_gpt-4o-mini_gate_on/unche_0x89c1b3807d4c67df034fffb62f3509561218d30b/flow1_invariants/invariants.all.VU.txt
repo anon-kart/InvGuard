@@ -1,0 +1,8 @@
+# VERIFIED-USEFUL (constraints for Flow-2)
+(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)
+(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)
+(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)
+(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)
+(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)
+(meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE)
+(meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE)

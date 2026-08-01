@@ -1,0 +1,2 @@
+# WEAK VERIFIED-USEFUL INVARIANTS
+meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) <= (select(pre.balances_re_ent8, meta.sender) + meta.value)

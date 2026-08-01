@@ -1,0 +1,304 @@
+{
+  "ok": true,
+  "invariants": {
+    "ok": false,
+    "verified": [],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "NO_REAL_INVARIANTS_AFTER_SANITIZATION"
+  },
+  "replay": {
+    "results": {
+      "A1": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A1",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 7.87ms",
+        "stderr_head": "Error: Compiler run failed:\n\t\t\tthrow; // game doesn't exist or already finished\n\t\t\t^---^\n\t\t^-------^\nError: Member \"block\" not found or not visible after argument-dependent lookup in block\nsrc/Target.sol:18:54: TypeError: Member \"block\" not found or not visible after argument-dependent lookup in block\n\t\treturn uint8(uint256(keccak256(player, cardNumber, block.block.timestamp)) % 52);\n\t\t                                                   ^---------^\n--- (other output) ---\n\tfunction BlackJack() {\n ^ (Relevant source part starts here and spans across multiple lines).\n\t\t\tthrow; // game is already going on\n\t\t\t^---^\n\t\t\tthrow; // incorrect bet\n\t\t\t^---^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t                 ^-----------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t                 ^-----------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t     ^---------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t                  ^------------^\n\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send((game.bet * 5) / 2)) throw; // send prize to the player\n\t\t\t\t\t                                          ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t\t                                    ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow; // game doesn't exist\n\t\t\t^---^\n\t\tGame game = games[msg.sender];",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A2": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A2",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 7.93ms",
+        "stderr_head": "Error: Compiler run failed:\n\t\t\tthrow; // game doesn't exist or already finished\n\t\t\t^---^\n\t\t^-------^\nError: Member \"block\" not found or not visible after argument-dependent lookup in block\nsrc/Target.sol:18:54: TypeError: Member \"block\" not found or not visible after argument-dependent lookup in block\n\t\treturn uint8(uint256(keccak256(player, cardNumber, block.block.timestamp)) % 52);\n\t\t                                                   ^---------^\n--- (other output) ---\n\tfunction BlackJack() {\n ^ (Relevant source part starts here and spans across multiple lines).\n\t\t\tthrow; // game is already going on\n\t\t\t^---^\n\t\t\tthrow; // incorrect bet\n\t\t\t^---^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t                 ^-----------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t                 ^-----------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t     ^---------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t                  ^------------^\n\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send((game.bet * 5) / 2)) throw; // send prize to the player\n\t\t\t\t\t                                          ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t\t                                    ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow; // game doesn't exist\n\t\t\t^---^\n\t\tGame game = games[msg.sender];",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A3": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A3",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 8.23ms",
+        "stderr_head": "Error: Compiler run failed:\n\t\t\tthrow; // game doesn't exist or already finished\n\t\t\t^---^\n\t\t^-------^\nError: Member \"block\" not found or not visible after argument-dependent lookup in block\nsrc/Target.sol:18:54: TypeError: Member \"block\" not found or not visible after argument-dependent lookup in block\n\t\treturn uint8(uint256(keccak256(player, cardNumber, block.block.timestamp)) % 52);\n\t\t                                                   ^---------^\n--- (other output) ---\n\tfunction BlackJack() {\n ^ (Relevant source part starts here and spans across multiple lines).\n\t\t\tthrow; // game is already going on\n\t\t\t^---^\n\t\t\tthrow; // incorrect bet\n\t\t\t^---^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t                 ^-----------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t                 ^-----------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t     ^---------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t                  ^------------^\n\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send((game.bet * 5) / 2)) throw; // send prize to the player\n\t\t\t\t\t                                          ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t\t                                    ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow; // game doesn't exist\n\t\t\t^---^\n\t\tGame game = games[msg.sender];",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A4": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A4",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 7.88ms",
+        "stderr_head": "Error: Compiler run failed:\n\t\t\tthrow; // game doesn't exist or already finished\n\t\t\t^---^\n\t\t^-------^\nError: Member \"block\" not found or not visible after argument-dependent lookup in block\nsrc/Target.sol:18:54: TypeError: Member \"block\" not found or not visible after argument-dependent lookup in block\n\t\treturn uint8(uint256(keccak256(player, cardNumber, block.block.timestamp)) % 52);\n\t\t                                                   ^---------^\n--- (other output) ---\n\tfunction BlackJack() {\n ^ (Relevant source part starts here and spans across multiple lines).\n\t\t\tthrow; // game is already going on\n\t\t\t^---^\n\t\t\tthrow; // incorrect bet\n\t\t\t^---^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t                 ^-----------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t                 ^-----------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t     ^---------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t                  ^------------^\n\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send((game.bet * 5) / 2)) throw; // send prize to the player\n\t\t\t\t\t                                          ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t\t                                    ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow; // game doesn't exist\n\t\t\t^---^\n\t\tGame game = games[msg.sender];",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A5": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A5",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 7.97ms",
+        "stderr_head": "Error: Compiler run failed:\n\t\t\tthrow; // game doesn't exist or already finished\n\t\t\t^---^\n\t\t^-------^\nError: Member \"block\" not found or not visible after argument-dependent lookup in block\nsrc/Target.sol:18:54: TypeError: Member \"block\" not found or not visible after argument-dependent lookup in block\n\t\treturn uint8(uint256(keccak256(player, cardNumber, block.block.timestamp)) % 52);\n\t\t                                                   ^---------^\n--- (other output) ---\n\tfunction BlackJack() {\n ^ (Relevant source part starts here and spans across multiple lines).\n\t\t\tthrow; // game is already going on\n\t\t\t^---^\n\t\t\tthrow; // incorrect bet\n\t\t\t^---^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(games[msg.sender].houseCards);\n\t\t                 ^-----------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t     ^--------^\n\t\tvar (houseScore, houseScoreBig) = calculateScore(game.houseCards);\n\t\t                 ^-----------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t     ^---------^\n\t\tvar (playerScore, playerScoreBig) = calculateScore(game.playerCards);\n\t\t                  ^------------^\n\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send((game.bet * 5) / 2)) throw; // send prize to the player\n\t\t\t\t\t                                          ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t\t                                    ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet)) throw; // return bet to the player\n\t\t\t\t\t                                ^---^\n\t\t\t\t\tif (!msg.sender.send(game.bet * 2)) throw; // send prize to the player\n\t\t\t\t\t                                    ^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow;\n\t\t\t^---^\n\t\t\tthrow; // game doesn't exist\n\t\t\t^---^\n\t\tGame game = games[msg.sender];",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 2000000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      }
+    },
+    "compile_ok": 0,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": false,
+    "run_all": false
+  },
+  "benign": {
+    "ok": false,
+    "reason": "benign_original_failed",
+    "original": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "BlackJack",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "deal",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "hit",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "stand",
+          "arg_types": [],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.4.9",
+      "error": "forge test failed"
+    },
+    "patched": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "BlackJack",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "deal",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "hit",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "stand",
+          "arg_types": [],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.4.9",
+      "error": "forge test failed"
+    },
+    "failed_calls": [
+      {
+        "reason": "original_suite_failed"
+      }
+    ]
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "PASS",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A1",
+    "invariant_applicable": false
+  }
+}

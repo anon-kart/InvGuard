@@ -1,0 +1,33 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h22_buggy_22.sol",
+    "stem": "sfi_reentrancy_reentrancy_h22_buggy_22",
+    "tier": "solidifi_test_h22",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawFunds_re_ent17",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "value_conservation"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 17.73,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 40.81,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

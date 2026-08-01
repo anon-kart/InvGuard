@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)
+(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)
+(meta.revert_taken == false) -> (post.start >= 0)
+(meta.revert_taken == false) -> (post.fibonacciLibrary != address(0))

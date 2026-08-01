@@ -1,0 +1,4 @@
+# VERIFIED-USEFUL INVARIANTS ONLY
+# DEFAULT FLOW-2 INPUT. Fail-closed if empty.
+(meta.revert_taken == false) -> (post._operator == pre._operator)
+(meta.revert_taken == false) -> (post._status == pre._status)

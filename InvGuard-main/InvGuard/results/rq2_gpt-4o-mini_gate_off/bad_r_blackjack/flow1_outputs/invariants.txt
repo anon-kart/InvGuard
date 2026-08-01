@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (select(post.games, meta.sender).bet >= select(pre.games, meta.sender).bet)
+(meta.revert_taken == false) -> (select(post.games, meta.sender).cardsDealt >= select(pre.games, meta.sender).cardsDealt)
+(meta.revert_taken == false) -> (select(post.games, meta.sender).playerCards.length >= select(pre.games, meta.sender).playerCards.length)
+(meta.revert_taken == false) -> (select(post.games, meta.sender).houseCards.length >= select(pre.games, meta.sender).houseCards.length)
+(meta.revert_taken == false) -> (select(post.games, meta.sender).state != GameState.Ongoing)
+(meta.revert_taken == false) -> (select(post.games, meta.sender).state == GameState.Player || select(post.games, meta.sender).state == GameState.Tie || select(post.games, meta.sender).state == GameState.House)

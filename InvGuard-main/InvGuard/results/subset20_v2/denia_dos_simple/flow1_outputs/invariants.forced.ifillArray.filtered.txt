@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) >= select(pre.listAddresses, meta.sender))
+(meta.revert_taken == false) -> (select(post.listAddresses, meta.sender) <= select(pre.listAddresses, meta.sender))

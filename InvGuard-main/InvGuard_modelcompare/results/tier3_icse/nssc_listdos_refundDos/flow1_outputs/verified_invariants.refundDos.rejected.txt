@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)  # reason=KeyError: "Unknown symbol 'post.refundAddresses.length'"

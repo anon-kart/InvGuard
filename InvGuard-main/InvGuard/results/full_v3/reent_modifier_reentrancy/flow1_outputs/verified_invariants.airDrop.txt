@@ -1,0 +1,6 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender)
+(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)
+(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == 20) -> (select(pre.tokenBalance, meta.sender) == 0)
+(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == select(pre.tokenBalance, meta.sender) + 20)

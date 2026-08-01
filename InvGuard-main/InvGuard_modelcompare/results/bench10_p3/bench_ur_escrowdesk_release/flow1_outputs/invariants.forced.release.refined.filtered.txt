@@ -1,0 +1,4 @@
+((meta.revert_taken == false)) -> ((post.totalEscrow >= pre.totalEscrow))
+(meta.revert_taken == false) -> (post.totalEscrow <= pre.totalEscrow)
+((meta.revert_taken == false)) -> ((select(post.escrow, meta.sender) >= select(pre.escrow, meta.sender)))
+(meta.revert_taken == false) -> (select(post.escrow, meta.sender) <= select(pre.escrow, meta.sender))

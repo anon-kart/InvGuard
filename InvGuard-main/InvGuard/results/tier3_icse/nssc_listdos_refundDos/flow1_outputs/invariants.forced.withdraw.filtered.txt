@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= 0)
+(meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)

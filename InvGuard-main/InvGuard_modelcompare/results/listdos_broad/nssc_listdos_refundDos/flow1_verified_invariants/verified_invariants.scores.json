@@ -1,0 +1,31 @@
+{
+  "strong": [
+    "meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender)"
+  ],
+  "medium": [],
+  "useful": [
+    "meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender)"
+  ],
+  "weak": [],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender)",
+      "killed": 1,
+      "mutants_ran": 1,
+      "kill_rate": 1.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 1.0,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

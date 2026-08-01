@@ -1,0 +1,6 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.contract_balance == (pre.contract_balance + meta.value)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.contract_balance <= (pre.contract_balance + meta.value)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.totalShares == pre.totalShares)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.contract_balance >= 0)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).

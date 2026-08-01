@@ -1,0 +1,4 @@
+Replaced block-dependent random selection with an injected commit-style randomness flow (submitRandomness + finalizeWinner), added a reentrancy mutex, and ensured all state updates occur before external transfers.
+
+INVARIANTS USED:
+1) Checks-Effects-Interactions (CEI): state is updated/cleared before external transfers in chooseWinner() and finalizeWinner(). 2) Reentrancy protection: a private _locked mutex prevents reentrant entry to critical functions. 3) Commit-style randomness: randomness must be submitted by feeAddress and finalized only on a later block (randomSeedBlock < block.number), preventing miner manipulation using same-block seed. 4) Access control: only feeAddress can submit randomness and call administrative functions (endRaffle, togglePause, kill). 5) Pending-commit flow: when randomness isn't available or is same-block, raffle is marked pending to be finalized later, ensuring random seed wasn't set in the same block as selection.

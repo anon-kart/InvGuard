@@ -1,0 +1,4 @@
+Converted the insertNnumbers function to a pull-payment pattern by recording amounts owed and allowing users to withdraw their funds.
+
+INVARIANTS USED:
+None

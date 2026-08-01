@@ -1,0 +1,263 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/FibonacciBalance.sol",
+    "stem": "acces_FibonacciBalance",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 29.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "CS5"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/multiowned_vulnerable.sol",
+    "stem": "acces_multiowned_vulnerable",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "withdrawAll",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 55.09,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/parity_wallet_bug_2.sol",
+    "stem": "acces_parity_wallet_bug_2",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "initWallet",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control",
+      "INVGUARD_IMPACT_POLICY": "access_control"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 174.59,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "INCONCLUSIVE",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/blackjack.sol",
+    "stem": "bad_r_blackjack",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "deal",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 123.83,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "CS10"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/etheraffle.sol",
+    "stem": "bad_r_etheraffle",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "chooseWinner",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "bad_randomness",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 114.8,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/modifier_reentrancy.sol",
+    "stem": "reent_modifier_reentrancy",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "airDrop",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 25.3,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "INCONCLUSIVE",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_bonus.sol",
+    "stem": "reent_reentrancy_bonus",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "getFirstWithdrawalBonus",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy",
+      "INVGUARD_IMPACT_POLICY": "financial"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 51.94,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839.sol",
+    "stem": "unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "WithdrawToken",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 73.5,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "INCONCLUSIVE",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x89c1b3807d4c67df034fffb62f3509561218d30b.sol",
+    "stem": "unche_0x89c1b3807d4c67df034fffb62f3509561218d30b",
+    "tier": "rq1_v2",
+    "model": "gpt-4o-mini",
+    "target_function": "deliver",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "flow1": {
+      "skipped": true
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 105.11,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE",
+        "attack_id": "A1"
+      }
+    }
+  }
+]

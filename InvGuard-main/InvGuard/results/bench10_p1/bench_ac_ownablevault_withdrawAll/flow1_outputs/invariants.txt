@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)
+(meta.revert_taken == false) -> (select(post.deposits, meta.sender) >= select(pre.deposits, meta.sender))
+(meta.revert_taken == false) -> (select(post.deposits, meta.sender) <= select(pre.deposits, meta.sender) + arg.value)
+(meta.revert_taken == false) -> (post.bal >= pre.bal)
+(meta.revert_taken == false) -> (post.locked == pre.locked)
+(pre.depositorCount == 0 && select(pre.deposits, meta.sender) > 0) -> (meta.revert_taken == true)

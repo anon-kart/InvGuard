@@ -1,0 +1,26 @@
+{
+  "function": "guess",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 0,
+  "deposit_count": 0,
+  "withdraw_count": 0,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (answer >= 0 && answer <= 255)",
+    "(meta.revert_taken == false) -> (isComplete() == (address(this).balance == 0))",
+    "(meta.revert_taken == false) -> (meta.value == 1 ether)",
+    "(meta.revert_taken == false) -> (select(select(post.address, this).balance, meta.sender) == select(select(pre.address, this).balance, meta.sender) - (n == answer ? 2 ether : 0))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (answer >= 0 && answer <= 255)",
+    "(meta.revert_taken == false) -> (isComplete() == (address(this).balance == 0))",
+    "(meta.revert_taken == false) -> (meta.value == 1 ether)",
+    "(meta.revert_taken == false) -> (select(select(post.address, this).balance, meta.sender) == select(select(pre.address, this).balance, meta.sender) - (n == answer ? 2 ether : 0))"
+  ],
+  "sanitized": [],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)"
+  ]
+}

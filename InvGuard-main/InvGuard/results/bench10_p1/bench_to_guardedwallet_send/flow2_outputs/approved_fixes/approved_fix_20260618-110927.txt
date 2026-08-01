@@ -1,0 +1,4 @@
+Changed the authorization check in the send() function from tx.origin to msg.sender.
+
+INVARIANTS USED:
+Authorization checks, balance checks.

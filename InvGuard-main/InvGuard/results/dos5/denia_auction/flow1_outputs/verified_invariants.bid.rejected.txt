@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.currentFrontrunner != 0)  # reason=Z3Exception: b'Sorts (_ BitVec 256) and (_ BitVec 160) are incompatible'
+(meta.revert_taken == false) -> (select(post.currentFrontrunner, meta.sender) == select(pre.currentFrontrunner, meta.sender)  # reason=Z3Exception: First argument must be a Z3 array expression

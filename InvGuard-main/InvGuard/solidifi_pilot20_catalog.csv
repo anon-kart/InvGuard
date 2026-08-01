@@ -1,0 +1,251 @@
+filename,invguard_class,solidifi_sub,host_id,pragma,reachable,compiles,context,dedup_key,selected
+buggy_1.sol,integer_overflow,overflow_underflow,1,>=0.4.22 <0.6.0,True,True,addition_overflow,66e9496c4e86e626,False
+buggy_10.sol,integer_overflow,overflow_underflow,10,>=0.4.21 < 0.6.0,True,True,addition_overflow,622510fbad6457f9,False
+buggy_11.sol,integer_overflow,overflow_underflow,11,^0.5.0,True,True,addition_overflow,1ddd9fc1fa98074a,False
+buggy_12.sol,integer_overflow,overflow_underflow,12,>=0.4.23 <0.6.0,True,True,addition_overflow,047b620fb08f617e,False
+buggy_13.sol,integer_overflow,overflow_underflow,13,>=0.4.22 <0.6.0,True,True,addition_overflow,bd578aecd6b1fb7a,False
+buggy_14.sol,integer_overflow,overflow_underflow,14,^0.5.1,True,True,addition_overflow,fdf3419d4d387543,False
+buggy_15.sol,integer_overflow,overflow_underflow,15,^0.5.7,True,True,addition_overflow,b95858f27d378fb2,False
+buggy_16.sol,integer_overflow,overflow_underflow,16,^0.5.11,True,True,addition_overflow,b05d4e747b22ed2a,False
+buggy_17.sol,integer_overflow,overflow_underflow,17,^0.5.6,True,True,addition_overflow,cf6959a740dd8f49,False
+buggy_18.sol,integer_overflow,overflow_underflow,18,>=0.5.9,True,True,addition_overflow,619d756cbe4c091d,False
+buggy_19.sol,integer_overflow,overflow_underflow,19,^0.5.1,True,True,addition_overflow,af50cdd2a19e3e26,False
+buggy_2.sol,integer_overflow,overflow_underflow,2,^0.5.1,True,True,addition_overflow,36ea43057cbc3f18,True
+buggy_20.sol,integer_overflow,overflow_underflow,20,^0.5.10,True,True,addition_overflow,ae124ed60e6aabdb,False
+buggy_21.sol,integer_overflow,overflow_underflow,21,^0.5.11,True,True,addition_overflow,402b1a8f31fafe42,False
+buggy_22.sol,integer_overflow,overflow_underflow,22,>=0.5.1,True,True,addition_overflow,e57ad1c85f4de350,False
+buggy_23.sol,integer_overflow,overflow_underflow,23,^0.5.2,True,True,addition_overflow,7b6f0052f9b4fbb0,False
+buggy_24.sol,integer_overflow,overflow_underflow,24,^0.5.0,True,True,addition_overflow,d1a358c4d9bb9752,False
+buggy_25.sol,integer_overflow,overflow_underflow,25,^0.5.11,True,True,addition_overflow,42f9cd011c1338d0,False
+buggy_26.sol,integer_overflow,overflow_underflow,26,^0.5.2,True,True,addition_overflow,330ab46216f9ea98,False
+buggy_27.sol,integer_overflow,overflow_underflow,27,^0.5.0,True,True,addition_overflow,2422e6921469e07a,False
+buggy_28.sol,integer_overflow,overflow_underflow,28,^0.5.0,True,True,addition_overflow,29b8a0d294e882e0,False
+buggy_29.sol,integer_overflow,overflow_underflow,29,>=0.5.11,True,True,addition_overflow,a7045811c875e4d4,False
+buggy_3.sol,integer_overflow,overflow_underflow,3,^0.5.1,True,True,addition_overflow,33980af7a4d44c52,False
+buggy_30.sol,integer_overflow,overflow_underflow,30,^0.5.11,True,True,addition_overflow,474f738d50bfa303,False
+buggy_31.sol,integer_overflow,overflow_underflow,31,>=0.5.11,True,True,addition_overflow,a2e63bfc4ae30bea,False
+buggy_32.sol,integer_overflow,overflow_underflow,32,^0.5.7,True,True,addition_overflow,f80361ab1ee5cf10,False
+buggy_33.sol,integer_overflow,overflow_underflow,33,>=0.5.11,True,True,addition_overflow,01e52916011a10fb,False
+buggy_34.sol,integer_overflow,overflow_underflow,34,>=0.5.11,True,True,addition_overflow,4ebf93298426926a,True
+buggy_35.sol,integer_overflow,overflow_underflow,35,>=0.5.11,True,True,addition_overflow,0afb5e44a56f642c,False
+buggy_36.sol,integer_overflow,overflow_underflow,36,>=0.5.1,True,True,addition_overflow,da5a5dee0a630fb2,False
+buggy_37.sol,integer_overflow,overflow_underflow,37,^0.5.00,True,True,addition_overflow,7780fa8769e02410,False
+buggy_38.sol,integer_overflow,overflow_underflow,38,^0.5.0,True,True,addition_overflow,241db457b1c52477,False
+buggy_39.sol,integer_overflow,overflow_underflow,39,^0.5.10,True,True,addition_overflow,01c0c1c1818c6edf,False
+buggy_4.sol,integer_overflow,overflow_underflow,4,>= 0.5.0 < 0.6.0,True,True,addition_overflow,2db7745786a56815,True
+buggy_40.sol,integer_overflow,overflow_underflow,40,^0.5.0,True,True,addition_overflow,07b26f726a90ba5c,False
+buggy_41.sol,integer_overflow,overflow_underflow,41,>=0.4.22 <0.6.0,True,True,addition_overflow,18f4b28c2570fbfd,False
+buggy_42.sol,integer_overflow,overflow_underflow,42,^0.5.11,True,True,addition_overflow,81038a50068e5115,False
+buggy_43.sol,integer_overflow,overflow_underflow,43,^0.5.0,True,True,addition_overflow,2398ba6e78179e74,True
+buggy_44.sol,integer_overflow,overflow_underflow,44,^0.5.0,True,True,addition_overflow,a3ee13c878eeac82,False
+buggy_45.sol,integer_overflow,overflow_underflow,45,^0.5.11,True,True,addition_overflow,b78d733573327b24,False
+buggy_46.sol,integer_overflow,overflow_underflow,46,>=0.4.21 <0.6.0,True,True,addition_overflow,b983889f9c0728ab,False
+buggy_47.sol,integer_overflow,overflow_underflow,47,^0.5.11,True,True,addition_overflow,a0ff2d0908d3dce6,False
+buggy_48.sol,integer_overflow,overflow_underflow,48,^0.5.11,True,True,addition_overflow,5e62974de8bdf322,True
+buggy_49.sol,integer_overflow,overflow_underflow,49,^0.5.11,True,True,addition_overflow,8128813b963398ba,False
+buggy_5.sol,integer_overflow,overflow_underflow,5,>=0.4.22 <0.6.0,True,True,addition_overflow,8a465928d08d82ea,False
+buggy_50.sol,integer_overflow,overflow_underflow,50,^0.5.11,True,True,addition_overflow,3b580ae0b717e91a,False
+buggy_6.sol,integer_overflow,overflow_underflow,6,^0.5.8,True,True,addition_overflow,53409ca34ac92af1,False
+buggy_7.sol,integer_overflow,overflow_underflow,7,^0.5.8,True,True,addition_overflow,825eed22ba7c8ce1,False
+buggy_8.sol,integer_overflow,overflow_underflow,8,>=0.4.22 <0.6.0,True,True,addition_overflow,ca0d734850a9d9f9,False
+buggy_9.sol,integer_overflow,overflow_underflow,9,>=0.4.22 <0.6.0,True,True,addition_overflow,c959ef4f44fd8089,False
+buggy_1.sol,reentrancy,reentrancy,1,>=0.4.22 <0.6.0,True,True,state_after_value_call,0f92228c19d0ab08,True
+buggy_10.sol,reentrancy,reentrancy,10,>=0.4.21 < 0.6.0,True,True,value_call,8d98ab07f225c2a8,False
+buggy_11.sol,reentrancy,reentrancy,11,^0.5.0,True,True,value_call,7515071e7c09fdce,True
+buggy_12.sol,reentrancy,reentrancy,12,>=0.4.23 <0.6.0,True,True,value_call,69f6459f3ad2a75d,False
+buggy_13.sol,reentrancy,reentrancy,13,>=0.4.22 <0.6.0,True,True,value_call,9f167663968a30c1,False
+buggy_14.sol,reentrancy,reentrancy,14,^0.5.1,True,True,value_call,9d7a4051ecb1115d,False
+buggy_15.sol,reentrancy,reentrancy,15,^0.5.7,True,True,value_call,100c80616812daa5,True
+buggy_16.sol,reentrancy,reentrancy,16,^0.5.11,True,True,value_call,3cd21adbd8455b4a,False
+buggy_17.sol,reentrancy,reentrancy,17,^0.5.6,True,True,value_call,5c43fd7480daa5ee,False
+buggy_18.sol,reentrancy,reentrancy,18,>=0.5.9,True,True,value_call,14d47cb8da028e93,False
+buggy_19.sol,reentrancy,reentrancy,19,^0.5.1,True,True,value_call,ecf9857e391a883b,False
+buggy_2.sol,reentrancy,reentrancy,2,^0.5.1,True,True,state_after_value_call,3e49198f391a32a7,False
+buggy_20.sol,reentrancy,reentrancy,20,^0.5.10,True,True,value_call,effd63c6fb5aa1cc,False
+buggy_21.sol,reentrancy,reentrancy,21,^0.5.11,True,True,value_call,516358807607c9f5,False
+buggy_22.sol,reentrancy,reentrancy,22,>=0.5.1,True,True,value_call,386c1a47d71ee2f6,True
+buggy_23.sol,reentrancy,reentrancy,23,^0.5.2,True,True,value_call,36618e357b6c6ec7,False
+buggy_24.sol,reentrancy,reentrancy,24,^0.5.0,True,True,value_call,59cc4e0a2ca0fef9,False
+buggy_25.sol,reentrancy,reentrancy,25,^0.5.11,True,True,value_call,9eeef75392949032,False
+buggy_26.sol,reentrancy,reentrancy,26,^0.5.2,True,True,value_call,fa7bf8df89ae8f1c,False
+buggy_27.sol,reentrancy,reentrancy,27,^0.5.0,True,True,value_call,2027ca78b01e24e2,False
+buggy_28.sol,reentrancy,reentrancy,28,^0.5.0,True,True,value_call,16a5322c7257673b,False
+buggy_29.sol,reentrancy,reentrancy,29,>=0.5.11,True,True,value_call,fdbd28c9c9ebf7f8,False
+buggy_3.sol,reentrancy,reentrancy,3,^0.5.1,True,True,state_after_value_call,150604971fa235d7,False
+buggy_30.sol,reentrancy,reentrancy,30,^0.5.11,True,True,value_call,ce91ff2222bf4745,False
+buggy_31.sol,reentrancy,reentrancy,31,>=0.5.11,True,True,value_call,8a5fc3c5469914fe,False
+buggy_32.sol,reentrancy,reentrancy,32,^0.5.7,True,True,value_call,cd7a614643afe369,False
+buggy_33.sol,reentrancy,reentrancy,33,>=0.5.11,True,True,value_call,3ff487fbe5594eac,False
+buggy_34.sol,reentrancy,reentrancy,34,>=0.5.11,True,True,value_call,5d6dc29680757fa3,False
+buggy_35.sol,reentrancy,reentrancy,35,>=0.5.11,True,True,value_call,9045c79647e73c8f,False
+buggy_36.sol,reentrancy,reentrancy,36,>=0.5.1,True,True,value_call,99b79ee5fca84dbf,False
+buggy_37.sol,reentrancy,reentrancy,37,^0.5.00,True,True,value_call,b531e6931c45aae0,False
+buggy_38.sol,reentrancy,reentrancy,38,^0.5.0,True,True,value_call,ea1264029d0e86f0,False
+buggy_39.sol,reentrancy,reentrancy,39,^0.5.10,True,True,value_call,fde876601f683ea3,False
+buggy_4.sol,reentrancy,reentrancy,4,>= 0.5.0 < 0.6.0,True,True,state_after_value_call,4084d17b6fe3686e,False
+buggy_40.sol,reentrancy,reentrancy,40,^0.5.0,True,True,value_call,237560f79b7f468f,False
+buggy_41.sol,reentrancy,reentrancy,41,>=0.4.22 <0.6.0,True,True,value_call,3441ca7b29b44a88,False
+buggy_42.sol,reentrancy,reentrancy,42,^0.5.11,True,True,value_call,52dab5bc342fc05e,False
+buggy_43.sol,reentrancy,reentrancy,43,^0.5.0,True,True,value_call,f1948a812cf7ad6f,False
+buggy_44.sol,reentrancy,reentrancy,44,^0.5.0,True,True,value_call,298179ff9fc0d7c8,False
+buggy_45.sol,reentrancy,reentrancy,45,^0.5.11,True,True,value_call,02f7928e14719829,False
+buggy_46.sol,reentrancy,reentrancy,46,>=0.4.21 <0.6.0,True,True,value_call,13ad0008f9ec4654,False
+buggy_47.sol,reentrancy,reentrancy,47,^0.5.11,True,True,state_after_value_call,c100926ada5797d8,False
+buggy_48.sol,reentrancy,reentrancy,48,^0.5.11,True,True,value_call,a6bac3fe99a2d7a1,False
+buggy_49.sol,reentrancy,reentrancy,49,^0.5.11,True,True,value_call,c235c167b57ebbc6,False
+buggy_5.sol,reentrancy,reentrancy,5,>=0.4.22 <0.6.0,True,True,value_call,810641df9b6b5130,False
+buggy_50.sol,reentrancy,reentrancy,50,^0.5.11,True,True,value_call,89ba31114ffc01dc,False
+buggy_6.sol,reentrancy,reentrancy,6,^0.5.8,True,True,value_call,eccb74c3c8937a3b,True
+buggy_7.sol,reentrancy,reentrancy,7,^0.5.8,True,True,value_call,737477e31661085f,False
+buggy_8.sol,reentrancy,reentrancy,8,>=0.4.22 <0.6.0,True,True,value_call,a037dce5790c0619,False
+buggy_9.sol,reentrancy,reentrancy,9,>=0.4.22 <0.6.0,True,True,value_call,4f1e6880086843b3,False
+buggy_1.sol,unchecked_call,unchecked_send,1,>=0.4.22 <0.6.0,True,True,standalone_send,e8f02806592397a8,False
+buggy_10.sol,unchecked_call,unchecked_send,10,>=0.4.21 < 0.6.0,True,True,loop_send,082c069fca204cca,False
+buggy_11.sol,unchecked_call,unchecked_send,11,^0.5.0,True,True,standalone_send,8ce207f0d88f301a,False
+buggy_12.sol,unchecked_call,unchecked_send,12,>=0.4.23 <0.6.0,True,True,standalone_send,3e88365de1e6307c,False
+buggy_13.sol,unchecked_call,unchecked_send,13,>=0.4.22 <0.6.0,True,True,standalone_send,41e7557836ba3b7f,False
+buggy_14.sol,unchecked_call,unchecked_send,14,^0.5.1,True,True,standalone_send,71a2c7b815e45361,False
+buggy_15.sol,unchecked_call,unchecked_send,15,^0.5.7,True,True,standalone_send,5937e260b67e3f75,False
+buggy_16.sol,unchecked_call,unchecked_send,16,^0.5.11,True,True,loop_send,afe5f9fb80031f33,False
+buggy_17.sol,unchecked_call,unchecked_send,17,^0.5.6,True,True,loop_send,6a888d0498999eb1,False
+buggy_18.sol,unchecked_call,unchecked_send,18,>=0.5.9,True,True,standalone_send,d38af9ce6f2571af,False
+buggy_19.sol,unchecked_call,unchecked_send,19,^0.5.1,True,True,standalone_send,4eb48302512bc7a2,False
+buggy_2.sol,unchecked_call,unchecked_send,2,^0.5.1,True,True,standalone_send,30eac3f3760d6231,False
+buggy_20.sol,unchecked_call,unchecked_send,20,^0.5.10,True,True,standalone_send,2e638deb7e9d8814,False
+buggy_21.sol,unchecked_call,unchecked_send,21,^0.5.11,True,True,loop_send,845deb0a99846ec2,False
+buggy_22.sol,unchecked_call,unchecked_send,22,>=0.5.1,True,True,loop_send,7cabacd060f1b933,False
+buggy_23.sol,unchecked_call,unchecked_send,23,^0.5.2,True,True,standalone_send,fde6b2066cae38cc,True
+buggy_24.sol,unchecked_call,unchecked_send,24,^0.5.0,True,True,loop_send,79592365b625ae31,False
+buggy_25.sol,unchecked_call,unchecked_send,25,^0.5.11,True,True,loop_send,175cf9ad730c02fc,False
+buggy_26.sol,unchecked_call,unchecked_send,26,^0.5.2,True,True,standalone_send,8c6693019a546b7a,False
+buggy_27.sol,unchecked_call,unchecked_send,27,^0.5.0,True,True,loop_send,94d1c566f981cc0a,False
+buggy_28.sol,unchecked_call,unchecked_send,28,^0.5.0,True,True,loop_send,d2fb6ca134b0bf43,False
+buggy_29.sol,unchecked_call,unchecked_send,29,>=0.5.11,True,True,loop_send,bd039cc7f827fb9b,False
+buggy_3.sol,unchecked_call,unchecked_send,3,^0.5.1,True,True,standalone_send,e176c5100387dc61,False
+buggy_30.sol,unchecked_call,unchecked_send,30,^0.5.11,True,True,loop_send,cebee36857354611,False
+buggy_31.sol,unchecked_call,unchecked_send,31,>=0.5.11,True,True,standalone_send,da8a9fb479dbd570,False
+buggy_32.sol,unchecked_call,unchecked_send,32,^0.5.7,True,True,standalone_send,1f693d1d6d8d24bb,False
+buggy_33.sol,unchecked_call,unchecked_send,33,>=0.5.11,True,True,standalone_send,0eeb7c8e8be7c397,False
+buggy_34.sol,unchecked_call,unchecked_send,34,>=0.5.11,True,True,loop_send,ef5eedc4edfcb8fe,False
+buggy_35.sol,unchecked_call,unchecked_send,35,>=0.5.11,True,True,standalone_send,80aaa97149284764,False
+buggy_36.sol,unchecked_call,unchecked_send,36,>=0.5.1,True,True,loop_send,21b4f585ca5f8f1f,False
+buggy_37.sol,unchecked_call,unchecked_send,37,^0.5.00,True,True,standalone_send,612ecb45dbf91798,False
+buggy_38.sol,unchecked_call,unchecked_send,38,^0.5.0,True,True,loop_send,79491bf92fc80866,False
+buggy_39.sol,unchecked_call,unchecked_send,39,^0.5.10,True,True,standalone_send,7b0ed32170c54928,False
+buggy_4.sol,unchecked_call,unchecked_send,4,>= 0.5.0 < 0.6.0,True,True,standalone_send,73167fd508bbb2c6,False
+buggy_40.sol,unchecked_call,unchecked_send,40,^0.5.0,True,True,standalone_send,83793ba457fa7feb,False
+buggy_41.sol,unchecked_call,unchecked_send,41,>=0.4.22 <0.6.0,True,True,standalone_send,b31f141f8e228f9a,False
+buggy_42.sol,unchecked_call,unchecked_send,42,^0.5.11,True,True,standalone_send,ec4fd6d668514d31,False
+buggy_43.sol,unchecked_call,unchecked_send,43,^0.5.0,True,True,loop_send,28aae4ca8dac124e,True
+buggy_44.sol,unchecked_call,unchecked_send,44,^0.5.0,True,True,loop_send,932f9f017f456a74,False
+buggy_45.sol,unchecked_call,unchecked_send,45,^0.5.11,True,True,standalone_send,8f7a0fc2aabc9732,False
+buggy_46.sol,unchecked_call,unchecked_send,46,>=0.4.21 <0.6.0,True,True,loop_send,417c40cf066254b9,False
+buggy_47.sol,unchecked_call,unchecked_send,47,^0.5.11,True,True,standalone_send,db41e81285a0f2d0,False
+buggy_48.sol,unchecked_call,unchecked_send,48,^0.5.11,True,True,standalone_send,91c9ef75b76bb2df,False
+buggy_49.sol,unchecked_call,unchecked_send,49,^0.5.11,True,True,standalone_send,4266033894f65a56,False
+buggy_5.sol,unchecked_call,unchecked_send,5,>=0.4.22 <0.6.0,True,True,standalone_send,9f730f36c5b0e5e3,False
+buggy_50.sol,unchecked_call,unchecked_send,50,^0.5.11,True,True,standalone_send,658ccf3c3fd72cb1,False
+buggy_6.sol,unchecked_call,unchecked_send,6,^0.5.8,True,True,standalone_send,bf19a8e76a2e4dfe,False
+buggy_7.sol,unchecked_call,unchecked_send,7,^0.5.8,True,True,standalone_send,2ea55975c0093355,False
+buggy_8.sol,unchecked_call,unchecked_send,8,>=0.4.22 <0.6.0,True,True,standalone_send,85892d5126e96a55,False
+buggy_9.sol,unchecked_call,unchecked_send,9,>=0.4.22 <0.6.0,True,True,loop_send,10748d066541c559,False
+buggy_1.sol,unchecked_call,unhandled_exceptions,1,>=0.4.22 <0.6.0,True,True,ignored_call_return,f782cec637d2c083,False
+buggy_10.sol,unchecked_call,unhandled_exceptions,10,>=0.4.21 < 0.6.0,True,True,ignored_call_return,3035bf92395d09a6,False
+buggy_11.sol,unchecked_call,unhandled_exceptions,11,^0.5.0,True,True,ignored_call_return,cdcbdb1f8a7f599b,False
+buggy_12.sol,unchecked_call,unhandled_exceptions,12,>=0.4.23 <0.6.0,True,True,ignored_call_return,06681bd08a821efb,False
+buggy_13.sol,unchecked_call,unhandled_exceptions,13,>=0.4.22 <0.6.0,True,True,ignored_call_return,1f3db425dfd4f6bc,False
+buggy_14.sol,unchecked_call,unhandled_exceptions,14,^0.5.1,True,True,ignored_call_return,4be9bc1f9b33c7d4,False
+buggy_15.sol,unchecked_call,unhandled_exceptions,15,^0.5.7,True,True,ignored_call_return,accbcee82e09dae1,False
+buggy_16.sol,unchecked_call,unhandled_exceptions,16,^0.5.11,True,True,ignored_call_return,f2d2e8be79f83ed7,False
+buggy_17.sol,unchecked_call,unhandled_exceptions,17,^0.5.6,True,True,ignored_call_return,2c6ae297e4ff9d99,False
+buggy_18.sol,unchecked_call,unhandled_exceptions,18,>=0.5.9,True,True,ignored_call_return,0c2e7db8c109872a,False
+buggy_19.sol,unchecked_call,unhandled_exceptions,19,^0.5.1,True,True,ignored_call_return,258ff10dadbe60cc,False
+buggy_2.sol,unchecked_call,unhandled_exceptions,2,^0.5.1,True,True,ignored_call_return,869a445fc4904a0c,False
+buggy_20.sol,unchecked_call,unhandled_exceptions,20,^0.5.10,True,True,ignored_call_return,972cbf6fc8754158,False
+buggy_21.sol,unchecked_call,unhandled_exceptions,21,^0.5.11,True,True,ignored_call_return,4a45b5b2a70cc19d,False
+buggy_22.sol,unchecked_call,unhandled_exceptions,22,>=0.5.1,True,True,ignored_call_return,68405d6dab51c625,False
+buggy_23.sol,unchecked_call,unhandled_exceptions,23,^0.5.2,True,True,ignored_call_return,8cf5de8926dc167d,False
+buggy_24.sol,unchecked_call,unhandled_exceptions,24,^0.5.0,True,True,ignored_call_return,fef3d1b3156e8833,False
+buggy_25.sol,unchecked_call,unhandled_exceptions,25,^0.5.11,True,True,ignored_call_return,4a0113813247b57a,False
+buggy_26.sol,unchecked_call,unhandled_exceptions,26,^0.5.2,True,True,ignored_call_return,a5e20af374f194bb,False
+buggy_27.sol,unchecked_call,unhandled_exceptions,27,^0.5.0,True,True,ignored_call_return,77e17caf3fe22fff,False
+buggy_28.sol,unchecked_call,unhandled_exceptions,28,^0.5.0,True,True,ignored_call_return,b0a432a595be530e,False
+buggy_29.sol,unchecked_call,unhandled_exceptions,29,>=0.5.11,True,True,ignored_call_return,22eaf52fdda38a97,False
+buggy_3.sol,unchecked_call,unhandled_exceptions,3,^0.5.1,True,True,ignored_call_return,146495960180979a,False
+buggy_30.sol,unchecked_call,unhandled_exceptions,30,^0.5.11,True,True,ignored_call_return,434e82f51c504fbc,True
+buggy_31.sol,unchecked_call,unhandled_exceptions,31,>=0.5.11,True,True,ignored_call_return,1150db1b83d4d992,False
+buggy_32.sol,unchecked_call,unhandled_exceptions,32,^0.5.7,True,True,ignored_call_return,9c04f4f5146fea29,False
+buggy_33.sol,unchecked_call,unhandled_exceptions,33,>=0.5.11,True,True,ignored_call_return,d564b49ab296edcd,False
+buggy_34.sol,unchecked_call,unhandled_exceptions,34,>=0.5.11,True,True,ignored_call_return,78945c5e47da4261,False
+buggy_35.sol,unchecked_call,unhandled_exceptions,35,>=0.5.11,True,True,ignored_call_return,1f3e81d9f6843e17,False
+buggy_36.sol,unchecked_call,unhandled_exceptions,36,>=0.5.1,True,True,ignored_call_return,7f16268f0f4b698d,False
+buggy_37.sol,unchecked_call,unhandled_exceptions,37,^0.5.00,True,True,ignored_call_return,957dee9518533879,False
+buggy_38.sol,unchecked_call,unhandled_exceptions,38,^0.5.0,True,True,ignored_call_return,9bdc254d9e0a1d2b,False
+buggy_39.sol,unchecked_call,unhandled_exceptions,39,^0.5.10,True,True,ignored_call_return,61b0324ec371f0ef,False
+buggy_4.sol,unchecked_call,unhandled_exceptions,4,>= 0.5.0 < 0.6.0,True,True,ignored_call_return,5582db6ccf74bc0c,False
+buggy_40.sol,unchecked_call,unhandled_exceptions,40,^0.5.0,True,True,ignored_call_return,e6e399d9efa45ddc,False
+buggy_41.sol,unchecked_call,unhandled_exceptions,41,>=0.4.22 <0.6.0,True,True,ignored_call_return,678af62b930cf950,True
+buggy_42.sol,unchecked_call,unhandled_exceptions,42,^0.5.11,True,True,ignored_call_return,13412cc296f09da3,False
+buggy_43.sol,unchecked_call,unhandled_exceptions,43,^0.5.0,True,True,ignored_call_return,202e62b122118399,False
+buggy_44.sol,unchecked_call,unhandled_exceptions,44,^0.5.0,True,True,ignored_call_return,b95021d96ae0c2b2,False
+buggy_45.sol,unchecked_call,unhandled_exceptions,45,^0.5.11,True,True,ignored_call_return,e46075b2b2653810,False
+buggy_46.sol,unchecked_call,unhandled_exceptions,46,>=0.4.21 <0.6.0,True,True,ignored_call_return,a465c7c1b38a6372,False
+buggy_47.sol,unchecked_call,unhandled_exceptions,47,^0.5.11,True,True,ignored_call_return,b79ea70592f0c3dc,False
+buggy_48.sol,unchecked_call,unhandled_exceptions,48,^0.5.11,True,True,ignored_call_return,cb21d179479a657a,False
+buggy_49.sol,unchecked_call,unhandled_exceptions,49,^0.5.11,True,True,ignored_call_return,0b112a267ce0bbae,True
+buggy_5.sol,unchecked_call,unhandled_exceptions,5,>=0.4.22 <0.6.0,True,True,ignored_call_return,9a4ed51bef587dc8,False
+buggy_50.sol,unchecked_call,unhandled_exceptions,50,^0.5.11,True,True,ignored_call_return,69ced5b365b53632,False
+buggy_6.sol,unchecked_call,unhandled_exceptions,6,^0.5.8,True,True,ignored_call_return,75c2e6e10a7af187,False
+buggy_7.sol,unchecked_call,unhandled_exceptions,7,^0.5.8,True,True,ignored_call_return,5e344c0670837349,False
+buggy_8.sol,unchecked_call,unhandled_exceptions,8,>=0.4.22 <0.6.0,True,True,ignored_call_return,2b9e150b690eaef9,False
+buggy_9.sol,unchecked_call,unhandled_exceptions,9,>=0.4.22 <0.6.0,True,True,ignored_call_return,9c0f291511ea887c,False
+buggy_1.sol,tx_origin,tx_origin,1,>=0.4.22 <0.6.0,True,True,require_txorigin,eaa1af38e1686da8,False
+buggy_10.sol,tx_origin,tx_origin,10,>=0.4.21 < 0.6.0,True,True,require_txorigin,457d6b8a0bf121bd,False
+buggy_11.sol,tx_origin,tx_origin,11,^0.5.0,True,True,require_txorigin,d4f674775f9cfe44,False
+buggy_12.sol,tx_origin,tx_origin,12,>=0.4.23 <0.6.0,True,True,require_txorigin,8a9c3b932ff60645,False
+buggy_13.sol,tx_origin,tx_origin,13,>=0.4.22 <0.6.0,True,True,require_txorigin,438fc1f3473aaae7,False
+buggy_14.sol,tx_origin,tx_origin,14,^0.5.1,True,True,require_txorigin,536bbef0d7849bd0,False
+buggy_15.sol,tx_origin,tx_origin,15,^0.5.7,True,True,require_txorigin,95cbb88d58405e8a,False
+buggy_16.sol,tx_origin,tx_origin,16,^0.5.11,True,True,require_txorigin,1e85a92a923c1f68,True
+buggy_17.sol,tx_origin,tx_origin,17,^0.5.6,True,True,require_txorigin,39db6f00dc56e549,False
+buggy_18.sol,tx_origin,tx_origin,18,>=0.5.9,True,True,require_txorigin,2401ef202072fc26,False
+buggy_19.sol,tx_origin,tx_origin,19,^0.5.1,True,True,require_txorigin,c2fc3b749a601631,False
+buggy_2.sol,tx_origin,tx_origin,2,^0.5.1,True,True,require_txorigin,4b178818961011d0,False
+buggy_20.sol,tx_origin,tx_origin,20,^0.5.10,True,True,require_txorigin,88d9365cfa8ab1dd,False
+buggy_21.sol,tx_origin,tx_origin,21,^0.5.11,True,True,require_txorigin,d54de459ab697c85,False
+buggy_22.sol,tx_origin,tx_origin,22,>=0.5.1,True,True,require_txorigin,39ae978d7e376d68,False
+buggy_23.sol,tx_origin,tx_origin,23,^0.5.2,True,True,require_txorigin,d4fecbafc33f13ed,False
+buggy_24.sol,tx_origin,tx_origin,24,^0.5.0,True,True,require_txorigin,0bb608135448a97a,False
+buggy_25.sol,tx_origin,tx_origin,25,^0.5.11,True,True,require_txorigin,a82a151a69e056c4,False
+buggy_26.sol,tx_origin,tx_origin,26,^0.5.2,True,True,require_txorigin,70a11226fb15ff27,False
+buggy_27.sol,tx_origin,tx_origin,27,^0.5.0,True,True,require_txorigin,aee6c5dce0319f40,False
+buggy_28.sol,tx_origin,tx_origin,28,^0.5.0,True,True,require_txorigin,6d24cbaff0ce21bb,False
+buggy_29.sol,tx_origin,tx_origin,29,>=0.5.11,True,True,require_txorigin,cdfc7a08d95c5ee9,False
+buggy_3.sol,tx_origin,tx_origin,3,^0.5.1,True,True,require_txorigin,74642e6351ade37b,False
+buggy_30.sol,tx_origin,tx_origin,30,^0.5.11,True,True,require_txorigin,f5bb54de79cefd13,False
+buggy_31.sol,tx_origin,tx_origin,31,>=0.5.11,True,True,require_txorigin,ea37136bddfa3cb0,False
+buggy_32.sol,tx_origin,tx_origin,32,^0.5.7,True,True,require_txorigin,163d75666c4600c4,False
+buggy_33.sol,tx_origin,tx_origin,33,>=0.5.11,True,True,require_txorigin,84e29feb9a05feab,False
+buggy_34.sol,tx_origin,tx_origin,34,>=0.5.11,True,True,require_txorigin,c6f66341dfe7636b,False
+buggy_35.sol,tx_origin,tx_origin,35,>=0.5.11,True,True,require_txorigin,9c97a4ca181a2854,False
+buggy_36.sol,tx_origin,tx_origin,36,>=0.5.1,True,True,require_txorigin,319b462ac6840c70,False
+buggy_37.sol,tx_origin,tx_origin,37,^0.5.00,True,True,require_txorigin,e9a1779e3a566167,False
+buggy_38.sol,tx_origin,tx_origin,38,^0.5.0,True,True,require_txorigin,c83cc09be758f477,False
+buggy_39.sol,tx_origin,tx_origin,39,^0.5.10,True,True,require_txorigin,d41c61debbfae1f0,False
+buggy_4.sol,tx_origin,tx_origin,4,>= 0.5.0 < 0.6.0,True,True,require_txorigin,d77434ff14992c65,False
+buggy_40.sol,tx_origin,tx_origin,40,^0.5.0,True,True,require_txorigin,a8140b94c69fe8b6,True
+buggy_41.sol,tx_origin,tx_origin,41,>=0.4.22 <0.6.0,True,True,require_txorigin,ba1cee214cc72c3a,False
+buggy_42.sol,tx_origin,tx_origin,42,^0.5.11,True,True,require_txorigin,cd93d38de75ee556,True
+buggy_43.sol,tx_origin,tx_origin,43,^0.5.0,True,True,require_txorigin,62a503aaae075969,False
+buggy_44.sol,tx_origin,tx_origin,44,^0.5.0,True,True,require_txorigin,bf68a5e48689ee63,True
+buggy_45.sol,tx_origin,tx_origin,45,^0.5.11,True,True,require_txorigin,6b1e4074697a0c03,False
+buggy_46.sol,tx_origin,tx_origin,46,>=0.4.21 <0.6.0,True,True,require_txorigin,f3c9b7deb5ce18ae,False
+buggy_47.sol,tx_origin,tx_origin,47,^0.5.11,True,True,require_txorigin,dc890df3d62517aa,False
+buggy_48.sol,tx_origin,tx_origin,48,^0.5.11,True,True,require_txorigin,bc24ff41349b38e1,False
+buggy_49.sol,tx_origin,tx_origin,49,^0.5.11,True,True,require_txorigin,2b5272d38e2a2a4c,False
+buggy_5.sol,tx_origin,tx_origin,5,>=0.4.22 <0.6.0,True,True,require_txorigin,df409c5d755e1a3a,True
+buggy_50.sol,tx_origin,tx_origin,50,^0.5.11,True,True,require_txorigin,122b39e4ec97d878,False
+buggy_6.sol,tx_origin,tx_origin,6,^0.5.8,True,True,require_txorigin,4cab3992a4913438,False
+buggy_7.sol,tx_origin,tx_origin,7,^0.5.8,True,True,require_txorigin,85577d9f2286bf5f,False
+buggy_8.sol,tx_origin,tx_origin,8,>=0.4.22 <0.6.0,True,True,require_txorigin,336c2903e67e4137,False
+buggy_9.sol,tx_origin,tx_origin,9,>=0.4.22 <0.6.0,True,True,require_txorigin,e9e2c75c16acbd45,False

@@ -1,0 +1,4 @@
+Replaced the push-refund in bid() with a pull-payment pattern by recording refunds in pendingReturns and added a withdraw() function plus a reentrancy mutex.
+
+INVARIANTS USED:
+1) Funds accounting: contract balance == currentBid + sum(pendingReturns) (modulo gas costs/rounding). 2) pendingReturns only increases in bid() for previous frontrunners and is set to zero in withdraw() before any external call (checks-effects-interactions). 3) Reentrancy is prevented on withdraw() by the _locked mutex; withdraw sets pendingReturns[msg.sender] = 0 before sending and reverts on send failure, ensuring no double withdrawal. 4) bid() requires msg.value > currentBid, preserving the auction ordering invariant.

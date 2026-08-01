@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (select(post.balances, arg.sender) >= select(pre.balances, arg.sender))
+(meta.revert_taken == false) -> (select(post.balances, arg.sender) == select(pre.balances, arg.sender) + arg.value)
+(meta.revert_taken == false) -> (address(this).balance >= select(pre.address, this).balance)
+(meta.revert_taken == false) -> (meta.sender == owner)
+(meta.revert_taken == false) -> (owner != address(0))
+(meta.revert_taken == false) -> (address(this).balance == select(pre.address, this).balance - arg.value)

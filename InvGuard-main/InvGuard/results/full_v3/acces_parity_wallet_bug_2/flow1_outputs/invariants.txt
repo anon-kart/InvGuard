@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)
+(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)
+(meta.revert_taken == false) -> (select(post.m_ownerIndex, arg.sender) >= select(pre.m_ownerIndex, arg.sender))
+(meta.revert_taken == false) -> (select(post.m_ownerIndex, arg.sender) <= select(pre.m_ownerIndex, arg.sender))
+(pre.m_numOwners == 0 && meta.m_spentToday > meta.value) -> (meta.revert_taken == true)

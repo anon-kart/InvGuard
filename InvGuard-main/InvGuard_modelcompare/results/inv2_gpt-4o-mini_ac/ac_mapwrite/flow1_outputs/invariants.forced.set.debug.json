@@ -1,0 +1,37 @@
+{
+  "function": "set",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 2,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.map, arg.key) == select(pre.map, arg.key))",
+    "(meta.revert_taken == false) -> (post.map.length >= pre.map.length)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (meta.sender == post.owner) -> (select(post.map, arg.key) == arg.value)",
+    "(meta.revert_taken == false) -> (meta.sender == post.owner) -> (post.map.length >= arg.key + 1)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.map, arg.key) == select(pre.map, arg.key))",
+    "(meta.revert_taken == false) -> (post.map.length >= pre.map.length)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (meta.sender == post.owner) -> (select(post.map, arg.key) == meta.value)",
+    "(meta.revert_taken == false) -> (meta.sender == post.owner) -> (post.map.length >= arg.key + 1)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.map, arg.key) == select(pre.map, arg.key))",
+    "(meta.revert_taken == false) -> (post.map.length >= pre.map.length)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (meta.sender == post.owner) -> (select(post.map, arg.key) == meta.value)",
+    "(meta.revert_taken == false) -> (meta.sender == post.owner) -> (post.map.length >= (arg.key + 1))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.map, arg.key) == select(pre.map, arg.key))",
+    "(meta.revert_taken == false) -> (post.map.length >= pre.map.length)",
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (meta.sender == post.owner) -> (select(post.map, arg.key) == meta.value)",
+    "(meta.revert_taken == false) -> (meta.sender == post.owner) -> (post.map.length >= (arg.key + 1))"
+  ]
+}

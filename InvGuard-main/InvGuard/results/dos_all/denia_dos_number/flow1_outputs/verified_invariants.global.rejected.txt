@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (numElements <= array.length)  # reason=KeyError: "Unknown symbol 'array.length'"
+(meta.revert_taken == false) -> (array.length >= 0)  # reason=KeyError: "Unknown symbol 'array.length'"

@@ -1,0 +1,4 @@
+Added a reentrancy mutex and modified settle() to require the guessed block be within the last 256 blocks (non-zero blockhash), moved state updates before the external transfer, and prevented payouts when blockhash is zero.
+
+INVARIANTS USED:
+1) Check-effects-interactions pattern: state is cleared before external call to prevent reentrancy. 2) Reentrancy lock `_locked` to prevent reentrant settle calls. 3) Ensure blockhash availability: require guessed block is within last 256 blocks and that blockhash != 0 to prevent predictable/zero hash exploits.

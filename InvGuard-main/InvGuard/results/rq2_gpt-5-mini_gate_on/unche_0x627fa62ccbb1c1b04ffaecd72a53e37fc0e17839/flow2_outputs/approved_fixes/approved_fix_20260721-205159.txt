@@ -1,0 +1,6 @@
+Added a reentrancy mutex (_locked) in WithdrawToken and changed the low-level token.call to be checked with require(...) so a failed token transfer reverts.
+
+INVARIANTS USED:
+1) Reentrancy lock invariant: _locked is false before entry; set true before external call and reset after — prevents reentrant entry into WithdrawToken.
+2) External call success invariant: require(token.call(...)) ensures the external transfer must return true or the transaction reverts, preventing silent failures.
+3) Access control invariant: onlyOwner modifier restricts sensitive functions to the owner.

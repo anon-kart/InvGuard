@@ -1,0 +1,533 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:openai.agents:[non-fatal] Tracing: request failed: Server disconnected without sending a response.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_032_TreasureHunt_unlockTreasure.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f unlockTreasure --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:20:5:
+   |
+20 |     function totalSupply() external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:25:5:
+   |
+25 |     function balanceOf(address account) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:34:5:
+   |
+34 |     function transfer(address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:43:5:
+   |
+43 |     function allowance(address owner, address spender) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:59:5:
+   |
+59 |     function approve(address spender, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:70:5:
+   |
+70 |     function transferFrom(address sender, address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'isActive'}
+INFO:root:   {'op': 'require', 'cond_src': 'keccak256(bytes)(abi.encodePacked(_secret)) == hashedSecret'}
+INFO:root:   {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+INFO:root:   {'op': 'require', 'cond_src': 'IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)'}
+INFO:root:   {'op': 'store', 'var': 'isActive', 'val_src': 'false'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.isActive == false)
+   - (meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)
+   - (meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.isActive == true)  | DGX_TOKEN_ADDRESS=0, DGX_TOKEN_ADDRESS1=0, arg.abi.encodePacked(_secret))=0, hashedSecret=0, hashedSecret1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)  | reason=KeyError: "Unknown symbol 'post._dgxBalance'"
+   - (meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply()  | reason=KeyError: "Unknown symbol 'post.totalSupply()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f unlockTreasure --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:20:5:
+   |
+20 |     function totalSupply() external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:25:5:
+   |
+25 |     function balanceOf(address account) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:34:5:
+   |
+34 |     function transfer(address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:43:5:
+   |
+43 |     function allowance(address owner, address spender) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:59:5:
+   |
+59 |     function approve(address spender, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:70:5:
+   |
+70 |     function transferFrom(address sender, address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'isActive'}
+INFO:root:   {'op': 'require', 'cond_src': 'keccak256(bytes)(abi.encodePacked(_secret)) == hashedSecret'}
+INFO:root:   {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+INFO:root:   {'op': 'require', 'cond_src': 'IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)'}
+INFO:root:   {'op': 'store', 'var': 'isActive', 'val_src': 'false'}
+INFO:root:[FLOW1] Failed invariants detected for unlockTreasure — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.refined.filtered.txt
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.isActive == false)
+   - (meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)
+   - (meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.isActive == true)  | DGX_TOKEN_ADDRESS=0, DGX_TOKEN_ADDRESS1=0, arg.abi.encodePacked(_secret))=0, hashedSecret=0, hashedSecret1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)  | reason=KeyError: "Unknown symbol 'post._dgxBalance'"
+   - (meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply()  | reason=KeyError: "Unknown symbol 'post.totalSupply()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f unlockTreasure --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: unlockTreasure  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))
+  - [tmp] created local _dgxBalance: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+  - [heuristics] unknown require cond: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+  - [heuristics] unknown expr: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+  - [skip] unparsed require: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.isActive == true)", "model": {"DGX_TOKEN_ADDRESS": "0", "DGX_TOKEN_ADDRESS1": "0", "arg.abi.encodePacked(_secret))": "0", "hashedSecret": "0", "hashedSecret1": "0", "isActive": "True", "isActive1": "False", "meta.revert_taken": "False"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.isActive == false)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)", "reason": "KeyError: \"Unknown symbol 'post._dgxBalance'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply())", "reason": "KeyError: \"Unknown symbol 'post.totalSupply()'\"", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f unlockTreasure --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: unlockTreasure  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))
+  - [tmp] created local _dgxBalance: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+  - [heuristics] unknown require cond: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+  - [heuristics] unknown expr: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+  - [skip] unparsed require: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.isActive == true)", "model": {"DGX_TOKEN_ADDRESS": "0", "DGX_TOKEN_ADDRESS1": "0", "arg.abi.encodePacked(_secret))": "0", "hashedSecret": "0", "hashedSecret1": "0", "isActive": "True", "isActive1": "False", "meta.revert_taken": "False"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.isActive == false)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)", "reason": "KeyError: \"Unknown symbol 'post._dgxBalance'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply())", "reason": "KeyError: \"Unknown symbol 'post.totalSupply()'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f unlockTreasure --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:20:5:
+   |
+20 |     function totalSupply() external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:25:5:
+   |
+25 |     function balanceOf(address account) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:34:5:
+   |
+34 |     function transfer(address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:43:5:
+   |
+43 |     function allowance(address owner, address spender) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:59:5:
+   |
+59 |     function approve(address spender, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:70:5:
+   |
+70 |     function transferFrom(address sender, address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'isActive'}
+INFO:root:   {'op': 'require', 'cond_src': 'keccak256(bytes)(abi.encodePacked(_secret)) == hashedSecret'}
+INFO:root:   {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+INFO:root:   {'op': 'require', 'cond_src': 'IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)'}
+INFO:root:   {'op': 'store', 'var': 'isActive', 'val_src': 'false'}
+INFO:root:[FLOW1] Failed invariants detected for unlockTreasure — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.refined.filtered.txt
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.isActive == false)
+   - (meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)
+   - (meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((post.isActive == true)  | DGX_TOKEN_ADDRESS=0, DGX_TOKEN_ADDRESS1=0, arg.abi.encodePacked(_secret))=0, hashedSecret=0, hashedSecret1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)  | reason=KeyError: "Unknown symbol 'post._dgxBalance'"
+   - (meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply()  | reason=KeyError: "Unknown symbol 'post.totalSupply()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.summary.json
+
+[FLOW1] Checker report after refinement (unlockTreasure, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f unlockTreasure --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: unlockTreasure  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))
+  - [tmp] created local _dgxBalance: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+  - [heuristics] unknown require cond: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+  - [heuristics] unknown expr: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+  - [skip] unparsed require: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((post.isActive == true))", "model": {"DGX_TOKEN_ADDRESS": "0", "DGX_TOKEN_ADDRESS1": "0", "arg.abi.encodePacked(_secret))": "0", "hashedSecret": "0", "hashedSecret1": "0", "isActive": "True", "isActive1": "False", "meta.revert_taken": "False"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.isActive == false)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)", "reason": "KeyError: \"Unknown symbol 'post._dgxBalance'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply())", "reason": "KeyError: \"Unknown symbol 'post.totalSupply()'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f unlockTreasure --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:20:5:
+   |
+20 |     function totalSupply() external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:25:5:
+   |
+25 |     function balanceOf(address account) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:34:5:
+   |
+34 |     function transfer(address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:43:5:
+   |
+43 |     function allowance(address owner, address spender) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:59:5:
+   |
+59 |     function approve(address spender, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:70:5:
+   |
+70 |     function transferFrom(address sender, address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'isActive'}
+INFO:root:   {'op': 'require', 'cond_src': 'keccak256(bytes)(abi.encodePacked(_secret)) == hashedSecret'}
+INFO:root:   {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+INFO:root:   {'op': 'require', 'cond_src': 'IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)'}
+INFO:root:   {'op': 'store', 'var': 'isActive', 'val_src': 'false'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.isActive == false)
+   - (meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)
+   - (meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((post.isActive == true)  | DGX_TOKEN_ADDRESS=0, DGX_TOKEN_ADDRESS1=0, arg.abi.encodePacked(_secret))=0, hashedSecret=0, hashedSecret1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)  | reason=KeyError: "Unknown symbol 'post._dgxBalance'"
+   - (meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply()  | reason=KeyError: "Unknown symbol 'post.totalSupply()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.unlockTreasure.summary.json
+
+[FLOW1] Checker report after refinement (unlockTreasure, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f unlockTreasure --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.unlockTreasure.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: unlockTreasure  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))
+  - [tmp] created local _dgxBalance: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+  - [heuristics] unknown require cond: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+  - [heuristics] unknown expr: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+  - [skip] unparsed require: IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((post.isActive == true))", "model": {"DGX_TOKEN_ADDRESS": "0", "DGX_TOKEN_ADDRESS1": "0", "arg.abi.encodePacked(_secret))": "0", "hashedSecret": "0", "hashedSecret1": "0", "isActive": "True", "isActive1": "False", "meta.revert_taken": "False"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.isActive == false)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post._dgxBalance == pre._dgxBalance)", "reason": "KeyError: \"Unknown symbol 'post._dgxBalance'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.totalSupply() == pre.totalSupply())", "reason": "KeyError: \"Unknown symbol 'post.totalSupply()'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_r29f6ic1/drop_require_1.sol --llm-invariants /tmp/inv_strength_r29f6ic1/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_r29f6ic1/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_r29f6ic1' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_r29f6ic1/drop_require_1.sol:
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_1.sol:20:5:
+   |
+20 |     function totalSupply() external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_1.sol:25:5:
+   |
+25 |     function balanceOf(address account) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_1.sol:34:5:
+   |
+34 |     function transfer(address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_1.sol:43:5:
+   |
+43 |     function allowance(address owner, address spender) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_1.sol:59:5:
+   |
+59 |     function approve(address spender, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_1.sol:70:5:
+   |
+70 |     function transferFrom(address sender, address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'keccak256(bytes)(abi.encodePacked(_secret)) == hashedSecret'}
+INFO:root:   {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+INFO:root:   {'op': 'require', 'cond_src': 'IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)'}
+INFO:root:   {'op': 'store', 'var': 'isActive', 'val_src': 'false'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.isActive == false)
+   - (meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)
+   - (meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_r29f6ic1/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_r29f6ic1/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_r29f6ic1/drop_require_2.sol --llm-invariants /tmp/inv_strength_r29f6ic1/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_r29f6ic1/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_r29f6ic1' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_r29f6ic1/drop_require_2.sol:
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_2.sol:20:5:
+   |
+20 |     function totalSupply() external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_2.sol:25:5:
+   |
+25 |     function balanceOf(address account) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_2.sol:34:5:
+   |
+34 |     function transfer(address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_2.sol:43:5:
+   |
+43 |     function allowance(address owner, address spender) external view virtual returns (uint256);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_2.sol:59:5:
+   |
+59 |     function approve(address spender, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Interface functions are implicitly "virtual"
+  --> /tmp/inv_strength_r29f6ic1/drop_require_2.sol:70:5:
+   |
+70 |     function transferFrom(address sender, address recipient, uint256 amount) external virtual returns (bool);
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+   --> /tmp/inv_strength_r29f6ic1/drop_require_2.sol:105:27:
+    |
+105 |   function unlockTreasure(bytes32 _secret) public {
+    |                           ^^^^^^^^^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'isActive'}
+INFO:root:   {'op': 'store', 'var': '_dgxBalance', 'val_src': 'IERC20(DGX_TOKEN_ADDRESS).balanceOf(address(this))'}
+INFO:root:   {'op': 'require', 'cond_src': 'IERC20(DGX_TOKEN_ADDRESS).transfer(meta.sender,_dgxBalance)'}
+INFO:root:   {'op': 'store', 'var': 'isActive', 'val_src': 'false'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.isActive == false)
+   - (meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)
+   - (meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_r29f6ic1/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_r29f6ic1/verified_invariants.global.summary.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

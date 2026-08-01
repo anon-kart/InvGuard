@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))
+(meta.revert_taken == false) -> (select(post.spent, meta.sender) <= select(post.balanceOf, meta.sender) * PRICE)
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender) - arg.amount)
+(meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= select(pre.balanceOf, arg.to) + arg.amount)

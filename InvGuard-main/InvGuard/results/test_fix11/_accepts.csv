@@ -1,0 +1,3 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+acces_multiowned_vulnerable,withdrawAll,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE,60.72
+acces_parity_wallet_bug_2,initWallet,False,gate_rejected,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,288.12

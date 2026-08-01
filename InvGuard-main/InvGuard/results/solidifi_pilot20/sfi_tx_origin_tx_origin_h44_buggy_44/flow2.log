@@ -1,0 +1,98 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../SolidiFI-benchmark/buggy_contracts/tx.origin/buggy_44.sol
+INFO:root:Loaded invariants (function=withdrawAll_txorigin10, mode=INVARIANT_GUIDED): constraints=2, objectives=0, validator_path=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/invariants.withdrawAll_txorigin10.VU.txt
+INFO:root:[prompt-enhancer] appended 5593 chars of context-aware hints
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=1 run_ok=1
+INFO:root:[feedback-loop] converged at round 0
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A2.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260724-125243.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[validate-gate] replay=PASS invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=1 n=1 compile_ok=1 run_ok=1 | gate_ok=True
+INFO:root:Patch accepted by non-LLM validation gate.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:Saved approved fix
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f withdrawAll_txorigin10 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:10:3: Warning: Function state mutability can be restricted to view
+  function bug_txorigin40(address owner_txorigin40) public{
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:20:1: Warning: Function state mutability can be restricted to view
+function transferTo_txorigin11(address to, uint amount,address owner_txorigin11) public {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:95:1: Warning: Function state mutability can be restricted to view
+function transferTo_txorigin3(address to, uint amount,address owner_txorigin3) public {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:121:1: Warning: Function state mutability can be restricted to view
+function transferTo_txorigin19(address to, uint amount,address owner_txorigin19) public {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:140:3: Warning: Function state mutability can be restricted to view
+  function transferTo_txorigin27(address to, uint amount,address owner_txorigin27) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:145:3: Warning: Function state mutability can be restricted to view
+  function transferTo_txorigin31(address to, uint amount,address owner_txorigin31) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:157:1: Warning: Function state mutability can be restricted to view
+function bug_txorigin20(address owner_txorigin20) public{
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:165:1: Warning: Function state mutability can be restricted to view
+function bug_txorigin32(  address owner_txorigin32) public{
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:232:1: Warning: Function state mutability can be restricted to view
+function bug_txorigin4(address owner_txorigin4) public{
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:270:3: Warning: Function state mutability can be restricted to view
+  function bug_txorigin12(address owner_txorigin12) public{
+  ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:294:1: Warning: Function state mutability can be restricted to view
+function transferTo_txorigin7(address to, uint amount,address owner_txorigin7) public {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:302:1: Warning: Function state mutability can be restricted to view
+function transferTo_txorigin23(address to, uint amount,address owner_txorigin23) public {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:376:1: Warning: Function state mutability can be restricted to view
+function bug_txorigin8(address owner_txorigin8) public{
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:387:1: Warning: Function state mutability can be restricted to view
+function transferTo_txorigin39(address to, uint amount,address owner_txorigin39) public {
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:399:1: Warning: Function state mutability can be restricted to view
+function bug_txorigin36(  address owner_txorigin36) public{
+^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol:410:1: Warning: Function state mutability can be restricted to view
+function transferTo_txorigin35(address to, uint amount,address owner_txorigin35) public {
+^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner_txorigin12'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'creator', 'val_src': 'iFactory(_factory).getInstanceCreator(address(this))'}
+INFO:root:   {'op': 'raw', 'src': 'creator'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == owner_txorigin7'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post._operator == pre._operator)
+   - (meta.revert_taken == false) -> (post._status == pre._status)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.withdrawAll_txorigin10.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/verified_invariants.withdrawAll_txorigin10.summary.json
+✅ Flow-2 completed successfully (patch validated by execution + invariants)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

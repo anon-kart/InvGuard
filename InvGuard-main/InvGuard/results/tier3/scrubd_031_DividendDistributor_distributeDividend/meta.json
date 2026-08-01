@@ -1,0 +1,20 @@
+{
+  "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_031_DividendDistributor_distributeDividend.sol",
+  "stem": "scrubd_031_DividendDistributor_distributeDividend",
+  "tier": "tier3",
+  "model": "gpt-4o-mini",
+  "target_function": "distributeDividend",
+  "extra_env": {},
+  "flow1": {
+    "returncode": 0,
+    "elapsed_sec": 87.76,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_031_DividendDistributor_distributeDividend/flow1.log"
+  },
+  "flow2": {
+    "returncode": 1,
+    "elapsed_sec": 1.17,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_031_DividendDistributor_distributeDividend/flow2.log"
+  }
+}

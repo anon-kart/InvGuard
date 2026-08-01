@@ -1,0 +1,9 @@
+{
+  "rq2_gpt-4o-mini_gate_on": {
+    "n": 20,
+    "accepts": 19,
+    "accept_rate": 95.0,
+    "false_accepts": 0,
+    "false_accept_rate": 0.0
+  }
+}

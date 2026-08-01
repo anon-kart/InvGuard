@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (post.win == true || post.win == false)
+(meta.revert_taken == false) -> (post.creditorAddresses.length <= pre.creditorAddresses.length + 350)
+(meta.revert_taken == false) -> (post.creditorAddresses.length >= pre.creditorAddresses.length)
+(meta.revert_taken == false) -> (post.creditorAddresses.length == 0 || post.creditorAddresses.length > 0)

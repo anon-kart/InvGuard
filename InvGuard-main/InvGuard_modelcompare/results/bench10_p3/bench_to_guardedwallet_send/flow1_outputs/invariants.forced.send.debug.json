@@ -1,0 +1,37 @@
+{
+  "function": "send",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 4,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)",
+    "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.holder == pre.holder)",
+    "(meta.revert_taken == false) -> (post.backup == pre.backup)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)",
+    "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.holder == pre.holder)",
+    "(meta.revert_taken == false) -> (post.backup == pre.backup)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)",
+    "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.holder == pre.holder)",
+    "(meta.revert_taken == false) -> (post.backup == pre.backup)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)",
+    "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.holder == pre.holder)",
+    "(meta.revert_taken == false) -> (post.backup == pre.backup)"
+  ]
+}

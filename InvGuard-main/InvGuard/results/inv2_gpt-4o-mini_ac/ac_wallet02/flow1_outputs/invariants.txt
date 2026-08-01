@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (creator == meta.sender)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) + arg.value > select(post.balances, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= arg.amount)
+(meta.revert_taken == false) -> (meta.sender.transfer(select(post.balances, meta.sender)))
+(meta.revert_taken == false) -> (creator == meta.sender)

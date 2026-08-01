@@ -1,0 +1,45 @@
+{
+  "function": "sendto_txorigin21",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 7,
+  "deposit_count": 7,
+  "withdraw_count": 7,
+  "chosen_count_before_final_fallback": 7,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) + select(post.balanceOf, post.to) == select(pre.balanceOf, meta.sender) + select(pre.balanceOf, post.to))",
+    "(meta.revert_taken == false) -> (post.sellPrice >= 0)",
+    "(meta.revert_taken == false) -> (post.buyPrice >= 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) + select(post.balanceOf, post.to) == select(pre.balanceOf, meta.sender) + select(pre.balanceOf, post.to))",
+    "(meta.revert_taken == false) -> (post.sellPrice >= 0)",
+    "(meta.revert_taken == false) -> (post.buyPrice >= 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) + select(post.balanceOf, post.to) == select(pre.balanceOf, meta.sender) + select(pre.balanceOf, post.to))",
+    "(meta.revert_taken == false) -> (post.sellPrice >= 0)",
+    "(meta.revert_taken == false) -> (post.buyPrice >= 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) + select(post.balanceOf, post.to) == select(pre.balanceOf, meta.sender) + select(pre.balanceOf, post.to))",
+    "(meta.revert_taken == false) -> (post.sellPrice >= 0)",
+    "(meta.revert_taken == false) -> (post.buyPrice >= 0)"
+  ]
+}

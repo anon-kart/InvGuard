@@ -1,0 +1,156 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_re_etherbank_withdraw.sol",
+    "stem": "bench_re_etherbank_withdraw",
+    "tier": "bench10",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 30.23,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 9.11,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_re_rewardvault_redeem.sol",
+    "stem": "bench_re_rewardvault_redeem",
+    "tier": "bench10",
+    "model": "gpt-4o-mini",
+    "target_function": "redeem",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 38.88,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 8.21,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ur_payoutledger_payout.sol",
+    "stem": "bench_ur_payoutledger_payout",
+    "tier": "bench10",
+    "model": "gpt-4o-mini",
+    "target_function": "payout",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.58,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 12.43,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_of_tokensale_buy.sol",
+    "stem": "bench_of_tokensale_buy",
+    "tier": "bench10",
+    "model": "gpt-4o-mini",
+    "target_function": "transfer",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 26.02,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 33.53,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_of_bonusvault_addBonus.sol",
+    "stem": "bench_of_bonusvault_addBonus",
+    "tier": "bench10",
+    "model": "gpt-4o-mini",
+    "target_function": "addBonus",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.36,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 8.31,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_to_guardedwallet_send.sol",
+    "stem": "bench_to_guardedwallet_send",
+    "tier": "bench10",
+    "model": "gpt-4o-mini",
+    "target_function": "send",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "tx_origin"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.74,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 25.27,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  }
+]

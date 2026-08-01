@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (isComplete() == true -> address(this).balance == 0)
+(meta.revert_taken == false) -> (guess(n) && n == answer -> meta.sender.balance == meta.sender.balance + 2 ether)
+(meta.revert_taken == false) -> (meta.value == 1 ether -> guess(n) is called once per player)

@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)
+(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)
+(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)

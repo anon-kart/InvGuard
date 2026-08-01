@@ -1,0 +1,897 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Re-entrancy/buggy_6.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw_balances_re_ent1 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(redeemableEther_re_ent11, meta.sender) > 0'}
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent35 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post._owner == pre._owner)  | reason=KeyError: "Unknown symbol 'post.arg.owner'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw_balances_re_ent1 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(redeemableEther_re_ent11, meta.sender) > 0'}
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent35 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post._owner == pre._owner)  | reason=KeyError: "Unknown symbol 'post.arg.owner'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw_balances_re_ent1 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 11 invariants from LLM.
+
+Function: withdraw_balances_re_ent1  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))", "model": {"_master": "0", "_master1": "0", "_owner": "0", "_owner1": "0", "addressMap": "K(BitVec(256), 0)", "addressMap1": "K(BitVec(256), 0)", "balances_re_ent1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "balances_re_ent11": "Store(K(BitVec(160),\n        115792089237316195423570985008687907853269984665640564039457584007913129639935),\n      0,\n      0)", "balances_re_ent17": "K(BitVec(160), 0)", "balances_re_ent171": "K(BitVec(160), 0)", "balances_re_ent3": "K(BitVec(160), 0)", "balances_re_ent31": "K(BitVec(160), 0)", "balances_re_ent311": "K(BitVec(160), 0)", "balances_re_ent36": "K(BitVec(160), 0)", "balances_re_ent361": "K(BitVec(160), 0)", "balances_re_ent38": "K(BitVec(160), 0)", "balances_re_ent381": "K(BitVec(160), 0)", "balances_re_ent8": "K(BitVec(160), 0)", "balances_re_ent81": "K(BitVec(160), 0)", "counter_re_ent14": "0", "counter_re_ent141": "0", "counter_re_ent35": "0", "counter_re_ent351": "0", "counter_re_ent42": "0", "counter_re_ent421": "0", "counter_re_ent7": "0", "counter_re_ent71": "0", "jackpot_re_ent2": "0", "jackpot_re_ent21": "0", "jackpot_re_ent23": "0", "jackpot_re_ent231": "0", "jackpot_re_ent30": "0", "jackpot_re_ent301": "0", "jackpot_re_ent37": "0", "jackpot_re_ent371": "0", "jackpot_re_ent9": "0", "jackpot_re_ent91": "0", "lastPlayer_re_ent2": "0", "lastPlayer_re_ent21": "0", "lastPlayer_re_ent23": "0", "lastPlayer_re_ent231": "0", "lastPlayer_re_ent30": "0", "lastPlayer_re_ent301": "0", "lastPlayer_re_ent37": "0", "lastPlayer_re_ent371": "0", "lastPlayer_re_ent9": "0", "lastPlayer_re_ent91": "0", "meta.revert_taken": "False", "meta.sender": "0", "not_called_re_ent13": "False", "not_called_re_ent131": "False", "not_called_re_ent20": "False", "not_called_re_ent201": "False", "not_called_re_ent27": "False", "not_called_re_ent271": "False", "not_called_re_ent41": "False", "not_called_re_ent411": "False", "redeemableEther_re_ent11": "K(BitVec(160), 0)", "redeemableEther_re_ent111": "K(BitVec(160), 0)", "redeemableEther_re_ent25": "K(BitVec(160), 0)", "redeemableEther_re_ent251": "K(BitVec(160), 0)", "redeemableEther_re_ent32": "K(BitVec(160), 0)", "redeemableEther_re_ent321": "K(BitVec(160), 0)", "redeemableEther_re_ent39": "K(BitVec(160), 0)", "redeemableEther_re_ent391": "K(BitVec(160), 0)", "redeemableEther_re_ent4": "K(BitVec(160), 0)", "redeemableEther_re_ent41": "K(BitVec(160), 0)", "stopped": "False", "stopped1": "False", "userBalance_re_ent12": "K(BitVec(160), 0)", "userBalance_re_ent121": "K(BitVec(160), 0)", "userBalance_re_ent19": "K(BitVec(160), 0)", "userBalance_re_ent191": "K(BitVec(160), 0)", "userBalance_re_ent26": "K(BitVec(160), 0)", "userBalance_re_ent261": "K(BitVec(160), 0)", "userBalance_re_ent33": "K(BitVec(160), 0)", "userBalance_re_ent331": "K(BitVec(160), 0)", "userBalance_re_ent40": "K(BitVec(160), 0)", "userBalance_re_ent401": "K(BitVec(160), 0)"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))", "status": "HOLDS"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))", "status": "HOLDS"}
+{"idx": 7, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))", "status": "HOLDS"}
+{"idx": 8, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))", "status": "HOLDS"}
+{"idx": 9, "inv": "(meta.revert_taken == false) -> (post.stopped == pre.stopped)", "status": "HOLDS"}
+{"idx": 10, "inv": "(meta.revert_taken == false) -> (post._master == pre._master)", "status": "HOLDS"}
+{"idx": 11, "inv": "(meta.revert_taken == false) -> (post._owner == pre._owner)", "reason": "KeyError: \"Unknown symbol 'post.arg.owner'\"", "status": "REJECTED_UNSUPPORTED"}INFO:root:[FLOW1] Failed invariants detected for withdraw_balances_re_ent1 — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw_balances_re_ent1 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 11 invariants from LLM.
+
+Function: withdraw_balances_re_ent1  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))", "model": {"_master": "0", "_master1": "0", "_owner": "0", "_owner1": "0", "addressMap": "K(BitVec(256), 0)", "addressMap1": "K(BitVec(256), 0)", "balances_re_ent1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "balances_re_ent11": "Store(K(BitVec(160),\n        115792089237316195423570985008687907853269984665640564039457584007913129639935),\n      0,\n      0)", "balances_re_ent17": "K(BitVec(160), 0)", "balances_re_ent171": "K(BitVec(160), 0)", "balances_re_ent3": "K(BitVec(160), 0)", "balances_re_ent31": "K(BitVec(160), 0)", "balances_re_ent311": "K(BitVec(160), 0)", "balances_re_ent36": "K(BitVec(160), 0)", "balances_re_ent361": "K(BitVec(160), 0)", "balances_re_ent38": "K(BitVec(160), 0)", "balances_re_ent381": "K(BitVec(160), 0)", "balances_re_ent8": "K(BitVec(160), 0)", "balances_re_ent81": "K(BitVec(160), 0)", "counter_re_ent14": "0", "counter_re_ent141": "0", "counter_re_ent35": "0", "counter_re_ent351": "0", "counter_re_ent42": "0", "counter_re_ent421": "0", "counter_re_ent7": "0", "counter_re_ent71": "0", "jackpot_re_ent2": "0", "jackpot_re_ent21": "0", "jackpot_re_ent23": "0", "jackpot_re_ent231": "0", "jackpot_re_ent30": "0", "jackpot_re_ent301": "0", "jackpot_re_ent37": "0", "jackpot_re_ent371": "0", "jackpot_re_ent9": "0", "jackpot_re_ent91": "0", "lastPlayer_re_ent2": "0", "lastPlayer_re_ent21": "0", "lastPlayer_re_ent23": "0", "lastPlayer_re_ent231": "0", "lastPlayer_re_ent30": "0", "lastPlayer_re_ent301": "0", "lastPlayer_re_ent37": "0", "lastPlayer_re_ent371": "0", "lastPlayer_re_ent9": "0", "lastPlayer_re_ent91": "0", "meta.revert_taken": "False", "meta.sender": "0", "not_called_re_ent13": "False", "not_called_re_ent131": "False", "not_called_re_ent20": "False", "not_called_re_ent201": "False", "not_called_re_ent27": "False", "not_called_re_ent271": "False", "not_called_re_ent41": "False", "not_called_re_ent411": "False", "redeemableEther_re_ent11": "K(BitVec(160), 0)", "redeemableEther_re_ent111": "K(BitVec(160), 0)", "redeemableEther_re_ent25": "K(BitVec(160), 0)", "redeemableEther_re_ent251": "K(BitVec(160), 0)", "redeemableEther_re_ent32": "K(BitVec(160), 0)", "redeemableEther_re_ent321": "K(BitVec(160), 0)", "redeemableEther_re_ent39": "K(BitVec(160), 0)", "redeemableEther_re_ent391": "K(BitVec(160), 0)", "redeemableEther_re_ent4": "K(BitVec(160), 0)", "redeemableEther_re_ent41": "K(BitVec(160), 0)", "stopped": "False", "stopped1": "False", "userBalance_re_ent12": "K(BitVec(160), 0)", "userBalance_re_ent121": "K(BitVec(160), 0)", "userBalance_re_ent19": "K(BitVec(160), 0)", "userBalance_re_ent191": "K(BitVec(160), 0)", "userBalance_re_ent26": "K(BitVec(160), 0)", "userBalance_re_ent261": "K(BitVec(160), 0)", "userBalance_re_ent33": "K(BitVec(160), 0)", "userBalance_re_ent331": "K(BitVec(160), 0)", "userBalance_re_ent40": "K(BitVec(160), 0)", "userBalance_re_ent401": "K(BitVec(160), 0)"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))", "status": "HOLDS"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))", "status": "HOLDS"}
+{"idx": 7, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))", "status": "HOLDS"}
+{"idx": 8, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))", "status": "HOLDS"}
+{"idx": 9, "inv": "(meta.revert_taken == false) -> (post.stopped == pre.stopped)", "status": "HOLDS"}
+{"idx": 10, "inv": "(meta.revert_taken == false) -> (post._master == pre._master)", "status": "HOLDS"}
+{"idx": 11, "inv": "(meta.revert_taken == false) -> (post._owner == pre._owner)", "reason": "KeyError: \"Unknown symbol 'post.arg.owner'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw_balances_re_ent1 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(redeemableEther_re_ent11, meta.sender) > 0'}
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent35 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+[... truncated ...]INFO:root:[FLOW1] Failed invariants detected for withdraw_balances_re_ent1 — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.refined.filtered.txt
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post._owner == pre._owner)  | reason=KeyError: "Unknown symbol 'post.arg.owner'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.summary.json
+
+[FLOW1] Checker report after refinement (withdraw_balances_re_ent1, tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw_balances_re_ent1 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 11 invariants from LLM.
+
+Function: withdraw_balances_re_ent1  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "((meta.revert_taken == false)) -> ((select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)))", "model": {"_master": "0", "_master1": "0", "_owner": "0", "_owner1": "0", "addressMap": "K(BitVec(256), 0)", "addressMap1": "K(BitVec(256), 0)", "balances_re_ent1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "balances_re_ent11": "Store(K(BitVec(160),\n        115792089237316195423570985008687907853269984665640564039457584007913129639935),\n      0,\n      0)", "balances_re_ent17": "K(BitVec(160), 0)", "balances_re_ent171": "K(BitVec(160), 0)", "balances_re_ent3": "K(BitVec(160), 0)", "balances_re_ent31": "K(BitVec(160), 0)", "balances_re_ent311": "K(BitVec(160), 0)", "balances_re_ent36": "K(BitVec(160), 0)", "balances_re_ent361": "K(BitVec(160), 0)", "balances_re_ent38": "K(BitVec(160), 0)", "balances_re_ent381": "K(BitVec(160), 0)", "balances_re_ent8": "K(BitVec(160), 0)", "balances_re_ent81": "K(BitVec(160), 0)", "counter_re_ent14": "0", "counter_re_ent141": "0", "counter_re_ent35": "0", "counter_re_ent351": "0", "counter_re_ent42": "0", "counter_re_ent421": "0", "counter_re_ent7": "0", "counter_re_ent71": "0", "jackpot_re_ent2": "0", "jackpot_re_ent21": "0", "jackpot_re_ent23": "0", "jackpot_re_ent231": "0", "jackpot_re_ent30": "0", "jackpot_re_ent301": "0", "jackpot_re_ent37": "0", "jackpot_re_ent371": "0", "jackpot_re_ent9": "0", "jackpot_re_ent91": "0", "lastPlayer_re_ent2": "0", "lastPlayer_re_ent21": "0", "lastPlayer_re_ent23": "0", "lastPlayer_re_ent231": "0", "lastPlayer_re_ent30": "0", "lastPlayer_re_ent301": "0", "lastPlayer_re_ent37": "0", "lastPlayer_re_ent371": "0", "lastPlayer_re_ent9": "0", "lastPlayer_re_ent91": "0", "meta.revert_taken": "False", "meta.sender": "0", "not_called_re_ent13": "False", "not_called_re_ent131": "False", "not_called_re_ent20": "False", "not_called_re_ent201": "False", "not_called_re_ent27": "False", "not_called_re_ent271": "False", "not_called_re_ent41": "False", "not_called_re_ent411": "False", "redeemableEther_re_ent11": "K(BitVec(160), 0)", "redeemableEther_re_ent111": "K(BitVec(160), 0)", "redeemableEther_re_ent25": "K(BitVec(160), 0)", "redeemableEther_re_ent251": "K(BitVec(160), 0)", "redeemableEther_re_ent32": "K(BitVec(160), 0)", "redeemableEther_re_ent321": "K(BitVec(160), 0)", "redeemableEther_re_ent39": "K(BitVec(160), 0)", "redeemableEther_re_ent391": "K(BitVec(160), 0)", "redeemableEther_re_ent4": "K(BitVec(160), 0)", "redeemableEther_re_ent41": "K(BitVec(160), 0)", "stopped": "False", "stopped1": "False", "userBalance_re_ent12": "K(BitVec(160), 0)", "userBalance_re_ent121": "K(BitVec(160), 0)", "userBalance_re_ent19": "K(BitVec(160), 0)", "userBalance_re_ent191": "K(BitVec(160), 0)", "userBalance_re_ent26": "K(BitVec(160), 0)", "userBalance_re_ent261": "K(BitVec(160), 0)", "userBalance_re_ent33": "K(BitVec(160), 0)", "userBalance_re_ent331": "K(BitVec(160), 0)", "userBalance_re_ent40": "K(BitVec(160), 0)", "userBalance_re_ent401": "K(BitVec(160), 0)"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))", "status": "HOLDS"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))", "status": "HOLDS"}
+{"idx": 7, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))", "status": "HOLDS"}
+{"idx": 8, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))", "status": "HOLDS"}
+{"idx": 9, "inv": "(meta.revert_taken == false) -> (post.stopped == pre.stopped)", "status": "HOLDS"}
+{"idx": 10, "inv": "(meta.revert_taken == false) -> (post._master == pre._master)", "status": "HOLDS"}
+{"idx": 11, "inv": "(meta.revert_taken == false) -> (post._owner == pre._owner)", "reason": "KeyError: \"Unknown symbol 'post.arg.owner'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw_balances_re_ent1 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(redeemableEther_re_ent11, meta.sender) > 0'}
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent35 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post._owner == pre._owner)  | reason=KeyError: "Unknown symbol 'post.arg.owner'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw_balances_re_ent1.summary.json
+
+[FLOW1] Checker report after refinement (withdraw_balances_re_ent1, tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw_balances_re_ent1 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw_balances_re_ent1.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 11 invariants from LLM.
+
+Function: withdraw_balances_re_ent1  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender))", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "((meta.revert_taken == false)) -> ((select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)))", "model": {"_master": "0", "_master1": "0", "_owner": "0", "_owner1": "0", "addressMap": "K(BitVec(256), 0)", "addressMap1": "K(BitVec(256), 0)", "balances_re_ent1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "balances_re_ent11": "Store(K(BitVec(160),\n        115792089237316195423570985008687907853269984665640564039457584007913129639935),\n      0,\n      0)", "balances_re_ent17": "K(BitVec(160), 0)", "balances_re_ent171": "K(BitVec(160), 0)", "balances_re_ent3": "K(BitVec(160), 0)", "balances_re_ent31": "K(BitVec(160), 0)", "balances_re_ent311": "K(BitVec(160), 0)", "balances_re_ent36": "K(BitVec(160), 0)", "balances_re_ent361": "K(BitVec(160), 0)", "balances_re_ent38": "K(BitVec(160), 0)", "balances_re_ent381": "K(BitVec(160), 0)", "balances_re_ent8": "K(BitVec(160), 0)", "balances_re_ent81": "K(BitVec(160), 0)", "counter_re_ent14": "0", "counter_re_ent141": "0", "counter_re_ent35": "0", "counter_re_ent351": "0", "counter_re_ent42": "0", "counter_re_ent421": "0", "counter_re_ent7": "0", "counter_re_ent71": "0", "jackpot_re_ent2": "0", "jackpot_re_ent21": "0", "jackpot_re_ent23": "0", "jackpot_re_ent231": "0", "jackpot_re_ent30": "0", "jackpot_re_ent301": "0", "jackpot_re_ent37": "0", "jackpot_re_ent371": "0", "jackpot_re_ent9": "0", "jackpot_re_ent91": "0", "lastPlayer_re_ent2": "0", "lastPlayer_re_ent21": "0", "lastPlayer_re_ent23": "0", "lastPlayer_re_ent231": "0", "lastPlayer_re_ent30": "0", "lastPlayer_re_ent301": "0", "lastPlayer_re_ent37": "0", "lastPlayer_re_ent371": "0", "lastPlayer_re_ent9": "0", "lastPlayer_re_ent91": "0", "meta.revert_taken": "False", "meta.sender": "0", "not_called_re_ent13": "False", "not_called_re_ent131": "False", "not_called_re_ent20": "False", "not_called_re_ent201": "False", "not_called_re_ent27": "False", "not_called_re_ent271": "False", "not_called_re_ent41": "False", "not_called_re_ent411": "False", "redeemableEther_re_ent11": "K(BitVec(160), 0)", "redeemableEther_re_ent111": "K(BitVec(160), 0)", "redeemableEther_re_ent25": "K(BitVec(160), 0)", "redeemableEther_re_ent251": "K(BitVec(160), 0)", "redeemableEther_re_ent32": "K(BitVec(160), 0)", "redeemableEther_re_ent321": "K(BitVec(160), 0)", "redeemableEther_re_ent39": "K(BitVec(160), 0)", "redeemableEther_re_ent391": "K(BitVec(160), 0)", "redeemableEther_re_ent4": "K(BitVec(160), 0)", "redeemableEther_re_ent41": "K(BitVec(160), 0)", "stopped": "False", "stopped1": "False", "userBalance_re_ent12": "K(BitVec(160), 0)", "userBalance_re_ent121": "K(BitVec(160), 0)", "userBalance_re_ent19": "K(BitVec(160), 0)", "userBalance_re_ent191": "K(BitVec(160), 0)", "userBalance_re_ent26": "K(BitVec(160), 0)", "userBalance_re_ent261": "K(BitVec(160), 0)", "userBalance_re_ent33": "K(BitVec(160), 0)", "userBalance_re_ent331": "K(BitVec(160), 0)", "userBalance_re_ent40": "K(BitVec(160), 0)", "userBalance_re_ent401": "K(BitVec(160), 0)"}, "status": "VIOLATED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))", "status": "HOLDS"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))", "status": "HOLDS"}
+{"idx": 7, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))", "status": "HOLDS"}
+{"idx": 8, "inv": "(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender))", "status": "HOLDS"}
+{"idx": 9, "inv": "(meta.revert_taken == false) -> (post.stopped == pre.stopped)", "status": "HOLDS"}
+{"idx": 10, "inv": "(meta.revert_taken == false) -> (post._master == pre._master)", "status": "HOLDS"}
+{"idx": 11, "inv": "(meta.revert_taken == false) -> (post._owner == pre._owner)", "reason": "KeyError: \"Unknown symbol 'post.arg.owner'\"", "status": "REJECTED_UNSUPPORTED"}INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength__6p11vyj/drop_require_1.sol --llm-invariants /tmp/inv_strength__6p11vyj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength__6p11vyj/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength__6p11vyj' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent35 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength__6p11vyj/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength__6p11vyj/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength__6p11vyj/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength__6p11vyj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength__6p11vyj/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength__6p11vyj' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(redeemableEther_re_ent11, meta.sender) > 0'}
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent35 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) > _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength__6p11vyj/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength__6p11vyj/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength__6p11vyj/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength__6p11vyj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength__6p11vyj/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength__6p11vyj' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(redeemableEther_re_ent11, meta.sender) > 0'}
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent35 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_sub', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength__6p11vyj/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength__6p11vyj/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength__6p11vyj/minus_eq_to_plus_eq.sol --llm-invariants /tmp/inv_strength__6p11vyj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength__6p11vyj/minus_eq_to_plus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength__6p11vyj' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(redeemableEther_re_ent11, meta.sender) > 0'}
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent35 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_add', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength__6p11vyj/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength__6p11vyj/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength__6p11vyj/drop_require_2.sol --llm-invariants /tmp/inv_strength__6p11vyj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength__6p11vyj/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength__6p11vyj' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(userBalance_re_ent12[msg.sender]))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent12', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(redeemableEther_re_ent11, meta.sender) > 0'}
+INFO:root:   {'op': 'store', 'var': 'transferValue_re_ent11', 'val_src': 'select(redeemableEther_re_ent11, meta.sender)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(transferValue_re_ent11)'}
+INFO:root:   {'op': 'store_map', 'var': 'redeemableEther_re_ent11', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(balances_re_ent1[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent1', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.send(balances_re_ent36[msg.sender])'}
+INFO:root:   {'op': 'store_map', 'var': 'balances_re_ent36', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent35', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent40[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent40', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(userBalance_re_ent33[msg.sender])()', 'ok_var': 'success'}
+INFO:root:   {'op': 'raw', 'src': '! success'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_map', 'var': 'userBalance_re_ent33', 'key_src': 'meta.sender', 'val_src': '0'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'counter_re_ent42 <= 5'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (msg', 'value_src': '0', 'args_src': '! (msg.sender.send(10000000000000000000))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store_add', 'var': 'counter_re_ent42', 'val_src': '1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent2', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent2.send(jackpot_re_ent2))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent2', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent2', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_master'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances_re_ent17, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.call.value(_weiToWithdraw)()', 'ok_var': 'success'}
+INFO:root:   {'op': 'require', 'cond_src': 'success'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances_re_ent17', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.sender == _owner'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': '! (lastPlayer_re_ent37', 'value_src': '0', 'args_src': '! (lastPlayer_re_ent37.send(jackpot_re_ent37))'}
+INFO:root:   {'op': 'raw', 'src': 'revert()()'}
+INFO:root:   {'op': 'store', 'var': 'lastPlayer_re_ent37', 'val_src': 'meta.sender'}
+INFO:root:   {'op': 'store', 'var': 'jackpot_re_ent37', 'val_src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+   - (meta.revert_taken == false) -> (post.stopped == pre.stopped)
+   - (meta.revert_taken == false) -> (post._master == pre._master)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)  | _master=0, _master1=0, _owner=0, _owner1=0, addressMap=K(BitVec(256), 0)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength__6p11vyj/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength__6p11vyj/verified_invariants.global.summary.json

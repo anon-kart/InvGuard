@@ -1,0 +1,4 @@
+Validated the submitted fix and found it was incomplete: donateToWhale() checked the low-level call return value, but loseWager() still ignored the return value of whale.call.value(...). The saved final fix wraps both low-level calls in require(...) so failures revert and accounting/events are not performed after failed ETH forwarding.
+
+INVARIANTS USED:
+All low-level calls that transfer ETH must have their boolean return values checked; contract accounting (totalDonated) and events must only occur after a successful transfer; existing public API, access modifiers, wager flow, payout logic, and ERC20 recovery behavior are preserved.

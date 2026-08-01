@@ -1,0 +1,17 @@
+[
+  {
+    "stem": "sfi_integer_overflow_overflow_underflow_h4_buggy_4",
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_integer_overflow_overflow_underflow_h4_buggy_4.sol",
+    "clean_contract": "",
+    "target_function": "transfer_intou26",
+    "solidifi_category": "Overflow-Underflow",
+    "solidifi_sub": "overflow_underflow",
+    "host_id": "4",
+    "context": "addition_overflow",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "integer_overflow",
+      "INVGUARD_IMPACT_POLICY": "state_corruption"
+    },
+    "original_contract": "/home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Overflow-Underflow/buggy_4.sol"
+  }
+]

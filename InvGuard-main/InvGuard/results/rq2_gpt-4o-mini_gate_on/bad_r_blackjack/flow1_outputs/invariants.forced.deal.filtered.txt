@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)
+(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)

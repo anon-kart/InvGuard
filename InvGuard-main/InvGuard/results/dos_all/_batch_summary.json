@@ -1,0 +1,28 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_number.sol",
+    "stem": "denia_dos_number",
+    "tier": "dos_all",
+    "model": "gpt-4o-mini",
+    "target_function": "insertNnumbers",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "denial_of_service",
+      "INVGUARD_IMPACT_POLICY": "liveness_broken"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 21.96,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 30.15,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

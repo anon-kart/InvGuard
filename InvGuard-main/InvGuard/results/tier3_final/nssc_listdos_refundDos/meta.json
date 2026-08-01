@@ -1,0 +1,20 @@
+{
+  "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_listdos_refundDos.sol",
+  "stem": "nssc_listdos_refundDos",
+  "tier": "tier3_final",
+  "model": "gpt-4o-mini",
+  "target_function": "refundDos",
+  "extra_env": {},
+  "flow1": {
+    "returncode": 0,
+    "elapsed_sec": 16.35,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_final/nssc_listdos_refundDos/flow1.log"
+  },
+  "flow2": {
+    "returncode": 0,
+    "elapsed_sec": 6.87,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3_final/nssc_listdos_refundDos/flow2.log"
+  }
+}

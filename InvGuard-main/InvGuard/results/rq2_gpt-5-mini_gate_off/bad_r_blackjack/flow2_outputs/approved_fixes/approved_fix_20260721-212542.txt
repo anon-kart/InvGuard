@@ -1,0 +1,8 @@
+Replaced same-block block-dependent randomness in deal() with a commit-reveal seeded randomness (added commitSeed/revealSeed and enforced reveal to be in a prior block) and added a reentrancy mutex.
+
+INVARIANTS USED:
+1) Player must commit a seed hash via commitSeed and later reveal the preimage via revealSeed; revealBlock[msg.sender] records the block where the seed was revealed.
+2) deal() requires revealedSeed[msg.sender] != 0 and revealBlock[msg.sender] < block.number to ensure the reveal happened in a prior block (prevents same-block prediction based on visible tx data).
+3) revealedSeed is consumed (set to 0) immediately after initial dealing so the seed cannot be reused.
+4) commitments[msg.sender] cleared on reveal to prevent reuse.
+5) Reentrancy mutex (_locked) prevents reentrant calls to deal() and other state-modifying paths while a deal is in progress.

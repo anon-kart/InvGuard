@@ -1,0 +1,72 @@
+{
+  "strong": [],
+  "medium": [],
+  "useful": [],
+  "weak": [
+    "meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit",
+    "meta.revert_taken == false) -> (select(post.Holders, meta.sender) >= select(pre.Holders, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.Holders, meta.sender) <= select(pre.Holders, meta.sender)",
+    "meta.revert_taken == false) -> (post.owner == pre.owner"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.Holders, meta.sender) >= select(pre.Holders, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.Holders, meta.sender) <= select(pre.Holders, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.owner == pre.owner",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    },
+    {
+      "name": "minus_eq_to_plus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

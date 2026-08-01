@@ -1,0 +1,5 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (meta.value <= 500000000000000000 -> (select(post.Deposits, meta.sender) == select(pre.Deposits, meta.sender)
+(meta.revert_taken == false) -> (select(post.Deposits, meta.sender) >= select(pre.Deposits, meta.sender)
+(meta.revert_taken == false) -> (post.Owner == pre.Owner)

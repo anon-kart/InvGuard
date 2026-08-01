@@ -1,0 +1,28 @@
+{
+  "VU": {
+    "count": 4,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (post.salt == pre.salt)"
+    ]
+  },
+  "VT": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)"
+    ]
+  },
+  "VM": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value))"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

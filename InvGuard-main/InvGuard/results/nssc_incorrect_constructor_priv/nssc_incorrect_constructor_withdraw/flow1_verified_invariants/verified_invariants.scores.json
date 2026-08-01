@@ -1,0 +1,76 @@
+{
+  "strong": [
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) >= (select(pre.balances, meta.sender) + meta.value)",
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)"
+  ],
+  "medium": [],
+  "useful": [
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) >= (select(pre.balances, meta.sender) + meta.value)",
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)"
+  ],
+  "weak": [
+    "meta.revert_taken == false) -> (select(post.balances, post.owner) == select(pre.balances, post.owner)",
+    "meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances, meta.sender) >= (select(pre.balances, meta.sender) + meta.value)",
+      "killed": 2,
+      "mutants_ran": 2,
+      "kill_rate": 1.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 1.0,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value)",
+      "killed": 2,
+      "mutants_ran": 2,
+      "kill_rate": 1.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 1.0,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances, post.owner) == select(pre.balances, post.owner)",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

@@ -1,0 +1,287 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_ur_payoutledger_payout.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f payout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'active'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'map_add', 'map': 'owed', 'key_src': 'who', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'store_add', 'var': 'totalOwed', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'raw', 'src': 'Funded(who,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'amount', 'val_src': 'select(owed, who)'}
+INFO:root:   {'op': 'require', 'cond_src': 'amount > 0'}
+INFO:root:   {'op': 'store_map', 'var': 'owed', 'key_src': 'who', 'val_src': '0'}
+INFO:root:   {'op': 'store_sub', 'var': 'totalOwed', 'val_src': 'amount'}
+INFO:root:   {'op': 'store', 'var': 'ok', 'val_src': 'who.send(amount)'}
+INFO:root:   {'op': 'raw', 'src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'paidTotal', 'key_src': 'who', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'PaidOut(who,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(owed, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == controller'}
+INFO:root:   {'op': 'store', 'var': 'active', 'val_src': 'a'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who)
+   - (meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)  | active=False, active1=False, arg.who=0, controller=0, controller1=0
+   - (meta.revert_taken == false) -> (select(post.owed, arg.who) >= select(pre.owed, arg.who)  | active=False, active1=False, arg.who=0, controller=0, controller1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)  | reason=TRANSLATOR_REJECTED: select expects 2 args
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f payout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'active'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'map_add', 'map': 'owed', 'key_src': 'who', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'store_add', 'var': 'totalOwed', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'raw', 'src': 'Funded(who,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'amount', 'val_src': 'select(owed, who)'}
+INFO:root:   {'op': 'require', 'cond_src': 'amount > 0'}
+INFO:root:   {'op': 'store_map', 'var': 'owed', 'key_src': 'who', 'val_src': '0'}
+INFO:root:   {'op': 'store_sub', 'var': 'totalOwed', 'val_src': 'amount'}
+INFO:root:   {'op': 'store', 'var': 'ok', 'val_src': 'who.send(amount)'}
+INFO:root:   {'op': 'raw', 'src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'paidTotal', 'key_src': 'who', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'PaidOut(who,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(owed, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == controller'}
+INFO:root:   {'op': 'store', 'var': 'active', 'val_src': 'a'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who)
+   - (meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)  | active=False, active1=False, arg.who=0, controller=0, controller1=0
+   - (meta.revert_taken == false) -> (select(post.owed, arg.who) >= select(pre.owed, arg.who)  | active=False, active1=False, arg.who=0, controller=0, controller1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)  | reason=TRANSLATOR_REJECTED: select expects 2 args
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f payout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Rejected lines (reason shown):
+  - (meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)))  =>  select expects 2 args
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: payout  (invariants: LLM-translated)
+Notes:
+  - [tmp] created local amount: BitVec256
+  - [heuristics] unknown expr: who.send(amount)
+  - [tmp] created local ok: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': 'ok', 'val_src': 'who.send(amount)'}
+  - [raw] ok
+  - [raw] PaidOut(who,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)", "model": {"active": "False", "active1": "False", "arg.who": "0", "controller": "0", "controller1": "0", "meta.revert_taken": "False", "owed": "K(BitVec(160),\n  2773620304070924283556152951910799110970910768787830645233240563633067393024)", "owed1": "Store(K(BitVec(160),\n        2773620304070924283556152951910799110970910768787830645233240563633067393024),\n      0,\n      0)", "paidTotal": "K(BitVec(160),\n  5431662340321417114202457316683896470729123892486817340006422539981171901144)", "paidTotal1": "Store(K(BitVec(160),\n        5431662340321417114202457316683896470729123892486817340006422539981171901144),\n      0,\n      8205282644392341397758610268594695581700034661274647985239663103614239294168)", "totalOwed": "30545918182412272674025348180146563819446731516715329422868136682748850995200", "totalOwed1": "27772297878341348390469195228235764708475820747927498777634896119115783602176"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.owed, arg.who) >= select(pre.owed, arg.who))", "model": {"active": "False", "active1": "False", "arg.who": "0", "controller": "0", "controller1": "0", "meta.revert_taken": "False", "owed": "K(BitVec(160),\n  49680665554464365460230741779459998171070852620721086085384988805494569174033)", "owed1": "Store(K(BitVec(160),\n        49680665554464365460230741779459998171070852620721086085384988805494569174033),\n      0,\n      0)", "paidTotal": "K(BitVec(160),\n  32604147849460644773829934981307487729478837277616582987889562396170527932285)", "paidTotal1": "Store(K(BitVec(160),\n        32604147849460644773829934981307487729478837277616582987889562396170527932285),\n      0,\n      82284813403925010234060676760767485900549689898337669073274551201665097106318)", "totalOwed": "49680665554464365460230741779459998171070852620721086085384988805494569174033", "totalOwed1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)))", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)))", "reason": "TRANSLATOR_REJECTED: select expects 2 args", "status": "REJECTED_UNSUPPORTED"}INFO:root:[FLOW1] Failed invariants detected for payout — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f payout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Rejected lines (reason shown):
+  - (meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)))  =>  select expects 2 args
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: payout  (invariants: LLM-translated)
+Notes:
+  - [tmp] created local amount: BitVec256
+  - [heuristics] unknown expr: who.send(amount)
+  - [tmp] created local ok: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': 'ok', 'val_src': 'who.send(amount)'}
+  - [raw] ok
+  - [raw] PaidOut(who,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalOwed >= pre.totalOwed)", "model": {"active": "False", "active1": "False", "arg.who": "0", "controller": "0", "controller1": "0", "meta.revert_taken": "False", "owed": "K(BitVec(160),\n  2773620304070924283556152951910799110970910768787830645233240563633067393024)", "owed1": "Store(K(BitVec(160),\n        2773620304070924283556152951910799110970910768787830645233240563633067393024),\n      0,\n      0)", "paidTotal": "K(BitVec(160),\n  5431662340321417114202457316683896470729123892486817340006422539981171901144)", "paidTotal1": "Store(K(BitVec(160),\n        5431662340321417114202457316683896470729123892486817340006422539981171901144),\n      0,\n      8205282644392341397758610268594695581700034661274647985239663103614239294168)", "totalOwed": "30545918182412272674025348180146563819446731516715329422868136682748850995200", "totalOwed1": "27772297878341348390469195228235764708475820747927498777634896119115783602176"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.owed, arg.who) >= select(pre.owed, arg.who))", "model": {"active": "False", "active1": "False", "arg.who": "0", "controller": "0", "controller1": "0", "meta.revert_taken": "False", "owed": "K(BitVec(160),\n  49680665554464365460230741779459998171070852620721086085384988805494569174033)", "owed1": "Store(K(BitVec(160),\n        49680665554464365460230741779459998171070852620721086085384988805494569174033),\n      0,\n      0)", "paidTotal": "K(BitVec(160),\n  32604147849460644773829934981307487729478837277616582987889562396170527932285)", "paidTotal1": "Store(K(BitVec(160),\n        32604147849460644773829934981307487729478837277616582987889562396170527932285),\n      0,\n      82284813403925010234060676760767485900549689898337669073274551201665097106318)", "totalOwed": "49680665554464365460230741779459998171070852620721086085384988805494569174033", "totalOwed1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.paidTotal, arg.who) >= select(pre.paidTotal, arg.who))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)))", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.totalOwed == (pre.totalOwed + select(post.owed, arg.who) - select(pre.owed, arg.who)))", "reason": "TRANSLATOR_REJECTED: select expects 2 args", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f payout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'active'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'map_add', 'map': 'owed', 'key_src': 'who', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'store_add', 'var': 'totalOwed', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'raw', 'src': 'Funded(who,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'amount', 'val_src': 'select(owed, who)'}
+INFO:root:   {'op': 'require', 'cond_src': 'amount > 0'}
+INFO:root:   {'op': 'store_map', 'var': 'owed', 'key_src': 'who', 'val_src': '0'}
+INFO:root:   {'op': 'store_sub', 'var': 'totalOwed', 'val_src': 'amount'}
+INFO:root:   {'op': 'store', 'var': 'ok', 'val_src': 'who.send(amount)'}
+INFO:root:   {'op': 'raw', 'src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'paidTotal', 'key_src': 'who', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'PaidOut(who,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(owed, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == controller'}
+INFO:root:   {'op': 'store', 'var': 'active', 'val_src': 'a'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.active == pre.active)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((post.totalOwed >= pre.totalOwed)  | active=False, active1=False, arg.who=0, controller=0, controller1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.summary.json
+
+[FLOW1] Checker report after refinement (payout, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f payout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: payout  (invariants: LLM-translated)
+Notes:
+  - [tmp] created local amount: BitVec256
+  - [heuristics] unknown expr: who.send(amount)
+  - [tmp] created local ok: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': 'ok', 'val_src': 'who.send(amount)'}
+  - [raw] ok
+  - [raw] PaidOut(who,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((post.totalOwed >= pre.totalOwed))", "model": {"active": "False", "active1": "False", "arg.who": "0", "controller": "0", "controller1": "0", "meta.revert_taken": "False", "owed": "K(BitVec(160),\n  2773620304070924283556152951910799110970910768787830645233240563633067393024)", "owed1": "Store(K(BitVec(160),\n        2773620304070924283556152951910799110970910768787830645233240563633067393024),\n      0,\n      0)", "paidTotal": "K(BitVec(160),\n  5431662340321417114202457316683896470729123892486817340006422539981171901144)", "paidTotal1": "Store(K(BitVec(160),\n        5431662340321417114202457316683896470729123892486817340006422539981171901144),\n      0,\n      8205282644392341397758610268594695581700034661274647985239663103614239294168)", "totalOwed": "30545918182412272674025348180146563819446731516715329422868136682748850995200", "totalOwed1": "27772297878341348390469195228235764708475820747927498777634896119115783602176"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.active == pre.active)", "status": "HOLDS"}INFO:root:[FLOW1] Failed invariants detected for payout — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.refined.filtered.txt
+
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f payout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'active'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value > 0'}
+INFO:root:   {'op': 'map_add', 'map': 'owed', 'key_src': 'who', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'store_add', 'var': 'totalOwed', 'val_src': 'meta.value'}
+INFO:root:   {'op': 'raw', 'src': 'Funded(who,meta.value)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'amount', 'val_src': 'select(owed, who)'}
+INFO:root:   {'op': 'require', 'cond_src': 'amount > 0'}
+INFO:root:   {'op': 'store_map', 'var': 'owed', 'key_src': 'who', 'val_src': '0'}
+INFO:root:   {'op': 'store_sub', 'var': 'totalOwed', 'val_src': 'amount'}
+INFO:root:   {'op': 'store', 'var': 'ok', 'val_src': 'who.send(amount)'}
+INFO:root:   {'op': 'raw', 'src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'paidTotal', 'key_src': 'who', 'val_src': 'amount'}
+INFO:root:   {'op': 'raw', 'src': 'PaidOut(who,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'select(owed, who)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == controller'}
+INFO:root:   {'op': 'store', 'var': 'active', 'val_src': 'a'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.active == pre.active)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((post.totalOwed >= pre.totalOwed)  | active=False, active1=False, arg.who=0, controller=0, controller1=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.payout.summary.json
+
+[FLOW1] Checker report after refinement (payout, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f payout --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.payout.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: payout  (invariants: LLM-translated)
+Notes:
+  - [tmp] created local amount: BitVec256
+  - [heuristics] unknown expr: who.send(amount)
+  - [tmp] created local ok: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': 'ok', 'val_src': 'who.send(amount)'}
+  - [raw] ok
+  - [raw] PaidOut(who,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((post.totalOwed >= pre.totalOwed))", "model": {"active": "False", "active1": "False", "arg.who": "0", "controller": "0", "controller1": "0", "meta.revert_taken": "False", "owed": "K(BitVec(160),\n  2773620304070924283556152951910799110970910768787830645233240563633067393024)", "owed1": "Store(K(BitVec(160),\n        2773620304070924283556152951910799110970910768787830645233240563633067393024),\n      0,\n      0)", "paidTotal": "K(BitVec(160),\n  5431662340321417114202457316683896470729123892486817340006422539981171901144)", "paidTotal1": "Store(K(BitVec(160),\n        5431662340321417114202457316683896470729123892486817340006422539981171901144),\n      0,\n      8205282644392341397758610268594695581700034661274647985239663103614239294168)", "totalOwed": "30545918182412272674025348180146563819446731516715329422868136682748850995200", "totalOwed1": "27772297878341348390469195228235764708475820747927498777634896119115783602176"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.active == pre.active)", "status": "HOLDS"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

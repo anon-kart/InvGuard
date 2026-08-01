@@ -1,0 +1,3 @@
+# VERIFIED-USEFUL-WEAK (REPORTING ONLY; DO NOT GUIDE FLOW-2)
+meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender)
+meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == select(pre.tokenBalance, meta.sender) + 20

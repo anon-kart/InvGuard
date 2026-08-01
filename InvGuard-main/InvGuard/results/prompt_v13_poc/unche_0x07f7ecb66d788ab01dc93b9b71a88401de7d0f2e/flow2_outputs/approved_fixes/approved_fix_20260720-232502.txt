@@ -1,0 +1,4 @@
+Changed the unchecked low-level call in donateToWhale() to require the call's success.
+
+INVARIANTS USED:
+Unchecked low-level calls were replaced with require statements to ensure that the call to the whale contract succeeds.

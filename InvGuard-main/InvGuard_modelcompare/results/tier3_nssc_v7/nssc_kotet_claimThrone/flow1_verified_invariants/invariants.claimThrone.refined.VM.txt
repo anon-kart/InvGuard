@@ -1,0 +1,2 @@
+# VIOLATED-MEANINGFUL (attack objectives for Flow-2)
+((meta.revert_taken == false)) -> ((post.claimPrice > (meta.value * 150) / 100))

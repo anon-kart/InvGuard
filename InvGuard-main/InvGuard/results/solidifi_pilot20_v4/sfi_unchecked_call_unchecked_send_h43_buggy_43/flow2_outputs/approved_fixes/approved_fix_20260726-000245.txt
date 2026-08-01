@@ -1,0 +1,4 @@
+Changed the transfer method in bug_unchk_send8 to require the success of the send operation.
+
+INVARIANTS USED:
+Require statement to check the success of the send operation.

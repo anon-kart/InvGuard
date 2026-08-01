@@ -1,0 +1,45 @@
+{
+  "function": "SAFE_Collect",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 7,
+  "deposit_count": 7,
+  "withdraw_count": 7,
+  "chosen_count_before_final_fallback": 7,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)",
+    "(meta.revert_taken == false) -> (post.MinSum <= pre.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post.intitalized == true) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender) + post.Val) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + post.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) - post.Val) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - post.Val)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)",
+    "(meta.revert_taken == false) -> (post.MinSum <= pre.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post.intitalized == true) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender) + post.Val) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + post.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) - post.Val) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - post.Val)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)",
+    "(meta.revert_taken == false) -> (post.MinSum <= pre.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post.intitalized == true) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender) + post.Val) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + post.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) - post.Val) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - post.Val)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)",
+    "(meta.revert_taken == false) -> (post.MinSum <= pre.MinSum)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post.intitalized == true) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender) + post.Val) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + post.Val)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) - post.Val) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - post.Val)"
+  ]
+}

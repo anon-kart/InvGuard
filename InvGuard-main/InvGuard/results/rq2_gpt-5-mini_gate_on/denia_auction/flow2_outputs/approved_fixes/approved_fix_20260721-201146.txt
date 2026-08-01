@@ -1,0 +1,4 @@
+Converted bid() to a pull-payment pattern by recording pending refunds in a mapping and added a withdraw() function plus a reentrancy mutex; removed the direct send from bid().
+
+INVARIANTS USED:
+1) bid() performs no external calls; it only records refunds in pendingReturns and updates state. 2) pendingReturns accumulation checks for overflow before assignment. 3) withdraw() uses checks-effects-interactions: it reads amount, sets pendingReturns[msg.sender]=0, then sends funds. 4) A reentrancy mutex (_locked) guards bid() and withdraw() to prevent reentrant calls. 5) External send in withdraw is the last action and requires success. Together these ensure funds owed are withdrawable even if payout to a previous frontrunner would fail, eliminating the DoS vector.

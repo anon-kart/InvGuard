@@ -1,0 +1,27 @@
+{
+  "function": "withdraw",
+  "raw_count": 3,
+  "fixed_raw_count": 3,
+  "sanitized_count": 2,
+  "deposit_count": 2,
+  "withdraw_count": 2,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == fibonacci(post.withdrawalCounter))",
+    "(meta.revert_taken == false) -> (post.start >= 3)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == fibonacci(post.withdrawalCounter))",
+    "(meta.revert_taken == false) -> (post.start >= 3)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.start >= 3)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.start >= 3)"
+  ]
+}

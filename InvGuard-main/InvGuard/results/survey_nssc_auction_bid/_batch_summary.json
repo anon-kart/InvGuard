@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_auction_bid.sol",
+    "stem": "nssc_auction_bid",
+    "tier": "survey_nssc_auction_bid",
+    "model": "gpt-4o-mini",
+    "target_function": "bid",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 19.58,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/survey_nssc_auction_bid/nssc_auction_bid/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 9.22,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/survey_nssc_auction_bid/nssc_auction_bid/flow2.log"
+    }
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "function": "bid",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.currentBid > 0)",
+    "(meta.revert_taken == false) -> (post.currentFrontrunner != address(0))",
+    "(meta.revert_taken == false) -> (post.currentBid > pre.currentBid)",
+    "(meta.revert_taken == false) -> (post.currentFrontrunner == arg.meta.sender)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.currentBid > 0)",
+    "(meta.revert_taken == false) -> (post.currentFrontrunner != address(0))",
+    "(meta.revert_taken == false) -> (post.currentBid > pre.currentBid)",
+    "(meta.revert_taken == false) -> (post.currentFrontrunner == meta.sender)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.currentBid > 0)",
+    "(meta.revert_taken == false) -> (post.currentBid > pre.currentBid)",
+    "(meta.revert_taken == false) -> (post.currentFrontrunner == meta.sender)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.currentBid > 0)",
+    "(meta.revert_taken == false) -> (post.currentBid > pre.currentBid)",
+    "(meta.revert_taken == false) -> (post.currentFrontrunner == meta.sender)"
+  ]
+}

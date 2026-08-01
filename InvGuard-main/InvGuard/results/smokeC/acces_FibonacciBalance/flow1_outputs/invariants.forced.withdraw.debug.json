@@ -1,0 +1,37 @@
+{
+  "function": "withdraw",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)",
+    "(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) >= select(pre.calculatedFibNumber, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) <= select(pre.calculatedFibNumber, meta.sender) + 1)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)",
+    "(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) >= select(pre.calculatedFibNumber, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) <= select(pre.calculatedFibNumber, meta.sender) + 1)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)",
+    "(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) >= select(pre.calculatedFibNumber, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) <= select(pre.calculatedFibNumber, meta.sender) + 1)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)",
+    "(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) >= select(pre.calculatedFibNumber, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.calculatedFibNumber, meta.sender) <= select(pre.calculatedFibNumber, meta.sender) + 1)"
+  ]
+}

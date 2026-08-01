@@ -1,0 +1,7 @@
+(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (post.c == pre.c)
+(meta.revert_taken == false) -> (post.paused == pre.paused)
+(meta.revert_taken == false) -> (post.cnt == pre.cnt)
+(meta.revert_taken == false) -> (post.i == pre.i)
+(meta.revert_taken == false) -> (post.decimals == pre.decimals)

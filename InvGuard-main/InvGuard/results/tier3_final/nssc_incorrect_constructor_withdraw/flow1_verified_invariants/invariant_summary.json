@@ -1,0 +1,24 @@
+{
+  "VU": {
+    "count": 3,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + meta.value))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (owner == pre.owner)"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (meta.contract_balance >= select(pre.balances, meta.sender))"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

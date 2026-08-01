@@ -1,0 +1,25 @@
+{
+  "function": "set",
+  "raw_count": 3,
+  "fixed_raw_count": 3,
+  "sanitized_count": 1,
+  "deposit_count": 1,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 1,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (map.length >= arg.key + 1)",
+    "(meta.revert_taken == false) -> (get(arg.key) == map[arg.key])",
+    "(meta.revert_taken == false) -> (meta.sender == owner)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (map.length >= arg.key + 1)",
+    "(meta.revert_taken == false) -> (get(arg.key) == map[arg.key])",
+    "(meta.revert_taken == false) -> (meta.sender == owner)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (meta.sender == owner)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (meta.sender == owner)"
+  ]
+}

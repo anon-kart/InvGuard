@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender))
+(meta.revert_taken == false) -> (post.totalShares == pre.totalShares)
+(meta.revert_taken == false) -> (post.collateral == pre.collateral)
+(meta.revert_taken == false) -> (post.debt == pre.debt)
+(meta.revert_taken == false) -> (post.price == pre.price)
+(meta.revert_taken == false) -> (post.asset == pre.asset)

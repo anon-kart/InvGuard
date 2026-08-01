@@ -1,0 +1,29 @@
+{
+  "function": "ifillArray",
+  "raw_count": 3,
+  "fixed_raw_count": 3,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (pre.listAddresses.length < 1500 -> post.listAddresses.length == pre.listAddresses.length + 350)",
+    "(meta.revert_taken == false) -> (pre.listAddresses.length >= 1500 -> post.listAddresses.length == 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (pre.listAddresses.length < 1500 -> post.listAddresses.length == pre.listAddresses.length + 350)",
+    "(meta.revert_taken == false) -> (pre.listAddresses.length >= 1500 -> post.listAddresses.length == 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (pre.listAddresses.length < 1500 -> post.listAddresses.length == pre.listAddresses.length + 350)",
+    "(meta.revert_taken == false) -> (pre.listAddresses.length >= 1500 -> post.listAddresses.length == 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.listAddresses.length <= 1500)",
+    "(meta.revert_taken == false) -> (pre.listAddresses.length < 1500 -> post.listAddresses.length == pre.listAddresses.length + 350)",
+    "(meta.revert_taken == false) -> (pre.listAddresses.length >= 1500 -> post.listAddresses.length == 0)"
+  ]
+}

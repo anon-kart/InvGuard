@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.totalSupply <= 10 * 10**6 * 10**18)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender) - arg.value)
+(meta.revert_taken == false) -> (select(post.balances, meta.to) >= select(pre.balances, meta.to) + arg.value)
+(meta.revert_taken == false) -> (select(post.balances, meta.to) + arg.value > select(pre.balances, meta.to))
+(meta.revert_taken == false) -> (select(post.allowed, meta.from, meta.sender) >= arg.value)

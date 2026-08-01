@@ -1,0 +1,127 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/etherstore.sol",
+    "stem": "re_etherstore",
+    "tier": "inv2_gpt-5-mini_re",
+    "model": "gpt-5-mini",
+    "target_function": "withdrawFunds",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 51.6,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/etherbank.sol",
+    "stem": "re_etherbank",
+    "tier": "inv2_gpt-5-mini_re",
+    "model": "gpt-5-mini",
+    "target_function": "withdrawBalance",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.06,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.32,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrancy_dao.sol",
+    "stem": "re_reentrancy_dao",
+    "tier": "inv2_gpt-5-mini_re",
+    "model": "gpt-5-mini",
+    "target_function": "withdrawAll",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 90.16,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 138.34,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/reentrance.sol",
+    "stem": "re_reentrance",
+    "tier": "inv2_gpt-5-mini_re",
+    "model": "gpt-5-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 41.08,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/simple_dao.sol",
+    "stem": "re_simple_dao",
+    "tier": "inv2_gpt-5-mini_re",
+    "model": "gpt-5-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "reentrancy"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 31.58,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

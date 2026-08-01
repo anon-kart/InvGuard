@@ -1,0 +1,27 @@
+{
+  "function": "Collect",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 1,
+  "deposit_count": 1,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 1,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (MinSum >= 0)",
+    "(meta.revert_taken == false) -> (intitalized == true)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= MinSum && select(post.balances, meta.sender) >= arg._am)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (MinSum >= 0)",
+    "(meta.revert_taken == false) -> (intitalized == true)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= MinSum && select(post.balances, meta.sender) >= arg._am)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)"
+  ]
+}

@@ -1,0 +1,4 @@
+Replaced `tx.origin` with `msg.sender` for authorization in the `sendto_txorigin21` function.
+
+INVARIANTS USED:
+Authorization check using `msg.sender` instead of `tx.origin`.

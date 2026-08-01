@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.answer == pre.answer)
+(meta.revert_taken == false) -> (post.answer != 0)
+(meta.revert_taken == false) -> (post.answer <= 255)
+(meta.revert_taken == false) -> (post.answer >= 0)
+(meta.revert_taken == false) -> (post.answer == pre.answer)
+(meta.revert_taken == false) -> (post.answer == pre.answer)

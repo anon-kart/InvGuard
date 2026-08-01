@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (balances_intou22[meta.sender] >= 0)
+(meta.revert_taken == false) -> (balances_intou22[meta.sender] >= _value)
+(meta.revert_taken == false) -> (balances_intou22[_to] == select(pre.balances_intou22, _to) + _value)
+(meta.revert_taken == false) -> (balances_intou22[meta.sender] == select(pre.balances_intou22, meta.sender) - _value)

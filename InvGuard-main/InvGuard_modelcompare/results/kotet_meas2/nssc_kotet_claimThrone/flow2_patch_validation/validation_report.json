@@ -1,0 +1,225 @@
+{
+  "ok": true,
+  "invariants": {
+    "ok": false,
+    "verified": [],
+    "trusted": [],
+    "unknown": [],
+    "failed": [
+      {
+        "name": "inv_1",
+        "line": "(meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)",
+        "model": {
+          "claimPrice": "0",
+          "claimPrice1": "115792089237316195423570985008687907853269984665640564039457584007913129639935",
+          "king1": "0",
+          "meta.revert_taken": "False",
+          "meta.sender": "0",
+          "meta.value": "0",
+          "owner": "0",
+          "owner1": "0",
+          "tmp.claimPrice": "115792089237316195423570985008687907853269984665640564039457584007913129639935"
+        }
+      }
+    ],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [
+      "[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f claimThrone --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results",
+      "[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker",
+      "[adapter] returncode: 0",
+      "",
+      "[translator] Accepted 1 invariants from LLM.",
+      "",
+      "Function: claimThrone  (invariants: LLM-translated)",
+      "Notes:",
+      "  - [div-abstract] abstracted compensation (val contains div/mul: (meta.value * 50) / 100)",
+      "  - [div-abstract] abstracted claimPrice (val contains div/mul: (meta.value * 150) / 100)",
+      "  - [heuristics] unknown require cond: address(king).send(compensation)",
+      "  - [heuristics] unknown expr: address(king).send(compensation)",
+      "  - [skip] unparsed require: address(king).send(compensation)",
+      "",
+      "=== Invariant Checks ===",
+      "{\"idx\": 1, \"inv\": \"(meta.revert_taken == false) -> (post.claimPrice == (meta.value * 150) / 100)\", \"model\": {\"claimPrice\": \"0\", \"claimPrice1\": \"115792089237316195423570985008687907853269984665640564039457584007913129639935\", \"king1\": \"0\", \"meta.revert_taken\": \"False\", \"meta.sender\": \"0\", \"meta.value\": \"0\", \"owner\": \"0\", \"owner1\": \"0\", \"tmp.claimPrice\": \"115792089237316195423570985008687907853269984665640564039457584007913129639935\"}, \"status\": \"VIOLATED\"}"
+    ],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "INVARIANTS_FAILED"
+  },
+  "replay": {
+    "results": {
+      "A1": {
+        "compile_ok": true,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A1",
+        "forge_returncode": 0,
+        "stdout_head": "Compiling 2 files with Solc 0.8.28\nSolc 0.8.28 finished in 16.46ms\nCompiler run successful!",
+        "stderr_head": "note[unaliased-plain-import]: use named imports '{A, B}' or alias 'import \"..\" as X'\n --> src/Attacker.sol:6:8\n  |\n6 | import \"./Target.sol\";\n  |        ^^^^^^^^^^^^^^\n  |\n  = help: https://book.getfoundry.sh/reference/forge/forge-lint#unaliased-plain-import\n",
+        "error": null,
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false,
+        "impact_details": "forge test ok; entrypoint_ok=0; impact_ok=0; profit_wei=0; drain_wei=0; honest_drain_wei=0; excess_drain_wei=0; impact_ok_differential=0; policy=profit_positive_or_excess_drain; revert_reason=",
+        "excess_drain_wei": 0,
+        "impact_ok_differential": false,
+        "test_returncode": 0,
+        "test_stdout_head": "Compiling 2 files with Solc 0.8.28\nSolc 0.8.28 finished in 38.41ms\nCompiler run successful!\n\nRan 1 test for test/ExploitExecutor.t.sol:ExploitExecutorTest\n[PASS] test_run_attack() (gas: 2886777)\nLogs:\n  entrypoint_ok: 0\n  ret_data: 0x\n  unauthorized_change: 0\n  stranded_funds: 0\n  profit_wei: 0\n  drain_wei: 0\n  honest_drain_wei: 0\n  excess_drain_wei: 0\n  impact_ok: 0\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 601.47\u00b5s (376.03\u00b5s CPU time)\n\nRan 1 test suite in 6.66ms (601.47\u00b5s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+        "test_stderr_head": "",
+        "test_error": null
+      }
+    },
+    "compile_ok": 1,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": true,
+    "run_all": false
+  },
+  "benign": {
+    "ok": false,
+    "reason": "benign_regression_failed",
+    "original": {
+      "ok": true,
+      "calls": [
+        {
+          "fn": "sweepCommission",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "claimThrone",
+          "arg_types": [],
+          "payable": true
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99900000000000000000
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 100000000000000000000
+          }
+        },
+        {
+          "owner": {
+            "ok": 1,
+            "t_before": 100000000000000000,
+            "t_after": 110000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99890000000000000000
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 110000000000000000,
+            "t_after": 110000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 100000000000000000000
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 100000000000000000,
+        "delta": 100000000000000000
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 0,
+      "stdout_head": "Compiling 3 files with Solc 0.8.28\nSolc 0.8.28 finished in 38.95ms\nCompiler run successful with warnings:\nWarning (5878): Failure condition of 'send' ignored. Consider using 'transfer' instead.\n  --> src/Target.sol:23:9:\n   |\n23 |         payable(king).send(compensation);\n   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nWarning (5159): \"selfdestruct\" has been deprecated. Note that, starting from the Cancun hard fork, the underlying opcode no longer deletes the code and data associated with an account and only transfers its Ether to the beneficiary, unless executed in the same transaction in which the contract was created (see EIP-6780). Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. Future changes to the EVM might further reduce the functionality of the opcode.\n  --> test/BenignBehavior.t.sol:10:9:\n   |\n10 |         selfdestruct(to);\n   |         ^^^^^^^^^^^^\n\n\nRan 1 test for test/BenignBehavior.t.sol:BenignBehaviorTest\n[PASS] test_benign_calls() (gas: 609615)\nLogs:\n  bal_before: 0\n  c0_owner: 0\n  t0_owner_before: 100000000000000000\n  t0_owner_after: 100000000000000000\n  s0_owner_before: 99900000000000000000\n  s0_owner_after: 99900000000000000000\n  c0_user: 0\n  t0_user_before: 100000000000000000\n  t0_user_after: 100000000000000000\n  s0_user_before: 100000000000000000000\n  s0_user_after: 100000000000000000000\n  c1_owner: 1\n  t1_owner_before: 100000000000000000\n  t1_owner_after: 110000000000000000\n  s1_owner_before: 99900000000000000000\n  s1_owner_after: 99890000000000000000\n  c1_user: 0\n  t1_user_before: 110000000000000000\n  t1_user_after: 110000000000000000\n  s1_user_before: 100000000000000000000\n  s1_user_after: 100000000000000000000\n  bal_after: 100000000000000000\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 436.16\u00b5s (228.07\u00b5s CPU time)\n\nRan 1 test suite in 6.95ms (436.16\u00b5s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+      "stderr_head": "Warning: the following cheatcode(s) are deprecated and will be removed in future versions:\n  snapshot(): replaced by `snapshotState`\n  revertTo(uint256): replaced by `revertToState`",
+      "error": null
+    },
+    "patched": {
+      "ok": true,
+      "calls": [
+        {
+          "fn": "sweepCommission",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "claimThrone",
+          "arg_types": [],
+          "payable": true
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99900000000000000000
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 100000000000000000000
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99900000000000000000
+          },
+          "user": {
+            "ok": 1,
+            "t_before": 100000000000000000,
+            "t_after": 105000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 99995000000000000000
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 100000000000000000,
+        "delta": 100000000000000000
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 0,
+      "stdout_head": "Compiling 3 files with Solc 0.8.28\nSolc 0.8.28 finished in 38.95ms\nCompiler run successful with warnings:\nWarning (5159): \"selfdestruct\" has been deprecated. Note that, starting from the Cancun hard fork, the underlying opcode no longer deletes the code and data associated with an account and only transfers its Ether to the beneficiary, unless executed in the same transaction in which the contract was created (see EIP-6780). Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. Future changes to the EVM might further reduce the functionality of the opcode.\n  --> test/BenignBehavior.t.sol:10:9:\n   |\n10 |         selfdestruct(to);\n   |         ^^^^^^^^^^^^\n\n\nRan 1 test for test/BenignBehavior.t.sol:BenignBehaviorTest\n[PASS] test_benign_calls() (gas: 618923)\nLogs:\n  bal_before: 0\n  c0_owner: 0\n  t0_owner_before: 100000000000000000\n  t0_owner_after: 100000000000000000\n  s0_owner_before: 99900000000000000000\n  s0_owner_after: 99900000000000000000\n  c0_user: 0\n  t0_user_before: 100000000000000000\n  t0_user_after: 100000000000000000\n  s0_user_before: 100000000000000000000\n  s0_user_after: 100000000000000000000\n  c1_owner: 0\n  t1_owner_before: 100000000000000000\n  t1_owner_after: 100000000000000000\n  s1_owner_before: 99900000000000000000\n  s1_owner_after: 99900000000000000000\n  c1_user: 1\n  t1_user_before: 100000000000000000\n  t1_user_after: 105000000000000000\n  s1_user_before: 100000000000000000000\n  s1_user_after: 99995000000000000000\n  bal_after: 100000000000000000\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 439.91\u00b5s (234.55\u00b5s CPU time)\n\nRan 1 test suite in 7.12ms (439.91\u00b5s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+      "stderr_head": "Warning: the following cheatcode(s) are deprecated and will be removed in future versions:\n  snapshot(): replaced by `snapshotState`\n  revertTo(uint256): replaced by `revertToState`",
+      "error": null
+    },
+    "failed_calls": [
+      {
+        "index": 1,
+        "sender": "owner",
+        "reason": "call_reverted_on_patch",
+        "call": {
+          "fn": "claimThrone",
+          "arg_types": [],
+          "payable": true
+        },
+        "original_ok": 1,
+        "patched_ok": 0
+      }
+    ]
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "PASS",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A1",
+    "invariant_applicable": false
+  }
+}

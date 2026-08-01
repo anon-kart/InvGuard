@@ -1,0 +1,57 @@
+{
+  "function": "initWallet",
+  "raw_count": 10,
+  "fixed_raw_count": 10,
+  "sanitized_count": 10,
+  "deposit_count": 10,
+  "withdraw_count": 10,
+  "chosen_count_before_final_fallback": 10,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, arg.sender) >= select(pre.m_ownerIndex, arg.sender))",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, arg.sender) <= select(pre.m_ownerIndex, arg.sender))",
+    "(meta.revert_taken == false) -> (post.m_required >= pre.m_required)",
+    "(meta.revert_taken == false) -> (post.m_required <= pre.m_required)",
+    "(meta.revert_taken == false) -> (post.m_dailyLimit >= pre.m_dailyLimit)",
+    "(meta.revert_taken == false) -> (post.m_dailyLimit <= pre.m_dailyLimit)",
+    "(meta.revert_taken == false) -> (post.m_spentToday >= pre.m_spentToday)",
+    "(meta.revert_taken == false) -> (post.m_spentToday <= pre.m_spentToday)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (post.m_required >= pre.m_required)",
+    "(meta.revert_taken == false) -> (post.m_required <= pre.m_required)",
+    "(meta.revert_taken == false) -> (post.m_dailyLimit >= pre.m_dailyLimit)",
+    "(meta.revert_taken == false) -> (post.m_dailyLimit <= pre.m_dailyLimit)",
+    "(meta.revert_taken == false) -> (post.m_spentToday >= pre.m_spentToday)",
+    "(meta.revert_taken == false) -> (post.m_spentToday <= pre.m_spentToday)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (post.m_required >= pre.m_required)",
+    "(meta.revert_taken == false) -> (post.m_required <= pre.m_required)",
+    "(meta.revert_taken == false) -> (post.m_dailyLimit >= pre.m_dailyLimit)",
+    "(meta.revert_taken == false) -> (post.m_dailyLimit <= pre.m_dailyLimit)",
+    "(meta.revert_taken == false) -> (post.m_spentToday >= pre.m_spentToday)",
+    "(meta.revert_taken == false) -> (post.m_spentToday <= pre.m_spentToday)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (post.m_required >= pre.m_required)",
+    "(meta.revert_taken == false) -> (post.m_required <= pre.m_required)",
+    "(meta.revert_taken == false) -> (post.m_dailyLimit >= pre.m_dailyLimit)",
+    "(meta.revert_taken == false) -> (post.m_dailyLimit <= pre.m_dailyLimit)",
+    "(meta.revert_taken == false) -> (post.m_spentToday >= pre.m_spentToday)",
+    "(meta.revert_taken == false) -> (post.m_spentToday <= pre.m_spentToday)"
+  ]
+}

@@ -1,0 +1,5 @@
+Added an explicit authorization check require(msg.sender == root) at the start of withdrawAll() so only the privileged root address (set in the constructor) can withdraw funds.
+
+INVARIANTS USED:
+- Only the root address (set at construction time) may call withdrawAll().
+- owners mapping non-zero check for onlyOwner modifier still enforced for other owner-only functions.

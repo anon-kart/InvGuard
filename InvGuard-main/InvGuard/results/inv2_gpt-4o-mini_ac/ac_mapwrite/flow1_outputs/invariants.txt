@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (select(post.map, arg.key) == select(pre.map, arg.key))
+(meta.revert_taken == false) -> (post.map.length >= pre.map.length)
+(meta.revert_taken == false) -> (post.owner == pre.owner)
+(meta.revert_taken == false) -> (meta.sender == post.owner) -> (select(post.map, arg.key) == arg.value)
+(meta.revert_taken == false) -> (meta.sender == post.owner) -> (post.map.length >= arg.key + 1)

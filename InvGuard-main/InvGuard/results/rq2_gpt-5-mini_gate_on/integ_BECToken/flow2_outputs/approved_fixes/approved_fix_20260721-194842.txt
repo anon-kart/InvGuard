@@ -1,0 +1,4 @@
+Added an explicit overflow check in batchTransfer to require that amount / cnt == _value (after ensuring cnt > 0), preventing multiplication overflow-based minting.
+
+INVARIANTS USED:
+Invariant: amount / cnt == _value ensures multiplication didn't overflow. Also require(cnt > 0) prevents division by zero.

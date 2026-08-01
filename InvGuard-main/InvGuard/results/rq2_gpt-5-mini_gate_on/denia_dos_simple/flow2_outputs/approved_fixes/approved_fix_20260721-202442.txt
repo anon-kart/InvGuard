@@ -1,0 +1,4 @@
+Replaced the push-loop in ifillArray with a pull-payment pattern by recording owed amounts in a balances mapping, increased array length in one step to avoid the loop, and added a reentrancy mutex plus a withdraw() function that safely sends recorded funds.
+
+INVARIANTS USED:
+1) No large/iterative gas-consuming operations in ifillArray: the push-loop was removed and array length is adjusted in constant time. 2) Pull-payment pattern: funds are recorded in balances and only transferred when the payee calls withdraw. 3) Effects-before-interactions: balances[msg.sender] is set to 0 before any external call during withdraw. 4) Reentrancy protection: a mutex (_locked) prevents reentrant calls to ifillArray and withdraw. 5) Bounded growth: ifillArray caps growth by checking listAddresses.length < 1500, preserving the original intended bound. 6) External calls use send and are checked (require) so failures revert, avoiding silent loss of funds.

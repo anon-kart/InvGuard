@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.collectedFees <= (pre.collectedFees + meta.value))
+(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) <= (select(pre.collectedFees, meta.sender) + meta.value))
+(meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees)
+(meta.revert_taken == false) -> (post.amt == pre.collectedFees)
+(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) == 0)
+(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) >= select(pre.collectedFees, meta.sender))

@@ -1,0 +1,7 @@
+Added a reentrancy mutex and changed donateToWhale to update state before the external call and require the low-level call's success.
+
+INVARIANTS USED:
+1) Checks-Effects-Interactions (CEI): state must be updated before making external calls to prevent reentrancy.
+2) Reentrancy guard invariant: a private locked flag (_locked) prevents reentrant entry into donateToWhale.
+3) Low-level call return-checking: low-level calls (call.value(...)) must have their boolean return value checked and the transaction reverted on failure.
+4) Preserve behavior: payout uses transfer (safe) and other public APIs unchanged.

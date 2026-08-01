@@ -1,0 +1,1 @@
+Your fix made set() uncallable: 'owner' is never initialized, so require(msg.sender == owner) always fails. Initialize owner to the deployer in the constructor so the legitimate owner can still call set(), while non-owners are rejected.

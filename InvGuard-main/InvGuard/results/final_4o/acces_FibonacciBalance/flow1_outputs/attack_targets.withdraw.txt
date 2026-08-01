@@ -1,0 +1,4 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)
+(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber - 1)
+(meta.revert_taken == false) -> (post.calculatedFibNumber == pre.calculatedFibNumber) -> (post.withdrawalCounter == pre.withdrawalCounter)

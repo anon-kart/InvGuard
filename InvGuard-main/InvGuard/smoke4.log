@@ -1,0 +1,5 @@
+
+=== [smoke4] reent_reentrancy_bonus  (tf=getFirstWithdrawalBonus, env={'INVGUARD_VULN_CLASS': 'reentrancy'}) ===
+
+========== smoke4: 0/1 strict accepts ==========
+  ----    reent_reentrancy_bonus                        no_report

@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "producer": "flow_1_files.agent",
+  "policy": "These are attack objectives/security obligations, not verified invariants. Flow-2 must validate any exploit concretely before repair claims.",
+  "obligation_count": 0,
+  "obligations": []
+}

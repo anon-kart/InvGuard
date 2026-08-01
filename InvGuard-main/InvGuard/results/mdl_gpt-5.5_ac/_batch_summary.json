@@ -1,0 +1,127 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/mycontract.sol",
+    "stem": "ac_mycontract",
+    "tier": "mdl_gpt-5.5_ac",
+    "model": "gpt-5.5",
+    "target_function": "sendTo",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 6.92,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.32,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/wallet_02_refund_nosub.sol",
+    "stem": "ac_wallet02",
+    "tier": "mdl_gpt-5.5_ac",
+    "model": "gpt-5.5",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 7.32,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.32,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/wallet_03_wrong_constructor.sol",
+    "stem": "ac_wallet03",
+    "tier": "mdl_gpt-5.5_ac",
+    "model": "gpt-5.5",
+    "target_function": "initWallet",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 6.21,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.32,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/mapping_write.sol",
+    "stem": "ac_mapwrite",
+    "tier": "mdl_gpt-5.5_ac",
+    "model": "gpt-5.5",
+    "target_function": "set",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 15.05,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/unprotected0.sol",
+    "stem": "ac_unprotected",
+    "tier": "mdl_gpt-5.5_ac",
+    "model": "gpt-5.5",
+    "target_function": "changeOwner",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "access_control"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 8.74,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.27,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

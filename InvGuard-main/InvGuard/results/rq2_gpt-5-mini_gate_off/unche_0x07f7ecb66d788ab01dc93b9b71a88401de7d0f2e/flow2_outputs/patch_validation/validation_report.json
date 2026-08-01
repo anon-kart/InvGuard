@@ -1,0 +1,424 @@
+{
+  "ok": true,
+  "invariants": {
+    "ok": false,
+    "verified": [],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "NO_REAL_INVARIANTS_AFTER_SANITIZATION"
+  },
+  "replay": {
+    "results": {
+      "A2": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A2",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 7.77ms",
+        "stderr_head": "Error: Compiler run failed:\n        (bool ok, bytes memory returnData) = whale.call.value(amount)(bytes4(keccak256(\"donate()\")));\n        ^------------------------------------------------------------------------------------------^\nError: Not enough components (1) in value to assign all variables (2).\nsrc/Target.sol:208:9: TypeError: Not enough components (1) in value to assign all variables (2).\n        (bool ok, bytes memory returnData) = whale.call.value(amount)(bytes4(keccak256(\"donate()\")));\n        ^------------------------------------------------------------------------------------------^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A3": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A3",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 8.11ms",
+        "stderr_head": "Error: Compiler run failed:\n        (bool ok, bytes memory returnData) = whale.call.value(amount)(bytes4(keccak256(\"donate()\")));\n        ^------------------------------------------------------------------------------------------^\nError: Not enough components (1) in value to assign all variables (2).\nsrc/Target.sol:208:9: TypeError: Not enough components (1) in value to assign all variables (2).\n        (bool ok, bytes memory returnData) = whale.call.value(amount)(bytes4(keccak256(\"donate()\")));\n        ^------------------------------------------------------------------------------------------^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      },
+      "A5": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A5",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 7.48ms",
+        "stderr_head": "Error: Compiler run failed:\n        (bool ok, bytes memory returnData) = whale.call.value(amount)(bytes4(keccak256(\"donate()\")));\n        ^------------------------------------------------------------------------------------------^\nError: Not enough components (1) in value to assign all variables (2).\nsrc/Target.sol:208:9: TypeError: Not enough components (1) in value to assign all variables (2).\n        (bool ok, bytes memory returnData) = whale.call.value(amount)(bytes4(keccak256(\"donate()\")));\n        ^------------------------------------------------------------------------------------------^",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      }
+    },
+    "compile_ok": 0,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": false,
+    "run_all": false
+  },
+  "benign": {
+    "ok": false,
+    "reason": "benign_original_failed",
+    "original": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "OpenToThePublic",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "AdjustBetAmounts",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "AdjustDifficulty",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "wager",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "play",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "donate",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "transferAnyERC20Token",
+          "arg_types": [
+            "address",
+            "address",
+            "uint256"
+          ],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.4.24",
+      "error": "forge test failed"
+    },
+    "patched": {
+      "ok": false,
+      "calls": [
+        {
+          "fn": "OpenToThePublic",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "AdjustBetAmounts",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "AdjustDifficulty",
+          "arg_types": [
+            "uint256"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "wager",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "play",
+          "arg_types": [],
+          "payable": false
+        },
+        {
+          "fn": "donate",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "transferAnyERC20Token",
+          "arg_types": [
+            "address",
+            "address",
+            "uint256"
+          ],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 0,
+            "t_after": 0,
+            "s_before": 0,
+            "s_after": 0
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 1,
+      "stdout_head": "",
+      "stderr_head": "Error: Found incompatible versions:\ntest/BenignBehavior.t.sol ^0.8.0 imports:\n    lib/forge-std/src/Test.sol ^0.8.0\n    src/Target.sol ^0.4.24",
+      "error": "forge test failed"
+    },
+    "failed_calls": [
+      {
+        "reason": "original_suite_failed"
+      }
+    ]
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "PASS",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A2",
+    "invariant_applicable": false
+  },
+  "gate_skipped": true,
+  "gate_would_have_accepted": true
+}

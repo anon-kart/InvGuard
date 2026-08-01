@@ -1,0 +1,4 @@
+Moved the state update before the external call in the withdraw_balances_re_ent8 function to prevent reentrancy attacks.
+
+INVARIANTS USED:
+Reentrancy Guard

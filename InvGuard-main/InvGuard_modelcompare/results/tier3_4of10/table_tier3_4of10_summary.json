@@ -1,0 +1,11 @@
+{
+  "tier_label": "Real-world (ToB NSSC)",
+  "n_contracts": 10,
+  "patch_generated_rate": 30.0,
+  "compile_rate": 30.0,
+  "exploit_mitigation_rate": 30.0,
+  "invariants_hold_rate": 10.0,
+  "benign_pass_rate": 10.0,
+  "overall_patch_success": 30.0,
+  "n_missing_report": 7
+}

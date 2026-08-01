@@ -1,0 +1,37 @@
+{
+  "function": "withdraw",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)",
+    "(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) <= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (address(this).balance == post.totalIn - post.totalOut)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)",
+    "(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) <= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (address(this).balance == post.totalIn - post.totalOut)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)",
+    "(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) <= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (meta.contract_balance == post.totalIn - post.totalOut)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)",
+    "(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.contributed, meta.sender) <= select(pre.contributed, meta.sender))",
+    "(meta.revert_taken == false) -> (meta.contract_balance == post.totalIn - post.totalOut)"
+  ]
+}

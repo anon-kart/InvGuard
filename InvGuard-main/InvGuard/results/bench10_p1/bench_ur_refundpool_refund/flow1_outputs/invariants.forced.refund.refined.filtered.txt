@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.totalCredit <= post.poolBalance())
+((meta.revert_taken == false)) -> ((select(post.registered, meta.sender) == true) -> (select(post.credit, meta.sender) > 0))

@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.amountToWithdraw == select(pre.rewardsForA, arg.recipient)  # reason=KeyError: "Unknown symbol 'post.amountToWithdraw'"

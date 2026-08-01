@@ -1,0 +1,20 @@
+{
+  "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_054_v1Migration_migrate.sol",
+  "stem": "scrubd_054_v1Migration_migrate",
+  "tier": "tier3",
+  "model": "gpt-4o-mini",
+  "target_function": "migrate",
+  "extra_env": {},
+  "flow1": {
+    "returncode": 0,
+    "elapsed_sec": 54.2,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_054_v1Migration_migrate/flow1.log"
+  },
+  "flow2": {
+    "returncode": 1,
+    "elapsed_sec": 1.22,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/tier3/scrubd_054_v1Migration_migrate/flow2.log"
+  }
+}

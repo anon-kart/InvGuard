@@ -1,0 +1,2 @@
+# STRONG VERIFIED-USEFUL INVARIANTS
+meta.revert_taken == false) -> (post.currentBid > pre.currentBid

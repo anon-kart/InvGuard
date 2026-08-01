@@ -1,0 +1,33 @@
+{
+  "function": "withdraw",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 4,
+  "deposit_count": 4,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.isActive == false)",
+    "(meta.revert_taken == false) -> (post._dgxBalance == 0)",
+    "(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)",
+    "(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.isActive == false)",
+    "(meta.revert_taken == false) -> (post._dgxBalance == 0)",
+    "(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)",
+    "(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.isActive == false)",
+    "(meta.revert_taken == false) -> (post._dgxBalance == 0)",
+    "(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)",
+    "(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.isActive == false)",
+    "(meta.revert_taken == false) -> (post._dgxBalance == 0)",
+    "(meta.revert_taken == false) -> (post.hashedSecret == pre.hashedSecret)",
+    "(meta.revert_taken == false) -> (post.DGX_TOKEN_ADDRESS == pre.DGX_TOKEN_ADDRESS)"
+  ]
+}

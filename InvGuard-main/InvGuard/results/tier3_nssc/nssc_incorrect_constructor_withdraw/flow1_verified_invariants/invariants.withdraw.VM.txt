@@ -1,0 +1,2 @@
+# VIOLATED-MEANINGFUL (attack objectives for Flow-2)
+(meta.revert_taken == false) -> (select(post.balances, owner) <= (select(pre.balances, owner) + meta.contract_balance))

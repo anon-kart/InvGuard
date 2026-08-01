@@ -1,0 +1,2 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == (select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount))

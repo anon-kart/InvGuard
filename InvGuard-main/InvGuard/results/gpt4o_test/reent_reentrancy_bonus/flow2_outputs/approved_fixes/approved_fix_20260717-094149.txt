@@ -1,0 +1,4 @@
+Moved the state update of claimedBonus before the external call to prevent reentrancy.
+
+INVARIANTS USED:
+State Update Before External Call: The state variable claimedBonus is updated before making any external calls to ensure that the function cannot be re-entered.

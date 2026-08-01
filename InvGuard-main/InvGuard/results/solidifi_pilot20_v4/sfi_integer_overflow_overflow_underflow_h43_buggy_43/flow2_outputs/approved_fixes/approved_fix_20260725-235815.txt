@@ -1,0 +1,4 @@
+Changed the require statement to check if the balance is greater than or equal to the value being transferred to prevent underflow.
+
+INVARIANTS USED:
+balances_intou22[msg.sender] >= _value

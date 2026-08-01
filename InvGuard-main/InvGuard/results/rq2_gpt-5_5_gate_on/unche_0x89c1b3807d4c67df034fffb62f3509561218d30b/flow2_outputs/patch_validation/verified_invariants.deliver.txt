@@ -1,0 +1,10 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)
+(pre.unrespondedCnt == 0) -> ((meta.revert_taken == false) -> (post.unrespondedCnt == 0 || post.unrespondedCnt == 1)
+(pre.newVersion != 0) -> ((meta.revert_taken == false) -> (post.killswitch == true || post.killswitch == pre.killswitch)
+(pre.unrespondedCnt != 0) -> ((meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE)
+(pre.unrespondedCnt != 0) -> ((meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE)
+(pre.unrespondedCnt != 0) -> ((meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)
+(pre.unrespondedCnt != 0) -> ((meta.revert_taken == false) -> (post.newVersion == pre.newVersion)
+(meta.revert_taken == false) -> (post.externalCallFlag == false)

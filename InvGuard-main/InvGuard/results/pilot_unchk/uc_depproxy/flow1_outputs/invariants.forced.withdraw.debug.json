@@ -1,0 +1,26 @@
+{
+  "function": "withdraw",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 0,
+  "deposit_count": 0,
+  "withdraw_count": 0,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (Deposits[meta.sender] >= 0)",
+    "(meta.revert_taken == false) -> (Deposits[meta.sender] == select(pre.Deposits, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (meta.sender == Owner)",
+    "(meta.revert_taken == false) -> (arg.amount <= Deposits[meta.sender])"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (Deposits[meta.sender] >= 0)",
+    "(meta.revert_taken == false) -> (Deposits[meta.sender] == select(pre.Deposits, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (meta.sender == Owner)",
+    "(meta.revert_taken == false) -> (arg.amount <= Deposits[meta.sender])"
+  ],
+  "sanitized": [],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)"
+  ]
+}

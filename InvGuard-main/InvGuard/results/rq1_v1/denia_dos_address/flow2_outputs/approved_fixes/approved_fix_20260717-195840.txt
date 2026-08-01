@@ -1,0 +1,4 @@
+Converted the emptyCreditors function to a pull-payment pattern by recording amounts owed and allowing each account to withdraw its own funds.
+
+INVARIANTS USED:
+Pull-payment pattern

@@ -1,0 +1,5 @@
+(pre.totalShares == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)
+(meta.revert_taken == false) -> (post.owner == pre.owner)
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender))
+(meta.revert_taken == false) -> (post.totalShares >= pre.totalShares)
+(meta.revert_taken == false) -> (post.totalShares <= pre.totalShares)

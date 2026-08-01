@@ -1,0 +1,5 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (listAddresses.length <= 1500)  # reason=KeyError: "Unknown symbol 'listAddresses.length'"
+(meta.revert_taken == false) -> (listAddresses.length >= 0)  # reason=KeyError: "Unknown symbol 'listAddresses.length'"
+(meta.revert_taken == false) -> (listAddresses.length == pre.listAddresses.length + 350)  # reason=KeyError: "Unknown symbol 'listAddresses.length'"
+(meta.revert_taken == false) -> (listAddresses.length == 0) -> (pre.listAddresses.length >= 1500)  # reason=KeyError: "Unknown symbol 'listAddresses.length'"

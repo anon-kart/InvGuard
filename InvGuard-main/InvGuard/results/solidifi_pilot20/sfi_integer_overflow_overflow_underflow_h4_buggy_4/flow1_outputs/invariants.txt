@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (_totalSupply == saleAmount + evtAmount + teamAmount)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= transferValue_intou26)
+(meta.revert_taken == false) -> (now > select(pre.lockTime_intou33, meta.sender))
+(meta.revert_taken == false) -> (now > select(pre.lockTime_intou13, meta.sender))

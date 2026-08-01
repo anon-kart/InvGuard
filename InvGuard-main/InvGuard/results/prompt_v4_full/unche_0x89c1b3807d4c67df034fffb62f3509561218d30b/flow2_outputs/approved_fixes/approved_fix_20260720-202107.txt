@@ -1,0 +1,4 @@
+Changed unchecked low-level calls in the deliver() function to require statements to ensure transfer success.
+
+INVARIANTS USED:
+Unchecked low-level calls were replaced with require statements to ensure that the Ether transfers succeed.

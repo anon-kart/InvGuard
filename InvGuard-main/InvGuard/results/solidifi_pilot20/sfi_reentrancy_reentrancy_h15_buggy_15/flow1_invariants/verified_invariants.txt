@@ -1,0 +1,10 @@
+# VERIFIED-USEFUL INVARIANTS ONLY
+# DEFAULT FLOW-2 INPUT. Fail-closed if empty.
+(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) >= select(pre.balances_re_ent38, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))
+(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)
+(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) <= select(pre.balances_re_ent38, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) <= select(pre.balances_re_ent31, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) <= select(pre.balances_re_ent36, meta.sender))

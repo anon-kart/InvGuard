@@ -1,0 +1,6 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+acces_multiowned_vulnerable,withdrawAll,False,gate_rejected,FAIL,INCONCLUSIVE,INCONCLUSIVE,79.41
+acces_parity_wallet_bug_2,initWallet,False,gate_rejected,INCONCLUSIVE,INCONCLUSIVE,INCONCLUSIVE,263.65
+integ_overflow_single_tx,overflowaddtostate,False,gate_rejected,FAIL,INCONCLUSIVE,INCONCLUSIVE,35.86
+bad_r_old_blockhash,settle,False,no_report,None,None,None,6.77
+reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106,Collect,False,no_report,None,None,None,33.43

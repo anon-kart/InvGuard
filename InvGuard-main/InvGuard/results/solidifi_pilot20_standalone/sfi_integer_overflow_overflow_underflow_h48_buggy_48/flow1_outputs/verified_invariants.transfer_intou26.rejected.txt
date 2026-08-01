@@ -1,0 +1,4 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.balances_intou26, arg._to) >= 0)  # reason=KeyError: "Unknown symbol 'arg.arg.to'"
+(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) <= (select(pre.balances_intou26, meta.sender) - arg._value)  # reason=KeyError: "Unknown symbol 'arg.arg.value'"
+(meta.revert_taken == false) -> (select(post.balances_intou26, arg._to) >= (select(pre.balances_intou26, arg._to) + arg._value)  # reason=KeyError: "Unknown symbol 'arg.arg.to'"

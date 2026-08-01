@@ -1,0 +1,4 @@
+Moved the claimedBonus state update before the external withdrawal call in getFirstWithdrawalBonus, following the Checks-Effects-Interactions pattern. The final saved version also preserves Solidity 0.4.24-compatible low-level call syntax in withdrawReward.
+
+INVARIANTS USED:
+Each recipient can claim the first-withdrawal bonus at most once; all relevant internal state updates (claimedBonus and rewardsForA reset) occur before external value transfer; reentrant calls cannot observe claimedBonus as false or withdraw the same reward balance twice; withdrawal success is still required.

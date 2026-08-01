@@ -1,0 +1,7 @@
+Added a reentrancy mutex (_locked), moved the tokenBalance update to the start of airDrop (effects) and adjusted the supportsToken modifier to perform the external interaction after the function body and clear the lock, implementing Checks-Effects-Interactions to prevent reentrancy.
+
+INVARIANTS USED:
+1) Checks-Effects-Interactions: state (tokenBalance) is updated before any external calls.
+2) Reentrancy mutex (_locked) ensures no reentrant entry into airDrop while in progress.
+3) External call is performed from the supportsToken modifier after the function body, and the mutex is cleared only after the external interaction completes.
+4) hasNoBalance modifier prevents multiple airdrops to the same caller when tokenBalance != 0.

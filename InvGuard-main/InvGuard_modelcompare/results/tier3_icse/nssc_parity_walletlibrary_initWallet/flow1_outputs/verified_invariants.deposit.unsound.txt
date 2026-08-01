@@ -1,0 +1,3 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).

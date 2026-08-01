@@ -1,0 +1,4 @@
+Removed unchecked arithmetic in batchTransfer to prevent integer overflow.
+
+INVARIANTS USED:
+SafeMath library for arithmetic operations.

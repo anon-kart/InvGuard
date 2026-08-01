@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (_operator != address(0) -> _status == true)
+(meta.revert_taken == false) -> (_operator == address(0) -> _status == false)
+(meta.revert_taken == false) -> (select(post._operator, meta.sender) != select(pre._operator, meta.sender))
+(meta.revert_taken == false) -> (select(post._status, meta.sender) == true -> select(pre._status, meta.sender) == true)
+(meta.revert_taken == false) -> (select(post._status, meta.sender) == false -> select(pre._status, meta.sender) == false)
+(meta.revert_taken == false) -> (select(post._factory, meta.sender) == select(pre._factory, meta.sender))

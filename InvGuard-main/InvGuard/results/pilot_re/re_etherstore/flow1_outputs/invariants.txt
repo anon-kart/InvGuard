@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (_weiToWithdraw <= withdrawalLimit)
+(meta.revert_taken == false) -> (now >= lastWithdrawTime[meta.sender] + 1 weeks)

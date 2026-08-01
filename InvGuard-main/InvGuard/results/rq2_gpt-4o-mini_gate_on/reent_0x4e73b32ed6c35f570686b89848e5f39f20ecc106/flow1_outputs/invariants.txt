@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (MinSum >= 0)
+(meta.revert_taken == false) -> (intitalized == true)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= MinSum && select(post.balances, meta.sender) >= arg._am)
+(meta.revert_taken == false) -> (LastMsg.Sender != address(0) && LastMsg.Val >= 0 && LastMsg.Time > 0)

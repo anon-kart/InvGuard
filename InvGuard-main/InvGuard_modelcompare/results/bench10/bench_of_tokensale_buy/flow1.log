@@ -1,0 +1,459 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_of_tokensale_buy.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= (select(pre.balanceOf, meta.sender) - arg.amount)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)  | PRICE=0, PRICE1=0, arg.amount=58362547930373334387904123345127242602759766708412165002585596652093108704557, arg.to=0, balanceOf=Store(Store(K(BitVec(160),
+              58362547930373334387904123345127242602759766708412165002585596652093108704557),
+            22835963083295358096932575511191922182123945984,
+            87013686403001887659628892935583643637964853454249513610719518833046534179121),
+      0,
+      466481225220408083206338012341929578896825819662550418417584587478847664123)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= (select(pre.balanceOf, arg.to) + arg.amount)  | PRICE=0, PRICE1=0, arg.amount=6113843421940578901023720801115930375714258167793933669098586420613801410561, arg.to=0, balanceOf=Store(K(BitVec(160),
+        6113843421940578901023720801115930375714258167793933669098586420613801410561),
+      0,
+      38998147912968959296492763529853382691910313013972976341798996192395859607552)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= (select(pre.balanceOf, meta.sender) - arg.amount)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)  | PRICE=0, PRICE1=0, arg.amount=58362547930373334387904123345127242602759766708412165002585596652093108704557, arg.to=0, balanceOf=Store(Store(K(BitVec(160),
+              58362547930373334387904123345127242602759766708412165002585596652093108704557),
+            22835963083295358096932575511191922182123945984,
+            87013686403001887659628892935583643637964853454249513610719518833046534179121),
+      0,
+      466481225220408083206338012341929578896825819662550418417584587478847664123)
+   - (meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= (select(pre.balanceOf, arg.to) + arg.amount)  | PRICE=0, PRICE1=0, arg.amount=6113843421940578901023720801115930375714258167793933669098586420613801410561, arg.to=0, balanceOf=Store(K(BitVec(160),
+        6113843421940578901023720801115930375714258167793933669098586420613801410561),
+      0,
+      38998147912968959296492763529853382691910313013972976341798996192395859607552)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] emit Transferred(meta.sender, to, amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))", "model": {"PRICE": "0", "PRICE1": "0", "arg.amount": "58362547930373334387904123345127242602759766708412165002585596652093108704557", "arg.to": "0", "balanceOf": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            87013686403001887659628892935583643637964853454249513610719518833046534179121),\n      0,\n      466481225220408083206338012341929578896825819662550418417584587478847664123)", "balanceOf1": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            28651138472628553271724769590456401035205086745837348608133922180953425474564),\n      0,\n      58829029155593742471110461357469172181656592528074715421003181239571956368680)", "issuer": "0", "issuer1": "0", "meta.revert_taken": "False", "meta.sender": "22835963083295358096932575511191922182123945984", "spent": "K(BitVec(160), 0)", "spent1": "K(BitVec(160), 0)", "totalSupply": "0", "totalSupply1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= (select(pre.balanceOf, meta.sender) - arg.amount))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= (select(pre.balanceOf, arg.to) + arg.amount))", "model": {"PRICE": "0", "PRICE1": "0", "arg.amount": "6113843421940578901023720801115930375714258167793933669098586420613801410561", "arg.to": "0", "balanceOf": "Store(K(BitVec(160),\n        6113843421940578901023720801115930375714258167793933669098586420613801410561),\n      0,\n      38998147912968959296492763529853382691910313013972976341798996192395859607552)", "balanceOf1": "Store(K(BitVec(160),\n        6113843421940578901023720801115930375714258167793933669098586420613801410561),\n      0,\n      38998147912968959296492763529853382691910313013972976341798996192395859607552)", "issuer": "0", "issuer1": "0", "meta.revert_taken": "False", "meta.sender": "0", "spent": "K(BitVec(160), 0)", "spent1": "K(BitVec(160), 0)", "totalSupply": "0", "totalSupply1": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for transfer — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] emit Transferred(meta.sender, to, amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))", "model": {"PRICE": "0", "PRICE1": "0", "arg.amount": "58362547930373334387904123345127242602759766708412165002585596652093108704557", "arg.to": "0", "balanceOf": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            87013686403001887659628892935583643637964853454249513610719518833046534179121),\n      0,\n      466481225220408083206338012341929578896825819662550418417584587478847664123)", "balanceOf1": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            28651138472628553271724769590456401035205086745837348608133922180953425474564),\n      0,\n      58829029155593742471110461357469172181656592528074715421003181239571956368680)", "issuer": "0", "issuer1": "0", "meta.revert_taken": "False", "meta.sender": "22835963083295358096932575511191922182123945984", "spent": "K(BitVec(160), 0)", "spent1": "K(BitVec(160), 0)", "totalSupply": "0", "totalSupply1": "0"}, "status": "VIOLATED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= (select(pre.balanceOf, meta.sender) - arg.amount))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, arg.to) >= (select(pre.balanceOf, arg.to) + arg.amount))", "model": {"PRICE": "0", "PRICE1": "0", "arg.amount": "6113843421940578901023720801115930375714258167793933669098586420613801410561", "arg.to": "0", "balanceOf": "Store(K(BitVec(160),\n        6113843421940578901023720801115930375714258167793933669098586420613801410561),\n      0,\n      38998147912968959296492763529853382691910313013972976341798996192395859607552)", "balanceOf1": "Store(K(BitVec(160),\n        6113843421940578901023720801115930375714258167793933669098586420613801410561),\n      0,\n      38998147912968959296492763529853382691910313013972976341798996192395859607552)", "issuer": "0", "issuer1": "0", "meta.revert_taken": "False", "meta.sender": "0", "spent": "K(BitVec(160), 0)", "spent1": "K(BitVec(160), 0)", "totalSupply": "0", "totalSupply1": "0"}, "status": "VIOLATED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)  | PRICE=0, PRICE1=0, arg.amount=58362547930373334387904123345127242602759766708412165002585596652093108704557, arg.to=0, balanceOf=Store(Store(K(BitVec(160),
+              58362547930373334387904123345127242602759766708412165002585596652093108704557),
+            22835963083295358096932575511191922182123945984,
+            87013686403001887659628892935583643637964853454249513610719518833046534179121),
+      0,
+      466481225220408083206338012341929578896825819662550418417584587478847664123)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+
+[FLOW1] Checker report after refinement (transfer, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] emit Transferred(meta.sender, to, amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "((meta.revert_taken == false)) -> ((select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)))", "model": {"PRICE": "0", "PRICE1": "0", "arg.amount": "58362547930373334387904123345127242602759766708412165002585596652093108704557", "arg.to": "0", "balanceOf": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            87013686403001887659628892935583643637964853454249513610719518833046534179121),\n      0,\n      466481225220408083206338012341929578896825819662550418417584587478847664123)", "balanceOf1": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            28651138472628553271724769590456401035205086745837348608133922180953425474564),\n      0,\n      58829029155593742471110461357469172181656592528074715421003181239571956368680)", "issuer": "0", "issuer1": "0", "meta.revert_taken": "False", "meta.sender": "22835963083295358096932575511191922182123945984", "spent": "K(BitVec(160), 0)", "spent1": "K(BitVec(160), 0)", "totalSupply": "0", "totalSupply1": "0"}, "status": "VIOLATED"}INFO:root:[FLOW1] Failed invariants detected for transfer — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt
+
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)  | PRICE=0, PRICE1=0, arg.amount=58362547930373334387904123345127242602759766708412165002585596652093108704557, arg.to=0, balanceOf=Store(Store(K(BitVec(160),
+              58362547930373334387904123345127242602759766708412165002585596652093108704557),
+            22835963083295358096932575511191922182123945984,
+            87013686403001887659628892935583643637964853454249513610719518833046534179121),
+      0,
+      466481225220408083206338012341929578896825819662550418417584587478847664123)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+
+[FLOW1] Checker report after refinement (transfer, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] emit Transferred(meta.sender, to, amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "((meta.revert_taken == false)) -> ((select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)))", "model": {"PRICE": "0", "PRICE1": "0", "arg.amount": "58362547930373334387904123345127242602759766708412165002585596652093108704557", "arg.to": "0", "balanceOf": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            87013686403001887659628892935583643637964853454249513610719518833046534179121),\n      0,\n      466481225220408083206338012341929578896825819662550418417584587478847664123)", "balanceOf1": "Store(Store(K(BitVec(160),\n              58362547930373334387904123345127242602759766708412165002585596652093108704557),\n            22835963083295358096932575511191922182123945984,\n            28651138472628553271724769590456401035205086745837348608133922180953425474564),\n      0,\n      58829029155593742471110461357469172181656592528074715421003181239571956368680)", "issuer": "0", "issuer1": "0", "meta.revert_taken": "False", "meta.sender": "22835963083295358096932575511191922182123945984", "spent": "K(BitVec(160), 0)", "spent1": "K(BitVec(160), 0)", "totalSupply": "0", "totalSupply1": "0"}, "status": "VIOLATED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_e3k_z2gd/drop_require_1.sol --llm-invariants /tmp/inv_strength_e3k_z2gd/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_e3k_z2gd/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_e3k_z2gd' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_e3k_z2gd/drop_require_1.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/drop_require_1.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/drop_require_1.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_e3k_z2gd/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_e3k_z2gd/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_e3k_z2gd/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_e3k_z2gd' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_e3k_z2gd/flip_ge_to_gt.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/flip_ge_to_gt.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/flip_ge_to_gt.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_e3k_z2gd/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_e3k_z2gd/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_e3k_z2gd/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_e3k_z2gd' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_e3k_z2gd/plus_eq_to_minus_eq.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/plus_eq_to_minus_eq.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/plus_eq_to_minus_eq.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_e3k_z2gd/minus_eq_to_plus_eq.sol --llm-invariants /tmp/inv_strength_e3k_z2gd/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_e3k_z2gd/minus_eq_to_plus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_e3k_z2gd' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_e3k_z2gd/minus_eq_to_plus_eq.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/minus_eq_to_plus_eq.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/minus_eq_to_plus_eq.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_e3k_z2gd/drop_require_2.sol --llm-invariants /tmp/inv_strength_e3k_z2gd/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_e3k_z2gd/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_e3k_z2gd' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_e3k_z2gd/drop_require_2.sol:
+Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/drop_require_2.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation Error: Source file requires different compiler version (current compiler is 0.8.19+commit.7dd6d404.Linux.g++) - note that nightly builds are considered to be strictly less than the released version
+ --> /tmp/inv_strength_e3k_z2gd/drop_require_2.sol:2:1:
+  |
+2 | pragma solidity ^0.7.6;
+  | ^^^^^^^^^^^^^^^^^^^^^^^
+
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_e3k_z2gd/verified_invariants.global.summary.json

@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender))
+(meta.revert_taken == false) -> (post.totalCredit <= pre.totalCredit)

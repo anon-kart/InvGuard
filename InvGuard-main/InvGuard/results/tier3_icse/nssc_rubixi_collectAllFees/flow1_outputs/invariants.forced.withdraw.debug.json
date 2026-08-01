@@ -1,0 +1,39 @@
+{
+  "function": "withdraw",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 6,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees)",
+    "(meta.revert_taken == false) -> (post.collectedFees <= pre.collectedFees + arg.value)",
+    "(meta.revert_taken == false) -> (post.amt == pre.collectedFees)",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) >= select(pre.collectedFees, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) <= select(pre.collectedFees, meta.sender) + arg.value)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees)",
+    "(meta.revert_taken == false) -> (post.collectedFees <= pre.collectedFees + meta.value)",
+    "(meta.revert_taken == false) -> (post.amt == pre.collectedFees)",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) >= select(pre.collectedFees, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) <= select(pre.collectedFees, meta.sender) + meta.value)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees)",
+    "(meta.revert_taken == false) -> (post.collectedFees <= (pre.collectedFees + meta.value))",
+    "(meta.revert_taken == false) -> (post.amt == pre.collectedFees)",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) >= select(pre.collectedFees, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) <= (select(pre.collectedFees, meta.sender) + meta.value))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees)",
+    "(meta.revert_taken == false) -> (post.amt == pre.collectedFees)",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) == 0)",
+    "(meta.revert_taken == false) -> (select(post.collectedFees, meta.sender) >= select(pre.collectedFees, meta.sender))"
+  ]
+}

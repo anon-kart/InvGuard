@@ -1,0 +1,23 @@
+{
+  "VU": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.raffleId >= pre.raffleId)",
+      "(meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber)"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.nextTicket >= pre.nextTicket)"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

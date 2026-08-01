@@ -1,0 +1,2 @@
+# VERIFIED-USEFUL (constraints for Flow-2)
+(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)

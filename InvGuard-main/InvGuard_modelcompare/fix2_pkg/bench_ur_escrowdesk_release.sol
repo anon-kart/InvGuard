@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract EscrowDesk {
+    mapping(address => uint256) public escrow;
+    mapping(address => bool) public active;
+    uint256 public totalEscrow;
+    address public arbiter;
+
+    event Locked(address indexed who, uint256 amount);
+    event Released(address indexed who, uint256 amount);
+
+    constructor() {
+        arbiter = msg.sender;
+    }
+
+    function deposit() external payable {
+        require(msg.value > 0, "zero");
+        escrow[msg.sender] += msg.value;
+        active[msg.sender] = true;
+        totalEscrow += msg.value;
+        emit Locked(msg.sender, msg.value);
+    }
+
+    function release(address payable who) external {
+        uint256 amount = escrow[who];
+        require(amount > 0, "nothing");
+        escrow[who] = 0;
+        totalEscrow -= amount;
+        who.send(amount);
+        emit Released(who, amount);
+    }
+
+    function escrowOf(address who) external view returns (uint256) {
+        return escrow[who];
+    }
+
+    receive() external payable {
+        escrow[msg.sender] += msg.value;
+        totalEscrow += msg.value;
+    }
+}

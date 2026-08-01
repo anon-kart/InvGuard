@@ -1,0 +1,53 @@
+{
+  "function": "batchTransfer",
+  "raw_count": 11,
+  "fixed_raw_count": 11,
+  "sanitized_count": 7,
+  "deposit_count": 7,
+  "withdraw_count": 7,
+  "chosen_count_before_final_fallback": 7,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.to) == select(pre.balances, arg.to) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.to) >= 0)",
+    "(meta.revert_taken == false) -> (post.c == pre.c)",
+    "(meta.revert_taken == false) -> (post.paused == pre.paused)",
+    "(meta.revert_taken == false) -> (post.cnt == pre.cnt)",
+    "(meta.revert_taken == false) -> (post.arg.amount == pre.arg.amount)",
+    "(meta.revert_taken == false) -> (post.i == pre.i)",
+    "(meta.revert_taken == false) -> (post.decimals == pre.decimals)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.to) == select(pre.balances, arg.to) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.to) >= 0)",
+    "(meta.revert_taken == false) -> (post.c == pre.c)",
+    "(meta.revert_taken == false) -> (post.paused == pre.paused)",
+    "(meta.revert_taken == false) -> (post.cnt == pre.cnt)",
+    "(meta.revert_taken == false) -> (arg.amount == arg.amount)",
+    "(meta.revert_taken == false) -> (post.i == pre.i)",
+    "(meta.revert_taken == false) -> (post.decimals == pre.decimals)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (post.c == pre.c)",
+    "(meta.revert_taken == false) -> (post.paused == pre.paused)",
+    "(meta.revert_taken == false) -> (post.cnt == pre.cnt)",
+    "(meta.revert_taken == false) -> (post.i == pre.i)",
+    "(meta.revert_taken == false) -> (post.decimals == pre.decimals)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (post.c == pre.c)",
+    "(meta.revert_taken == false) -> (post.paused == pre.paused)",
+    "(meta.revert_taken == false) -> (post.cnt == pre.cnt)",
+    "(meta.revert_taken == false) -> (post.i == pre.i)",
+    "(meta.revert_taken == false) -> (post.decimals == pre.decimals)"
+  ]
+}

@@ -1,0 +1,2 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+integ_BECToken,batchTransfer,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE,138.63

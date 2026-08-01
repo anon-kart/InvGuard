@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (amountToWithdraw <= select(pre.userBalances, arg.recipient))
+(meta.revert_taken == false) -> (claimedBonus[arg.recipient] == false)
+(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= 0)
+(meta.revert_taken == false) -> (amountToWithdraw == select(pre.rewardsForA, arg.recipient) + 100)

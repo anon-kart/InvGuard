@@ -1,0 +1,6 @@
+Added a reentrancy mutex (_locked) and moved state updates (setting claimedBonus and increasing rewardsForA) before the external call to withdrawReward in getFirstWithdrawalBonus. This enforces a checks-effects-interactions ordering and prevents reentrant calls to getFirstWithdrawalBonus while it is executing.
+
+INVARIANTS USED:
+1) Reentrancy guard invariant: _locked is false at entry and set to true during execution; any reentrant call will fail the require(!_locked).
+2) Checks-Effects-Interactions: state changes (claimedBonus and rewardsForA) are performed before external calls, preventing reentrancy from observing stale state.
+3) withdrawReward zeroes rewardsForA before performing the external call, ensuring funds cannot be drained twice in that call.

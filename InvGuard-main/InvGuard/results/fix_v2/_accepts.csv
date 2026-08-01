@@ -1,0 +1,2 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+reent_reentrancy_bonus,getFirstWithdrawalBonus,False,gate_rejected,FAIL,INCONCLUSIVE,INCONCLUSIVE,108.83

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "function": "withdraw",
+  "obligation_count": 1,
+  "obligations": [
+    {
+      "id": "SO-CALL-001",
+      "kind": "SECURITY_OBLIGATION",
+      "category": "ExternalCall",
+      "title": "Withdraw external transfer must be safely handled",
+      "severity": "Medium",
+      "functions": [
+        "withdraw"
+      ],
+      "why": "withdraw performs an external value transfer. Attack harness must model receiver behavior, including payable receive() and reverting receive().",
+      "attack_goal": {
+        "type": "EXTERNAL_CALL_BEHAVIOR",
+        "success_condition": "unexpected revert, locked funds, or profit after callback behavior",
+        "harness_requirements": [
+          "generate one attacker with payable receive()",
+          "generate one attacker with reverting receive()",
+          "generate one attacker that attempts reentry if state update order permits"
+        ]
+      },
+      "dsl_candidates": [
+        "(meta.revert_taken == false) -> (post.totalShares <= pre.totalShares)"
+      ],
+      "repair_hint": "Preserve checks-effects-interactions; consider pull-payment or explicit failed-call behavior."
+    }
+  ]
+}

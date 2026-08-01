@@ -1,0 +1,4 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (receivers_unchk30 >= 0)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (addr_unchk30 != address(0)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (receivers_unchk30 <= 1)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).

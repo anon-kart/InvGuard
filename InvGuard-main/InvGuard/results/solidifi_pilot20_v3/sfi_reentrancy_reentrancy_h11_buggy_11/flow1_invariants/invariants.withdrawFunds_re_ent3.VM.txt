@@ -1,0 +1,4 @@
+# VIOLATED-MEANINGFUL (attack objectives for Flow-2)
+(meta.revert_taken == false) -> (select(post.balances_re_ent3, meta.sender) >= select(pre.balances_re_ent3, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent3, meta.sender) <= (select(pre.balances_re_ent3, meta.sender) + arg._weiToWithdraw))
+(meta.revert_taken == false) -> (select(post.balances_re_ent3, meta.sender) == (select(pre.balances_re_ent3, meta.sender) + meta.value - arg._weiToWithdraw))

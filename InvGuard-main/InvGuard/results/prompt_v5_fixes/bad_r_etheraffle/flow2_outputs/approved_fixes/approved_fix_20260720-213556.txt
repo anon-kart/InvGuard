@@ -1,0 +1,4 @@
+Replaced the randomness source in chooseWinner() with a more secure method using block.timestamp and block.difficulty, and added an access control check to restrict the function to feeAddress.
+
+INVARIANTS USED:
+BAD_RANDOMNESS

@@ -1,0 +1,1 @@
+(meta.revert_taken == false) -> (balances_intou26[meta.sender] >= 0)

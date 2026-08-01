@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block != 0)
+(meta.revert_taken == false) -> (post.block > select(pre.guesses, meta.sender).block)
+(meta.revert_taken == false) -> (select(post.guesses, meta.sender).guess == blockhash(select(pre.guesses, meta.sender).block))
+(meta.revert_taken == false) -> (select(pre.guesses, meta.sender).block == 0)

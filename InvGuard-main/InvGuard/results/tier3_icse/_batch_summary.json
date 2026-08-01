@@ -1,0 +1,520 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_auction_bid.sol",
+    "stem": "nssc_auction_bid",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "bid",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.67,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 10.42,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_incorrect_constructor_withdraw.sol",
+    "stem": "nssc_incorrect_constructor_withdraw",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "withdraw",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 29.75,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 60.64,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "gate_rejected",
+      "verdicts": {
+        "replay": "FAIL",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_kotet_claimThrone.sol",
+    "stem": "nssc_kotet_claimThrone",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "claimThrone",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 26.92,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 12.59,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_listdos_refundDos.sol",
+    "stem": "nssc_listdos_refundDos",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "refundDos",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 28.78,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 13.24,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_parity_walletlibrary_initWallet.sol",
+    "stem": "nssc_parity_walletlibrary_initWallet",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "initWallet",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.3,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 11.12,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_privatebank_CashOut.sol",
+    "stem": "nssc_privatebank_CashOut",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 37.04,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 42.48,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "PASS",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_rubixi_collectAllFees.sol",
+    "stem": "nssc_rubixi_collectAllFees",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "collectAllFees",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 34.11,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 16.97,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_spankchain_LCOpenTimeout.sol",
+    "stem": "nssc_spankchain_LCOpenTimeout",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "LCOpenTimeout",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 103.67,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 19.83,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_therun_play.sol",
+    "stem": "nssc_therun_play",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "play",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 29.19,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 55.55,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_unprotected_changeOwner.sol",
+    "stem": "nssc_unprotected_changeOwner",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "changeOwner",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 23.66,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 58.9,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": true,
+      "reason": "ok",
+      "verdicts": {
+        "replay": "PASS",
+        "invariant": "INCONCLUSIVE",
+        "benign": "INCONCLUSIVE"
+      }
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_009_Free3_claim.sol",
+    "stem": "scrubd_009_Free3_claim",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "claim",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 61.95,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 17.51,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_030_DividendDistributor_distributeDividend.sol",
+    "stem": "scrubd_030_DividendDistributor_distributeDividend",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "distributeDividend",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 324.67,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 144.68,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_031_DividendDistributor_distributeDividend.sol",
+    "stem": "scrubd_031_DividendDistributor_distributeDividend",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "distributeDividend",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 183.57,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 141.7,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_032_TreasureHunt_unlockTreasure.sol",
+    "stem": "scrubd_032_TreasureHunt_unlockTreasure",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "unlockTreasure",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 50.31,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 90.26,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_036_DividendDistributor_distributeDividend.sol",
+    "stem": "scrubd_036_DividendDistributor_distributeDividend",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "distributeDividend",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 197.2,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 169.33,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_042_PrivateBank_CashOut.sol",
+    "stem": "scrubd_042_PrivateBank_CashOut",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 50.88,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 12.02,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow2_no_impactful_exploit",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_047_PRIVATE_ETH_CELL_Collect.sol",
+    "stem": "scrubd_047_PRIVATE_ETH_CELL_Collect",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "ETH_CELL_Collect",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 48.22,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_051_BANK_SAFE_Collect.sol",
+    "stem": "scrubd_051_BANK_SAFE_Collect",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "SAFE_Collect",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 35.9,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_054_v1Migration_migrate.sol",
+    "stem": "scrubd_054_v1Migration_migrate",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "migrate",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 114.65,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_073_ETH_VAULT_CashOut.sol",
+    "stem": "scrubd_073_ETH_VAULT_CashOut",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "VAULT_CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 32.01,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_085_ETH_VAULT_CashOut.sol",
+    "stem": "scrubd_085_ETH_VAULT_CashOut",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "VAULT_CashOut",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 35.48,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.22,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/scrubd_090_D_BANK_Collect.sol",
+    "stem": "scrubd_090_D_BANK_Collect",
+    "tier": "tier3_icse",
+    "model": "gpt-4o-mini",
+    "target_function": "BANK_Collect",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 32.52,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.17,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "flow1_no_verified_invariants",
+      "verdicts": {}
+    }
+  }
+]

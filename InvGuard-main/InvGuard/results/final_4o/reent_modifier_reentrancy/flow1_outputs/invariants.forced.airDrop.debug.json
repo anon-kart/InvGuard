@@ -1,0 +1,28 @@
+{
+  "function": "airDrop",
+  "raw_count": 3,
+  "fixed_raw_count": 3,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 2,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender) + 20)"
+  ]
+}

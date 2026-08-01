@@ -1,0 +1,1 @@
+((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) + meta.value > select(post.balances, meta.sender)))

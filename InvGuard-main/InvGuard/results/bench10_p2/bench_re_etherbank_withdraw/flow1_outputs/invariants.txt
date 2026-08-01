@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.totalDeposited >= pre.totalDeposited)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + meta.value)
+(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) >= select(pre.depositCount, meta.sender))
+(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) <= select(pre.depositCount, meta.sender) + 1)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) + meta.value >= select(pre.balances, meta.sender))

@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.initialized == true)
+(pre.initialized == false) -> (post.initialized == true)

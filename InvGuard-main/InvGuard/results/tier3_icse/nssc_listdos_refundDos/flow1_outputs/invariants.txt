@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender))
+(meta.revert_taken == false) -> (post.refundAddresses.length >= pre.refundAddresses.length)
+(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) <= address(this).balance)
+(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= 0)

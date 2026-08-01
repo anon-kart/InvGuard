@@ -1,0 +1,57 @@
+{
+  "function": "withdrawFunds_re_ent17",
+  "raw_count": 10,
+  "fixed_raw_count": 10,
+  "sanitized_count": 10,
+  "deposit_count": 10,
+  "withdraw_count": 10,
+  "chosen_count_before_final_fallback": 10,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent15, meta.sender) >= select(pre.balances_re_ent15, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent10, meta.sender) >= select(pre.balances_re_ent10, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent21, meta.sender) >= select(pre.balances_re_ent21, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (post.numProposals >= pre.numProposals)",
+    "(meta.revert_taken == false) -> (post.minimumTokensToVote >= pre.minimumTokensToVote)",
+    "(meta.revert_taken == false) -> (post.minimumQuorum >= pre.minimumQuorum)",
+    "(meta.revert_taken == false) -> (post.debatingPeriodInMinutes >= pre.debatingPeriodInMinutes)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent15, meta.sender) >= select(pre.balances_re_ent15, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent10, meta.sender) >= select(pre.balances_re_ent10, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent21, meta.sender) >= select(pre.balances_re_ent21, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (post.numProposals >= pre.numProposals)",
+    "(meta.revert_taken == false) -> (post.minimumTokensToVote >= pre.minimumTokensToVote)",
+    "(meta.revert_taken == false) -> (post.minimumQuorum >= pre.minimumQuorum)",
+    "(meta.revert_taken == false) -> (post.debatingPeriodInMinutes >= pre.debatingPeriodInMinutes)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent15, meta.sender) >= select(pre.balances_re_ent15, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent10, meta.sender) >= select(pre.balances_re_ent10, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent21, meta.sender) >= select(pre.balances_re_ent21, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (post.numProposals >= pre.numProposals)",
+    "(meta.revert_taken == false) -> (post.minimumTokensToVote >= pre.minimumTokensToVote)",
+    "(meta.revert_taken == false) -> (post.minimumQuorum >= pre.minimumQuorum)",
+    "(meta.revert_taken == false) -> (post.debatingPeriodInMinutes >= pre.debatingPeriodInMinutes)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent15, meta.sender) >= select(pre.balances_re_ent15, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent10, meta.sender) >= select(pre.balances_re_ent10, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent21, meta.sender) >= select(pre.balances_re_ent21, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (post.numProposals >= pre.numProposals)",
+    "(meta.revert_taken == false) -> (post.minimumTokensToVote >= pre.minimumTokensToVote)",
+    "(meta.revert_taken == false) -> (post.minimumQuorum >= pre.minimumQuorum)",
+    "(meta.revert_taken == false) -> (post.debatingPeriodInMinutes >= pre.debatingPeriodInMinutes)"
+  ]
+}

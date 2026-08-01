@@ -1,0 +1,41 @@
+{
+  "function": "withdrawAll_txorigin2",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 6,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance + arg.value)",
+    "(meta.revert_taken == false) -> (post.contract_balance >= 0)",
+    "(meta.revert_taken == false) -> (post.contract_balance <= pre.contract_balance + arg.value)",
+    "(meta.revert_taken == false) -> (post.contract_balance >= pre.contract_balance - arg.value)",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance + meta.value)",
+    "(meta.revert_taken == false) -> (post.contract_balance >= 0)",
+    "(meta.revert_taken == false) -> (post.contract_balance <= pre.contract_balance + meta.value)",
+    "(meta.revert_taken == false) -> (post.contract_balance >= pre.contract_balance - meta.value)",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (post.contract_balance == (pre.contract_balance + meta.value))",
+    "(meta.revert_taken == false) -> (post.contract_balance >= 0)",
+    "(meta.revert_taken == false) -> (post.contract_balance <= (pre.contract_balance + meta.value))",
+    "(meta.revert_taken == false) -> (post.contract_balance >= (pre.contract_balance - meta.value))",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (post.contract_balance == (pre.contract_balance + meta.value))",
+    "(meta.revert_taken == false) -> (post.contract_balance >= 0)",
+    "(meta.revert_taken == false) -> (post.contract_balance <= (pre.contract_balance + meta.value))",
+    "(meta.revert_taken == false) -> (post.contract_balance >= (pre.contract_balance - meta.value))",
+    "(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance)"
+  ]
+}

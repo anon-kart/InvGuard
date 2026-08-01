@@ -1,0 +1,3 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (post.totalDonated <= pre.totalDonated + select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated - select(pre.wagers, meta.sender))

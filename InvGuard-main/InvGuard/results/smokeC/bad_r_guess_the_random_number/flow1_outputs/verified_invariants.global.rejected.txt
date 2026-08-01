@@ -1,0 +1,4 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (isComplete() == true -> address(this).balance == 0)  # reason=KeyError: "Unknown symbol 'isComplete()'"
+(meta.revert_taken == false) -> (guess(n) && n == answer -> meta.sender.balance == meta.sender.balance + 2 ether)  # reason=KeyError: "Unknown symbol 'guess(n)'"
+(meta.revert_taken == false) -> (meta.value == 1 ether -> guess(n) is only allowed once per player)  # reason=KeyError: "Unknown symbol '1 ether'"

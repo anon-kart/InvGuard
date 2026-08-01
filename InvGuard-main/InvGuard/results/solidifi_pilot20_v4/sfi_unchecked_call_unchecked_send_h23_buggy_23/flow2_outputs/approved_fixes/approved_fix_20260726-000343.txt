@@ -1,0 +1,4 @@
+Changed the unchecked transfer in bug_unchk_send15() to require the success of the send operation.
+
+INVARIANTS USED:
+Require statement to ensure the success of the send operation.

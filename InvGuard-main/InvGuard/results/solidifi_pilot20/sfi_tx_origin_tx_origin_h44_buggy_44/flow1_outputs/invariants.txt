@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post._operator == pre._operator)
+(meta.revert_taken == false) -> (post._status == pre._status)
+(meta.revert_taken == false) -> (select(post.hashFunction, meta.sender) == select(pre.hashFunction, meta.sender))
+(meta.revert_taken == false) -> (select(post.digestSize, meta.sender) == select(pre.digestSize, meta.sender))
+(meta.revert_taken == false) -> (post.hash == pre.hash)
+(meta.revert_taken == false) -> (post.codeSize == pre.codeSize)

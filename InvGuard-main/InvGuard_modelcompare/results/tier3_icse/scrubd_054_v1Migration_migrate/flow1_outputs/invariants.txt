@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.current <= post.count)
+(meta.revert_taken == false) -> (post.count > 0)
+(meta.revert_taken == false) -> (select(post.user, meta.sender) != address(0))
+(meta.revert_taken == false) -> (post.randomness != 0)
+(meta.revert_taken == false) -> (post.limit >= post.remaining)
+(meta.revert_taken == false) -> (post.remaining > 0)

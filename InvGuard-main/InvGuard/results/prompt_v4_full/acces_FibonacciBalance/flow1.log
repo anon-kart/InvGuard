@@ -1,0 +1,346 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/FibonacciBalance.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.deposit.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:9:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:15:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '_start'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'calculatedFibNumber', 'val_src': 'fibonacci(n)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'n == 0', 'then': [{'op': 'raw', 'src': 'start'}], 'else': [{'op': 'raw', 'src': 'n == 1'}]}
+INFO:root:   {'op': 'raw', 'src': 'start + 1'}
+INFO:root:   {'op': 'raw', 'src': 'fibonacci(n - 1) + fibonacci(n - 2)'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:9:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:15:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_add', 'var': 'withdrawalCounter', 'val_src': '1'}
+INFO:root:   {'op': 'require', 'cond_src': 'fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(calculatedFibNumber * 1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '3'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'fibSig', 'val_src': 'bytes4(sha3()(setFibonacci(uint256)))'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:9:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/FibonacciBalance.sol:15:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '_start'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'calculatedFibNumber', 'val_src': 'fibonacci(n)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'n == 0', 'then': [{'op': 'raw', 'src': 'start'}], 'else': [{'op': 'raw', 'src': 'n == 1'}]}
+INFO:root:   {'op': 'raw', 'src': 'start + 1'}
+INFO:root:   {'op': 'raw', 'src': 'fibonacci(n - 1) + fibonacci(n - 2)'}
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:26:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '_start'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'calculatedFibNumber', 'val_src': 'fibonacci(n)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'n == 0', 'then': [{'op': 'raw', 'src': 'start'}], 'else': [{'op': 'raw', 'src': 'n == 1'}]}
+INFO:root:   {'op': 'raw', 'src': 'start + 1'}
+INFO:root:   {'op': 'raw', 'src': 'fibonacci(n - 1) + fibonacci(n - 2)'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:26:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_add', 'var': 'withdrawalCounter', 'val_src': '1'}
+INFO:root:   {'op': 'require', 'cond_src': 'fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(calculatedFibNumber * 1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '3'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'fibSig', 'val_src': 'bytes4(sha3()(setFibonacci(uint256)))'}
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)
+   - (meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)
+   - (meta.revert_taken == false) -> (post.start >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:26:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '_start'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'calculatedFibNumber', 'val_src': 'fibonacci(n)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'n == 0', 'then': [{'op': 'raw', 'src': 'start'}], 'else': [{'op': 'raw', 'src': 'n == 1'}]}
+INFO:root:   {'op': 'raw', 'src': 'start + 1'}
+INFO:root:   {'op': 'raw', 'src': 'fibonacci(n - 1) + fibonacci(n - 2)'}
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:26:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_add', 'var': 'withdrawalCounter', 'val_src': '1'}
+INFO:root:   {'op': 'require', 'cond_src': 'fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(calculatedFibNumber * 1000000000000000000)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '3'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'fibSig', 'val_src': 'bytes4(sha3()(setFibonacci(uint256)))'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)
+   - (meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)
+   - (meta.revert_taken == false) -> (post.start >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 3 invariants from LLM.
+
+Function: withdraw  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown require cond: fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)
+  - [heuristics] unknown expr: fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)
+  - [skip] unparsed require: fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(calculatedFibNumber * 1000000000000000000)'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.start >= 0)", "status": "HOLDS"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdraw.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 3 invariants from LLM.
+
+Function: withdraw  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown require cond: fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)
+  - [heuristics] unknown expr: fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)
+  - [skip] unparsed require: fibonacciLibrary.delegatecall(fibSig,withdrawalCounter)
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(calculatedFibNumber * 1000000000000000000)'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.start >= 0)", "status": "HOLDS"}INFO:root:[FLOW1] Direct VU injection: 1 invariants -> VU files.
+
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_53e1mwfi/drop_require_1.sol --llm-invariants /tmp/inv_strength_53e1mwfi/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_53e1mwfi/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_53e1mwfi' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_53e1mwfi/drop_require_1.sol:
+/tmp/inv_strength_53e1mwfi/drop_require_1.sol:19:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/tmp/inv_strength_53e1mwfi/drop_require_1.sol:26:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '_start'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'calculatedFibNumber', 'val_src': 'fibonacci(n)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'n == 0', 'then': [{'op': 'raw', 'src': 'start'}], 'else': [{'op': 'raw', 'src': 'n == 1'}]}
+INFO:root:   {'op': 'raw', 'src': 'start + 1'}
+INFO:root:   {'op': 'raw', 'src': 'fibonacci(n - 1) + fibonacci(n - 2)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)  | reason=KeyError: "Unknown symbol 'post.withdrawalCounter'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.txt
+[ADAPTER] REJECTED invariants written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.rejected.txt
+[ADAPTER] Summary written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_53e1mwfi/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_53e1mwfi/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_53e1mwfi/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_53e1mwfi' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_53e1mwfi/plus_eq_to_minus_eq.sol:
+/tmp/inv_strength_53e1mwfi/plus_eq_to_minus_eq.sol:19:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/tmp/inv_strength_53e1mwfi/plus_eq_to_minus_eq.sol:26:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '_start'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'calculatedFibNumber', 'val_src': 'fibonacci(n)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'n == 0', 'then': [{'op': 'raw', 'src': 'start'}], 'else': [{'op': 'raw', 'src': 'n == 1'}]}
+INFO:root:   {'op': 'raw', 'src': 'start + 1'}
+INFO:root:   {'op': 'raw', 'src': 'fibonacci(n - 1) + fibonacci(n - 2)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)  | reason=KeyError: "Unknown symbol 'post.withdrawalCounter'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.txt
+[ADAPTER] REJECTED invariants written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.rejected.txt
+[ADAPTER] Summary written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /tmp/inv_strength_53e1mwfi/drop_require_2.sol --llm-invariants /tmp/inv_strength_53e1mwfi/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_53e1mwfi/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_53e1mwfi' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_53e1mwfi/drop_require_2.sol:
+/tmp/inv_strength_53e1mwfi/drop_require_2.sol:19:37: Warning: "sha3" has been deprecated in favour of "keccak256"
+    bytes4 constant fibSig = bytes4(sha3("setFibonacci(uint256)"));
+                                    ^---------------------------^
+/tmp/inv_strength_53e1mwfi/drop_require_2.sol:26:5: Warning: No visibility specified. Defaulting to "public". 
+    function withdraw() {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'start', 'val_src': '_start'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'calculatedFibNumber', 'val_src': 'fibonacci(n)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'if', 'cond_src': 'n == 0', 'then': [{'op': 'raw', 'src': 'start'}], 'else': [{'op': 'raw', 'src': 'n == 1'}]}
+INFO:root:   {'op': 'raw', 'src': 'start + 1'}
+INFO:root:   {'op': 'raw', 'src': 'fibonacci(n - 1) + fibonacci(n - 2)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)  | reason=KeyError: "Unknown symbol 'post.withdrawalCounter'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.txt
+[ADAPTER] REJECTED invariants written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.rejected.txt
+[ADAPTER] Summary written to /tmp/inv_strength_53e1mwfi/verified_invariants.global.summary.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

@@ -1,0 +1,4 @@
+Added access control to the changeOwner() function by requiring the caller to be the current owner.
+
+INVARIANTS USED:
+Access Control

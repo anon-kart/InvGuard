@@ -1,0 +1,33 @@
+{
+  "function": "initWallet",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 3,
+  "deposit_count": 2,
+  "withdraw_count": 2,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) + arg.value > select(post.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= arg.amount)",
+    "(meta.revert_taken == false) -> (creator == meta.sender)",
+    "(meta.revert_taken == false) -> (this.balance == sum(balances))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) + meta.value > select(post.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= arg.amount)",
+    "(meta.revert_taken == false) -> (creator == meta.sender)",
+    "(meta.revert_taken == false) -> (this.balance == sum(balances))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) + meta.value > select(post.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= arg.amount)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) + meta.value > select(post.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= arg.amount)"
+  ]
+}

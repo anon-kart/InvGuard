@@ -1,0 +1,7 @@
+Moved state updates (rewardsForA and claimedBonus) before the external call in getFirstWithdrawalBonus and added a reentrancy mutex (_locked) to prevent reentrancy.
+
+INVARIANTS USED:
+1) Checks-Effects-Interactions: State modifications (rewardsForA and claimedBonus) are applied before any external call, preventing an attacker from observing an inconsistent state during reentrancy.
+2) Reentrancy mutex: _locked prevents recursive entry into getFirstWithdrawalBonus, ensuring the function cannot be reentered while it is already executing.
+3) withdrawReward zeroes rewardsForA before transferring: withdrawReward sets rewardsForA[recipient] = 0 before making the external call, ensuring the balance cannot be drained multiple times in the same call.
+Together these invariants guarantee that the bonus can only be claimed once per recipient and that reentrant calls cannot exploit intermediate states to claim extra funds.

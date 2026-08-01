@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (address(this).balance == 1 ether)
+(meta.revert_taken == false) -> (isComplete() == true) -> (address(this).balance == 0)
+(meta.revert_taken == false) -> (meta.sender.balance == meta.sender.balance + 2 ether)

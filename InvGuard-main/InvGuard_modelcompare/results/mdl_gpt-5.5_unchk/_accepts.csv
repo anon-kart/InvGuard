@@ -1,0 +1,6 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+uc_keepether,withdraw,False,no_report,None,None,None,1.32
+uc_depproxy,proxy,False,no_report,None,None,None,15.07
+uc_vaultproxy1,proxy,False,no_report,None,None,None,1.32
+uc_vaultproxy2,proxy,False,no_report,None,None,None,1.37
+uc_etherget,getTokens,False,no_report,None,None,None,1.32

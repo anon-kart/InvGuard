@@ -1,0 +1,25 @@
+{
+  "function": "withdrawFunds",
+  "raw_count": 3,
+  "fixed_raw_count": 3,
+  "sanitized_count": 1,
+  "deposit_count": 1,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 1,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (_weiToWithdraw <= withdrawalLimit)",
+    "(meta.revert_taken == false) -> (now >= lastWithdrawTime[meta.sender] + 1 weeks)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (_weiToWithdraw <= withdrawalLimit)",
+    "(meta.revert_taken == false) -> (now >= lastWithdrawTime[meta.sender] + 1 weeks)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)"
+  ]
+}

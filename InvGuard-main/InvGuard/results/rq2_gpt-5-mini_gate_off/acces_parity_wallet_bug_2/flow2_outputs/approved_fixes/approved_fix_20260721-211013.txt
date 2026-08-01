@@ -1,0 +1,7 @@
+Added an authorization check at the start of initWallet to require that only the designated wallet library (_walletLibrary) can perform initialization, preventing arbitrary callers from initializing and taking over the wallet.
+
+INVARIANTS USED:
+- only_uninitialized ensures initialization can only occur when m_numOwners == 0 (contract uninitialized).
+- After initialization, m_numOwners > 0, preventing reinitialization (enforced by only_uninitialized).
+- require(msg.sender == _walletLibrary) enforces that only the authorized wallet library address can call initWallet, preventing arbitrary takeover.
+These invariants together ensure initWallet can only be executed once and only by the designated library address.

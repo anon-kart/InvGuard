@@ -1,0 +1,4 @@
+Changed WithdrawToken to require the low-level token.call to succeed so failed token transfers revert instead of being ignored.
+
+INVARIANTS USED:
+The authorization model is preserved: WithdrawToken, WitdrawTokenToHolder, and WithdrawToHolder remain protected by onlyOwner. The token transfer target, selector (transfer(address,uint256)), recipient, and amount arguments are unchanged. Existing deposit and holder-accounting logic is unchanged. The only semantic change is that a failed low-level token transfer now reverts, preventing silent failure and preserving state consistency for callers such as WitdrawTokenToHolder.

@@ -1,0 +1,33 @@
+{
+  "function": "withdraw",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 1,
+  "deposit_count": 1,
+  "withdraw_count": 1,
+  "chosen_count_before_final_fallback": 1,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.addressToStakes, arg.sender).firstStakeBlockNumber >= select(pre.addressToStakes, arg.sender).firstStakeBlockNumber)",
+    "(meta.revert_taken == false) -> (select(post.addressToStakes, arg.sender).secondStakeBlockNumber >= select(pre.addressToStakes, arg.sender).secondStakeBlockNumber)",
+    "(meta.revert_taken == false) -> (select(post.addressToStakes, arg.sender).totalStaked >= select(pre.addressToStakes, arg.sender).totalStaked)",
+    "(meta.revert_taken == false) -> (select(post.addressToStakes, arg.sender).mintBlockNumber >= select(pre.addressToStakes, arg.sender).mintBlockNumber)",
+    "(meta.revert_taken == false) -> (select(post.free0TokenIdUsed, arg.free0TokenId) == true -> select(pre.free0TokenIdUsed, arg.free0TokenId) == false)",
+    "(meta.revert_taken == false) -> (post.totalStaked == 0 -> pre.totalStaked > 0)",
+    "(meta.revert_taken == false) -> (post.totalStaked == 0 -> select(post.addressToStakes, arg.sender).totalStaked == 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.addressToStakes, meta.sender).firstStakeBlockNumber >= select(pre.addressToStakes, meta.sender).firstStakeBlockNumber)",
+    "(meta.revert_taken == false) -> (select(post.addressToStakes, meta.sender).secondStakeBlockNumber >= select(pre.addressToStakes, meta.sender).secondStakeBlockNumber)",
+    "(meta.revert_taken == false) -> (select(post.addressToStakes, meta.sender).totalStaked >= select(pre.addressToStakes, meta.sender).totalStaked)",
+    "(meta.revert_taken == false) -> (select(post.addressToStakes, meta.sender).mintBlockNumber >= select(pre.addressToStakes, meta.sender).mintBlockNumber)",
+    "(meta.revert_taken == false) -> (select(post.free0TokenIdUsed, arg.free0TokenId) == true -> select(pre.free0TokenIdUsed, arg.free0TokenId) == false)",
+    "(meta.revert_taken == false) -> (post.totalStaked == 0 -> pre.totalStaked > 0)",
+    "(meta.revert_taken == false) -> (post.totalStaked == 0 -> select(post.addressToStakes, meta.sender).totalStaked == 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalStaked == 0 -> pre.totalStaked > 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalStaked == 0 -> pre.totalStaked > 0)"
+  ]
+}

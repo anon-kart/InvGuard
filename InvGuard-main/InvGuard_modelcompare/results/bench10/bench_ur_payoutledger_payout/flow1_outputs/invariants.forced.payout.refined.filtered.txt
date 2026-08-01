@@ -1,0 +1,2 @@
+((meta.revert_taken == false)) -> ((post.totalOwed >= pre.totalOwed))
+(meta.revert_taken == false) -> (post.active == pre.active)

@@ -1,0 +1,4 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= post.MinSum) -> (select(pre.balances, meta.sender) >= pre.MinSum)

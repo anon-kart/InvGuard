@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.calculatedFibNumber == select(pre.calculatedFibNumber, post.withdrawalCounter)  # reason=Z3Exception: First argument must be a Z3 array expression

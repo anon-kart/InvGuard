@@ -1,0 +1,45 @@
+{
+  "function": "transferFrom",
+  "raw_count": 7,
+  "fixed_raw_count": 7,
+  "sanitized_count": 7,
+  "deposit_count": 7,
+  "withdraw_count": 7,
+  "chosen_count_before_final_fallback": 7,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, post.to) == select(pre.balances, post.to) + post.tokens)",
+    "(meta.revert_taken == false) -> (select(post.balances, pre.from) == select(pre.balances, pre.from) - post.tokens)",
+    "(meta.revert_taken == false) -> (select(post.balances, post.to) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, pre.from) >= 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, post.to) == select(pre.balances, post.to) + post.tokens)",
+    "(meta.revert_taken == false) -> (select(post.balances, pre.from) == select(pre.balances, pre.from) - post.tokens)",
+    "(meta.revert_taken == false) -> (select(post.balances, post.to) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, pre.from) >= 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, post.to) == select(pre.balances, post.to) + post.tokens)",
+    "(meta.revert_taken == false) -> (select(post.balances, pre.from) == select(pre.balances, pre.from) - post.tokens)",
+    "(meta.revert_taken == false) -> (select(post.balances, post.to) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, pre.from) >= 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post._totalSupply == pre._totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, post.to) == select(pre.balances, post.to) + post.tokens)",
+    "(meta.revert_taken == false) -> (select(post.balances, pre.from) == select(pre.balances, pre.from) - post.tokens)",
+    "(meta.revert_taken == false) -> (select(post.balances, post.to) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances, pre.from) >= 0)"
+  ]
+}

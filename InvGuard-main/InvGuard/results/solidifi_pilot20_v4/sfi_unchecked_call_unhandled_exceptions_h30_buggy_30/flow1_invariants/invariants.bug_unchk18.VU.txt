@@ -1,0 +1,2 @@
+# VERIFIED-USEFUL (constraints for Flow-2)
+(meta.revert_taken == false) -> (post.receivers_unchk18 >= pre.receivers_unchk18)

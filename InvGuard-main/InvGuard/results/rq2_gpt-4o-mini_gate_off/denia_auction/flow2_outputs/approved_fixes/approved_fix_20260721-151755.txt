@@ -1,0 +1,4 @@
+Converted the bid function to a pull-payment pattern by recording amounts owed and allowing users to withdraw their funds instead of pushing payments directly.
+
+INVARIANTS USED:
+Pull-payment pattern to prevent denial of service attacks.

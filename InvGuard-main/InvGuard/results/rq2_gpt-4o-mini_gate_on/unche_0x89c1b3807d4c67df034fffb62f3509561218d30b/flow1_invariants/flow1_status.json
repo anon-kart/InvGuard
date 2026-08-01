@@ -1,0 +1,7 @@
+{
+  "verified_useful_count": 7,
+  "flow2_invariant_guided_enabled": true,
+  "verified_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt",
+  "verified_invariants_all_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.all.txt",
+  "policy": "fail_closed: Flow-2 receives only verified-useful invariants; unknown/trusted/unsound/rejected/trivial invariants are excluded"
+}

@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.c == pre.c)  # reason=KeyError: "Unknown symbol 'post.c'"

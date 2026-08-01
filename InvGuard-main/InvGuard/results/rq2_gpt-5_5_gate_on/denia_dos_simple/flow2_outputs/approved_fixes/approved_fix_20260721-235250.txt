@@ -1,0 +1,4 @@
+Replaced the gas-heavy repeated address push loop in ifillArray with bounded per-caller pull-payment accounting, and added a withdrawal function that clears the caller's balance before transferring funds.
+
+INVARIANTS USED:
+ifillArray executes in bounded gas with no unbounded/large storage-writing loop; each caller's pendingPayments balance is updated independently; withdrawPayments only transfers the caller's recorded amount; state is set to zero before the external transfer to preserve checks-effects-interactions and prevent reentrancy double-withdrawal; arithmetic increase is guarded against overflow.

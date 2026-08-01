@@ -1,0 +1,416 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/reentrancy/etherstore.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'require', 'cond_src': '_weiToWithdraw <= withdrawalLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+   - (select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | arg._weiToWithdraw=2787593149816327892691964784081045188247552, arg.now=115792089237316195423570985008687907853269984665640564039457584007913129639935, balances=K(BitVec(160),
+  115792089237316195422786347291764572757790510987739605737444789577355125325824), balances1=Store(K(BitVec(160),
+        115792089237316195422786347291764572757790510987739605737444789577355125325824),
+      0,
+      115792089237316195422786347291764569970197361171411713045480005496309937078272), lastWithdrawTime=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129035135)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'require', 'cond_src': '_weiToWithdraw <= withdrawalLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+   - (select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | arg._weiToWithdraw=2787593149816327892691964784081045188247552, arg.now=115792089237316195423570985008687907853269984665640564039457584007913129639935, balances=K(BitVec(160),
+  115792089237316195422786347291764572757790510987739605737444789577355125325824), balances1=Store(K(BitVec(160),
+        115792089237316195422786347291764572757790510987739605737444789577355125325824),
+      0,
+      115792089237316195422786347291764569970197361171411713045480005496309937078272), lastWithdrawTime=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129035135)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: withdrawFunds  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown require cond: )
+  - [heuristics] unknown expr: )
+  - [skip] unparsed require: meta.sender.call.value(_weiToWithdraw)()
+  - [heuristics] unknown expr: now
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "model": {"arg._weiToWithdraw": "2787593149816327892691964784081045188247552", "arg.now": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "balances": "K(BitVec(160),\n  115792089237316195422786347291764572757790510987739605737444789577355125325824)", "balances1": "Store(K(BitVec(160),\n        115792089237316195422786347291764572757790510987739605737444789577355125325824),\n      0,\n      115792089237316195422786347291764569970197361171411713045480005496309937078272)", "lastWithdrawTime": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129035135)", "lastWithdrawTime1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129035135)", "meta.revert_taken": "False", "meta.sender": "0", "withdrawalLimit": "2787593149816327892691964784081045188247552", "withdrawalLimit1": "2787593149816327892691964784081045188247552"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)", "status": "HOLDS"}
+{"idx": 4, "inv": "(select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)", "status": "HOLDS"}INFO:root:[FLOW1] Failed invariants detected for withdrawFunds — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.refined.filtered.txt
+INFO:root:[FLOW1] Failed invariants detected for withdrawFunds — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: withdrawFunds  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown require cond: )
+  - [heuristics] unknown expr: )
+  - [skip] unparsed require: meta.sender.call.value(_weiToWithdraw)()
+  - [heuristics] unknown expr: now
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "model": {"arg._weiToWithdraw": "2787593149816327892691964784081045188247552", "arg.now": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "balances": "K(BitVec(160),\n  115792089237316195422786347291764572757790510987739605737444789577355125325824)", "balances1": "Store(K(BitVec(160),\n        115792089237316195422786347291764572757790510987739605737444789577355125325824),\n      0,\n      115792089237316195422786347291764569970197361171411713045480005496309937078272)", "lastWithdrawTime": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129035135)", "lastWithdrawTime1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129035135)", "meta.revert_taken": "False", "meta.sender": "0", "withdrawalLimit": "2787593149816327892691964784081045188247552", "withdrawalLimit1": "2787593149816327892691964784081045188247552"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)", "status": "HOLDS"}
+{"idx": 4, "inv": "(select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)", "status": "HOLDS"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'require', 'cond_src': '_weiToWithdraw <= withdrawalLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | arg._weiToWithdraw=2787593149816327892691964784081045188247552, arg.now=115792089237316195423570985008687907853269984665640564039457584007913129639935, balances=K(BitVec(160),
+  115792089237316195422786347291764572757790510987739605737444789577355125325824), balances1=Store(K(BitVec(160),
+        115792089237316195422786347291764572757790510987739605737444789577355125325824),
+      0,
+      115792089237316195422786347291764569970197361171411713045480005496309937078272), lastWithdrawTime=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129035135)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds.summary.json
+
+[FLOW1] Checker report after refinement (withdrawFunds, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 3 invariants from LLM.
+
+Function: withdrawFunds  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown require cond: )
+  - [heuristics] unknown expr: )
+  - [skip] unparsed require: meta.sender.call.value(_weiToWithdraw)()
+  - [heuristics] unknown expr: now
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)))", "model": {"arg._weiToWithdraw": "2787593149816327892691964784081045188247552", "arg.now": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "balances": "K(BitVec(160),\n  115792089237316195422786347291764572757790510987739605737444789577355125325824)", "balances1": "Store(K(BitVec(160),\n        115792089237316195422786347291764572757790510987739605737444789577355125325824),\n      0,\n      115792089237316195422786347291764569970197361171411713045480005496309937078272)", "lastWithdrawTime": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129035135)", "lastWithdrawTime1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129035135)", "meta.revert_taken": "False", "meta.sender": "0", "withdrawalLimit": "2787593149816327892691964784081045188247552", "withdrawalLimit1": "2787593149816327892691964784081045188247552"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)", "status": "HOLDS"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'require', 'cond_src': '_weiToWithdraw <= withdrawalLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | arg._weiToWithdraw=2787593149816327892691964784081045188247552, arg.now=115792089237316195423570985008687907853269984665640564039457584007913129639935, balances=K(BitVec(160),
+  115792089237316195422786347291764572757790510987739605737444789577355125325824), balances1=Store(K(BitVec(160),
+        115792089237316195422786347291764572757790510987739605737444789577355125325824),
+      0,
+      115792089237316195422786347291764569970197361171411713045480005496309937078272), lastWithdrawTime=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129035135)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds.summary.json
+
+[FLOW1] Checker report after refinement (withdrawFunds, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 3 invariants from LLM.
+
+Function: withdrawFunds  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown require cond: )
+  - [heuristics] unknown expr: )
+  - [skip] unparsed require: meta.sender.call.value(_weiToWithdraw)()
+  - [heuristics] unknown expr: now
+  - [skip] unparsed store_map: {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((select(post.balances, meta.sender) >= select(pre.balances, meta.sender)))", "model": {"arg._weiToWithdraw": "2787593149816327892691964784081045188247552", "arg.now": "115792089237316195423570985008687907853269984665640564039457584007913129639935", "balances": "K(BitVec(160),\n  115792089237316195422786347291764572757790510987739605737444789577355125325824)", "balances1": "Store(K(BitVec(160),\n        115792089237316195422786347291764572757790510987739605737444789577355125325824),\n      0,\n      115792089237316195422786347291764569970197361171411713045480005496309937078272)", "lastWithdrawTime": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129035135)", "lastWithdrawTime1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129035135)", "meta.revert_taken": "False", "meta.sender": "0", "withdrawalLimit": "2787593149816327892691964784081045188247552", "withdrawalLimit1": "2787593149816327892691964784081045188247552"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)", "status": "HOLDS"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_i9goiu52/drop_require_1.sol --llm-invariants /tmp/inv_strength_i9goiu52/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_i9goiu52/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_i9goiu52' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_weiToWithdraw <= withdrawalLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+   - (select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_i9goiu52/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_i9goiu52/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_i9goiu52/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_i9goiu52/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_i9goiu52/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_i9goiu52' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) > _weiToWithdraw'}
+INFO:root:   {'op': 'require', 'cond_src': '_weiToWithdraw <= withdrawalLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+   - (select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_i9goiu52/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_i9goiu52/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_i9goiu52/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_i9goiu52/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_i9goiu52/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_i9goiu52' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'require', 'cond_src': '_weiToWithdraw <= withdrawalLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+   - (select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_i9goiu52/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_i9goiu52/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_i9goiu52/minus_eq_to_plus_eq.sol --llm-invariants /tmp/inv_strength_i9goiu52/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_i9goiu52/minus_eq_to_plus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_i9goiu52' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'require', 'cond_src': '_weiToWithdraw <= withdrawalLimit'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+   - (select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_i9goiu52/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_i9goiu52/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_i9goiu52/drop_require_2.sol --llm-invariants /tmp/inv_strength_i9goiu52/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_i9goiu52/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_i9goiu52' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'map_add', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': 'meta.value'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balances, meta.sender) >= _weiToWithdraw'}
+INFO:root:   {'op': 'require', 'cond_src': 'now >= select(lastWithdrawTime, meta.sender) + 604800'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender.call.value(_weiToWithdraw)()'}
+INFO:root:   {'op': 'map_sub', 'map': 'balances', 'key_src': 'meta.sender', 'val_src': '_weiToWithdraw'}
+INFO:root:   {'op': 'store_map', 'var': 'lastWithdrawTime', 'key_src': 'meta.sender', 'val_src': 'now'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'withdrawalLimit', 'val_src': '1000000000000000000'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+   - (meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)
+   - (select(pre.balances, meta.sender) >= 0) -> (select(post.balances, meta.sender) >= 0)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_i9goiu52/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_i9goiu52/verified_invariants.global.summary.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

@@ -1,0 +1,8 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.payedOut_unchk45 == pre.payedOut_unchk45 || (post.payedOut_unchk45 == true && pre.payedOut_unchk45 == false)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.payedOut_unchk8 == pre.payedOut_unchk8 || (post.payedOut_unchk8 == true && pre.payedOut_unchk8 == false)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.payedOut_unchk44 == pre.payedOut_unchk44 || (post.payedOut_unchk44 == true && pre.payedOut_unchk44 == false)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.payedOut_unchk33 == pre.payedOut_unchk33 || (post.payedOut_unchk33 == true && pre.payedOut_unchk33 == false)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).

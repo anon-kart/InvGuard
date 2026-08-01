@@ -1,0 +1,130 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+WARNING:root:[FLOW1] No function-specific invariants for settle; falling back to all sanitized invariants.
+WARNING:root:[FLOW1] Sanitizer removed all invariants for settle; NOT falling back to raw invariants. Using safe deterministic invariants only.
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+WARNING:root:[FLOW1] No function-specific invariants for settle; falling back to all sanitized invariants.
+WARNING:root:[FLOW1] Sanitizer removed all invariants for settle; NOT falling back to raw invariants. Using safe deterministic invariants only.
+[DEBUG] contract_on_disk = /home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/old_blockhash.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f settle --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.settle.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(guesses, meta.sender).block == 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value == 1000000000000000000'}
+INFO:root:   {'op': 'raw', 'src': 'select(guesses, meta.sender).guess = hash'}
+INFO:root:   {'op': 'raw', 'src': 'select(guesses, meta.sender).block = block.number + 1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'block.number > select(guesses, meta.sender).block'}
+INFO:root:   {'op': 'store', 'var': 'answer', 'val_src': 'blockhash(uint256)(select(guesses, meta.sender).block)'}
+INFO:root:   {'op': 'raw', 'src': 'select(guesses, meta.sender).block = 0'}
+INFO:root:   {'op': 'raw', 'src': 'select(guesses, meta.sender).guess == answer'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(2000000000000000000)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  | reason=KeyError: "Unknown symbol 'post.feeBps'"
+   - (meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  | reason=KeyError: "Unknown symbol 'post.maxWithdrawBps'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.settle.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.settle.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.settle.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f settle --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.settle.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(guesses, meta.sender).block == 0'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.value == 1000000000000000000'}
+INFO:root:   {'op': 'raw', 'src': 'select(guesses, meta.sender).guess = hash'}
+INFO:root:   {'op': 'raw', 'src': 'select(guesses, meta.sender).block = block.number + 1'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'block.number > select(guesses, meta.sender).block'}
+INFO:root:   {'op': 'store', 'var': 'answer', 'val_src': 'blockhash(uint256)(select(guesses, meta.sender).block)'}
+INFO:root:   {'op': 'raw', 'src': 'select(guesses, meta.sender).block = 0'}
+INFO:root:   {'op': 'raw', 'src': 'select(guesses, meta.sender).guess == answer'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(2000000000000000000)'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.feeBps == pre.feeBps)  | reason=KeyError: "Unknown symbol 'post.feeBps'"
+   - (meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)  | reason=KeyError: "Unknown symbol 'post.maxWithdrawBps'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.settle.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.settle.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.settle.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f settle --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.settle.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: settle  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: blockhash(uint256)(select(guesses, meta.sender).block)
+  - [tmp] created local answer: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': 'answer', 'val_src': 'blockhash(uint256)(select(guesses, meta.sender).block)'}
+  - [raw] select(guesses, meta.sender).block = 0
+  - [raw] select(guesses, meta.sender).guess == answer
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(2000000000000000000)'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)", "reason": "KeyError: \"Unknown symbol 'post.feeBps'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)", "reason": "KeyError: \"Unknown symbol 'post.maxWithdrawBps'\"", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f settle --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.settle.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 2 invariants from LLM.
+
+Function: settle  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: blockhash(uint256)(select(guesses, meta.sender).block)
+  - [tmp] created local answer: BitVec256
+  - [skip] unparsed store: {'op': 'store', 'var': 'answer', 'val_src': 'blockhash(uint256)(select(guesses, meta.sender).block)'}
+  - [raw] select(guesses, meta.sender).block = 0
+  - [raw] select(guesses, meta.sender).guess == answer
+  - [heuristics] unknown expr: msg
+  - [skip] unparsed external_call: {'op': 'external_call', 'kind': 'high_level', 'target_src': 'msg', 'value_src': '0', 'args_src': 'msg.sender.transfer(2000000000000000000)'}
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)", "reason": "KeyError: \"Unknown symbol 'post.feeBps'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)", "reason": "KeyError: \"Unknown symbol 'post.maxWithdrawBps'\"", "status": "REJECTED_UNSUPPORTED"}WARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ⚠️ No verified-useful invariants for Flow-2. Invariant-guided Flow-2 must be disabled or run in explicit contract-only mode.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

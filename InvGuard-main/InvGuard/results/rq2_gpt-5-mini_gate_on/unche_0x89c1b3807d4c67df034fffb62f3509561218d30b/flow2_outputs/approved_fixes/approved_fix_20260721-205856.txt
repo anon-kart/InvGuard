@@ -1,0 +1,4 @@
+Changed all low-level transfers and calls in deliver() to require success (replacing unchecked .send/.call with require(...) wrappers) so failures revert instead of being ignored.
+
+INVARIANTS USED:
+1) All external transfer/calls in deliver() must succeed or the transaction reverts (no silent failure of .send/.call). 2) unrespondedCnt is decremented only when request fee is set to DELIVERED_FEE_FLAG to keep state consistent. 3) Only SGX_ADDRESS can call deliver(). 4) externalCallFlag is set during external calls to prevent reentrancy where intended.

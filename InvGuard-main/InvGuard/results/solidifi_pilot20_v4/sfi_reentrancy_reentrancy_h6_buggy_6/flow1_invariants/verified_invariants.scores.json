@@ -1,0 +1,59 @@
+{
+  "strong": [
+    "meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) == (select(pre.balances_re_ent1, meta.sender) + meta.value)",
+    "meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)"
+  ],
+  "medium": [],
+  "useful": [
+    "meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) == (select(pre.balances_re_ent1, meta.sender) + meta.value)",
+    "meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)"
+  ],
+  "weak": [
+    "meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) <= (select(pre.balances_re_ent1, meta.sender) + meta.value)"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) <= (select(pre.balances_re_ent1, meta.sender) + meta.value)",
+      "killed": 0,
+      "mutants_ran": 1,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) == (select(pre.balances_re_ent1, meta.sender) + meta.value)",
+      "killed": 1,
+      "mutants_ran": 1,
+      "kill_rate": 1.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 1.0,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances_re_ent1, meta.sender) >= select(pre.balances_re_ent1, meta.sender)",
+      "killed": 1,
+      "mutants_ran": 1,
+      "kill_rate": 1.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 1.0,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

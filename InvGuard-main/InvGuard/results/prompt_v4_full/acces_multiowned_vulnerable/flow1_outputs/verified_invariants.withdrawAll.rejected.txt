@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (arg._owner != 0)  # reason=KeyError: "Unknown symbol 'arg.arg.owner'"

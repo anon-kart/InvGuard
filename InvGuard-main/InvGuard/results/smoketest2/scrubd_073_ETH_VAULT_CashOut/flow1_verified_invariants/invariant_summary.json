@@ -1,0 +1,25 @@
+{
+  "VU": {
+    "count": 3,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)",
+      "(meta.revert_taken == false) -> (post.TransferLog == pre.TransferLog)"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg._am))"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

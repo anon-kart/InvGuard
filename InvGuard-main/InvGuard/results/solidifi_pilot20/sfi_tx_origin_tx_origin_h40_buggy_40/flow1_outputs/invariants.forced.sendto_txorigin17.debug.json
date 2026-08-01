@@ -1,0 +1,29 @@
+{
+  "function": "sendto_txorigin17",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 2,
+  "deposit_count": 0,
+  "withdraw_count": 2,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (_totalSupply >= 0)",
+    "(meta.revert_taken == false) -> (select(post._balances, arg.account) >= 0)",
+    "(meta.revert_taken == false) -> (_totalSupply == sum(_balances))",
+    "(meta.revert_taken == false) -> (select(post._allowances, arg.owner, arg.spender) >= 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (_totalSupply >= 0)",
+    "(meta.revert_taken == false) -> (select(post._balances, arg.account) >= 0)",
+    "(meta.revert_taken == false) -> (_totalSupply == sum(_balances))",
+    "(meta.revert_taken == false) -> (select(post._allowances, arg.owner, arg.spender) >= 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post._balances, arg.account) >= 0)",
+    "(meta.revert_taken == false) -> (select(post._allowances, arg.owner, arg.spender) >= 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post._balances, arg.account) >= 0)",
+    "(meta.revert_taken == false) -> (select(post._allowances, arg.owner, arg.spender) >= 0)"
+  ]
+}

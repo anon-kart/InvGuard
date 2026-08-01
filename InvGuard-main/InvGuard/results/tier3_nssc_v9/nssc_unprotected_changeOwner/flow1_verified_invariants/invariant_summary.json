@@ -1,0 +1,29 @@
+{
+  "VU": {
+    "count": 6,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (post.owner != pre.owner) -> (select(post.balances, pre.owner) == select(pre.balances, pre.owner))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 3,
+    "examples": [
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))",
+      "(meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender))"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

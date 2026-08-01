@@ -1,0 +1,6 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)  # reason=KeyError: "Unknown symbol 'post.requestCnt'"
+(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)  # reason=KeyError: "Unknown symbol 'post.unrespondedCnt'"
+(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)  # reason=KeyError: "Unknown symbol 'post.killswitch'"
+(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)  # reason=KeyError: "Unknown symbol 'post.newVersion'"
+(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)  # reason=KeyError: "Unknown symbol 'post.CANCELLATION_FEE'"

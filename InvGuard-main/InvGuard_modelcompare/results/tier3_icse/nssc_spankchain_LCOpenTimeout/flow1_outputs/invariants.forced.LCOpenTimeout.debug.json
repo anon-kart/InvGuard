@@ -1,0 +1,30 @@
+{
+  "function": "LCOpenTimeout",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 0,
+  "deposit_count": 0,
+  "withdraw_count": 0,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(Channels[arg._lcID].ethBalanceA, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].isOpen == true) -> (Channels[arg._lcID].ethBalanceA == pre.ethBalanceA)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].isOpen == false) -> (Channels[arg._lcID].ethBalanceA == 0)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].LCopenTimeout >= block.timestamp)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].partyA == meta.sender)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].isOpen == true) -> (Channels[arg._lcID].LCopenTimeout == block.timestamp)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(Channels[arg._lcID].ethBalanceA, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].isOpen == true) -> (Channels[arg._lcID].ethBalanceA == pre.ethBalanceA)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].isOpen == false) -> (Channels[arg._lcID].ethBalanceA == 0)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].LCopenTimeout >= block.timestamp)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].partyA == meta.sender)",
+    "(meta.revert_taken == false) -> (Channels[arg._lcID].isOpen == true) -> (Channels[arg._lcID].LCopenTimeout == block.timestamp)"
+  ],
+  "sanitized": [],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.feeBps == pre.feeBps)",
+    "(meta.revert_taken == false) -> (post.maxWithdrawBps == pre.maxWithdrawBps)"
+  ]
+}

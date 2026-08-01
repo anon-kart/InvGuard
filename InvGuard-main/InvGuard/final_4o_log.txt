@@ -1,0 +1,7 @@
+
+=== [final_4o] acces_FibonacciBalance  (tf=withdraw, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+=== [final_4o] acces_multiowned_vulnerable  (tf=withdrawAll, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+  [best-of-3] attempt 2, prev=no_report

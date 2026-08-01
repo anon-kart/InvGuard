@@ -1,0 +1,4 @@
+Replaced the unbounded address-pushing loop in ifillArray() with per-caller accounting and added a pull-based withdrawal function.
+
+INVARIANTS USED:
+Validated that ifillArray() no longer performs a gas-amplifying storage push loop; it uses constant-time per-caller accounting instead. The pending withdrawal increment includes an overflow guard compatible with Solidity 0.4.25. The withdraw() function follows checks-effects-interactions by reading the amount, requiring it to be nonzero, zeroing state before transfer, and then transferring. The function return behavior remains boolean. Note: listAddresses is no longer mutated, so the length-based branch is constant unless modified elsewhere; this preserves removal of the DoS loop but may alter original array-filling semantics.

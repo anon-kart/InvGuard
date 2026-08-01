@@ -1,0 +1,20 @@
+{
+  "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_incorrect_constructor_withdraw.sol",
+  "stem": "nssc_incorrect_constructor_withdraw",
+  "tier": "nssc_incorrect_constructor_pay",
+  "model": "gpt-4o-mini",
+  "target_function": "withdraw",
+  "extra_env": {},
+  "flow1": {
+    "returncode": 0,
+    "elapsed_sec": 31.0,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/nssc_incorrect_constructor_pay/nssc_incorrect_constructor_withdraw/flow1.log"
+  },
+  "flow2": {
+    "returncode": 0,
+    "elapsed_sec": 58.63,
+    "timed_out": false,
+    "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/nssc_incorrect_constructor_pay/nssc_incorrect_constructor_withdraw/flow2.log"
+  }
+}

@@ -1,0 +1,4 @@
+Added an access control check require(msg.sender == owner) at the start of changeOwner to restrict it to the current owner.
+
+INVARIANTS USED:
+Access-control invariant: require(msg.sender == owner) ensures only the current owner can change the owner address.

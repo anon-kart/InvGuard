@@ -1,0 +1,14 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:openai._base_client:Retrying request to /responses in 0.415179 seconds
+INFO:openai._base_client:Retrying request to /responses in 0.994720 seconds
+ERROR:openai.agents:Error getting response: Request timed out.. (request_id: None)
+WARNING:root:[FLOW1] orchestrator agent run failed (Request timed out.); the deterministic pipeline below will proceed and is authoritative.
+INFO:root:[FLOW1] agent path incomplete (contract=True, invariants=False); deterministic generation will supply/repair them.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+WARNING:root:[FLOW1] invariants.txt not found; checker cannot run.
+WARNING:root:[FLOW1] invariants.txt not found; checker cannot run.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_reentrancy_reentrancy_h1_buggy_1.sol
+[FLOW1] ❌ Skipping refinement + strength scoring due to checker infrastructure failure (non-zero exit).

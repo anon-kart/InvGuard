@@ -1,0 +1,439 @@
+mythril.mythril.mythril_config [INFO]: Creating mythril data directory 
+mythril.mythril.mythril_config [INFO]: No config file found. Creating default: /root/.mythril/config.ini 
+mythril.mythril.mythril_config [INFO]: Infura key not provided, so onchain access is disabled. Use --infura-id <INFURA_ID> or set it in the environment variable INFURA_ID or in the ~/.mythril/config.ini file 
+mythril.support.signatures [INFO]: Using signature database at /root/.mythril/signatures.db
+mythril.laser.ethereum.svm [INFO]: LASER EVM initialized with dynamic loader: <mythril.support.loader.DynLoader object at 0x73a453de0ee0>
+mythril.laser.ethereum.strategy.extensions.bounded_loops [INFO]: Loaded search strategy extension: Loop bounds (limit = 3)
+mythril.laser.plugin.loader [INFO]: Loading laser plugin: coverage
+mythril.laser.plugin.loader [INFO]: Loading laser plugin: mutation-pruner
+mythril.laser.plugin.loader [INFO]: Loading laser plugin: call-depth-limit
+mythril.laser.plugin.loader [INFO]: Loading laser plugin: instruction-profiler
+mythril.laser.plugin.loader [INFO]: Loading laser plugin: dependency-pruner
+mythril.laser.plugin.loader [INFO]: Instrumenting symbolic vm with plugin: coverage
+mythril.laser.plugin.loader [INFO]: Instrumenting symbolic vm with plugin: mutation-pruner
+mythril.laser.plugin.loader [INFO]: Instrumenting symbolic vm with plugin: call-depth-limit
+mythril.laser.plugin.loader [INFO]: Instrumenting symbolic vm with plugin: instruction-profiler
+mythril.laser.plugin.loader [INFO]: Instrumenting symbolic vm with plugin: dependency-pruner
+mythril.laser.ethereum.svm [DEBUG]: Starting LASER execution
+mythril.laser.ethereum.svm [INFO]: Starting message call transaction to 0
+mythril.laser.ethereum.svm [INFO]: Starting message call transaction, iteration: 0, 1 initial states
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 0
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 1
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 2
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLVALUE at 3
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 4
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ISZERO at 5
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 6
+mythril.analysis.module.base [DEBUG]: Entering analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPI at 7
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 8
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 11
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 9
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating POP at 12
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating REVERT at 10
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 1 from sender_1 to                                        0x0.
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 13
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATASIZE at 14
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating LT at 15
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 16
+mythril.analysis.module.base [DEBUG]: Entering analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPI at 17
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 18
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 27
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATALOAD at 19
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 28
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 20
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 29
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHR at 21
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating REVERT at 30
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 1 from sender_1 to                                        0x0.
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 22
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH4 at 23
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating EQ at 24
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 25
+mythril.analysis.module.base [DEBUG]: Entering analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPI at 26
+mythril.laser.ethereum.svm [DEBUG]: - Entering function MAIN:unknown
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 27
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 31
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 28
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 32
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 29
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 33
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating REVERT at 30
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 1 from sender_1 to                                        0x0.
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 34
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATASIZE at 35
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 36
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 37
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 38
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating LT at 39
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ISZERO at 40
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 41
+mythril.analysis.module.base [DEBUG]: Entering analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPI at 42
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 43
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 46
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 44
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating POP at 47
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating REVERT at 45
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 1 from sender_1 to                                        0x0.
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 48
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 49
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 50
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHL at 51
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 52
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 53
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATALOAD at 54
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating AND at 55
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 56
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 57
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ADD at 58
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATALOAD at 59
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 60
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMP at 61
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 80
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLER at 81
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 82
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 83
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 84
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 85
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 86
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 87
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 88
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 89
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 90
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 91
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP3 at 92
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHA3 at 93
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 94
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SLOAD at 95
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP5 at 96
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 97
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 98
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 99
+mythril.analysis.module.base [DEBUG]: Entering analysis module: ArbitraryStorage
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: ArbitraryStorage
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Entering analysis module: StateChangeAfterCall
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: StateChangeAfterCall
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SSTORE at 100
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 101
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 102
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 103
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHL at 104
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 105
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP4 at 106
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 107
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP4 at 108
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating AND at 109
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 110
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 111
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP2 at 112
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 113
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP2 at 114
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHA3 at 115
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 116
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SLOAD at 117
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 118
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP2 at 119
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ADD at 120
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 121
+mythril.analysis.module.base [DEBUG]: Entering analysis module: ArbitraryStorage
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: ArbitraryStorage
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Entering analysis module: StateChangeAfterCall
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: StateChangeAfterCall
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SSTORE at 122
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 123
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 124
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMP at 125
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 62
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 63
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 64
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MLOAD at 65
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP2 at 66
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ISZERO at 67
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ISZERO at 68
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP3 at 69
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 70
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MLOAD at 71
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 72
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 73
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 74
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 75
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 76
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ADD at 77
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 78
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.modules.integer [DEBUG]: Checking overflow in RETURN at transaction end address 105, ostate address 127
+mythril.analysis.module.modules.integer [DEBUG]: Checking overflow in RETURN at transaction end address 105, ostate address 152
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Entering analysis module: UncheckedRetval
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: UncheckedRetval
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating RETURN at 79
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 1 from sender_1 to                                        0x0.
+mythril.laser.plugin.plugins.coverage.coverage_plugin [INFO]: Number of new instructions covered in tx 0: 126
+mythril.laser.ethereum.svm [INFO]: Starting message call transaction, iteration: 1, 1 initial states
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 0
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 1
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 2
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLVALUE at 3
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 4
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ISZERO at 5
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 6
+mythril.analysis.module.base [DEBUG]: Entering analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPI at 7
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 8
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 11
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 9
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating POP at 12
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating REVERT at 10
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 2 from sender_2 to                                        0x0.
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 13
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATASIZE at 14
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating LT at 15
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 16
+mythril.analysis.module.base [DEBUG]: Entering analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPI at 17
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 18
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 27
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATALOAD at 19
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 28
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 20
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 29
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHR at 21
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating REVERT at 30
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 2 from sender_2 to                                        0x0.
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 22
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH4 at 23
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating EQ at 24
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 25
+mythril.analysis.module.base [DEBUG]: Entering analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPI at 26
+mythril.laser.ethereum.svm [DEBUG]: - Entering function MAIN:unknown
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 27
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 31
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 28
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 32
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 29
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 33
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating REVERT at 30
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 2 from sender_2 to                                        0x0.
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 34
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATASIZE at 35
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 36
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 37
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 38
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating LT at 39
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ISZERO at 40
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 41
+mythril.analysis.module.base [DEBUG]: Entering analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: TxOrigin
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPI at 42
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 43
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 46
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 44
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating POP at 47
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating REVERT at 45
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 2 from sender_2 to                                        0x0.
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 48
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 49
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 50
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHL at 51
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 52
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 53
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATALOAD at 54
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating AND at 55
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 56
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 57
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ADD at 58
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLDATALOAD at 59
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 60
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMP at 61
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 80
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating CALLER at 81
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 82
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 83
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 84
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 85
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 86
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 87
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 88
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 89
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 90
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 91
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP3 at 92
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHA3 at 93
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 94
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SLOAD at 95
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP5 at 96
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 97
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 98
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 99
+mythril.analysis.module.base [DEBUG]: Entering analysis module: ArbitraryStorage
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: ArbitraryStorage
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Entering analysis module: StateChangeAfterCall
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: StateChangeAfterCall
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SSTORE at 100
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 101
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 102
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 103
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHL at 104
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 105
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP4 at 106
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 107
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP4 at 108
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating AND at 109
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 110
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 111
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP2 at 112
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 113
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP2 at 114
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SHA3 at 115
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 116
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SLOAD at 117
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 118
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP2 at 119
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ADD at 120
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 121
+mythril.analysis.module.base [DEBUG]: Entering analysis module: ArbitraryStorage
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: ArbitraryStorage
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Entering analysis module: StateChangeAfterCall
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: StateChangeAfterCall
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SSTORE at 122
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 123
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 124
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMP at 125
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating JUMPDEST at 62
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 63
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP1 at 64
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MLOAD at 65
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP2 at 66
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ISZERO at 67
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ISZERO at 68
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP3 at 69
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MSTORE at 70
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating MLOAD at 71
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 72
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating DUP2 at 73
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 74
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SUB at 75
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating PUSH1 at 76
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating ADD at 77
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating SWAP1 at 78
+mythril.analysis.module.base [DEBUG]: Entering analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: IntegerArithmetics
+mythril.analysis.module.base [DEBUG]: Entering analysis module: UncheckedRetval
+mythril.analysis.module.base [DEBUG]: Exiting analysis module: UncheckedRetval
+mythril.laser.ethereum.instructions [DEBUG]: Evaluating RETURN at 79
+mythril.laser.ethereum.svm [DEBUG]: Ending transaction MessageCallTransaction 2 from sender_2 to                                        0x0.
+mythril.laser.plugin.plugins.coverage.coverage_plugin [INFO]: Number of new instructions covered in tx 1: 0
+mythril.laser.ethereum.svm [INFO]: Finished symbolic execution
+mythril.laser.plugin.plugins.coverage.coverage_plugin [INFO]: Achieved 89.36% coverage for code: 6080604052348015600f57600080fd5b506004361060285760003560e01c806346aa924314602d575b600080fd5b605660048036036040811015604157600080fd5b506001600160a01b038135169060200135606a565b604080519115158252519081900360200190f35b33600090815260208190526040808220805484900390556001600160a01b03939093168152919091208054909101905560019056fea265627a7a723158202a12e33af67f56f5bda6f5fceeeb8c65e561dde49c787aded4cf520583879ad964736f6c634300050c0032
+mythril.laser.plugin.plugins.instruction_profiler [INFO]: Total: 0.3681821823120117 s
+[ADD         ]   0.7149 %,  nr      6,  total   0.0026 s,  avg   0.0004 s,  min   0.0004 s,  max   0.0005 s
+[AND         ]   0.4273 %,  nr      4,  total   0.0016 s,  avg   0.0004 s,  min   0.0004 s,  max   0.0004 s
+[CALLDATALOAD]  13.8068 %,  nr      6,  total   0.0508 s,  avg   0.0085 s,  min   0.0083 s,  max   0.0086 s
+[CALLDATASIZE]   0.3946 %,  nr      4,  total   0.0015 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0004 s
+[CALLER      ]   0.1947 %,  nr      2,  total   0.0007 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0004 s
+[CALLVALUE   ]   0.2134 %,  nr      2,  total   0.0008 s,  avg   0.0004 s,  min   0.0004 s,  max   0.0004 s
+[DUP1        ]   2.4475 %,  nr     22,  total   0.0090 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0007 s
+[DUP2        ]   1.0953 %,  nr     12,  total   0.0040 s,  avg   0.0003 s,  min   0.0003 s,  max   0.0004 s
+[DUP3        ]   0.4107 %,  nr      4,  total   0.0015 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0005 s
+[DUP5        ]   0.2181 %,  nr      2,  total   0.0008 s,  avg   0.0004 s,  min   0.0004 s,  max   0.0004 s
+[EQ          ]   0.2146 %,  nr      2,  total   0.0008 s,  avg   0.0004 s,  min   0.0004 s,  max   0.0004 s
+[ISZERO      ]   1.0209 %,  nr      8,  total   0.0038 s,  avg   0.0005 s,  min   0.0004 s,  max   0.0005 s
+[JUMP        ]   0.7499 %,  nr      4,  total   0.0028 s,  avg   0.0007 s,  min   0.0006 s,  max   0.0008 s
+[JUMPDEST    ]   1.9287 %,  nr     14,  total   0.0071 s,  avg   0.0005 s,  min   0.0003 s,  max   0.0016 s
+[JUMPI       ]   2.4393 %,  nr      8,  total   0.0090 s,  avg   0.0011 s,  min   0.0011 s,  max   0.0012 s
+[LT          ]   0.4277 %,  nr      4,  total   0.0016 s,  avg   0.0004 s,  min   0.0004 s,  max   0.0004 s
+[MLOAD       ]  10.3209 %,  nr      4,  total   0.0380 s,  avg   0.0095 s,  min   0.0095 s,  max   0.0096 s
+[MSTORE      ]  26.9849 %,  nr     10,  total   0.0994 s,  avg   0.0099 s,  min   0.0062 s,  max   0.0118 s
+[POP         ]   0.3865 %,  nr      4,  total   0.0014 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0004 s
+[PUSH1       ]   6.5055 %,  nr     60,  total   0.0240 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0007 s
+[PUSH4       ]   0.1899 %,  nr      2,  total   0.0007 s,  avg   0.0003 s,  min   0.0003 s,  max   0.0004 s
+[SHA3        ]  21.9863 %,  nr      4,  total   0.0809 s,  avg   0.0202 s,  min   0.0200 s,  max   0.0206 s
+[SHL         ]   0.4109 %,  nr      4,  total   0.0015 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0004 s
+[SHR         ]   0.2249 %,  nr      2,  total   0.0008 s,  avg   0.0004 s,  min   0.0004 s,  max   0.0004 s
+[SLOAD       ]   0.7242 %,  nr      4,  total   0.0027 s,  avg   0.0007 s,  min   0.0005 s,  max   0.0011 s
+[SSTORE      ]   0.5199 %,  nr      4,  total   0.0019 s,  avg   0.0005 s,  min   0.0004 s,  max   0.0006 s
+[SUB         ]   1.3658 %,  nr     10,  total   0.0050 s,  avg   0.0005 s,  min   0.0004 s,  max   0.0012 s
+[SWAP1       ]   2.5125 %,  nr     26,  total   0.0093 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0004 s
+[SWAP2       ]   0.8119 %,  nr      8,  total   0.0030 s,  avg   0.0004 s,  min   0.0003 s,  max   0.0004 s
+[SWAP4       ]   0.3515 %,  nr      4,  total   0.0013 s,  avg   0.0003 s,  min   0.0003 s,  max   0.0003 s
+
+mythril.analysis.security [INFO]: Starting analysis
+mythril.analysis.security [DEBUG]: Retrieving results for Caller can write to arbitrary storage locations
+mythril.analysis.security [DEBUG]: Retrieving results for Delegatecall to a user-specified address
+mythril.analysis.security [DEBUG]: Retrieving results for Control flow depends on tx.origin
+mythril.analysis.security [DEBUG]: Retrieving results for Any sender can withdraw ETH from the contract account
+mythril.analysis.security [DEBUG]: Retrieving results for Integer overflow or underflow
+mythril.analysis.security [DEBUG]: Retrieving results for State change after an external call
+mythril.analysis.security [DEBUG]: Retrieving results for Contract can be accidentally killed by anyone
+mythril.analysis.security [DEBUG]: Retrieving results for Return value of an external call is not checked
+mythril.mythril.mythril_analyzer [INFO]: Solver statistics: 
+Query count: 37 
+Solver time: 0.8792686462402344
+{"error": null, "issues": [{"address": 127, "contract": "MAIN", "description": "The arithmetic operator can underflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. ", "function": "_function_0x46aa9243", "max_gas_used": 52709, "min_gas_used": 12048, "severity": "High", "sourceMap": 127, "swc-id": "101", "title": "Integer Arithmetic Bugs (subtraction)", "tx_sequence": {"initialState": {"accounts": {"0x0": {"balance": "0x0", "code": "6080604052348015600f57600080fd5b506004361060285760003560e01c806346aa924314602d575b600080fd5b605660048036036040811015604157600080fd5b506001600160a01b038135169060200135606a565b604080519115158252519081900360200190f35b33600090815260208190526040808220805484900390556001600160a01b03939093168152919091208054909101905560019056fea265627a7a723158202a12e33af67f56f5bda6f5fceeeb8c65e561dde49c787aded4cf520583879ad964736f6c634300050c0032", "nonce": 0, "storage": "{}"}, "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {"balance": "0x1", "code": "", "nonce": 0, "storage": "{}"}}}, "steps": [{"address": "0x0", "calldata": "0x46aa924301010101010101010101010100000000000000010000000000000000000002000101010101010101010102010101010101010101010101010101010101010101", "input": "0x46aa924301010101010101010101010100000000000000010000000000000000000002000101010101010101010102010101010101010101010101010101010101010101", "name": "unknown", "origin": "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef", "value": "0x0"}]}}, {"address": 152, "contract": "MAIN", "description": "The arithmetic operator can overflow.\nIt is possible to cause an integer overflow or underflow in the arithmetic operation. ", "function": "_function_0x46aa9243", "max_gas_used": 52709, "min_gas_used": 12048, "severity": "High", "sourceMap": 152, "swc-id": "101", "title": "Integer Arithmetic Bugs (addition)", "tx_sequence": {"initialState": {"accounts": {"0x0": {"balance": "0x0", "code": "6080604052348015600f57600080fd5b506004361060285760003560e01c806346aa924314602d575b600080fd5b605660048036036040811015604157600080fd5b506001600160a01b038135169060200135606a565b604080519115158252519081900360200190f35b33600090815260208190526040808220805484900390556001600160a01b03939093168152919091208054909101905560019056fea265627a7a723158202a12e33af67f56f5bda6f5fceeeb8c65e561dde49c787aded4cf520583879ad964736f6c634300050c0032", "nonce": 0, "storage": "{}"}, "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef": {"balance": "0x0", "code": "", "nonce": 0, "storage": "{}"}}}, "steps": [{"address": "0x0", "calldata": "0x46aa9243000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffebcc71a7952fee98dd7c6f96dfa9ff47e2ae7afeaaa5384bf8eb4cc0000000000", "input": "0x46aa9243000000000000000000000000affeaffeaffeaffeaffeaffeaffeaffeaffeaffebcc71a7952fee98dd7c6f96dfa9ff47e2ae7afeaaa5384bf8eb4cc0000000000", "name": "unknown", "origin": "0xaffeaffeaffeaffeaffeaffeaffeaffeaffeaffe", "value": "0x0"}]}}], "success": true}

@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (creditorAddresses.length > 1500 -> win == true)
+(meta.revert_taken == false) -> (creditorAddresses.length <= 1500 -> win == false)
+(meta.revert_taken == false) -> (iWin() == win)
+(meta.revert_taken == false) -> (numberCreditors() == creditorAddresses.length)

@@ -1,0 +1,411 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/bench_to_guardedwallet_send.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f send --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == (select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount)  | arg.amount=1, arg.dest=1, backup=0, backup1=0, holder=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+   - (meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + pre.vaultBalance() - arg.amount)  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f send --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == (select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount)  | arg.amount=1, arg.dest=1, backup=0, backup1=0, holder=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+   - (meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + pre.vaultBalance() - arg.amount)  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f send --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: send  (invariants: LLM-translated)
+Notes:
+  - [raw] Sent(dest,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == (select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount))", "model": {"arg.amount": "1", "arg.dest": "1", "backup": "0", "backup1": "0", "holder": "0", "holder1": "0", "meta.contract_balance": "1", "meta.revert_taken": "False", "meta.sender": "0", "sendCount": "57896044618658097711785492504343953926634992332820282019728792003956564819967", "sendCount1": "57896044618658097711785492504343953926634992332820282019728792003956564819968", "sentTo": "Store(K(BitVec(160), 0),\n      1,\n      57896044618658097711785492504343953926634992332820282019728792003956564819967)", "sentTo1": "Store(K(BitVec(160), 0),\n      1,\n      57896044618658097711785492504343953926634992332820282019728792003956564819968)"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.holder == pre.holder)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + pre.vaultBalance() - arg.amount))", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}INFO:root:[FLOW1] Failed invariants detected for send — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.refined.filtered.txt
+INFO:root:[FLOW1] Failed invariants detected for send — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.refined.filtered.txt
+
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f send --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: send  (invariants: LLM-translated)
+Notes:
+  - [raw] Sent(dest,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.sentTo, meta.sender) == (select(pre.sentTo, meta.sender) + (post.sendCount - pre.sendCount) * arg.amount))", "model": {"arg.amount": "1", "arg.dest": "1", "backup": "0", "backup1": "0", "holder": "0", "holder1": "0", "meta.contract_balance": "1", "meta.revert_taken": "False", "meta.sender": "0", "sendCount": "57896044618658097711785492504343953926634992332820282019728792003956564819967", "sendCount1": "57896044618658097711785492504343953926634992332820282019728792003956564819968", "sentTo": "Store(K(BitVec(160), 0),\n      1,\n      57896044618658097711785492504343953926634992332820282019728792003956564819967)", "sentTo1": "Store(K(BitVec(160), 0),\n      1,\n      57896044618658097711785492504343953926634992332820282019728792003956564819968)"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.holder == pre.holder)", "status": "HOLDS"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + pre.vaultBalance() - arg.amount))", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f send --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.summary.json
+
+[FLOW1] Checker report after refinement (send, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f send --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 3 invariants from LLM.
+
+Function: send  (invariants: LLM-translated)
+Notes:
+  - [raw] Sent(dest,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.holder == pre.holder)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f send --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance()  | reason=KeyError: "Unknown symbol 'post.vaultBalance()'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.send.summary.json
+
+[FLOW1] Checker report after refinement (send, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f send --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.send.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 3 invariants from LLM.
+
+Function: send  (invariants: LLM-translated)
+Notes:
+  - [raw] Sent(dest,amount)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.holder == pre.holder)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())", "reason": "KeyError: \"Unknown symbol 'post.vaultBalance()'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_zhkd6az3/drop_require_1.sol --llm-invariants /tmp/inv_strength_zhkd6az3/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_zhkd6az3/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_zhkd6az3' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_zhkd6az3/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_zhkd6az3/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_zhkd6az3/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_zhkd6az3' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance > amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_zhkd6az3/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_zhkd6az3/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_zhkd6az3/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_zhkd6az3' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'map_sub', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_zhkd6az3/drop_require_ok.sol --llm-invariants /tmp/inv_strength_zhkd6az3/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_zhkd6az3/drop_require_ok.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_zhkd6az3' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_zhkd6az3/drop_require_ok.sol:
+Warning: Unused local variable.
+  --> /tmp/inv_strength_zhkd6az3/drop_require_ok.sol:25:10:
+   |
+25 |         (bool ok, ) = dest.call{value: amount}("");
+   |          ^^^^^^^
+
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'require', 'cond_src': 'meta.contract_balance >= amount'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_zhkd6az3/drop_require_2.sol --llm-invariants /tmp/inv_strength_zhkd6az3/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_zhkd6az3/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes --allow-paths .,/tmp/inv_strength_zhkd6az3' running
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'external_call', 'kind': 'call', 'target_src': 'dest', 'value_src': 'amount', 'args_src': '', 'ok_var': 'ok'}
+INFO:root:   {'op': 'require', 'cond_src': 'ok'}
+INFO:root:   {'op': 'map_add', 'map': 'sentTo', 'key_src': 'dest', 'val_src': 'amount'}
+INFO:root:   {'op': 'store_add', 'var': 'sendCount', 'val_src': '1'}
+INFO:root:   {'op': 'raw', 'src': 'Sent(dest,amount)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': 'meta.contract_balance'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'meta.sender == holder'}
+INFO:root:   {'op': 'store', 'var': 'backup', 'val_src': 'b'}
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+   - (meta.revert_taken == false) -> (post.holder == pre.holder)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.txt
+[ADAPTER] Summary written to /tmp/inv_strength_zhkd6az3/verified_invariants.global.summary.json
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

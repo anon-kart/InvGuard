@@ -1,0 +1,9 @@
+{
+    "Reentrancy": [],
+    "IntegerBugs": [],
+    "UnhandledExceptions": [
+        {
+            "offset": 112
+        }
+    ]
+}

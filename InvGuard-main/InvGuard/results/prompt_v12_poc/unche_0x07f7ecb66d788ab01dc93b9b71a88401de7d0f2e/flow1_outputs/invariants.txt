@@ -1,0 +1,8 @@
+(meta.revert_taken == false) -> (totalDonated >= pre.totalDonated)
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender))
+(meta.revert_taken == false) -> (post.betLimit > 0)
+(meta.revert_taken == false) -> (post.difficulty > 0)
+(meta.revert_taken == false) -> (post.openToPublic == true || post.openToPublic == false)
+(meta.revert_taken == false) -> (whale != address(0))
+(meta.revert_taken == false) -> (owner != address(0))

@@ -1,0 +1,49 @@
+{
+  "function": "withdraw_balances_re_ent8",
+  "raw_count": 8,
+  "fixed_raw_count": 8,
+  "sanitized_count": 8,
+  "deposit_count": 8,
+  "withdraw_count": 8,
+  "chosen_count_before_final_fallback": 8,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) >= select(pre.balances_re_ent38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) <= select(pre.balances_re_ent38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) <= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) <= select(pre.balances_re_ent36, meta.sender))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) >= select(pre.balances_re_ent38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) <= select(pre.balances_re_ent38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) <= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) <= select(pre.balances_re_ent36, meta.sender))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) >= select(pre.balances_re_ent38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) <= select(pre.balances_re_ent38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) <= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) <= select(pre.balances_re_ent36, meta.sender))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) >= select(pre.balances_re_ent38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender))",
+    "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent38, meta.sender) <= select(pre.balances_re_ent38, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) <= select(pre.balances_re_ent31, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) <= select(pre.balances_re_ent36, meta.sender))"
+  ]
+}

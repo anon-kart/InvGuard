@@ -1,0 +1,7 @@
+(meta.revert_taken == false) -> (post.receivers_unchk30 >= pre.receivers_unchk30)
+(meta.revert_taken == false) -> (post.receivers_unchk30 <= pre.receivers_unchk30)
+(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 + 1)
+(meta.revert_taken == false) -> (post.receivers_unchk30 == pre.receivers_unchk30 - 1)
+(meta.revert_taken == false) -> (post.receivers_unchk30 != pre.receivers_unchk30)
+(meta.revert_taken == false) -> (post.receivers_unchk30 > pre.receivers_unchk30)
+(meta.revert_taken == false) -> (post.receivers_unchk30 < pre.receivers_unchk30)

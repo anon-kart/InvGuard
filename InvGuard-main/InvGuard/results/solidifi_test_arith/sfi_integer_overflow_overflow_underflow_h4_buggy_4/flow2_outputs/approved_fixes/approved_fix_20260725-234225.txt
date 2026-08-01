@@ -1,0 +1,4 @@
+Removed unchecked arithmetic by ensuring the sender's balance is greater than or equal to the value before subtraction.
+
+INVARIANTS USED:
+Require statement to check balance before transfer.

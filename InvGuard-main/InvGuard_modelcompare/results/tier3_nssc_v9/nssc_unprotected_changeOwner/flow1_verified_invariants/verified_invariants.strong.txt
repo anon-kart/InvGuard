@@ -1,0 +1,6 @@
+# STRONG VERIFIED-USEFUL INVARIANTS
+meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+meta.revert_taken == false) -> (post.owner == pre.owner) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender)
+meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) - meta.value) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)

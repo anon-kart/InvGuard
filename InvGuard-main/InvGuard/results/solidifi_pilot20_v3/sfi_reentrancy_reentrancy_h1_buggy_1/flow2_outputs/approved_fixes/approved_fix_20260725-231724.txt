@@ -1,0 +1,4 @@
+Applied Checks-Effects-Interactions pattern by moving state updates before the external call and added a require statement for transfer success.
+
+INVARIANTS USED:
+Checks-Effects-Interactions pattern

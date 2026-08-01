@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract BonusVault {
+    mapping(address => uint256) public points;
+    mapping(address => bool) public enrolled;
+    uint256 public totalPoints;
+    address public admin;
+    uint256 public cap;
+
+    event Registered(address indexed who);
+    event BonusAdded(address indexed who, uint256 bonus);
+
+    constructor(uint256 _cap) {
+        admin = msg.sender;
+        cap = _cap;
+    }
+
+    function register() external {
+        require(!enrolled[msg.sender], "already");
+        enrolled[msg.sender] = true;
+        points[msg.sender] = 1;
+        emit Registered(msg.sender);
+    }
+
+    function addBonus(uint256 bonus) external {
+        require(enrolled[msg.sender], "not enrolled");
+        unchecked {
+            points[msg.sender] += bonus;
+        }
+        emit BonusAdded(msg.sender, bonus);
+    }
+
+    function pointsOf(address who) external view returns (uint256) {
+        return points[who];
+    }
+
+    function setCap(uint256 c) external {
+        require(msg.sender == admin, "not admin");
+        cap = c;
+    }
+}

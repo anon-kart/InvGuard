@@ -1,0 +1,25 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../sb-heists/smartbugs-curated/0.4.x/contracts/dataset/denial_of_service/dos_address.sol
+WARNING:root:No verified-useful invariants for emptyCreditors. Proceeding in CONTRACT_ONLY mode (no invariant-guided repair).
+INFO:root:Loaded invariants (function=emptyCreditors, mode=CONTRACT_ONLY_NOT_INVARIANT_GUIDED): constraints=0, objectives=0, validator_path=<none>
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=1 run_ok=0
+INFO:root:[feedback-loop] compile_ok=1 run_ok=0 at round 0; stopping loop to allow template fallback.
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260717-195823.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+INFO:root:[contract-specific] Trying denia_dos_address: Unbounded array growth in addCreditors()
+INFO:root:[contract-specific] CS12 attack succeeded!
+WARNING:root:LLM attacks ran but none had concrete impact. Attempting invariant-derived reentrancy template attack.
+WARNING:root:[template-attack] T1 had no impact: run_ok=False impact_ok=False
+INFO:root:[flow2] No invariant file at all; 1 execution-confirmed attack(s). Proceeding with an empty invariant set: the gate will report invariant=INCONCLUSIVE and decide on replay.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[validate-gate] replay=PASS invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=1 n=1 compile_ok=1 run_ok=1 | gate_ok=True
+INFO:root:✅ Patch accepted by non-LLM validation gate.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:Saved approved fix
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+✅ Flow-2 completed successfully (patch validated by execution + invariants)
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

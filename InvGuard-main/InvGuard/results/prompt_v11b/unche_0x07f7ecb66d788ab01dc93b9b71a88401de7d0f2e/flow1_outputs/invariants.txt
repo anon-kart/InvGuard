@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (betLimit > 0)
+(meta.revert_taken == false) -> (difficulty > 0)
+(meta.revert_taken == false) -> (totalDonated >= 0)
+(meta.revert_taken == false) -> (whale != address(0))
+(meta.revert_taken == false) -> (openToPublic == true || openToPublic == false)
+(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= 0)

@@ -1,0 +1,6 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender)  # reason=KeyError: "Unknown symbol 'post.shares'"
+(meta.revert_taken == false) -> (post.totalShares >= pre.totalShares)  # reason=KeyError: "Unknown symbol 'post.totalShares'"
+(meta.revert_taken == false) -> (post.totalShares <= pre.totalShares)  # reason=KeyError: "Unknown symbol 'post.totalShares'"
+(meta.revert_taken == false) -> (post.totalShares == (pre.totalShares + meta.value)  # reason=KeyError: "Unknown symbol 'post.totalShares'"
+(meta.revert_taken == false) -> (post.contract_balance == (pre.contract_balance + meta.value)  # reason=KeyError: "Unknown symbol 'post.contract_balance'"

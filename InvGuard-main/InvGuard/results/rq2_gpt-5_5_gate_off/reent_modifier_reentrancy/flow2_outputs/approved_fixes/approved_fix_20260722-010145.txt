@@ -1,0 +1,4 @@
+Moved the airdrop balance update before the external token-support callback and added a reentrancy mutex to prevent modifier-based reentry.
+
+INVARIANTS USED:
+The caller's tokenBalance must be zero before a successful airdrop; a successful airdrop grants exactly 20 tokens to msg.sender; the external supportsToken callback must not be able to observe a zero balance and recursively obtain another airdrop; while an airdrop is in progress, reentrant calls to airDrop must fail; if the token-support check fails or reverts, all state changes including the balance increment and lock update revert.

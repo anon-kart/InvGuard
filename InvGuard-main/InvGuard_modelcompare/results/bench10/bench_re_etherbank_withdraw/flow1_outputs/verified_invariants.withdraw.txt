@@ -1,0 +1,4 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.totalDeposited >= pre.totalDeposited)
+(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) >= select(pre.depositCount, meta.sender)

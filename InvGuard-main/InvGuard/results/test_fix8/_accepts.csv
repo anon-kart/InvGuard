@@ -1,0 +1,4 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+bad_r_etheraffle,chooseWinner,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE,74.7
+unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839,WithdrawToken,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE,69.06
+unche_0x89c1b3807d4c67df034fffb62f3509561218d30b,deliver,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE,91.44

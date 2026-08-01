@@ -1,0 +1,23 @@
+{
+  "VU": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.king == meta.sender)"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 2,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.claimPrice >= pre.claimPrice)",
+      "(meta.revert_taken == false) -> (meta.value >= post.claimPrice)"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

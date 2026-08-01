@@ -1,0 +1,4 @@
+# VERIFIED-USEFUL INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED/TRIVIAL invariants are excluded.
+(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) >= select(pre.refundAmount, meta.sender))
+(meta.revert_taken == false) -> (select(post.refundAmount, meta.sender) == (select(pre.refundAmount, meta.sender) + meta.value))

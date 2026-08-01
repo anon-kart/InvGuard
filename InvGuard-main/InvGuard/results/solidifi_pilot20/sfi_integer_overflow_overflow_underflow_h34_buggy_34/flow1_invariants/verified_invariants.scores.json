@@ -1,0 +1,162 @@
+{
+  "strong": [],
+  "medium": [],
+  "useful": [],
+  "weak": [
+    "meta.revert_taken == false) -> (select(post.balances_intou2, meta.sender) <= select(pre.balances_intou2, meta.sender)",
+    "meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply",
+    "meta.revert_taken == false) -> (select(post.lockTime_intou17, meta.sender) >= select(pre.lockTime_intou17, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.lockTime_intou5, meta.sender) >= select(pre.lockTime_intou5, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.lockTime_intou21, meta.sender) >= select(pre.lockTime_intou21, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.lockTime_intou1, meta.sender) >= select(pre.lockTime_intou1, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.lockTime_intou37, meta.sender) >= select(pre.lockTime_intou37, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.lockTime_intou9, meta.sender) >= select(pre.lockTime_intou9, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.lockTime_intou25, meta.sender) >= select(pre.lockTime_intou25, meta.sender)",
+    "meta.revert_taken == false) -> (select(post.lockTime_intou33, meta.sender) >= select(pre.lockTime_intou33, meta.sender)"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances_intou2, meta.sender) <= select(pre.balances_intou2, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.lockTime_intou17, meta.sender) >= select(pre.lockTime_intou17, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.lockTime_intou5, meta.sender) >= select(pre.lockTime_intou5, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.lockTime_intou21, meta.sender) >= select(pre.lockTime_intou21, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.lockTime_intou1, meta.sender) >= select(pre.lockTime_intou1, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.lockTime_intou37, meta.sender) >= select(pre.lockTime_intou37, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.lockTime_intou9, meta.sender) >= select(pre.lockTime_intou9, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.lockTime_intou25, meta.sender) >= select(pre.lockTime_intou25, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.lockTime_intou33, meta.sender) >= select(pre.lockTime_intou33, meta.sender)",
+      "killed": 0,
+      "mutants_ran": 5,
+      "kill_rate": 0.0,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.01,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "flip_ge_to_gt",
+      "compiled": true
+    },
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    },
+    {
+      "name": "minus_eq_to_plus_eq",
+      "compiled": true
+    },
+    {
+      "name": "drop_require_2",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

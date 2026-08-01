@@ -1,0 +1,6 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.totalPoints >= pre.totalPoints)
+(meta.revert_taken == false) -> (select(post.points, meta.sender) >= select(pre.points, meta.sender)
+(meta.revert_taken == false) -> (post.cap >= pre.cap)
+(select(pre.enrolled, meta.sender) == false) -> (select(post.enrolled, meta.sender) == true)

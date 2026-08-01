@@ -1,0 +1,4 @@
+The submitted fix was insufficient because it still stored a constructor-time answer that can be computed/read after deployment, and its free commit step let an attacker commit to the known winning value and reveal later. The saved fix removes the stored predictable answer, requires the 1 ether stake at commit time before the randomness is known, binds the committed guess to the sender and a salt, and derives the answer during reveal from the commitment block hash after that block has been mined.
+
+INVARIANTS USED:
+A guess must be economically committed before the random value is knowable; the reveal must occur after the commit block but before blockhash expiry; the revealed (sender, guess, salt) must match the prior commitment; no constructor-time or storage-resident winning answer is used; the contract must hold the committed stake plus the prize before accepting a commitment.

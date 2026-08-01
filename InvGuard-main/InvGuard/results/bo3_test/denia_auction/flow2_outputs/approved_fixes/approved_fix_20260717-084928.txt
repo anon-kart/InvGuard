@@ -1,0 +1,4 @@
+Converted the bid function to a pull-payment pattern by recording refunds instead of pushing payments directly.
+
+INVARIANTS USED:
+Pull-payment pattern to prevent DoS attacks.

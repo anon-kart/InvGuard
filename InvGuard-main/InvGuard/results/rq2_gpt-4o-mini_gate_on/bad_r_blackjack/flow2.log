@@ -1,0 +1,107 @@
+INFO:root:Loaded contract: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/../../../sb-heists/smartbugs-curated/0.4.x/contracts/dataset/bad_randomness/blackjack.sol
+WARNING:root:[flow2] VU file for deal is empty; falling back to verified_invariants.txt
+INFO:root:Loaded invariants (function=deal, mode=CONTRACT_ONLY_NOT_INVARIANT_GUIDED): constraints=2, objectives=0, validator_path=<none>
+INFO:root:[prompt-enhancer] appended 7448 chars of context-aware hints
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=0 compile_ok=0 run_ok=0
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[feedback-loop] round=1 compile_ok=5 run_ok=5
+INFO:root:[feedback-loop] converged at round 1
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A1.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A2.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A3.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A4.txt
+INFO:root:Saved attack candidate: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/candidates/attack_candidate_A5.txt
+INFO:root:Saved exploit analysis: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_analysis/exploit_analysis_20260722-121354.txt
+INFO:root:ExploitExecutor results written to: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/executor_results.json
+INFO:root:[flow2] No invariant-guided file; 5 execution-confirmed attack(s). Using verified_invariants.txt (may be empty); replay is the deciding security source.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+WARNING:root:[validate-gate] replay=PASS invariant=INCONCLUSIVE(applicable=False) benign=INCONCLUSIVE | impact_ct=0 n=5 compile_ok=0 run_ok=0 | gate_ok=True
+INFO:root:Patch accepted by non-LLM validation gate.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 400 Bad Request"
+ERROR:openai.agents:[non-fatal] Tracing client error 400: {
+  "error": {
+    "message": "Invalid 'data[1].error.data': data payload too large. Expected a JSON value under 10KB.",
+    "type": "invalid_request_error",
+    "param": "data[1].error.data",
+    "code": null
+  }
+}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 400 Bad Request"
+ERROR:openai.agents:[non-fatal] Tracing client error 400: {
+  "error": {
+    "message": "Invalid 'data[1].error.data': data payload too large. Expected a JSON value under 10KB.",
+    "type": "invalid_request_error",
+    "param": "data[1].error.data",
+    "code": null
+  }
+}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 400 Bad Request"
+ERROR:openai.agents:[non-fatal] Tracing client error 400: {
+  "error": {
+    "message": "Invalid 'data[1].error.data': data payload too large. Expected a JSON value under 10KB.",
+    "type": "invalid_request_error",
+    "param": "data[1].error.data",
+    "code": null
+  }
+}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 400 Bad Request"
+ERROR:openai.agents:Error getting response: Error code: 400 - {'error': {'message': 'Your input exceeds the context window of this model. Please adjust your input and try again.', 'type': 'invalid_request_error', 'param': 'input', 'code': 'context_length_exceeded'}}. (request_id: req_7102be6f224749dfb0872b300e94f333)
+Traceback (most recent call last):
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_2_files/agent.py", line 3030, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_2_files/agent.py", line 3015, in main
+    await Runner.run(
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/run.py", line 367, in run
+    return await runner.run(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/run.py", line 685, in run
+    turn_result = await self._run_single_turn(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/run.py", line 1602, in _run_single_turn
+    new_response = await cls._get_new_response(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/run.py", line 1860, in _get_new_response
+    new_response = await model.get_response(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/models/openai_responses.py", line 95, in get_response
+    response = await self._fetch_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/agents/models/openai_responses.py", line 317, in _fetch_response
+    response = await self._client.responses.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/openai/resources/responses/responses.py", line 2480, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1794, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/lib/python3.12/site-packages/openai/_base_client.py", line 1594, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.BadRequestError: Error code: 400 - {'error': {'message': 'Your input exceeds the context window of this model. Please adjust your input and try again.', 'type': 'invalid_request_error', 'param': 'input', 'code': 'context_length_exceeded'}}
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 400 Bad Request"
+ERROR:openai.agents:[non-fatal] Tracing client error 400: {
+  "error": {
+    "message": "Invalid 'data[1].error.data': data payload too large. Expected a JSON value under 10KB.",
+    "type": "invalid_request_error",
+    "param": "data[1].error.data",
+    "code": null
+  }
+}

@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (initialized == true)
+(meta.revert_taken == false) -> (m_owners.length >= m_required)
+(meta.revert_taken == false) -> (isOwner(meta.sender) == true)
+(meta.revert_taken == false) -> (isOwner(meta.sender) == true)

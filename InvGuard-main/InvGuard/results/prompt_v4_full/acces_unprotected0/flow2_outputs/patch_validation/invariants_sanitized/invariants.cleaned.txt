@@ -1,0 +1,1 @@
+(meta.revert_taken == false) -> (meta.sender == pre.owner -> post.owner == arg._newOwner)

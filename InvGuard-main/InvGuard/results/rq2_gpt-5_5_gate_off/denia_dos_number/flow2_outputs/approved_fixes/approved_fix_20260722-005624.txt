@@ -1,0 +1,4 @@
+Added bounds checks and removed the unbounded storage-writing loop in insertNnumbers to prevent denial-of-service from uncontrolled array growth. The replacement updates only the tracked length and, when needed, the storage array length, bounded by a maximum of 1500 elements.
+
+INVARIANTS USED:
+After any successful insertNnumbers call, numElements <= 1500. The precondition numElements <= 1500 makes 1500 - numElements safe from underflow in Solidity 0.4.x, and numbers <= 1500 - numElements makes numElements + numbers <= 1500. array.length is only increased to newNumElements, so array.length >= numElements is preserved. insertNnumbers no longer performs work proportional to an attacker-controlled unbounded numbers value; all state changes are constant-time and bounded.

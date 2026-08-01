@@ -1,0 +1,4 @@
+Added an explicit authorization check require(msg.sender == root) at the start of withdrawAll() to ensure only the contract creator/root can withdraw all funds.
+
+INVARIANTS USED:
+1) owners[root] == root is initialized in constructor. 2) onlyOwner modifier checks owners[msg.sender] != 0 for owner-restricted functions. 3) New invariant added by fix: withdrawAll requires msg.sender == root so only root can withdraw contract balance.

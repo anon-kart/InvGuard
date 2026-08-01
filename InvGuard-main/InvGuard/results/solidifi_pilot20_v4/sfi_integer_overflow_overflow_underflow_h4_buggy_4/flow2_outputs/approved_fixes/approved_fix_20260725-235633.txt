@@ -1,0 +1,4 @@
+Changed the overflow check in transfer_intou26 to ensure it correctly checks for sufficient balance before subtraction.
+
+INVARIANTS USED:
+Sufficient balance check before subtraction.

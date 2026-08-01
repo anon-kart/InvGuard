@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_rubixi_collectAllFees.sol",
+    "stem": "nssc_rubixi_collectAllFees",
+    "tier": "survey_nssc_rubixi_collectAllFees",
+    "model": "gpt-4o-mini",
+    "target_function": "collectAllFees",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 24.48,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/survey_nssc_rubixi_collectAllFees/nssc_rubixi_collectAllFees/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 28.36,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/survey_nssc_rubixi_collectAllFees/nssc_rubixi_collectAllFees/flow2.log"
+    }
+  }
+]

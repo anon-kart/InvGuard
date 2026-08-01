@@ -1,0 +1,4 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (_owner != 0)  # reason=KeyError: "Unknown symbol 'arg.owner'"
+(meta.revert_taken == false) -> (owners[arg._owner] == meta.sender || (owners[arg._owner] != 0 && meta.sender == root)  # reason=KeyError: "Unknown symbol 'arg.arg.owner'"
+(meta.revert_taken == false) -> (owners[meta.sender] != 0)  # reason=Z3Exception: b'Sorts (_ BitVec 256) and (_ BitVec 160) are incompatible'

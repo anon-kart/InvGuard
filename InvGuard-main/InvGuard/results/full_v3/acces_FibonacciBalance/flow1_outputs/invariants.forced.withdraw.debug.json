@@ -1,0 +1,33 @@
+{
+  "function": "withdraw",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 4,
+  "deposit_count": 4,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)",
+    "(meta.revert_taken == false) -> (post.start >= 3)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)",
+    "(meta.revert_taken == false) -> (post.start >= 3)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)",
+    "(meta.revert_taken == false) -> (post.start >= 3)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)",
+    "(meta.revert_taken == false) -> (post.start >= 3)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)"
+  ]
+}

@@ -1,0 +1,426 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x044eefa225a051027061bea002dd97ace7878f89/0x044eefa225a051027061bea002dd97ace7878f89.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:3:28: Warning: Functions in interfaces should be declared external.
+interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; }
+                           ^-----------------------------------------------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:34:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:68:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(msg.sender, _value);
+        ^----------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:78:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(_from, _value);
+        ^-----------------^
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_to != 0x0'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _from) >= _value'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _to) + _value > select(balanceOf, _to)'}
+INFO:root:   {'op': 'store', 'var': 'previousBalances', 'val_src': 'select(balanceOf, _from) + select(balanceOf, _to)'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': '_from', 'val_src': '_value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': '_to', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(_from,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'assert(bool)(select(balanceOf, _from) + select(balanceOf, _to) == previousBalances)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_value <= select(allowance, _from)[meta.sender]'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': '_transfer(_from,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowance', 'key_src': 'meta.sender][_spender', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'spender', 'val_src': 'tokenRecipient(_spender)'}
+INFO:root:   {'op': 'raw', 'src': 'approve(_spender,_value)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'spender', 'value_src': '0', 'args_src': 'spender.receiveApproval(msg.sender,_value,this,_extraData)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= _value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'store_sub', 'var': 'totalSupply', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'Burn(meta.sender,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _from) >= _value'}
+INFO:root:   {'op': 'require', 'cond_src': '_value <= select(allowance, _from)[meta.sender]'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': '_from', 'val_src': '_value'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= 0)
+   - (meta.revert_taken == false) -> (post.totalSupply >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= pre.totalSupply)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129639935), balanceOf1=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129639935), decimals=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.totalSupply == (pre.totalSupply - arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) == (select(pre.balanceOf, meta.sender) - arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+   - (meta.revert_taken == false) -> (post.totalSupply <= (pre.totalSupply + arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:3:28: Warning: Functions in interfaces should be declared external.
+interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; }
+                           ^-----------------------------------------------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:34:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:68:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(msg.sender, _value);
+        ^----------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:78:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(_from, _value);
+        ^-----------------^
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_to != 0x0'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _from) >= _value'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _to) + _value > select(balanceOf, _to)'}
+INFO:root:   {'op': 'store', 'var': 'previousBalances', 'val_src': 'select(balanceOf, _from) + select(balanceOf, _to)'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': '_from', 'val_src': '_value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': '_to', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(_from,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'assert(bool)(select(balanceOf, _from) + select(balanceOf, _to) == previousBalances)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_value <= select(allowance, _from)[meta.sender]'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': '_transfer(_from,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowance', 'key_src': 'meta.sender][_spender', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'spender', 'val_src': 'tokenRecipient(_spender)'}
+INFO:root:   {'op': 'raw', 'src': 'approve(_spender,_value)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'spender', 'value_src': '0', 'args_src': 'spender.receiveApproval(msg.sender,_value,this,_extraData)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= _value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'store_sub', 'var': 'totalSupply', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'Burn(meta.sender,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _from) >= _value'}
+INFO:root:   {'op': 'require', 'cond_src': '_value <= select(allowance, _from)[meta.sender]'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': '_from', 'val_src': '_value'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+[... truncated ...]INFO:root:[FLOW1] Failed invariants detected for transfer — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= 0)
+   - (meta.revert_taken == false) -> (post.totalSupply >= 0)
+❌ Violated invariants:
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= pre.totalSupply)  | allowance=0, allowance1=0, arg._value=0, arg.select(allowance, _from)[meta.sender]=0, balanceOf=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129639935)
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.totalSupply == (pre.totalSupply - arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) == (select(pre.balanceOf, meta.sender) - arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+   - (meta.revert_taken == false) -> (post.totalSupply <= (pre.totalSupply + arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] _transfer(meta.sender,_to,_value)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= 0)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.totalSupply >= 0)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= pre.totalSupply)", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "balanceOf1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0", "totalSupply": "115792089237316195423570985008687907853269984665640564039457584007913129639934", "totalSupply1": "115792089237316195423570985008687907853269984665640564039457584007913129639934"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.totalSupply == (pre.totalSupply - arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) == (select(pre.balanceOf, meta.sender) - arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.totalSupply <= (pre.totalSupply + arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 6 invariants from LLM.
+
+Function: transferFrom  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: _from][meta.sender
+  - [skip] unparsed map_sub: {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+  - [raw] _transfer(_from,_to,_value)
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= 0)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.totalSupply >= 0)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= pre.totalSupply)", "model": {"allowance": "0", "allowance1": "0", "arg._value": "0", "arg.select(allowance, _from)[meta.sender]": "0", "balanceOf": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "balanceOf1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0", "totalSupply": "115792089237316195423570985008687907853269984665640564039457584007913129639934", "totalSupply1": "115792089237316195423570985008687907853269984665640564039457584007913129639934"}, "status": "VIOLATED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.totalSupply == (pre.totalSupply - arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 5, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) == (select(pre.balanceOf, meta.sender) - arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 6, "inv": "(meta.revert_taken == false) -> (post.totalSupply <= (pre.totalSupply + arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:3:28: Warning: Functions in interfaces should be declared external.
+interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; }
+                           ^-----------------------------------------------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:34:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:68:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(msg.sender, _value);
+        ^----------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:78:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(_from, _value);
+        ^-----------------^
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_to != 0x0'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _from) >= _value'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _to) + _value > select(balanceOf, _to)'}
+INFO:root:   {'op': 'store', 'var': 'previousBalances', 'val_src': 'select(balanceOf, _from) + select(balanceOf, _to)'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': '_from', 'val_src': '_value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': '_to', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(_from,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'assert(bool)(select(balanceOf, _from) + select(balanceOf, _to) == previousBalances)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_value <= select(allowance, _from)[meta.sender]'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': '_transfer(_from,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowance', 'key_src': 'meta.sender][_spender', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'spender', 'val_src': 'tokenRecipient(_spender)'}
+INFO:root:   {'op': 'raw', 'src': 'approve(_spender,_value)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'spender', 'value_src': '0', 'args_src': 'spender.receiveApproval(msg.sender,_value,this,_extraData)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= _value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'store_sub', 'var': 'totalSupply', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'Burn(meta.sender,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _from) >= _value'}
+INFO:root:   {'op': 'require', 'cond_src': '_value <= select(allowance, _from)[meta.sender]'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': '_from', 'val_src': '_value'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+[... truncated ...]INFO:root:[FLOW1] Failed invariants detected for transferFrom — refining.
+INFO:flow_1_files.invariant_rewriter:[det-refine] template=ADD_NO_REVERT_GUARD applied; bindings={}
+INFO:root:[det-refine] wrote refined invariants -> /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.refined.filtered.txt
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balanceOf, meta.sender) <= pre.totalSupply)  | allowance=0, allowance1=0, balanceOf=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129639935), balanceOf1=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129639935), decimals=0
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+
+[FLOW1] Checker report after refinement (transfer, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 1 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] _transfer(meta.sender,_to,_value)
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((select(post.balanceOf, meta.sender) <= pre.totalSupply))", "model": {"allowance": "0", "allowance1": "0", "balanceOf": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "balanceOf1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0", "totalSupply": "115792089237316195423570985008687907853269984665640564039457584007913129639934", "totalSupply1": "115792089237316195423570985008687907853269984665640564039457584007913129639934"}, "status": "VIOLATED"}
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.refined.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:19:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function TokenERC20(uint256 initialSupply, string tokenName, string tokenSymbol) public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:3:28: Warning: Functions in interfaces should be declared external.
+interface tokenRecipient { function receiveApproval(address _from, uint256 _value, address _token, bytes _extraData) public; }
+                           ^-----------------------------------------------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:34:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _value);
+        ^--------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:68:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(msg.sender, _value);
+        ^----------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:78:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Burn(_from, _value);
+        ^-----------------^
+
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_to != 0x0'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _from) >= _value'}
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _to) + _value > select(balanceOf, _to)'}
+INFO:root:   {'op': 'store', 'var': 'previousBalances', 'val_src': 'select(balanceOf, _from) + select(balanceOf, _to)'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': '_from', 'val_src': '_value'}
+INFO:root:   {'op': 'map_add', 'map': 'balanceOf', 'key_src': '_to', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'Transfer(_from,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'assert(bool)(select(balanceOf, _from) + select(balanceOf, _to) == previousBalances)'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'raw', 'src': '_transfer(meta.sender,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': '_value <= select(allowance, _from)[meta.sender]'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': '_transfer(_from,_to,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store_map', 'var': 'allowance', 'key_src': 'meta.sender][_spender', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'store', 'var': 'spender', 'val_src': 'tokenRecipient(_spender)'}
+INFO:root:   {'op': 'raw', 'src': 'approve(_spender,_value)'}
+INFO:root:   {'op': 'external_call', 'kind': 'high_level', 'target_src': 'spender', 'value_src': '0', 'args_src': 'spender.receiveApproval(msg.sender,_value,this,_extraData)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, meta.sender) >= _value'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': 'meta.sender', 'val_src': '_value'}
+INFO:root:   {'op': 'store_sub', 'var': 'totalSupply', 'val_src': '_value'}
+INFO:root:   {'op': 'raw', 'src': 'Burn(meta.sender,_value)'}
+INFO:root:   {'op': 'raw', 'src': 'true'}
+INFO:root:   {'op': 'raw', 'src': 'success'}
+INFO:root:[DEBUG-body-lines]
+INFO:root:   {'op': 'require', 'cond_src': 'select(balanceOf, _from) >= _value'}
+INFO:root:   {'op': 'require', 'cond_src': '_value <= select(allowance, _from)[meta.sender]'}
+INFO:root:   {'op': 'map_sub', 'map': 'balanceOf', 'key_src': '_from', 'val_src': '_value'}
+INFO:root:   {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+   - ((meta.revert_taken == false)) -> ((select(post.balanceOf, meta.sender) <= pre.totalSupply)  | allowance=0, allowance1=0, arg._value=0, arg.select(allowance, _from)[meta.sender]=0, balanceOf=K(BitVec(160),
+  115792089237316195423570985008687907853269984665640564039457584007913129639935)
+❔ Unknown / not verified invariants (excluded):WARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+
+🚫 Rejected / unsupported invariants (excluded):
+   - (meta.revert_taken == false) -> (post.totalSupply == (pre.totalSupply - arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+   - (meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) == (select(pre.balanceOf, meta.sender) - arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+   - (meta.revert_taken == false) -> (post.totalSupply <= (pre.totalSupply + arg._value)  | reason=KeyError: "Unknown symbol 'arg.arg.value'"
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.txt
+[ADAPTER] REJECTED invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.rejected.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.summary.json
+
+[FLOW1] Checker report after refinement (transferFrom, tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.refined.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: transferFrom  (invariants: LLM-translated)
+Notes:
+  - [heuristics] unknown expr: _from][meta.sender
+  - [skip] unparsed map_sub: {'op': 'map_sub', 'map': 'allowance', 'key_src': '_from][meta.sender', 'val_src': '_value'}
+  - [raw] _transfer(_from,_to,_value)
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "((meta.revert_taken == false)) -> ((select(post.balanceOf, meta.sender) <= pre.totalSupply))", "model": {"allowance": "0", "allowance1": "0", "arg._value": "0", "arg.select(allowance, _from)[meta.sender]": "0", "balanceOf": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "balanceOf1": "K(BitVec(160),\n  115792089237316195423570985008687907853269984665640564039457584007913129639935)", "decimals": "0", "decimals1": "0", "meta.revert_taken": "False", "name": "0", "name1": "0", "symbol": "0", "symbol1": "0", "totalSupply": "115792089237316195423570985008687907853269984665640564039457584007913129639934", "totalSupply1": "115792089237316195423570985008687907853269984665640564039457584007913129639934"}, "status": "VIOLATED"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.totalSupply == (pre.totalSupply - arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) == (select(pre.balanceOf, meta.sender) - arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (post.totalSupply <= (pre.totalSupply + arg._value))", "reason": "KeyError: \"Unknown symbol 'arg.arg.value'\"", "status": "REJECTED_UNSUPPORTED"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ⚠️ No verified-useful invariants for Flow-2. Invariant-guided Flow-2 must be disabled or run in explicit contract-only mode.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

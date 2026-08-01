@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (currentFrontrunner != 0 -> currentBid > 0)
+(meta.revert_taken == false) -> (currentBid > pre.currentBid)
+(meta.revert_taken == false) -> (currentFrontrunner == meta.sender)
+(meta.revert_taken == false) -> (currentBid == meta.value)

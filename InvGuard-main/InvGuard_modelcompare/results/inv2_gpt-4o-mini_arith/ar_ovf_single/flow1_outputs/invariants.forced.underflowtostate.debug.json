@@ -1,0 +1,33 @@
+{
+  "function": "underflowtostate",
+  "raw_count": 4,
+  "fixed_raw_count": 4,
+  "sanitized_count": 4,
+  "deposit_count": 1,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.count >= 1)",
+    "(meta.revert_taken == false) -> (post.count == pre.count + arg.input)",
+    "(meta.revert_taken == false) -> (post.count == pre.count * arg.input)",
+    "(meta.revert_taken == false) -> (post.count == pre.count - arg.input)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.count >= 1)",
+    "(meta.revert_taken == false) -> (post.count == pre.count + arg.input)",
+    "(meta.revert_taken == false) -> (post.count == pre.count * arg.input)",
+    "(meta.revert_taken == false) -> (post.count == pre.count - arg.input)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.count >= 1)",
+    "(meta.revert_taken == false) -> (post.count == (pre.count + arg.input))",
+    "(meta.revert_taken == false) -> (post.count == pre.count * arg.input)",
+    "(meta.revert_taken == false) -> (post.count == (pre.count - arg.input))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.count >= 1)",
+    "(meta.revert_taken == false) -> (post.count == (pre.count + arg.input))",
+    "(meta.revert_taken == false) -> (post.count == pre.count * arg.input)",
+    "(meta.revert_taken == false) -> (post.count == (pre.count - arg.input))"
+  ]
+}

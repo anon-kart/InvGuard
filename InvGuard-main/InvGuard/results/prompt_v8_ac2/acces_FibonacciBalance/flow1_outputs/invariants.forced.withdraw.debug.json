@@ -1,0 +1,37 @@
+{
+  "function": "withdraw",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)",
+    "(meta.revert_taken == false) -> (post.start >= 0)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == select(pre.calculatedFibNumber, post.withdrawalCounter))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)",
+    "(meta.revert_taken == false) -> (post.start >= 0)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == select(pre.calculatedFibNumber, post.withdrawalCounter))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)",
+    "(meta.revert_taken == false) -> (post.start >= 0)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == select(pre.calculatedFibNumber, post.withdrawalCounter))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= 0)",
+    "(meta.revert_taken == false) -> (post.start >= 0)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == select(pre.calculatedFibNumber, post.withdrawalCounter))"
+  ]
+}

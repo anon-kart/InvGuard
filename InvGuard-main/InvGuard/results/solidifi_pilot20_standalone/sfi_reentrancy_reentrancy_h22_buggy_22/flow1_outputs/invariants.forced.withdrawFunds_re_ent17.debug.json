@@ -1,0 +1,35 @@
+{
+  "function": "withdrawFunds_re_ent17",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 4,
+  "deposit_count": 3,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) == select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= select(pre.balances_re_ent17, meta.sender))"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) == select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= 0)",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= select(pre.balances_re_ent17, meta.sender))"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) == (select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= select(pre.balances_re_ent17, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) == (select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw))",
+    "(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= 0)"
+  ]
+}

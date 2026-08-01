@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)  # reason=KeyError: "Unknown symbol 'select(post.requests,post.requestCnt).fee'"

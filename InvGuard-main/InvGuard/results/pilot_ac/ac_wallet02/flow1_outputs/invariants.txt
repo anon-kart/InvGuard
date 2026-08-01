@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)
+(meta.revert_taken == false) -> (this.balance == sum(balances))
+(meta.revert_taken == false) -> (arg.amount <= select(post.balances, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) + arg.value > select(post.balances, meta.sender))
+(meta.revert_taken == false) -> (meta.sender.transfer(select(post.balances, meta.sender)))

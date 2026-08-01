@@ -1,0 +1,4 @@
+# VIOLATED-MEANINGFUL (attack objectives for Flow-2)
+(meta.revert_taken == false) -> (post.claimPrice >= pre.claimPrice)
+(meta.revert_taken == false) -> (post.claimPrice <= pre.claimPrice + (pre.claimPrice * 50) / 100)
+(meta.revert_taken == false) -> (post.claimPrice == (pre.claimPrice * 150) / 100)

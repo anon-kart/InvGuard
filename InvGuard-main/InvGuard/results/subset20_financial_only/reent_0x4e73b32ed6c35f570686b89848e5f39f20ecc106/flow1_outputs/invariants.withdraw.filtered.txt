@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender) + arg._am) -> (select(post.balances, meta.sender) >= post.MinSum)
+(meta.revert_taken == false) -> (post.MinSum == pre.MinSum)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))
+(meta.revert_taken == false) -> (post.intitalized == true) -> (post.MinSum >= 0)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))

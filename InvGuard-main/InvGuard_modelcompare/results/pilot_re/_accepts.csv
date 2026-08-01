@@ -1,0 +1,6 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+re_etherstore,withdrawFunds,False,no_report,None,None,None,126.63
+re_etherbank,withdrawBalance,False,no_report,None,None,None,116.07
+re_reentrancy_dao,withdrawAll,False,no_report,None,None,None,57.22
+re_reentrance,withdraw,False,no_report,None,None,None,9.47
+re_simple_dao,withdraw,False,no_report,None,None,None,92.43

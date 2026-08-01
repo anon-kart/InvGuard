@@ -1,0 +1,35 @@
+{
+  "function": "getTokens",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, this) >= select(pre.balanceOf, this))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, this) <= select(pre.balanceOf, this))",
+    "(select(pre.balanceOf, this) == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, this) >= select(pre.balanceOf, this))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, this) <= select(pre.balanceOf, this))",
+    "(select(pre.balanceOf, this) == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.owner == pre.owner)",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))"
+  ]
+}

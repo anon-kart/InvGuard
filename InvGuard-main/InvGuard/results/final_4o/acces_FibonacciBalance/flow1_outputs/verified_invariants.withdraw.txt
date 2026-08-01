@@ -1,0 +1,7 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)
+(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)
+(meta.revert_taken == false) -> (post.start == pre.start)
+(meta.revert_taken == false) -> (post.fibonacciLibrary == pre.fibonacciLibrary)
+(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1) -> (post.calculatedFibNumber == pre.calculatedFibNumber)

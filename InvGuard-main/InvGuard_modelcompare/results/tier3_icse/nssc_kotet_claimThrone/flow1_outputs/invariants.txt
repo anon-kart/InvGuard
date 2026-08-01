@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.king != address(0))
+(meta.revert_taken == false) -> (post.claimPrice > 0)
+(meta.revert_taken == false) -> (post.compensation == (arg.meta.value * 50) / 100)
+(meta.revert_taken == false) -> (arg.meta.sender != address(0))
+(meta.revert_taken == false) -> (post.claimPrice == (arg.meta.value * 150) / 100)

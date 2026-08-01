@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (credit[arg.to] >= 0)
+(meta.revert_taken == false) -> (credit[arg.to] <= arg.to.balance)
+(meta.revert_taken == false) -> (credit[meta.sender] >= arg.amount)
+(meta.revert_taken == false) -> (credit[meta.sender] == select(pre.credit, meta.sender) - arg.amount)

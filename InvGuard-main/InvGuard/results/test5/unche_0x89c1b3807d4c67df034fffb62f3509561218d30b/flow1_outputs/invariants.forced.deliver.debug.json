@@ -1,0 +1,47 @@
+{
+  "function": "deliver",
+  "raw_count": 8,
+  "fixed_raw_count": 8,
+  "sanitized_count": 7,
+  "deposit_count": 7,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 7,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+    "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).requester == meta.sender)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)",
+    "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+    "(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)",
+    "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+    "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+    "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).requester == meta.sender)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)",
+    "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+    "(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)",
+    "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+    "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+    "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)",
+    "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+    "(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)",
+    "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+    "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)",
+    "(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)",
+    "(meta.revert_taken == false) -> (select(post.requests, post.requestCnt).fee == meta.value)",
+    "(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)",
+    "(meta.revert_taken == false) -> (post.externalCallFlag == pre.externalCallFlag)",
+    "(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)",
+    "(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)"
+  ]
+}

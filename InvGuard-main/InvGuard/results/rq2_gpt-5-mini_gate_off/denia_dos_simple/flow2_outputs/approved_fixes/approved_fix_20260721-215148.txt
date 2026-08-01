@@ -1,0 +1,8 @@
+Replaced the unbounded push loop in ifillArray with a pull-payment style: record owed amounts in a mapping (payments) and a virtualLength counter, added a withdrawPayments() function for recipients to pull funds, and added a reentrancy mutex to protect state updates.
+
+INVARIANTS USED:
+1) Checks-Effects-Interactions (CEI): state (payments[msg.sender]=0) updated before external call to msg.sender.send(payment).
+2) Reentrancy guard: _locked boolean prevents reentrant calls to sensitive functions.
+3) Arithmetic safety: require(virtualLength + 350 >= virtualLength) prevents overflow when increasing virtualLength.
+4) Pull-payment pattern: avoid pushing to storage in an unbounded loop that can cause out-of-gas/DoS by recording owed amounts and letting recipients withdraw.
+5) Failure propagation: using require on send to ensure failed sends revert and do not leave state inconsistent.

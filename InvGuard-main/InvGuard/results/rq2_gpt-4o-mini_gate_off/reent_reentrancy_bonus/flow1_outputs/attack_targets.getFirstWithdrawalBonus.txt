@@ -1,0 +1,3 @@
+# MEANINGFUL BUT VIOLATED INVARIANTS (ATTACK TARGETS)
+(meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true) -> (select(pre.claimedBonus, arg.recipient) == false)
+(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == (select(pre.userBalances, arg.recipient) + select(pre.rewardsForA, arg.recipient)))

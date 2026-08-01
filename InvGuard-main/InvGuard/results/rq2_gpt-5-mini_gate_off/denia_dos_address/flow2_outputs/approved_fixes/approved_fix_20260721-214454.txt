@@ -1,0 +1,11 @@
+Reworked emptyCreditors to record owed amounts in a pendingWithdrawals mapping (pull-payment), added a withdraw() function, a reentrancy mutex (_locked), and ensured state updates occur before external calls.
+
+INVARIANTS USED:
+1) No external calls are performed inside the creditor-processing loop (prevents one malicious recipient from reverting the entire operation).
+2) All owed amounts are recorded in pendingWithdrawals for each creditor; creditorAddresses is cleared only after recording (preserves accounting).
+3) Withdrawals update state (pendingWithdrawals[msg.sender] = 0) before making the external send call (prevents reentrancy-based double-withdrawal).
+4) A reentrancy mutex (_locked) is used in both emptyCreditors and withdraw to block reentrant calls.
+5) Arithmetic check ensures no overflow when incrementing owed amounts (require(newAmount >= pendingWithdrawals[creditor])).
+6) withdraw requires amount > 0 and requires the send to succeed, so callers cannot receive funds unless state is properly updated.
+7) The public views (iWin, numberCreditors) reflect state only; no external calls performed there.
+These invariants together mitigate DOS-by-address and reentrancy issues present in the original contract.

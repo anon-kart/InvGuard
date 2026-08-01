@@ -1,0 +1,49 @@
+{
+  "function": "withdraw",
+  "raw_count": 8,
+  "fixed_raw_count": 8,
+  "sanitized_count": 8,
+  "deposit_count": 8,
+  "withdraw_count": 8,
+  "chosen_count_before_final_fallback": 8,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.start == pre.start)",
+    "(meta.revert_taken == false) -> (post.fibonacciLibrary == pre.fibonacciLibrary)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1) -> (post.calculatedFibNumber == pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber - 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == pre.calculatedFibNumber) -> (post.withdrawalCounter == pre.withdrawalCounter)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.start == pre.start)",
+    "(meta.revert_taken == false) -> (post.fibonacciLibrary == pre.fibonacciLibrary)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1) -> (post.calculatedFibNumber == pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber - 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == pre.calculatedFibNumber) -> (post.withdrawalCounter == pre.withdrawalCounter)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.start == pre.start)",
+    "(meta.revert_taken == false) -> (post.fibonacciLibrary == pre.fibonacciLibrary)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1) -> (post.calculatedFibNumber == pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber - 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == pre.calculatedFibNumber) -> (post.withdrawalCounter == pre.withdrawalCounter)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter >= pre.withdrawalCounter)",
+    "(meta.revert_taken == false) -> (post.start == pre.start)",
+    "(meta.revert_taken == false) -> (post.fibonacciLibrary == pre.fibonacciLibrary)",
+    "(meta.revert_taken == false) -> (post.withdrawalCounter == pre.withdrawalCounter + 1) -> (post.calculatedFibNumber == pre.calculatedFibNumber)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber <= pre.calculatedFibNumber + 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber >= pre.calculatedFibNumber - 1)",
+    "(meta.revert_taken == false) -> (post.calculatedFibNumber == pre.calculatedFibNumber) -> (post.withdrawalCounter == pre.withdrawalCounter)"
+  ]
+}

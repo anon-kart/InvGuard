@@ -1,0 +1,4 @@
+Changed the low-level call in WithdrawToken to require the success of the transfer.
+
+INVARIANTS USED:
+Unchecked low-level calls

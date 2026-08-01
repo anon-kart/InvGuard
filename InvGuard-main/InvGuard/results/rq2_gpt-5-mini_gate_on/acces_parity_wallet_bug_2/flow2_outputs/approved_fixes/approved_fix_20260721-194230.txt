@@ -1,0 +1,6 @@
+Added an authorization check in initWallet so only the designated library address (_walletLibrary) can initialize the wallet (require(msg.sender == _walletLibrary)).
+
+INVARIANTS USED:
+1) only_uninitialized modifier ensures init functions run only before m_numOwners > 0 (initialization only once).
+2) initWallet must now be invoked by the constant _walletLibrary address, preventing arbitrary callers from initializing owners/requirements.
+3) m_numOwners == 0 prior to initialization and becomes >0 after initMultiowned, preserving uniqueness of initialization.

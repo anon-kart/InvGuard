@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.allowed, meta.sender, meta.sender) >= meta.value)  # reason=TRANSLATOR_REJECTED: select expects 2 args

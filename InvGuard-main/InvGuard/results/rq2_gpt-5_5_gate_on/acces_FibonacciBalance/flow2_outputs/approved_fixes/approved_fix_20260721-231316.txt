@@ -1,0 +1,7 @@
+The proposed fix only restricted withdraw(), leaving the fallback function publicly callable. Because the fallback still performs an arbitrary delegatecall into the library, any external account could call library functions such as setStart(uint256) in the storage context of FibonacciBalance and overwrite sensitive storage, including the fibonacciLibrary address. The final fix centralizes access control in an onlyOwner modifier and applies it to both withdraw() and the fallback delegatecall entry point, ensuring only the owner can trigger delegatecalls or withdrawals.
+
+INVARIANTS USED:
+1. Only the contract owner may withdraw Ether from FibonacciBalance.
+2. Only the contract owner may execute delegatecall against fibonacciLibrary in the storage context of FibonacciBalance.
+3. Untrusted users must not be able to mutate FibonacciBalance storage through FibonacciLib functions.
+4. The withdrawal logic still increments withdrawalCounter, computes calculatedFibNumber through the configured library, and transfers the computed amount to the authorized owner.

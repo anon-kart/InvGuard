@@ -1,0 +1,49 @@
+{
+  "strong": [],
+  "medium": [
+    "meta.revert_taken == false) -> (post.currentBid > 0",
+    "meta.revert_taken == false) -> (meta.value > pre.currentBid"
+  ],
+  "useful": [
+    "meta.revert_taken == false) -> (post.currentBid > 0",
+    "meta.revert_taken == false) -> (meta.value > pre.currentBid"
+  ],
+  "weak": [],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (post.currentBid > 0",
+      "killed": 2,
+      "mutants_ran": 2,
+      "kill_rate": 1.0,
+      "coverage_score": 0.2,
+      "trivial": false,
+      "score": 1.0,
+      "tier": "medium",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (meta.value > pre.currentBid",
+      "killed": 1,
+      "mutants_ran": 2,
+      "kill_rate": 0.5,
+      "coverage_score": 0.2,
+      "trivial": false,
+      "score": 0.502,
+      "tier": "medium",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "drop_require_2",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

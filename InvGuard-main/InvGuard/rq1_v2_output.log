@@ -1,0 +1,60 @@
+
+=== [rq1_v2] acces_FibonacciBalance  (tf=withdraw, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+
+=== [rq1_v2] acces_multiowned_vulnerable  (tf=withdrawAll, env={'INVGUARD_VULN_CLASS': 'access_  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] acces_parity_wallet_bug_2  (tf=initWallet, en  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] acces_parity_wallet_bug_2  (tf=init  [best-of-5] attempt 3, prev=gate_rejected
+  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] bad_r_blackjack  (tf=deal, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] bad_r_blackjack  (tf=deal, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'state_cor  [best-of-5] a  [best-of-5] attempt 2, prev
+=== [rq1_v2] b  [best-of-5] attempt 3, prev=gate_rejected
+  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] bad_r_etheraffle  (tf=chooseWinner, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-5] attempt 2, prev=gate_rejected
+  [best-of-5] attempt 3, prev=gate_rejected
+  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] reent_modifier_reentrancy  (tf=airDrop, env={'INVGUARD_VULN_CLASS': 'reentrancy', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-5] attempt 2, prev=gate_rejected
+  [best-of-5] attempt 3, prev=gate_rejected
+  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] reent_reentrancy_bonus  (tf=getFirstWithdrawalBonus, env={'INVGUARD_VULN_CLASS': 'reentrancy', 'INVGUARD_IMPACT_POLICY': 'financial'}) ===
+  [best-of-5] attempt 2, prev=gate_rejected
+  [best-of-5] attempt 3, prev=gate_rejected
+  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839  (tf=WithdrawToken, env={'INVGUARD_VULN_CLASS': 'unchecked_call', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-5] attempt 2, prev=gate_rejected
+  [best-of-5] attempt 3, prev=gate_rejected
+  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+=== [rq1_v2] unche_0x89c1b3807d4c67df034fffb62f3509561218d30b  (tf=deliver, env={'INVGUARD_VULN_CLASS': 'unchecked_call', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-5] attempt 2, prev=gate_rejected
+  [best-of-5] attempt 3, prev=gate_rejected
+  [best-of-5] attempt 4, prev=gate_rejected
+  [best-of-5] attempt 5, prev=gate_rejected
+
+========== rq1_v2: 1/9 strict accepts ==========
+  ACCEPT  acces_FibonacciBalance
+  ----    acces_multiowned_vulnerable                   gate_rejected
+  ----    acces_parity_wallet_bug_2                     gate_rejected
+  ----    bad_r_blackjack                               gate_rejected
+  ----    bad_r_etheraffle                              gate_rejected
+  ----    reent_modifier_reentrancy                     gate_rejected
+  ----    reent_reentrancy_bonus                        gate_rejected
+  ----    unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839 gate_rejected
+  ----    unche_0x89c1b3807d4c67df034fffb62f3509561218d30b gate_rejected

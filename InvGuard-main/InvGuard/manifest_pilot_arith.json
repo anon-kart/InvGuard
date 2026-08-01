@@ -1,0 +1,7 @@
+[
+ {"stem":"ar_ovf_add","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/integer_overflow_add.sol","target_function":"run","extra_env":{"INVGUARD_VULN_CLASS":"integer_overflow"}},
+ {"stem":"ar_ovf_min","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/integer_overflow_minimal.sol","target_function":"run","extra_env":{"INVGUARD_VULN_CLASS":"integer_overflow"}},
+ {"stem":"ar_ovf_mul","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/integer_overflow_mul.sol","target_function":"run","extra_env":{"INVGUARD_VULN_CLASS":"integer_overflow"}},
+ {"stem":"ar_ovf_simple","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/overflow_simple_add.sol","target_function":"add","extra_env":{"INVGUARD_VULN_CLASS":"integer_overflow"}},
+ {"stem":"ar_ovf_single","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/arithmetic/overflow_single_tx.sol","target_function":"underflowtostate","extra_env":{"INVGUARD_VULN_CLASS":"integer_overflow"}}
+]

@@ -1,0 +1,89 @@
+
+=== [rq1_v1] acces_FibonacciBalance  (tf=withdraw, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+  [best-of-3] attempt 2, prev=no_report
+  [best-of-3] attempt 3, prev=no_report
+
+=== [rq1_v1] acces_multiowned_vulnerable  (tf=withdrawAll, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+=== [rq1_v1] acces_parity_wallet_bug_2  (tf=initWallet, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+=== [rq1_v1] acces_unprotected0  (tf=changeOwner, env={'INVGUARD_VULN_CLASS': 'access_control', 'INVGUARD_IMPACT_POLICY': 'access_control'}) ===
+
+=== [rq1_v1] integ_BECToken  (tf=batchTransfer, env={'INVGUARD_VULN_CLASS': 'integer_overflow', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-3] attempt 2, prev=no_report
+  [best-of-3] attempt 3, prev=no_report
+
+=== [rq1_v1] integ_overflow_single_tx  (tf=overflowaddtostate, env={'INVGUARD_VULN_CLASS': 'integer_overflow', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+  [best-of-3] ACCEPT on attempt 3
+
+=== [rq1_v1] bad_r_blackjack  (tf=deal, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+=== [rq1_v1] bad_r_etheraffle  (tf=chooseWinner, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+=== [rq1_v1] bad_r_guess_the_random_number  (tf=guess, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'outcome_controlled'}) ===
+
+=== [rq1_v1] bad_r_old_blockhash  (tf=settle, env={'INVGUARD_VULN_CLASS': 'bad_randomness', 'INVGUARD_IMPACT_POLICY': 'outcome_controlled'}) ===
+
+=== [rq1_v1] denia_auction  (tf=bid, env={'INVGUARD_VULN_CLASS': 'denial_of_service', 'INVGUARD_IMPACT_POLICY': 'liveness_broken'}) ===
+
+=== [rq1_v1] denia_dos_address  (tf=emptyCreditors, env={'INVGUARD_VULN_CLASS': 'denial_of_service', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+
+=== [rq1_v1] denia_dos_number  (tf=insertNnumbers, env={'INVGUARD_VULN_CLASS': 'denial_of_service', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+
+=== [rq1_v1] denia_dos_simple  (tf=ifillArray, env={'INVGUARD_VULN_CLASS': 'denial_of_service', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+
+=== [rq1_v1] reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106  (tf=Collect, env={'INVGUARD_VULN_CLASS': 'reentrancy', 'INVGUARD_IMPACT_POLICY': 'financial'}) ===
+  [best-of-3] attempt 2, prev=no_report
+  [best-of-3] attempt 3, prev=no_report
+
+=== [rq1_v1] reent_modifier_reentrancy  (tf=airDrop, env={'INVGUARD_VULN_CLASS': 'reentrancy', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+=== [rq1_v1] reent_reentrancy_bonus  (tf=getFirstWithdrawalBonus, env={'INVGUARD_VULN_CLASS': 'reentrancy', 'INVGUARD_IMPACT_POLICY': 'financial'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+=== [rq1_v1] unche_0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e  (tf=donateToWhale, env={'INVGUARD_VULN_CLASS': 'unchecked_call', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-3] attempt 2, prev=no_report
+  [best-of-3] attempt 3, prev=no_report
+
+=== [rq1_v1] unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839  (tf=WithdrawToken, env={'INVGUARD_VULN_CLASS': 'unchecked_call', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+=== [rq1_v1] unche_0x89c1b3807d4c67df034fffb62f3509561218d30b  (tf=deliver, env={'INVGUARD_VULN_CLASS': 'unchecked_call', 'INVGUARD_IMPACT_POLICY': 'state_corruption'}) ===
+  [best-of-3] attempt 2, prev=gate_rejected
+  [best-of-3] attempt 3, prev=gate_rejected
+
+========== rq1_v1: 8/20 strict accepts ==========
+  ACCEPT  acces_unprotected0
+  ACCEPT  integ_overflow_single_tx
+  ACCEPT  bad_r_guess_the_random_number
+  ACCEPT  bad_r_old_blockhash
+  ACCEPT  denia_auction
+  ACCEPT  denia_dos_address
+  ACCEPT  denia_dos_number
+  ACCEPT  denia_dos_simple
+  ----    acces_FibonacciBalance                        no_report
+  ----    acces_multiowned_vulnerable                   gate_rejected
+  ----    acces_parity_wallet_bug_2                     gate_rejected
+  ----    integ_BECToken                                no_report
+  ----    bad_r_blackjack                               gate_rejected
+  ----    bad_r_etheraffle                              gate_rejected
+  ----    reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106 no_report
+  ----    reent_modifier_reentrancy                     gate_rejected
+  ----    reent_reentrancy_bonus                        gate_rejected
+  ----    unche_0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e no_report
+  ----    unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839 gate_rejected
+  ----    unche_0x89c1b3807d4c67df034fffb62f3509561218d30b gate_rejected

@@ -1,0 +1,15 @@
+[
+  {"stem": "bench_re_etherbank_withdraw",       "contract": "contracts/bench_re_etherbank_withdraw.sol",       "target_function": "withdraw",    "extra_env": {"INVGUARD_VULN_CLASS": "reentrancy"}},
+  {"stem": "bench_re_rewardvault_redeem",        "contract": "contracts/bench_re_rewardvault_redeem.sol",        "target_function": "redeem",      "extra_env": {"INVGUARD_VULN_CLASS": "reentrancy"}},
+
+  {"stem": "bench_ac_ownablevault_withdrawAll",  "contract": "contracts/bench_ac_ownablevault_withdrawAll.sol",  "target_function": "withdrawAll", "extra_env": {"INVGUARD_VULN_CLASS": "access_control"}},
+  {"stem": "bench_ac_configbank_setManager",     "contract": "contracts/bench_ac_configbank_setManager.sol",     "target_function": "sweep",       "extra_env": {"INVGUARD_VULN_CLASS": "access_control", "INVGUARD_AC_FN": "setManager"}},
+  {"stem": "bench_ac_treasurybox_withdrawTo",    "contract": "contracts/bench_ac_treasurybox_withdrawTo.sol",    "target_function": "withdrawTo",  "extra_env": {"INVGUARD_VULN_CLASS": "access_control", "INVGUARD_IMPACT_POLICY": "access_control"}},
+
+  {"stem": "bench_ur_refundpool_refund",         "contract": "contracts/bench_ur_refundpool_refund.sol",         "target_function": "refund",      "extra_env": {"INVGUARD_VULN_CLASS": "unchecked_call", "INVGUARD_IMPACT_POLICY": "silent_failure"}},
+  {"stem": "bench_ur_payoutledger_payout",       "contract": "contracts/bench_ur_payoutledger_payout.sol",       "target_function": "payout",      "extra_env": {"INVGUARD_VULN_CLASS": "unchecked_call", "INVGUARD_IMPACT_POLICY": "silent_failure"}},
+  {"stem": "bench_ur_escrowdesk_release",        "contract": "contracts/bench_ur_escrowdesk_release.sol",        "target_function": "release",     "extra_env": {"INVGUARD_VULN_CLASS": "unchecked_call", "INVGUARD_IMPACT_POLICY": "silent_failure"}},
+
+  {"stem": "bench_to_piggybank_withdraw",        "contract": "contracts/bench_to_piggybank_withdraw.sol",        "target_function": "withdraw",    "extra_env": {"INVGUARD_VULN_CLASS": "tx_origin"}},
+  {"stem": "bench_to_guardedwallet_send",        "contract": "contracts/bench_to_guardedwallet_send.sol",        "target_function": "send",        "extra_env": {"INVGUARD_VULN_CLASS": "tx_origin"}}
+]

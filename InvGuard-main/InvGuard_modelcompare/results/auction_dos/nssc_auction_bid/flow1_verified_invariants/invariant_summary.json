@@ -1,0 +1,22 @@
+{
+  "VU": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.currentBid > pre.currentBid)"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 1,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.currentFrontrunner == meta.sender)"
+    ]
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

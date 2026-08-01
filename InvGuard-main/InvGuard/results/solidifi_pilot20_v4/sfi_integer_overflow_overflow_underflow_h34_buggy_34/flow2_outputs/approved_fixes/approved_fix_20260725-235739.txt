@@ -1,0 +1,4 @@
+Removed unchecked arithmetic and added a proper overflow check in transfer_intou34().
+
+INVARIANTS USED:
+require(balances_intou34[msg.sender] >= _value);

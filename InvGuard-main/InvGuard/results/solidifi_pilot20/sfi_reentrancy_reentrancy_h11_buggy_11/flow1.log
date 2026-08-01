@@ -1,0 +1,191 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/SolidiFI-benchmark/buggy_contracts/Re-entrancy/buggy_11.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds_re_ent3 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds_re_ent3.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(_weiToWithdraw)();
+                         ^-------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:44:27: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,) = lastPlayer_re_ent9.call.value(jackpot_re_ent9)();
+                          ^----------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:69:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(userBalance_re_ent26[msg.sender])();
+                         ^-------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:118:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(1 ether)();
+                        ^------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:171:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+       (bool success,) =msg.sender.call.value(balances_re_ent1[msg.sender ])();
+                        ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:208:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(_weiToWithdraw)();
+                        ^-------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:277:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+       (bool success,) = msg.sender.call.value(balances_re_ent8[msg.sender ])();
+                         ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:326:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(userBalance_re_ent40[msg.sender])();
+                        ^-------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:338:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(userBalance_re_ent33[msg.sender])();
+                         ^-------------------------------------------------------^
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(_weiToWithdraw)();
+                         ^-------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:44:27: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,) = lastPlayer_re_ent9.call.value(jackpot_re_ent9)();
+                          ^----------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:69:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(userBalance_re_ent26[msg.sender])();
+                         ^-------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:118:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(1 ether)();
+                        ^------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:171:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+       (bool success,) =msg.sender.call.value(balances_re_ent1[msg.sender ])();
+                        ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:208:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(_weiToWithdraw)();
+                        ^-------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:277:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+       (bool success,) = msg.sender.call.value(balances_re_ent8[msg.sender ])();
+                         ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:326:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(userBalance_re_ent40[msg.sender])();
+                        ^-------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:338:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(userBalance_re_ent33[msg.sender])();
+                         ^-------------------------------------------------------^
+[... truncated ...]INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+   - (meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (select(post.balances, owner) >= select(pre.balances, owner)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (select(post.balances, owner) <= select(pre.balances, owner)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds_re_ent3.txt
+[ADAPTER] UNSOUND invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds_re_ent3.unsound.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds_re_ent3.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdrawFunds_re_ent3 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.withdrawFunds_re_ent3.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(_weiToWithdraw)();
+                         ^-------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:44:27: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,) = lastPlayer_re_ent9.call.value(jackpot_re_ent9)();
+                          ^----------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:69:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(userBalance_re_ent26[msg.sender])();
+                         ^-------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:118:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(1 ether)();
+                        ^------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:171:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+       (bool success,) =msg.sender.call.value(balances_re_ent1[msg.sender ])();
+                        ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:208:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(_weiToWithdraw)();
+                        ^-------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:277:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+       (bool success,) = msg.sender.call.value(balances_re_ent8[msg.sender ])();
+                         ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:326:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(userBalance_re_ent40[msg.sender])();
+                        ^-------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:338:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(userBalance_re_ent33[msg.sender])();
+                         ^-------------------------------------------------------^
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(_weiToWithdraw)();
+                         ^-------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:44:27: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,) = lastPlayer_re_ent9.call.value(jackpot_re_ent9)();
+                          ^----------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:69:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(userBalance_re_ent26[msg.sender])();
+                         ^-------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:118:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(1 ether)();
+                        ^------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:171:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+       (bool success,) =msg.sender.call.value(balances_re_ent1[msg.sender ])();
+                        ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:208:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(_weiToWithdraw)();
+                        ^-------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:277:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+       (bool success,) = msg.sender.call.value(balances_re_ent8[msg.sender ])();
+                         ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:326:25: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)=msg.sender.call.value(userBalance_re_ent40[msg.sender])();
+                        ^-------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:338:26: Error: Wrong argument count for function call: 0 arguments given but expected 1. This function requires a single bytes argument. Use "" as argument to provide empty calldata.
+        (bool success,)= msg.sender.call.value(userBalance_re_ent33[msg.sender])();
+                         ^-------------------------------------------------------^
+[... truncated ...]WARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+   - (meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (select(post.balances, owner) >= select(pre.balances, owner)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (select(post.balances, owner) <= select(pre.balances, owner)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds_re_ent3.txt
+[ADAPTER] UNSOUND invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds_re_ent3.unsound.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdrawFunds_re_ent3.summary.json
+[FLOW1] ⚠️ Checker ran successfully, but model was UNSOUND (UNVERIFIED_UNSOUND).
+[FLOW1] ⚠️ Refusing refinement + strength scoring to avoid unsound verification claims.
+[FLOW1] UNSOUND attempted invariants (structured): deposit=6 withdraw=6
+[FLOW1] Legacy UNSOUND files (if present):
+  - /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.unsound.txt
+  - /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.unsound.txt
+[FLOW1] ✅ Security obligations / attack objectives written despite Z3 UNSOUND:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final verified-useful invariant file written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

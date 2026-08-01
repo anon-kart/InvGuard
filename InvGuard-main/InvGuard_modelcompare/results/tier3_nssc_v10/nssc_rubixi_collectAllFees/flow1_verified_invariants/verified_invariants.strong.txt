@@ -1,0 +1,2 @@
+# STRONG VERIFIED-USEFUL INVARIANTS
+meta.revert_taken == false) -> (post.collectedFees == 0) -> (pre.collectedFees > 0

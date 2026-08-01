@@ -1,0 +1,41 @@
+{
+  "function": "addBonus",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 5,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalPoints >= pre.totalPoints)",
+    "(meta.revert_taken == false) -> (select(post.points, meta.sender) >= select(pre.points, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.points, meta.sender) <= select(pre.points, meta.sender) + arg.bonus)",
+    "(meta.revert_taken == false) -> (post.cap >= pre.cap)",
+    "(select(pre.enrolled, meta.sender) == false) -> (select(post.enrolled, meta.sender) == true)",
+    "(meta.revert_taken == false) -> (select(post.enrolled, meta.sender) == false)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalPoints >= pre.totalPoints)",
+    "(meta.revert_taken == false) -> (select(post.points, meta.sender) >= select(pre.points, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.points, meta.sender) <= select(pre.points, meta.sender) + arg.bonus)",
+    "(meta.revert_taken == false) -> (post.cap >= pre.cap)",
+    "(select(pre.enrolled, meta.sender) == false) -> (select(post.enrolled, meta.sender) == true)",
+    "(meta.revert_taken == false) -> (select(post.enrolled, meta.sender) == false)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalPoints >= pre.totalPoints)",
+    "(meta.revert_taken == false) -> (select(post.points, meta.sender) >= select(pre.points, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.points, meta.sender) <= (select(pre.points, meta.sender) + arg.bonus))",
+    "(meta.revert_taken == false) -> (post.cap >= pre.cap)",
+    "(select(pre.enrolled, meta.sender) == false) -> (select(post.enrolled, meta.sender) == true)",
+    "(meta.revert_taken == false) -> (select(post.enrolled, meta.sender) == false)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalPoints >= pre.totalPoints)",
+    "(meta.revert_taken == false) -> (select(post.points, meta.sender) >= select(pre.points, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.points, meta.sender) <= (select(pre.points, meta.sender) + arg.bonus))",
+    "(meta.revert_taken == false) -> (post.cap >= pre.cap)",
+    "(select(pre.enrolled, meta.sender) == false) -> (select(post.enrolled, meta.sender) == true)",
+    "(meta.revert_taken == false) -> (select(post.enrolled, meta.sender) == false)"
+  ]
+}

@@ -1,0 +1,161 @@
+
+> symEvm@1.0.0 dev
+> node src/index.js
+
+
+contracts/sample.sol:300:2: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+	msg.sender.send(Balances_unchk29);}
+	^-------------------------------^
+contracts/sample.sol:334:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+contracts/sample.sol:343:2: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+	msg.sender.send(Balances_unchk5);}
+	^------------------------------^
+contracts/sample.sol:360:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+contracts/sample.sol:387:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk34.send(subpot_unchk34);  //bug
+        ^---------------------------------^
+contracts/sample.sol:407:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+contracts/sample.sol:424:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk10.send(subpot_unchk10);  //bug
+        ^---------------------------------^
+contracts/sample.sol:433:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+contracts/sample.sol:451:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk22.send(subpot_unchk22);  //bug
+        ^---------------------------------^
+contracts/sample.sol:461:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+contracts/sample.sol:469:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+contracts/sample.sol:500:2: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+	msg.sender.send(Balances_unchk41);}
+	^-------------------------------^
+contracts/sample.sol:554:5: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+    callee.send(5 ether);
+    ^------------------^
+contracts/sample.sol:601:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+contracts/sample.sol:615:2: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+	msg.sender.send(Balances_unchk17);}
+	^-------------------------------^
+contracts/sample.sol:657:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+contracts/sample.sol:701:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+contracts/sample.sol:714:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+contracts/sample.sol:742:5: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+    callee.send(5 ether);
+    ^------------------^
+contracts/sample.sol:755:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk20.send(winAmount_unchk20);
+        ^------------------------------------^
+contracts/sample.sol:769:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk32.send(winAmount_unchk32);
+        ^------------------------------------^
+contracts/sample.sol:778:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (42 ether); }
+       ^------------------^
+contracts/sample.sol:793:5: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+    callee.send(5 ether);
+    ^------------------^
+contracts/sample.sol:806:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk46.send(subpot_unchk46);  //bug
+        ^---------------------------------^
+contracts/sample.sol:837:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+contracts/sample.sol:845:5: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+    callee.send(5 ether);
+    ^------------------^
+contracts/sample.sol:855:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        msg.sender.send(address(this).balance);
+        ^------------------------------------^
+contracts/sample.sol:890:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk8.send(winAmount_unchk8);
+        ^----------------------------------^
+contracts/sample.sol:912:8: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+      {addr.send (4 ether); }
+       ^-----------------^
+contracts/sample.sol:920:9: Warning: Return value of low-level calls not used.
+        dst.call.value(msg.value)("");
+        ^---------------------------^
+contracts/sample.sol:935:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        dst.send(msg.value);
+        ^-----------------^
+contracts/sample.sol:948:9: Warning: Failure condition of 'send' ignored. Consider using 'transfer' instead.
+        winner_unchk44.send(winAmount_unchk44);
+        ^------------------------------------^
+contracts/sample.sol:385:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+function cash_unchk34(uint roundIndex, uint subpotIndex, address payable winner_unchk34) public{
+                      ^-------------^
+contracts/sample.sol:385:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+function cash_unchk34(uint roundIndex, uint subpotIndex, address payable winner_unchk34) public{
+                                       ^--------------^
+contracts/sample.sol:422:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+function cash_unchk10(uint roundIndex, uint subpotIndex,address payable winner_unchk10) public{
+                      ^-------------^
+contracts/sample.sol:422:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+function cash_unchk10(uint roundIndex, uint subpotIndex,address payable winner_unchk10) public{
+                                       ^--------------^
+contracts/sample.sol:449:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+function cash_unchk22(uint roundIndex, uint subpotIndex, address payable winner_unchk22)public{
+                      ^-------------^
+contracts/sample.sol:449:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+function cash_unchk22(uint roundIndex, uint subpotIndex, address payable winner_unchk22)public{
+                                       ^--------------^
+contracts/sample.sol:804:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+function cash_unchk46(uint roundIndex, uint subpotIndex, address payable winner_unchk46) public{
+                      ^-------------^
+contracts/sample.sol:804:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+function cash_unchk46(uint roundIndex, uint subpotIndex, address payable winner_unchk46) public{
+                                       ^--------------^
+contracts/sample.sol:478:1: Warning: Function state mutability can be restricted to pure
+function callnotchecked_unchk1(address payable callee) public {
+^ (Relevant source part starts here and spans across multiple lines).
+contracts/sample.sol:633:1: Warning: Function state mutability can be restricted to pure
+function callnotchecked_unchk37(address payable callee) public {
+^ (Relevant source part starts here and spans across multiple lines).
+contracts/sample.sol:725:1: Warning: Function state mutability can be restricted to pure
+function callnotchecked_unchk25(address payable callee) public {
+^ (Relevant source part starts here and spans across multiple lines).
+contracts/sample.sol:860:3: Warning: Function state mutability can be restricted to pure
+  function callnotchecked_unchk13(address callee) public {
+  ^ (Relevant source part starts here and spans across multiple lines).
+
+<--- Last few GCs --->
+
+[29028:0x754aca0]    15669 ms: Scavenge 2035.0 (2075.1) -> 2033.0 (2076.3) MB, 3.2 / 0.0 ms  (average mu = 0.173, current mu = 0.128) allocation failure; 
+[29028:0x754aca0]    15674 ms: Scavenge 2036.1 (2076.3) -> 2033.9 (2077.1) MB, 3.2 / 0.0 ms  (average mu = 0.173, current mu = 0.128) allocation failure; 
+[29028:0x754aca0]    15680 ms: Scavenge 2036.9 (2077.1) -> 2034.8 (2086.1) MB, 3.5 / 0.0 ms  (average mu = 0.173, current mu = 0.128) allocation failure; 
+
+
+<--- JS stacktrace --->
+
+FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
+ 1: 0xb9bbf0 node::Abort() [node]
+ 2: 0xaa27ee  [node]
+ 3: 0xd734a0 v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [node]
+ 4: 0xd73847 v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [node]
+ 5: 0xf50c55  [node]
+ 6: 0xf51b58 v8::internal::Heap::RecomputeLimits(v8::internal::GarbageCollector) [node]
+ 7: 0xf62053  [node]
+ 8: 0xf62ec8 v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags) [node]
+ 9: 0xf66095 v8::internal::Heap::HandleGCRequest() [node]
+10: 0xee41ff v8::internal::StackGuard::HandleInterrupts() [node]
+11: 0x12e4adf v8::internal::Runtime_StackGuardWithGap(int, unsigned long*, v8::internal::Isolate*) [node]
+12: 0x1711cb9  [node]
+Aborted (core dumped)

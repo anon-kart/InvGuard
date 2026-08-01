@@ -1,0 +1,4 @@
+Converted the ifillArray function to a pull-payment pattern by recording amounts owed and allowing users to withdraw their funds, thus preventing denial-of-service attacks.
+
+INVARIANTS USED:
+Prevention of Denial-of-Service attacks by using a pull-payment pattern.

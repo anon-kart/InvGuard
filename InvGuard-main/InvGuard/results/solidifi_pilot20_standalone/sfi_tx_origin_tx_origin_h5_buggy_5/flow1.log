@@ -1,0 +1,221 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/standalone_contracts/sfi_tx_origin_tx_origin_h5_buggy_5.sol
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f deposit --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.deposit.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+WARNING:root:[parser] solcx AST compile failed; using regex fallback. err=SolcError: contract.sol:11:40: ParserError: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+> command: `/home/kartik/.solcx/solc-v0.4.26 --standard-json --allow-paths .`
+> return code: `0`
+> stdout:
+{"contracts":{},"errors":[{"component":"general","formattedMessage":"contract.sol:11:40: ParserError: Expected ',' but got 'payable'\n    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {\n                                       ^-----^\n","message":"Expected ',' but got 'payable'","severity":"error","sourceLocation":{"end":188,"file":"contract.sol","start":181},"type":"ParserError"}],"sources":{}}
+
+> stderr:
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (post.owner == pre.owner)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.txt
+[ADAPTER] UNSOUND invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.unsound.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f withdraw --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.withdraw.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+WARNING:root:[parser] solcx AST compile failed; using regex fallback. err=SolcError: contract.sol:11:40: ParserError: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+> command: `/home/kartik/.solcx/solc-v0.4.26 --standard-json --allow-paths .`
+> return code: `0`
+> stdout:
+{"contracts":{},"errors":[{"component":"general","formattedMessage":"contract.sol:11:40: ParserError: Expected ',' but got 'payable'\n    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {\n                                       ^-----^\n","message":"Expected ',' but got 'payable'","severity":"error","sourceLocation":{"end":188,"file":"contract.sol","start":181},"type":"ParserError"}],"sources":{}}
+
+> stderr:
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+WARNING:root:[parser] solcx AST compile failed; using regex fallback. err=SolcError: contract.sol:11:40: ParserError: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+> command: `/home/kartik/.solcx/solc-v0.4.26 --standard-json --allow-paths .`
+> return code: `0`
+> stdout:
+{"contracts":{},"errors":[{"component":"general","formattedMessage":"contract.sol:11:40: ParserError: Expected ',' but got 'payable'\n    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {\n                                       ^-----^\n","message":"Expected ',' but got 'payable'","severity":"error","sourceLocation":{"end":188,"file":"contract.sol","start":181},"type":"ParserError"}],"sources":{}}
+
+> stderr:
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 904, in <module>
+    main()
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/cli/driver.py", line 657, in main
+    model = builder.build_for_function_name(cir, chosen_fn)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker/model/symmodel_builder.py", line 109, in build_for_function_name
+    raise ValueError(f"Function '{func_name}' not found in contract {cir.name}.")
+[... truncated ...]INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f sendto_txorigin21 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.sendto_txorigin21.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+WARNING:root:[parser] solcx AST compile failed; using regex fallback. err=SolcError: contract.sol:11:40: ParserError: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+> command: `/home/kartik/.solcx/solc-v0.4.26 --standard-json --allow-paths .`
+> return code: `0`
+> stdout:
+{"contracts":{},"errors":[{"component":"general","formattedMessage":"contract.sol:11:40: ParserError: Expected ',' but got 'payable'\n    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {\n                                       ^-----^\n","message":"Expected ',' but got 'payable'","severity":"error","sourceLocation":{"end":188,"file":"contract.sol","start":181},"type":"ParserError"}],"sources":{}}
+
+> stderr:
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (post.owner == pre.owner)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.sendto_txorigin21.txt
+[ADAPTER] UNSOUND invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.sendto_txorigin21.unsound.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.sendto_txorigin21.summary.json
+[ADAPTER] launching: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/.venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f sendto_txorigin21 --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.sendto_txorigin21.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Slither failed: SlitherError: Invalid compilation: 
+Invalid solc compilation /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:11:40: Error: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+INFO:root:[parser] Falling back to py-solc-x AST…
+INFO:root:[parser] USING SOLCX (py-solc-x) path
+WARNING:root:[parser] solcx AST compile failed; using regex fallback. err=SolcError: contract.sol:11:40: ParserError: Expected ',' but got 'payable'
+    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {
+                                       ^-----^
+
+> command: `/home/kartik/.solcx/solc-v0.4.26 --standard-json --allow-paths .`
+> return code: `0`
+> stdout:
+{"contracts":{},"errors":[{"component":"general","formattedMessage":"contract.sol:11:40: ParserError: Expected ',' but got 'payable'\n    function sendto_txorigin21(address payable receiver, uint amount,address owner_txorigin21) public {\n                                       ^-----^\n","message":"Expected ',' but got 'payable'","severity":"error","sourceLocation":{"end":188,"file":"contract.sol","start":181},"type":"ParserError"}],"sources":{}}
+
+> stderr:
+
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+   - (meta.revert_taken == false) -> (select(post.owner, meta.sender) == select(pre.owner, meta.sender)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+   - (meta.revert_taken == false) -> (post.owner == pre.owner)  | reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.sendto_txorigin21.txt
+[ADAPTER] UNSOUND invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.sendto_txorigin21.unsound.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.sendto_txorigin21.summary.json
+[FLOW1] ⚠️ Checker ran successfully, but model was UNSOUND (UNVERIFIED_UNSOUND).
+[FLOW1] ⚠️ Refusing refinement + strength scoring to avoid unsound verification claims.
+[FLOW1] UNSOUND attempted invariants (structured): deposit=2 withdraw=2
+[FLOW1] Legacy UNSOUND files (if present):
+  - /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.deposit.unsound.txt
+  - /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.withdraw.unsound.txtWARNING:root:[FLOW1] No verified-useful invariants produced. Flow-2 invariant-guided mode should be disabled.
+
+[FLOW1] ✅ Security obligations / attack objectives written despite Z3 UNSOUND:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final verified-useful invariant file written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

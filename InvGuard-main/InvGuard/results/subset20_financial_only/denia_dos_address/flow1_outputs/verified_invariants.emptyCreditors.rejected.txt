@@ -1,0 +1,6 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.win == true) -> (pre.creditorAddresses.length > 1500)  # reason=KeyError: "Unknown symbol 'pre.creditorAddresses.length'"
+(meta.revert_taken == false) -> (post.creditorAddresses.length >= pre.creditorAddresses.length)  # reason=KeyError: "Unknown symbol 'post.creditorAddresses.length'"
+(meta.revert_taken == false) -> (post.creditorAddresses.length <= pre.creditorAddresses.length + 350)  # reason=KeyError: "Unknown symbol 'post.creditorAddresses.length'"
+(meta.revert_taken == false) -> (post.creditorAddresses.length == 0) -> (pre.creditorAddresses.length > 1500)  # reason=KeyError: "Unknown symbol 'post.creditorAddresses.length'"
+(meta.revert_taken == false) -> (post.creditorAddresses.length == pre.creditorAddresses.length + 350) -> (post.win == false)  # reason=KeyError: "Unknown symbol 'post.creditorAddresses.length'"

@@ -1,0 +1,4 @@
+Converted the emptyCreditors function to a pull-payment pattern, allowing creditors to withdraw their funds instead of pushing payments in a loop.
+
+INVARIANTS USED:
+Pull-payment pattern

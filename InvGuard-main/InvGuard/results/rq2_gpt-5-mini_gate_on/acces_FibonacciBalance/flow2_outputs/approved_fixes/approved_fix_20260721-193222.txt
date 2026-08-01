@@ -1,0 +1,9 @@
+Added an authorization check require(msg.sender == fibonacciLibrary) at the start of withdraw(), and implemented a reentrancy mutex (_locked) to guard the function.
+
+INVARIANTS USED:
+1) delegatecall executes library code in the caller's context and can modify the caller's storage (storage slot mapping invariant).
+2) Storage layout: in FibonacciBalance slot0 = fibonacciLibrary, slot1 = calculatedFibNumber, slot2 = start, ...; in FibonacciLib slot0 = start, slot1 = calculatedFibNumber — writing to library's start via delegatecall will overwrite fibonacciLibrary in the caller.
+3) require(msg.sender == X) only restricts who can call a function; if an attacker can change X to their own address by manipulating storage via delegatecall, the check can be bypassed.
+4) Reentrancy guard prevents reentrant withdrawals but does not prevent storage overwrite attacks via delegatecall in the fallback.
+
+Conclusion from invariants: the added checks do not fix the primary delegatecall-based storage overwrite vulnerability. The fallback delegatecall still allows an attacker to overwrite fibonacciLibrary (slot0) by calling setStart through the fallback, then become the allowed caller and drain funds. The reentrancy guard helps against reentrant drains but is insufficient here.

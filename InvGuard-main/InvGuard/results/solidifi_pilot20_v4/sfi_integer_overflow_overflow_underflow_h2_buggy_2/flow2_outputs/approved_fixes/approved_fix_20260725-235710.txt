@@ -1,0 +1,4 @@
+Fixed integer overflow/underflow by adjusting the require statement to check for sufficient balance before subtraction.
+
+INVARIANTS USED:
+require(balances_intou26[msg.sender] >= _value)

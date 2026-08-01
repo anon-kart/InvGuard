@@ -1,0 +1,2 @@
+# VERIFIED-TRIVIAL (sanity/regression only; NOT for Flow-2)
+(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= 0)

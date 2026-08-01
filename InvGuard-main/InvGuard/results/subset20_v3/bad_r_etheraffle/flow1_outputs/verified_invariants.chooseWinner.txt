@@ -1,0 +1,5 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.raffleId >= pre.raffleId)
+(meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber)
+(meta.revert_taken == false) -> (post.paused == pre.paused)

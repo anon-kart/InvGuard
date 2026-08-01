@@ -1,0 +1,7 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.shares, meta.sender) == select(pre.shares, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.totalShares == pre.totalShares)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.collateral == pre.collateral)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.debt == pre.debt)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.price == pre.price)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).
+(meta.revert_taken == false) -> (post.asset == pre.asset)  # reason=UNSOUND_MODEL: Function body not modeled (source=slither, modeled=True, body_len=0).

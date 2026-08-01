@@ -1,0 +1,6 @@
+# VERIFIED-USEFUL INVARIANTS ONLY
+# DEFAULT FLOW-2 INPUT. Fail-closed if empty.
+(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)
+(meta.revert_taken == false) -> (select(post.Holders, meta.sender) >= select(pre.Holders, meta.sender))
+(meta.revert_taken == false) -> (select(post.Holders, meta.sender) <= select(pre.Holders, meta.sender))
+(meta.revert_taken == false) -> (post.owner == pre.owner)

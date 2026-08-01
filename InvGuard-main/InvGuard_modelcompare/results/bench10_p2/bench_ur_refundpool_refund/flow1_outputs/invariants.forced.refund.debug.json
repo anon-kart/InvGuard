@@ -1,0 +1,35 @@
+{
+  "function": "refund",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 3,
+  "chosen_count_before_final_fallback": 3,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalCredit >= pre.totalCredit)",
+    "(meta.revert_taken == false) -> (post.totalCredit <= pre.totalCredit + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.registered, meta.sender) == true -> select(post.credit, meta.sender) > 0)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == select(pre.credit, meta.sender) + arg.amount)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalCredit >= pre.totalCredit)",
+    "(meta.revert_taken == false) -> (post.totalCredit <= pre.totalCredit + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) >= select(pre.credit, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.registered, meta.sender) == true -> select(post.credit, meta.sender) > 0)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) == select(pre.credit, meta.sender) + arg.amount)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalCredit >= pre.totalCredit)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.registered, meta.sender) == true -> select(post.credit, meta.sender) > 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalCredit >= pre.totalCredit)",
+    "(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= select(pre.credit, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.registered, meta.sender) == true -> select(post.credit, meta.sender) > 0)"
+  ]
+}

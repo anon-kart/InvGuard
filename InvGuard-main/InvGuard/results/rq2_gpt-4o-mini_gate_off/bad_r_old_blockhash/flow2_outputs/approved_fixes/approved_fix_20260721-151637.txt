@@ -1,0 +1,4 @@
+Replaced the use of blockhash with a commit-reveal scheme using keccak256 to derive the answer.
+
+INVARIANTS USED:
+The commit-reveal scheme ensures that the guess is locked in before the answer is revealed, preventing manipulation.

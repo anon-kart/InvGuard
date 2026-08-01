@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (select(post.free0TokenIdUsed, arg.free0TokenId) == true -> select(pre.free0TokenIdUsed, arg.free0TokenId) == false)
+(meta.revert_taken == false) -> (post.totalStaked <= (pre.totalStaked + meta.value))
+(meta.revert_taken == false) -> (post.totalStaked >= (pre.totalStaked - meta.value))

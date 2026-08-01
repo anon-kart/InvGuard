@@ -1,0 +1,25 @@
+{
+  "VU": {
+    "count": 6,
+    "examples": [
+      "(meta.revert_taken == false) -> (post.totalDonated >= pre.totalDonated)",
+      "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) >= select(pre.wagers, meta.sender))",
+      "(meta.revert_taken == false) -> (select(post.wagers, meta.sender) <= select(pre.wagers, meta.sender))",
+      "(meta.revert_taken == false) -> (post.openToPublic == pre.openToPublic)",
+      "(meta.revert_taken == false) -> (post.betLimit >= pre.betLimit)",
+      "(meta.revert_taken == false) -> (post.difficulty >= pre.difficulty)"
+    ]
+  },
+  "VT": {
+    "count": 0,
+    "examples": []
+  },
+  "VM": {
+    "count": 0,
+    "examples": []
+  },
+  "UT": {
+    "count": 0,
+    "examples": []
+  }
+}

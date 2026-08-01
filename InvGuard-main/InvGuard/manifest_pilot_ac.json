@@ -1,0 +1,7 @@
+[
+ {"stem":"ac_mycontract","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/mycontract.sol","target_function":"sendTo","extra_env":{"INVGUARD_VULN_CLASS":"access_control"}},
+ {"stem":"ac_wallet02","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/wallet_02_refund_nosub.sol","target_function":"withdraw","extra_env":{"INVGUARD_VULN_CLASS":"access_control"}},
+ {"stem":"ac_wallet03","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/wallet_03_wrong_constructor.sol","target_function":"initWallet","extra_env":{"INVGUARD_VULN_CLASS":"access_control"}},
+ {"stem":"ac_mapwrite","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/mapping_write.sol","target_function":"set","extra_env":{"INVGUARD_VULN_CLASS":"access_control"}},
+ {"stem":"ac_unprotected","contract":"/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/access_control/unprotected0.sol","target_function":"changeOwner","extra_env":{"INVGUARD_VULN_CLASS":"access_control"}}
+]

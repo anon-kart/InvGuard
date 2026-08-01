@@ -1,0 +1,35 @@
+{
+    "patches": [
+        {
+            "bug_type": "leaking_ether",
+            "pc": 25,
+            "patch": [
+                {
+                    "delete": "",
+                    "insert": "CALLER PUSH1_0x0 SSTORE",
+                    "insert_mode": "after",
+                    "constructor": true
+                }
+            ]
+        },
+        {
+            "bug_type": "leaking_ether",
+            "pc": 78,
+            "patch": [
+                {
+                    "delete": "",
+                    "insert": "PUSH1_0x0 SLOAD PUSH20_0xffffffffffffffffffffffffffffffffffffffff AND CALLER EQ PUSH_jump_loc_1 JUMPI PUSH1_0x0 DUP1 REVERT JUMPDEST_jump_loc_1",
+                    "insert_mode": "before",
+                    "constructor": false
+                }
+            ]
+        }
+    ],
+    "control_flow_graph_recovery_time": 0.002473592758178711,
+    "control_flow_graph_recovery": "100%",
+    "original_deployment_size": "30 bytes",
+    "patched_deployment_size": "34 bytes",
+    "original_runtime_size": "105 bytes",
+    "patched_runtime_size": "140 bytes",
+    "execution_time": 0.15163207054138184
+}

@@ -1,0 +1,25 @@
+[
+  {"stem": "nssc_auction_bid",                          "target_function": "bid",            "extra_env": {}},
+  {"stem": "nssc_incorrect_constructor_withdraw",        "target_function": "withdraw",       "extra_env": {}},
+  {"stem": "nssc_kotet_claimThrone",                     "target_function": "claimThrone",    "extra_env": {}},
+  {"stem": "nssc_listdos_refundDos",                     "target_function": "refundDos",      "extra_env": {}},
+  {"stem": "nssc_parity_walletlibrary_initWallet",       "target_function": "initWallet",     "extra_env": {}},
+  {"stem": "nssc_privatebank_CashOut",                   "target_function": "CashOut",        "extra_env": {}},
+  {"stem": "nssc_rubixi_collectAllFees",                 "target_function": "collectAllFees", "extra_env": {}},
+  {"stem": "nssc_spankchain_LCOpenTimeout",              "target_function": "LCOpenTimeout",  "extra_env": {}},
+  {"stem": "nssc_therun_play",                           "target_function": "play",           "extra_env": {}},
+  {"stem": "nssc_unprotected_changeOwner",               "target_function": "changeOwner",    "extra_env": {}},
+
+  {"stem": "scrubd_009_Free3_claim",                          "target_function": "claim",             "extra_env": {}},
+  {"stem": "scrubd_030_DividendDistributor_distributeDividend","target_function": "distributeDividend","extra_env": {}},
+  {"stem": "scrubd_031_DividendDistributor_distributeDividend","target_function": "distributeDividend","extra_env": {}},
+  {"stem": "scrubd_032_TreasureHunt_unlockTreasure",         "target_function": "unlockTreasure",    "extra_env": {}},
+  {"stem": "scrubd_036_DividendDistributor_distributeDividend","target_function": "distributeDividend","extra_env": {}},
+  {"stem": "scrubd_042_PrivateBank_CashOut",                 "target_function": "CashOut",           "extra_env": {}},
+  {"stem": "scrubd_047_PRIVATE_ETH_CELL_Collect",            "target_function": "ETH_CELL_Collect",  "extra_env": {}},
+  {"stem": "scrubd_051_BANK_SAFE_Collect",                   "target_function": "SAFE_Collect",      "extra_env": {}},
+  {"stem": "scrubd_054_v1Migration_migrate",                 "target_function": "migrate",           "extra_env": {}},
+  {"stem": "scrubd_073_ETH_VAULT_CashOut",                   "target_function": "VAULT_CashOut",     "extra_env": {}},
+  {"stem": "scrubd_085_ETH_VAULT_CashOut",                   "target_function": "VAULT_CashOut",     "extra_env": {}},
+  {"stem": "scrubd_090_D_BANK_Collect",                      "target_function": "BANK_Collect",      "extra_env": {}}
+]

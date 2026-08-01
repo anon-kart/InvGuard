@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) <= (select(pre.balances_re_ent17, meta.sender) + arg._weiToWithdraw))
+(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw == select(pre.balances_re_ent17, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) + arg._weiToWithdraw <= select(pre.balances_re_ent17, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= (select(pre.balances_re_ent17, meta.sender) - arg._weiToWithdraw))
+(select(pre.balances_re_ent17, meta.sender) == 0 && meta.contract_balance > arg._weiToWithdraw) -> (meta.revert_taken == true)
+(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender))

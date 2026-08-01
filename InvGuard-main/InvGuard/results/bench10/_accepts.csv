@@ -1,0 +1,7 @@
+stem,target_function,accepted,reason,replay,invariant,benign
+bench_re_etherbank_withdraw,withdraw,False,flow2_no_impactful_exploit,None,None,None
+bench_re_rewardvault_redeem,redeem,False,flow2_no_impactful_exploit,None,None,None
+bench_ur_payoutledger_payout,payout,False,flow2_no_impactful_exploit,None,None,None
+bench_of_tokensale_buy,transfer,False,flow2_no_impactful_exploit,None,None,None
+bench_of_bonusvault_addBonus,addBonus,False,flow2_no_impactful_exploit,None,None,None
+bench_to_guardedwallet_send,send,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE

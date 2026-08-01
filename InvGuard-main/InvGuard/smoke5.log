@@ -1,0 +1,8 @@
+
+=== [smoke5] denia_dos_simple  (tf=ifillArray, env={'INVGUARD_VULN_CLASS': 'denial_of_service'}) ===
+
+=== [smoke5] reent_reentrancy_bonus  (tf=getFirstWithdrawalBonus, env={'INVGUARD_VULN_CLASS': 'reentrancy'}) ===
+
+========== smoke5: 0/2 strict accepts ==========
+  ----    denia_dos_simple                              no_report
+  ----    reent_reentrancy_bonus                        gate_rejected

@@ -1,0 +1,35 @@
+{
+  "function": "initWallet",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 4,
+  "deposit_count": 4,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, arg.sender) >= select(pre.m_ownerIndex, arg.sender))",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, arg.sender) <= select(pre.m_ownerIndex, arg.sender))",
+    "(pre.m_numOwners == 0 && meta.m_spentToday > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender))",
+    "(pre.m_numOwners == 0 && meta.m_spentToday > meta.value) -> (meta.revert_taken == true)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.m_numOwners >= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (post.m_numOwners <= pre.m_numOwners)",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) >= select(pre.m_ownerIndex, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.m_ownerIndex, meta.sender) <= select(pre.m_ownerIndex, meta.sender))"
+  ]
+}

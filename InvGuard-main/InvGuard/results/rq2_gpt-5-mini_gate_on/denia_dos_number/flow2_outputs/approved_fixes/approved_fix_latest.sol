@@ -1,0 +1,80 @@
+/*
+ * @source: https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/dos_gas_limit/dos_number.sol
+ * @author: -
+ * @vulnerable_at_lines: 18,19,20,21,22
+ */
+
+pragma solidity ^0.4.25;
+
+contract DosNumber {
+
+    uint numElements = 0;
+    uint[] array;
+
+    // Pull-payment storage: amounts owed to addresses (to avoid pushing in a loop)
+    mapping(address => uint) public pendingWithdrawals;
+    // Reentrancy mutex
+    bool private _locked;
+
+    function insertNnumbers(uint value,uint numbers) public {
+
+        // Convert push pattern to pull pattern:
+        // Record total owed to msg.sender instead of performing per-item work or external calls in a loop.
+        // Also avoid unbounded per-iteration storage writes by growing the array length once.
+
+        // bounds check for multiplication overflow: require(value * numbers does not overflow)
+        if (value != 0 && numbers != 0) {
+            require(numbers <= uint(-1) / value);
+        }
+        uint total = value * numbers;
+
+        // Record owed amount to sender (pull-payment)
+        pendingWithdrawals[msg.sender] += total;
+
+        // Grow logical element count and array length in a single operation to avoid an unbounded loop.
+        uint newNumElements = numElements + numbers;
+        if (newNumElements > array.length) {
+            array.length = newNumElements;
+        }
+        numElements = newNumElements;
+    }
+
+    // Withdraw function for pull-payments
+    function withdraw() public {
+        require(!_locked);
+        _locked = true;
+
+        uint amount = pendingWithdrawals[msg.sender];
+        require(amount > 0);
+
+        // Update state before external call (Checks-Effects-Interactions)
+        pendingWithdrawals[msg.sender] = 0;
+
+        // Perform external transfer and require success so failures propagate
+        require(msg.sender.call.value(amount)());
+
+        _locked = false;
+    }
+
+    function clear() public {
+        require(numElements>1500);
+        numElements = 0;
+    }
+
+    // Gas DOS clear
+    function clearDOS() public {
+
+        // number depends on actual gas limit
+        require(numElements>1500);
+        array = new uint[](0);
+        numElements = 0;
+    }
+
+    function getLengthArray() public view returns(uint) {
+        return numElements;
+    }
+
+    function getRealLengthArray() public view returns(uint) {
+        return array.length;
+    }
+}

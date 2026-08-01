@@ -1,0 +1,5 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.contract_balance == (pre.contract_balance + meta.value)  # reason=KeyError: "Unknown symbol 'post.contract_balance'"
+(meta.revert_taken == false) -> (post.contract_balance <= (pre.contract_balance + meta.value)  # reason=KeyError: "Unknown symbol 'post.contract_balance'"
+(meta.revert_taken == false) -> (post.contract_balance >= (pre.contract_balance - meta.value)  # reason=KeyError: "Unknown symbol 'post.contract_balance'"
+(meta.revert_taken == false) -> (post.contract_balance >= 0)  # reason=KeyError: "Unknown symbol 'post.contract_balance'"

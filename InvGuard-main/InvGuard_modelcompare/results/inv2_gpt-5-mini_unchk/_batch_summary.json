@@ -1,0 +1,127 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0xb7c5c5aa4d42967efe906e1b66cb8df9cebf04f7.sol",
+    "stem": "uc_keepether",
+    "tier": "inv2_gpt-5-mini_unchk",
+    "model": "gpt-5-mini",
+    "target_function": "withdraw",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 27.13,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0xb11b2fed6c9354f7aa2f658d3b4d7b31d8a13b77.sol",
+    "stem": "uc_depproxy",
+    "tier": "inv2_gpt-5-mini_unchk",
+    "model": "gpt-5-mini",
+    "target_function": "proxy",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 35.23,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0xbaa3de6504690efb064420d89e871c27065cdd52.sol",
+    "stem": "uc_vaultproxy1",
+    "tier": "inv2_gpt-5-mini_unchk",
+    "model": "gpt-5-mini",
+    "target_function": "proxy",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 28.55,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0xbebbfe5b549f5db6e6c78ca97cac19d1fb03082c.sol",
+    "stem": "uc_vaultproxy2",
+    "tier": "inv2_gpt-5-mini_unchk",
+    "model": "gpt-5-mini",
+    "target_function": "proxy",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 32.35,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  },
+  {
+    "contract": "/home/kartik/Downloads/sb-heists/smartbugs-curated/0.4.x/contracts/dataset/unchecked_low_level_calls/0x52d2e0f9b01101a59b38a3d05c80b7618aeed984.sol",
+    "stem": "uc_etherget",
+    "tier": "inv2_gpt-5-mini_unchk",
+    "model": "gpt-5-mini",
+    "target_function": "getTokens",
+    "extra_env": {
+      "INVGUARD_VULN_CLASS": "unchecked_call"
+    },
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 28.95,
+      "timed_out": false
+    },
+    "flow2": {
+      "returncode": 1,
+      "elapsed_sec": 1.37,
+      "timed_out": false
+    },
+    "gate": {
+      "accepted": false,
+      "reason": "no_report",
+      "verdicts": {}
+    }
+  }
+]

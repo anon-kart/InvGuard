@@ -1,0 +1,91 @@
+/*
+ * @source: https://github.com/SmartContractSecurity/SWC-registry/blob/master/test_cases/dos_gas_limit/dos_number.sol
+ * @author: -
+ * @vulnerable_at_lines: 18,19,20,21,22
+ */
+
+pragma solidity ^0.4.25;
+
+contract DosNumber {
+
+    uint numElements = 0;
+    uint[] array;
+
+    // Pull-payment mapping: record amounts owed to callers instead of pushing in a loop
+    mapping(address => uint) public payments;
+    // Reentrancy mutex
+    bool private _locked;
+
+    function insertNnumbers(uint value,uint numbers) public {
+
+        // Convert push-loop (which could DoS by reverting a single recipient or by expensive repeated storage writes)
+        // into a pull-payment style: record the total amount owed to msg.sender and update counters with safe checks.
+        // This avoids performing multiple external operations or repeated storage writes in a loop.
+
+        // prevent overflow on numElements
+        uint newNumElements = numElements + numbers;
+        require(newNumElements >= numElements);
+
+        // record owed amount for caller (value represents per-number amount)
+        uint total = value * numbers;
+        // check multiplication overflow (simple check)
+        if (numbers != 0) {
+            require(total / numbers == value);
+        }
+
+        payments[msg.sender] = payments[msg.sender] + total;
+
+        // update element counter
+        numElements = newNumElements;
+
+        // Note: we intentionally avoid performing array.length expansions or per-element writes here
+        // to prevent gas/execution DoS from large 'numbers' values.
+    }
+
+    // Allow users to withdraw their recorded payments (pull pattern).
+    function withdraw() public {
+        require(!_locked);
+        _locked = true;
+
+        uint amount = payments[msg.sender];
+        require(amount > 0);
+
+        // Move state before external call
+        payments[msg.sender] = 0;
+
+        // propagate failure if send fails
+        require(msg.sender.send(amount));
+
+        _locked = false;
+    }
+
+    function clear() public {
+        require(numElements>1500);
+        numElements = 0;
+    }
+
+    // Gas DOS clear
+    function clearDOS() public {
+
+        // number depends on actual gas limit
+        require(numElements>1500);
+        array = new uint[](0);
+        numElements = 0;
+    }
+
+    function getLengthArray() public view returns(uint) {
+        return numElements;
+    }
+
+    function getRealLengthArray() public view returns(uint) {
+        return array.length;
+    }
+}
+
+
+// ---- auto-added by BenignExecutor ----
+// Provides a stable deployable name used by the harness: `Target`.
+// Assumes `DosNumber` has a no-arg constructor (or implicit constructor).
+contract Target is DosNumber {
+    constructor() DosNumber() {}
+}

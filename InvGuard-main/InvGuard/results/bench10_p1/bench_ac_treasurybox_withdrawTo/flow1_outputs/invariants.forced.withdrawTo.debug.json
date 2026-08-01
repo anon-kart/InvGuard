@@ -1,0 +1,41 @@
+{
+  "function": "withdrawTo",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 4,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (post.frozen == pre.frozen)",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.vaultBalance() <= pre.vaultBalance() + arg.amount)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (post.frozen == pre.frozen)",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.vaultBalance() <= pre.vaultBalance() + arg.amount)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg.amount))",
+    "(meta.revert_taken == false) -> (post.frozen == pre.frozen)",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + arg.amount))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg.amount))",
+    "(meta.revert_taken == false) -> (post.frozen == pre.frozen)",
+    "(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())",
+    "(meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + arg.amount))"
+  ]
+}

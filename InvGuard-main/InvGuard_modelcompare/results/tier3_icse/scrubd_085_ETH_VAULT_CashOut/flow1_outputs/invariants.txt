@@ -1,0 +1,7 @@
+(meta.revert_taken == false) -> (select(post.balances, arg.sender) >= select(pre.balances, arg.sender))
+(meta.revert_taken == false) -> (select(post.balances, arg.sender) <= select(pre.balances, arg.sender) + arg._am)
+(meta.revert_taken == false) -> (select(post.balances, arg.sender) == select(pre.balances, arg.sender) + (arg.value > pre.MinDeposit ? arg.value : 0) - (arg._am <= select(pre.balances, arg.sender) ? arg._am : 0))
+(meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)
+(meta.revert_taken == false) -> (post.Sender == pre.Sender)
+(meta.revert_taken == false) -> (post.Val == pre.Val)
+(meta.revert_taken == false) -> (post.Time == pre.Time)

@@ -1,0 +1,2 @@
+# [DISCARDED:not_an_invariant] (meta.revert_taken == false) -> (meta.sender == owner)
+# [DISCARDED:not_an_invariant] (meta.revert_taken == false) -> (owner != arg._newOwner)

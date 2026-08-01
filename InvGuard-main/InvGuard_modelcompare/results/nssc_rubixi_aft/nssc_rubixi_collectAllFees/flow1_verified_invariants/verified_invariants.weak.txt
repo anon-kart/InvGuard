@@ -1,0 +1,2 @@
+# WEAK VERIFIED-USEFUL INVARIANTS
+meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees

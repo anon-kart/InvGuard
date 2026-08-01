@@ -1,0 +1,4 @@
+The submitted fix only protected overflowaddtostate. The final fix adds Solidity 0.4.x-compatible arithmetic precondition checks before every addition, multiplication, and subtraction that uses count and input, covering both state-updating and local-only computations.
+
+INVARIANTS USED:
+For addition, require input <= uint256(-1) - count so count + input cannot exceed the uint256 maximum. For multiplication, require input == 0 || count <= uint256(-1) / input to avoid division by zero and ensure count * input cannot exceed the uint256 maximum. For subtraction, require input <= count so count - input cannot underflow. These checks preserve the original arithmetic result for all inputs where the operation is representable and revert otherwise.

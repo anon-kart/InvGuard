@@ -1,0 +1,37 @@
+{
+  "function": "withdrawAll",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 3,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == select(pre.owners, arg._owner))",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) == select(pre.owners, meta.sender))",
+    "(meta.revert_taken == false) -> (post.root == pre.root)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) != 0 || arg._owner == 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == select(pre.owners, arg._owner))",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) == select(pre.owners, meta.sender))",
+    "(meta.revert_taken == false) -> (post.root == pre.root)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) != 0 || arg._owner == 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == select(pre.owners, arg._owner))",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) == select(pre.owners, meta.sender))",
+    "(meta.revert_taken == false) -> (post.root == pre.root)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) != 0 || arg._owner == 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) == select(pre.owners, arg._owner))",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) == select(pre.owners, meta.sender))",
+    "(meta.revert_taken == false) -> (post.root == pre.root)",
+    "(meta.revert_taken == false) -> (select(post.owners, meta.sender) != 0)",
+    "(meta.revert_taken == false) -> (select(post.owners, arg._owner) != 0 || arg._owner == 0)"
+  ]
+}

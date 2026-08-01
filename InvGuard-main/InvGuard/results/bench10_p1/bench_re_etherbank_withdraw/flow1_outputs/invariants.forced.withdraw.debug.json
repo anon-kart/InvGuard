@@ -1,0 +1,41 @@
+{
+  "function": "withdraw",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 6,
+  "deposit_count": 4,
+  "withdraw_count": 6,
+  "chosen_count_before_final_fallback": 6,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalDeposited >= pre.totalDeposited)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + pre.arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) >= select(pre.depositCount, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) <= select(pre.depositCount, meta.sender) + 1)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) + post.totalDeposited == select(pre.balances, meta.sender) + pre.totalDeposited + pre.arg.amount)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalDeposited >= pre.totalDeposited)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) >= select(pre.depositCount, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) <= select(pre.depositCount, meta.sender) + 1)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) + post.totalDeposited == select(pre.balances, meta.sender) + pre.totalDeposited + arg.amount)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalDeposited >= pre.totalDeposited)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg.amount))",
+    "(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) >= select(pre.depositCount, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) <= select(pre.depositCount, meta.sender) + 1)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) + post.totalDeposited == (select(pre.balances, meta.sender) + pre.totalDeposited + arg.amount))"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg.amount))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) + post.totalDeposited == (select(pre.balances, meta.sender) + pre.totalDeposited + arg.amount))",
+    "(meta.revert_taken == false) -> (post.totalDeposited >= pre.totalDeposited)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) >= select(pre.depositCount, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.depositCount, meta.sender) <= select(pre.depositCount, meta.sender) + 1)"
+  ]
+}

@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block == 0)
+(meta.revert_taken == false) -> (meta.value == 1 ether)
+(meta.revert_taken == false) -> (select(post.guesses, meta.sender).block > block.number)
+(meta.revert_taken == false) -> (select(post.guesses, meta.sender).guess == blockhash(select(post.guesses, meta.sender).block))

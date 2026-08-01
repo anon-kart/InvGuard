@@ -1,0 +1,4 @@
+Moved the state update for claimedBonus before the external call to withdrawReward to prevent reentrancy.
+
+INVARIANTS USED:
+State updates before external calls.

@@ -1,0 +1,8 @@
+(meta.revert_taken == false) -> (post.raffleId >= pre.raffleId)
+(meta.revert_taken == false) -> (post.nextTicket >= pre.nextTicket)
+(meta.revert_taken == false) -> (select(post.contestants, post.currTicket).addr == meta.sender)
+(meta.revert_taken == false) -> (select(post.contestants, post.currTicket).raffleId == post.raffleId)
+(meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber)
+(meta.revert_taken == false) -> (post.gaps.length <= pre.gaps.length)
+(meta.revert_taken == false) -> (post.moneySent <= pre.moneySent + meta.value)
+(meta.revert_taken == false) -> (post.refund <= pre.refund + pricePerTicket)

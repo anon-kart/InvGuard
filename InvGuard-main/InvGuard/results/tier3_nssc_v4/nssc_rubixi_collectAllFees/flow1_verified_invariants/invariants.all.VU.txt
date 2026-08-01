@@ -1,0 +1,4 @@
+# VERIFIED-USEFUL (constraints for Flow-2)
+(meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees)
+(meta.revert_taken == false) -> (post.creator == pre.creator)
+(meta.revert_taken == false) -> (post.collectedFees == 0) -> (pre.collectedFees != 0)

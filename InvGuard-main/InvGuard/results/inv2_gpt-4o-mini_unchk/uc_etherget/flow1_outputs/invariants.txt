@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.owner == pre.owner)
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) >= select(pre.balanceOf, meta.sender))
+(meta.revert_taken == false) -> (select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender))
+(meta.revert_taken == false) -> (select(post.balanceOf, this) >= select(pre.balanceOf, this))
+(meta.revert_taken == false) -> (select(post.balanceOf, this) <= select(pre.balanceOf, this))
+(select(pre.balanceOf, this) == 0 && meta.contract_balance > meta.value) -> (meta.revert_taken == true)

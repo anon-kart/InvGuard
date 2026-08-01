@@ -1,0 +1,3 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (listAddresses.length < 1500)  # reason=KeyError: "Unknown symbol 'listAddresses.length'"
+(meta.revert_taken == false) -> (i <= 350)  # reason=KeyError: "Unknown symbol 'i'"

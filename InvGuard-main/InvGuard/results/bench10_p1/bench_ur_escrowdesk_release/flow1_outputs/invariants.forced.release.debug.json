@@ -1,0 +1,37 @@
+{
+  "function": "release",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 4,
+  "deposit_count": 4,
+  "withdraw_count": 4,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (post.totalEscrow >= pre.totalEscrow)",
+    "(meta.revert_taken == false) -> (post.totalEscrow <= pre.totalEscrow + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.escrow, meta.sender) >= select(pre.escrow, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.escrow, meta.sender) <= select(pre.escrow, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.active, meta.sender) == true -> select(post.escrow, meta.sender) > 0)",
+    "(meta.revert_taken == false) -> (select(post.active, meta.sender) == false -> select(post.escrow, meta.sender) == 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (post.totalEscrow >= pre.totalEscrow)",
+    "(meta.revert_taken == false) -> (post.totalEscrow <= pre.totalEscrow + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.escrow, meta.sender) >= select(pre.escrow, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.escrow, meta.sender) <= select(pre.escrow, meta.sender) + arg.amount)",
+    "(meta.revert_taken == false) -> (select(post.active, meta.sender) == true -> select(post.escrow, meta.sender) > 0)",
+    "(meta.revert_taken == false) -> (select(post.active, meta.sender) == false -> select(post.escrow, meta.sender) == 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (post.totalEscrow >= pre.totalEscrow)",
+    "(meta.revert_taken == false) -> (select(post.escrow, meta.sender) >= select(pre.escrow, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.active, meta.sender) == true -> select(post.escrow, meta.sender) > 0)",
+    "(meta.revert_taken == false) -> (select(post.active, meta.sender) == false -> select(post.escrow, meta.sender) == 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (post.totalEscrow >= pre.totalEscrow)",
+    "(meta.revert_taken == false) -> (select(post.escrow, meta.sender) >= select(pre.escrow, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.active, meta.sender) == true -> select(post.escrow, meta.sender) > 0)",
+    "(meta.revert_taken == false) -> (select(post.active, meta.sender) == false -> select(post.escrow, meta.sender) == 0)"
+  ]
+}

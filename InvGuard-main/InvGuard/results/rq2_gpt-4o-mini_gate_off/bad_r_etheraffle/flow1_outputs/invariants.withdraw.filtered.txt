@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.raffleId >= pre.raffleId)
+(meta.revert_taken == false) -> (post.nextTicket >= pre.nextTicket)
+(meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber)
+(meta.revert_taken == false) -> (post.gaps.length <= pre.gaps.length)
+(meta.revert_taken == false) -> (post.gaps.length >= pre.gaps.length - 1)

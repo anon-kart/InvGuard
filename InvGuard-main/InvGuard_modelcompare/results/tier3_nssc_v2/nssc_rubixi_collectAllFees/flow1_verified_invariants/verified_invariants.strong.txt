@@ -1,0 +1,3 @@
+# STRONG VERIFIED-USEFUL INVARIANTS
+meta.revert_taken == false) -> (post.collectedFees <= (pre.collectedFees + meta.value)
+meta.revert_taken == false) -> (post.collectedFees == (pre.collectedFees + meta.value)

@@ -1,0 +1,1 @@
+The exploit still succeeds: a non-owner calls initWallet() to become creator/owner, then drains via migrateTo. Restrict initWallet() so it runs only once (by the deployer, or only while uninitialized), and keep migrateTo restricted to the legitimate creator.

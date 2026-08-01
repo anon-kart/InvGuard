@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true)
+(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) >= select(pre.userBalances, arg.recipient))

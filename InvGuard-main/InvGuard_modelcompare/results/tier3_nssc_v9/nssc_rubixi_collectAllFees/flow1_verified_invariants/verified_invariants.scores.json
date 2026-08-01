@@ -1,0 +1,46 @@
+{
+  "strong": [],
+  "medium": [],
+  "useful": [],
+  "weak": [
+    "meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees",
+    "(meta.revert_taken == false) -> (post.collectedFees == 0) -> (pre.collectedFees == 0)"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (post.collectedFees >= pre.collectedFees",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.collectedFees == 0 -> pre.collectedFees == 0",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

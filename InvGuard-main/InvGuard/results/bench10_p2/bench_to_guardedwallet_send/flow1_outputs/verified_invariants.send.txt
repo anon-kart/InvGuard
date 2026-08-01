@@ -1,0 +1,5 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest)
+(meta.revert_taken == false) -> (post.holder == pre.holder)

@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.stakeTokens >= pre.stakeTokens)
+(meta.revert_taken == false) -> (post.lock == true -> pre.lock == false)

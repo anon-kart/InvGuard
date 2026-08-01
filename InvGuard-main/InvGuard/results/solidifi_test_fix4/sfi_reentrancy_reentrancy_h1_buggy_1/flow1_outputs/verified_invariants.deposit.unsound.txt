@@ -1,0 +1,3 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (meta.value > 0 -> select(post.balances_re_ent8, meta.sender) > select(pre.balances_re_ent8, meta.sender)  # reason=UNSOUND_MODEL: Function body not modeled (source=solcx-ast-only, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= 0)  # reason=UNSOUND_MODEL: Function body not modeled (source=solcx-ast-only, modeled=False, body_len=0).

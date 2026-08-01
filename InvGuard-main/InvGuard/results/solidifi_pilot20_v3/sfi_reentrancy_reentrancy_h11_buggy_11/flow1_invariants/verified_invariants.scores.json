@@ -1,0 +1,43 @@
+{
+  "strong": [
+    "meta.revert_taken == false) -> (select(post.balances_re_ent3, meta.sender) >= select(pre.balances_re_ent3, meta.sender)"
+  ],
+  "medium": [],
+  "useful": [
+    "meta.revert_taken == false) -> (select(post.balances_re_ent3, meta.sender) >= select(pre.balances_re_ent3, meta.sender)"
+  ],
+  "weak": [],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (select(post.balances_re_ent3, meta.sender) >= select(pre.balances_re_ent3, meta.sender)",
+      "killed": 3,
+      "mutants_ran": 4,
+      "kill_rate": 0.75,
+      "coverage_score": 1.0,
+      "trivial": false,
+      "score": 0.76,
+      "tier": "strong",
+      "weak_reason": null,
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "drop_require_1",
+      "compiled": true
+    },
+    {
+      "name": "flip_ge_to_gt",
+      "compiled": true
+    },
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    },
+    {
+      "name": "minus_eq_to_plus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

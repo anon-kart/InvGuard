@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (post.owner == pre.owner)
+(meta.revert_taken == false) -> (post.contract_balance >= 0)
+(meta.revert_taken == false) -> (post.contract_balance == pre.contract_balance)

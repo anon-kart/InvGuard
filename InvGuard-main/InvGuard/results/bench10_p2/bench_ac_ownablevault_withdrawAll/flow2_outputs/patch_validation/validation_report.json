@@ -1,0 +1,245 @@
+{
+  "ok": true,
+  "invariants": {
+    "ok": true,
+    "verified": [
+      "(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)",
+      "(meta.revert_taken == false) -> (select(post.deposits, meta.sender) >= select(pre.deposits, meta.sender)",
+      "(meta.revert_taken == false) -> (post.locked == pre.locked)"
+    ],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [
+      "[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/patched_contract.sol -f withdrawAll --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results",
+      "[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker",
+      "[adapter] returncode: 0",
+      "",
+      "[translator] Accepted 3 invariants from LLM.",
+      "",
+      "Function: withdrawAll  (invariants: LLM-translated)",
+      "Notes:",
+      "  - [tmp] created local bal: BitVec256",
+      "  - [raw] Drain(to,bal)",
+      "",
+      "=== Invariant Checks ===",
+      "{\"idx\": 1, \"inv\": \"(meta.revert_taken == false) -> (post.depositorCount >= pre.depositorCount)\", \"status\": \"HOLDS\"}",
+      "{\"idx\": 2, \"inv\": \"(meta.revert_taken == false) -> (select(post.deposits, meta.sender) >= select(pre.deposits, meta.sender))\", \"status\": \"HOLDS\"}",
+      "{\"idx\": 3, \"inv\": \"(meta.revert_taken == false) -> (post.locked == pre.locked)\", \"status\": \"HOLDS\"}"
+    ],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "OK"
+  },
+  "replay": {
+    "results": {
+      "A1": {
+        "compile_ok": true,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A1",
+        "forge_returncode": 0,
+        "stdout_head": "Compiling 2 files with Solc 0.8.28\nSolc 0.8.28 finished in 23.40ms\nCompiler run successful!",
+        "stderr_head": "note[unaliased-plain-import]: use named imports '{A, B}' or alias 'import \"..\" as X'\n --> src/Attacker.sol:6:8\n  |\n6 | import \"./Target.sol\";\n  |        ^^^^^^^^^^^^^^\n  |\n  = help: https://book.getfoundry.sh/reference/forge/forge-lint#unaliased-plain-import\n",
+        "error": null,
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false,
+        "impact_details": "forge test ok; entrypoint_ok=0; impact_ok=0; profit_wei=0; drain_wei=0; honest_drain_wei=0; excess_drain_wei=0; impact_ok_differential=0; policy=profit_positive_or_excess_drain; revert_reason=not owner",
+        "excess_drain_wei": 0,
+        "impact_ok_differential": false,
+        "test_returncode": 0,
+        "test_stdout_head": "Compiling 2 files with Solc 0.8.28\nSolc 0.8.28 finished in 49.58ms\nCompiler run successful!\n\nRan 1 test for test/ExploitExecutor.t.sol:ExploitExecutorTest\n[PASS] test_run_attack() (gas: 3947293)\nLogs:\n  entrypoint_ok: 0\n  ret_data: 0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000096e6f74206f776e65720000000000000000000000000000000000000000000000\n  unauthorized_change: 0\n  priv_bypassed: 0\n  stranded_funds: 0\n  profit_wei: 0\n  drain_wei: 0\n  honest_drain_wei: 0\n  excess_drain_wei: 0\n  impact_ok: 0\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 695.96\u00b5s (432.40\u00b5s CPU time)\n\nRan 1 test suite in 5.77ms (695.96\u00b5s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+        "test_stderr_head": "",
+        "test_error": null
+      }
+    },
+    "compile_ok": 1,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": true,
+    "run_all": false
+  },
+  "benign": {
+    "ok": true,
+    "reason": null,
+    "original": {
+      "ok": true,
+      "calls": [
+        {
+          "fn": "deposit",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "withdrawAll",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "setLocked",
+          "arg_types": [
+            "bool"
+          ],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 1,
+            "t_before": 100000000000000000,
+            "t_after": 110000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99890000000000000000
+          },
+          "user": {
+            "ok": 1,
+            "t_before": 110000000000000000,
+            "t_after": 120000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 99990000000000000000
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99900000000000000000
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 100000000000000000000
+          }
+        },
+        {
+          "owner": {
+            "ok": 1,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99900000000000000000
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 100000000000000000000
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 100000000000000000,
+        "delta": 100000000000000000
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 0,
+      "stdout_head": "Compiling 3 files with Solc 0.8.28\nSolc 0.8.28 finished in 50.56ms\nCompiler run successful with warnings:\nWarning (5159): \"selfdestruct\" has been deprecated. Note that, starting from the Cancun hard fork, the underlying opcode no longer deletes the code and data associated with an account and only transfers its Ether to the beneficiary, unless executed in the same transaction in which the contract was created (see EIP-6780). Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. Future changes to the EVM might further reduce the functionality of the opcode.\n  --> test/BenignBehavior.t.sol:10:9:\n   |\n10 |         selfdestruct(to);\n   |         ^^^^^^^^^^^^\n\n\nRan 1 test for test/BenignBehavior.t.sol:BenignBehaviorTest\n[PASS] test_benign_calls() (gas: 885206)\nLogs:\n  bal_before: 0\n  c0_owner: 1\n  t0_owner_before: 100000000000000000\n  t0_owner_after: 110000000000000000\n  s0_owner_before: 99900000000000000000\n  s0_owner_after: 99890000000000000000\n  c0_user: 1\n  t0_user_before: 110000000000000000\n  t0_user_after: 120000000000000000\n  s0_user_before: 100000000000000000000\n  s0_user_after: 99990000000000000000\n  c1_owner: 0\n  t1_owner_before: 100000000000000000\n  t1_owner_after: 100000000000000000\n  s1_owner_before: 99900000000000000000\n  s1_owner_after: 99900000000000000000\n  c1_user: 0\n  t1_user_before: 100000000000000000\n  t1_user_after: 100000000000000000\n  s1_user_before: 100000000000000000000\n  s1_user_after: 100000000000000000000\n  c2_owner: 1\n  t2_owner_before: 100000000000000000\n  t2_owner_after: 100000000000000000\n  s2_owner_before: 99900000000000000000\n  s2_owner_after: 99900000000000000000\n  c2_user: 0\n  t2_user_before: 100000000000000000\n  t2_user_after: 100000000000000000\n  s2_user_before: 100000000000000000000\n  s2_user_after: 100000000000000000000\n  bal_after: 100000000000000000\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 514.49\u00b5s (295.54\u00b5s CPU time)\n\nRan 1 test suite in 5.84ms (514.49\u00b5s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+      "stderr_head": "Warning: the following cheatcode(s) are deprecated and will be removed in future versions:\n  snapshot(): replaced by `snapshotState`\n  revertTo(uint256): replaced by `revertToState`",
+      "error": null
+    },
+    "patched": {
+      "ok": true,
+      "calls": [
+        {
+          "fn": "deposit",
+          "arg_types": [],
+          "payable": true
+        },
+        {
+          "fn": "withdrawAll",
+          "arg_types": [
+            "address"
+          ],
+          "payable": false
+        },
+        {
+          "fn": "setLocked",
+          "arg_types": [
+            "bool"
+          ],
+          "payable": false
+        }
+      ],
+      "results": [
+        {
+          "owner": {
+            "ok": 1,
+            "t_before": 100000000000000000,
+            "t_after": 110000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99890000000000000000
+          },
+          "user": {
+            "ok": 1,
+            "t_before": 110000000000000000,
+            "t_after": 120000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 99990000000000000000
+          }
+        },
+        {
+          "owner": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99900000000000000000
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 100000000000000000000
+          }
+        },
+        {
+          "owner": {
+            "ok": 1,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 99900000000000000000,
+            "s_after": 99900000000000000000
+          },
+          "user": {
+            "ok": 0,
+            "t_before": 100000000000000000,
+            "t_after": 100000000000000000,
+            "s_before": 100000000000000000000,
+            "s_after": 100000000000000000000
+          }
+        }
+      ],
+      "global_balance": {
+        "before": 0,
+        "after": 100000000000000000,
+        "delta": 100000000000000000
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 0,
+      "stdout_head": "Compiling 3 files with Solc 0.8.28\nSolc 0.8.28 finished in 50.81ms\nCompiler run successful with warnings:\nWarning (5159): \"selfdestruct\" has been deprecated. Note that, starting from the Cancun hard fork, the underlying opcode no longer deletes the code and data associated with an account and only transfers its Ether to the beneficiary, unless executed in the same transaction in which the contract was created (see EIP-6780). Any use in newly deployed contracts is strongly discouraged even if the new behavior is taken into account. Future changes to the EVM might further reduce the functionality of the opcode.\n  --> test/BenignBehavior.t.sol:10:9:\n   |\n10 |         selfdestruct(to);\n   |         ^^^^^^^^^^^^\n\n\nRan 1 test for test/BenignBehavior.t.sol:BenignBehaviorTest\n[PASS] test_benign_calls() (gas: 904694)\nLogs:\n  bal_before: 0\n  c0_owner: 1\n  t0_owner_before: 100000000000000000\n  t0_owner_after: 110000000000000000\n  s0_owner_before: 99900000000000000000\n  s0_owner_after: 99890000000000000000\n  c0_user: 1\n  t0_user_before: 110000000000000000\n  t0_user_after: 120000000000000000\n  s0_user_before: 100000000000000000000\n  s0_user_after: 99990000000000000000\n  c1_owner: 0\n  t1_owner_before: 100000000000000000\n  t1_owner_after: 100000000000000000\n  s1_owner_before: 99900000000000000000\n  s1_owner_after: 99900000000000000000\n  c1_user: 0\n  t1_user_before: 100000000000000000\n  t1_user_after: 100000000000000000\n  s1_user_before: 100000000000000000000\n  s1_user_after: 100000000000000000000\n  c2_owner: 1\n  t2_owner_before: 100000000000000000\n  t2_owner_after: 100000000000000000\n  s2_owner_before: 99900000000000000000\n  s2_owner_after: 99900000000000000000\n  c2_user: 0\n  t2_user_before: 100000000000000000\n  t2_user_after: 100000000000000000\n  s2_user_before: 100000000000000000000\n  s2_user_after: 100000000000000000000\n  bal_after: 100000000000000000\n\nSuite result: ok. 1 passed; 0 failed; 0 skipped; finished in 502.14\u00b5s (293.90\u00b5s CPU time)\n\nRan 1 test suite in 6.12ms (502.14\u00b5s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)",
+      "stderr_head": "Warning: the following cheatcode(s) are deprecated and will be removed in future versions:\n  snapshot(): replaced by `snapshotState`\n  revertTo(uint256): replaced by `revertToState`",
+      "error": null
+    },
+    "failed_calls": []
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "PASS",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A1",
+    "invariant_applicable": false
+  }
+}

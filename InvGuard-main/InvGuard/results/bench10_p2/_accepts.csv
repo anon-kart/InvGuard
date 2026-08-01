@@ -1,0 +1,11 @@
+stem,target_function,accepted,reason,replay,invariant,benign
+bench_re_etherbank_withdraw,withdraw,False,flow2_no_impactful_exploit,None,None,None
+bench_re_rewardvault_redeem,redeem,False,flow2_no_impactful_exploit,None,None,None
+bench_ac_ownablevault_withdrawAll,withdrawAll,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE
+bench_ac_configbank_setManager,sweep,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE
+bench_ac_treasurybox_withdrawTo,withdrawTo,False,flow2_no_impactful_exploit,None,None,None
+bench_ur_refundpool_refund,refund,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE
+bench_ur_payoutledger_payout,payout,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE
+bench_ur_escrowdesk_release,release,False,flow1_no_verified_invariants,None,None,None
+bench_to_piggybank_withdraw,withdraw,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE
+bench_to_guardedwallet_send,send,True,ok,PASS,INCONCLUSIVE,INCONCLUSIVE

@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (select(post.balanceOf, post.owner) > select(pre.balanceOf, pre.owner)  # reason=KeyError: "Unknown symbol 'post.balanceOf'"

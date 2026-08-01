@@ -1,0 +1,6 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (post.totalIn >= pre.totalIn)
+(meta.revert_taken == false) -> (post.totalOut >= pre.totalOut)
+(meta.revert_taken == false) -> (select(post.contributed, meta.sender) >= select(pre.contributed, meta.sender)
+(meta.revert_taken == false) -> (meta.sender == owner)

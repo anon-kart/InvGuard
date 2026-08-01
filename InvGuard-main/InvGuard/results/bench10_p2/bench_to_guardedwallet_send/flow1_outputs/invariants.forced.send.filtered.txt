@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (post.sendCount >= pre.sendCount)
+(meta.revert_taken == false) -> (select(post.sentTo, arg.dest) >= select(pre.sentTo, arg.dest))
+(meta.revert_taken == false) -> (post.vaultBalance() >= pre.vaultBalance())
+(meta.revert_taken == false) -> (post.vaultBalance() <= (pre.vaultBalance() + arg.amount))
+(meta.revert_taken == false) -> (post.holder == pre.holder)

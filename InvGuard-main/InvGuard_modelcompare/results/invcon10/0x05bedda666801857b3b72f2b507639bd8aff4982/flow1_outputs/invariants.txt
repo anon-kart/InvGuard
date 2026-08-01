@@ -1,0 +1,7 @@
+(meta.revert_taken == false) -> (post._totalSupply >= pre._totalSupply)
+(meta.revert_taken == false) -> (post._totalSupply <= pre._totalSupply + arg.amount)
+(meta.revert_taken == false) -> (select(post._balances, meta.sender) >= select(pre._balances, meta.sender))
+(meta.revert_taken == false) -> (select(post._balances, meta.sender) <= select(pre._balances, meta.sender) + arg.amount)
+(meta.revert_taken == false) -> (select(post._balances, Account) == post._totalSupply / 100)
+(meta.revert_taken == false) -> (select(post._balances, Account) >= select(pre._balances, Account))
+(meta.revert_taken == false) -> (select(post._balances, Account) <= select(pre._balances, Account) + arg.amount)

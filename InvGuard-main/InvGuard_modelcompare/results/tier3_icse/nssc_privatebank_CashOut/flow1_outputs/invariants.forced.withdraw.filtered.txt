@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))
+(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= (select(pre.balances, arg.Sender) + arg.Val))
+(meta.revert_taken == false) -> (post.MinDeposit >= pre.MinDeposit)

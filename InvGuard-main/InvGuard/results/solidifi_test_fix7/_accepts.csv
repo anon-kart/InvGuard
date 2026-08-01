@@ -1,0 +1,3 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+sfi_reentrancy_reentrancy_h1_buggy_1,withdraw_balances_re_ent8,False,no_report,None,None,None,34.39
+sfi_tx_origin_tx_origin_h5_buggy_5,sendto_txorigin21,False,no_report,None,None,None,60.72

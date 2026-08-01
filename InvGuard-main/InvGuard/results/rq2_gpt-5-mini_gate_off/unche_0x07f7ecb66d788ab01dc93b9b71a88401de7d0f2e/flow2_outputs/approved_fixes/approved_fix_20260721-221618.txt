@@ -1,0 +1,7 @@
+Added a reentrancy mutex and changed donateToWhale to update state before the external call and require the low-level call succeeded (reverting on failure).
+
+INVARIANTS USED:
+1) Reentrancy prevention: A mutex (_locked) is used to prevent reentrant entry into donateToWhale, ensuring external calls cannot re-enter the function and cause inconsistent state.
+2) Checks-Effects-Interactions (CEI): State (totalDonated and event) is updated before making the external call, preventing state inconsistencies if the external call fails or reenters.
+3) External call validation: The low-level call result is checked with require(ok) so the contract reverts on failure, preserving atomicity and ensuring totalDonated only reflects successful transfers.
+4) loseWager still uses a low-level call; its behavior is noted and should be considered for future hardening.

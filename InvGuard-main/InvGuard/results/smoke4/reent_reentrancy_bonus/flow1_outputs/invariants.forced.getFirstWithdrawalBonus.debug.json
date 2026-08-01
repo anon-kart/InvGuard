@@ -1,0 +1,37 @@
+{
+  "function": "getFirstWithdrawalBonus",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 0,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 5,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient))",
+    "(meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false)",
+    "(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient))",
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= select(pre.rewardsForA, arg.recipient) + 100)",
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) == 0 -> select(pre.rewardsForA, arg.recipient) > 0)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient))",
+    "(meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false)",
+    "(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient))",
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= select(pre.rewardsForA, arg.recipient) + 100)",
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) == 0 -> select(pre.rewardsForA, arg.recipient) > 0)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient))",
+    "(meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false)",
+    "(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient))",
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= (select(pre.rewardsForA, arg.recipient) + 100))",
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) == 0 -> select(pre.rewardsForA, arg.recipient) > 0)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) >= select(pre.rewardsForA, arg.recipient))",
+    "(meta.revert_taken == false) -> (select(post.claimedBonus, arg.recipient) == true -> select(pre.claimedBonus, arg.recipient) == false)",
+    "(meta.revert_taken == false) -> (select(post.userBalances, arg.recipient) == select(pre.userBalances, arg.recipient))",
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) <= (select(pre.rewardsForA, arg.recipient) + 100))",
+    "(meta.revert_taken == false) -> (select(post.rewardsForA, arg.recipient) == 0 -> select(pre.rewardsForA, arg.recipient) > 0)"
+  ]
+}

@@ -1,0 +1,4 @@
+Changed guess() so payouts depend on randomness authenticated by the deployment-time randomness source rather than the stored block-derived answer. The submitted randomness must be accompanied by a valid signature from randomnessSource over the contract address, caller, guessed number, and randomness value; the derived winning number is then computed from that authenticated randomness and caller/contract context.
+
+INVARIANTS USED:
+The payout branch in guess() no longer reads or compares against the block-derived answer. A caller cannot supply arbitrary randomness unless it is authorized by randomnessSource via ecrecover. The signed message binds the randomness to this contract, msg.sender, and n, limiting replay/front-running across contracts, callers, or guesses. The 1 ether entry fee and 2 ether payout behavior are preserved.

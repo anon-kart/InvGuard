@@ -1,0 +1,4 @@
+Replaced the unchecked multiplication in batchTransfer with SafeMath.mul(uint256(cnt), _value) to prevent integer overflow.
+
+INVARIANTS USED:
+1) Multiplication safety: using SafeMath.mul ensures that uint256(cnt) * _value cannot overflow (it requires either a==0 or c/a==b). 2) Non-zero and bounds checks: require(cnt > 0 && cnt <= 20) and require(_value > 0) ensure cnt and _value are within expected ranges, limiting combinations that could cause issues. 3) Balance safety: SafeMath.sub and SafeMath.add maintain that balances[msg.sender] cannot underflow and recipient balances cannot overflow beyond uint256 limit (SafeMath.add checks). 4) Total supply invariant: totalSupply is only set in constructor; transfers preserve the sum of balances (subtracting from sender and adding to receivers by the same amount). 5) Pausable/ownership invariants: whenNotPaused and onlyOwner modifiers prevent unauthorized or paused-state operations.

@@ -1,0 +1,4 @@
+Added access control to setManager by requiring msg.sender to be the current manager.
+
+INVARIANTS USED:
+Access control for manager functions.

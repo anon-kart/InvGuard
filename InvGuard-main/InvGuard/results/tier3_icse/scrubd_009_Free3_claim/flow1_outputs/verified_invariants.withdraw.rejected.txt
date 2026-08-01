@@ -1,0 +1,2 @@
+# REJECTED / UNSUPPORTED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.totalStaked == 0 -> pre.totalStaked > 0)  # reason=KeyError: "Unknown symbol 'post.totalStaked'"

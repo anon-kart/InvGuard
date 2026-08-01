@@ -1,0 +1,4 @@
+Added an explicit precondition in overflowaddtostate to require input <= uint256(-1) - count and then performed the addition, preventing integer overflow.
+
+INVARIANTS USED:
+Invariant: 0 <= count <= uint256(-1). Precondition enforced: input <= uint256(-1) - count. This guarantees count + input <= uint256(-1), preventing wrap-around overflow in pre-0.8 Solidity arithmetic.

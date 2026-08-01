@@ -1,0 +1,1 @@
+(meta.revert_taken == false) -> (post.win == true || post.win == false)

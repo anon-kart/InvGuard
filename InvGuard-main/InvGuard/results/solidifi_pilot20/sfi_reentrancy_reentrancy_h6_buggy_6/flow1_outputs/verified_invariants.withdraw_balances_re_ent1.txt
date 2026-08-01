@@ -1,0 +1,11 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)
+(meta.revert_taken == false) -> (select(post.userBalance_re_ent40, meta.sender) >= select(pre.userBalance_re_ent40, meta.sender)
+(meta.revert_taken == false) -> (select(post.userBalance_re_ent33, meta.sender) >= select(pre.userBalance_re_ent33, meta.sender)
+(meta.revert_taken == false) -> (select(post.balances_re_ent36, meta.sender) >= select(pre.balances_re_ent36, meta.sender)
+(meta.revert_taken == false) -> (select(post.balances_re_ent17, meta.sender) >= select(pre.balances_re_ent17, meta.sender)
+(meta.revert_taken == false) -> (select(post.balances_re_ent31, meta.sender) >= select(pre.balances_re_ent31, meta.sender)
+(meta.revert_taken == false) -> (select(post.balances_re_ent8, meta.sender) >= select(pre.balances_re_ent8, meta.sender)
+(meta.revert_taken == false) -> (post.stopped == pre.stopped)
+(meta.revert_taken == false) -> (post._master == pre._master)

@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_kotet_claimThrone.sol",
+    "stem": "nssc_kotet_claimThrone",
+    "tier": "dos_safety_kotet",
+    "model": "gpt-4o-mini",
+    "target_function": "claimThrone",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 26.62,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/dos_safety_kotet/nssc_kotet_claimThrone/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 25.78,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/dos_safety_kotet/nssc_kotet_claimThrone/flow2.log"
+    }
+  }
+]

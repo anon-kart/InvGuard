@@ -1,0 +1,6 @@
+# UNSOUND / UNVERIFIED / EXCLUDED FROM FLOW-2
+(meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.killswitch == pre.killswitch)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.newVersion == pre.newVersion)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).
+(meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE)  # reason=UNSOUND_MODEL: Function body not modeled (source=regex, modeled=False, body_len=0).

@@ -1,0 +1,1 @@
+(meta.revert_taken == false) -> (meta.sender == owner -> meta.contract_balance >= 0)

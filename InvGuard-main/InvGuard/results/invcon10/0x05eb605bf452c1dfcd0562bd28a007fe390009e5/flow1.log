@@ -1,0 +1,532 @@
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1
+INFO:root:[cleanup] Cleared stale dir: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/responses "HTTP/1.1 200 OK"
+INFO:root:[FLOW1] orchestrator agent run completed (turns<=40).
+INFO:root:[FLOW1] agent path produced contract.sol + invariants.txt.
+INFO:root:[FLOW1] Forcing deterministic Z3 checks (deposit + withdraw).
+INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+[DEBUG] contract_on_disk = /home/kartik/Downloads/InvCon-Tool-master/Experiment/FinalReportERC20/total/0x05eb605bf452c1dfcd0562bd28a007fe390009e5/0x05eb605bf452c1dfcd0562bd28a007fe390009e5.sol
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:177:42: Warning: "sha3" has been deprecated in favour of "keccak256"
+ ... sha3("receiveApproval(address,uint256,address,bytes)") ... 
+     ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:32:53: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() public constant returns (uint256 supply) {}
+                                                    ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                       ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                                                                ^-------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:42:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                      ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:42:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                   ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:42:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                                                   ^----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:49:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                          ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:49:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                         ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:49:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                      ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:49:87: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                                                      ^----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:55:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                     ^--------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:55:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                       ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:55:72: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                                                       ^----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:60:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                       ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:60:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                       ^--------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:60:83: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                                                                  ^---------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:32:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() public constant returns (uint256 supply) {}
+    ^----------------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+   - (meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)INFO:root:[FLOW1] Forcing Z3 check from Python via adapter (deterministic).
+
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transfer.summary.json
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.filtered.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=0
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1' running
+INFO:CryticCompile:Compilation warnings/errors on /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:177:42: Warning: "sha3" has been deprecated in favour of "keccak256"
+ ... sha3("receiveApproval(address,uint256,address,bytes)") ... 
+     ^----------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:32:53: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() public constant returns (uint256 supply) {}
+                                                    ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                       ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                                                                ^-------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:42:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                      ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:42:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                   ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:42:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                                                   ^----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:49:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                          ^-----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:49:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                         ^---------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:49:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                      ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:49:87: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                                                      ^----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:55:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                     ^--------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:55:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                       ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:55:72: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                                                       ^----------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:60:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                       ^------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:60:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                       ^--------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:60:83: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                                                                  ^---------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:32:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() public constant returns (uint256 supply) {}
+    ^----------------------------------------------------------------^
+/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol:36:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+[... truncated ...]
+
+=== [ADAPTER] FINAL INVARIANT SUMMARY ===
+✅ Verified invariants:
+   - (meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)
+   - (meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender)
+   - (meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender)
+❌ Violated invariants:
+❔ Unknown / not verified invariants (excluded):
+🚫 Rejected / unsupported invariants (excluded):
+⚠️ UNSOUND / unverified invariants (excluded):
+========================================
+
+[ADAPTER] Verified invariants written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.txt
+[ADAPTER] Summary written to /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/verified_invariants.transferFrom.summary.json
+
+[FLOW1] Deposit checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transfer --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transfer.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: transfer  (invariants: LLM-translated)
+Notes:
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "status": "HOLDS"}
+
+[FLOW1] Withdraw checker report (tail):
+[adapter] cmd: /home/kartik/venv/bin/python -m cli.driver /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/contract.sol -f transferFrom --llm-invariants /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1/invariants.forced.transferFrom.filtered.txt --no-builtin-fallback --json-results
+[adapter] cwd: /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker
+[adapter] returncode: 0
+
+[translator] Accepted 4 invariants from LLM.
+
+Function: transferFrom  (invariants: LLM-translated)
+Notes:
+  - [raw] success
+
+=== Invariant Checks ===
+{"idx": 1, "inv": "(meta.revert_taken == false) -> (post.totalSupply >= pre.totalSupply)", "status": "HOLDS"}
+{"idx": 2, "inv": "(meta.revert_taken == false) -> (post.totalSupply <= pre.totalSupply)", "status": "HOLDS"}
+{"idx": 3, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))", "status": "HOLDS"}
+{"idx": 4, "inv": "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender))", "status": "HOLDS"}
+[FLOW1] ✅ Security obligations / attack objectives written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_attack_targets/security_obligations.all.json
+[FLOW1] ✅ Final VERIFIED-USEFUL invariants for Flow-2 written to:
+  /home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow1_verified_invariants/verified_invariants.txt
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ae5_swnj/drop_require_1.sol --llm-invariants /tmp/inv_strength_ae5_swnj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ae5_swnj/drop_require_1.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_ae5_swnj' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_ae5_swnj/drop_require_1.sol:
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:178:42: Warning: "sha3" has been deprecated in favour of "keccak256"
+ ... sha3("receiveApproval(address,uint256,address,bytes)") ... 
+     ^----------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:33:53: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() public constant returns (uint256 supply) {}
+                                                    ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:37:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:37:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                                                                ^-------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:43:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                      ^---------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:43:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                   ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:43:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                                                   ^----------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:50:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                          ^-----------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:50:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                         ^---------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:50:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                      ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:50:87: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                                                      ^----------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:56:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                     ^--------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:56:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                       ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:56:72: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                                                       ^----------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:61:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:61:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                       ^--------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:61:83: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                                                                  ^---------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:33:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() public constant returns (uint256 supply) {}
+    ^----------------------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/drop_require_1.sol:37:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol --llm-invariants /tmp/inv_strength_ae5_swnj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_ae5_swnj' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:177:42: Warning: "sha3" has been deprecated in favour of "keccak256"
+ ... sha3("receiveApproval(address,uint256,address,bytes)") ... 
+     ^----------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:32:53: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() public constant returns (uint256 supply) {}
+                                                    ^------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:36:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:36:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                                                                ^-------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:42:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                      ^---------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:42:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                   ^------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:42:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                                                   ^----------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:49:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                          ^-----------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:49:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                         ^---------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:49:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                      ^------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:49:87: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                                                      ^----------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:55:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                     ^--------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:55:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                       ^------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:55:72: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                                                       ^----------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:60:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:60:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                       ^--------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:60:83: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                                                                  ^---------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:32:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() public constant returns (uint256 supply) {}
+    ^----------------------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/flip_ge_to_gt.sol:36:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol --llm-invariants /tmp/inv_strength_ae5_swnj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_ae5_swnj' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:177:42: Warning: "sha3" has been deprecated in favour of "keccak256"
+ ... sha3("receiveApproval(address,uint256,address,bytes)") ... 
+     ^----------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:32:53: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() public constant returns (uint256 supply) {}
+                                                    ^------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:36:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:36:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                                                                ^-------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:42:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                      ^---------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:42:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                   ^------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:42:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                                                   ^----------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:49:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                          ^-----------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:49:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                         ^---------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:49:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                      ^------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:49:87: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                                                      ^----------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:55:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                     ^--------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:55:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                       ^------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:55:72: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                                                       ^----------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:60:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:60:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                       ^--------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:60:83: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                                                                  ^---------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:32:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() public constant returns (uint256 supply) {}
+    ^----------------------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/plus_eq_to_minus_eq.sol:36:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol --llm-invariants /tmp/inv_strength_ae5_swnj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_ae5_swnj' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:177:42: Warning: "sha3" has been deprecated in favour of "keccak256"
+ ... sha3("receiveApproval(address,uint256,address,bytes)") ... 
+     ^----------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:32:53: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() public constant returns (uint256 supply) {}
+                                                    ^------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:36:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:36:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                                                                ^-------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:42:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                      ^---------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:42:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                   ^------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:42:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                                                   ^----------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:49:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                          ^-----------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:49:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                         ^---------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:49:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                      ^------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:49:87: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                                                      ^----------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:55:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                     ^--------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:55:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                       ^------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:55:72: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                                                       ^----------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:60:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:60:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                       ^--------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:60:83: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                                                                  ^---------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:32:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() public constant returns (uint256 supply) {}
+    ^----------------------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/minus_eq_to_plus_eq.sol:36:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+[... truncated ...]
+[ADAPTER] launching: /home/kartik/venv/bin/python -m cli.driver /tmp/inv_strength_ae5_swnj/drop_require_2.sol --llm-invariants /tmp/inv_strength_ae5_swnj/invariants_sanitized/invariants.cleaned.txt --no-builtin-fallback --json-results (cwd=/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/flow_1_files/Z3Checker)
+[ADAPTER] returncode=1
+[ADAPTER] stderr (head):
+INFO:root:[parser] USING SLITHER path
+INFO:CryticCompile:'solc --version' running
+INFO:CryticCompile:'solc /tmp/inv_strength_ae5_swnj/drop_require_2.sol --combined-json abi,ast,bin,bin-runtime,srcmap,srcmap-runtime,userdoc,devdoc,hashes,compact-format --allow-paths .,/tmp/inv_strength_ae5_swnj' running
+INFO:CryticCompile:Compilation warnings/errors on /tmp/inv_strength_ae5_swnj/drop_require_2.sol:
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:178:42: Warning: "sha3" has been deprecated in favour of "keccak256"
+ ... sha3("receiveApproval(address,uint256,address,bytes)") ... 
+     ^----------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:33:53: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function totalSupply() public constant returns (uint256 supply) {}
+                                                    ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:37:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:37:65: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+                                                                ^-------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:43:23: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                      ^---------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:43:36: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                   ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:43:68: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transfer(address _to, uint256 _value) public returns (bool success) {}
+                                                                   ^----------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:50:27: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                          ^-----------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:50:42: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                         ^---------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:50:55: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                      ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:50:87: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {}
+                                                                                      ^----------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:56:22: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                     ^--------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:56:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                       ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:56:72: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function approve(address _spender, uint256 _value) public returns (bool success) {}
+                                                                       ^----------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:61:24: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                       ^------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:61:40: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                       ^--------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:61:83: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowance(address _owner, address _spender) public constant returns (uint256 remaining) {}
+                                                                                  ^---------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:33:5: Warning: Function state mutability can be restricted to pure
+    function totalSupply() public constant returns (uint256 supply) {}
+    ^----------------------------------------------------------------^
+/tmp/inv_strength_ae5_swnj/drop_require_2.sol:37:5: Warning: Function state mutability can be restricted to pure
+    function balanceOf(address _owner) public constant returns (uint256 balance) {}
+[... truncated ...]
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/traces/ingest "HTTP/1.1 204 No Content"

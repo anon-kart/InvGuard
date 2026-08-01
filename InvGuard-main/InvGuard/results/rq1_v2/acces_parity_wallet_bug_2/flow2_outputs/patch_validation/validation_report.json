@@ -1,0 +1,89 @@
+{
+  "ok": false,
+  "invariants": {
+    "ok": false,
+    "verified": [],
+    "trusted": [],
+    "unknown": [],
+    "failed": [],
+    "rejected": [],
+    "unsound": [],
+    "report_lines": [],
+    "used_invariants_file": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/invariants_sanitized/invariants.cleaned.txt",
+    "allow_semantic_rewrites": false,
+    "reason": "invariants_failed"
+  },
+  "replay": {
+    "results": {
+      "A1": {
+        "compile_ok": false,
+        "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/exploit_executor/A1",
+        "forge_returncode": 1,
+        "stdout_head": "Compiling 2 files with Solc 0.4.26\nSolc 0.4.26 finished in 4.03ms",
+        "stderr_head": "Error: Compiler run failed:\n    var pending = m_pending[_operation];\n    ^---------^\n    ^---------^\nError: Undeclared identifier. Did you mean \"_owners\"?\nsrc/Target.sol:227:31: DeclarationError: Undeclared identifier. Did you mean \"_owners\"?\n        require(msg.sender == owner);\n                              ^---^\n--- (other output) ---\n    var pending = m_pending[_operation];\n    ^---------^\n  modifier only_uninitialized { if (m_numOwners > 0) throw; _; }\n                                                     ^---^\n          throw;\n          ^---^\n          throw;\n          ^---^\n    var pending = m_pending[_operation];",
+        "error": "forge build failed",
+        "entrypoint": "attack()",
+        "value_wei": 10000000000000000,
+        "run_ok": false,
+        "impact_ok": false
+      }
+    },
+    "compile_ok": 0,
+    "run_ok": 0,
+    "impact_ok": 0,
+    "compile_all": false,
+    "run_all": false,
+    "failures": [
+      {
+        "attack": "A1",
+        "compile_ok": false,
+        "run_ok": false,
+        "impact_ok": false,
+        "impact_details": null
+      }
+    ]
+  },
+  "benign": {
+    "ok": true,
+    "reason": null,
+    "original": {
+      "ok": true,
+      "calls": [],
+      "results": [],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/original",
+      "forge_returncode": 0,
+      "stdout_head": "",
+      "stderr_head": "",
+      "error": null
+    },
+    "patched": {
+      "ok": true,
+      "calls": [],
+      "results": [],
+      "global_balance": {
+        "before": 0,
+        "after": 0,
+        "delta": 0
+      },
+      "project_dir": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/run_outputs/flow2/patch_validation/benign_executor/patched",
+      "forge_returncode": 0,
+      "stdout_head": "",
+      "stderr_head": "",
+      "error": null
+    },
+    "failed_calls": []
+  },
+  "arbitration": {
+    "rule": "no_FAIL and >=1 security PASS and benign not FAIL",
+    "replay_verdict": "INCONCLUSIVE",
+    "invariant_verdict": "INCONCLUSIVE",
+    "benign_verdict": "INCONCLUSIVE",
+    "attack_id": "A1",
+    "invariant_applicable": false
+  }
+}

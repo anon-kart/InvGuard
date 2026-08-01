@@ -1,0 +1,4 @@
+Replaced the use of blockhash in settle() with a commit-reveal scheme using keccak256 for randomness.
+
+INVARIANTS USED:
+The fix ensures that the randomness used in the contract is not predictable and is based on user input and block properties, mitigating the risk of manipulation.

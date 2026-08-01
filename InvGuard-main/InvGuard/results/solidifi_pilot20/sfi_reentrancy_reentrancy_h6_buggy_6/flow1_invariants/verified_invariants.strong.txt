@@ -1,0 +1,2 @@
+# STRONG VERIFIED-USEFUL INVARIANTS
+meta.revert_taken == false) -> (select(post.userBalance_re_ent12, meta.sender) >= select(pre.userBalance_re_ent12, meta.sender)

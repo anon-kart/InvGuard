@@ -1,0 +1,5 @@
+((meta.revert_taken == false)) -> ((post.totalOwed >= pre.totalOwed))
+((meta.revert_taken == false)) -> ((select(post.owed, meta.sender) >= select(pre.owed, meta.sender)))
+(meta.revert_taken == false) -> (select(post.owed, meta.sender) <= select(pre.owed, meta.sender))
+((meta.revert_taken == false)) -> ((post.totalOwed <= pre.totalOwed + select(pre.owed, meta.sender)))
+(meta.revert_taken == false) -> (select(post.paidTotal, meta.sender) >= select(pre.paidTotal, meta.sender))

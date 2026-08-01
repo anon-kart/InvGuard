@@ -1,0 +1,2 @@
+(meta.revert_taken == false) -> (post.king != meta.sender)
+(meta.revert_taken == false) -> (post.claimPrice > (meta.value * 100) / 150)

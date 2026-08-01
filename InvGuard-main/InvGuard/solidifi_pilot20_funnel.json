@@ -1,0 +1,20 @@
+{
+  "total_scanned": 250,
+  "per_class_raw": {
+    "integer_overflow": 50,
+    "reentrancy": 50,
+    "unchecked_call": 100,
+    "tx_origin": 50
+  },
+  "per_sub_raw": {
+    "overflow_underflow": 50,
+    "reentrancy": 50,
+    "unchecked_send": 50,
+    "unhandled_exceptions": 50,
+    "tx_origin": 50
+  },
+  "reachable": 250,
+  "compilable": 250,
+  "after_dedup": 250,
+  "selected": 20
+}

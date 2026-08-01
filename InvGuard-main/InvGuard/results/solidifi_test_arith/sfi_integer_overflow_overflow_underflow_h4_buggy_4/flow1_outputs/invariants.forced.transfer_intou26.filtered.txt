@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) >= (select(pre.balances_intou26, meta.sender) - arg._value))
+(meta.revert_taken == false) -> (select(post.balances_intou26, arg._to) >= (select(pre.balances_intou26, arg._to) + arg._value))
+(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) <= select(pre.balances_intou26, meta.sender))
+(meta.revert_taken == false) -> (select(post.balances_intou26, meta.sender) >= 0)
+(meta.revert_taken == false) -> (select(post.balances_intou26, arg._to) >= 0)

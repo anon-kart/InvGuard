@@ -1,0 +1,36 @@
+{
+  "function": "airDrop",
+  "raw_count": 5,
+  "fixed_raw_count": 5,
+  "sanitized_count": 5,
+  "deposit_count": 5,
+  "withdraw_count": 5,
+  "chosen_count_before_final_fallback": 4,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (post.hasBeenCalled != pre.hasBeenCalled)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == 20)",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == select(pre.tokenBalance, meta.sender) + 20)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (post.hasBeenCalled != pre.hasBeenCalled)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == 20)",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == select(pre.tokenBalance, meta.sender) + 20)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (post.hasBeenCalled != pre.hasBeenCalled)",
+    "(select(pre.tokenBalance, meta.sender) == 0 && meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == 20)",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == select(pre.tokenBalance, meta.sender) + 20)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) >= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) <= select(pre.tokenBalance, meta.sender))",
+    "(meta.revert_taken == false) -> (post.hasBeenCalled != pre.hasBeenCalled)",
+    "(meta.revert_taken == false) -> (select(post.tokenBalance, meta.sender) == select(pre.tokenBalance, meta.sender) + 20)"
+  ]
+}

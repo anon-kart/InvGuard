@@ -1,0 +1,4 @@
+Moved the state update in the airDrop function before any external calls to prevent reentrancy.
+
+INVARIANTS USED:
+Reentrancy Guard

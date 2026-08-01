@@ -1,0 +1,9 @@
+Replaced block-dependent randomness with a commit-reveal scheme (commit/reveal + per-game seed used by drawCard) and added a reentrancy mutex plus reordered state updates before external sends.
+
+INVARIANTS USED:
+1) Commit-reveal: players must commit a hash then reveal a seed; the seed is stored in revealedSeeds and then locked into gameSeeds when a game starts, preventing seed reuse or manipulation mid-game.
+2) Deterministic per-game randomness: drawCard uses only the locked per-game seed and card index, removing block.timestamp/blockhash dependency.
+3) Seed lifecycle: gameSeeds[msg.sender] is cleared when a game finishes to prevent reuse.
+4) Reentrancy guard: _locked flag prevents reentrant calls during critical functions (deal/hit/stand).
+5) Game state checks: gameIsGoingOn modifier and checks prevent actions on non-ongoing games.
+6) External calls after state updates: state and gameSeeds are cleared/updated before sending funds.

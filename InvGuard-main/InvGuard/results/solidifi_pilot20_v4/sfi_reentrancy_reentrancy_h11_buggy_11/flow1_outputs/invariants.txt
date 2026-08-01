@@ -1,0 +1,5 @@
+(meta.revert_taken == false) -> (balances_re_ent3[meta.sender] >= 0)
+(meta.revert_taken == false) -> (balances_re_ent3[meta.sender] >= arg._weiToWithdraw)
+(meta.revert_taken == false) -> (balances_re_ent3[meta.sender] == select(pre.balances_re_ent3, meta.sender) - arg._weiToWithdraw)
+(meta.revert_taken == false) -> (arg._weiToWithdraw <= balances_re_ent3[meta.sender])
+(meta.revert_taken == false) -> (success == true)

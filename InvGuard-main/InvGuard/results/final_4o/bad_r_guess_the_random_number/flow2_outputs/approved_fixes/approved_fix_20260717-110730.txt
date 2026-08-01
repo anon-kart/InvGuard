@@ -1,0 +1,4 @@
+Implemented a commit-reveal scheme to replace the predictable randomness.
+
+INVARIANTS USED:
+Commit-Reveal Scheme: Ensures that the answer is committed before being revealed, preventing any premature disclosure or manipulation. Ether Handling: The contract requires 1 ether to participate, and rewards 2 ether for a correct guess, maintaining the balance logic.

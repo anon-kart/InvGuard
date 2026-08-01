@@ -1,0 +1,1 @@
+(meta.revert_taken == false) -> (balances_re_ent8[meta.sender] >= 0)

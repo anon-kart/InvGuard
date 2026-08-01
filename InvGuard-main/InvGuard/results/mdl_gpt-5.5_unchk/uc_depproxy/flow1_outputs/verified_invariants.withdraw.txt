@@ -1,0 +1,7 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (arg.amount > 0 && select(pre.Deposits, meta.sender) >= arg.amount -> (select(post.Deposits, meta.sender) == select(pre.Deposits, meta.sender)
+(meta.revert_taken == false) -> (arg.amount <= 0 -> (select(post.Deposits, meta.sender) == select(pre.Deposits, meta.sender)
+(meta.revert_taken == false) -> (select(pre.Deposits, meta.sender) < arg.amount -> (select(post.Deposits, meta.sender) == select(pre.Deposits, meta.sender)
+(meta.revert_taken == false) -> (select(post.Deposits, meta.sender) >= select(pre.Deposits, meta.sender)
+(meta.revert_taken == false) -> (post.Owner == pre.Owner)

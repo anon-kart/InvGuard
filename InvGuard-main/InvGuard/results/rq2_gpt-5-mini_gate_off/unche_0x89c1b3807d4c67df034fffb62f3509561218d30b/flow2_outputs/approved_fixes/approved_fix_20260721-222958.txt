@@ -1,0 +1,4 @@
+Replaced unchecked low-level sends/calls in deliver() with require(...) checks, moved state updates before external calls where needed, and added a reentrancy mutex (_locked) to protect the function.
+
+INVARIANTS USED:
+1) Checks-effects-interactions: state (requests[requestId].fee and unrespondedCnt) updated before any external calls. 2) Reentrancy mutex: require(!_locked) and _locked flag to prevent reentrant entry into deliver(). 3) External-call result checked: all external low-level calls in deliver() are wrapped with require(...) to revert on failure.

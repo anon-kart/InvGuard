@@ -1,0 +1,4 @@
+# VERIFIED INVARIANTS ONLY
+# UNKNOWN/TRUSTED/UNSOUND/REJECTED invariants are excluded.
+(meta.revert_taken == false) -> (select(post.lastWithdrawTime, meta.sender) >= select(pre.lastWithdrawTime, meta.sender)
+(meta.revert_taken == false) -> (post.withdrawalLimit == pre.withdrawalLimit)

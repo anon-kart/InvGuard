@@ -1,0 +1,4 @@
+Replaced the push-payments behavior in emptyCreditors with a pull-payment pattern: added a balances mapping, a withdraw() function, and a reentrancy mutex; emptyCreditors now records owed amounts for each creditor and clears the array without making external calls.
+
+INVARIANTS USED:
+1) Pull-payment invariant: external calls (payments) are not performed inside loops; amounts owed are recorded and claimed by recipients via pull withdrawals. 2) Checks-Effects-Interactions (CEI): withdraw() sets balances[msg.sender]=0 before external transfer to prevent reentrancy. 3) Reentrancy guard: _locked prevents reentrancy during emptyCreditors execution. 4) Gas-DoS mitigation: avoiding per-recipient transfers in a loop ensures emptyCreditors cannot fail due to gas limits or revertions by particular addresses.

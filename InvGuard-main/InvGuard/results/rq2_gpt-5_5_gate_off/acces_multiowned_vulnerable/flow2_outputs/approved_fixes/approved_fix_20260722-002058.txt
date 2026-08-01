@@ -1,0 +1,4 @@
+The submitted fix was incomplete: it added a root check to withdrawAll, but the reported access-control vulnerability was the unprotected newOwner function. The final fix adds the onlyOwner modifier to newOwner so arbitrary external accounts cannot add themselves or others as owners. The root-only withdrawAll restriction is retained as an additional hardening measure. Zero-address assignments/checks were expressed using address(0) for clarity under Solidity 0.4.23.
+
+INVARIANTS USED:
+root is initialized once in the constructor and is recorded as an owner. An address is an owner iff owners[address] != address(0). Critical ownership mutation via newOwner must only be callable by an existing owner. deleteOwner remains callable only by owners and preserves the existing parent/root deletion policy. withdrawAll remains callable only by the root account, which is also an owner.

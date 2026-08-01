@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (balances_re_ent8[arg.sender] >= 0)
+(meta.revert_taken == false) -> (balances_re_ent8[arg.sender] == 0) after withdraw_balances_re_ent8()
+(meta.revert_taken == false) -> (balances_re_ent8[arg.sender] == select(pre.balances_re_ent8, arg.sender) + arg.value) after deposit()

@@ -1,0 +1,4 @@
+Added an explicit bounds check to prevent integer overflow in the overflowaddtostate function.
+
+INVARIANTS USED:
+require(count + input >= count); require(count * input / input == count); require(count >= input);

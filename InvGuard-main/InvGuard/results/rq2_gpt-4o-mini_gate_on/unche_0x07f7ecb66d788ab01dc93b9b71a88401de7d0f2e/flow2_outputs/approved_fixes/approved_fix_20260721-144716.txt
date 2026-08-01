@@ -1,0 +1,4 @@
+Changed the low-level call in donateToWhale() to require the success of the call to prevent unchecked call vulnerabilities.
+
+INVARIANTS USED:
+Require statements to ensure successful calls.

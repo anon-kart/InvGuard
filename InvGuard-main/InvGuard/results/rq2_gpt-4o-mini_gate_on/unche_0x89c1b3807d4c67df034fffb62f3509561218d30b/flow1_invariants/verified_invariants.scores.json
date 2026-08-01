@@ -1,0 +1,102 @@
+{
+  "strong": [],
+  "medium": [],
+  "useful": [],
+  "weak": [
+    "meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt",
+    "meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt",
+    "meta.revert_taken == false) -> (post.killswitch == pre.killswitch",
+    "meta.revert_taken == false) -> (post.newVersion == pre.newVersion",
+    "meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE",
+    "meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE",
+    "meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (post.requestCnt >= pre.requestCnt",
+      "killed": 0,
+      "mutants_ran": 0,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.unrespondedCnt <= pre.unrespondedCnt",
+      "killed": 0,
+      "mutants_ran": 0,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.killswitch == pre.killswitch",
+      "killed": 0,
+      "mutants_ran": 0,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.newVersion == pre.newVersion",
+      "killed": 0,
+      "mutants_ran": 0,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.CANCELLATION_FEE == pre.CANCELLATION_FEE",
+      "killed": 0,
+      "mutants_ran": 0,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.MIN_FEE == pre.MIN_FEE",
+      "killed": 0,
+      "mutants_ran": 0,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.GAS_PRICE == pre.GAS_PRICE",
+      "killed": 0,
+      "mutants_ran": 0,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [],
+  "unsound_model": false
+}

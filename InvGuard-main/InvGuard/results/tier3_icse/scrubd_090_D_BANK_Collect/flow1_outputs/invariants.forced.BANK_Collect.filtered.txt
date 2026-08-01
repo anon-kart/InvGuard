@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (post.MinSum >= pre.MinSum)
+(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= select(pre.balances, arg.Sender))
+(meta.revert_taken == false) -> (select(post.balances, arg.Sender) <= (select(pre.balances, arg.Sender) + arg.Val))
+(meta.revert_taken == false) -> (select(post.balances, arg.Sender) >= (select(pre.balances, arg.Sender) - arg.Val))
+(meta.revert_taken == false) -> (post.intitalized == pre.intitalized)
+(pre.intitalized == false) -> (post.intitalized == true)

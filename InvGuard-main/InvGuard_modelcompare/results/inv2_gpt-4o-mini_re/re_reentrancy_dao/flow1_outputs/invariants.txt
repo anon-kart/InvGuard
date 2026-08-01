@@ -1,0 +1,4 @@
+(meta.revert_taken == false) -> (balance >= 0)
+(meta.revert_taken == false) -> (select(post.credit, meta.sender) <= post.balance)
+(meta.revert_taken == false) -> (select(post.credit, meta.sender) == 0)
+(meta.revert_taken == false) -> (select(post.credit, meta.sender) == select(pre.credit, meta.sender) + arg.value)

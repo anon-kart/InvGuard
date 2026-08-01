@@ -1,0 +1,3 @@
+(meta.revert_taken == false) -> (post.totalSupply == pre.totalSupply)
+(meta.revert_taken == false) -> (post.paused == pre.paused)
+(meta.revert_taken == false) -> (post.decimals == pre.decimals)

@@ -1,0 +1,4 @@
+Replaced the use of blockhash in settle() with a keccak256 hash of a secret and the current block number to eliminate bad randomness.
+
+INVARIANTS USED:
+Replaced blockhash with a keccak256 hash to ensure better randomness.

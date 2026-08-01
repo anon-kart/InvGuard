@@ -1,0 +1,4 @@
+Removed dependence on manipulable block values in the guess function by implementing a commit-reveal scheme.
+
+INVARIANTS USED:
+Commit-reveal scheme to ensure the integrity of the guess.

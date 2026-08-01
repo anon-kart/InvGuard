@@ -1,0 +1,6 @@
+(meta.revert_taken == false) -> (select(post.Deposits, meta.sender) >= select(pre.Deposits, meta.sender))
+(meta.revert_taken == false) -> (select(post.Deposits, meta.sender) <= select(pre.Deposits, meta.sender) + meta.value)
+(meta.revert_taken == false) -> (post.Owner == pre.Owner)
+(meta.revert_taken == false) -> (select(post.Deposits, meta.sender) == select(pre.Deposits, meta.sender) + (meta.value > 0.5 ether ? meta.value : 0))
+(meta.revert_taken == false) -> (select(post.Deposits, meta.sender) >= 0)
+(meta.revert_taken == false) -> (select(post.Deposits, meta.sender) <= select(pre.Deposits, meta.sender) + meta.value)

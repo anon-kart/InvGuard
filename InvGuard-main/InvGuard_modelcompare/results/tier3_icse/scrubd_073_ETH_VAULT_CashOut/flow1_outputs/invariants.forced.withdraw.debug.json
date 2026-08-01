@@ -1,0 +1,48 @@
+{
+  "function": "withdraw",
+  "raw_count": 8,
+  "fixed_raw_count": 8,
+  "sanitized_count": 8,
+  "deposit_count": 7,
+  "withdraw_count": 7,
+  "chosen_count_before_final_fallback": 7,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances, arg.sender) >= select(pre.balances, arg.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.sender) <= select(pre.balances, arg.sender) + arg._am)",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.sender) == select(pre.balances, arg.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)",
+    "(meta.revert_taken == false) -> (post.TransferLog == pre.TransferLog)",
+    "(meta.revert_taken == false) -> (post.Val == pre.Val)",
+    "(meta.revert_taken == false) -> (post.Sender == pre.Sender)",
+    "(meta.revert_taken == false) -> (post.Time == pre.Time)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= select(pre.balances, meta.sender) + arg._am)",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)",
+    "(meta.revert_taken == false) -> (post.TransferLog == pre.TransferLog)",
+    "(meta.revert_taken == false) -> (post.Val == pre.Val)",
+    "(meta.revert_taken == false) -> (post.Sender == pre.Sender)",
+    "(meta.revert_taken == false) -> (post.Time == pre.Time)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg._am))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value))",
+    "(meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)",
+    "(meta.revert_taken == false) -> (post.TransferLog == pre.TransferLog)",
+    "(meta.revert_taken == false) -> (post.Val == pre.Val)",
+    "(meta.revert_taken == false) -> (post.Sender == pre.Sender)",
+    "(meta.revert_taken == false) -> (post.Time == pre.Time)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) <= (select(pre.balances, meta.sender) + arg._am))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (post.MinDeposit == pre.MinDeposit)",
+    "(meta.revert_taken == false) -> (post.TransferLog == pre.TransferLog)",
+    "(meta.revert_taken == false) -> (post.Val == pre.Val)",
+    "(meta.revert_taken == false) -> (post.Sender == pre.Sender)",
+    "(meta.revert_taken == false) -> (post.Time == pre.Time)"
+  ]
+}

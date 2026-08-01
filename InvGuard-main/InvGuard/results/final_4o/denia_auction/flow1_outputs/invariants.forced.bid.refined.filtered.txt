@@ -1,0 +1,4 @@
+((meta.revert_taken == false)) -> ((post.currentBid <= (pre.currentBid + meta.value)))
+(meta.revert_taken == false) -> (post.currentBid == meta.value)
+(meta.revert_taken == false) -> (post.currentBid >= pre.currentBid)
+((meta.revert_taken == false)) -> ((post.currentFrontrunner == meta.sender))

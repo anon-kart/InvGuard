@@ -1,0 +1,7 @@
+(meta.revert_taken == false) -> (post.numElements <= (pre.numElements + arg.numbers))
+(meta.revert_taken == false) -> (post.numElements >= pre.numElements)
+(meta.revert_taken == false) -> (post.numElements == pre.numElements + (post.array.length - pre.array.length))
+(meta.revert_taken == false) -> (post.array.length >= pre.array.length)
+(meta.revert_taken == false) -> (post.array.length <= pre.array.length + 1)
+(pre.numElements > 1500) -> (post.numElements == 0)
+(pre.numElements > 1500) -> (post.array.length == 0)

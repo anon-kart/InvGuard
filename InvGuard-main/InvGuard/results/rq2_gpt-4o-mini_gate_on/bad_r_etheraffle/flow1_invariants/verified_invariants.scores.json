@@ -1,0 +1,46 @@
+{
+  "strong": [],
+  "medium": [],
+  "useful": [],
+  "weak": [
+    "meta.revert_taken == false) -> (post.raffleId >= pre.raffleId",
+    "meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber"
+  ],
+  "scores": [
+    {
+      "invariant": "meta.revert_taken == false) -> (post.raffleId >= pre.raffleId",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    },
+    {
+      "invariant": "meta.revert_taken == false) -> (post.blockNumber >= pre.blockNumber",
+      "killed": 0,
+      "mutants_ran": 2,
+      "kill_rate": 0.0,
+      "coverage_score": 0.9,
+      "trivial": false,
+      "score": 0.009,
+      "tier": "weak",
+      "weak_reason": "low_kill_rate",
+      "kills_validated_exploit": false
+    }
+  ],
+  "mutants": [
+    {
+      "name": "plus_eq_to_minus_eq",
+      "compiled": true
+    },
+    {
+      "name": "minus_eq_to_plus_eq",
+      "compiled": true
+    }
+  ],
+  "unsound_model": false
+}

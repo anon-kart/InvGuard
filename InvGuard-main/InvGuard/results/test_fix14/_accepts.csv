@@ -1,0 +1,4 @@
+stem,target_function,accepted,reason,replay,invariant,benign,flow2_sec
+integ_BECToken,batchTransfer,False,no_report,None,None,None,10.53
+reent_0x4e73b32ed6c35f570686b89848e5f39f20ecc106,Collect,False,no_report,None,None,None,32.07
+unche_0x07f7ecb66d788ab01dc93b9b71a88401de7d0f2e,donateToWhale,False,no_report,None,None,None,61.8

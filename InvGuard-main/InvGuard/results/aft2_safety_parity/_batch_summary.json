@@ -1,0 +1,22 @@
+[
+  {
+    "contract": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/contracts/nssc_parity_walletlibrary_initWallet.sol",
+    "stem": "nssc_parity_walletlibrary_initWallet",
+    "tier": "aft2_safety_parity",
+    "model": "gpt-4o-mini",
+    "target_function": "initWallet",
+    "extra_env": {},
+    "flow1": {
+      "returncode": 0,
+      "elapsed_sec": 21.25,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/aft2_safety_parity/nssc_parity_walletlibrary_initWallet/flow1.log"
+    },
+    "flow2": {
+      "returncode": 0,
+      "elapsed_sec": 29.57,
+      "timed_out": false,
+      "log": "/home/kartik/Downloads/InvGuard-main (1)/InvGuard-main/InvGuard/results/aft2_safety_parity/nssc_parity_walletlibrary_initWallet/flow2.log"
+    }
+  }
+]

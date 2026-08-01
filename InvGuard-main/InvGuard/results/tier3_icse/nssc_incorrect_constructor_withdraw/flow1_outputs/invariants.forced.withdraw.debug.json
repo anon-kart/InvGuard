@@ -1,0 +1,34 @@
+{
+  "function": "withdraw",
+  "raw_count": 6,
+  "fixed_raw_count": 6,
+  "sanitized_count": 3,
+  "deposit_count": 3,
+  "withdraw_count": 2,
+  "chosen_count_before_final_fallback": 2,
+  "raw_lines": [
+    "(meta.revert_taken == false) -> (select(post.balances, arg.sender) >= select(pre.balances, arg.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, arg.sender) == select(pre.balances, arg.sender) + arg.value)",
+    "(meta.revert_taken == false) -> (address(this).balance >= select(pre.address, this).balance)",
+    "(meta.revert_taken == false) -> (meta.sender == owner)",
+    "(meta.revert_taken == false) -> (owner != address(0))",
+    "(meta.revert_taken == false) -> (address(this).balance == select(pre.address, this).balance - arg.value)"
+  ],
+  "fixed_raw": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == select(pre.balances, meta.sender) + meta.value)",
+    "(meta.revert_taken == false) -> (address(this).balance >= select(pre.address, this).balance)",
+    "(meta.revert_taken == false) -> (meta.sender == owner)",
+    "(meta.revert_taken == false) -> (owner != address(0))",
+    "(meta.revert_taken == false) -> (address(this).balance == select(pre.address, this).balance - meta.value)"
+  ],
+  "sanitized": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) == (select(pre.balances, meta.sender) + meta.value))",
+    "(meta.revert_taken == false) -> (meta.sender == owner)"
+  ],
+  "chosen_before_final_fallback": [
+    "(meta.revert_taken == false) -> (select(post.balances, meta.sender) >= select(pre.balances, meta.sender))",
+    "(meta.revert_taken == false) -> (meta.sender == owner)"
+  ]
+}

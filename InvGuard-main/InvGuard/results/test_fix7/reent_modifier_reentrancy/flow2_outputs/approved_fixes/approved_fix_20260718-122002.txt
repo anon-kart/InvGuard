@@ -1,0 +1,4 @@
+Moved state updates before any external calls in the airDrop function to prevent reentrancy.
+
+INVARIANTS USED:
+State updates before external calls

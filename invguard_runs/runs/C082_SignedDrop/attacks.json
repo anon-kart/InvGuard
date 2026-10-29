@@ -1,0 +1,102 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C082",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "claim(uint256,uint8,bytes32,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1 ether",
+        "signature=reused"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "replay one valid signature twice",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "attacker balance +1.0 ether net of cost"
+    },
+    {
+      "id": "A2",
+      "entry_point": "claim(uint256,uint8,bytes32,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1 ether",
+        "signature=reused"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "replay one valid signature twice",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A3",
+      "entry_point": "claim(uint256,uint8,bytes32,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1 ether",
+        "signature=reused"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "replay one valid signature twice",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A4",
+      "entry_point": "claim(uint256,uint8,bytes32,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1 ether",
+        "signature=reused"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "replay one valid signature twice",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A5",
+      "entry_point": "claim(uint256,uint8,bytes32,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1 ether",
+        "signature=reused"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "replay one valid signature twice",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A1"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

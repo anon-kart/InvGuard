@@ -1,0 +1,74 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C021",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "cashOut",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "call",
+      "rationale": "the transition succeeds only if its external calls succeed",
+      "predicate": "!meta.revert_taken -> meta.all_calls_success",
+      "function": "cashOut",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.all_calls_success": false,
+        "meta.revert_taken": false
+      }
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(pre.credits, meta.sender) >= arg.amount",
+      "function": "cashOut",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> select(post.credits, meta.sender) == select(pre.credits, meta.sender) - arg.amount",
+      "function": "cashOut",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I4",
+      "category": "value",
+      "rationale": "Ether attached to this call",
+      "predicate": "!meta.revert_taken -> meta.contract_balance >= arg.amount",
+      "function": "cashOut",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "send(winner) returns true",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "funds are eventually delivered to the recipient",
+      "reason": "temporal language"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 6,
+    "kept_after_normalization": 4,
+    "preservation": 3,
+    "repair_obligations": 1,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

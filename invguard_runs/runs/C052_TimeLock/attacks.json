@@ -1,0 +1,97 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C052",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "state_bound_violation",
+  "impact_oracle_description": "wrapped state value outside its intended bound",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "increaseLockTime(uint256)",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [
+        "_secondsToIncrease=2**256-lockTime"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "wrap lockTime to zero and withdraw before the lock expires",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A2",
+      "entry_point": "increaseLockTime(uint256)",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [
+        "_secondsToIncrease=2**256-lockTime"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "wrap lockTime to zero and withdraw before the lock expires",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A3",
+      "entry_point": "increaseLockTime(uint256)",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [
+        "_secondsToIncrease=2**256-lockTime"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "wrap lockTime to zero and withdraw before the lock expires",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "increaseLockTime(uint256)",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [
+        "_secondsToIncrease=2**256-lockTime"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "wrap lockTime to zero and withdraw before the lock expires",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "value wrapped to 2**256-1"
+    },
+    {
+      "id": "A5",
+      "entry_point": "increaseLockTime(uint256)",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [
+        "_secondsToIncrease=2**256-lockTime"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "wrap lockTime to zero and withdraw before the lock expires",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A4"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

@@ -1,0 +1,107 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C040",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "unauthorized_privileged_state_change",
+  "impact_oracle_description": "unauthorized modification of privileged state",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "_move(address,address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "from=deployer",
+        "to=attacker",
+        "a=1000000"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "move another holder's tokens through the public helper",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "privileged slot set to attacker address"
+    },
+    {
+      "id": "A2",
+      "entry_point": "_move(address,address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "from=deployer",
+        "to=attacker",
+        "a=1000000"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "move another holder's tokens through the public helper",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A3",
+      "entry_point": "_move(address,address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "from=deployer",
+        "to=attacker",
+        "a=1000000"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "move another holder's tokens through the public helper",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "_move(address,address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "from=deployer",
+        "to=attacker",
+        "a=1000000"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "move another holder's tokens through the public helper",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A5",
+      "entry_point": "_move(address,address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "from=deployer",
+        "to=attacker",
+        "a=1000000"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "move another holder's tokens through the public helper",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A1"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

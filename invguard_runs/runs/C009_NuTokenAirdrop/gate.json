@@ -1,0 +1,47 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C009",
+  "fixmaker_model": "gpt-4o-mini-2024-07-18",
+  "max_llm_rounds": 3,
+  "acceptance_rule": "no channel FAIL, at least one security channel positive, no confirmed benign regression",
+  "rounds": [
+    {
+      "round": 1,
+      "proposer": "llm",
+      "structure_check": "fail",
+      "decision": "reject",
+      "diagnostics": "candidate removed or changed an existing external selector; ABI must be preserved",
+      "compile": "ok"
+    },
+    {
+      "round": 2,
+      "proposer": "llm",
+      "compile": "ok",
+      "structure_check": "ok",
+      "symbolic": {
+        "preservation": {
+          "I1": "PASS"
+        },
+        "obligations": {},
+        "verdict": "PASS"
+      },
+      "exploit_replay": {
+        "verdict": "PASS",
+        "per_witness": {
+          "FB1": "neutralized"
+        }
+      },
+      "benign_differential": {
+        "sequences": 4,
+        "checkpoints": 12,
+        "regressions": 0,
+        "verdict": "PASS"
+      },
+      "decision": "accept"
+    }
+  ],
+  "final_decision": "accept",
+  "strongest_evidence": "exploit_replay",
+  "emitted_patch": "patch_candidate.sol",
+  "last_candidate": "patch_candidate.sol"
+}

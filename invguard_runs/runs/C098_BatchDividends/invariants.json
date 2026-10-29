@@ -1,0 +1,50 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C098",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "distributeBatch",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "liveness",
+      "rationale": "a legitimate call must not be blocked by another party",
+      "predicate": "arg.n <= 100 -> !meta.revert_taken",
+      "function": "distributeBatch",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true,
+      "inconclusive_reason": "loop or external callee influences a referenced symbol"
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> post.cursor <= pre.holders_length",
+      "function": "distributeBatch",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true,
+      "inconclusive_reason": "array length and storage-array iteration are not modeled"
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balances[a] <= pre.balances[a]",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "the external call eventually completes before any re-entry",
+      "reason": "temporal language"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 4,
+    "kept_after_normalization": 2,
+    "preservation": 0,
+    "repair_obligations": 0,
+    "unvalidated": 2,
+    "discarded": 0
+  }
+}

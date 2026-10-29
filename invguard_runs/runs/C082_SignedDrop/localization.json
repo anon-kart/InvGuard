@@ -1,0 +1,35 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C082",
+  "contract": "SignedDrop",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "pattern",
+      "detector": "unprotected-value-transfer",
+      "function": "claim",
+      "candidate_class": "access_control"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "access_control",
+    "function": "claim"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "signature_replay",
+    "function": "claim",
+    "in_declared_scope": false
+  },
+  "class_match": null,
+  "function_match": null
+}

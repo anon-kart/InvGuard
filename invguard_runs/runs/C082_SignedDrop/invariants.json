@@ -1,0 +1,53 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C082",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "claim",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "access",
+      "rationale": "only the authorized principal may perform this transition",
+      "predicate": "!meta.revert_taken -> select(pre.claimed, meta.sender) == 0",
+      "function": "claim",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": false,
+        "meta.sender": "0x00000000000000000000000000000000000a77ac",
+        "pre.claimed": 0
+      }
+    },
+    {
+      "id": "I2",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> select(post.claimed, meta.sender) == select(pre.claimed, meta.sender) + arg.amount",
+      "function": "claim",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "isOwner(meta.sender)",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "forall f: privileged(f) -> meta.sender == pre.owner",
+      "reason": "contains a quantifier"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 4,
+    "kept_after_normalization": 2,
+    "preservation": 1,
+    "repair_obligations": 1,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

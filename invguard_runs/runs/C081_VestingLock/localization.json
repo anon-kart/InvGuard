@@ -1,0 +1,35 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C081",
+  "contract": "VestingLock",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "timestamp",
+      "function": "release",
+      "candidate_class": "bad_randomness"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "bad_randomness",
+    "function": "release"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "timestamp_dependence",
+    "function": "release",
+    "in_declared_scope": false
+  },
+  "class_match": null,
+  "function_match": null
+}

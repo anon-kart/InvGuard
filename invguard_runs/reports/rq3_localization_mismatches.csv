@@ -1,0 +1,10 @@
+contract_id,contract,gt_class,gt_function,selected_class,selected_function,repair_effective_anyway
+C009,NuTokenAirdrop,reentrancy,airDrop,reentrancy,supportsToken,True
+C025,KingOfEther,unchecked_call,claimThrone,denial_of_service,claimThrone,True
+C028,PrizeDesk,unchecked_call,payout,unchecked_call,_pay,True
+C047,EmergencyVault,tx_origin,emergencyWithdraw,access_control,emergencyWithdraw,True
+C056,PointsExchange,arithmetic,transferPoints,arithmetic,redeem,False
+C074,Dividends,denial_of_service,distribute,denial_of_service,join,True
+C075,DosNumber,denial_of_service,insertNnumbers,denial_of_service,clearDOS,True
+C076,DosAddress,denial_of_service,emptyCreditors,denial_of_service,addCreditors,True
+C078,AuctionHelper,denial_of_service,bid,denial_of_service,_refundLeader,True

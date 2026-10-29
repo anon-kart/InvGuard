@@ -1,0 +1,81 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C006",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "withdraw",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(post.credit, meta.sender) <= select(pre.credit, meta.sender)",
+      "function": "withdraw",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": false,
+        "meta.sender": "0x00000000000000000000000000000000000a77ac",
+        "post.credit": "2**256 - 1",
+        "pre.credit": 0
+      }
+    },
+    {
+      "id": "I2",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "select(pre.credit, meta.sender) >= arg.amount -> select(post.credit, meta.sender) == select(pre.credit, meta.sender) - arg.amount",
+      "function": "withdraw",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false
+    },
+    {
+      "id": "I3",
+      "category": "reentrancy",
+      "rationale": "the function must not be entered again while an outer call is active",
+      "predicate": "meta.call_depth > 1 -> meta.revert_taken",
+      "function": "withdraw",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "re-entry depends on callback behavior outside the single-transition model"
+    },
+    {
+      "id": "I4",
+      "category": "value",
+      "rationale": "Ether attached to this call",
+      "predicate": "!meta.revert_taken -> meta.value == 0",
+      "function": "withdraw",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balances[a] <= pre.balances[a]",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "the external call eventually completes before any re-entry",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 7,
+    "kept_after_normalization": 4,
+    "preservation": 2,
+    "repair_obligations": 1,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

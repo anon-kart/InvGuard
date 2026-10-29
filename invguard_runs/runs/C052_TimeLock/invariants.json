@@ -1,0 +1,73 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C052",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "increaseLockTime",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> select(post.lockTime, meta.sender) >= select(pre.lockTime, meta.sender)",
+      "function": "increaseLockTime",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": false,
+        "meta.sender": "0x00000000000000000000000000000000000a77ac",
+        "post.lockTime": "2**256 - 1",
+        "pre.lockTime": 0
+      }
+    },
+    {
+      "id": "I2",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> select(post.lockTime, meta.sender) == select(pre.lockTime, meta.sender) + arg._secondsToIncrease",
+      "function": "increaseLockTime",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> select(post.balances, meta.sender) == select(pre.balances, meta.sender)",
+      "function": "increaseLockTime",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balanceOf[a] < 2**256",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "SafeMath.sub(x, y) does not revert",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "meta.revert_taken == false -> select(post.lockTime, meta.sender) >= select(pre.lockTime, meta.sender)",
+      "reason": "duplicate of I1 after normalization"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 7,
+    "kept_after_normalization": 3,
+    "preservation": 2,
+    "repair_obligations": 1,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

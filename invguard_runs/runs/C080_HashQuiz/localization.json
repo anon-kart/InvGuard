@@ -1,0 +1,35 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C080",
+  "contract": "HashQuiz",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "pattern",
+      "detector": "unprotected-value-transfer",
+      "function": "solve",
+      "candidate_class": "access_control"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "access_control",
+    "function": "solve"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "front_running",
+    "function": "solve",
+    "in_declared_scope": false
+  },
+  "class_match": null,
+  "function_match": null
+}

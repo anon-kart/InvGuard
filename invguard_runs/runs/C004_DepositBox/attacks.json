@@ -1,0 +1,78 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C004",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "excess_balance_loss_vs_nonreentrant",
+  "impact_oracle_description": "excess balance loss relative to a matched non-reentrant execution",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw in receive() while balances[sender] still positive",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A2",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw in receive() while balances[sender] still positive",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A3",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw in receive() while balances[sender] still positive",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    },
+    {
+      "id": "A4",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw in receive() while balances[sender] still positive",
+      "compile": "ok_after_refinement",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "contract lost 3.0 ether vs 1.0 ether in the matched non-reentrant run (excess 2.0 ether)",
+      "initial_compile_error": "TypeError: member \"call\" not found or not visible after argument-dependent lookup in address"
+    },
+    {
+      "id": "A5",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw in receive() while balances[sender] still positive",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A4"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

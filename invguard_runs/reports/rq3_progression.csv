@@ -1,0 +1,6 @@
+stage,contracts,notes
+in scope,78,
+executable witness confirmed,71,"63 generated, 8 fallback"
+source-compatible patch produced,71,
+gate-accepted patch,67,
+externally effective repair,64,

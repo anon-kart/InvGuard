@@ -1,0 +1,7 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C088",
+  "evaluator": "none (class outside declared scope)",
+  "patch_emitted": false,
+  "note": "no reference evaluator; reported separately from repair results"
+}

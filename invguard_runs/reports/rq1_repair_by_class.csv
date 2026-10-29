@@ -1,0 +1,9 @@
+class,n,sGuard_mitigated_predicted,sGuard+_mitigated_predicted,SmartFix_mitigated_predicted,SolGPT_mitigated_predicted,TIPS_mitigated_predicted,any_baseline,InvGuard_mitigated,InvGuard_effective
+reentrancy,16,15,15,15,14,14,15,13,13
+unchecked_call,12,0,7,5,10,12,12,10,10
+access_control,14,0,0,9,8,0,12,13,12
+tx_origin,6,6,6,6,6,6,6,5,5
+arithmetic,12,9,9,12,7,9,12,10,10
+bad_randomness,8,0,0,0,5,0,5,5,5
+denial_of_service,10,0,0,0,0,0,0,9,9
+total,78,30,37,47,50,41,62,65,64

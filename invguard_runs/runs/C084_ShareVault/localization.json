@@ -1,0 +1,41 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C084",
+  "contract": "ShareVault",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "divide-before-multiply",
+      "function": "deposit",
+      "candidate_class": null
+    },
+    {
+      "source": "pattern",
+      "detector": "unchecked-arithmetic",
+      "function": "deposit",
+      "candidate_class": "arithmetic"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "arithmetic",
+    "function": "deposit"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "share_inflation",
+    "function": "deposit",
+    "in_declared_scope": false
+  },
+  "class_match": null,
+  "function_match": null
+}

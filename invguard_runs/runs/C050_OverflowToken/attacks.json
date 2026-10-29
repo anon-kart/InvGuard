@@ -1,0 +1,107 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C050",
+  "k": 5,
+  "compile_refinement_used": false,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "transfer(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=accomplice",
+        "value=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "transfer from a zero-balance account to underflow the sender balance",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A2",
+      "entry_point": "transfer(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=accomplice",
+        "value=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "transfer from a zero-balance account to underflow the sender balance",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "attacker balance +1.0 ether net of cost"
+    },
+    {
+      "id": "A3",
+      "entry_point": "transfer(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=accomplice",
+        "value=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "transfer from a zero-balance account to underflow the sender balance",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "transfer(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=accomplice",
+        "value=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "transfer from a zero-balance account to underflow the sender balance",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A5",
+      "entry_point": "transfer(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=accomplice",
+        "value=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "transfer from a zero-balance account to underflow the sender balance",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A2"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

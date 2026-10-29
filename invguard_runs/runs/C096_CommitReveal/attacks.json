@@ -1,0 +1,84 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C096",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "reveal(uint256,bytes32)",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "predict answer",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "reveal(uint256,bytes32)",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "predict answer",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A3",
+      "entry_point": "reveal(uint256,bytes32)",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "predict answer",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A4",
+      "entry_point": "reveal(uint256,bytes32)",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "predict answer",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A5",
+      "entry_point": "reveal(uint256,bytes32)",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "predict answer",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "bad_randomness",
+    "entry_point": "reveal(uint256,bytes32)",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "none",
+    "failure": "answer depends on a block after commit; no candidate wins above chance"
+  },
+  "confirmed_witnesses": [],
+  "witness_source": null,
+  "outcome": "no_confirmed_witness_stop_no_repair_claim",
+  "reason": "answer depends on a block after commit; no candidate wins above chance"
+}

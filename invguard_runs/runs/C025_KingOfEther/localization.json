@@ -1,0 +1,41 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C025",
+  "contract": "KingOfEther",
+  "pragma": "0.4",
+  "findings": [
+    {
+      "source": "pattern",
+      "detector": "failure-dependent-external-call",
+      "function": "claimThrone",
+      "candidate_class": "denial_of_service"
+    },
+    {
+      "source": "slither",
+      "detector": "unchecked-send",
+      "function": "claimThrone",
+      "candidate_class": "unchecked_call"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "denial_of_service",
+    "function": "claimThrone"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "unchecked_call",
+    "function": "claimThrone",
+    "in_declared_scope": true
+  },
+  "class_match": false,
+  "function_match": true
+}

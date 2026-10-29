@@ -1,0 +1,63 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C088",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "relay",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> select(post.executed, arg.id) == true",
+      "function": "relay",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(pre.executed, arg.id) == false",
+      "function": "relay",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "call",
+      "rationale": "the transition succeeds only if its external calls succeed",
+      "predicate": "!meta.revert_taken -> meta.all_calls_success",
+      "function": "relay",
+      "validator_verdict": "FAIL",
+      "role": "discarded_not_security_relevant",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.all_calls_success": false,
+        "meta.revert_taken": false
+      }
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "isOwner(meta.sender)",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "forall f: privileged(f) -> meta.sender == pre.owner",
+      "reason": "contains a quantifier"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 5,
+    "kept_after_normalization": 3,
+    "preservation": 2,
+    "repair_obligations": 0,
+    "unvalidated": 0,
+    "discarded": 1
+  }
+}

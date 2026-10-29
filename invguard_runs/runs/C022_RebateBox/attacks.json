@@ -1,0 +1,97 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C022",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "stranded_funds_rejecting_recipient",
+  "impact_oracle_description": "funds stranded under a rejecting recipient",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "cashOut(uint256)",
+      "ether_value": "1 ether (deposit from rejecting contract)",
+      "typed_arguments": [
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "cash out to a reverting receiver so credit is lost while Ether stays",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "1.0 ether stranded; recipient credit cleared"
+    },
+    {
+      "id": "A2",
+      "entry_point": "cashOut(uint256)",
+      "ether_value": "1 ether (deposit from rejecting contract)",
+      "typed_arguments": [
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "cash out to a reverting receiver so credit is lost while Ether stays",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A3",
+      "entry_point": "cashOut(uint256)",
+      "ether_value": "1 ether (deposit from rejecting contract)",
+      "typed_arguments": [
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "cash out to a reverting receiver so credit is lost while Ether stays",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "cashOut(uint256)",
+      "ether_value": "1 ether (deposit from rejecting contract)",
+      "typed_arguments": [
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "cash out to a reverting receiver so credit is lost while Ether stays",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    },
+    {
+      "id": "A5",
+      "entry_point": "cashOut(uint256)",
+      "ether_value": "1 ether (deposit from rejecting contract)",
+      "typed_arguments": [
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "cash out to a reverting receiver so credit is lost while Ether stays",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A1"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

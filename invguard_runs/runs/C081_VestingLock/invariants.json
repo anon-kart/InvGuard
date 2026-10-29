@@ -1,0 +1,53 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C081",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "release",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> pre.unlockAt <= meta.timestamp",
+      "function": "release",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true,
+      "inconclusive_reason": "meta.timestamp is outside the predicate language"
+    },
+    {
+      "id": "I2",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.beneficiary == pre.beneficiary",
+      "function": "release",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "isOwner(meta.sender)",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "forall f: privileged(f) -> meta.sender == pre.owner",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "meta.revert_taken == false -> pre.unlockAt <= meta.timestamp",
+      "reason": "duplicate of I1 after normalization"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 5,
+    "kept_after_normalization": 2,
+    "preservation": 1,
+    "repair_obligations": 0,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

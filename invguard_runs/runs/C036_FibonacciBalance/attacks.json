@@ -1,0 +1,96 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C036",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "unauthorized_privileged_state_change",
+  "impact_oracle_description": "unauthorized modification of privileged state",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "fallback(setStart)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "msg.data=setStart(uint256(attackerLib))"
+      ],
+      "targets_obligations": [],
+      "objective": "overwrite slot 0 (fibonacciLibrary) through the delegatecall fallback",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A2",
+      "entry_point": "fallback(setStart)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "msg.data=setStart(uint256(attackerLib))"
+      ],
+      "targets_obligations": [],
+      "objective": "overwrite slot 0 (fibonacciLibrary) through the delegatecall fallback",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A3",
+      "entry_point": "fallback(setStart)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "msg.data=setStart(uint256(attackerLib))"
+      ],
+      "targets_obligations": [],
+      "objective": "overwrite slot 0 (fibonacciLibrary) through the delegatecall fallback",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "fallback(setStart)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "msg.data=setStart(uint256(attackerLib))"
+      ],
+      "targets_obligations": [],
+      "objective": "overwrite slot 0 (fibonacciLibrary) through the delegatecall fallback",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A5",
+      "entry_point": "fallback(setStart)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "msg.data=setStart(uint256(attackerLib))"
+      ],
+      "targets_obligations": [],
+      "objective": "overwrite slot 0 (fibonacciLibrary) through the delegatecall fallback",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "access_control",
+    "entry_point": "fallback(setStart)",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "ok",
+    "impact_observed": "privileged slot set to attacker address"
+  },
+  "confirmed_witnesses": [
+    "FB1"
+  ],
+  "witness_source": "fallback",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

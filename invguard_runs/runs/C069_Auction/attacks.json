@@ -1,0 +1,88 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C069",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "availability_loss",
+  "impact_oracle_description": "loss of availability of a legitimate operation",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "bid()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become leader with a contract whose fallback reverts so every later bid fails",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "bid()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become leader with a contract whose fallback reverts so every later bid fails",
+      "compile": "ok_after_refinement",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "subsequent legitimate call reverts in 3/3 attempts",
+      "initial_compile_error": "TypeError: member \"call\" not found or not visible after argument-dependent lookup in address"
+    },
+    {
+      "id": "A3",
+      "entry_point": "bid()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become leader with a contract whose fallback reverts so every later bid fails",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "bid()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become leader with a contract whose fallback reverts so every later bid fails",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A5",
+      "entry_point": "bid()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become leader with a contract whose fallback reverts so every later bid fails",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A2"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

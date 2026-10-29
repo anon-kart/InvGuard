@@ -1,0 +1,23 @@
+contract_id,contract,set,label,localized_class,witness_confirmed,gate_decision,reason
+C079,ApproveToken,out,front_running,none,False,,no in-scope finding
+C080,HashQuiz,out,front_running,access_control,False,,attacker cannot produce the preimage; no candidate shows impact
+C081,VestingLock,out,timestamp_dependence,bad_randomness,False,,"timestamp is a deadline, not a random source; no candidate wins"
+C082,SignedDrop,out,signature_replay,access_control,True,accept,
+C083,SpotLender,out,price_manipulation,none,False,,no in-scope finding
+C084,ShareVault,out,share_inflation,arithmetic,False,,rounding loss is not overflow; arithmetic oracle reports no wrap
+C085,ShortAddressCoin,out,short_address,none,False,,no in-scope finding
+C086,FeeSplitter,out,business_logic,none,False,,no in-scope finding
+C087,NameRegistrar,out,uninitialized_storage,none,False,,uninitialized-storage finding has no class mapping
+C088,GasRelayer,out,gas_griefing,unchecked_call,False,,call result is consumed; no stranded funds under rejecting target
+C089,SafeBank,neg,safe,reentrancy,False,,re-entry finds zero balance; no excess loss
+C090,MutexBank,neg,safe,reentrancy,False,,mutex reverts re-entry; no excess loss
+C091,SafeMathToken,neg,safe,none,False,,no in-scope finding
+C092,CheckedLotto,neg,safe,none,False,,no in-scope finding
+C093,OwnableSafe,neg,safe,none,False,,no in-scope finding
+C094,CheckedToken,neg,safe,none,False,,no in-scope finding
+C095,PullAuction,neg,safe,denial_of_service,False,,rejecting leader cannot block bid; refund is pull-based
+C096,CommitReveal,neg,safe,bad_randomness,False,,answer depends on a block after commit; no candidate wins above chance
+C097,CheckedDAO,neg,safe,reentrancy,False,,re-entry triggers checked underflow and whole transaction reverts
+C098,BatchDividends,neg,safe,denial_of_service,False,,batch size bounds gas; no availability loss
+C099,OriginLogger,neg,safe,none,False,,no in-scope finding
+C100,TwoStepOwnable,neg,safe,none,False,,no in-scope finding

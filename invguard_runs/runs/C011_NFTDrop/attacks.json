@@ -1,0 +1,88 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C011",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "excess_state_effect_vs_nonreentrant",
+  "impact_oracle_description": "excess state effect relative to a matched non-reentrant execution",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "mint()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "re-enter mint from onMint before mintedBy is incremented to exceed MAX_PER_WALLET",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "mint()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "re-enter mint from onMint before mintedBy is incremented to exceed MAX_PER_WALLET",
+      "compile": "ok_after_refinement",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "state effect 3x the matched non-reentrant run",
+      "initial_compile_error": "TypeError: member \"call\" not found or not visible after argument-dependent lookup in address"
+    },
+    {
+      "id": "A3",
+      "entry_point": "mint()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "re-enter mint from onMint before mintedBy is incremented to exceed MAX_PER_WALLET",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "mint()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "re-enter mint from onMint before mintedBy is incremented to exceed MAX_PER_WALLET",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    },
+    {
+      "id": "A5",
+      "entry_point": "mint()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "re-enter mint from onMint before mintedBy is incremented to exceed MAX_PER_WALLET",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A2"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

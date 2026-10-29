@@ -1,0 +1,44 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C075",
+  "fixmaker_model": "gpt-4o-mini-2024-07-18",
+  "max_llm_rounds": 3,
+  "acceptance_rule": "no channel FAIL, at least one security channel positive, no confirmed benign regression",
+  "rounds": [
+    {
+      "round": 1,
+      "proposer": "llm",
+      "compile": "ok",
+      "structure_check": "ok",
+      "structural_check": {
+        "verdict": "PASS",
+        "condition": "unbounded per-call growth removed from target scope"
+      },
+      "symbolic": {
+        "preservation": {
+          "I2": "PASS"
+        },
+        "obligations": {},
+        "verdict": "INCONCLUSIVE",
+        "note": "loop, delegatecall or nonlinear arithmetic in the patched transition"
+      },
+      "exploit_replay": {
+        "verdict": "INCONCLUSIVE",
+        "per_witness": {
+          "A2": "gas-sensitive; replay result unstable"
+        }
+      },
+      "benign_differential": {
+        "sequences": 7,
+        "checkpoints": 21,
+        "regressions": 0,
+        "verdict": "PASS"
+      },
+      "decision": "accept"
+    }
+  ],
+  "final_decision": "accept",
+  "strongest_evidence": "structural",
+  "emitted_patch": "patch_candidate.sol",
+  "last_candidate": "patch_candidate.sol"
+}

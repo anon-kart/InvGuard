@@ -1,0 +1,11 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C023",
+  "evaluator": "reference exploit + reference benign sequence",
+  "patch_emitted": false,
+  "mitigated": false,
+  "benign_preserved": null,
+  "effective": false,
+  "pipeline_stage": "no_witness",
+  "failure_cause": "impact is unbacked credit, not stranded Ether; unchecked-call oracle reports no impact"
+}

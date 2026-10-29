@@ -1,0 +1,76 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C049",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "batchTransfer",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> select(post.balances, meta.sender) <= select(pre.balances, meta.sender)",
+      "function": "batchTransfer",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "nonlinear arithmetic and loop over receivers influences a referenced symbol"
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> arg._value > 0",
+      "function": "batchTransfer",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> arg._value <= select(pre.balances, meta.sender)",
+      "function": "batchTransfer",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "nonlinear arithmetic and loop over receivers influences a referenced symbol"
+    },
+    {
+      "id": "I4",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> meta.value == 0",
+      "function": "batchTransfer",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balanceOf[a] < 2**256",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "SafeMath.sub(x, y) does not revert",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "meta.revert_taken == false -> select(post.balances, meta.sender) <= select(pre.balances, meta.sender)",
+      "reason": "duplicate of I1 after normalization"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 7,
+    "kept_after_normalization": 4,
+    "preservation": 2,
+    "repair_obligations": 0,
+    "unvalidated": 2,
+    "discarded": 0
+  }
+}

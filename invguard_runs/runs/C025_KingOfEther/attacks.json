@@ -1,0 +1,87 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C025",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "stranded_funds_rejecting_recipient",
+  "impact_oracle_description": "funds stranded under a rejecting recipient",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "claimThrone()",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "hold the throne with a rejecting king so compensation is silently lost",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "claimThrone()",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "hold the throne with a rejecting king so compensation is silently lost",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A3",
+      "entry_point": "claimThrone()",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "hold the throne with a rejecting king so compensation is silently lost",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A4",
+      "entry_point": "claimThrone()",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "hold the throne with a rejecting king so compensation is silently lost",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "1.0 ether stranded; recipient credit cleared"
+    },
+    {
+      "id": "A5",
+      "entry_point": "claimThrone()",
+      "ether_value": "0.1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "hold the throne with a rejecting king so compensation is silently lost",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A4"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

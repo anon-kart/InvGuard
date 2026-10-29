@@ -1,0 +1,86 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C009",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "excess_state_effect_vs_nonreentrant",
+  "impact_oracle_description": "excess state effect relative to a matched non-reentrant execution",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "airDrop()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter airDrop from supportsToken() before tokenBalance is updated",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A2",
+      "entry_point": "airDrop()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter airDrop from supportsToken() before tokenBalance is updated",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A3",
+      "entry_point": "airDrop()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter airDrop from supportsToken() before tokenBalance is updated",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    },
+    {
+      "id": "A4",
+      "entry_point": "airDrop()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter airDrop from supportsToken() before tokenBalance is updated",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A5",
+      "entry_point": "airDrop()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter airDrop from supportsToken() before tokenBalance is updated",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "reentrancy",
+    "entry_point": "airDrop()",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "ok",
+    "impact_observed": "state effect 3x the matched non-reentrant run"
+  },
+  "confirmed_witnesses": [
+    "FB1"
+  ],
+  "witness_source": "fallback",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

@@ -1,0 +1,102 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C056",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "state_bound_violation",
+  "impact_oracle_description": "wrapped state value outside its intended bound",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "redeem(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "redeem with zero points to wrap points",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "redeem(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "redeem with zero points to wrap points",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "value wrapped to 2**256-1"
+    },
+    {
+      "id": "A3",
+      "entry_point": "redeem(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "redeem with zero points to wrap points",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "redeem(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "redeem with zero points to wrap points",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A5",
+      "entry_point": "redeem(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "redeem with zero points to wrap points",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A2"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

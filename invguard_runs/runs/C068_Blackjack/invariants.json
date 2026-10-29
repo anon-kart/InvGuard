@@ -1,0 +1,57 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C068",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "stand",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> select(post.games, meta.sender) == 0",
+      "function": "stand",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "loop or external callee influences a referenced symbol"
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> meta.value == 0",
+      "function": "stand",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "the outcome is unpredictable to the player",
+      "reason": "not expressible over a single transition"
+    },
+    {
+      "raw": "blockhash(block.number - 1) != 0",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "meta.revert_taken == false -> select(post.games, meta.sender) == 0",
+      "reason": "duplicate of I1 after normalization"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 6,
+    "kept_after_normalization": 2,
+    "preservation": 1,
+    "repair_obligations": 0,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

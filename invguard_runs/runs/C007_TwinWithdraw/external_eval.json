@@ -1,0 +1,11 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C007",
+  "evaluator": "reference exploit + reference benign sequence",
+  "patch_emitted": true,
+  "mitigated": false,
+  "benign_preserved": true,
+  "effective": false,
+  "pipeline_stage": "accepted_defective",
+  "failure_cause": "generated witness re-enters withdraw directly; reference exploit re-enters through sibling withdrawTo, which the patch leaves unchanged"
+}

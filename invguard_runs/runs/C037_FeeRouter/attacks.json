@@ -1,0 +1,88 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C037",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "unauthorized_privileged_state_change",
+  "impact_oracle_description": "unauthorized modification of privileged state",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "setFee(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "bps=1000"
+      ],
+      "targets_obligations": [],
+      "objective": "change the fee from an unprivileged account",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "setFee(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "bps=1000"
+      ],
+      "targets_obligations": [],
+      "objective": "change the fee from an unprivileged account",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A3",
+      "entry_point": "setFee(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "bps=1000"
+      ],
+      "targets_obligations": [],
+      "objective": "change the fee from an unprivileged account",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "setFee(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "bps=1000"
+      ],
+      "targets_obligations": [],
+      "objective": "change the fee from an unprivileged account",
+      "compile": "ok_after_refinement",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "privileged slot set to attacker address",
+      "initial_compile_error": "TypeError: member \"call\" not found or not visible after argument-dependent lookup in address"
+    },
+    {
+      "id": "A5",
+      "entry_point": "setFee(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "bps=1000"
+      ],
+      "targets_obligations": [],
+      "objective": "change the fee from an unprivileged account",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A4"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

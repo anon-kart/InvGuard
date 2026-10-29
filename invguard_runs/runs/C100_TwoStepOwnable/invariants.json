@@ -1,0 +1,63 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C100",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "acceptOwnership",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "access",
+      "rationale": "only the authorized principal may perform this transition",
+      "predicate": "!meta.revert_taken -> meta.sender == pre.pendingOwner",
+      "function": "acceptOwnership",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I2",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.owner == meta.sender",
+      "function": "acceptOwnership",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.pendingOwner == 0",
+      "function": "acceptOwnership",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balances[a] <= pre.balances[a]",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "the external call eventually completes before any re-entry",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "meta.revert_taken == false -> meta.sender == pre.pendingOwner",
+      "reason": "duplicate of I1 after normalization"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 6,
+    "kept_after_normalization": 3,
+    "preservation": 3,
+    "repair_obligations": 0,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

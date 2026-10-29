@@ -1,0 +1,11 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C046",
+  "evaluator": "reference exploit + reference benign sequence",
+  "patch_emitted": true,
+  "mitigated": true,
+  "benign_preserved": true,
+  "effective": true,
+  "pipeline_stage": "accepted_effective",
+  "failure_cause": null
+}

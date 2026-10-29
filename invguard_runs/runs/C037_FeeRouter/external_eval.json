@@ -1,0 +1,11 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C037",
+  "evaluator": "reference exploit + reference benign sequence",
+  "patch_emitted": true,
+  "mitigated": true,
+  "benign_preserved": false,
+  "effective": false,
+  "pipeline_stage": "accepted_defective",
+  "failure_cause": "benign tests exercise only the owner path; reference benign sequence has the operator call setFee, which now reverts"
+}

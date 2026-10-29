@@ -1,0 +1,84 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C098",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "availability_loss",
+  "impact_oracle_description": "loss of availability of a legitimate operation",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "distributeBatch(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "block distribution",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "distributeBatch(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "block distribution",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A3",
+      "entry_point": "distributeBatch(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "block distribution",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "distributeBatch(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "block distribution",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    },
+    {
+      "id": "A5",
+      "entry_point": "distributeBatch(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "block distribution",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "denial_of_service",
+    "entry_point": "distributeBatch(uint256)",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "none",
+    "failure": "batch size bounds gas; no availability loss"
+  },
+  "confirmed_witnesses": [],
+  "witness_source": null,
+  "outcome": "no_confirmed_witness_stop_no_repair_claim",
+  "reason": "batch size bounds gas; no availability loss"
+}

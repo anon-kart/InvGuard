@@ -1,0 +1,35 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C090",
+  "contract": "MutexBank",
+  "pragma": "0.4",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "reentrancy-eth",
+      "function": "withdraw",
+      "candidate_class": "reentrancy"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "reentrancy",
+    "function": "withdraw"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "none",
+    "function": null,
+    "in_declared_scope": false
+  },
+  "class_match": null,
+  "function_match": null
+}

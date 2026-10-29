@@ -1,0 +1,5 @@
+subset,TP,FP,precision_pct,predicates_per_contract,expected_properties_recalled,expected_properties,recall_pct
+all 100 contracts,239,52,82.1,2.91,181,214,84.6
+in scope,195,46,80.9,3.09,149,176,84.7
+out of scope,19,3,86.4,2.20,13,18,72.2
+negative controls,25,3,89.3,2.33,19,20,95.0

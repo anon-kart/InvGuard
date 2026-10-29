@@ -1,0 +1,34 @@
+contract_id,contract,expected_property_not_recalled
+C001,EtherBank,deposit credits sender
+C002,SavingsJar,deposit credits sender
+C007,TwinWithdraw,no re-entrant drain of withdrawTo
+C008,LedgerBank,no cross-function re-entry into transfer
+C009,NuTokenAirdrop,balance becomes exactly 20
+C010,BonusRewards,contract funds only decrease by bonus
+C014,SharePool,sharePrice consistent during external call
+C015,EscrowRefund,seller paid only after release time
+C024,BatchPayer,failed payment keeps pending credit
+C032,Missing,only owner withdraws
+C033,Rubixi,fees collected only by creator
+C034,WalletLibrary,execute bounded by limit
+C036,FibonacciBalance,payout follows fibonacci
+C037,FeeRouter,fee changed only by owner or operator
+C049,BECToken,supply conserved
+C056,PointsExchange,transferPoints bounded by points
+C061,GuessTheRandomNumber,outcome not computable in the betting transaction
+C062,LuckyNumber,outcome not computable in the betting transaction
+C063,PredictTheBlockHash,blockhash used only within 256 blocks
+C064,SecretSeedLottery,winning number not derivable from storage
+C065,HiddenSeed,winning number not derivable from storage
+C066,TimestampLottery,winner not predictable at draw time
+C067,PrevrandaoRaffle,winner not predictable at draw time
+C068,Blackjack,cards not predictable
+C073,RefundList,failed refunds stay claimable
+C074,Dividends,each holder credited once per distribution
+C077,Payroll,each employee receives salary
+C079,ApproveToken,allowance change not front-runnable
+C080,HashQuiz,solution not stealable from mempool
+C083,SpotLender,borrow limit robust to spot manipulation
+C084,ShareVault,first depositor cannot inflate share price
+C088,GasRelayer,relayed call gets enough gas
+C089,SafeBank,no re-entrant drain

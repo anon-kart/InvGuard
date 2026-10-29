@@ -1,0 +1,4 @@
+contract_id,contract,coverage_gap,explanation
+C007,TwinWithdraw,witness_coverage,"generated witness re-enters withdraw directly; reference exploit re-enters through sibling withdrawTo, which the patch leaves unchanged"
+C037,FeeRouter,benign_role_gap,"benign tests exercise only the owner path; reference benign sequence has the operator call setFee, which now reverts"
+C056,PointsExchange,localization_scope,"localization selected redeem; reference exploit wraps points through transferPoints, which still has an unchecked subtraction"

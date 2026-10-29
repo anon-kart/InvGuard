@@ -1,0 +1,292 @@
+contract_id,contract,set,invariant,category,predicate,validator_verdict,role,human_label
+C001,EtherBank,in,I1,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C001,EtherBank,in,I2,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) > 0",PASS,preservation,correct
+C001,EtherBank,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C001,EtherBank,in,I4,value,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C001,EtherBank,in,I5,balance,"!meta.revert_taken -> meta.contract_balance >= select(pre.balances, meta.sender)",PASS,preservation,correct
+C002,SavingsJar,in,I1,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C002,SavingsJar,in,I2,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) > 0",PASS,preservation,correct
+C002,SavingsJar,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C002,SavingsJar,in,I4,value,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C002,SavingsJar,in,I5,balance,"!meta.revert_taken -> meta.contract_balance >= select(pre.balances, meta.sender)",PASS,preservation,correct
+C003,CoinVault,in,I1,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C003,CoinVault,in,I2,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) > 0",PASS,preservation,correct
+C003,CoinVault,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C003,CoinVault,in,I4,call,!meta.revert_taken -> meta.all_calls_success,PASS,preservation,correct
+C004,DepositBox,in,I1,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C004,DepositBox,in,I2,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) > 0",PASS,preservation,correct
+C004,DepositBox,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C004,DepositBox,in,I4,call,!meta.revert_taken -> meta.all_calls_success,PASS,preservation,correct
+C005,StakeVault,in,I1,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C005,StakeVault,in,I2,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) > 0",PASS,preservation,correct
+C005,StakeVault,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C005,StakeVault,in,I4,call,!meta.revert_taken -> meta.all_calls_success,PASS,preservation,correct
+C006,SimpleDAO,in,I1,bound,"!meta.revert_taken -> select(post.credit, meta.sender) <= select(pre.credit, meta.sender)",FAIL,repair_obligation,correct
+C006,SimpleDAO,in,I2,arithmetic,"select(pre.credit, meta.sender) >= arg.amount -> select(post.credit, meta.sender) == select(pre.credit, meta.sender) - arg.amount",PASS,preservation,correct
+C006,SimpleDAO,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C006,SimpleDAO,in,I4,value,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C007,TwinWithdraw,in,I1,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C007,TwinWithdraw,in,I2,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C007,TwinWithdraw,in,I3,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) > 0",PASS,preservation,correct
+C008,LedgerBank,in,I1,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C008,LedgerBank,in,I2,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C008,LedgerBank,in,I3,call,!meta.revert_taken -> meta.all_calls_success,PASS,preservation,correct
+C008,LedgerBank,in,I4,bound,"!meta.revert_taken -> meta.contract_balance >= select(pre.balances, meta.sender)",PASS,preservation,correct
+C009,NuTokenAirdrop,in,I1,bound,"!meta.revert_taken -> select(pre.tokenBalance, meta.sender) == 0",PASS,preservation,correct
+C009,NuTokenAirdrop,in,I2,arithmetic,"!meta.revert_taken -> select(post.tokenBalance, meta.sender) == 20",INCONCLUSIVE,unvalidated,correct
+C009,NuTokenAirdrop,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C010,BonusRewards,in,I1,state-effect,"!meta.revert_taken -> select(post.claimedBonus, arg.recipient) == true",PASS,preservation,correct
+C010,BonusRewards,in,I2,bound,"!meta.revert_taken -> select(pre.claimedBonus, arg.recipient) == false",PASS,preservation,correct
+C010,BonusRewards,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C010,BonusRewards,in,I4,state-effect,"!meta.revert_taken -> select(post.rewardsForA, arg.recipient) == 0",PASS,preservation,correct
+C011,NFTDrop,in,I1,bound,"!meta.revert_taken -> select(post.mintedBy, meta.sender) <= 2",FAIL,repair_obligation,correct
+C011,NFTDrop,in,I2,arithmetic,!meta.revert_taken -> post.totalMinted == pre.totalMinted + 1,PASS,preservation,correct
+C011,NFTDrop,in,I3,state-effect,"!meta.revert_taken -> select(post.ownerOf, post.totalMinted) == meta.sender",PASS,preservation,correct
+C011,NFTDrop,in,I4,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,incorrect
+C012,TicketMint,in,I1,bound,"!meta.revert_taken -> select(post.mintedBy, meta.sender) <= 2",FAIL,repair_obligation,correct
+C012,TicketMint,in,I2,arithmetic,!meta.revert_taken -> post.totalMinted == pre.totalMinted + 1,PASS,preservation,correct
+C012,TicketMint,in,I3,state-effect,"!meta.revert_taken -> select(post.ownerOf, post.totalMinted) == meta.sender",PASS,preservation,correct
+C012,TicketMint,in,I4,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,incorrect
+C013,PayeeRegistry,in,I1,state-effect,"!meta.revert_taken -> select(post.owed, meta.sender) == 0",INCONCLUSIVE,unvalidated,correct
+C013,PayeeRegistry,in,I2,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C013,PayeeRegistry,in,I3,call,!meta.revert_taken -> meta.all_calls_success,INCONCLUSIVE,unvalidated,correct
+C014,SharePool,in,I1,state-effect,"!meta.revert_taken -> select(post.shares, meta.sender) == 0",PASS,preservation,correct
+C014,SharePool,in,I2,arithmetic,"!meta.revert_taken -> post.totalShares == pre.totalShares - select(pre.shares, meta.sender)",INCONCLUSIVE,unvalidated,correct
+C014,SharePool,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,incorrect
+C015,EscrowRefund,in,I1,state-effect,"!meta.revert_taken -> select(post.deposits, meta.sender) == 0",PASS,preservation,correct
+C015,EscrowRefund,in,I2,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C015,EscrowRefund,in,I3,bound,"!meta.revert_taken -> select(pre.deposits, meta.sender) > 0",PASS,preservation,correct
+C015,EscrowRefund,in,I4,access,!meta.revert_taken -> meta.sender != pre.seller,PASS,preservation,incorrect
+C016,TokenExchange,in,I1,bound,"!meta.revert_taken -> select(pre.tokens, meta.sender) >= arg.amount",PASS,preservation,correct
+C016,TokenExchange,in,I2,arithmetic,"!meta.revert_taken -> select(post.tokens, meta.sender) == select(pre.tokens, meta.sender) - arg.amount",PASS,preservation,correct
+C016,TokenExchange,in,I3,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C016,TokenExchange,in,I4,value,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C017,Lotto,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C017,Lotto,in,I2,state-effect,!meta.revert_taken -> post.payedOut == true,PASS,preservation,correct
+C017,Lotto,in,I3,bound,!meta.revert_taken -> pre.payedOut == false,PASS,preservation,correct
+C017,Lotto,in,I4,access,!meta.revert_taken -> meta.sender == pre.winner,FAIL,discarded_not_security_relevant,incorrect
+C018,Raffle,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C018,Raffle,in,I2,state-effect,!meta.revert_taken -> post.payedOut == true,PASS,preservation,correct
+C018,Raffle,in,I3,bound,!meta.revert_taken -> pre.payedOut == false,PASS,preservation,correct
+C018,Raffle,in,I4,access,!meta.revert_taken -> meta.sender == pre.winner,FAIL,discarded_not_security_relevant,incorrect
+C019,SendWallet,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C019,SendWallet,in,I2,arithmetic,"!meta.revert_taken -> select(post.balances, meta.sender) == select(pre.balances, meta.sender) - arg.amount",PASS,preservation,correct
+C019,SendWallet,in,I3,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) >= arg.amount",PASS,preservation,correct
+C020,PiggyWallet,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C020,PiggyWallet,in,I2,arithmetic,"!meta.revert_taken -> select(post.balances, meta.sender) == select(pre.balances, meta.sender) - arg.amount",PASS,preservation,correct
+C020,PiggyWallet,in,I3,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) >= arg.amount",PASS,preservation,correct
+C021,CreditDesk,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C021,CreditDesk,in,I2,bound,"!meta.revert_taken -> select(pre.credits, meta.sender) >= arg.amount",PASS,preservation,correct
+C021,CreditDesk,in,I3,arithmetic,"!meta.revert_taken -> select(post.credits, meta.sender) == select(pre.credits, meta.sender) - arg.amount",PASS,preservation,correct
+C021,CreditDesk,in,I4,value,!meta.revert_taken -> meta.contract_balance >= arg.amount,PASS,preservation,incorrect
+C022,RebateBox,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C022,RebateBox,in,I2,bound,"!meta.revert_taken -> select(pre.credits, meta.sender) >= arg.amount",PASS,preservation,correct
+C022,RebateBox,in,I3,arithmetic,"!meta.revert_taken -> select(post.credits, meta.sender) == select(pre.credits, meta.sender) - arg.amount",PASS,preservation,correct
+C022,RebateBox,in,I4,value,!meta.revert_taken -> meta.contract_balance >= arg.amount,PASS,preservation,incorrect
+C023,TokenBank,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C023,TokenBank,in,I2,arithmetic,"!meta.revert_taken -> select(post.deposited, meta.sender) == select(pre.deposited, meta.sender) + arg.amount",PASS,preservation,correct
+C024,BatchPayer,in,I1,call,!meta.revert_taken -> meta.all_calls_success,INCONCLUSIVE,unvalidated,correct
+C024,BatchPayer,in,I2,state-effect,"!meta.revert_taken -> select(post.pending, select(pre.recipients, 0)) == 0",INCONCLUSIVE,unvalidated,incorrect
+C024,BatchPayer,in,I3,value,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C025,KingOfEther,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C025,KingOfEther,in,I2,state-effect,!meta.revert_taken -> post.king == meta.sender,PASS,preservation,correct
+C025,KingOfEther,in,I3,bound,!meta.revert_taken -> meta.value >= pre.claimPrice,PASS,preservation,correct
+C025,KingOfEther,in,I4,arithmetic,!meta.revert_taken -> post.claimPrice == meta.value * 3 / 2,INCONCLUSIVE,unvalidated,correct
+C026,PrivateEthCell,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C026,PrivateEthCell,in,I2,bound,"!meta.revert_taken -> arg.amount <= select(pre.balances, meta.sender)",PASS,preservation,correct
+C026,PrivateEthCell,in,I3,arithmetic,"!meta.revert_taken -> select(post.balances, meta.sender) == select(pre.balances, meta.sender) - arg.amount",PASS,preservation,correct
+C027,TreasurySweeper,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,PASS,preservation,correct
+C027,TreasurySweeper,in,I2,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C027,TreasurySweeper,in,I3,arithmetic,!meta.revert_taken -> post.swept == pre.swept + meta.contract_balance,PASS,preservation,incorrect
+C028,PrizeDesk,in,I1,call,!meta.revert_taken -> meta.all_calls_success,FAIL,repair_obligation,correct
+C028,PrizeDesk,in,I2,state-effect,"!meta.revert_taken -> select(post.paid, meta.sender) == true",PASS,preservation,correct
+C028,PrizeDesk,in,I3,state-effect,"!meta.revert_taken -> select(post.winnings, meta.sender) == 0",PASS,preservation,correct
+C029,Owned,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C029,Owned,in,I2,state-effect,!meta.revert_taken -> post.owner == arg.newOwner,PASS,preservation,correct
+C029,Owned,in,I3,value,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C030,OwnedVault,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C030,OwnedVault,in,I2,state-effect,!meta.revert_taken -> post.owner == arg.newOwner,PASS,preservation,correct
+C030,OwnedVault,in,I3,value,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C031,FeeVault,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C031,FeeVault,in,I2,state-effect,!meta.revert_taken -> post.owner == arg.o,PASS,preservation,correct
+C031,FeeVault,in,I3,state-effect,!meta.revert_taken -> post.fee == pre.fee,PASS,preservation,incorrect
+C032,Missing,in,I1,access,!meta.revert_taken -> pre.owner == 0 || meta.sender == pre.owner,FAIL,repair_obligation,correct
+C032,Missing,in,I2,state-effect,!meta.revert_taken -> post.owner == meta.sender,PASS,preservation,correct
+C033,Rubixi,in,I1,access,!meta.revert_taken -> pre.creator == 0 || meta.sender == pre.creator,FAIL,repair_obligation,correct
+C033,Rubixi,in,I2,state-effect,!meta.revert_taken -> post.creator == meta.sender,PASS,preservation,correct
+C033,Rubixi,in,I3,state-effect,!meta.revert_taken -> post.collectedFees == pre.collectedFees,PASS,preservation,incorrect
+C034,WalletLibrary,in,I1,access,!meta.revert_taken -> pre.initialized == false,FAIL,repair_obligation,correct
+C034,WalletLibrary,in,I2,state-effect,!meta.revert_taken -> post.owner == arg._owner,PASS,preservation,correct
+C034,WalletLibrary,in,I3,state-effect,!meta.revert_taken -> post.dailyLimit == arg._limit,PASS,preservation,correct
+C034,WalletLibrary,in,I4,access,!meta.revert_taken -> pre.owner == 0,FAIL,repair_obligation,correct
+C035,OpenVault,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C035,OpenVault,in,I2,state-effect,!meta.revert_taken -> post.owner == pre.owner,PASS,preservation,correct
+C036,FibonacciBalance,in,I1,state-effect,!meta.revert_taken -> post.fibonacciLibrary == pre.fibonacciLibrary,INCONCLUSIVE,unvalidated,correct
+C036,FibonacciBalance,in,I2,arithmetic,!meta.revert_taken -> post.withdrawalCounter == pre.withdrawalCounter + 1,PASS,preservation,correct
+C036,FibonacciBalance,in,I3,bound,!meta.revert_taken -> meta.contract_balance >= post.calculatedFibNumber,INCONCLUSIVE,unvalidated,incorrect
+C037,FeeRouter,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,discarded_not_security_relevant,incorrect
+C037,FeeRouter,in,I2,bound,!meta.revert_taken -> post.feeBps <= 1000,PASS,preservation,correct
+C037,FeeRouter,in,I3,state-effect,!meta.revert_taken -> post.feeBps == arg.bps,PASS,preservation,correct
+C038,RewardToken,in,I1,access,!meta.revert_taken -> meta.sender == pre.minter,FAIL,repair_obligation,correct
+C038,RewardToken,in,I2,arithmetic,!meta.revert_taken -> post.totalSupply == pre.totalSupply + arg.amount,PASS,preservation,correct
+C038,RewardToken,in,I3,arithmetic,"!meta.revert_taken -> select(post.balanceOf, arg.to) == select(pre.balanceOf, arg.to) + arg.amount",PASS,preservation,correct
+C039,Suicidal,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C039,Suicidal,in,I2,value,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C040,HelperToken,in,I1,access,!meta.revert_taken -> meta.sender == arg.from,FAIL,repair_obligation,correct
+C040,HelperToken,in,I2,bound,"!meta.revert_taken -> select(pre.balanceOf, arg.from) >= arg.a",PASS,preservation,correct
+C040,HelperToken,in,I3,arithmetic,"arg.from != arg.to && !meta.revert_taken -> select(post.balanceOf, arg.to) == select(pre.balanceOf, arg.to) + arg.a",PASS,preservation,correct
+C041,MultiOwned,in,I1,access,"!meta.revert_taken -> select(pre.owners, meta.sender) != 0",FAIL,repair_obligation,correct
+C041,MultiOwned,in,I2,state-effect,"!meta.revert_taken -> select(post.owners, arg._owner) == meta.sender",PASS,preservation,correct
+C041,MultiOwned,in,I3,bound,!meta.revert_taken -> arg._owner != 0,PASS,preservation,correct
+C042,UpgradeProxy,in,I1,access,!meta.revert_taken -> meta.sender == pre.admin,FAIL,repair_obligation,correct
+C042,UpgradeProxy,in,I2,state-effect,!meta.revert_taken -> post.implementation == arg.newImpl,PASS,preservation,correct
+C042,UpgradeProxy,in,I3,state-effect,!meta.revert_taken -> post.admin == pre.admin,PASS,preservation,correct
+C043,TxWallet,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C043,TxWallet,in,I2,access,!meta.revert_taken -> meta.origin == pre.owner,PASS,preservation,incorrect
+C043,TxWallet,in,I3,state-effect,!meta.revert_taken -> post.owner == pre.owner,PASS,preservation,correct
+C044,PhishableWallet,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C044,PhishableWallet,in,I2,access,!meta.revert_taken -> meta.origin == pre.owner,PASS,preservation,incorrect
+C044,PhishableWallet,in,I3,state-effect,!meta.revert_taken -> post.owner == pre.owner,PASS,preservation,correct
+C045,OriginModifier,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C045,OriginModifier,in,I2,bound,!meta.revert_taken -> arg.amount <= pre.limit,PASS,preservation,correct
+C045,OriginModifier,in,I3,state-effect,!meta.revert_taken -> post.limit == pre.limit,PASS,preservation,incorrect
+C046,LimitWallet,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C046,LimitWallet,in,I2,bound,!meta.revert_taken -> arg.amount <= pre.limit,PASS,preservation,correct
+C046,LimitWallet,in,I3,state-effect,!meta.revert_taken -> post.limit == pre.limit,PASS,preservation,incorrect
+C047,EmergencyVault,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C047,EmergencyVault,in,I2,access,!meta.revert_taken -> meta.origin == pre.owner || meta.sender == pre.owner,PASS,preservation,incorrect
+C048,PoCGame,in,I1,access,!meta.revert_taken -> meta.sender == pre.owner,FAIL,repair_obligation,correct
+C048,PoCGame,in,I2,state-effect,!meta.revert_taken -> post.pot == 0,PASS,preservation,correct
+C049,BECToken,in,I1,arithmetic,"!meta.revert_taken -> select(post.balances, meta.sender) <= select(pre.balances, meta.sender)",INCONCLUSIVE,unvalidated,correct
+C049,BECToken,in,I2,bound,!meta.revert_taken -> arg._value > 0,PASS,preservation,correct
+C049,BECToken,in,I3,arithmetic,"!meta.revert_taken -> arg._value <= select(pre.balances, meta.sender)",INCONCLUSIVE,unvalidated,correct
+C049,BECToken,in,I4,bound,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C050,OverflowToken,in,I1,bound,"!meta.revert_taken -> select(pre.balanceOf, meta.sender) >= arg.value",FAIL,repair_obligation,correct
+C050,OverflowToken,in,I2,arithmetic,"!meta.revert_taken && meta.sender != arg.to -> select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)",FAIL,repair_obligation,correct
+C050,OverflowToken,in,I3,state-effect,!meta.revert_taken -> post.totalSupply == pre.totalSupply,PASS,preservation,correct
+C051,HoloToken,in,I1,bound,"!meta.revert_taken -> select(pre.balanceOf, meta.sender) >= arg.value",FAIL,repair_obligation,correct
+C051,HoloToken,in,I2,arithmetic,"!meta.revert_taken && meta.sender != arg.to -> select(post.balanceOf, meta.sender) <= select(pre.balanceOf, meta.sender)",FAIL,repair_obligation,correct
+C051,HoloToken,in,I3,state-effect,!meta.revert_taken -> post.totalSupply == pre.totalSupply,PASS,preservation,correct
+C052,TimeLock,in,I1,arithmetic,"!meta.revert_taken -> select(post.lockTime, meta.sender) >= select(pre.lockTime, meta.sender)",FAIL,repair_obligation,correct
+C052,TimeLock,in,I2,arithmetic,"!meta.revert_taken -> select(post.lockTime, meta.sender) == select(pre.lockTime, meta.sender) + arg._secondsToIncrease",PASS,preservation,correct
+C052,TimeLock,in,I3,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == select(pre.balances, meta.sender)",PASS,preservation,correct
+C053,IntegerOverflowSingle,in,I1,arithmetic,!meta.revert_taken -> post.count <= pre.count,FAIL,repair_obligation,correct
+C053,IntegerOverflowSingle,in,I2,bound,!meta.revert_taken -> arg.input <= pre.count,FAIL,repair_obligation,correct
+C053,IntegerOverflowSingle,in,I3,arithmetic,!meta.revert_taken -> post.count == pre.count - arg.input,PASS,preservation,incorrect
+C054,CounterMinus,in,I1,arithmetic,!meta.revert_taken -> post.count <= pre.count,FAIL,repair_obligation,correct
+C054,CounterMinus,in,I2,bound,!meta.revert_taken -> arg.input <= pre.count,FAIL,repair_obligation,correct
+C054,CounterMinus,in,I3,arithmetic,!meta.revert_taken -> post.count == pre.count - arg.input,PASS,preservation,incorrect
+C055,PointsLedger,in,I1,bound,"!meta.revert_taken -> select(pre.points, meta.sender) >= arg.amount",FAIL,repair_obligation,correct
+C055,PointsLedger,in,I2,arithmetic,"!meta.revert_taken -> select(post.points, meta.sender) <= select(pre.points, meta.sender)",FAIL,repair_obligation,correct
+C055,PointsLedger,in,I3,arithmetic,"!meta.revert_taken -> select(post.redeemed, meta.sender) == select(pre.redeemed, meta.sender) + arg.amount",PASS,preservation,correct
+C056,PointsExchange,in,I1,bound,"!meta.revert_taken -> select(pre.points, meta.sender) >= arg.amount",FAIL,repair_obligation,correct
+C056,PointsExchange,in,I2,arithmetic,"!meta.revert_taken -> select(post.points, meta.sender) <= select(pre.points, meta.sender)",FAIL,repair_obligation,correct
+C056,PointsExchange,in,I3,arithmetic,"!meta.revert_taken -> select(post.redeemed, meta.sender) == select(pre.redeemed, meta.sender) + arg.amount",PASS,preservation,correct
+C057,TokenSaleChallenge,in,I1,arithmetic,!meta.revert_taken -> meta.value == arg.numTokens * 1000000000000000000,INCONCLUSIVE,unvalidated,correct
+C057,TokenSaleChallenge,in,I2,arithmetic,"!meta.revert_taken -> select(post.balanceOf, meta.sender) == select(pre.balanceOf, meta.sender) + arg.numTokens",PASS,preservation,correct
+C057,TokenSaleChallenge,in,I3,bound,!meta.revert_taken -> meta.value > 0,FAIL,discarded_not_security_relevant,incorrect
+C058,AllowanceToken,in,I1,bound,"!meta.revert_taken -> select(select(pre.allowance, arg.from), meta.sender) >= arg.value",FAIL,repair_obligation,correct
+C058,AllowanceToken,in,I2,bound,"!meta.revert_taken -> select(pre.balanceOf, arg.from) >= arg.value",PASS,preservation,correct
+C058,AllowanceToken,in,I3,arithmetic,"!meta.revert_taken -> select(select(post.allowance, arg.from), meta.sender) <= select(select(pre.allowance, arg.from), meta.sender)",FAIL,repair_obligation,correct
+C059,UncheckedVault,in,I1,bound,"!meta.revert_taken -> select(pre.balance, meta.sender) >= arg.amount",FAIL,repair_obligation,correct
+C059,UncheckedVault,in,I2,arithmetic,"!meta.revert_taken -> select(post.balance, meta.sender) == select(pre.balance, meta.sender) - arg.amount",PASS,preservation,correct
+C059,UncheckedVault,in,I3,value,!meta.revert_taken -> meta.contract_balance >= arg.amount,PASS,preservation,correct
+C060,LinkedToken,in,I1,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) >= arg.amount",FAIL,repair_obligation,correct
+C060,LinkedToken,in,I2,arithmetic,!meta.revert_taken -> post.totalSupply <= pre.totalSupply,FAIL,repair_obligation,correct
+C061,GuessTheRandomNumber,in,I1,randomness,!meta.revert_taken -> meta.value == 1000000000000000000,PASS,preservation,correct
+C061,GuessTheRandomNumber,in,I2,bound,!meta.revert_taken -> meta.contract_balance >= 2000000000000000000,FAIL,discarded_not_security_relevant,incorrect
+C062,LuckyNumber,in,I1,randomness,!meta.revert_taken -> meta.value == 1000000000000000000,PASS,preservation,correct
+C062,LuckyNumber,in,I2,bound,!meta.revert_taken -> meta.contract_balance >= 2000000000000000000,FAIL,discarded_not_security_relevant,incorrect
+C063,PredictTheBlockHash,in,I1,randomness,"!meta.revert_taken -> select(post.guesses, meta.sender) == 0",INCONCLUSIVE,unvalidated,incorrect
+C063,PredictTheBlockHash,in,I2,bound,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C064,SecretSeedLottery,in,I1,randomness,!meta.revert_taken -> post.pot >= pre.pot || post.pot == 0,PASS,preservation,correct
+C064,SecretSeedLottery,in,I2,bound,!meta.revert_taken -> meta.value == 100000000000000000,PASS,preservation,correct
+C064,SecretSeedLottery,in,I3,randomness,!meta.revert_taken -> post.pot != 0,FAIL,repair_obligation,correct
+C065,HiddenSeed,in,I1,randomness,!meta.revert_taken -> post.pot >= pre.pot || post.pot == 0,PASS,preservation,correct
+C065,HiddenSeed,in,I2,bound,!meta.revert_taken -> meta.value == 100000000000000000,PASS,preservation,correct
+C065,HiddenSeed,in,I3,randomness,!meta.revert_taken -> post.pot != 0,FAIL,repair_obligation,correct
+C066,TimestampLottery,in,I1,randomness,!meta.revert_taken -> meta.contract_balance >= 20000000000000000,PASS,preservation,incorrect
+C066,TimestampLottery,in,I2,state-effect,!meta.revert_taken -> pre.players_length >= 2,PASS,preservation,correct
+C066,TimestampLottery,in,I3,randomness,!meta.revert_taken -> meta.sender != meta.target,FAIL,discarded_not_security_relevant,incorrect
+C067,PrevrandaoRaffle,in,I1,randomness,!meta.revert_taken -> meta.contract_balance >= 20000000000000000,PASS,preservation,incorrect
+C067,PrevrandaoRaffle,in,I2,state-effect,!meta.revert_taken -> pre.players_length >= 2,PASS,preservation,correct
+C067,PrevrandaoRaffle,in,I3,randomness,!meta.revert_taken -> meta.sender != meta.target,FAIL,discarded_not_security_relevant,incorrect
+C068,Blackjack,in,I1,state-effect,"!meta.revert_taken -> select(post.games, meta.sender) == 0",INCONCLUSIVE,unvalidated,incorrect
+C068,Blackjack,in,I2,bound,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C069,Auction,in,I1,liveness,meta.value > pre.highestBid -> !meta.revert_taken,FAIL,repair_obligation,correct
+C069,Auction,in,I2,state-effect,!meta.revert_taken -> post.leader == meta.sender,PASS,preservation,correct
+C069,Auction,in,I3,arithmetic,!meta.revert_taken -> post.highestBid > pre.highestBid,PASS,preservation,correct
+C069,Auction,in,I4,call,!meta.revert_taken -> meta.all_calls_success,PASS,preservation,incorrect
+C070,BidRoom,in,I1,liveness,meta.value > pre.highestBid -> !meta.revert_taken,FAIL,repair_obligation,correct
+C070,BidRoom,in,I2,state-effect,!meta.revert_taken -> post.leader == meta.sender,PASS,preservation,correct
+C070,BidRoom,in,I3,arithmetic,!meta.revert_taken -> post.highestBid > pre.highestBid,PASS,preservation,correct
+C070,BidRoom,in,I4,call,!meta.revert_taken -> meta.all_calls_success,PASS,preservation,incorrect
+C071,KingOfTheHill,in,I1,liveness,meta.value >= pre.prize -> !meta.revert_taken,FAIL,repair_obligation,correct
+C071,KingOfTheHill,in,I2,state-effect,!meta.revert_taken -> post.king == meta.sender,PASS,preservation,correct
+C071,KingOfTheHill,in,I3,state-effect,!meta.revert_taken -> post.prize == meta.value,PASS,preservation,correct
+C072,ThroneGame,in,I1,liveness,meta.value >= pre.prize -> !meta.revert_taken,FAIL,repair_obligation,correct
+C072,ThroneGame,in,I2,state-effect,!meta.revert_taken -> post.king == meta.sender,PASS,preservation,correct
+C072,ThroneGame,in,I3,state-effect,!meta.revert_taken -> post.prize == meta.value,PASS,preservation,correct
+C073,RefundList,in,I1,liveness,!meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C073,RefundList,in,I2,call,!meta.revert_taken -> meta.all_calls_success,INCONCLUSIVE,unvalidated,incorrect
+C074,Dividends,in,I1,liveness,pre.holders_length > 0 -> !meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C074,Dividends,in,I2,arithmetic,!meta.revert_taken -> meta.value >= 0,PASS,preservation,incorrect
+C075,DosNumber,in,I1,liveness,pre.numElements > 1500 -> !meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C075,DosNumber,in,I2,state-effect,!meta.revert_taken -> post.numElements == 0,PASS,preservation,correct
+C076,DosAddress,in,I1,liveness,pre.creditorAddresses_length > 1500 -> !meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C076,DosAddress,in,I2,state-effect,!meta.revert_taken && pre.creditorAddresses_length > 1500 -> post.win == true,PASS,preservation,correct
+C077,Payroll,in,I1,liveness,!meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C077,Payroll,in,I2,state-effect,!meta.revert_taken -> post.owner == pre.owner,PASS,preservation,incorrect
+C078,AuctionHelper,in,I1,liveness,meta.value > pre.highestBid -> !meta.revert_taken,FAIL,repair_obligation,correct
+C078,AuctionHelper,in,I2,state-effect,!meta.revert_taken -> post.leader == meta.sender,PASS,preservation,correct
+C078,AuctionHelper,in,I3,arithmetic,!meta.revert_taken -> post.bidCount == pre.bidCount + 1,PASS,preservation,correct
+C079,ApproveToken,out,I1,state-effect,"!meta.revert_taken -> select(select(post.allowance, meta.sender), arg.spender) == arg.value",PASS,preservation,correct
+C079,ApproveToken,out,I2,bound,!meta.revert_taken -> meta.value == 0,PASS,preservation,incorrect
+C080,HashQuiz,out,I1,access,!meta.revert_taken -> meta.contract_balance > 0,FAIL,discarded_not_security_relevant,incorrect
+C080,HashQuiz,out,I2,state-effect,!meta.revert_taken -> post.answerHash == pre.answerHash,PASS,preservation,correct
+C081,VestingLock,out,I1,bound,!meta.revert_taken -> pre.unlockAt <= meta.timestamp,INCONCLUSIVE,unvalidated,correct
+C081,VestingLock,out,I2,state-effect,!meta.revert_taken -> post.beneficiary == pre.beneficiary,PASS,preservation,correct
+C082,SignedDrop,out,I1,access,"!meta.revert_taken -> select(pre.claimed, meta.sender) == 0",FAIL,repair_obligation,correct
+C082,SignedDrop,out,I2,arithmetic,"!meta.revert_taken -> select(post.claimed, meta.sender) == select(pre.claimed, meta.sender) + arg.amount",PASS,preservation,correct
+C083,SpotLender,out,I1,bound,"!meta.revert_taken -> select(post.debt, meta.sender) == select(pre.debt, meta.sender) + arg.ethAmount",PASS,preservation,correct
+C083,SpotLender,out,I2,bound,!meta.revert_taken -> arg.ethAmount <= meta.contract_balance,INCONCLUSIVE,unvalidated,correct
+C084,ShareVault,out,I1,arithmetic,!meta.revert_taken -> post.totalShares >= pre.totalShares,PASS,preservation,correct
+C084,ShareVault,out,I2,bound,"!meta.revert_taken && meta.value > 0 -> select(post.shares, meta.sender) > select(pre.shares, meta.sender)",INCONCLUSIVE,unvalidated,correct
+C085,ShortAddressCoin,out,I1,bound,"!meta.revert_taken -> select(post.balances, meta.sender) <= select(pre.balances, meta.sender) || meta.sender == arg.to",PASS,preservation,correct
+C085,ShortAddressCoin,out,I2,arithmetic,"select(pre.balances, meta.sender) >= arg.amount && meta.sender != arg.to -> select(post.balances, arg.to) == select(pre.balances, arg.to) + arg.amount",PASS,preservation,correct
+C086,FeeSplitter,out,I1,bound,"!meta.revert_taken -> select(pre.balances, meta.sender) >= arg.amount",PASS,preservation,correct
+C086,FeeSplitter,out,I2,arithmetic,"!meta.revert_taken -> select(post.balances, meta.sender) == select(pre.balances, meta.sender) - arg.amount",PASS,preservation,correct
+C086,FeeSplitter,out,I3,arithmetic,"!meta.revert_taken -> select(post.balances, pre.treasury) - select(pre.balances, pre.treasury) <= arg.amount / 40",FAIL,repair_obligation,correct
+C087,NameRegistrar,out,I1,access,!meta.revert_taken -> pre.unlocked == true,INCONCLUSIVE,unvalidated,correct
+C087,NameRegistrar,out,I2,state-effect,!meta.revert_taken -> post.registrar == pre.registrar,INCONCLUSIVE,unvalidated,correct
+C088,GasRelayer,out,I1,state-effect,"!meta.revert_taken -> select(post.executed, arg.id) == true",PASS,preservation,correct
+C088,GasRelayer,out,I2,bound,"!meta.revert_taken -> select(pre.executed, arg.id) == false",PASS,preservation,correct
+C088,GasRelayer,out,I3,call,!meta.revert_taken -> meta.all_calls_success,FAIL,discarded_not_security_relevant,incorrect
+C089,SafeBank,neg,I1,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C089,SafeBank,neg,I2,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,incorrect
+C089,SafeBank,neg,I3,call,!meta.revert_taken -> meta.all_calls_success,PASS,preservation,correct
+C090,MutexBank,neg,I1,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C090,MutexBank,neg,I2,state-effect,"!meta.revert_taken -> select(post.balances, meta.sender) == 0",PASS,preservation,correct
+C090,MutexBank,neg,I3,state-effect,!meta.revert_taken -> post.locked == false,PASS,preservation,correct
+C091,SafeMathToken,neg,I1,bound,"!meta.revert_taken -> select(pre.balanceOf, meta.sender) >= arg.value",PASS,preservation,correct
+C091,SafeMathToken,neg,I2,arithmetic,"!meta.revert_taken && meta.sender != arg.to -> select(post.balanceOf, meta.sender) == select(pre.balanceOf, meta.sender) - arg.value",PASS,preservation,correct
+C092,CheckedLotto,neg,I1,call,!meta.revert_taken -> meta.all_calls_success,PASS,preservation,correct
+C092,CheckedLotto,neg,I2,state-effect,!meta.revert_taken -> post.payedOut == true,PASS,preservation,correct
+C093,OwnableSafe,neg,I1,access,!meta.revert_taken -> meta.sender == pre.owner,PASS,preservation,correct
+C093,OwnableSafe,neg,I2,state-effect,!meta.revert_taken -> post.owner == arg.n,PASS,preservation,correct
+C093,OwnableSafe,neg,I3,bound,!meta.revert_taken -> arg.n != 0,PASS,preservation,correct
+C094,CheckedToken,neg,I1,bound,"!meta.revert_taken -> select(pre.balanceOf, meta.sender) >= arg.value",PASS,preservation,correct
+C094,CheckedToken,neg,I2,state-effect,!meta.revert_taken -> post.totalSupply == pre.totalSupply,PASS,preservation,correct
+C095,PullAuction,neg,I1,liveness,meta.value > pre.highestBid -> !meta.revert_taken,FAIL,repair_obligation,correct
+C095,PullAuction,neg,I2,state-effect,!meta.revert_taken -> post.leader == meta.sender,PASS,preservation,correct
+C096,CommitReveal,neg,I1,state-effect,"!meta.revert_taken -> select(post.commitBlock, meta.sender) == 0",PASS,preservation,correct
+C096,CommitReveal,neg,I2,bound,"!meta.revert_taken -> select(pre.commitBlock, meta.sender) != 0",PASS,preservation,correct
+C097,CheckedDAO,neg,I1,reentrancy,meta.call_depth > 1 -> meta.revert_taken,INCONCLUSIVE,unvalidated,incorrect
+C097,CheckedDAO,neg,I2,bound,"!meta.revert_taken -> select(post.credit, meta.sender) <= select(pre.credit, meta.sender)",PASS,preservation,correct
+C098,BatchDividends,neg,I1,liveness,arg.n <= 100 -> !meta.revert_taken,INCONCLUSIVE,unvalidated,correct
+C098,BatchDividends,neg,I2,bound,!meta.revert_taken -> post.cursor <= pre.holders_length,INCONCLUSIVE,unvalidated,correct
+C099,OriginLogger,neg,I1,access,!meta.revert_taken -> meta.sender == pre.owner,PASS,preservation,correct
+C099,OriginLogger,neg,I2,access,!meta.revert_taken -> meta.origin == pre.owner,FAIL,discarded_not_security_relevant,incorrect
+C100,TwoStepOwnable,neg,I1,access,!meta.revert_taken -> meta.sender == pre.pendingOwner,PASS,preservation,correct
+C100,TwoStepOwnable,neg,I2,state-effect,!meta.revert_taken -> post.owner == meta.sender,PASS,preservation,correct
+C100,TwoStepOwnable,neg,I3,state-effect,!meta.revert_taken -> post.pendingOwner == 0,PASS,preservation,correct

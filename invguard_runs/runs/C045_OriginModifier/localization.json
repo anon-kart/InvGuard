@@ -1,0 +1,35 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C045",
+  "contract": "OriginModifier",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "tx-origin",
+      "function": "send",
+      "candidate_class": "tx_origin"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "tx_origin",
+    "function": "send"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "tx_origin",
+    "function": "send",
+    "in_declared_scope": true
+  },
+  "class_match": true,
+  "function_match": true
+}

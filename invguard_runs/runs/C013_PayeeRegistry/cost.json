@@ -1,0 +1,11 @@
+{
+  "model_calls": 5,
+  "input_tokens": 33710,
+  "output_tokens": 3588,
+  "gate_invocations": 4,
+  "runtime_s": 94.3,
+  "api_cost_usd": 0.00721,
+  "run_type": "unverified",
+  "contract_id": "C013",
+  "model": "gpt-4o-mini-2024-07-18"
+}

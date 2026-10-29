@@ -1,0 +1,104 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C048",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "payoutPot(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "phish the owner into calling an intermediary that calls payoutPot",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "constructor requires tx.origin == msg.sender; harness deployment reverts"
+    },
+    {
+      "id": "A2",
+      "entry_point": "payoutPot(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "phish the owner into calling an intermediary that calls payoutPot",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "constructor requires tx.origin == msg.sender; harness deployment reverts"
+    },
+    {
+      "id": "A3",
+      "entry_point": "payoutPot(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "phish the owner into calling an intermediary that calls payoutPot",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "constructor requires tx.origin == msg.sender; harness deployment reverts"
+    },
+    {
+      "id": "A4",
+      "entry_point": "payoutPot(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "phish the owner into calling an intermediary that calls payoutPot",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "constructor requires tx.origin == msg.sender; harness deployment reverts"
+    },
+    {
+      "id": "A5",
+      "entry_point": "payoutPot(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "phish the owner into calling an intermediary that calls payoutPot",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "constructor requires tx.origin == msg.sender; harness deployment reverts"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "tx_origin",
+    "entry_point": "payoutPot(address)",
+    "compile": "ok",
+    "run": "not_run",
+    "impact": "none",
+    "failure": "constructor requires tx.origin == msg.sender; harness deployment reverts"
+  },
+  "confirmed_witnesses": [],
+  "witness_source": null,
+  "outcome": "no_confirmed_witness_stop_no_repair_claim",
+  "reason": "constructor requires tx.origin == msg.sender; harness deployment reverts"
+}

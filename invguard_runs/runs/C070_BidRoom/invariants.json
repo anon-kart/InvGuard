@@ -1,0 +1,80 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C070",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "bid",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "liveness",
+      "rationale": "a legitimate call must not be blocked by another party",
+      "predicate": "meta.value > pre.highestBid -> !meta.revert_taken",
+      "function": "bid",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": true,
+        "meta.value": "pre.highestBid + 1",
+        "pre.highestBid": 0,
+        "meta.all_calls_success": false
+      }
+    },
+    {
+      "id": "I2",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.leader == meta.sender",
+      "function": "bid",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> post.highestBid > pre.highestBid",
+      "function": "bid",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I4",
+      "category": "call",
+      "rationale": "the transition succeeds only if its external calls succeed",
+      "predicate": "!meta.revert_taken -> meta.all_calls_success",
+      "function": "bid",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "every bidder can always eventually bid",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "gasleft() > 21000",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 7,
+    "kept_after_normalization": 4,
+    "preservation": 3,
+    "repair_obligations": 1,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

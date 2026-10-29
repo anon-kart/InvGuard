@@ -1,0 +1,73 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C058",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "transferFrom",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(select(pre.allowance, arg.from), meta.sender) >= arg.value",
+      "function": "transferFrom",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "arg.from": 1,
+        "arg.value": 1,
+        "meta.revert_taken": false,
+        "meta.sender": "0x00000000000000000000000000000000000a77ac",
+        "pre.allowance": 0
+      }
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(pre.balanceOf, arg.from) >= arg.value",
+      "function": "transferFrom",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> select(select(post.allowance, arg.from), meta.sender) <= select(select(pre.allowance, arg.from), meta.sender)",
+      "function": "transferFrom",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "arg.from": 1,
+        "meta.revert_taken": false,
+        "meta.sender": "0x00000000000000000000000000000000000a77ac",
+        "post.allowance": "2**256 - 1",
+        "pre.allowance": 0
+      }
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balanceOf[a] < 2**256",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "SafeMath.sub(x, y) does not revert",
+      "reason": "function call in predicate"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 5,
+    "kept_after_normalization": 3,
+    "preservation": 1,
+    "repair_obligations": 2,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

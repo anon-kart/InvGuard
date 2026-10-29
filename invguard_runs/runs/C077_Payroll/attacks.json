@@ -1,0 +1,78 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C077",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "availability_loss",
+  "impact_oracle_description": "loss of availability of a legitimate operation",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "payAll()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "be hired as a contract that rejects Ether so payroll reverts for everyone",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A2",
+      "entry_point": "payAll()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "be hired as a contract that rejects Ether so payroll reverts for everyone",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A3",
+      "entry_point": "payAll()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "be hired as a contract that rejects Ether so payroll reverts for everyone",
+      "compile": "ok_after_refinement",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "subsequent legitimate call reverts in 3/3 attempts",
+      "initial_compile_error": "TypeError: member \"call\" not found or not visible after argument-dependent lookup in address"
+    },
+    {
+      "id": "A4",
+      "entry_point": "payAll()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "be hired as a contract that rejects Ether so payroll reverts for everyone",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A5",
+      "entry_point": "payAll()",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "be hired as a contract that rejects Ether so payroll reverts for everyone",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A3"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

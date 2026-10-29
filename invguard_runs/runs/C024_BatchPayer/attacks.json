@@ -1,0 +1,77 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C024",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "stranded_funds_rejecting_recipient",
+  "impact_oracle_description": "funds stranded under a rejecting recipient",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "payAll()",
+      "ether_value": "1 ether (add rejecting recipient)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "register a rejecting recipient so its pending credit is erased without payment",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A2",
+      "entry_point": "payAll()",
+      "ether_value": "1 ether (add rejecting recipient)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "register a rejecting recipient so its pending credit is erased without payment",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "1.0 ether stranded; recipient credit cleared"
+    },
+    {
+      "id": "A3",
+      "entry_point": "payAll()",
+      "ether_value": "1 ether (add rejecting recipient)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "register a rejecting recipient so its pending credit is erased without payment",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A4",
+      "entry_point": "payAll()",
+      "ether_value": "1 ether (add rejecting recipient)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "register a rejecting recipient so its pending credit is erased without payment",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A5",
+      "entry_point": "payAll()",
+      "ether_value": "1 ether (add rejecting recipient)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "register a rejecting recipient so its pending credit is erased without payment",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A2"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

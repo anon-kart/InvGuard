@@ -1,0 +1,86 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C074",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "availability_loss",
+  "impact_oracle_description": "loss of availability of a legitimate operation",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "distribute()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "join thousands of times so distribute exceeds the block gas limit",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A2",
+      "entry_point": "distribute()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "join thousands of times so distribute exceeds the block gas limit",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A3",
+      "entry_point": "distribute()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "join thousands of times so distribute exceeds the block gas limit",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "distribute()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "join thousands of times so distribute exceeds the block gas limit",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    },
+    {
+      "id": "A5",
+      "entry_point": "distribute()",
+      "ether_value": "1 ether",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "join thousands of times so distribute exceeds the block gas limit",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "denial_of_service",
+    "entry_point": "distribute()",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "ok",
+    "impact_observed": "subsequent legitimate call reverts in 3/3 attempts"
+  },
+  "confirmed_witnesses": [
+    "FB1"
+  ],
+  "witness_source": "fallback",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

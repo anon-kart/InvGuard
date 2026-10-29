@@ -1,0 +1,32 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C079",
+  "contract": "ApproveToken",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "erc20-interface-race",
+      "function": "approve",
+      "candidate_class": null
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": null,
+  "status": "no_in_scope_target",
+  "ground_truth": {
+    "vulnerability_class": "front_running",
+    "function": "approve",
+    "in_declared_scope": false
+  },
+  "class_match": null,
+  "function_match": null
+}

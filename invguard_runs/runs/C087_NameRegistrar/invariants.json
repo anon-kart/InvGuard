@@ -1,0 +1,54 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C087",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "register",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "access",
+      "rationale": "only the authorized principal may perform this transition",
+      "predicate": "!meta.revert_taken -> pre.unlocked == true",
+      "function": "register",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "loop or external callee influences a referenced symbol"
+    },
+    {
+      "id": "I2",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.registrar == pre.registrar",
+      "function": "register",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "loop or external callee influences a referenced symbol"
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "isOwner(meta.sender)",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "forall f: privileged(f) -> meta.sender == pre.owner",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 5,
+    "kept_after_normalization": 2,
+    "preservation": 0,
+    "repair_obligations": 0,
+    "unvalidated": 2,
+    "discarded": 0
+  }
+}

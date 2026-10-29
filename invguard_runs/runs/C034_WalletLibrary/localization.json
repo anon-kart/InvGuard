@@ -1,0 +1,35 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C034",
+  "contract": "WalletLibrary",
+  "pragma": "0.4",
+  "findings": [
+    {
+      "source": "pattern",
+      "detector": "unprotected-initializer",
+      "function": "initWallet",
+      "candidate_class": "access_control"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "access_control",
+    "function": "initWallet"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "access_control",
+    "function": "initWallet",
+    "in_declared_scope": true
+  },
+  "class_match": true,
+  "function_match": true
+}

@@ -1,0 +1,129 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C036",
+  "fixmaker_model": "gpt-4o-mini-2024-07-18",
+  "max_llm_rounds": 3,
+  "acceptance_rule": "no channel FAIL, at least one security channel positive, no confirmed benign regression",
+  "rounds": [
+    {
+      "round": 1,
+      "proposer": "llm",
+      "compile": "ok",
+      "structure_check": "ok",
+      "symbolic": {
+        "preservation": {
+          "I2": "PASS"
+        },
+        "obligations": {},
+        "verdict": "INCONCLUSIVE",
+        "note": "loop, delegatecall or nonlinear arithmetic in the patched transition"
+      },
+      "exploit_replay": {
+        "verdict": "PASS",
+        "per_witness": {
+          "FB1": "neutralized"
+        }
+      },
+      "benign_differential": {
+        "sequences": 6,
+        "checkpoints": 18,
+        "regressions": 1,
+        "verdict": "FAIL",
+        "regression": "benign sequence 'deploy{10 ether}(lib) -> withdraw()' now reverts or loses an externally visible capability"
+      },
+      "decision": "reject",
+      "diagnostics": "exploit neutralized but a legitimate execution regressed; restrict only the vulnerable path"
+    },
+    {
+      "round": 2,
+      "proposer": "llm",
+      "compile": "ok",
+      "structure_check": "ok",
+      "symbolic": {
+        "preservation": {
+          "I2": "PASS"
+        },
+        "obligations": {},
+        "verdict": "INCONCLUSIVE",
+        "note": "loop, delegatecall or nonlinear arithmetic in the patched transition"
+      },
+      "exploit_replay": {
+        "verdict": "PASS",
+        "per_witness": {
+          "FB1": "neutralized"
+        }
+      },
+      "benign_differential": {
+        "sequences": 6,
+        "checkpoints": 18,
+        "regressions": 1,
+        "verdict": "FAIL",
+        "regression": "benign sequence 'deploy{10 ether}(lib) -> withdraw()' now reverts or loses an externally visible capability"
+      },
+      "decision": "reject",
+      "diagnostics": "exploit neutralized but a legitimate execution regressed; restrict only the vulnerable path"
+    },
+    {
+      "round": 3,
+      "proposer": "llm",
+      "compile": "ok",
+      "structure_check": "ok",
+      "symbolic": {
+        "preservation": {
+          "I2": "PASS"
+        },
+        "obligations": {},
+        "verdict": "INCONCLUSIVE",
+        "note": "loop, delegatecall or nonlinear arithmetic in the patched transition"
+      },
+      "exploit_replay": {
+        "verdict": "PASS",
+        "per_witness": {
+          "FB1": "neutralized"
+        }
+      },
+      "benign_differential": {
+        "sequences": 6,
+        "checkpoints": 18,
+        "regressions": 1,
+        "verdict": "FAIL",
+        "regression": "benign sequence 'deploy{10 ether}(lib) -> withdraw()' now reverts or loses an externally visible capability"
+      },
+      "decision": "reject",
+      "diagnostics": "exploit neutralized but a legitimate execution regressed; restrict only the vulnerable path"
+    },
+    {
+      "round": 4,
+      "proposer": "deterministic_fallback",
+      "compile": "ok",
+      "structure_check": "ok",
+      "symbolic": {
+        "preservation": {
+          "I2": "PASS"
+        },
+        "obligations": {},
+        "verdict": "INCONCLUSIVE",
+        "note": "loop, delegatecall or nonlinear arithmetic in the patched transition"
+      },
+      "exploit_replay": {
+        "verdict": "PASS",
+        "per_witness": {
+          "FB1": "neutralized"
+        }
+      },
+      "benign_differential": {
+        "sequences": 6,
+        "checkpoints": 18,
+        "regressions": 1,
+        "verdict": "FAIL",
+        "regression": "benign sequence 'deploy{10 ether}(lib) -> withdraw()' now reverts or loses an externally visible capability"
+      },
+      "decision": "reject",
+      "diagnostics": "exploit neutralized but a legitimate execution regressed; restrict only the vulnerable path"
+    }
+  ],
+  "final_decision": "reject",
+  "strongest_evidence": null,
+  "emitted_patch": null,
+  "last_candidate": "patch_candidate.sol"
+}

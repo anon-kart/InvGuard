@@ -1,0 +1,60 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C062",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "guess",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "randomness",
+      "rationale": "outcome must not be known when the bet is placed",
+      "predicate": "!meta.revert_taken -> meta.value == 1000000000000000000",
+      "function": "guess",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> meta.contract_balance >= 2000000000000000000",
+      "function": "guess",
+      "validator_verdict": "FAIL",
+      "role": "discarded_not_security_relevant",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.contract_balance": 0,
+        "meta.revert_taken": false
+      }
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "the outcome is unpredictable to the player",
+      "reason": "not expressible over a single transition"
+    },
+    {
+      "raw": "blockhash(block.number - 1) != 0",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "meta.revert_taken == false -> meta.value == 1000000000000000000",
+      "reason": "duplicate of I1 after normalization"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 6,
+    "kept_after_normalization": 2,
+    "preservation": 1,
+    "repair_obligations": 0,
+    "unvalidated": 0,
+    "discarded": 1
+  }
+}

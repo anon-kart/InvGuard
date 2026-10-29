@@ -1,0 +1,84 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C068",
+  "k": 5,
+  "compile_refinement_used": false,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "stand()",
+      "ether_value": "1 ether (deal)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "deal, then hit/stand only in blocks where the precomputed cards win",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A2",
+      "entry_point": "stand()",
+      "ether_value": "1 ether (deal)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "deal, then hit/stand only in blocks where the precomputed cards win",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A3",
+      "entry_point": "stand()",
+      "ether_value": "1 ether (deal)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "deal, then hit/stand only in blocks where the precomputed cards win",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "stand()",
+      "ether_value": "1 ether (deal)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "deal, then hit/stand only in blocks where the precomputed cards win",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A5",
+      "entry_point": "stand()",
+      "ether_value": "1 ether (deal)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "deal, then hit/stand only in blocks where the precomputed cards win",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "bad_randomness",
+    "entry_point": "stand()",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "none",
+    "failure": "needs deal/hit/stand across blocks with chosen block contents"
+  },
+  "confirmed_witnesses": [],
+  "witness_source": null,
+  "outcome": "no_confirmed_witness_stop_no_repair_claim",
+  "reason": "needs deal/hit/stand across blocks with chosen block contents"
+}

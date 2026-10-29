@@ -1,0 +1,8 @@
+contract_id,contract,class,reason
+C014,SharePool,reentrancy,vulnerable read happens in a second contract (Lender); single-contract witness shows no excess loss
+C023,TokenBank,unchecked_call,"impact is unbacked credit, not stranded Ether; unchecked-call oracle reports no impact"
+C026,PrivateEthCell,unchecked_call,deployment needs a live Log contract; harness passes address(0) and deposit reverts
+C048,PoCGame,tx_origin,constructor requires tx.origin == msg.sender; harness deployment reverts
+C060,LinkedToken,arithmetic,public library function needs linking; forge build fails before deployment
+C063,PredictTheBlockHash,bad_randomness,needs 257-block advancement between lockInGuess and settle
+C068,Blackjack,bad_randomness,needs deal/hit/stand across blocks with chosen block contents

@@ -1,0 +1,5 @@
+contract_id,contract,candidate_would_be_effective,round_history
+C013,PayeeRegistry,False,replay_fail;replay_fail;replay_fail;fallback_replay_fail
+C036,FibonacciBalance,True,benign_fail;benign_fail;benign_fail;fallback_benign_fail
+C065,HiddenSeed,True,benign_fail;benign_fail;benign_fail;fallback_unavailable
+C073,RefundList,False,benign_fail;benign_fail;benign_fail;fallback_unavailable

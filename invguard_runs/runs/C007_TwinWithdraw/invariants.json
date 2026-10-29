@@ -1,0 +1,64 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C007",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "withdraw",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> select(post.balances, meta.sender) == 0",
+      "function": "withdraw",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I2",
+      "category": "reentrancy",
+      "rationale": "the function must not be entered again while an outer call is active",
+      "predicate": "meta.call_depth > 1 -> meta.revert_taken",
+      "function": "withdraw",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "re-entry depends on callback behavior outside the single-transition model"
+    },
+    {
+      "id": "I3",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(pre.balances, meta.sender) > 0",
+      "function": "withdraw",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balances[a] <= pre.balances[a]",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "the external call eventually completes before any re-entry",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "meta.revert_taken == false -> select(post.balances, meta.sender) == 0",
+      "reason": "duplicate of I1 after normalization"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 6,
+    "kept_after_normalization": 3,
+    "preservation": 2,
+    "repair_obligations": 0,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

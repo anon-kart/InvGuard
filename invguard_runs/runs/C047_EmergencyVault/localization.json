@@ -1,0 +1,41 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C047",
+  "contract": "EmergencyVault",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "tx-origin",
+      "function": "emergencyWithdraw",
+      "candidate_class": "tx_origin"
+    },
+    {
+      "source": "pattern",
+      "detector": "unprotected-value-transfer",
+      "function": "emergencyWithdraw",
+      "candidate_class": "access_control"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "access_control",
+    "function": "emergencyWithdraw"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "tx_origin",
+    "function": "emergencyWithdraw",
+    "in_declared_scope": true
+  },
+  "class_match": false,
+  "function_match": true
+}

@@ -1,0 +1,87 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C061",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "guess(uint8)",
+      "ether_value": "1 ether",
+      "typed_arguments": [
+        "n=computed in attacker"
+      ],
+      "targets_obligations": [],
+      "objective": "compute the answer from blockhash and timestamp in the same transaction and always win",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A2",
+      "entry_point": "guess(uint8)",
+      "ether_value": "1 ether",
+      "typed_arguments": [
+        "n=computed in attacker"
+      ],
+      "targets_obligations": [],
+      "objective": "compute the answer from blockhash and timestamp in the same transaction and always win",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "attacker balance +1.0 ether net of cost"
+    },
+    {
+      "id": "A3",
+      "entry_point": "guess(uint8)",
+      "ether_value": "1 ether",
+      "typed_arguments": [
+        "n=computed in attacker"
+      ],
+      "targets_obligations": [],
+      "objective": "compute the answer from blockhash and timestamp in the same transaction and always win",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "guess(uint8)",
+      "ether_value": "1 ether",
+      "typed_arguments": [
+        "n=computed in attacker"
+      ],
+      "targets_obligations": [],
+      "objective": "compute the answer from blockhash and timestamp in the same transaction and always win",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A5",
+      "entry_point": "guess(uint8)",
+      "ether_value": "1 ether",
+      "typed_arguments": [
+        "n=computed in attacker"
+      ],
+      "targets_obligations": [],
+      "objective": "compute the answer from blockhash and timestamp in the same transaction and always win",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A2"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

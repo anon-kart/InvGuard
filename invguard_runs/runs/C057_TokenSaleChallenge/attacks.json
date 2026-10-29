@@ -1,0 +1,88 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C057",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "buy(uint256)",
+      "ether_value": "415992086870360064 wei",
+      "typed_arguments": [
+        "numTokens=2**256/1e18+1"
+      ],
+      "targets_obligations": [],
+      "objective": "overflow numTokens*price so a tiny payment buys a huge balance, then sell",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A2",
+      "entry_point": "buy(uint256)",
+      "ether_value": "415992086870360064 wei",
+      "typed_arguments": [
+        "numTokens=2**256/1e18+1"
+      ],
+      "targets_obligations": [],
+      "objective": "overflow numTokens*price so a tiny payment buys a huge balance, then sell",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A3",
+      "entry_point": "buy(uint256)",
+      "ether_value": "415992086870360064 wei",
+      "typed_arguments": [
+        "numTokens=2**256/1e18+1"
+      ],
+      "targets_obligations": [],
+      "objective": "overflow numTokens*price so a tiny payment buys a huge balance, then sell",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "buy(uint256)",
+      "ether_value": "415992086870360064 wei",
+      "typed_arguments": [
+        "numTokens=2**256/1e18+1"
+      ],
+      "targets_obligations": [],
+      "objective": "overflow numTokens*price so a tiny payment buys a huge balance, then sell",
+      "compile": "ok_after_refinement",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "attacker balance +1.0 ether net of cost",
+      "initial_compile_error": "TypeError: member \"call\" not found or not visible after argument-dependent lookup in address"
+    },
+    {
+      "id": "A5",
+      "entry_point": "buy(uint256)",
+      "ether_value": "415992086870360064 wei",
+      "typed_arguments": [
+        "numTokens=2**256/1e18+1"
+      ],
+      "targets_obligations": [],
+      "objective": "overflow numTokens*price so a tiny payment buys a huge balance, then sell",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A4"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

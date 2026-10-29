@@ -1,0 +1,11 @@
+category,predicates,correct,precision_pct
+access,34,25,73.5
+arithmetic,47,43,91.5
+balance,2,2,100.0
+bound,61,53,86.9
+call,23,19,82.6
+liveness,12,12,100.0
+randomness,11,6,54.5
+reentrancy,19,14,73.7
+state-effect,71,64,90.1
+value,11,1,9.1

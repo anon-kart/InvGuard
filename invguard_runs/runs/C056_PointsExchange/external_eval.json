@@ -1,0 +1,11 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C056",
+  "evaluator": "reference exploit + reference benign sequence",
+  "patch_emitted": true,
+  "mitigated": false,
+  "benign_preserved": true,
+  "effective": false,
+  "pipeline_stage": "accepted_defective",
+  "failure_cause": "localization selected redeem; reference exploit wraps points through transferPoints, which still has an unchecked subtraction"
+}

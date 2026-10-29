@@ -1,0 +1,11 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C060",
+  "evaluator": "reference exploit + reference benign sequence",
+  "patch_emitted": false,
+  "mitigated": false,
+  "benign_preserved": null,
+  "effective": false,
+  "pipeline_stage": "no_witness",
+  "failure_cause": "public library function needs linking; forge build fails before deployment"
+}

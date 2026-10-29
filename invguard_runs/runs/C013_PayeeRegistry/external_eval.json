@@ -1,0 +1,11 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C013",
+  "evaluator": "reference exploit + reference benign sequence",
+  "patch_emitted": false,
+  "mitigated": false,
+  "benign_preserved": null,
+  "effective": false,
+  "pipeline_stage": "gate_rejected",
+  "failure_cause": "gate rejected the last candidate"
+}

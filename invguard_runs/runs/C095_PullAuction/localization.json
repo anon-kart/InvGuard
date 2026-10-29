@@ -1,0 +1,41 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C095",
+  "contract": "PullAuction",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "low-level-calls",
+      "function": "bid",
+      "candidate_class": null
+    },
+    {
+      "source": "pattern",
+      "detector": "external-call-in-payable",
+      "function": "bid",
+      "candidate_class": "denial_of_service"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "denial_of_service",
+    "function": "bid"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "none",
+    "function": null,
+    "in_declared_scope": false
+  },
+  "class_match": null,
+  "function_match": null
+}

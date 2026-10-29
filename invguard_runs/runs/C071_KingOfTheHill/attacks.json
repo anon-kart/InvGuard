@@ -1,0 +1,87 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C071",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "availability_loss",
+  "impact_oracle_description": "loss of availability of a legitimate operation",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "fallback()",
+      "ether_value": "prize",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become king with a contract that rejects Ether so the throne is frozen",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A2",
+      "entry_point": "fallback()",
+      "ether_value": "prize",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become king with a contract that rejects Ether so the throne is frozen",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A3",
+      "entry_point": "fallback()",
+      "ether_value": "prize",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become king with a contract that rejects Ether so the throne is frozen",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "subsequent legitimate call reverts in 3/3 attempts"
+    },
+    {
+      "id": "A4",
+      "entry_point": "fallback()",
+      "ether_value": "prize",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become king with a contract that rejects Ether so the throne is frozen",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A5",
+      "entry_point": "fallback()",
+      "ether_value": "prize",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "become king with a contract that rejects Ether so the throne is frozen",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A3"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

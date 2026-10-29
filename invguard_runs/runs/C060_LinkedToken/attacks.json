@@ -1,0 +1,109 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C060",
+  "k": 5,
+  "compile_refinement_used": false,
+  "impact_oracle": "state_bound_violation",
+  "impact_oracle_description": "wrapped state value outside its intended bound",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "burn(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "burn from a zero balance to wrap the balance",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "public library function needs linking; forge build fails before deployment"
+    },
+    {
+      "id": "A2",
+      "entry_point": "burn(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "burn from a zero balance to wrap the balance",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "public library function needs linking; forge build fails before deployment"
+    },
+    {
+      "id": "A3",
+      "entry_point": "burn(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "burn from a zero balance to wrap the balance",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "public library function needs linking; forge build fails before deployment"
+    },
+    {
+      "id": "A4",
+      "entry_point": "burn(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "burn from a zero balance to wrap the balance",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "public library function needs linking; forge build fails before deployment"
+    },
+    {
+      "id": "A5",
+      "entry_point": "burn(uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "amount=1"
+      ],
+      "targets_obligations": [
+        "I1",
+        "I2"
+      ],
+      "objective": "burn from a zero balance to wrap the balance",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "public library function needs linking; forge build fails before deployment"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "arithmetic",
+    "entry_point": "burn(uint256)",
+    "compile": "error",
+    "run": "not_run",
+    "impact": "none",
+    "failure": "public library function needs linking; forge build fails before deployment"
+  },
+  "confirmed_witnesses": [],
+  "witness_source": null,
+  "outcome": "no_confirmed_witness_stop_no_repair_claim",
+  "reason": "public library function needs linking; forge build fails before deployment"
+}

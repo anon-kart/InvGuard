@@ -1,0 +1,101 @@
+contract_id,file,contract,pattern,pragma,loc,set,ground_truth_class,ground_truth_function,expected_transformation
+C001,contracts/C001_EtherBank.sol,EtherBank,RE1,0.4,12,in_scope,reentrancy,withdraw,checks-effects-interactions reorder
+C002,contracts/C002_SavingsJar.sol,SavingsJar,RE1,0.4,15,in_scope,reentrancy,withdraw,checks-effects-interactions reorder
+C003,contracts/C003_CoinVault.sol,CoinVault,RE2,0.8,13,in_scope,reentrancy,withdraw,nonReentrant guard + checks-effects-interactions
+C004,contracts/C004_DepositBox.sol,DepositBox,RE2,0.8,16,in_scope,reentrancy,withdraw,nonReentrant guard + checks-effects-interactions
+C005,contracts/C005_StakeVault.sol,StakeVault,RE2,0.8,13,in_scope,reentrancy,withdraw,nonReentrant guard + checks-effects-interactions
+C006,contracts/C006_SimpleDAO.sol,SimpleDAO,RE3,0.4,15,in_scope,reentrancy,withdraw,checks-effects-interactions reorder
+C007,contracts/C007_TwinWithdraw.sol,TwinWithdraw,RE4,0.4,18,in_scope,reentrancy,withdraw,checks-effects-interactions reorder (withdraw only)
+C008,contracts/C008_LedgerBank.sol,LedgerBank,RE5,0.8,18,in_scope,reentrancy,withdraw,nonReentrant on withdraw and transfer + checks-effects-interactions
+C009,contracts/C009_NuTokenAirdrop.sol,NuTokenAirdrop,RE6,0.4,20,in_scope,reentrancy,airDrop,mutex modifier placed before external-call modifier
+C010,contracts/C010_BonusRewards.sol,BonusRewards,RE7,0.4,17,in_scope,reentrancy,getFirstWithdrawalBonus,set claimedBonus before external call
+C011,contracts/C011_NFTDrop.sol,NFTDrop,RE8,0.8,18,in_scope,reentrancy,mint,move cap accounting before callback
+C012,contracts/C012_TicketMint.sol,TicketMint,RE8,0.8,21,in_scope,reentrancy,mint,move cap accounting before callback
+C013,contracts/C013_PayeeRegistry.sol,PayeeRegistry,RE9,0.8,21,in_scope,reentrancy,claim,flag set after external call (incorrect)
+C014,contracts/C014_SharePool.sol,SharePool,RE10,0.8,39,in_scope,reentrancy,withdraw,none
+C015,contracts/C015_EscrowRefund.sol,EscrowRefund,RE11,0.8,25,in_scope,reentrancy,refund,checks-effects-interactions reorder
+C016,contracts/C016_TokenExchange.sol,TokenExchange,RE12,0.4,13,in_scope,reentrancy,sell,checks-effects-interactions reorder
+C017,contracts/C017_Lotto.sol,Lotto,UC1,0.4,24,in_scope,unchecked_call,sendToWinner,require on send return value
+C018,contracts/C018_Raffle.sol,Raffle,UC1,0.4,27,in_scope,unchecked_call,sendToWinner,require on send return value
+C019,contracts/C019_SendWallet.sol,SendWallet,UC2,0.4,11,in_scope,unchecked_call,withdraw,require on low-level call result
+C020,contracts/C020_PiggyWallet.sol,PiggyWallet,UC2,0.4,14,in_scope,unchecked_call,withdraw,require on low-level call result
+C021,contracts/C021_CreditDesk.sol,CreditDesk,UC3,0.8,11,in_scope,unchecked_call,cashOut,check low-level call result
+C022,contracts/C022_RebateBox.sol,RebateBox,UC3,0.8,14,in_scope,unchecked_call,cashOut,check low-level call result
+C023,contracts/C023_TokenBank.sol,TokenBank,UC4,0.8,20,in_scope,unchecked_call,deposit,none
+C024,contracts/C024_BatchPayer.sol,BatchPayer,UC5,0.4,23,in_scope,unchecked_call,payAll,restore pending credit when send fails
+C025,contracts/C025_KingOfEther.sol,KingOfEther,UC6,0.4,20,in_scope,unchecked_call,claimThrone,push-to-pull compensation
+C026,contracts/C026_PrivateEthCell.sol,PrivateEthCell,UC7,0.4,31,in_scope,unchecked_call,cashOut,require on low-level call result
+C027,contracts/C027_TreasurySweeper.sol,TreasurySweeper,UC8,0.4,16,in_scope,unchecked_call,sweep,require on low-level call result
+C028,contracts/C028_PrizeDesk.sol,PrizeDesk,UC9,0.4,17,in_scope,unchecked_call,payout,require on send in helper
+C029,contracts/C029_Owned.sol,Owned,AC1,0.4,14,in_scope,access_control,changeOwner,owner check
+C030,contracts/C030_OwnedVault.sol,OwnedVault,AC1,0.4,17,in_scope,access_control,changeOwner,owner check
+C031,contracts/C031_FeeVault.sol,FeeVault,AC2,0.8,21,in_scope,access_control,setOwner,apply existing onlyOwner modifier
+C032,contracts/C032_Missing.sol,Missing,AC3,0.4,11,in_scope,access_control,Missconstructor,real constructor + guard on legacy initializer
+C033,contracts/C033_Rubixi.sol,Rubixi,AC3B,0.4,21,in_scope,access_control,DynamicPyramid,real constructor + onlyowner on legacy initializer
+C034,contracts/C034_WalletLibrary.sol,WalletLibrary,AC4,0.4,15,in_scope,access_control,initWallet,one-time initializer flag
+C035,contracts/C035_OpenVault.sol,OpenVault,AC5,0.8,10,in_scope,access_control,withdrawAll,owner check
+C036,contracts/C036_FibonacciBalance.sol,FibonacciBalance,AC6,0.4,33,in_scope,access_control,withdraw,restrict delegatecall fallback to setFibonacci selector
+C037,contracts/C037_FeeRouter.sol,FeeRouter,AC7,0.8,22,in_scope,access_control,setFee,owner-only check (operator role missed)
+C038,contracts/C038_RewardToken.sol,RewardToken,AC8,0.8,19,in_scope,access_control,mint,minter check
+C039,contracts/C039_Suicidal.sol,Suicidal,AC9,0.4,10,in_scope,access_control,kill,owner check
+C040,contracts/C040_HelperToken.sol,HelperToken,AC10,0.8,22,in_scope,access_control,_move,holder check on public helper + internal mover
+C041,contracts/C041_MultiOwned.sol,MultiOwned,AC11,0.4,26,in_scope,access_control,newOwner,onlyOwner on newOwner
+C042,contracts/C042_UpgradeProxy.sol,UpgradeProxy,AC12,0.8,20,in_scope,access_control,upgradeTo,admin check
+C043,contracts/C043_TxWallet.sol,TxWallet,TX1,0.4,11,in_scope,tx_origin,transferTo,tx.origin -> msg.sender
+C044,contracts/C044_PhishableWallet.sol,PhishableWallet,TX1,0.4,14,in_scope,tx_origin,transferTo,tx.origin -> msg.sender
+C045,contracts/C045_OriginModifier.sol,OriginModifier,TX2,0.8,19,in_scope,tx_origin,send,tx.origin -> msg.sender in modifier
+C046,contracts/C046_LimitWallet.sol,LimitWallet,TX2,0.8,22,in_scope,tx_origin,send,tx.origin -> msg.sender in modifier
+C047,contracts/C047_EmergencyVault.sol,EmergencyVault,TX3,0.8,14,in_scope,tx_origin,emergencyWithdraw,drop tx.origin disjunct
+C048,contracts/C048_PoCGame.sol,PoCGame,TX4,0.4,16,in_scope,tx_origin,payoutPot,none
+C049,contracts/C049_BECToken.sol,BECToken,AR1,0.4,17,in_scope,arithmetic,batchTransfer,division-based bound before multiplication
+C050,contracts/C050_OverflowToken.sol,OverflowToken,AR2,0.4,14,in_scope,arithmetic,transfer,explicit balance and overflow checks
+C051,contracts/C051_HoloToken.sol,HoloToken,AR2,0.4,17,in_scope,arithmetic,transfer,explicit balance and overflow checks
+C052,contracts/C052_TimeLock.sol,TimeLock,AR3,0.4,18,in_scope,arithmetic,increaseLockTime,overflow guard on addition
+C053,contracts/C053_IntegerOverflowSingle.sol,IntegerOverflowSingle,AR4,0.4,12,in_scope,arithmetic,subFromBalance,bound check before subtraction
+C054,contracts/C054_CounterMinus.sol,CounterMinus,AR4,0.4,15,in_scope,arithmetic,subFromBalance,bound check before subtraction
+C055,contracts/C055_PointsLedger.sol,PointsLedger,AR5,0.8,18,in_scope,arithmetic,redeem,bound check before unchecked subtraction
+C056,contracts/C056_PointsExchange.sol,PointsExchange,AR5B,0.8,24,in_scope,arithmetic,transferPoints,bound check in redeem only
+C057,contracts/C057_TokenSaleChallenge.sol,TokenSaleChallenge,AR6,0.4,19,in_scope,arithmetic,buy,bound before multiplication
+C058,contracts/C058_AllowanceToken.sol,AllowanceToken,AR8,0.4,18,in_scope,arithmetic,transferFrom,allowance bound check
+C059,contracts/C059_UncheckedVault.sol,UncheckedVault,AR7,0.8,13,in_scope,arithmetic,withdraw,bound check before unchecked subtraction
+C060,contracts/C060_LinkedToken.sol,LinkedToken,AR9,0.4,25,in_scope,arithmetic,burn,none
+C061,contracts/C061_GuessTheRandomNumber.sol,GuessTheRandomNumber,BR1,0.4,12,in_scope,bad_randomness,guess,commit to future blockhash with settle continuation
+C062,contracts/C062_LuckyNumber.sol,LuckyNumber,BR1,0.4,15,in_scope,bad_randomness,guess,commit to future blockhash with settle continuation
+C063,contracts/C063_PredictTheBlockHash.sol,PredictTheBlockHash,BR2,0.4,24,in_scope,bad_randomness,settle,none
+C064,contracts/C064_SecretSeedLottery.sol,SecretSeedLottery,BR3,0.4,17,in_scope,bad_randomness,play,future-blockhash commit with reveal continuation
+C065,contracts/C065_HiddenSeed.sol,HiddenSeed,BR3,0.4,20,in_scope,bad_randomness,play,future-blockhash commit with reveal continuation
+C066,contracts/C066_TimestampLottery.sol,TimestampLottery,BR4,0.8,15,in_scope,bad_randomness,draw,two-step draw on future blockhash
+C067,contracts/C067_PrevrandaoRaffle.sol,PrevrandaoRaffle,BR4,0.8,18,in_scope,bad_randomness,draw,two-step draw on future blockhash
+C068,contracts/C068_Blackjack.sol,Blackjack,BR5,0.4,33,in_scope,bad_randomness,stand,none
+C069,contracts/C069_Auction.sol,Auction,DS1,0.4,10,in_scope,denial_of_service,bid,push-to-pull refund
+C070,contracts/C070_BidRoom.sol,BidRoom,DS1,0.4,13,in_scope,denial_of_service,bid,push-to-pull refund
+C071,contracts/C071_KingOfTheHill.sol,KingOfTheHill,DS2,0.4,16,in_scope,denial_of_service,fallback,push-to-pull credit
+C072,contracts/C072_ThroneGame.sol,ThroneGame,DS2,0.4,19,in_scope,denial_of_service,fallback,push-to-pull credit
+C073,contracts/C073_RefundList.sol,RefundList,DS3,0.4,16,in_scope,denial_of_service,refundAll,skip failing send and clear credit (loses refund)
+C074,contracts/C074_Dividends.sol,Dividends,DS4,0.8,19,in_scope,denial_of_service,distribute,unique-join and holder cap
+C075,contracts/C075_DosNumber.sol,DosNumber,DS5,0.4,27,in_scope,denial_of_service,insertNnumbers,cap per-call growth and constant-time clear
+C076,contracts/C076_DosAddress.sol,DosAddress,DS6,0.4,22,in_scope,denial_of_service,emptyCreditors,cap array growth
+C077,contracts/C077_Payroll.sol,Payroll,DS7,0.8,19,in_scope,denial_of_service,payAll,accrue salary and pull-based claim
+C078,contracts/C078_AuctionHelper.sol,AuctionHelper,DS8,0.4,17,in_scope,denial_of_service,bid,push-to-pull refund in helper
+C079,contracts/C079_ApproveToken.sol,ApproveToken,OS1,0.8,19,out_of_scope,front_running,approve,
+C080,contracts/C080_HashQuiz.sol,HashQuiz,OS2,0.8,10,out_of_scope,front_running,solve,
+C081,contracts/C081_VestingLock.sol,VestingLock,OS3,0.8,12,out_of_scope,timestamp_dependence,release,
+C082,contracts/C082_SignedDrop.sol,SignedDrop,OS4,0.8,13,out_of_scope,signature_replay,claim,
+C083,contracts/C083_SpotLender.sol,SpotLender,OS5,0.8,32,out_of_scope,price_manipulation,borrow,
+C084,contracts/C084_ShareVault.sol,ShareVault,OS6,0.8,16,out_of_scope,share_inflation,deposit,
+C085,contracts/C085_ShortAddressCoin.sol,ShortAddressCoin,OS7,0.4,14,out_of_scope,short_address,sendCoin,
+C086,contracts/C086_FeeSplitter.sol,FeeSplitter,OS8,0.8,18,out_of_scope,business_logic,withdraw,
+C087,contracts/C087_NameRegistrar.sol,NameRegistrar,OS9,0.4,19,out_of_scope,uninitialized_storage,register,
+C088,contracts/C088_GasRelayer.sol,GasRelayer,OS10,0.8,10,out_of_scope,gas_griefing,relay,
+C089,contracts/C089_SafeBank.sol,SafeBank,N1,0.8,13,negative_control,none,,
+C090,contracts/C090_MutexBank.sol,MutexBank,N2,0.4,16,negative_control,none,,
+C091,contracts/C091_SafeMathToken.sol,SafeMathToken,N3,0.4,23,negative_control,none,,
+C092,contracts/C092_CheckedLotto.sol,CheckedLotto,N4,0.4,15,negative_control,none,,
+C093,contracts/C093_OwnableSafe.sol,OwnableSafe,N5,0.8,18,negative_control,none,,
+C094,contracts/C094_CheckedToken.sol,CheckedToken,N6,0.8,13,negative_control,none,,
+C095,contracts/C095_PullAuction.sol,PullAuction,N7,0.8,17,negative_control,none,,
+C096,contracts/C096_CommitReveal.sol,CommitReveal,N8,0.8,21,negative_control,none,,
+C097,contracts/C097_CheckedDAO.sol,CheckedDAO,N9,0.8,13,negative_control,none,,
+C098,contracts/C098_BatchDividends.sol,BatchDividends,N10,0.8,26,negative_control,none,,
+C099,contracts/C099_OriginLogger.sol,OriginLogger,N11,0.8,13,negative_control,none,,
+C100,contracts/C100_TwoStepOwnable.sol,TwoStepOwnable,N12,0.8,16,negative_control,none,,

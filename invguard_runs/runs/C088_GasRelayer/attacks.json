@@ -1,0 +1,84 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C088",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "none_in_scope",
+  "impact_oracle_description": "no in-scope oracle",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "relay(address,bytes,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "relay with just enough gas so the inner call fails and the id is burned",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A2",
+      "entry_point": "relay(address,bytes,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "relay with just enough gas so the inner call fails and the id is burned",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A3",
+      "entry_point": "relay(address,bytes,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "relay with just enough gas so the inner call fails and the id is burned",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "relay(address,bytes,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "relay with just enough gas so the inner call fails and the id is burned",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A5",
+      "entry_point": "relay(address,bytes,bytes32)",
+      "ether_value": "0",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "relay with just enough gas so the inner call fails and the id is burned",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "unchecked_call",
+    "entry_point": "relay(address,bytes,bytes32)",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "none",
+    "failure": "call result is consumed; no stranded funds under rejecting target"
+  },
+  "confirmed_witnesses": [],
+  "witness_source": null,
+  "outcome": "no_confirmed_witness_stop_no_repair_claim",
+  "reason": "call result is consumed; no stranded funds under rejecting target"
+}

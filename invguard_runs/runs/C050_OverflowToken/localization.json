@@ -1,0 +1,41 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C050",
+  "contract": "OverflowToken",
+  "pragma": "0.4",
+  "findings": [
+    {
+      "source": "pattern",
+      "detector": "unchecked-arithmetic",
+      "function": "transfer",
+      "candidate_class": "arithmetic"
+    },
+    {
+      "source": "slither",
+      "detector": "tautology",
+      "function": "transfer",
+      "candidate_class": null
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "arithmetic",
+    "function": "transfer"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "arithmetic",
+    "function": "transfer",
+    "in_declared_scope": true
+  },
+  "class_match": true,
+  "function_match": true
+}

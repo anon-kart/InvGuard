@@ -1,0 +1,103 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C045",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "send(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker",
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "trigger send from a phishing contract during an owner transaction",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "send(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker",
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "trigger send from a phishing contract during an owner transaction",
+      "compile": "ok_after_refinement",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "attacker balance +1.0 ether net of cost",
+      "initial_compile_error": "TypeError: member \"call\" not found or not visible after argument-dependent lookup in address"
+    },
+    {
+      "id": "A3",
+      "entry_point": "send(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker",
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "trigger send from a phishing contract during an owner transaction",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "send(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker",
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "trigger send from a phishing contract during an owner transaction",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    },
+    {
+      "id": "A5",
+      "entry_point": "send(address,uint256)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "to=attacker",
+        "amount=1 ether"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "trigger send from a phishing contract during an owner transaction",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A2"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

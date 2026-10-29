@@ -1,0 +1,84 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C012",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "mint",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(post.mintedBy, meta.sender) <= 2",
+      "function": "mint",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": false,
+        "meta.sender": "0x00000000000000000000000000000000000a77ac",
+        "post.mintedBy": "2**256 - 1"
+      }
+    },
+    {
+      "id": "I2",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> post.totalMinted == pre.totalMinted + 1",
+      "function": "mint",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false
+    },
+    {
+      "id": "I3",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> select(post.ownerOf, post.totalMinted) == meta.sender",
+      "function": "mint",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I4",
+      "category": "reentrancy",
+      "rationale": "the function must not be entered again while an outer call is active",
+      "predicate": "meta.call_depth > 1 -> meta.revert_taken",
+      "function": "mint",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "re-entry depends on callback behavior outside the single-transition model"
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balances[a] <= pre.balances[a]",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "the external call eventually completes before any re-entry",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "meta.revert_taken == false -> select(post.mintedBy, meta.sender) <= 2",
+      "reason": "duplicate of I1 after normalization"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 8,
+    "kept_after_normalization": 4,
+    "preservation": 2,
+    "repair_obligations": 1,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

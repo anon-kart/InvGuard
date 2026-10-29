@@ -1,0 +1,63 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C060",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "burn",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(pre.balances, meta.sender) >= arg.amount",
+      "function": "burn",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "arg.amount": 1,
+        "meta.revert_taken": false,
+        "meta.sender": "0x00000000000000000000000000000000000a77ac",
+        "pre.balances": 0
+      }
+    },
+    {
+      "id": "I2",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> post.totalSupply <= pre.totalSupply",
+      "function": "burn",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": false,
+        "post.totalSupply": "2**256 - 1",
+        "pre.totalSupply": 0
+      }
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balanceOf[a] < 2**256",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "SafeMath.sub(x, y) does not revert",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "meta.revert_taken == false -> select(pre.balances, meta.sender) >= arg.amount",
+      "reason": "duplicate of I1 after normalization"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 5,
+    "kept_after_normalization": 2,
+    "preservation": 0,
+    "repair_obligations": 2,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C027",
+  "k": 5,
+  "compile_refinement_used": false,
+  "impact_oracle": "stranded_funds_rejecting_recipient",
+  "impact_oracle_description": "funds stranded under a rejecting recipient",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "sweep()",
+      "ether_value": "1 ether (fund)",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I2"
+      ],
+      "objective": "sweep to a rejecting treasury so swept is credited while Ether stays",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A2",
+      "entry_point": "sweep()",
+      "ether_value": "1 ether (fund)",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I2"
+      ],
+      "objective": "sweep to a rejecting treasury so swept is credited while Ether stays",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A3",
+      "entry_point": "sweep()",
+      "ether_value": "1 ether (fund)",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I2"
+      ],
+      "objective": "sweep to a rejecting treasury so swept is credited while Ether stays",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A4",
+      "entry_point": "sweep()",
+      "ether_value": "1 ether (fund)",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I2"
+      ],
+      "objective": "sweep to a rejecting treasury so swept is credited while Ether stays",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A5",
+      "entry_point": "sweep()",
+      "ether_value": "1 ether (fund)",
+      "typed_arguments": [],
+      "targets_obligations": [
+        "I2"
+      ],
+      "objective": "sweep to a rejecting treasury so swept is credited while Ether stays",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "unchecked_call",
+    "entry_point": "sweep()",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "ok",
+    "impact_observed": "1.0 ether stranded; recipient credit cleared"
+  },
+  "confirmed_witnesses": [
+    "FB1"
+  ],
+  "witness_source": "fallback",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

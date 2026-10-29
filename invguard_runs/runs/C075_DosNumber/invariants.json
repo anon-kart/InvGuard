@@ -1,0 +1,53 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C075",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "insertNnumbers",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "liveness",
+      "rationale": "a legitimate call must not be blocked by another party",
+      "predicate": "pre.numElements > 1500 -> !meta.revert_taken",
+      "function": "insertNnumbers",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "loop over array influences a referenced symbol"
+    },
+    {
+      "id": "I2",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.numElements == 0",
+      "function": "insertNnumbers",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "every bidder can always eventually bid",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "gasleft() > 21000",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "pre.numElements > 1500 -> !meta.revert_taken",
+      "reason": "duplicate of I1 after normalization"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 5,
+    "kept_after_normalization": 2,
+    "preservation": 1,
+    "repair_obligations": 0,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

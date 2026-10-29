@@ -1,0 +1,79 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C025",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "claimThrone",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "call",
+      "rationale": "the transition succeeds only if its external calls succeed",
+      "predicate": "!meta.revert_taken -> meta.all_calls_success",
+      "function": "claimThrone",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.all_calls_success": false,
+        "meta.revert_taken": false
+      }
+    },
+    {
+      "id": "I2",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.king == meta.sender",
+      "function": "claimThrone",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> meta.value >= pre.claimPrice",
+      "function": "claimThrone",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I4",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> post.claimPrice == meta.value * 3 / 2",
+      "function": "claimThrone",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true,
+      "inconclusive_reason": "nonlinear symbolic arithmetic"
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "send(winner) returns true",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "funds are eventually delivered to the recipient",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "meta.revert_taken == false -> meta.all_calls_success",
+      "reason": "duplicate of I1 after normalization"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 7,
+    "kept_after_normalization": 4,
+    "preservation": 2,
+    "repair_obligations": 1,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

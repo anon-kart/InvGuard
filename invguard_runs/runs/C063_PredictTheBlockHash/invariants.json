@@ -1,0 +1,49 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C063",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "settle",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "randomness",
+      "rationale": "outcome must not be known when the bet is placed",
+      "predicate": "!meta.revert_taken -> select(post.guesses, meta.sender) == 0",
+      "function": "settle",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true,
+      "inconclusive_reason": "loop or external callee influences a referenced symbol"
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> meta.value == 0",
+      "function": "settle",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "the outcome is unpredictable to the player",
+      "reason": "not expressible over a single transition"
+    },
+    {
+      "raw": "blockhash(block.number - 1) != 0",
+      "reason": "function call in predicate"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 4,
+    "kept_after_normalization": 2,
+    "preservation": 1,
+    "repair_obligations": 0,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

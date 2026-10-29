@@ -1,0 +1,41 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C015",
+  "contract": "EscrowRefund",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "reentrancy-eth",
+      "function": "refund",
+      "candidate_class": "reentrancy"
+    },
+    {
+      "source": "slither",
+      "detector": "timestamp",
+      "function": "refund",
+      "candidate_class": "bad_randomness"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "reentrancy",
+    "function": "refund"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "reentrancy",
+    "function": "refund",
+    "in_declared_scope": true
+  },
+  "class_match": true,
+  "function_match": true
+}

@@ -1,0 +1,73 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C072",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "fallback",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "liveness",
+      "rationale": "a legitimate call must not be blocked by another party",
+      "predicate": "meta.value >= pre.prize -> !meta.revert_taken",
+      "function": "fallback",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": true,
+        "meta.value": "pre.highestBid + 1",
+        "pre.prize": 0,
+        "meta.all_calls_success": false
+      }
+    },
+    {
+      "id": "I2",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.king == meta.sender",
+      "function": "fallback",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.prize == meta.value",
+      "function": "fallback",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "every bidder can always eventually bid",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "gasleft() > 21000",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "meta.value >= pre.prize -> !meta.revert_taken",
+      "reason": "duplicate of I1 after normalization"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 7,
+    "kept_after_normalization": 3,
+    "preservation": 2,
+    "repair_obligations": 1,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

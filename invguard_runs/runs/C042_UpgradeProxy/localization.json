@@ -1,0 +1,41 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C042",
+  "contract": "UpgradeProxy",
+  "pragma": "0.8",
+  "findings": [
+    {
+      "source": "pattern",
+      "detector": "unprotected-privileged-write",
+      "function": "upgradeTo",
+      "candidate_class": "access_control"
+    },
+    {
+      "source": "slither",
+      "detector": "assembly",
+      "function": "upgradeTo",
+      "candidate_class": null
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "access_control",
+    "function": "upgradeTo"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "access_control",
+    "function": "upgradeTo",
+    "in_declared_scope": true
+  },
+  "class_match": true,
+  "function_match": true
+}

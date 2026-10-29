@@ -1,0 +1,98 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C030",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "unauthorized_privileged_state_change",
+  "impact_oracle_description": "unauthorized modification of privileged state",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "changeOwner(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "newOwner=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "take ownership from a non-owner account then call withdraw",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A2",
+      "entry_point": "changeOwner(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "newOwner=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "take ownership from a non-owner account then call withdraw",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A3",
+      "entry_point": "changeOwner(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "newOwner=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "take ownership from a non-owner account then call withdraw",
+      "compile": "ok_after_refinement",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "privileged slot set to attacker address",
+      "initial_compile_error": "TypeError: member \"call\" not found or not visible after argument-dependent lookup in address"
+    },
+    {
+      "id": "A4",
+      "entry_point": "changeOwner(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "newOwner=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "take ownership from a non-owner account then call withdraw",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A5",
+      "entry_point": "changeOwner(address)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "newOwner=attacker"
+      ],
+      "targets_obligations": [
+        "I1"
+      ],
+      "objective": "take ownership from a non-owner account then call withdraw",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A3"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

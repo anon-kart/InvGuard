@@ -1,0 +1,32 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C087",
+  "contract": "NameRegistrar",
+  "pragma": "0.4",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "uninitialized-storage",
+      "function": "register",
+      "candidate_class": null
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": null,
+  "status": "no_in_scope_target",
+  "ground_truth": {
+    "vulnerability_class": "uninitialized_storage",
+    "function": "register",
+    "in_declared_scope": false
+  },
+  "class_match": null,
+  "function_match": null
+}

@@ -1,0 +1,73 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C054",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "subFromBalance",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> post.count <= pre.count",
+      "function": "subFromBalance",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": false,
+        "post.count": "2**256 - 1",
+        "pre.count": 0
+      }
+    },
+    {
+      "id": "I2",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> arg.input <= pre.count",
+      "function": "subFromBalance",
+      "validator_verdict": "FAIL",
+      "role": "repair_obligation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "arg.input": 1,
+        "meta.revert_taken": false,
+        "pre.count": 0
+      }
+    },
+    {
+      "id": "I3",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> post.count == pre.count - arg.input",
+      "function": "subFromBalance",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balanceOf[a] < 2**256",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "SafeMath.sub(x, y) does not revert",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "meta.revert_taken == false -> post.count <= pre.count",
+      "reason": "duplicate of I1 after normalization"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 6,
+    "kept_after_normalization": 3,
+    "preservation": 1,
+    "repair_obligations": 2,
+    "unvalidated": 0,
+    "discarded": 0
+  }
+}

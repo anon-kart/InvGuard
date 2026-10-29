@@ -1,0 +1,7 @@
+policy,accepted,effective,defective,precision_pct
+Gate-OFF,71,66,5,93.0
+"LLM critic, run 1",67,62,5,92.5
+"LLM critic, run 2",66,62,4,93.9
+"LLM critic, run 3",67,63,4,94.0
+Deterministic gate,67,64,3,95.5
+LLM critic identical decisions across 3 runs,60,,,84.5

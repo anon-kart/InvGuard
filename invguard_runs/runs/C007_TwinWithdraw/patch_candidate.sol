@@ -1,0 +1,23 @@
+pragma solidity ^0.4.24;
+
+contract TwinWithdraw {
+    mapping(address => uint256) public balances;
+
+    function deposit() public payable {
+        balances[msg.sender] += msg.value;
+    }
+
+    function withdraw() public {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0);
+        balances[msg.sender] = 0;
+        require(msg.sender.call.value(amount)());
+    }
+
+    function withdrawTo(address to) public {
+        uint256 amount = balances[msg.sender];
+        require(amount > 0);
+        require(to.call.value(amount)());
+        balances[msg.sender] = 0;
+    }
+}

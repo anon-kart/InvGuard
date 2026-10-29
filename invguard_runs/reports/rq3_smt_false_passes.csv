@@ -1,0 +1,11 @@
+contract_id,invariant,predicate,category
+C001,I5,"!meta.revert_taken -> meta.contract_balance >= select(pre.balances, meta.sender)",balance
+C002,I5,"!meta.revert_taken -> meta.contract_balance >= select(pre.balances, meta.sender)",balance
+C006,I2,"select(pre.credit, meta.sender) >= arg.amount -> select(post.credit, meta.sender) == select(pre.credit, meta.sender) - arg.amount",arithmetic
+C008,I4,"!meta.revert_taken -> meta.contract_balance >= select(pre.balances, meta.sender)",bound
+C009,I1,"!meta.revert_taken -> select(pre.tokenBalance, meta.sender) == 0",bound
+C010,I2,"!meta.revert_taken -> select(pre.claimedBonus, arg.recipient) == false",bound
+C011,I2,!meta.revert_taken -> post.totalMinted == pre.totalMinted + 1,arithmetic
+C012,I2,!meta.revert_taken -> post.totalMinted == pre.totalMinted + 1,arithmetic
+C015,I4,!meta.revert_taken -> meta.sender != pre.seller,access
+C016,I2,"!meta.revert_taken -> select(post.tokens, meta.sender) == select(pre.tokens, meta.sender) - arg.amount",arithmetic

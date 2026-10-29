@@ -1,0 +1,625 @@
+configuration,contract_id,contract,accepted,mitigated,benign_preserved,effective
+Full InvGuard,C001,EtherBank,True,True,True,True
+Full InvGuard,C002,SavingsJar,True,True,True,True
+Full InvGuard,C003,CoinVault,True,True,True,True
+Full InvGuard,C004,DepositBox,True,True,True,True
+Full InvGuard,C005,StakeVault,True,True,True,True
+Full InvGuard,C006,SimpleDAO,True,True,True,True
+Full InvGuard,C007,TwinWithdraw,True,False,True,False
+Full InvGuard,C008,LedgerBank,True,True,True,True
+Full InvGuard,C009,NuTokenAirdrop,True,True,True,True
+Full InvGuard,C010,BonusRewards,True,True,True,True
+Full InvGuard,C011,NFTDrop,True,True,True,True
+Full InvGuard,C012,TicketMint,True,True,True,True
+Full InvGuard,C013,PayeeRegistry,False,False,,False
+Full InvGuard,C014,SharePool,False,False,,False
+Full InvGuard,C015,EscrowRefund,True,True,True,True
+Full InvGuard,C016,TokenExchange,True,True,True,True
+Full InvGuard,C017,Lotto,True,True,True,True
+Full InvGuard,C018,Raffle,True,True,True,True
+Full InvGuard,C019,SendWallet,True,True,True,True
+Full InvGuard,C020,PiggyWallet,True,True,True,True
+Full InvGuard,C021,CreditDesk,True,True,True,True
+Full InvGuard,C022,RebateBox,True,True,True,True
+Full InvGuard,C023,TokenBank,False,False,,False
+Full InvGuard,C024,BatchPayer,True,True,True,True
+Full InvGuard,C025,KingOfEther,True,True,True,True
+Full InvGuard,C026,PrivateEthCell,False,False,,False
+Full InvGuard,C027,TreasurySweeper,True,True,True,True
+Full InvGuard,C028,PrizeDesk,True,True,True,True
+Full InvGuard,C029,Owned,True,True,True,True
+Full InvGuard,C030,OwnedVault,True,True,True,True
+Full InvGuard,C031,FeeVault,True,True,True,True
+Full InvGuard,C032,Missing,True,True,True,True
+Full InvGuard,C033,Rubixi,True,True,True,True
+Full InvGuard,C034,WalletLibrary,True,True,True,True
+Full InvGuard,C035,OpenVault,True,True,True,True
+Full InvGuard,C036,FibonacciBalance,False,False,,False
+Full InvGuard,C037,FeeRouter,True,True,False,False
+Full InvGuard,C038,RewardToken,True,True,True,True
+Full InvGuard,C039,Suicidal,True,True,True,True
+Full InvGuard,C040,HelperToken,True,True,True,True
+Full InvGuard,C041,MultiOwned,True,True,True,True
+Full InvGuard,C042,UpgradeProxy,True,True,True,True
+Full InvGuard,C043,TxWallet,True,True,True,True
+Full InvGuard,C044,PhishableWallet,True,True,True,True
+Full InvGuard,C045,OriginModifier,True,True,True,True
+Full InvGuard,C046,LimitWallet,True,True,True,True
+Full InvGuard,C047,EmergencyVault,True,True,True,True
+Full InvGuard,C048,PoCGame,False,False,,False
+Full InvGuard,C049,BECToken,True,True,True,True
+Full InvGuard,C050,OverflowToken,True,True,True,True
+Full InvGuard,C051,HoloToken,True,True,True,True
+Full InvGuard,C052,TimeLock,True,True,True,True
+Full InvGuard,C053,IntegerOverflowSingle,True,True,True,True
+Full InvGuard,C054,CounterMinus,True,True,True,True
+Full InvGuard,C055,PointsLedger,True,True,True,True
+Full InvGuard,C056,PointsExchange,True,False,True,False
+Full InvGuard,C057,TokenSaleChallenge,True,True,True,True
+Full InvGuard,C058,AllowanceToken,True,True,True,True
+Full InvGuard,C059,UncheckedVault,True,True,True,True
+Full InvGuard,C060,LinkedToken,False,False,,False
+Full InvGuard,C061,GuessTheRandomNumber,True,True,True,True
+Full InvGuard,C062,LuckyNumber,True,True,True,True
+Full InvGuard,C063,PredictTheBlockHash,False,False,,False
+Full InvGuard,C064,SecretSeedLottery,True,True,True,True
+Full InvGuard,C065,HiddenSeed,False,False,,False
+Full InvGuard,C066,TimestampLottery,True,True,True,True
+Full InvGuard,C067,PrevrandaoRaffle,True,True,True,True
+Full InvGuard,C068,Blackjack,False,False,,False
+Full InvGuard,C069,Auction,True,True,True,True
+Full InvGuard,C070,BidRoom,True,True,True,True
+Full InvGuard,C071,KingOfTheHill,True,True,True,True
+Full InvGuard,C072,ThroneGame,True,True,True,True
+Full InvGuard,C073,RefundList,False,False,,False
+Full InvGuard,C074,Dividends,True,True,True,True
+Full InvGuard,C075,DosNumber,True,True,True,True
+Full InvGuard,C076,DosAddress,True,True,True,True
+Full InvGuard,C077,Payroll,True,True,True,True
+Full InvGuard,C078,AuctionHelper,True,True,True,True
+- SMT invariant re-check at the gate,C001,EtherBank,True,True,True,True
+- SMT invariant re-check at the gate,C002,SavingsJar,True,True,True,True
+- SMT invariant re-check at the gate,C003,CoinVault,True,True,True,True
+- SMT invariant re-check at the gate,C004,DepositBox,True,True,True,True
+- SMT invariant re-check at the gate,C005,StakeVault,True,True,True,True
+- SMT invariant re-check at the gate,C006,SimpleDAO,True,True,True,True
+- SMT invariant re-check at the gate,C007,TwinWithdraw,True,False,True,False
+- SMT invariant re-check at the gate,C008,LedgerBank,True,True,True,True
+- SMT invariant re-check at the gate,C009,NuTokenAirdrop,True,True,True,True
+- SMT invariant re-check at the gate,C010,BonusRewards,True,True,True,True
+- SMT invariant re-check at the gate,C011,NFTDrop,True,False,True,False
+- SMT invariant re-check at the gate,C012,TicketMint,True,True,True,True
+- SMT invariant re-check at the gate,C013,PayeeRegistry,False,False,,False
+- SMT invariant re-check at the gate,C014,SharePool,False,False,,False
+- SMT invariant re-check at the gate,C015,EscrowRefund,True,True,True,True
+- SMT invariant re-check at the gate,C016,TokenExchange,True,True,True,True
+- SMT invariant re-check at the gate,C017,Lotto,True,True,True,True
+- SMT invariant re-check at the gate,C018,Raffle,True,True,True,True
+- SMT invariant re-check at the gate,C019,SendWallet,True,True,True,True
+- SMT invariant re-check at the gate,C020,PiggyWallet,True,True,True,True
+- SMT invariant re-check at the gate,C021,CreditDesk,True,True,True,True
+- SMT invariant re-check at the gate,C022,RebateBox,True,True,True,True
+- SMT invariant re-check at the gate,C023,TokenBank,False,False,,False
+- SMT invariant re-check at the gate,C024,BatchPayer,True,True,True,True
+- SMT invariant re-check at the gate,C025,KingOfEther,True,True,True,True
+- SMT invariant re-check at the gate,C026,PrivateEthCell,False,False,,False
+- SMT invariant re-check at the gate,C027,TreasurySweeper,True,True,True,True
+- SMT invariant re-check at the gate,C028,PrizeDesk,True,True,True,True
+- SMT invariant re-check at the gate,C029,Owned,True,True,True,True
+- SMT invariant re-check at the gate,C030,OwnedVault,True,True,True,True
+- SMT invariant re-check at the gate,C031,FeeVault,True,True,True,True
+- SMT invariant re-check at the gate,C032,Missing,True,True,True,True
+- SMT invariant re-check at the gate,C033,Rubixi,True,True,True,True
+- SMT invariant re-check at the gate,C034,WalletLibrary,True,False,True,False
+- SMT invariant re-check at the gate,C035,OpenVault,True,True,True,True
+- SMT invariant re-check at the gate,C036,FibonacciBalance,False,False,,False
+- SMT invariant re-check at the gate,C037,FeeRouter,True,True,False,False
+- SMT invariant re-check at the gate,C038,RewardToken,True,True,True,True
+- SMT invariant re-check at the gate,C039,Suicidal,True,True,True,True
+- SMT invariant re-check at the gate,C040,HelperToken,True,True,True,True
+- SMT invariant re-check at the gate,C041,MultiOwned,True,True,True,True
+- SMT invariant re-check at the gate,C042,UpgradeProxy,True,True,True,True
+- SMT invariant re-check at the gate,C043,TxWallet,True,True,True,True
+- SMT invariant re-check at the gate,C044,PhishableWallet,True,True,True,True
+- SMT invariant re-check at the gate,C045,OriginModifier,True,True,True,True
+- SMT invariant re-check at the gate,C046,LimitWallet,True,True,True,True
+- SMT invariant re-check at the gate,C047,EmergencyVault,True,True,True,True
+- SMT invariant re-check at the gate,C048,PoCGame,False,False,,False
+- SMT invariant re-check at the gate,C049,BECToken,True,True,True,True
+- SMT invariant re-check at the gate,C050,OverflowToken,True,False,True,False
+- SMT invariant re-check at the gate,C051,HoloToken,True,True,True,True
+- SMT invariant re-check at the gate,C052,TimeLock,True,True,True,True
+- SMT invariant re-check at the gate,C053,IntegerOverflowSingle,True,True,True,True
+- SMT invariant re-check at the gate,C054,CounterMinus,True,True,True,True
+- SMT invariant re-check at the gate,C055,PointsLedger,True,True,True,True
+- SMT invariant re-check at the gate,C056,PointsExchange,True,False,True,False
+- SMT invariant re-check at the gate,C057,TokenSaleChallenge,True,True,True,True
+- SMT invariant re-check at the gate,C058,AllowanceToken,True,False,True,False
+- SMT invariant re-check at the gate,C059,UncheckedVault,True,True,True,True
+- SMT invariant re-check at the gate,C060,LinkedToken,False,False,,False
+- SMT invariant re-check at the gate,C061,GuessTheRandomNumber,True,True,True,True
+- SMT invariant re-check at the gate,C062,LuckyNumber,True,True,True,True
+- SMT invariant re-check at the gate,C063,PredictTheBlockHash,False,False,,False
+- SMT invariant re-check at the gate,C064,SecretSeedLottery,True,True,True,True
+- SMT invariant re-check at the gate,C065,HiddenSeed,False,False,,False
+- SMT invariant re-check at the gate,C066,TimestampLottery,True,True,True,True
+- SMT invariant re-check at the gate,C067,PrevrandaoRaffle,True,True,True,True
+- SMT invariant re-check at the gate,C068,Blackjack,False,False,,False
+- SMT invariant re-check at the gate,C069,Auction,True,True,True,True
+- SMT invariant re-check at the gate,C070,BidRoom,True,True,True,True
+- SMT invariant re-check at the gate,C071,KingOfTheHill,True,True,True,True
+- SMT invariant re-check at the gate,C072,ThroneGame,True,True,True,True
+- SMT invariant re-check at the gate,C073,RefundList,False,False,,False
+- SMT invariant re-check at the gate,C074,Dividends,True,True,True,True
+- SMT invariant re-check at the gate,C075,DosNumber,True,True,True,True
+- SMT invariant re-check at the gate,C076,DosAddress,True,True,True,True
+- SMT invariant re-check at the gate,C077,Payroll,True,True,True,True
+- SMT invariant re-check at the gate,C078,AuctionHelper,True,True,True,True
+- replay feedback to later rounds,C001,EtherBank,True,True,True,True
+- replay feedback to later rounds,C002,SavingsJar,False,False,,False
+- replay feedback to later rounds,C003,CoinVault,True,True,True,True
+- replay feedback to later rounds,C004,DepositBox,False,False,,False
+- replay feedback to later rounds,C005,StakeVault,True,True,True,True
+- replay feedback to later rounds,C006,SimpleDAO,True,True,True,True
+- replay feedback to later rounds,C007,TwinWithdraw,True,False,True,False
+- replay feedback to later rounds,C008,LedgerBank,False,False,,False
+- replay feedback to later rounds,C009,NuTokenAirdrop,True,True,True,True
+- replay feedback to later rounds,C010,BonusRewards,True,True,True,True
+- replay feedback to later rounds,C011,NFTDrop,True,True,True,True
+- replay feedback to later rounds,C012,TicketMint,False,False,,False
+- replay feedback to later rounds,C013,PayeeRegistry,False,False,,False
+- replay feedback to later rounds,C014,SharePool,False,False,,False
+- replay feedback to later rounds,C015,EscrowRefund,True,True,True,True
+- replay feedback to later rounds,C016,TokenExchange,True,True,True,True
+- replay feedback to later rounds,C017,Lotto,True,True,True,True
+- replay feedback to later rounds,C018,Raffle,True,True,True,True
+- replay feedback to later rounds,C019,SendWallet,True,True,True,True
+- replay feedback to later rounds,C020,PiggyWallet,True,True,True,True
+- replay feedback to later rounds,C021,CreditDesk,False,False,,False
+- replay feedback to later rounds,C022,RebateBox,True,True,True,True
+- replay feedback to later rounds,C023,TokenBank,False,False,,False
+- replay feedback to later rounds,C024,BatchPayer,True,True,True,True
+- replay feedback to later rounds,C025,KingOfEther,True,True,True,True
+- replay feedback to later rounds,C026,PrivateEthCell,False,False,,False
+- replay feedback to later rounds,C027,TreasurySweeper,True,True,True,True
+- replay feedback to later rounds,C028,PrizeDesk,True,True,True,True
+- replay feedback to later rounds,C029,Owned,True,True,True,True
+- replay feedback to later rounds,C030,OwnedVault,True,True,True,True
+- replay feedback to later rounds,C031,FeeVault,True,True,True,True
+- replay feedback to later rounds,C032,Missing,True,True,True,True
+- replay feedback to later rounds,C033,Rubixi,True,True,True,True
+- replay feedback to later rounds,C034,WalletLibrary,True,True,True,True
+- replay feedback to later rounds,C035,OpenVault,True,True,True,True
+- replay feedback to later rounds,C036,FibonacciBalance,False,False,,False
+- replay feedback to later rounds,C037,FeeRouter,True,True,False,False
+- replay feedback to later rounds,C038,RewardToken,True,True,True,True
+- replay feedback to later rounds,C039,Suicidal,True,True,True,True
+- replay feedback to later rounds,C040,HelperToken,True,True,True,True
+- replay feedback to later rounds,C041,MultiOwned,True,True,True,True
+- replay feedback to later rounds,C042,UpgradeProxy,True,True,True,True
+- replay feedback to later rounds,C043,TxWallet,True,True,True,True
+- replay feedback to later rounds,C044,PhishableWallet,True,True,True,True
+- replay feedback to later rounds,C045,OriginModifier,True,True,True,True
+- replay feedback to later rounds,C046,LimitWallet,True,True,True,True
+- replay feedback to later rounds,C047,EmergencyVault,True,True,True,True
+- replay feedback to later rounds,C048,PoCGame,False,False,,False
+- replay feedback to later rounds,C049,BECToken,True,True,True,True
+- replay feedback to later rounds,C050,OverflowToken,True,True,True,True
+- replay feedback to later rounds,C051,HoloToken,True,True,True,True
+- replay feedback to later rounds,C052,TimeLock,False,False,,False
+- replay feedback to later rounds,C053,IntegerOverflowSingle,True,True,True,True
+- replay feedback to later rounds,C054,CounterMinus,True,True,True,True
+- replay feedback to later rounds,C055,PointsLedger,True,True,True,True
+- replay feedback to later rounds,C056,PointsExchange,True,False,True,False
+- replay feedback to later rounds,C057,TokenSaleChallenge,True,True,True,True
+- replay feedback to later rounds,C058,AllowanceToken,True,True,True,True
+- replay feedback to later rounds,C059,UncheckedVault,True,True,True,True
+- replay feedback to later rounds,C060,LinkedToken,False,False,,False
+- replay feedback to later rounds,C061,GuessTheRandomNumber,True,True,True,True
+- replay feedback to later rounds,C062,LuckyNumber,False,False,,False
+- replay feedback to later rounds,C063,PredictTheBlockHash,False,False,,False
+- replay feedback to later rounds,C064,SecretSeedLottery,True,True,True,True
+- replay feedback to later rounds,C065,HiddenSeed,False,False,,False
+- replay feedback to later rounds,C066,TimestampLottery,True,True,True,True
+- replay feedback to later rounds,C067,PrevrandaoRaffle,True,True,True,True
+- replay feedback to later rounds,C068,Blackjack,False,False,,False
+- replay feedback to later rounds,C069,Auction,True,True,True,True
+- replay feedback to later rounds,C070,BidRoom,False,False,,False
+- replay feedback to later rounds,C071,KingOfTheHill,True,True,True,True
+- replay feedback to later rounds,C072,ThroneGame,True,True,True,True
+- replay feedback to later rounds,C073,RefundList,False,False,,False
+- replay feedback to later rounds,C074,Dividends,True,True,True,True
+- replay feedback to later rounds,C075,DosNumber,True,True,True,True
+- replay feedback to later rounds,C076,DosAddress,True,True,True,True
+- replay feedback to later rounds,C077,Payroll,True,True,True,True
+- replay feedback to later rounds,C078,AuctionHelper,True,True,True,True
+- benign differential testing,C001,EtherBank,True,True,True,True
+- benign differential testing,C002,SavingsJar,True,True,True,True
+- benign differential testing,C003,CoinVault,True,True,True,True
+- benign differential testing,C004,DepositBox,True,True,True,True
+- benign differential testing,C005,StakeVault,True,True,True,True
+- benign differential testing,C006,SimpleDAO,True,True,True,True
+- benign differential testing,C007,TwinWithdraw,True,False,True,False
+- benign differential testing,C008,LedgerBank,True,True,True,True
+- benign differential testing,C009,NuTokenAirdrop,True,True,True,True
+- benign differential testing,C010,BonusRewards,True,True,True,True
+- benign differential testing,C011,NFTDrop,True,True,True,True
+- benign differential testing,C012,TicketMint,True,True,True,True
+- benign differential testing,C013,PayeeRegistry,False,False,,False
+- benign differential testing,C014,SharePool,False,False,,False
+- benign differential testing,C015,EscrowRefund,True,True,True,True
+- benign differential testing,C016,TokenExchange,True,True,True,True
+- benign differential testing,C017,Lotto,True,True,False,False
+- benign differential testing,C018,Raffle,True,True,True,True
+- benign differential testing,C019,SendWallet,True,True,True,True
+- benign differential testing,C020,PiggyWallet,True,True,True,True
+- benign differential testing,C021,CreditDesk,True,True,True,True
+- benign differential testing,C022,RebateBox,True,True,True,True
+- benign differential testing,C023,TokenBank,False,False,,False
+- benign differential testing,C024,BatchPayer,True,True,True,True
+- benign differential testing,C025,KingOfEther,True,True,False,False
+- benign differential testing,C026,PrivateEthCell,False,False,,False
+- benign differential testing,C027,TreasurySweeper,True,True,True,True
+- benign differential testing,C028,PrizeDesk,True,True,True,True
+- benign differential testing,C029,Owned,True,True,False,False
+- benign differential testing,C030,OwnedVault,True,True,True,True
+- benign differential testing,C031,FeeVault,True,True,True,True
+- benign differential testing,C032,Missing,True,True,False,False
+- benign differential testing,C033,Rubixi,True,True,True,True
+- benign differential testing,C034,WalletLibrary,True,True,True,True
+- benign differential testing,C035,OpenVault,True,True,False,False
+- benign differential testing,C036,FibonacciBalance,True,True,True,True
+- benign differential testing,C037,FeeRouter,True,True,False,False
+- benign differential testing,C038,RewardToken,True,True,False,False
+- benign differential testing,C039,Suicidal,True,True,True,True
+- benign differential testing,C040,HelperToken,True,True,True,True
+- benign differential testing,C041,MultiOwned,True,True,False,False
+- benign differential testing,C042,UpgradeProxy,True,True,True,True
+- benign differential testing,C043,TxWallet,True,True,True,True
+- benign differential testing,C044,PhishableWallet,True,True,True,True
+- benign differential testing,C045,OriginModifier,True,True,True,True
+- benign differential testing,C046,LimitWallet,True,True,True,True
+- benign differential testing,C047,EmergencyVault,True,True,True,True
+- benign differential testing,C048,PoCGame,False,False,,False
+- benign differential testing,C049,BECToken,True,True,True,True
+- benign differential testing,C050,OverflowToken,True,True,True,True
+- benign differential testing,C051,HoloToken,True,True,True,True
+- benign differential testing,C052,TimeLock,True,True,True,True
+- benign differential testing,C053,IntegerOverflowSingle,True,True,True,True
+- benign differential testing,C054,CounterMinus,True,True,True,True
+- benign differential testing,C055,PointsLedger,True,True,True,True
+- benign differential testing,C056,PointsExchange,True,False,True,False
+- benign differential testing,C057,TokenSaleChallenge,True,True,True,True
+- benign differential testing,C058,AllowanceToken,True,True,True,True
+- benign differential testing,C059,UncheckedVault,True,True,True,True
+- benign differential testing,C060,LinkedToken,False,False,,False
+- benign differential testing,C061,GuessTheRandomNumber,True,True,False,False
+- benign differential testing,C062,LuckyNumber,True,True,True,True
+- benign differential testing,C063,PredictTheBlockHash,False,False,,False
+- benign differential testing,C064,SecretSeedLottery,True,True,True,True
+- benign differential testing,C065,HiddenSeed,True,True,True,True
+- benign differential testing,C066,TimestampLottery,True,True,True,True
+- benign differential testing,C067,PrevrandaoRaffle,True,True,True,True
+- benign differential testing,C068,Blackjack,False,False,,False
+- benign differential testing,C069,Auction,True,True,False,False
+- benign differential testing,C070,BidRoom,True,True,True,True
+- benign differential testing,C071,KingOfTheHill,True,True,True,True
+- benign differential testing,C072,ThroneGame,True,True,False,False
+- benign differential testing,C073,RefundList,True,True,False,False
+- benign differential testing,C074,Dividends,True,True,True,True
+- benign differential testing,C075,DosNumber,True,True,True,True
+- benign differential testing,C076,DosAddress,True,True,True,True
+- benign differential testing,C077,Payroll,True,True,True,True
+- benign differential testing,C078,AuctionHelper,True,True,True,True
+- target-function scope to FixMaker,C001,EtherBank,True,True,True,True
+- target-function scope to FixMaker,C002,SavingsJar,True,True,True,True
+- target-function scope to FixMaker,C003,CoinVault,True,True,True,True
+- target-function scope to FixMaker,C004,DepositBox,True,True,True,True
+- target-function scope to FixMaker,C005,StakeVault,True,True,True,True
+- target-function scope to FixMaker,C006,SimpleDAO,True,True,True,True
+- target-function scope to FixMaker,C007,TwinWithdraw,True,False,True,False
+- target-function scope to FixMaker,C008,LedgerBank,False,False,,False
+- target-function scope to FixMaker,C009,NuTokenAirdrop,True,False,True,False
+- target-function scope to FixMaker,C010,BonusRewards,False,False,,False
+- target-function scope to FixMaker,C011,NFTDrop,True,True,True,True
+- target-function scope to FixMaker,C012,TicketMint,True,True,True,True
+- target-function scope to FixMaker,C013,PayeeRegistry,False,False,,False
+- target-function scope to FixMaker,C014,SharePool,False,False,,False
+- target-function scope to FixMaker,C015,EscrowRefund,False,False,,False
+- target-function scope to FixMaker,C016,TokenExchange,False,False,,False
+- target-function scope to FixMaker,C017,Lotto,True,True,True,True
+- target-function scope to FixMaker,C018,Raffle,True,True,True,True
+- target-function scope to FixMaker,C019,SendWallet,True,True,True,True
+- target-function scope to FixMaker,C020,PiggyWallet,True,True,True,True
+- target-function scope to FixMaker,C021,CreditDesk,True,True,True,True
+- target-function scope to FixMaker,C022,RebateBox,True,True,True,True
+- target-function scope to FixMaker,C023,TokenBank,False,False,,False
+- target-function scope to FixMaker,C024,BatchPayer,True,True,True,True
+- target-function scope to FixMaker,C025,KingOfEther,False,False,,False
+- target-function scope to FixMaker,C026,PrivateEthCell,False,False,,False
+- target-function scope to FixMaker,C027,TreasurySweeper,True,True,True,True
+- target-function scope to FixMaker,C028,PrizeDesk,False,False,,False
+- target-function scope to FixMaker,C029,Owned,True,True,True,True
+- target-function scope to FixMaker,C030,OwnedVault,True,True,True,True
+- target-function scope to FixMaker,C031,FeeVault,True,True,True,True
+- target-function scope to FixMaker,C032,Missing,True,True,True,True
+- target-function scope to FixMaker,C033,Rubixi,True,True,True,True
+- target-function scope to FixMaker,C034,WalletLibrary,True,True,True,True
+- target-function scope to FixMaker,C035,OpenVault,True,True,True,True
+- target-function scope to FixMaker,C036,FibonacciBalance,False,False,,False
+- target-function scope to FixMaker,C037,FeeRouter,True,True,False,False
+- target-function scope to FixMaker,C038,RewardToken,True,True,True,True
+- target-function scope to FixMaker,C039,Suicidal,True,True,True,True
+- target-function scope to FixMaker,C040,HelperToken,True,False,True,False
+- target-function scope to FixMaker,C041,MultiOwned,True,True,True,True
+- target-function scope to FixMaker,C042,UpgradeProxy,False,False,,False
+- target-function scope to FixMaker,C043,TxWallet,True,True,True,True
+- target-function scope to FixMaker,C044,PhishableWallet,True,True,True,True
+- target-function scope to FixMaker,C045,OriginModifier,True,False,True,False
+- target-function scope to FixMaker,C046,LimitWallet,True,True,True,True
+- target-function scope to FixMaker,C047,EmergencyVault,True,True,True,True
+- target-function scope to FixMaker,C048,PoCGame,False,False,,False
+- target-function scope to FixMaker,C049,BECToken,True,False,True,False
+- target-function scope to FixMaker,C050,OverflowToken,True,True,True,True
+- target-function scope to FixMaker,C051,HoloToken,True,True,True,True
+- target-function scope to FixMaker,C052,TimeLock,True,True,True,True
+- target-function scope to FixMaker,C053,IntegerOverflowSingle,True,True,True,True
+- target-function scope to FixMaker,C054,CounterMinus,True,True,True,True
+- target-function scope to FixMaker,C055,PointsLedger,True,True,True,True
+- target-function scope to FixMaker,C056,PointsExchange,True,False,True,False
+- target-function scope to FixMaker,C057,TokenSaleChallenge,False,False,,False
+- target-function scope to FixMaker,C058,AllowanceToken,True,True,True,True
+- target-function scope to FixMaker,C059,UncheckedVault,True,True,True,True
+- target-function scope to FixMaker,C060,LinkedToken,False,False,,False
+- target-function scope to FixMaker,C061,GuessTheRandomNumber,True,True,True,True
+- target-function scope to FixMaker,C062,LuckyNumber,True,True,True,True
+- target-function scope to FixMaker,C063,PredictTheBlockHash,False,False,,False
+- target-function scope to FixMaker,C064,SecretSeedLottery,False,False,,False
+- target-function scope to FixMaker,C065,HiddenSeed,False,False,,False
+- target-function scope to FixMaker,C066,TimestampLottery,True,True,True,True
+- target-function scope to FixMaker,C067,PrevrandaoRaffle,True,False,True,False
+- target-function scope to FixMaker,C068,Blackjack,False,False,,False
+- target-function scope to FixMaker,C069,Auction,True,True,True,True
+- target-function scope to FixMaker,C070,BidRoom,True,True,True,True
+- target-function scope to FixMaker,C071,KingOfTheHill,True,True,True,True
+- target-function scope to FixMaker,C072,ThroneGame,True,True,True,True
+- target-function scope to FixMaker,C073,RefundList,False,False,,False
+- target-function scope to FixMaker,C074,Dividends,False,False,,False
+- target-function scope to FixMaker,C075,DosNumber,True,True,True,True
+- target-function scope to FixMaker,C076,DosAddress,True,True,True,True
+- target-function scope to FixMaker,C077,Payroll,True,False,True,False
+- target-function scope to FixMaker,C078,AuctionHelper,False,False,,False
+Raw LLM predicates,C001,EtherBank,True,True,True,True
+Raw LLM predicates,C002,SavingsJar,True,True,True,True
+Raw LLM predicates,C003,CoinVault,True,True,True,True
+Raw LLM predicates,C004,DepositBox,True,True,True,True
+Raw LLM predicates,C005,StakeVault,True,True,True,True
+Raw LLM predicates,C006,SimpleDAO,True,True,True,True
+Raw LLM predicates,C007,TwinWithdraw,True,False,True,False
+Raw LLM predicates,C008,LedgerBank,True,True,True,True
+Raw LLM predicates,C009,NuTokenAirdrop,True,True,True,True
+Raw LLM predicates,C010,BonusRewards,True,True,True,True
+Raw LLM predicates,C011,NFTDrop,True,True,True,True
+Raw LLM predicates,C012,TicketMint,True,True,True,True
+Raw LLM predicates,C013,PayeeRegistry,False,False,,False
+Raw LLM predicates,C014,SharePool,False,False,,False
+Raw LLM predicates,C015,EscrowRefund,True,True,True,True
+Raw LLM predicates,C016,TokenExchange,True,True,True,True
+Raw LLM predicates,C017,Lotto,True,True,True,True
+Raw LLM predicates,C018,Raffle,True,True,True,True
+Raw LLM predicates,C019,SendWallet,True,True,True,True
+Raw LLM predicates,C020,PiggyWallet,True,True,True,True
+Raw LLM predicates,C021,CreditDesk,True,True,True,True
+Raw LLM predicates,C022,RebateBox,True,True,True,True
+Raw LLM predicates,C023,TokenBank,False,False,,False
+Raw LLM predicates,C024,BatchPayer,True,True,True,True
+Raw LLM predicates,C025,KingOfEther,True,True,True,True
+Raw LLM predicates,C026,PrivateEthCell,False,False,,False
+Raw LLM predicates,C027,TreasurySweeper,True,True,True,True
+Raw LLM predicates,C028,PrizeDesk,True,True,True,True
+Raw LLM predicates,C029,Owned,True,True,True,True
+Raw LLM predicates,C030,OwnedVault,True,True,True,True
+Raw LLM predicates,C031,FeeVault,True,True,True,True
+Raw LLM predicates,C032,Missing,True,True,True,True
+Raw LLM predicates,C033,Rubixi,False,False,,False
+Raw LLM predicates,C034,WalletLibrary,True,True,True,True
+Raw LLM predicates,C035,OpenVault,True,True,True,True
+Raw LLM predicates,C036,FibonacciBalance,False,False,,False
+Raw LLM predicates,C037,FeeRouter,True,True,False,False
+Raw LLM predicates,C038,RewardToken,True,True,True,True
+Raw LLM predicates,C039,Suicidal,True,True,True,True
+Raw LLM predicates,C040,HelperToken,True,True,True,True
+Raw LLM predicates,C041,MultiOwned,True,True,True,True
+Raw LLM predicates,C042,UpgradeProxy,True,True,True,True
+Raw LLM predicates,C043,TxWallet,True,True,True,True
+Raw LLM predicates,C044,PhishableWallet,True,True,True,True
+Raw LLM predicates,C045,OriginModifier,True,True,True,True
+Raw LLM predicates,C046,LimitWallet,True,True,True,True
+Raw LLM predicates,C047,EmergencyVault,True,True,True,True
+Raw LLM predicates,C048,PoCGame,False,False,,False
+Raw LLM predicates,C049,BECToken,True,True,True,True
+Raw LLM predicates,C050,OverflowToken,True,True,True,True
+Raw LLM predicates,C051,HoloToken,True,True,True,True
+Raw LLM predicates,C052,TimeLock,True,True,True,True
+Raw LLM predicates,C053,IntegerOverflowSingle,True,True,True,True
+Raw LLM predicates,C054,CounterMinus,True,False,True,False
+Raw LLM predicates,C055,PointsLedger,True,True,True,True
+Raw LLM predicates,C056,PointsExchange,True,False,True,False
+Raw LLM predicates,C057,TokenSaleChallenge,True,True,True,True
+Raw LLM predicates,C058,AllowanceToken,True,True,True,True
+Raw LLM predicates,C059,UncheckedVault,True,True,True,True
+Raw LLM predicates,C060,LinkedToken,False,False,,False
+Raw LLM predicates,C061,GuessTheRandomNumber,True,True,True,True
+Raw LLM predicates,C062,LuckyNumber,True,True,True,True
+Raw LLM predicates,C063,PredictTheBlockHash,False,False,,False
+Raw LLM predicates,C064,SecretSeedLottery,True,True,True,True
+Raw LLM predicates,C065,HiddenSeed,False,False,,False
+Raw LLM predicates,C066,TimestampLottery,True,True,True,True
+Raw LLM predicates,C067,PrevrandaoRaffle,True,True,True,True
+Raw LLM predicates,C068,Blackjack,False,False,,False
+Raw LLM predicates,C069,Auction,True,True,True,True
+Raw LLM predicates,C070,BidRoom,True,True,True,True
+Raw LLM predicates,C071,KingOfTheHill,True,False,True,False
+Raw LLM predicates,C072,ThroneGame,True,True,True,True
+Raw LLM predicates,C073,RefundList,False,False,,False
+Raw LLM predicates,C074,Dividends,True,True,True,True
+Raw LLM predicates,C075,DosNumber,True,True,True,True
+Raw LLM predicates,C076,DosAddress,True,True,True,True
+Raw LLM predicates,C077,Payroll,True,True,True,True
+Raw LLM predicates,C078,AuctionHelper,True,True,True,True
+Generic class templates,C001,EtherBank,True,True,True,True
+Generic class templates,C002,SavingsJar,True,True,True,True
+Generic class templates,C003,CoinVault,True,True,True,True
+Generic class templates,C004,DepositBox,True,True,True,True
+Generic class templates,C005,StakeVault,True,True,True,True
+Generic class templates,C006,SimpleDAO,True,True,True,True
+Generic class templates,C007,TwinWithdraw,True,False,True,False
+Generic class templates,C008,LedgerBank,True,True,True,True
+Generic class templates,C009,NuTokenAirdrop,True,True,True,True
+Generic class templates,C010,BonusRewards,True,True,True,True
+Generic class templates,C011,NFTDrop,True,True,True,True
+Generic class templates,C012,TicketMint,True,True,True,True
+Generic class templates,C013,PayeeRegistry,False,False,,False
+Generic class templates,C014,SharePool,False,False,,False
+Generic class templates,C015,EscrowRefund,True,True,True,True
+Generic class templates,C016,TokenExchange,True,True,True,True
+Generic class templates,C017,Lotto,True,True,True,True
+Generic class templates,C018,Raffle,True,True,True,True
+Generic class templates,C019,SendWallet,True,True,True,True
+Generic class templates,C020,PiggyWallet,True,True,True,True
+Generic class templates,C021,CreditDesk,True,True,True,True
+Generic class templates,C022,RebateBox,True,True,True,True
+Generic class templates,C023,TokenBank,False,False,,False
+Generic class templates,C024,BatchPayer,True,True,True,True
+Generic class templates,C025,KingOfEther,True,True,True,True
+Generic class templates,C026,PrivateEthCell,False,False,,False
+Generic class templates,C027,TreasurySweeper,True,True,True,True
+Generic class templates,C028,PrizeDesk,True,True,True,True
+Generic class templates,C029,Owned,True,True,True,True
+Generic class templates,C030,OwnedVault,True,True,True,True
+Generic class templates,C031,FeeVault,True,True,True,True
+Generic class templates,C032,Missing,True,True,True,True
+Generic class templates,C033,Rubixi,False,False,,False
+Generic class templates,C034,WalletLibrary,True,True,True,True
+Generic class templates,C035,OpenVault,True,True,True,True
+Generic class templates,C036,FibonacciBalance,False,False,,False
+Generic class templates,C037,FeeRouter,True,True,False,False
+Generic class templates,C038,RewardToken,True,True,True,True
+Generic class templates,C039,Suicidal,True,True,True,True
+Generic class templates,C040,HelperToken,True,True,True,True
+Generic class templates,C041,MultiOwned,True,False,True,False
+Generic class templates,C042,UpgradeProxy,True,True,True,True
+Generic class templates,C043,TxWallet,True,True,True,True
+Generic class templates,C044,PhishableWallet,True,True,True,True
+Generic class templates,C045,OriginModifier,True,True,True,True
+Generic class templates,C046,LimitWallet,True,True,True,True
+Generic class templates,C047,EmergencyVault,True,True,True,True
+Generic class templates,C048,PoCGame,False,False,,False
+Generic class templates,C049,BECToken,True,True,True,True
+Generic class templates,C050,OverflowToken,True,True,True,True
+Generic class templates,C051,HoloToken,True,True,True,True
+Generic class templates,C052,TimeLock,True,True,True,True
+Generic class templates,C053,IntegerOverflowSingle,True,True,True,True
+Generic class templates,C054,CounterMinus,False,False,,False
+Generic class templates,C055,PointsLedger,True,True,True,True
+Generic class templates,C056,PointsExchange,True,False,True,False
+Generic class templates,C057,TokenSaleChallenge,True,True,True,True
+Generic class templates,C058,AllowanceToken,True,True,True,True
+Generic class templates,C059,UncheckedVault,True,True,True,True
+Generic class templates,C060,LinkedToken,False,False,,False
+Generic class templates,C061,GuessTheRandomNumber,True,True,True,True
+Generic class templates,C062,LuckyNumber,True,True,True,True
+Generic class templates,C063,PredictTheBlockHash,False,False,,False
+Generic class templates,C064,SecretSeedLottery,True,True,True,True
+Generic class templates,C065,HiddenSeed,False,False,,False
+Generic class templates,C066,TimestampLottery,True,True,True,True
+Generic class templates,C067,PrevrandaoRaffle,True,True,True,True
+Generic class templates,C068,Blackjack,False,False,,False
+Generic class templates,C069,Auction,True,True,True,True
+Generic class templates,C070,BidRoom,True,True,True,True
+Generic class templates,C071,KingOfTheHill,False,False,,False
+Generic class templates,C072,ThroneGame,True,True,True,True
+Generic class templates,C073,RefundList,False,False,,False
+Generic class templates,C074,Dividends,True,True,True,True
+Generic class templates,C075,DosNumber,True,True,True,True
+Generic class templates,C076,DosAddress,True,False,True,False
+Generic class templates,C077,Payroll,True,True,True,True
+Generic class templates,C078,AuctionHelper,True,True,True,True
+No invariant guidance,C001,EtherBank,True,True,True,True
+No invariant guidance,C002,SavingsJar,True,True,True,True
+No invariant guidance,C003,CoinVault,True,True,True,True
+No invariant guidance,C004,DepositBox,True,True,True,True
+No invariant guidance,C005,StakeVault,True,True,True,True
+No invariant guidance,C006,SimpleDAO,True,True,True,True
+No invariant guidance,C007,TwinWithdraw,True,False,True,False
+No invariant guidance,C008,LedgerBank,True,True,True,True
+No invariant guidance,C009,NuTokenAirdrop,True,True,True,True
+No invariant guidance,C010,BonusRewards,True,False,True,False
+No invariant guidance,C011,NFTDrop,True,True,True,True
+No invariant guidance,C012,TicketMint,True,True,True,True
+No invariant guidance,C013,PayeeRegistry,False,False,,False
+No invariant guidance,C014,SharePool,False,False,,False
+No invariant guidance,C015,EscrowRefund,True,True,True,True
+No invariant guidance,C016,TokenExchange,True,True,True,True
+No invariant guidance,C017,Lotto,True,True,True,True
+No invariant guidance,C018,Raffle,True,True,True,True
+No invariant guidance,C019,SendWallet,True,True,True,True
+No invariant guidance,C020,PiggyWallet,True,True,True,True
+No invariant guidance,C021,CreditDesk,True,True,True,True
+No invariant guidance,C022,RebateBox,True,True,True,True
+No invariant guidance,C023,TokenBank,False,False,,False
+No invariant guidance,C024,BatchPayer,True,True,True,True
+No invariant guidance,C025,KingOfEther,True,True,True,True
+No invariant guidance,C026,PrivateEthCell,False,False,,False
+No invariant guidance,C027,TreasurySweeper,True,True,True,True
+No invariant guidance,C028,PrizeDesk,True,True,True,True
+No invariant guidance,C029,Owned,True,True,True,True
+No invariant guidance,C030,OwnedVault,True,True,True,True
+No invariant guidance,C031,FeeVault,True,True,True,True
+No invariant guidance,C032,Missing,True,True,True,True
+No invariant guidance,C033,Rubixi,True,False,True,False
+No invariant guidance,C034,WalletLibrary,True,True,True,True
+No invariant guidance,C035,OpenVault,True,True,True,True
+No invariant guidance,C036,FibonacciBalance,False,False,,False
+No invariant guidance,C037,FeeRouter,True,True,False,False
+No invariant guidance,C038,RewardToken,True,True,True,True
+No invariant guidance,C039,Suicidal,True,True,True,True
+No invariant guidance,C040,HelperToken,True,True,True,True
+No invariant guidance,C041,MultiOwned,True,False,True,False
+No invariant guidance,C042,UpgradeProxy,True,True,True,True
+No invariant guidance,C043,TxWallet,True,True,True,True
+No invariant guidance,C044,PhishableWallet,True,True,True,True
+No invariant guidance,C045,OriginModifier,True,True,True,True
+No invariant guidance,C046,LimitWallet,True,True,True,True
+No invariant guidance,C047,EmergencyVault,True,True,True,True
+No invariant guidance,C048,PoCGame,False,False,,False
+No invariant guidance,C049,BECToken,True,True,True,True
+No invariant guidance,C050,OverflowToken,True,True,True,True
+No invariant guidance,C051,HoloToken,True,True,True,True
+No invariant guidance,C052,TimeLock,True,True,True,True
+No invariant guidance,C053,IntegerOverflowSingle,True,True,True,True
+No invariant guidance,C054,CounterMinus,False,False,,False
+No invariant guidance,C055,PointsLedger,True,True,True,True
+No invariant guidance,C056,PointsExchange,True,False,True,False
+No invariant guidance,C057,TokenSaleChallenge,True,True,True,True
+No invariant guidance,C058,AllowanceToken,True,True,True,True
+No invariant guidance,C059,UncheckedVault,True,True,True,True
+No invariant guidance,C060,LinkedToken,False,False,,False
+No invariant guidance,C061,GuessTheRandomNumber,True,True,True,True
+No invariant guidance,C062,LuckyNumber,True,True,True,True
+No invariant guidance,C063,PredictTheBlockHash,False,False,,False
+No invariant guidance,C064,SecretSeedLottery,True,True,True,True
+No invariant guidance,C065,HiddenSeed,False,False,,False
+No invariant guidance,C066,TimestampLottery,True,True,True,True
+No invariant guidance,C067,PrevrandaoRaffle,True,True,True,True
+No invariant guidance,C068,Blackjack,False,False,,False
+No invariant guidance,C069,Auction,True,True,True,True
+No invariant guidance,C070,BidRoom,True,True,True,True
+No invariant guidance,C071,KingOfTheHill,False,False,,False
+No invariant guidance,C072,ThroneGame,True,True,True,True
+No invariant guidance,C073,RefundList,False,False,,False
+No invariant guidance,C074,Dividends,True,True,True,True
+No invariant guidance,C075,DosNumber,True,True,True,True
+No invariant guidance,C076,DosAddress,True,False,True,False
+No invariant guidance,C077,Payroll,True,True,True,True
+No invariant guidance,C078,AuctionHelper,True,True,True,True

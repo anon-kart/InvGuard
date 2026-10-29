@@ -1,0 +1,77 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C002",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "excess_balance_loss_vs_nonreentrant",
+  "impact_oracle_description": "excess balance loss relative to a matched non-reentrant execution",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw from fallback before balances[sender] is cleared",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "ok",
+      "impact_observed": "contract lost 3.0 ether vs 1.0 ether in the matched non-reentrant run (excess 2.0 ether)"
+    },
+    {
+      "id": "A2",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw from fallback before balances[sender] is cleared",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A3",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw from fallback before balances[sender] is cleared",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A4",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw from fallback before balances[sender] is cleared",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    },
+    {
+      "id": "A5",
+      "entry_point": "withdraw()",
+      "ether_value": "1 ether (deposit)",
+      "typed_arguments": [],
+      "targets_obligations": [],
+      "objective": "re-enter withdraw from fallback before balances[sender] is cleared",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    }
+  ],
+  "fallback": null,
+  "confirmed_witnesses": [
+    "A1"
+  ],
+  "witness_source": "generated",
+  "outcome": "witness_confirmed",
+  "reason": null
+}

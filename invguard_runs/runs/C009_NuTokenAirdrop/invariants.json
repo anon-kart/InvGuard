@@ -1,0 +1,61 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C009",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "airDrop",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> select(pre.tokenBalance, meta.sender) == 0",
+      "function": "airDrop",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false
+    },
+    {
+      "id": "I2",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> select(post.tokenBalance, meta.sender) == 20",
+      "function": "airDrop",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "loop or external callee influences a referenced symbol"
+    },
+    {
+      "id": "I3",
+      "category": "reentrancy",
+      "rationale": "the function must not be entered again while an outer call is active",
+      "predicate": "meta.call_depth > 1 -> meta.revert_taken",
+      "function": "airDrop",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "re-entry depends on callback behavior outside the single-transition model"
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balances[a] <= pre.balances[a]",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "the external call eventually completes before any re-entry",
+      "reason": "temporal language"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 5,
+    "kept_after_normalization": 3,
+    "preservation": 1,
+    "repair_obligations": 0,
+    "unvalidated": 2,
+    "discarded": 0
+  }
+}

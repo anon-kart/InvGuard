@@ -1,0 +1,35 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C028",
+  "contract": "PrizeDesk",
+  "pragma": "0.4",
+  "findings": [
+    {
+      "source": "slither",
+      "detector": "unchecked-send",
+      "function": "_pay",
+      "candidate_class": "unchecked_call"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "unchecked_call",
+    "function": "_pay"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "unchecked_call",
+    "function": "payout",
+    "in_declared_scope": true
+  },
+  "class_match": true,
+  "function_match": false
+}

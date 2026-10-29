@@ -1,0 +1,41 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C073",
+  "contract": "RefundList",
+  "pragma": "0.4",
+  "findings": [
+    {
+      "source": "pattern",
+      "detector": "failure-dependent-external-call",
+      "function": "refundAll",
+      "candidate_class": "denial_of_service"
+    },
+    {
+      "source": "slither",
+      "detector": "calls-loop",
+      "function": "refundAll",
+      "candidate_class": "denial_of_service"
+    }
+  ],
+  "severity_order": [
+    "reentrancy",
+    "access_control",
+    "tx_origin",
+    "unchecked_call",
+    "arithmetic",
+    "denial_of_service",
+    "bad_randomness"
+  ],
+  "selected_target": {
+    "vulnerability_class": "denial_of_service",
+    "function": "refundAll"
+  },
+  "status": "target_selected",
+  "ground_truth": {
+    "vulnerability_class": "denial_of_service",
+    "function": "refundAll",
+    "in_declared_scope": true
+  },
+  "class_match": true,
+  "function_match": true
+}

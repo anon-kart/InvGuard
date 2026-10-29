@@ -1,0 +1,72 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C057",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "buy",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> meta.value == arg.numTokens * 1000000000000000000",
+      "function": "buy",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "nonlinear arithmetic influences a referenced symbol"
+    },
+    {
+      "id": "I2",
+      "category": "arithmetic",
+      "rationale": "arithmetic relation between pre- and post-state",
+      "predicate": "!meta.revert_taken -> select(post.balanceOf, meta.sender) == select(pre.balanceOf, meta.sender) + arg.numTokens",
+      "function": "buy",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": true
+    },
+    {
+      "id": "I3",
+      "category": "bound",
+      "rationale": "transferred or consumed value must stay within the recorded bound",
+      "predicate": "!meta.revert_taken -> meta.value > 0",
+      "function": "buy",
+      "validator_verdict": "FAIL",
+      "role": "discarded_not_security_relevant",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "counterexample": {
+        "meta.revert_taken": false,
+        "meta.value": 0
+      }
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "forall a: post.balanceOf[a] < 2**256",
+      "reason": "contains a quantifier"
+    },
+    {
+      "raw": "SafeMath.sub(x, y) does not revert",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "meta.revert_taken == false -> meta.value == arg.numTokens * 1000000000000000000",
+      "reason": "duplicate of I1 after normalization"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 7,
+    "kept_after_normalization": 3,
+    "preservation": 1,
+    "repair_obligations": 0,
+    "unvalidated": 1,
+    "discarded": 1
+  }
+}

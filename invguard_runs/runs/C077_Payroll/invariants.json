@@ -1,0 +1,57 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C077",
+  "model": "gpt-4o-mini-2024-07-18",
+  "function": "payAll",
+  "candidates": [
+    {
+      "id": "I1",
+      "category": "liveness",
+      "rationale": "a legitimate call must not be blocked by another party",
+      "predicate": "!meta.revert_taken",
+      "function": "payAll",
+      "validator_verdict": "INCONCLUSIVE",
+      "role": "unvalidated",
+      "human_label": "correct",
+      "holds_on_vulnerable_transition_adjudicated": false,
+      "inconclusive_reason": "loop over staff influences a referenced symbol"
+    },
+    {
+      "id": "I2",
+      "category": "state-effect",
+      "rationale": "successful execution must leave this storage effect",
+      "predicate": "!meta.revert_taken -> post.owner == pre.owner",
+      "function": "payAll",
+      "validator_verdict": "PASS",
+      "role": "preservation",
+      "human_label": "incorrect",
+      "holds_on_vulnerable_transition_adjudicated": true
+    }
+  ],
+  "normalization_dropped": [
+    {
+      "raw": "every bidder can always eventually bid",
+      "reason": "temporal language"
+    },
+    {
+      "raw": "gasleft() > 21000",
+      "reason": "function call in predicate"
+    },
+    {
+      "raw": "!meta.revert_taken",
+      "reason": "duplicate of I1 after normalization"
+    },
+    {
+      "raw": "!meta.revert_taken -> true",
+      "reason": "trivially weak"
+    }
+  ],
+  "summary": {
+    "proposed_raw": 6,
+    "kept_after_normalization": 2,
+    "preservation": 1,
+    "repair_obligations": 0,
+    "unvalidated": 1,
+    "discarded": 0
+  }
+}

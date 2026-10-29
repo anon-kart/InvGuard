@@ -1,0 +1,5 @@
+criterion,correct,n,rate_pct
+vulnerability class,76,78,97.4
+target function,71,78,91.0
+class and function,69,78,88.5
+"class and function, DoS subset",6,10,60.0

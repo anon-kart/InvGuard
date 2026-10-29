@@ -1,0 +1,94 @@
+{
+  "run_type": "unverified",
+  "contract_id": "C080",
+  "k": 5,
+  "compile_refinement_used": true,
+  "impact_oracle": "attacker_profit",
+  "impact_oracle_description": "attacker profit",
+  "llm_candidates": [
+    {
+      "id": "A1",
+      "entry_point": "solve(string)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "answer=unknown"
+      ],
+      "targets_obligations": [],
+      "objective": "copy a pending correct answer with higher gas",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A2",
+      "entry_point": "solve(string)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "answer=unknown"
+      ],
+      "targets_obligations": [],
+      "objective": "copy a pending correct answer with higher gas",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error persisted after one refinement"
+    },
+    {
+      "id": "A3",
+      "entry_point": "solve(string)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "answer=unknown"
+      ],
+      "targets_obligations": [],
+      "objective": "copy a pending correct answer with higher gas",
+      "compile": "ok",
+      "run": "revert",
+      "impact": "not_run",
+      "failure": "attack transaction reverted in setup"
+    },
+    {
+      "id": "A4",
+      "entry_point": "solve(string)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "answer=unknown"
+      ],
+      "targets_obligations": [],
+      "objective": "copy a pending correct answer with higher gas",
+      "compile": "ok",
+      "run": "ok",
+      "impact": "none",
+      "failure": "oracle observed no impact"
+    },
+    {
+      "id": "A5",
+      "entry_point": "solve(string)",
+      "ether_value": "0",
+      "typed_arguments": [
+        "answer=unknown"
+      ],
+      "targets_obligations": [],
+      "objective": "copy a pending correct answer with higher gas",
+      "compile": "error",
+      "run": "not_run",
+      "impact": "not_run",
+      "failure": "compile error"
+    }
+  ],
+  "fallback": {
+    "id": "FB1",
+    "source": "deterministic_class_skeleton",
+    "vulnerability_class": "access_control",
+    "entry_point": "solve(string)",
+    "compile": "ok",
+    "run": "ok",
+    "impact": "none",
+    "failure": "attacker cannot produce the preimage; no candidate shows impact"
+  },
+  "confirmed_witnesses": [],
+  "witness_source": null,
+  "outcome": "no_confirmed_witness_stop_no_repair_claim",
+  "reason": "attacker cannot produce the preimage; no candidate shows impact"
+}
